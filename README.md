@@ -1,4 +1,4 @@
-# My Awesome Book
+# About
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
-test
+This book contains my notes about computer and life.  
+You can feedback on [Gitbook](https://www.gitbook.com/book/fzinfz/notes/discussions) if any.

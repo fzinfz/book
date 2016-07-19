@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [GFW](GFW.md)
-* Cloud
+* [Cloud](Cloud.md)
 

@@ -1,9 +1,19 @@
 # Table of Contents
 - [Shadowsocks](#shadowsocks)
 - [Lightsword](#lightsword)
+- [Reversed Proxy](#Reversed Proxy)
 - [Optimize](#optimize)
 
 
+
+# Firewall
+```
+firewall-cmd --zone=public --add-port=4433/tcp --permanent
+firewall-cmd --zone=public --add-port=4433/udp--permanent
+firewall-cmd --reload
+firewall-cmd --list-all
+```
+---
 # Shadowsocks
 https://github.com/shadowsocks/shadowsocks/tree/master
 https://wiki.archlinux.org/index.php/Shadowsocks
@@ -64,21 +74,14 @@ lslocal -s server_addr -f
 lsbridge -s server_addr -f  
 ```
 ---
-# Google
+# Reversed Proxy
+## Google
 https://github.com/bohanyang/onemirror  
 OneMirror is a Docker image of Nginx, which already configured Google Search, Google Fonts and Gravatar proxy.
 ```
 docker run -p 80:80 -d bohan/onemirror
 ```
 
----
-# Firewall
-```
-firewall-cmd --zone=public --add-port=4433/tcp --permanent
-firewall-cmd --zone=public --add-port=4433/udp--permanent
-firewall-cmd --reload
-firewall-cmd --list-all
-```
 ---
 # Optimize
 

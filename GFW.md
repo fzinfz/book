@@ -59,6 +59,14 @@ lslocal -s server_addr -f
 lsbridge -s server_addr -f  
 ```
 ---
+# Google
+https://github.com/bohanyang/onemirror  
+OneMirror is a Docker image of Nginx, which already configured Google Search, Google Fonts and Gravatar proxy.
+```
+docker run -p 80:80 -d bohan/onemirror
+```
+
+---
 # Firewall
 ```
 firewall-cmd --zone=public --add-port=4433/tcp --permanent

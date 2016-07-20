@@ -6,18 +6,18 @@
 
 # Shadowsocks
 https://github.com/shadowsocks/shadowsocks/tree/master
+https://wiki.archlinux.org/index.php/Shadowsocks
 
 Auto install:  
 https://github.com/teddysun/shadowsocks_install  
 https://github.com/iMeiji/shadowsocks_install
-
 
 ```
 #Python version on CentOS
 yum install python-setuptools && easy_install pip
 pip install shadowsocks
 
-sudo ssserver -p 443 -k password -m rc4-md5 --user nobody -d start
+sudo ssserver -p 443 -k password -m aes-256-cfb -d start
 
 #C version on CentOS: https://teddysun.com/357.html  
 wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev.sh  

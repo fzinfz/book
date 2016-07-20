@@ -9,7 +9,7 @@ cat /etc/*-release
 ### systemctl
 https://wiki.archlinux.org/index.php/systemd  
 ```
-systemctl status
+sy  stemctl status
 
 systemctl
 systemctl --failed

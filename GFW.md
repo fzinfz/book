@@ -43,6 +43,11 @@ docker pull dockerzone/shadowsocks-server:latest
 https://github.com/mengskysama/shadowsocks/tree/manyuser  
 https://github.com/orvice/ss-panel
 
+###Manager
+```
+docker pull gyteng/ssmgr
+```
+
 ---
 # LightSword
 https://github.com/UnsignedInt8/LightSword  

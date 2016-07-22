@@ -25,7 +25,7 @@ sudo chkconfig docker on
 ```
 
 ## Windows 
-### [Linux based](boot2docker.io)
+### Linux VM ( http://boot2docker.io )
 https://docs.docker.com/docker-for-windows/  
 The current version of Docker for Windows runs on 64bit Windows 10 Pro, Enterprise and Education (1511 November update, Build 10586 or later). 
 

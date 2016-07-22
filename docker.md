@@ -34,7 +34,7 @@ https://docs.docker.com/engine/installation/windows/
 https://www.docker.com/products/docker-toolbox  (also for MAC)
 
 
-### Windows container
+### Windows Container
 https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server  
 
 https://blogs.msdn.microsoft.com/jcorioland/2016/04/28/getting-started-with-containers-and-docker-on-windows-server-2016-technical-preview-5/  
@@ -56,9 +56,6 @@ Install-PackageProvider ContainerImage -Force
 Install-ContainerImage -Name WindowsServerCore
 Restart-Service docker
 ```
-
-
-
 
 # Registry
 ## China Mirrors

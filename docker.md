@@ -3,8 +3,6 @@
 https://docs.docker.com/engine/getstarted/linux_install_help/  
 kernel must be 3.10 at minimum, which CentOS 7 runs.
 ```
-sudo yum install docker-engine
-
 $ curl -fsSL https://get.docker.com/ | sh
 ```
 ### CentOS
@@ -19,6 +17,8 @@ enabled=1
 gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 EOF
+
+sudo yum install docker-engine
 
 sudo service docker start
 sudo chkconfig docker on

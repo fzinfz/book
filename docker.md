@@ -33,15 +33,6 @@ https://docs.docker.com/engine/installation/windows/
 
 https://www.docker.com/products/docker-toolbox  (also for MAC)
 
-#### Connect mirror on boot2docker
-```
-docker-machine ssh default 
-
-echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
-
-docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn 
-
-```
 
 ### Windows container
 https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server  
@@ -66,10 +57,17 @@ Install-ContainerImage -Name WindowsServerCore
 Restart-Service docker
 ```
 
-## Containers on Windows Server 2016 TP5
+
 
 
 # Registry
+## China Mirrors
+```
+echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
+
+docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn 
+```
+
 ## Deploying a registry server
 https://github.com/docker/distribution/blob/master/docs/deploying.md  
 ```

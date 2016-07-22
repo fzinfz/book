@@ -60,9 +60,15 @@ Restart-Service docker
 # Registry
 ## China Mirrors
 ```
-echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
-
 docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn 
+```
+
+### Systemd
+https://servers.ustclug.org/2015/05/new-docker-hub-registry-mirror/
+
+### boot2docker
+```
+echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
 ```
 
 ## Deploying a registry server

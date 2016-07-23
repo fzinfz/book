@@ -75,4 +75,9 @@ echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var
 https://github.com/docker/distribution/blob/master/docs/deploying.md  
 ```
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
+``` 
+
+# Run
+```
+docker exec -it "id of running container" bash
 ```

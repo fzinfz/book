@@ -1,8 +1,55 @@
-# Commands
-## Run
-> shell:startup
+<!-- TOC -->
 
-## Powershell
+- [CMD](#cmd)
+- [CMD Tools](#cmd-tools)
+- [GUI Tools](#gui-tools)
+- [Configuration](#configuration)
+- [Powershell](#powershell)
+- [VT](#vt)
+	- [Hyper-V](#hyper-v)
+- [Installation](#installation)
+
+<!-- /TOC -->
+
+# CMD
+> startup DIR
+- shell:startup
+
+> Auto Login
+- netplwiz.exe
+
+> Run console background  
+- START /B program > log.txt
+
+> Networking
+- netstat -ano | findstr LISTEN
+- netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
+
+# CMD Tools
+> Check which process opening the file
+- https://download.sysinternals.com/files/Handle.zip
+
+# GUI Tools
+- [SoftPerfect RAM Disk](https://www.softperfect.com/products/ramdisk/)
+
+# Configuration
+> Disable Windows Defender
+- gpedit.msc: Computer Configuration/Administrative Templates/Windows Components/Windows Defender
+
+> Registry locations
+- %WINDIR%\System32\config\
+- https://technet.microsoft.com/en-in/library/cc750583(en-us).aspx
+
+> NFS mount
+- mount ip-of-NFS-Server:/Share-Name  x:
+
+> fix cifs/share mount:
+```
+net use * /del /yes
+net use h: \\192.168.0.1\docs /user:ServerB\user Password 
+```
+
+# Powershell
 ```Powershell
 #list top processes sort by memory
 Get-Process | Sort WorkingSet -Descending  | select-object  Id, Name, 
@@ -25,10 +72,10 @@ Get-WMIObject Win32_Process |
 
 # VT
 ## Hyper-V 
-### check support: 
-> systeminfo
+> check support
+- systeminfo
  
-### Turn Off  
+> Turn Off  
 ```
 C:\>bcdedit /copy {current} /d "No Hyper-V" 
 The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
@@ -38,14 +85,18 @@ The operation completed successfully.
 ```
 
 # Installation
-## Tools
-> [winntsetup](http://www.msfn.org/board/topic/149612-winntsetup-v386/)
+> Tools
+- [winntsetup](http://www.msfn.org/board/topic/149612-winntsetup-v386/)
 
-## Errors
-* "Windows setup could not configure to run on this computer's hardware"
-    - Shift+F10 
-    - c:\windows\system32\oobe\msoobe.exe
+> Force OOBE
+- Shift+F10 
+- c:\windows\system32\oobe\msoobe.exe
 
-* Fix boot partiton
-    + EFI
-        - bcdboot c:\windows /s h: /f UEFI
+> Fix boot partiton
++ EFI
+    - bcdboot c:\windows /s h: /f UEFI
+
+> IDE to AHCI after Installation
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  
+    iaStorV,iaStorAV,storahci: Start => 0  
+    StartOverride => DELETE

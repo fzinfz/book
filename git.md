@@ -10,5 +10,6 @@ git pull origin master
 git config --global push.default simple
 git push --set-upstream origin master
 
-```
+git commit -am "save arezzo files"
 
+```

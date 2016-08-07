@@ -1,7 +1,9 @@
 # Summary
 
 * [Introduction](README.md)
-* [Docker](docker.md)
-* [Cloud](cloud.md)
+* [Windows](windows.md)
 * [Linux](linux.md)
-
+* [Virtualization](vt.md)
+* [Docker](docker.md) 
+* [Git](git.md)
+* [Cloud](cloud.md)

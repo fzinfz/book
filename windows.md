@@ -5,8 +5,7 @@
 - [GUI Tools](#gui-tools)
 - [Configuration](#configuration)
 - [Powershell](#powershell)
-- [VT](#vt)
-	- [Hyper-V](#hyper-v)
+- [Hyper-V](#hyper-v)
 - [Installation](#installation)
 
 <!-- /TOC -->
@@ -31,6 +30,7 @@
 
 # GUI Tools
 - [SoftPerfect RAM Disk](https://www.softperfect.com/products/ramdisk/)
+- http://www.freerdp.com/
 
 # Configuration
 > Disable Windows Defender
@@ -70,8 +70,7 @@ Get-Process | Get-Member | findstr Mem
 Get-WMIObject Win32_Process | 
 ```
 
-# VT
-## Hyper-V 
+# Hyper-V 
 > check support
 - systeminfo
  

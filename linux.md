@@ -86,10 +86,13 @@ echo 'ps grep excluding grep pid'
 RESULT_ssh_agent =`ps -aux | sed -n /[s]sh-agent/p`
 
 if [ "${RESULT_ssh_agent:-null}" = null ]; then
-    sh /mnt/d/Dropbox/bash/add_ssh.sh
+	chmod 600 /home/fzinfz/.ssh/id_rsa_vultr
+	eval $(ssh-agent -s)
+	ssh-add /home/fzinfz/.ssh/id_rsa_vultr
 else
-    echo "ssh-agent running"
+    echo "ssh-agent running,skip adding"
 fi
+
 ```
 
 # Files Description

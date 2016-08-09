@@ -1,3 +1,26 @@
+<!-- TOC -->
+
+- [Run](#run)
+- [Install](#install)
+	- [Linux](#linux)
+		- [CentOS](#centos)
+	- [Windows](#windows)
+		- [Linux VM ( http://boot2docker.io )](#linux-vm-httpboot2dockerio-)
+		- [Windows Container](#windows-container)
+- [Registry](#registry)
+	- [China Mirrors](#china-mirrors)
+		- [Systemd](#systemd)
+		- [boot2docker](#boot2docker)
+	- [Deploying a registry server](#deploying-a-registry-server)
+- [Upload](#upload)
+
+<!-- /TOC -->
+
+# Run
+```
+docker exec -it "id of running container" bash
+```
+
 # Install
 ## Linux
 https://docs.docker.com/engine/getstarted/linux_install_help/  
@@ -77,7 +100,9 @@ https://github.com/docker/distribution/blob/master/docs/deploying.md
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 ``` 
 
-# Run
+# Upload
 ```
-docker exec -it "id of running container" bash
+$ docker tag local-image:tagname fzinfz/ferro:tagname
+$ docker push fzinfz/ferro:tagname
 ```
+

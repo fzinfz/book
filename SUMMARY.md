@@ -6,4 +6,5 @@
 * [Virtualization](vt.md)
 * [Docker](docker.md) 
 * [Git](git.md)
+* [Hardware](hw.md)
 * [Cloud](cloud.md)

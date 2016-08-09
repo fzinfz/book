@@ -1,49 +1,67 @@
 <!-- TOC -->
 
-- [CMD](#cmd)
+- [RUN](#run)
+	- [Startup Folder](#startup-folder)
+	- [Auto Login](#auto-login)
+- [CMD Commands](#cmd-commands)
+	- [Networking](#networking)
 - [CMD Tools](#cmd-tools)
+	- [Check and unclock file](#check-and-unclock-file)
 - [GUI Tools](#gui-tools)
+	- [Cross-Platform](#cross-platform)
 - [Configuration](#configuration)
+	- [Disable Windows Defender](#disable-windows-defender)
+	- [Registry locations](#registry-locations)
+	- [NFS mount](#nfs-mount)
+	- [Fix cifs/share mount:](#fix-cifsshare-mount)
 - [Powershell](#powershell)
 - [Hyper-V](#hyper-v)
+	- [Check support](#check-support)
+	- [Turn Off](#turn-off)
 - [Installation](#installation)
+	- [Tools](#tools)
+	- [Force OOBE](#force-oobe)
+	- [Fix boot partiton](#fix-boot-partiton)
+	- [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
 
 <!-- /TOC -->
 
-# CMD
-> startup DIR
+# RUN
+## Startup Folder
 - shell:startup
 
-> Auto Login
+## Auto Login
 - netplwiz.exe
 
-> Run console background  
-- START /B program > log.txt
-
-> Networking
+# CMD Commands
+## Networking
 - netstat -ano | findstr LISTEN
 - netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
 
 # CMD Tools
-> Check which process opening the file
+## Check and unclock file
 - https://download.sysinternals.com/files/Handle.zip
+- http://unlocker.en.softonic.com/
 
 # GUI Tools
 - [SoftPerfect RAM Disk](https://www.softperfect.com/products/ramdisk/)
+
+## Cross-Platform
 - http://www.freerdp.com/
+- [Password Recovery](https://hashcat.net/hashcat/)
 
 # Configuration
-> Disable Windows Defender
+## Disable Windows Defender
 - gpedit.msc: Computer Configuration/Administrative Templates/Windows Components/Windows Defender
 
-> Registry locations
+## Registry locations
 - %WINDIR%\System32\config\
 - https://technet.microsoft.com/en-in/library/cc750583(en-us).aspx
 
-> NFS mount
+## NFS mount
 - mount ip-of-NFS-Server:/Share-Name  x:
 
-> fix cifs/share mount:
+## Fix cifs/share mount:
 ```
 net use * /del /yes
 net use h: \\192.168.0.1\docs /user:ServerB\user Password 
@@ -71,10 +89,10 @@ Get-WMIObject Win32_Process |
 ```
 
 # Hyper-V 
-> check support
+## Check support
 - systeminfo
  
-> Turn Off  
+## Turn Off  
 ```
 C:\>bcdedit /copy {current} /d "No Hyper-V" 
 The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
@@ -84,18 +102,18 @@ The operation completed successfully.
 ```
 
 # Installation
-> Tools
+## Tools
 - [winntsetup](http://www.msfn.org/board/topic/149612-winntsetup-v386/)
 
-> Force OOBE
+## Force OOBE
 - Shift+F10 
 - c:\windows\system32\oobe\msoobe.exe
 
-> Fix boot partiton
+## Fix boot partiton
 + EFI
     - bcdboot c:\windows /s h: /f UEFI
 
-> IDE to AHCI after Installation
+## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  
     iaStorV,iaStorAV,storahci: Start => 0  
     StartOverride => DELETE

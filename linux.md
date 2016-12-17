@@ -17,7 +17,7 @@
 - [System](#system)
     - [time](#time)
     - [history without line numbers](#history-without-line-numbers)
-        - [systemctl](#systemctl)
+    - [systemctl](#systemctl)
 - [Files](#files)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
@@ -38,7 +38,6 @@
         - [Restore](#restore)
     - [vmdk](#vmdk)
 - [Serial Console](#serial-console)
-- [Windows](#windows)
 
 <!-- /TOC -->
 
@@ -122,7 +121,7 @@ TZ='Asia/Shanghai'; export TZ
 ## history without line numbers  
 `history | cut -c 8-`
 
-### systemctl
+## systemctl
 https://wiki.archlinux.org/index.php/systemd
 
 ```
@@ -267,9 +266,4 @@ https://wiki.openwrt.org/doc/hardware/port.serial
 cat openwrt-lantiq-ram-u-boot.asc > /dev/ttyUSB0
 screen /dev/ttyUSB0 115200
 picocom -b 115200 /dev/ttyUSB0
-```
-
-# Windows
-```
-route add 192.168.0.0  MASK 255.255.0.0 10.0.0.1
 ```

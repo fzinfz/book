@@ -1,27 +1,27 @@
 <!-- TOC -->
 
-- [Cow - Auto detect blocked sites](#cow-auto-detect-blocked-sites)
+- [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [GO Simple Tunnel](#go-simple-tunnel)
 - [Shadowsocks](#shadowsocks)
-	- [Auto install](#auto-install)
-	- [Python version on CentOS](#python-version-on-centos)
-	- [C version on CentOS](#c-version-on-centos)
-	- [Docker](#docker)
-	- [Multi Users](#multi-users)
-	- [Manager/Panel](#managerpanel)
+    - [Auto install](#auto-install)
+    - [Python version on CentOS](#python-version-on-centos)
+    - [C version on CentOS](#c-version-on-centos)
+    - [Docker](#docker)
+    - [Multi Users](#multi-users)
+    - [Manager/Panel](#managerpanel)
 - [LightSword](#lightsword)
-	- [CentOS](#centos)
+    - [CentOS](#centos)
 - [Other tools](#other-tools)
 - [Reversed Proxy](#reversed-proxy)
-	- [Google](#google)
+    - [Google](#google)
 - [Optimize](#optimize)
-	- [OS/Server side](#os--server-side)
-		- [BBR](#bbr)
-		- [ServerSpeeder](#serverspeeder)
-			- [Supported kernels](#supported-kernels)
-	- [Server + Client both sides](#server-client-both-sides)
-		- [KCPTun](#kcptun)
-		- [Finalspeed](#finalspeed)
+    - [OS / Server side](#os--server-side)
+        - [BBR](#bbr)
+        - [ServerSpeeder](#serverspeeder)
+            - [Supported kernels](#supported-kernels)
+    - [Server + Client both sides](#server--client-both-sides)
+        - [KCPTun](#kcptun)
+        - [Finalspeed](#finalspeed)
 - [introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 
 <!-- /TOC -->
@@ -120,14 +120,7 @@ docker run -p 80:80 -d bohan/onemirror
 https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocks-optimize
 
 ### BBR
-https://github.com/iMeiji/shadowsocks_install/wiki/%E5%BC%80%E5%90%AFTCP-BBR%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95
-```
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-sysctl -p
-sysctl -n net.ipv4.tcp_congestion_control
-lsmod | grep bbr
-```
+https://www.1note.win/linux.html#enable-tcp-bbr-of-kernel-49
 
 ### ServerSpeeder
 ```

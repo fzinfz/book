@@ -21,6 +21,9 @@ https://www.ietf.org/proceedings/97/slides/slides-97-iccrg-bbr-congestion-contro
 http://www.thequilt.net/wp-content/uploads/BBR-TCP-Opportunities.pdf
 http://queue.acm.org/detail.cfm?id=3022184
 
+# Hardware
+CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119
+
 # Virtualization
 
 ## Vagrant

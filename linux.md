@@ -11,8 +11,7 @@
     - [Enable tcp_congestion_control temporarily](#enable-tcp_congestion_control-temporarily)
     - [Enable tcp_congestion_control permanently](#enable-tcp_congestion_control-permanently)
     - [Check](#check)
-- [Docker](#docker)
-    - [Install(kernel>=3.10)](#installkernel310)
+- [Benchmark](#benchmark)
 - [vi/vim](#vivim)
 - [System](#system)
     - [time](#time)
@@ -95,13 +94,10 @@ sysctl -p
 sysctl net.ipv4 | grep control
 tc qdisc show
 ```
-
-# Docker
-## Install(kernel>=3.10)
+# Benchmark
 ```
-curl -fsSL https://get.docker.com/ | sh
-sudo systemctl enable docker.service
-sudo systemctl start docker
+wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
+tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
 
 # vi/vim

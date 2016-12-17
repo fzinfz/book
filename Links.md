@@ -50,9 +50,6 @@ echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var
 ```
 
 # Cloud
-# Trial
-https://tryappservice.azure.com 
-
 # Pricing
 https://aws.amazon.com/free/  
 https://aws.amazon.com/ec2/pricing/  
@@ -76,11 +73,14 @@ https://www.qingcloud.com/pricing/plan
 https://www.sinacloud.com/index/price.html   
 https://www.daocloud.io/pricing/public.html  
 
+# Free
+https://tryappservice.azure.com 
+
 ## Promotions
-> Vultr  
-$20 for 1 Year:  http://www.vultr.com/?ref=6916363-3B  
-$50 for 60 days or $20 for 30 days:  https://www.vultr.com/coupons/  
+### Vultr  
+$20 for 1 Year:  http://www.vultr.com/?ref=6916363-3B   
+$50 for 60 days or $20 for 30 days:  https://www.vultr.com/coupons/   
 Max $100 for 1 year:  https://www.vultr.com/match/
 
-> Digitalocean  
+### Digitalocean  
 $20: https://cloud.docker.com/account/

@@ -75,7 +75,7 @@ reboot
 ```
 
 # Enable TCP BBR of Kernel 4.9
-[docs](./Links#tcp-bbr-congestion-based-congestion-control)
+[docs](./Links.html#tcp-bbr-congestion-based-congestion-control)
 ## Manually Load and check BBR module(Optional)
 ```
 modprobe tcp_bbr

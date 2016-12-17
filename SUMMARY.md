@@ -8,3 +8,5 @@
 * [Git](git.md)
 * [Hardware](hw.md)
 * [Cloud](cloud.md)
+
+* [test](cloud.md#pricing)

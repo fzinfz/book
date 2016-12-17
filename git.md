@@ -34,3 +34,5 @@ $ git push -f origin master
 
 git pull origin master #fetch + merge
 ```
+
+git log --since=2.weeks

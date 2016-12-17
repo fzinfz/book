@@ -1,28 +1,29 @@
 <!-- TOC -->
 
 - [RUN](#run)
-	- [Startup Folder](#startup-folder)
-	- [Auto Login](#auto-login)
+    - [Startup Folder](#startup-folder)
+    - [Auto Login](#auto-login)
 - [CMD Commands](#cmd-commands)
-	- [Networking](#networking)
+    - [Networking](#networking)
 - [CMD Tools](#cmd-tools)
-	- [Check and unclock file](#check-and-unclock-file)
+    - [Check and unclock file](#check-and-unclock-file)
 - [GUI Tools](#gui-tools)
-	- [Cross-Platform](#cross-platform)
+    - [Cross-Platform](#cross-platform)
 - [Configuration](#configuration)
-	- [Disable Windows Defender](#disable-windows-defender)
-	- [Registry locations](#registry-locations)
-	- [NFS mount](#nfs-mount)
-	- [Fix cifs/share mount:](#fix-cifsshare-mount)
+    - [Disable Windows Defender](#disable-windows-defender)
+    - [Registry locations](#registry-locations)
+    - [NFS mount](#nfs-mount)
+    - [Fix cifs/share mount:](#fix-cifsshare-mount)
 - [Powershell](#powershell)
 - [Hyper-V](#hyper-v)
-	- [Check support](#check-support)
-	- [Turn Off](#turn-off)
+    - [Check support](#check-support)
+    - [Turn Off](#turn-off)
 - [Installation](#installation)
-	- [Tools](#tools)
-	- [Force OOBE](#force-oobe)
-	- [Fix boot partiton](#fix-boot-partiton)
-	- [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
+    - [Tools](#tools)
+    - [Force OOBE](#force-oobe)
+    - [Fix boot partiton](#fix-boot-partiton)
+    - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
+    - [Uninstall software in safemode](#uninstall-software-in-safemode)
 
 <!-- /TOC -->
 
@@ -33,10 +34,13 @@
 ## Auto Login
 - netplwiz.exe
 
+
 # CMD Commands
 ## Networking
 - netstat -ano | findstr LISTEN
 - netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
+
+netsh interface ip set address "Ethernet adapter Ethernet 2" static 192.168.3.5 255.255.255.0 192.168.3.2
 
 # CMD Tools
 ## Check and unclock file
@@ -68,6 +72,12 @@ net use h: \\192.168.0.1\docs /user:ServerB\user Password
 ```
 
 # Powershell
+Set-ExecutionPolicy RemoteSigned
+Enable-PSRemoting -Force
+
+Import-Module ServerManager
+Add-WindowsFeature RDS-Virtualization
+
 ```Powershell
 #list top processes sort by memory
 Get-Process | Sort WorkingSet -Descending  | select-object  Id, Name, 
@@ -117,3 +127,7 @@ The operation completed successfully.
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  
     iaStorV,iaStorAV,storahci: Start => 0  
     StartOverride => DELETE
+
+## Uninstall software in safemode
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /T REG_SZ /F /D "Service"
+net start msiserver

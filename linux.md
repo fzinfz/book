@@ -3,13 +3,12 @@
 - [Check release & kernel](#check-release--kernel)
 - [Kernel 4.9](#kernel-49)
     - [Ubuntu / Debian](#ubuntu--debian)
-        - [Debian Official](#debian-official)
+        - [Debian Jessie Official](#debian-jessie-official)
 - [Grub](#grub)
     - [Ubuntu / Debian](#ubuntu--debian)
 - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
     - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
-    - [Enable tcp_congestion_control temporarily](#enable-tcp_congestion_control-temporarily)
-    - [Enable tcp_congestion_control permanently](#enable-tcp_congestion_control-permanently)
+    - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
     - [Check](#check)
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
@@ -58,10 +57,14 @@ wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9/linux-image-4.9.0-040900
 sudo dpkg -i *.deb
 ```
 Tested on Debian 8.6 and Ubuntu 16.10.
-### Debian Official
+
+### Debian Jessie Official
 ```
-echo  "deb http://ftp.de.debian.org/debian experimental main"  >>  /etc/apt/sources.list
-apt-get update && apt-cache search linux-image-4.9
+echo deb http://ftp.de.debian.org/debian experimental main >> /etc/apt/sources.list
+echo deb http://ftp.de.debian.org/debian jessie-backports main >> /etc/apt/sources.list
+apt-get update
+apt-get install linux-base -t jessie-backports
+apt-get install linux-image-4.9.0-rc8-amd64-unsigned
 ```
 
 # Grub
@@ -70,36 +73,37 @@ apt-get update && apt-cache search linux-image-4.9
 awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
 vi /etc/default/grub
 update-grub
-reboot
 ```
 
 # Enable TCP BBR of Kernel 4.9
 [docs](./Links.html#tcp-bbr-congestion-based-congestion-control)
+
 ## Manually Load and check BBR module(Optional)
 ```
 modprobe tcp_bbr
 lsmod | grep bbr
 sysctl net.ipv4.tcp_available_congestion_control
 ```
-## Enable tcp_congestion_control temporarily
-`sysctl -w net.ipv4.tcp_congestion_control=bbr`
-## Enable tcp_congestion_control permanently
+
+## Enable tcp_congestion_control
 ```
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
+reboot
 ```
+
 ## Check
 ```
 sysctl net.ipv4 | grep control
 tc qdisc show
 ```
+
 # Benchmark
 ```
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
-
 # vi/vim
 ```
 cw => change word

@@ -4,8 +4,10 @@
 - [Kernel 4.9](#kernel-49)
     - [Ubuntu / Debian](#ubuntu--debian)
         - [Debian Jessie Official](#debian-jessie-official)
+    - [CentOS / Redhat](#centos--redhat)
 - [Grub](#grub)
     - [Ubuntu / Debian](#ubuntu--debian)
+    - [CentOS / Redhat](#centos--redhat)
 - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
     - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
     - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
@@ -48,15 +50,9 @@ cat /etc/*-release
 # Kernel 4.9
 ## Ubuntu / Debian
 ```
-mkdir kernel-4.9 && cd kernel-4.9
-
-wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9/linux-headers-4.9.0-040900_4.9.0-040900.201612111631_all.deb
-wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9/linux-headers-4.9.0-040900-generic_4.9.0-040900.201612111631_amd64.deb
 wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9/linux-image-4.9.0-040900-generic_4.9.0-040900.201612111631_amd64.deb
-
-sudo dpkg -i *.deb
+dpkg -i linux-image-4.9.0*.deb
 ```
-Tested on Debian 8.6 and Ubuntu 16.10.
 
 ### Debian Jessie Official
 ```
@@ -66,6 +62,19 @@ apt-get update
 apt-get install linux-base -t jessie-backports
 apt-get install linux-image-4.9.0-rc8-amd64-unsigned
 ```
+## CentOS / Redhat
+```
+wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
+
+ar x linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
+tar -Jxf data.tar.xz
+install -m644 boot/vmlinuz-4.9.0-rc8-amd64 /boot/vmlinuz-4.9.0-rc8-amd64
+cp -Rav lib/modules/4.9.0-rc8-amd64 /lib/modules/
+depmod -a 4.9.0-rc8-amd64
+
+dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
+```
+Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
 
 # Grub
 ## Ubuntu / Debian
@@ -73,6 +82,14 @@ apt-get install linux-image-4.9.0-rc8-amd64-unsigned
 awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
 vi /etc/default/grub
 update-grub
+```
+
+## CentOS / Redhat
+```
+grub2-mkconfig -o /boot/grub2/grub.cfg
+awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
+grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
+grub2-editenv list 
 ```
 
 # Enable TCP BBR of Kernel 4.9
@@ -95,6 +112,7 @@ reboot
 
 ## Check
 ```
+sysctl net.core.default_qdisc
 sysctl net.ipv4 | grep control
 tc qdisc show
 ```

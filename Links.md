@@ -1,3 +1,6 @@
+# Tools
+http://vip.xunlei.com/fast_xl/update.html
+
 # Linux Shell
 http://explainshell.com/
 
@@ -10,6 +13,9 @@ http://nbviewer.jupyter.org/
 http://www.balticnetworkstraining.com/subnet-calculator/  
 http://www.mikrotik.com/img/netaddresses2.pdf
 
+## DHCP
+Options: http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+
 ## Optimization
 https://fasterdata.es.net/assets/Papers-and-Publications/100G-Tuning-TechEx2016.tierney.pdf
 
@@ -20,6 +26,7 @@ http://events.linuxfoundation.org/sites/events/files/slides/Linux_traffic_contro
 https://www.ietf.org/proceedings/97/slides/slides-97-iccrg-bbr-congestion-control-02.pdf   
 http://www.thequilt.net/wp-content/uploads/BBR-TCP-Opportunities.pdf
 http://queue.acm.org/detail.cfm?id=3022184
+http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.pdf
 
 # Hardware
 CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119
@@ -51,9 +58,12 @@ docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn
 ```
 echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
 ```
+# MySQL Cluster
+https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-ndb-innodb-engines.html
+
 
 # Cloud
-# Pricing
+## Pricing
 https://aws.amazon.com/free/  
 https://aws.amazon.com/ec2/pricing/  
 https://calculator.s3.amazonaws.com/index.html
@@ -76,14 +86,17 @@ https://www.qingcloud.com/pricing/plan
 https://www.sinacloud.com/index/price.html   
 https://www.daocloud.io/pricing/public.html  
 
-# Free
+## Free 
 https://tryappservice.azure.com 
 
+## Trial
+http://aws.amazon.com/free/
+https://cloud.google.com/free-trial/
+https://azure.microsoft.com/en-us/offers/ms-azr-0044p/
+
 ## Promotions
-### Vultr  
 $20 for 1 Year:  http://www.vultr.com/?ref=6916363-3B   
 $50 for 60 days or $20 for 30 days:  https://www.vultr.com/coupons/   
 Max $100 for 1 year:  https://www.vultr.com/match/
 
-### Digitalocean  
 $20: https://cloud.docker.com/account/

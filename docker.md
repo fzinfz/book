@@ -3,6 +3,7 @@
 - [Install(kernel>=3.10)](#installkernel310)
     - [Debian Jessie](#debian-jessie)
 - [Swarm](#swarm)
+- [Run](#run)
 
 <!-- /TOC -->
 
@@ -31,14 +32,43 @@ Ref: https://docs.docker.com/engine/installation/linux/debian/
 TCP port 2377 for cluster management communications
 TCP and UDP port 7946 for communication among nodes
 TCP and UDP port 4789 for overlay network traffic
+--opt encrypted => protocol 50 (ESP) is open
 
-If you are planning on creating an overlay network with encryption (--opt encrypted), you will also need to ensure protocol 50 (ESP) is open.
+If you have a cluster with 1 manager, and the manager goes down the cluster goes down, but you can bring it back up by fixing the node.
+If you have a cluster with 2 managers, you cannot tolerate any failure.
 ```
-docker swarm init --advertise-addr 1.2.3.4
+netstat -lntup | egrep '2377|7946|4789|50'
+docker network create \
+  --driver overlay \
+  --subnet 10.66.1.0/24 \
+  --opt encrypted \
+  web
 
-swarm join-token manager
+docker network ls
+  
+docker swarm init --advertise-addr 1.2.3.4
+docker swarm join-token manager
 docker swarm join-token worker
+docker swarm init --force-new-cluster # without losing data
 
 docker node ls
 
+docker service create --name nginx -p 8080:80 --replicas 3 nginx
+docker service create --name nginx -p 80:80  -p 443:443 --network web --mode global nginx
+
+docker service ls
+docker service ps nginx
+docker inspect <ID> | grep Err
 ```
+https://docs.docker.com/engine/reference/commandline/service_create/
+
+# Run
+```
+echo test | docker run --rm -i alpine cat
+```
+
+Volume labels  
+`:z` => shared  
+`:Z` => private
+
+`--entrypoint` will clear out `CMD`

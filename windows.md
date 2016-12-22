@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Unique Features](#unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
     - [Auto Login](#auto-login)
@@ -26,6 +27,10 @@
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 
 <!-- /TOC -->
+
+# Unique Features
+10: Free RemoteFX, WSL
+2016: NFS Server
 
 # RUN
 ## Startup Folder

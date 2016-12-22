@@ -7,7 +7,7 @@
     - [CentOS / Redhat](#centos--redhat)
 - [Grub](#grub)
     - [Ubuntu / Debian](#ubuntu--debian)
-    - [CentOS / Redhat](#centos--redhat)
+    - [CentOS](#centos)
 - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
     - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
     - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
@@ -17,6 +17,7 @@
 - [System](#system)
     - [time](#time)
     - [history without line numbers](#history-without-line-numbers)
+    - [ssh](#ssh)
     - [systemctl](#systemctl)
 - [Files](#files)
 - [Dropbox](#dropbox)
@@ -84,7 +85,7 @@ vi /etc/default/grub
 update-grub
 ```
 
-## CentOS / Redhat
+## CentOS
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
 awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
@@ -121,6 +122,9 @@ tc qdisc show
 ```
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
+
+dd if=/dev/zero of=/root/testfile bs=200M count=1 oflag=direct   
+dd if=/dev/zero of=/root/testfile bs=512 count=1000 oflag=direct
 ```
 # vi/vim
 ```
@@ -138,6 +142,11 @@ TZ='Asia/Shanghai'; export TZ
 
 ## history without line numbers  
 `history | cut -c 8-`
+
+## ssh
+```
+ssh-keygen -R hostname
+```
 
 ## systemctl
 https://wiki.archlinux.org/index.php/systemd
@@ -159,8 +168,8 @@ sudo du -hcd 2  / | more
 sudo  du -a / | sort -n -r | head -n 20
 sudo apt-get autoclean
 
-dd if=/dev/zero of=/root/testfile bs=1G count=1 oflag=direct    
-dd if=/dev/zero of=/root/testfile bs=512 count=1000 oflag=direct
+rsync -aP  /root/_bin root@remote:/root
+rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --remove-source-files
 ```
 - The ~/.bash_profile would be used once, at login.
 - The ~/.bashrc script is read every time a shell is started.
@@ -228,7 +237,8 @@ service firewalld stop
 ```
 ## Ubuntu 16
 ```
-ufw allow 11200:11299/tcp
+sudo ufw allow 11200:11299/tcp
+sudo ufw disable
 ```
 
 # Nginx

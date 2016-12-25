@@ -1,15 +1,15 @@
 <!-- TOC -->
 
-- [Tools](#tools)
-    - [introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
-- [Linux Shell](#linux-shell)
-- [Git](#git)
 - [Networking](#networking)
     - [Subnetting](#subnetting)
     - [DHCP](#dhcp)
     - [Optimization](#optimization)
         - [TC](#tc)
         - [TCP BBR: Congestion-Based Congestion Control](#tcp-bbr-congestion-based-congestion-control)
+    - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
+- [Sync](#sync)
+- [Shell](#shell)
+- [Git](#git)
 - [Hardware](#hardware)
 - [Virtualization](#virtualization)
     - [Vagrant](#vagrant)
@@ -24,23 +24,9 @@
     - [Free](#free)
     - [Trial](#trial)
     - [Promotions](#promotions)
+- [China only](#china-only)
 
 <!-- /TOC -->
-
-# Tools
-http://vip.xunlei.com/fast_xl/update.html
-
-## introspectable tunnels to localhost
-https://github.com/inconshreveable/ngrok
-https://github.com/fatedier/frp
-https://github.com/lovedboy/gortcp
-
-# Linux Shell
-http://explainshell.com/
-
-# Git
-https://rawgit.com/  
-http://nbviewer.jupyter.org/
 
 # Networking
 ## Subnetting
@@ -62,11 +48,26 @@ http://www.thequilt.net/wp-content/uploads/BBR-TCP-Opportunities.pdf
 http://queue.acm.org/detail.cfm?id=3022184
 http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.pdf
 
+## Introspectable tunnels to localhost
+https://github.com/inconshreveable/ngrok
+https://github.com/fatedier/frp
+https://github.com/lovedboy/gortcp
+
+# Sync
+https://www.resilio.com/platforms/desktop/
+
+# Shell
+http://explainshell.com/
+https://www.netsarang.com/xshell_download.html
+
+# Git
+https://rawgit.com/  
+http://nbviewer.jupyter.org/
+
 # Hardware
 CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119
 
 # Virtualization
-
 ## Vagrant
 https://atlas.hashicorp.com/boxes/  
 Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.user.js
@@ -134,3 +135,6 @@ $50 for 60 days or $20 for 30 days:  https://www.vultr.com/coupons/
 Max $100 for 1 year:  https://www.vultr.com/match/
 
 $20: https://cloud.docker.com/account/
+
+# China only
+http://vip.xunlei.com/fast_xl/update.html

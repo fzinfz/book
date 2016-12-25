@@ -129,27 +129,4 @@ https://github.com/xtaci/kcptun
 MIPS32 MSB/LSB version: https://github.com/xtaci/kcptun/issues/29
 
 ### Finalspeed
-
 https://blog.kuoruan.com/82.html
-```
-service iptables start  
-iptables -I INPUT -p tcp --dport ssh端口号 -j ACCEPT  
-iptables -I OUTPUT -p tcp --sport ssh端口号 -j ACCEPT  
-service iptables save
-
-wget  https://soft.kuoruan.com/finalspeed/install_fs.sh  
-chmod +x install_fs.sh  
-./install_fs.sh 2>&1 | tee install.log
-
-mkdir -p /fs/cnf/ ; echo 新端口号 > /fs/cnf/listen_port ; sh /fs/restart.sh
-
-chmod +x /etc/rc.local  
-echo sh /fs/start.sh >> /etc/rc.local
-
-crontab -e  	
-0 3 * * * sh /fs/restart.sh
-```
-
-# introspectable tunnels to localhost
-https://github.com/inconshreveable/ngrok
-https://github.com/fzinfz/gortcp

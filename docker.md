@@ -41,26 +41,13 @@ TCP and UDP port 4789 for overlay network traffic
 If you have a cluster with 1 manager, and the manager goes down the cluster goes down, but you can bring it back up by fixing the node.
 If you have a cluster with 2 managers, you cannot tolerate any failure.
 ```
-netstat -lntup | egrep '2377|7946|4789|50'
-docker network create \
-  --driver overlay \
-  --subnet 10.66.2.0/24 \
-  --opt encrypted \
-  sync
-
-docker network ls
-
-# node IP
-ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
-# service VIP
-ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
-  
-docker swarm init --advertise-addr 1.2.3.4
+docker swarm init --advertise-addr 10.2.0.1
 docker swarm join-token manager
 docker swarm join-token worker
 docker swarm init --force-new-cluster # without losing data
 
 docker node ls
+netstat -lntup | egrep '2377|7946|4789|50'
 
 docker service create --name nginx -p 8080:80 --replicas 3 nginx
 docker service create --name nginx -p 80:80  -p 443:443 --network web --mode global nginx
@@ -70,6 +57,19 @@ docker service ps nginx
 docker inspect <ID> | grep Err
 ```
 https://docs.docker.com/engine/reference/commandline/service_create/
+
+docker network create \
+  --driver overlay \
+  --subnet 10.66.3.0/24 \
+  --opt encrypted \
+  pub
+
+docker network ls
+
+# node IP
+ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
+# service VIP
+ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
 
 # Run
 ```

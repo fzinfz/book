@@ -1,14 +1,12 @@
 <!-- TOC -->
 
-- [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
-- [GO Simple Tunnel](#go-simple-tunnel)
 - [Shadowsocks](#shadowsocks)
-    - [Auto install](#auto-install)
-    - [Python version on CentOS](#python-version-on-centos)
-    - [C version on CentOS](#c-version-on-centos)
     - [Docker](#docker)
     - [Multi Users](#multi-users)
     - [Manager/Panel](#managerpanel)
+- [v2ray](#v2ray)
+- [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
+- [GO Simple Tunnel](#go-simple-tunnel)
 - [LightSword](#lightsword)
     - [CentOS](#centos)
 - [Other tools](#other-tools)
@@ -26,42 +24,15 @@
 
 <!-- /TOC -->
 
-# Cow - Auto detect blocked sites
-https://github.com/cyfdecyf/cow
-
-# GO Simple Tunnel  
-https://github.com/ginuerzh/gost  
-[PPTP, redsocks, iptables, https/socks5全局上网](https://docs.google.com/document/d/1OGIrebKWq__Lt0ADxprxapevC1BEzPaR6ry9XY_WDdA/edit#heading=h.qh7wl45v71jq)
-
 # Shadowsocks
 https://github.com/shadowsocks/shadowsocks/tree/master
+https://github.com/shadowsocks/shadowsocks-libev
+https://github.com/orvice/shadowsocks-go
+
 https://wiki.archlinux.org/index.php/Shadowsocks
-
-## Auto install  
-https://github.com/teddysun/shadowsocks_install  
-https://github.com/iMeiji/shadowsocks_install
-
-## Python version on CentOS
-```
-yum install python-setuptools && easy_install pip
-pip install shadowsocks
-
-sudo ssserver -p 443 -k password -m aes-256-cfb -d start
-```
-
-## C version on CentOS  
-https://teddysun.com/357.html  
-```
-wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev.sh  
-chmod +x shadowsocks-libev.sh  
-./shadowsocks-libev.sh 2>&1 | tee shadowsocks-libev.log
-
-/etc/init.d/shadowsocks status
-```
-https://gist.github.com/aa65535/ea090063496b0d3a1748
+https://shadowsocks.org/en/download/servers.html
 
 ## Docker
-
 https://github.com/oddrationale/docker-shadowsocks   
 ```
 docker run -d -p 1984:1984 oddrationale/docker-shadowsocks -s 0.0.0.0 -p 1984 -k $SSPASSWORD -m aes-256-cfb
@@ -74,7 +45,6 @@ docker pull dockerzone/shadowsocks-server:latest
 
 ## Multi Users
 https://github.com/mengskysama/shadowsocks/tree/manyuser  
-https://github.com/orvice/ss-panel
 
 ## Manager/Panel
 https://github.com/orvice/ss-panel  
@@ -82,6 +52,16 @@ https://github.com/sendya/shadowsocks-panel
 
 docker pull gyteng/ssmgr
 
+# v2ray
+https://hub.docker.com/r/v2ray/official/
+https://www.v2ray.com
+
+# Cow - Auto detect blocked sites
+https://github.com/cyfdecyf/cow
+
+# GO Simple Tunnel  
+https://github.com/ginuerzh/gost  
+[PPTP, redsocks, iptables, https/socks5全局上网](https://docs.google.com/document/d/1OGIrebKWq__Lt0ADxprxapevC1BEzPaR6ry9XY_WDdA/edit#heading=h.qh7wl45v71jq)
 
 ---
 # LightSword

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Interactive notes](#interactive-notes)
 - [Check release & kernel](#check-release--kernel)
 - [Kernel 4.9](#kernel-49)
     - [Ubuntu / Debian](#ubuntu--debian)
@@ -16,21 +17,24 @@
 - [vi/vim](#vivim)
 - [System](#system)
     - [time](#time)
+    - [language](#language)
     - [history without line numbers](#history-without-line-numbers)
     - [ssh](#ssh)
     - [systemctl](#systemctl)
+- [Package Management](#package-management)
+- [yum](#yum)
 - [Files](#files)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
-- [Networking L2/L3](#networking-l2l3)
-- [Proxy](#proxy)
-- [SELinux](#selinux)
+- [Networking](#networking)
+    - [Proxy](#proxy)
 - [Firewall](#firewall)
     - [iptables](#iptables)
     - [CentOS](#centos)
     - [Ubuntu 16](#ubuntu-16)
 - [Nginx](#nginx)
     - [Display file as text](#display-file-as-text)
+- [SELinux](#selinux)
 - [Storage](#storage)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
@@ -41,6 +45,9 @@
 - [Serial Console](#serial-console)
 
 <!-- /TOC -->
+
+# Interactive notes
+http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Check release & kernel
 ```
@@ -140,6 +147,9 @@ sudo timedatectl set-ntp true
 TZ='Asia/Shanghai'; export TZ
 ```
 
+## language
+EN: `LC_ALL=C bash`
+
 ## history without line numbers  
 `history | cut -c 8-`
 
@@ -159,10 +169,21 @@ systemctl --failed
 
 systemctl list-unit-files
 systemctl enable xxx
+
+sudo systemctl daemon-reload
 ```
+
+# Package Management
+# yum
+yum-config-manager --disable c7-media
+
+
 
 # Files
 ```
+cat > file <<'EOL'
+EOL
+
 sudo ncdu
 sudo du -hcd 2  / | more
 sudo  du -a / | sort -n -r | head -n 20
@@ -180,7 +201,7 @@ rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --
 dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
 unlink: https://www.dropbox.com/account#security  
 
-# Networking L2/L3
+# Networking
 ```
 ls -l /sys/class/net/
 ip addr show dev eth1
@@ -191,21 +212,17 @@ dhclient -r eth0
 dhclient eth0
 
 tcpdump -i eno16777736 port 27017
+
+nmap -sV -p6379 127.0.0.1
 ```
 
-# Proxy
+## Proxy
 ```
-export http_proxy=http://192.168.4.10:7778/  
+export http_proxy=http://10.99.0.100:1080/  
 export https_proxy=$http_proxy   
 export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
 export ftp_proxy=$http_proxy  
 export rsync_proxy=$http_proxy
-```
-
-# SELinux
-```
-getenforce
-semanage port -a -t mongod_port_t -p tcp 27017
 ```
 
 # Firewall
@@ -238,6 +255,7 @@ service firewalld stop
 ## Ubuntu 16
 ```
 sudo ufw allow 11200:11299/tcp
+sudo ufw status verbose
 sudo ufw disable
 ```
 
@@ -250,6 +268,16 @@ location /code/ {
         add_header Content-Type text/plain;
     }
 }
+
+location /somedir {
+        autoindex on;
+}
+```
+
+# SELinux
+```
+getenforce
+semanage port -a -t mongod_port_t -p tcp 27017
 ```
 
 # Storage

@@ -10,6 +10,10 @@
 # Install(kernel>=3.10)
 ```
 curl -fsSL https://get.docker.com/ | sh
+
+echo deb https://apt.dockerproject.org/repo <dist_name> main >> /etc/apt/sources.list
+apt-get update
+
 sudo systemctl enable docker.service
 sudo systemctl start docker
 ```
@@ -40,11 +44,16 @@ If you have a cluster with 2 managers, you cannot tolerate any failure.
 netstat -lntup | egrep '2377|7946|4789|50'
 docker network create \
   --driver overlay \
-  --subnet 10.66.1.0/24 \
+  --subnet 10.66.2.0/24 \
   --opt encrypted \
-  web
+  sync
 
 docker network ls
+
+# node IP
+ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
+# service VIP
+ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
   
 docker swarm init --advertise-addr 1.2.3.4
 docker swarm join-token manager

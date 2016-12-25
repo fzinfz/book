@@ -1,3 +1,4 @@
 # About
-This gitbook is mainly for sysadmin notes.  
-For programming notes and interactive outputs please visit: http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/
+Sysadmin notes: https://www.1note.win
+Coding ipynb: http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/
+Docker Hub: https://hub.docker.com/r/fzinfz/

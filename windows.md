@@ -3,6 +3,7 @@
 - [Unique Features](#unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
+    - [Query .Net Framwork Versions](#query-net-framwork-versions)
     - [Auto Login](#auto-login)
 - [CMD Commands](#cmd-commands)
     - [Networking](#networking)
@@ -27,7 +28,6 @@
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 
 <!-- /TOC -->
-
 # Unique Features
 10: Free RemoteFX, WSL
 2016: NFS Server
@@ -35,6 +35,9 @@
 # RUN
 ## Startup Folder
 - shell:startup
+
+## Query .Net Framwork Versions
+reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP
 
 ## Auto Login
 - netplwiz.exe

@@ -1,76 +1,47 @@
 <!-- TOC -->
 
 - [Interactive notes](#interactive-notes)
-- [Check release & kernel](#check-release--kernel)
-- [Kernel 4.9](#kernel-49)
-    - [Ubuntu / Debian](#ubuntu--debian)
-        - [Debian Jessie Official](#debian-jessie-official)
-    - [CentOS / Redhat](#centos--redhat)
-- [Grub](#grub)
-    - [Ubuntu / Debian](#ubuntu--debian)
-    - [CentOS](#centos)
-- [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
-    - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
-    - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
-    - [Check](#check)
-- [Benchmark](#benchmark)
-- [vi/vim](#vivim)
-- [System](#system)
-    - [time](#time)
-    - [language](#language)
-    - [history without line numbers](#history-without-line-numbers)
-    - [ssh](#ssh)
-    - [systemctl](#systemctl)
-- [Package Management](#package-management)
-- [yum](#yum)
-- [Files](#files)
-- [Dropbox](#dropbox)
-    - [link account](#link-account)
-- [Networking](#networking)
-    - [Proxy](#proxy)
-- [Firewall](#firewall)
-    - [iptables](#iptables)
-    - [CentOS](#centos)
-    - [Ubuntu 16](#ubuntu-16)
-- [Nginx](#nginx)
-    - [Display file as text](#display-file-as-text)
-- [SELinux](#selinux)
-- [Storage](#storage)
-- [VSphere / ESXi](#vsphere--esxi)
-    - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
-    - [Config](#config)
-        - [Backup](#backup)
-        - [Restore](#restore)
-    - [vmdk](#vmdk)
-- [Serial Console](#serial-console)
+- [Repository](#repository)
+    - [Ubuntu](#ubuntu)
+    - [Debian](#debian)
+    - [apt](#apt)
 
 <!-- /TOC -->
 
 # Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
-# Check release & kernel
+# Repository
+## Ubuntu
+Main - Canonical-supported free and open-source software.
+Universe - Community-maintained free and open-source software.
+Restricted - Proprietary drivers for devices.
+Multiverse - Software restricted by copyright or legal issues.
 ```
-lsb_release -a
-uname -a
-cat /etc/*-release
-```
-# Kernel 4.9
-## Ubuntu / Debian
-```
-wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9/linux-image-4.9.0-040900-generic_4.9.0-040900.201612111631_amd64.deb
-dpkg -i linux-image-4.9.0*.deb
+echo deb http://archive.ubuntu.com/ubuntu zesty main  >> /etc/apt/sources.list
 ```
 
-### Debian Jessie Official
+## Debian
+→ experimental
+→ unstable(Sid) → testing → stable
+Debian Unstable - repository where new & untested packages are introduced.
+Debian Testing - repository with packages from unstable, if no bug are found within 10 days.
+
+main consists of DFSG-compliant packages, which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.
+contrib packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).
+non-free contains software that does not comply with the DFSG.
 ```
-echo deb http://ftp.de.debian.org/debian experimental main >> /etc/apt/sources.list
-echo deb http://ftp.de.debian.org/debian jessie-backports main >> /etc/apt/sources.list
+echo deb http://ftp.debian.org/debian experimental main >> /etc/apt/sources.list
+echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list
+```
+
+## apt
 apt-get update
 apt-get install linux-base -t jessie-backports
-apt-get install linux-image-4.9.0-rc8-amd64-unsigned
+apt-cache search linux-image | grep 4.9
+apt show linux-image-extra-4.9.0-11-generic
 ```
-## CentOS / Redhat
+## deb manually
 ```
 wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
 
@@ -83,6 +54,13 @@ depmod -a 4.9.0-rc8-amd64
 dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
 ```
 Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
+
+# Check release & kernel
+```
+lsb_release -a
+uname -a
+cat /etc/*-release
+```
 
 # Grub
 ## Ubuntu / Debian
@@ -99,18 +77,32 @@ awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
 grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
 grub2-editenv list 
 ```
+# Networking
+```
+ls -l /sys/class/net/
+ip addr show dev eth1
+ifconfig ens7 10.99.0.10/16 up
+ip addr flush dev eth0
+ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient  
+dhclient -r eth0
+dhclient eth0
 
-# Enable TCP BBR of Kernel 4.9
+tcpdump -i eno16777736 port 27017
+
+nmap -sV -p6379 127.0.0.1
+```
+
+## Enable TCP BBR of Kernel 4.9
 [docs](./Links.html#tcp-bbr-congestion-based-congestion-control)
 
-## Manually Load and check BBR module(Optional)
+### Manually Load and check BBR module(Optional)
 ```
 modprobe tcp_bbr
 lsmod | grep bbr
 sysctl net.ipv4.tcp_available_congestion_control
 ```
 
-## Enable tcp_congestion_control
+### Enable tcp_congestion_control
 ```
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
@@ -118,11 +110,54 @@ sysctl -p
 reboot
 ```
 
-## Check
+### Check
 ```
 sysctl net.core.default_qdisc
 sysctl net.ipv4 | grep control
 tc qdisc show
+```
+
+## Proxy
+```
+export http_proxy=http://10.99.0.100:1080/  
+export https_proxy=$http_proxy   
+export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
+export ftp_proxy=$http_proxy  
+export rsync_proxy=$http_proxy
+```
+
+## Firewall
+### iptables
+```
+iptables -I INPUT -i docker0 -j ACCEPT
+iptables -I INPUT -s  localhost -j ACCEPT
+
+iptables -A INPUT --dport 5355 -j DROP
+iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
+iptables -A INPUT -p udp --dport 161 -j ACCEPT
+iptables-save
+iptables -L --line-numbers
+iptables -D INPUT 2
+```
+### CentOS
+```
+firewall-cmd --permanent --zone=public \
+--add-rich-rule="rule family="ipv4" \
+source address="1.2.3.4/32" \
+port protocol="tcp" port="4567" accept"
+
+firewall-cmd --zone=public --add-port=4433/tcp --permanent
+firewall-cmd --zone=public --add-port=4433/udp--permanent
+firewall-cmd --reload
+firewall-cmd --list-all
+
+service firewalld stop 
+```
+### Ubuntu 16
+```
+sudo ufw allow 11200:11299/tcp
+sudo ufw status verbose
+sudo ufw disable
 ```
 
 # Benchmark
@@ -171,6 +206,9 @@ systemctl list-unit-files
 systemctl enable xxx
 
 sudo systemctl daemon-reload
+
+SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
+-S, --since=, -U, --until=
 ```
 
 # Package Management
@@ -188,6 +226,7 @@ sudo ncdu
 sudo du -hcd 2  / | more
 sudo  du -a / | sort -n -r | head -n 20
 sudo apt-get autoclean
+apt --installed list
 
 rsync -aP  /root/_bin root@remote:/root
 rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --remove-source-files
@@ -201,63 +240,6 @@ rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --
 dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
 unlink: https://www.dropbox.com/account#security  
 
-# Networking
-```
-ls -l /sys/class/net/
-ip addr show dev eth1
-ifconfig ens7 10.99.0.10/16 up
-ip addr flush dev eth0
-ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient  
-dhclient -r eth0
-dhclient eth0
-
-tcpdump -i eno16777736 port 27017
-
-nmap -sV -p6379 127.0.0.1
-```
-
-## Proxy
-```
-export http_proxy=http://10.99.0.100:1080/  
-export https_proxy=$http_proxy   
-export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
-export ftp_proxy=$http_proxy  
-export rsync_proxy=$http_proxy
-```
-
-# Firewall
-## iptables
-```
-iptables -I INPUT -i docker0 -j ACCEPT
-iptables -I INPUT -s  localhost -j ACCEPT
-
-iptables -A INPUT --dport 5355 -j DROP
-iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
-iptables -A INPUT -p udp --dport 161 -j ACCEPT
-iptables-save
-iptables -L --line-numbers
-iptables -D INPUT 2
-```
-## CentOS
-```
-firewall-cmd --permanent --zone=public \
---add-rich-rule="rule family="ipv4" \
-source address="1.2.3.4/32" \
-port protocol="tcp" port="4567" accept"
-
-firewall-cmd --zone=public --add-port=4433/tcp --permanent
-firewall-cmd --zone=public --add-port=4433/udp--permanent
-firewall-cmd --reload
-firewall-cmd --list-all
-
-service firewalld stop 
-```
-## Ubuntu 16
-```
-sudo ufw allow 11200:11299/tcp
-sudo ufw status verbose
-sudo ufw disable
-```
 
 # Nginx
 ## Display file as text

@@ -4,6 +4,7 @@
     - [Docker](#docker)
     - [Multi Users](#multi-users)
     - [Manager/Panel](#managerpanel)
+- [ShadowVPN](#shadowvpn)
 - [v2ray](#v2ray)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [GO Simple Tunnel](#go-simple-tunnel)
@@ -20,7 +21,6 @@
     - [Server + Client both sides](#server--client-both-sides)
         - [KCPTun](#kcptun)
         - [Finalspeed](#finalspeed)
-- [introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 
 <!-- /TOC -->
 
@@ -52,9 +52,16 @@ https://github.com/sendya/shadowsocks-panel
 
 docker pull gyteng/ssmgr
 
+# ShadowVPN
+https://github.com/OkamiSupport/How-to-build-your-own-private-network
+
 # v2ray
-https://hub.docker.com/r/v2ray/official/
-https://www.v2ray.com
+https://www.v2ray.com/chapter_02/01_overview.html
+https://toutyrater.github.io/v2ray-guide-pages/
+```
+docker run -d -v /config.json:/etc/v2ray/config.json v2ray/official/
+docker run -dt mritd/v2ray -c ".. http://www.bejson.com/zhuanyi/ .."
+```
 
 # Cow - Auto detect blocked sites
 https://github.com/cyfdecyf/cow

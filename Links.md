@@ -65,7 +65,8 @@ https://rawgit.com/
 http://nbviewer.jupyter.org/
 
 # Hardware
-CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119
+CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119  
+CPU flags：http://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean  
 
 # Virtualization
 ## Vagrant
@@ -94,6 +95,7 @@ docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn
 echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
 ```
 # MySQL Cluster
+http://severalnines.com/blog/mysql-docker-introduction-docker-swarm-mode-and-multi-host-networking
 https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-ndb-innodb-engines.html
 
 

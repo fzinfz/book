@@ -2,8 +2,14 @@
 
 - [Install(kernel>=3.10)](#installkernel310)
     - [Debian Jessie](#debian-jessie)
+- [Storage](#storage)
+- [Mirror](#mirror)
 - [Swarm](#swarm)
+- [node IP](#node-ip)
+- [service VIP](#service-vip)
 - [Run](#run)
+- [CoreOS](#coreos)
+- [Kubernetes](#kubernetes)
 
 <!-- /TOC -->
 
@@ -32,6 +38,14 @@ apt-get install docker-engine
 ```
 Ref: https://docs.docker.com/engine/installation/linux/debian/
 
+# Storage
+https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
+![](https://docs.docker.com/engine/userguide/storagedriver/images/driver-pros-cons.png)
+http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
+
+# Mirror
+V1: https://docs.docker.com/v1.6/articles/registry_mirror/
+
 # Swarm
 TCP port 2377 for cluster management communications
 TCP and UDP port 7946 for communication among nodes
@@ -47,6 +61,8 @@ docker swarm join-token worker
 docker swarm init --force-new-cluster # without losing data
 
 docker node ls
+docker node update --label-add server=s1 st
+
 netstat -lntup | egrep '2377|7946|4789|50'
 
 docker service create --name nginx -p 8080:80 --replicas 3 nginx
@@ -81,3 +97,13 @@ Volume labels
 `:Z` => private
 
 `--entrypoint` will clear out `CMD`
+
+# CoreOS
+https://coreos.com/releases/
+```
+vi /etc/coreos/update.conf
+update_engine_client -update
+```
+
+# Kubernetes
+http://kubernetes.io/docs/getting-started-guides/

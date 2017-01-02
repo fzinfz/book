@@ -5,6 +5,45 @@
     - [Ubuntu](#ubuntu)
     - [Debian](#debian)
     - [apt](#apt)
+    - [deb manually](#deb-manually)
+- [Check release & kernel](#check-release--kernel)
+- [Grub](#grub)
+    - [Ubuntu / Debian](#ubuntu--debian)
+    - [CentOS](#centos)
+- [Networking](#networking)
+    - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
+        - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
+        - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
+        - [Check](#check)
+    - [Proxy](#proxy)
+    - [Firewall](#firewall)
+        - [iptables](#iptables)
+        - [CentOS](#centos)
+        - [Ubuntu 16](#ubuntu-16)
+- [Benchmark](#benchmark)
+- [vi/vim](#vivim)
+- [System](#system)
+    - [time](#time)
+    - [language](#language)
+    - [history without line numbers](#history-without-line-numbers)
+    - [ssh](#ssh)
+    - [systemctl](#systemctl)
+- [Package Management](#package-management)
+- [yum](#yum)
+- [Files](#files)
+- [Dropbox](#dropbox)
+    - [link account](#link-account)
+- [Nginx](#nginx)
+    - [Display file as text](#display-file-as-text)
+- [SELinux](#selinux)
+- [Storage](#storage)
+- [VSphere / ESXi](#vsphere--esxi)
+    - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
+    - [Config](#config)
+        - [Backup](#backup)
+        - [Restore](#restore)
+    - [vmdk](#vmdk)
+- [Serial Console](#serial-console)
 
 <!-- /TOC -->
 
@@ -36,6 +75,7 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 ```
 
 ## apt
+```
 apt-get update
 apt-get install linux-base -t jessie-backports
 apt-cache search linux-image | grep 4.9

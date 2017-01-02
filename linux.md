@@ -52,23 +52,23 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Repository
 ## Ubuntu
-Main - Canonical-supported free and open-source software.
-Universe - Community-maintained free and open-source software.
-Restricted - Proprietary drivers for devices.
-Multiverse - Software restricted by copyright or legal issues.
+Main - Canonical-supported free and open-source software.  
+Universe - Community-maintained free and open-source software.  
+Restricted - Proprietary drivers for devices.  
+Multiverse - Software restricted by copyright or legal issues.  
 ```
 echo deb http://archive.ubuntu.com/ubuntu zesty main  >> /etc/apt/sources.list
 ```
 
 ## Debian
-→ experimental
-→ unstable(Sid) → testing → stable
-Debian Unstable - repository where new & untested packages are introduced.
-Debian Testing - repository with packages from unstable, if no bug are found within 10 days.
+→ experimental  
+→ unstable(Sid) → testing → stable  
+Debian Unstable - repository where new & untested packages are introduced.  
+Debian Testing - repository with packages from unstable, if no bug are found within 10 days.  
 
-main consists of DFSG-compliant packages, which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.
-contrib packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).
-non-free contains software that does not comply with the DFSG.
+main consists of DFSG-compliant packages, which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.  
+contrib packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).  
+non-free contains software that does not comply with the DFSG.  
 ```
 echo deb http://ftp.debian.org/debian experimental main >> /etc/apt/sources.list
 echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list

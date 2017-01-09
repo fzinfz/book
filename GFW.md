@@ -8,8 +8,9 @@
 - [v2ray](#v2ray)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [GO Simple Tunnel](#go-simple-tunnel)
+- [goproxy for GAE](#goproxy-for-gae)
+- [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [LightSword](#lightsword)
-    - [CentOS](#centos)
 - [Other tools](#other-tools)
 - [Reversed Proxy](#reversed-proxy)
     - [Google](#google)
@@ -49,8 +50,7 @@ https://github.com/mengskysama/shadowsocks/tree/manyuser
 ## Manager/Panel
 https://github.com/orvice/ss-panel  
 https://github.com/sendya/shadowsocks-panel
-
-docker pull gyteng/ssmgr
+https://github.com/shadowsocks/shadowsocks-manager
 
 # ShadowVPN
 https://github.com/OkamiSupport/How-to-build-your-own-private-network
@@ -70,24 +70,17 @@ https://github.com/cyfdecyf/cow
 https://github.com/ginuerzh/gost  
 [PPTP, redsocks, iptables, https/socks5全局上网](https://docs.google.com/document/d/1OGIrebKWq__Lt0ADxprxapevC1BEzPaR6ry9XY_WDdA/edit#heading=h.qh7wl45v71jq)
 
+# goproxy for GAE
+https://github.com/phuslu/goproxy/blob/wiki/SimpleGuide.md
+
+# goproxy with msocks protocal
+https://github.com/shell909090/goproxy
+
 ---
 # LightSword
 https://github.com/UnsignedInt8/LightSword  
 https://medium.com/@UnsignedInt8  
 
-## CentOS
-https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora
-```
-curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -  
-yum install -y nodejs
-
-npm install lightsword -g
-
-lsserver --password abc123 --port 8081 --method aes-256-cfb --fork --cluster  
-lsserver -d stop
-lslocal -s server_addr -f   
-lsbridge -s server_addr -f  
-```
 # Other tools
 ![](https://pbs.twimg.com/media/B6MjT6cCYAA-U3C.png:large)
 

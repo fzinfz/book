@@ -37,13 +37,14 @@
     - [Display file as text](#display-file-as-text)
 - [SELinux](#selinux)
 - [Storage](#storage)
+- [Serial Console](#serial-console)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
     - [Config](#config)
         - [Backup](#backup)
         - [Restore](#restore)
     - [vmdk](#vmdk)
-- [Serial Console](#serial-console)
+- [RouterOS](#routeros)
 
 <!-- /TOC -->
 
@@ -314,6 +315,14 @@ echo /dev/vdb1               /mnt/blockstorage       ext4    defaults,noatime 0 
 mount /mnt/blockstorage
 ```
 
+# Serial Console
+https://wiki.openwrt.org/doc/hardware/port.serial
+```
+cat openwrt-lantiq-ram-u-boot.asc > /dev/ttyUSB0
+screen /dev/ttyUSB0 115200
+picocom -b 115200 /dev/ttyUSB0
+```
+
 # VSphere / ESXi
 ## Raw disk mapping (RDM)
 ```
@@ -338,10 +347,7 @@ vmkfstools -i "source.vmdk" -d thin "destination.vmdk"
 ```
 The tool also reverts a vmdk which was blown up, back into a thin file! ([Ref](http://www.how2blog.de/?p=98))
 
-# Serial Console
-https://wiki.openwrt.org/doc/hardware/port.serial
-```
-cat openwrt-lantiq-ram-u-boot.asc > /dev/ttyUSB0
-screen /dev/ttyUSB0 115200
-picocom -b 115200 /dev/ttyUSB0
-```
+
+
+# RouterOS
+put [resolve google.com server 8.8.8.8]

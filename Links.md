@@ -11,6 +11,7 @@
 - [Shell](#shell)
 - [Git](#git)
 - [Hardware](#hardware)
+- [Linux](#linux)
 - [Virtualization](#virtualization)
     - [Vagrant](#vagrant)
     - [QEMU](#qemu)
@@ -67,6 +68,9 @@ http://nbviewer.jupyter.org/
 # Hardware
 CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119  
 CPU flags：http://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean  
+
+# Linux
+Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/  
 
 # Virtualization
 ## Vagrant

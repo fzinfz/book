@@ -17,8 +17,10 @@
 ```
 curl -fsSL https://get.docker.com/ | sh
 
-echo deb https://apt.dockerproject.org/repo <dist_name> main >> /etc/apt/sources.list
+echo deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main experimental testing > /etc/apt/sources.list.d/docker.list
 apt-get update
+apt install -y docker-engine
+apt policy docker-engine | head -n 20
 
 sudo systemctl enable docker.service
 sudo systemctl start docker
@@ -34,7 +36,7 @@ echo deb http://ftp.de.debian.org/debian jessie-backports main >> /etc/apt/sourc
 echo deb https://apt.dockerproject.org/repo debian-jessie main >> /etc/apt/sources.list
 apt-get update
 apt-cache policy docker-engine
-apt-get install docker-engine
+apt install -y --allow-unauthenticated docker-engine
 ```
 Ref: https://docs.docker.com/engine/installation/linux/debian/
 
@@ -52,8 +54,7 @@ TCP and UDP port 7946 for communication among nodes
 TCP and UDP port 4789 for overlay network traffic
 --opt encrypted => protocol 50 (ESP) is open
 
-If you have a cluster with 1 manager, and the manager goes down the cluster goes down, but you can bring it back up by fixing the node.
-If you have a cluster with 2 managers, you cannot tolerate any failure.
+https://docs.docker.com/engine/swarm/admin_guide/#/add-manager-nodes-for-fault-tolerance
 ```
 docker swarm init --advertise-addr 10.2.0.1
 docker swarm join-token manager

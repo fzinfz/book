@@ -15,10 +15,11 @@
 
 # Install(kernel>=3.10)
 ```
+wget -qO- https://get.docker.com/ | sh
 curl -fsSL https://get.docker.com/ | sh
 
 echo deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main experimental testing > /etc/apt/sources.list.d/docker.list
-apt-get update
+apt update
 apt install -y docker-engine
 apt policy docker-engine | head -n 20
 
@@ -47,6 +48,8 @@ http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-driver
 
 # Mirror
 V1: https://docs.docker.com/v1.6/articles/registry_mirror/
+
+--registry-mirror=http://hub-mirror.c.163.com
 
 # Swarm
 TCP port 2377 for cluster management communications

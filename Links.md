@@ -9,17 +9,24 @@
     - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 - [Sync](#sync)
 - [Shell](#shell)
+    - [UEFI Shell](#uefi-shell)
 - [Git](#git)
 - [Hardware](#hardware)
 - [Linux](#linux)
 - [Virtualization](#virtualization)
+    - [IOMMU](#iommu)
+    - [Openstack](#openstack)
+        - [Images](#images)
+    - [LXD](#lxd)
     - [Vagrant](#vagrant)
     - [QEMU](#qemu)
 - [Docker](#docker)
+    - [Tools](#tools)
     - [Linux based On Windows/Mac](#linux-based-on-windowsmac)
     - [China Mirrors](#china-mirrors)
         - [boot2docker(https://github.com/boot2docker/boot2docker)](#boot2dockerhttpsgithubcomboot2dockerboot2docker)
 - [MySQL Cluster](#mysql-cluster)
+- [Data](#data)
 - [Cloud](#cloud)
     - [Pricing](#pricing)
     - [Free](#free)
@@ -60,6 +67,8 @@ https://www.resilio.com/platforms/desktop/
 # Shell
 http://explainshell.com/
 https://www.netsarang.com/xshell_download.html
+## UEFI Shell
+https://software.intel.com/en-us/articles/uefi-shell
 
 # Git
 https://rawgit.com/  
@@ -73,6 +82,34 @@ CPU flags：http://unix.stackexchange.com/questions/43539/what-do-the-flags-in-p
 Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/  
 
 # Virtualization
+## IOMMU
+https://pve.proxmox.com/wiki/Pci_passthrough
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
+https://wiki.debian.org/VGAPassthrough
+
+https://github.com/awilliam/rom-parser
+
+## Openstack
+http://conjure-up.io/docs/en/users/#getting-started
+
+http://docs.openstack.org/developer/devstack/  
+http://docs.openstack.org/developer/devstack/guides/single-machine.html
+
+http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
+https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
+
+### Images
+http://docs.openstack.org/image-guide/obtain-images.html  
+http://cdimage.debian.org/cdimage/openstack/
+http://linuximages.de/openstack/arch/
+
+## LXD
+https://www.ubuntu.com/cloud/lxd
+http://insights.ubuntu.com/2016/03/14/the-lxd-2-0-story-prologue/
+https://insights.ubuntu.com/2016/04/13/stephane-graber-lxd-2-0-docker-in-lxd-712/  
+
+https://github.com/lxc/lxd#how-can-i-run-docker-inside-a-lxd-container
+
 ## Vagrant
 https://atlas.hashicorp.com/boxes/  
 Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.user.js
@@ -82,6 +119,9 @@ disk convert: https://cloudbase.it/qemu-img-windows/
 [Building ARM containers on any x86 machine, even DockerHub](https://resin.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub/)
 
 # Docker
+## Tools
+https://microbadger.com
+
 ## Linux based On Windows/Mac
 https://docs.docker.com/engine/installation/windows/  
 https://docs.docker.com/machine/drivers/  
@@ -102,6 +142,9 @@ echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var
 http://severalnines.com/blog/mysql-docker-introduction-docker-swarm-mode-and-multi-host-networking
 https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-ndb-innodb-engines.html
 
+
+# Data
+https://docs.wso2.com/display/DSS301/Excel+Sample
 
 # Cloud
 ## Pricing

@@ -2,6 +2,8 @@
 
 - [Interactive notes](#interactive-notes)
 - [Repository](#repository)
+    - [Redhat](#redhat)
+        - [EPEL](#epel)
     - [Ubuntu](#ubuntu)
     - [Debian](#debian)
     - [apt](#apt)
@@ -9,6 +11,9 @@
 - [Check release & kernel](#check-release--kernel)
 - [Grub](#grub)
     - [Ubuntu / Debian](#ubuntu--debian)
+        - [VT-d](#vt-d)
+        - [QEMU](#qemu)
+        - [vagrant](#vagrant)
     - [CentOS](#centos)
 - [Networking](#networking)
     - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
@@ -23,14 +28,22 @@
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
 - [System](#system)
+    - [disk](#disk)
+        - [LVM](#lvm)
+        - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
+    - [files](#files)
     - [time](#time)
     - [language](#language)
     - [history without line numbers](#history-without-line-numbers)
     - [ssh](#ssh)
+    - [password](#password)
+    - [font](#font)
     - [systemctl](#systemctl)
 - [Package Management](#package-management)
 - [yum](#yum)
 - [Files](#files)
+- [Openstack](#openstack)
+    - [Ubuntu](#ubuntu)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Nginx](#nginx)
@@ -45,6 +58,8 @@
         - [Restore](#restore)
     - [vmdk](#vmdk)
 - [RouterOS](#routeros)
+- [X](#x)
+- [ANDROID](#android)
 
 <!-- /TOC -->
 
@@ -52,6 +67,23 @@
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Repository
+## Redhat
+```
+subscription-manager register
+subscription-manager attach --auto
+subscription-manager repos --enable rhel-7-server-optional-rpms
+subscription-manager repos --enable rhel-7-server-extras-rpms
+rm -f /var/run/yum.pid <PID> && yum remove PackageKit
+```
+
+### EPEL
+http://elrepo.org/tiki/tiki-index.php
+```
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+yum install yum-plugin-fastestmirror
+yum --enablerepo=elrepo-kernel install kernel-ml
+```
 ## Ubuntu
 Main - Canonical-supported free and open-source software.  
 Universe - Community-maintained free and open-source software.  
@@ -111,6 +143,75 @@ vi /etc/default/grub
 update-grub
 ```
 
+### VT-d
+```
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on"
+modprobe.blacklist=ahci,radeon,nouveau
+
+lspci -nn
+lspci -nnk -d 8086:1521
+
+add IOMMU GROUP
+
+echo '0000:00:1f.2' | sudo tee /sys/bus/pci/devices/0000:00:1f.2/driver/unbind
+echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
+```
+
+### QEMU
+```
+modprobe -r kvm_intel
+modprobe kvm_intel nested=1
+qemu-system-x86_64 -enable-kvm -cpu host
+echo options kvm_intel nested=1 >> /etc/modprobe.d/modprobe.conf
+
+systool -m kvm_intel -v | grep nested
+egrep --color=auto 'vmx|svm' /proc/cpuinfo
+
+virsh domxml-to-native qemu-argv demo.xml > demo.sh
+
+cat > demo.args <<EOF
+LC_ALL=C PATH=/bin HOME=/home/test USER=test \
+LOGNAME=test /usr/bin/qemu -S -M pc -m 214 -smp 1 \
+-nographic -monitor pty -no-acpi -boot c -hda \
+/dev/HostVG/QEMUGuest1 -net none -serial none \
+-parallel none -usb
+EOF
+
+virsh domxml-from-native qemu-argv demo.args > demo.xml
+
+virsh list --all
+
+
+vi /etc/libvirt/qemu/VM_NAME.xml
+
+  <features>
+    ...
+    <kvm>
+      <hidden state='on'/>
+    </kvm>
+  </features>
+
+  <qemu:commandline>                                              
+  <qemu:arg value='-set'/>                                          
+  <qemu:arg value='device.hostdev0.x-vga=on'/>      
+  </qemu:commandline>
+
+
+```
+
+### vagrant
+```
+sudo apt-get install vagrant 
+sudo apt-get install libz-dev
+vagrant plugin install vagrant-mutate
+vagrant mutate http://files.vagrantup.com/precise32.box libvirt
+vagrant plugin install vagrant-libvirt
+
+vagrant plugin install vagrant-lxc
+
+```
+
 ## CentOS
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -118,6 +219,7 @@ awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
 grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
 grub2-editenv list 
 ```
+
 # Networking
 ```
 ls -l /sys/class/net/
@@ -160,7 +262,7 @@ tc qdisc show
 
 ## Proxy
 ```
-export http_proxy=http://10.99.0.100:1080/  
+export http_proxy=http://localhost:8123/  
 export https_proxy=$http_proxy   
 export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
 export ftp_proxy=$http_proxy  
@@ -217,6 +319,36 @@ ciw => change word from cursor
 ```
 
 # System
+## disk
+### LVM
+```
+pvs
+pvdisplay -v -m
+lvcreate -L 10G VolGroup00 -n lvolhome
+mkfs.ext4 /dev/mapper/VolGroup00-lvolhome
+mount /dev/mapper/VolGroup00-lvolhome /home
+lvresize -L +50G /dev/mapper/FZ--vg-data --resize-fs
+
+mkswap /dev/VG/LV
+echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
+swapon -va
+cat /proc/swaps
+
+```
+### Convert between MBR and GPT
+```
+sudo sgdisk -g /dev/sda
+sudo sgdisk -m /dev/sda
+sudo partprobe -s
+```
+
+## files
+```
+apt-get install mlocate
+updatedb
+locate -S
+lsof -p <PID>
+```
 ## time 
 ```
 sudo timedatectl set-ntp true
@@ -231,7 +363,19 @@ EN: `LC_ALL=C bash`
 
 ## ssh
 ```
+sudo apt-get install openssh-server 
+
 ssh-keygen -R hostname
+```
+
+## password
+```
+echo user:pwd | chpasswd
+```
+
+## font
+```
+apt-get install  xfonts-base
 ```
 
 ## systemctl
@@ -267,13 +411,21 @@ sudo ncdu
 sudo du -hcd 2  / | more
 sudo  du -a / | sort -n -r | head -n 20
 sudo apt-get autoclean
-apt --installed list
+apt list --installed
 
 rsync -aP  /root/_bin root@remote:/root
 rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --remove-source-files
 ```
 - The ~/.bash_profile would be used once, at login.
 - The ~/.bashrc script is read every time a shell is started.
+
+# Openstack
+## Ubuntu
+```
+sudo apt-add-repository ppa:juju/stable
+sudo apt-add-repository ppa:conjure-up/next
+sudo apt update && sudo apt install -y conjure-up &&  conjure-up
+```
 
 # Dropbox
 ## link account
@@ -351,3 +503,18 @@ The tool also reverts a vmdk which was blown up, back into a thin file! ([Ref](h
 
 # RouterOS
 put [resolve google.com server 8.8.8.8]
+
+# X
+```
+vncserver -kill :1
+```
+
+
+# ANDROID
+```
+miflash lock: 
+fastboot oem edl
+fastboot oem edl-reboot
+
+adb push filename /sdcard/.
+```

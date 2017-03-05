@@ -23,7 +23,7 @@
     - [Proxy](#proxy)
     - [Firewall](#firewall)
         - [iptables](#iptables)
-        - [CentOS](#centos)
+        - [CentOS](#centos-1)
         - [Ubuntu 16](#ubuntu-16)
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
@@ -43,7 +43,7 @@
 - [yum](#yum)
 - [Files](#files)
 - [Openstack](#openstack)
-    - [Ubuntu](#ubuntu)
+    - [Ubuntu](#ubuntu-1)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Nginx](#nginx)
@@ -56,7 +56,6 @@
     - [Config](#config)
         - [Backup](#backup)
         - [Restore](#restore)
-    - [vmdk](#vmdk)
 - [RouterOS](#routeros)
 - [X](#x)
 - [ANDROID](#android)
@@ -111,8 +110,12 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 ```
 apt-get update
 apt-get install linux-base -t jessie-backports
-apt-cache search linux-image | grep 4.9
+apt-cache search linux-image | grep linux-image-4
+apt install linux-image-4.10.0-9-generic
+
 apt show linux-image-extra-4.9.0-11-generic
+
+apt-get install --only-upgrade docker-engine
 ```
 ## deb manually
 ```
@@ -233,7 +236,14 @@ dhclient eth0
 tcpdump -i eno16777736 port 27017
 
 nmap -sV -p6379 127.0.0.1
+
+echo 'check tcp-segmentation-offload, generic-segmentation/receive-offload status'
+ethtool -k ens3
+ethtool -K ens3 gro off gso off tso off
+
 ```
+
+http://darkk.net.ru/redsocks/
 
 ## Enable TCP BBR of Kernel 4.9
 [docs](./Links.html#tcp-bbr-congestion-based-congestion-control)
@@ -257,7 +267,7 @@ reboot
 ```
 sysctl net.core.default_qdisc
 sysctl net.ipv4 | grep control
-tc qdisc show
+tc qdisc show   
 ```
 
 ## Proxy
@@ -493,12 +503,6 @@ vmkfstools -z /vmfs/devices/disks/<device> example.vmdk
 vim-cmd hostsvc/maintenance_mode_enter
 vim-cmd hostsvc/firmware/restore_config /tmp/configBundle.tgz
 ```
-## vmdk
-```
-vmkfstools -i "source.vmdk" -d thin "destination.vmdk"
-```
-The tool also reverts a vmdk which was blown up, back into a thin file! ([Ref](http://www.how2blog.de/?p=98))
-
 
 
 # RouterOS

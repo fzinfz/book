@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Networking](#networking)
+    - [MAC addresss <-> Vender:](#mac-addresss---vender)
     - [Subnetting](#subnetting)
     - [DHCP](#dhcp)
     - [Optimization](#optimization)
@@ -31,12 +32,13 @@
     - [Pricing](#pricing)
     - [Free](#free)
     - [Trial](#trial)
-    - [Promotions](#promotions)
-- [China only](#china-only)
 
 <!-- /TOC -->
 
 # Networking
+## MAC addresss <-> Vender:
+http://aruljohn.com/vendor
+
 ## Subnetting
 http://www.balticnetworkstraining.com/subnet-calculator/  
 http://www.mikrotik.com/img/netaddresses2.pdf
@@ -177,13 +179,5 @@ https://tryappservice.azure.com
 http://aws.amazon.com/free/
 https://cloud.google.com/free-trial/
 https://azure.microsoft.com/en-us/offers/ms-azr-0044p/
-
-## Promotions
-$20 for 1 Year:  http://www.vultr.com/?ref=6916363-3B   
-$50 for 60 days or $20 for 30 days:  https://www.vultr.com/coupons/   
-Max $100 for 1 year:  https://www.vultr.com/match/
-
-$20: https://cloud.docker.com/account/
-
-# China only
-http://vip.xunlei.com/fast_xl/update.html
+ 
+DigitalOcean $20: https://cloud.docker.com

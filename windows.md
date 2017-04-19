@@ -132,7 +132,15 @@ The operation completed successfully.
 
 ## Fix boot partiton
 + EFI
-    - bcdboot c:\windows /s h: /f UEFI
+```
+diskpart
+convert
+create partition efi size=512
+select partition 2
+assign letter=b
+
+bcdboot c:\windows /s h: /f UEFI
+```
 
 ## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  

@@ -28,6 +28,7 @@
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
 - [System](#system)
+    - [CPU](#cpu)
     - [disk](#disk)
         - [LVM](#lvm)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
@@ -72,6 +73,7 @@ subscription-manager register
 subscription-manager attach --auto
 subscription-manager repos --enable rhel-7-server-optional-rpms
 subscription-manager repos --enable rhel-7-server-extras-rpms
+yum install epel-release
 rm -f /var/run/yum.pid <PID> && yum remove PackageKit
 ```
 
@@ -111,11 +113,13 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 apt-get update
 apt-get install linux-base -t jessie-backports
 apt-cache search linux-image | grep linux-image-4
-apt install linux-image-4.10.0-9-generic
+apt install linux-image-4.10.0-9-generic linux-image-extra-4.10.0-9-generic
 
-apt show linux-image-extra-4.9.0-11-generic
+apt show linux-image-extra-4.10*
 
 apt-get install --only-upgrade docker-engine
+
+apt policy docker-ce | head -n 20
 ```
 ## deb manually
 ```
@@ -152,8 +156,10 @@ GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on"
 modprobe.blacklist=ahci,radeon,nouveau
 
-lspci -nn
-lspci -nnk -d 8086:1521
+lspci -nn 
+lspci -nnk -d 8086:1521 
+-nn		Show both textual and numeric ID's (names & numbers)
+-k		Show kernel drivers handling each device
 
 add IOMMU GROUP
 
@@ -272,7 +278,7 @@ tc qdisc show
 
 ## Proxy
 ```
-export http_proxy=http://localhost:8123/  
+export http_proxy=http://192.168.88.10:1080/  
 export https_proxy=$http_proxy   
 export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
 export ftp_proxy=$http_proxy  
@@ -314,7 +320,11 @@ sudo ufw disable
 ```
 
 # Benchmark
+http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 ```
+sysbench --test=cpu run
+sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
+
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 
@@ -329,6 +339,12 @@ ciw => change word from cursor
 ```
 
 # System
+## CPU
+```
+sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
+sudo watch -n 1 'dmidecode -t processor | grep Speed'
+```
+
 ## disk
 ### LVM
 ```
@@ -337,12 +353,13 @@ pvdisplay -v -m
 lvcreate -L 10G VolGroup00 -n lvolhome
 mkfs.ext4 /dev/mapper/VolGroup00-lvolhome
 mount /dev/mapper/VolGroup00-lvolhome /home
-lvresize -L +50G /dev/mapper/FZ--vg-data --resize-fs
 
-mkswap /dev/VG/LV
-echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
+swapoff -v /dev/mapper/ubuntu--vg-swap_1
+lvm lvreduce /dev/mapper/ubuntu--vg-swap_1 -L -19G
+mkswap /dev/mapper/ubuntu--vg-swap_1
 swapon -va
-cat /proc/swaps
+
+echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
 ```
 ### Convert between MBR and GPT

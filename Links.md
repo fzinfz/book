@@ -32,12 +32,13 @@
     - [Pricing](#pricing)
     - [Free](#free)
     - [Trial](#trial)
+- [Hardware](#hardware-1)
 
 <!-- /TOC -->
 
 # Networking
 ## MAC addresss <-> Vender:
-http://aruljohn.com/vendor
+http://aruljohn.com/mac.pl
 
 ## Subnetting
 http://www.balticnetworkstraining.com/subnet-calculator/  
@@ -181,3 +182,6 @@ https://cloud.google.com/free-trial/
 https://azure.microsoft.com/en-us/offers/ms-azr-0044p/
  
 DigitalOcean $20: https://cloud.docker.com
+
+# Hardware
+RS232 3pin： http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A)

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Install(kernel>=3.10)](#installkernel310)
+    - [Ubuntu](#ubuntu)
     - [Debian Jessie](#debian-jessie)
 - [Storage](#storage)
 - [Mirror](#mirror)
@@ -17,14 +18,20 @@
 ```
 wget -qO- https://get.docker.com/ | sh
 curl -fsSL https://get.docker.com/ | sh
+```
 
-echo deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-xenial main experimental testing > /etc/apt/sources.list.d/docker.list
-apt update
-apt install -y docker-engine
-apt policy docker-engine | head -n 20
+## Ubuntu
+https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
+```
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 
-sudo systemctl enable docker.service
-sudo systemctl start docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+
+apt update && apt install -y docker-ce
 ```
 
 ## Debian Jessie
@@ -82,7 +89,7 @@ docker network create \
   --driver overlay \
   --subnet 10.66.3.0/24 \
   --opt encrypted \
-  pub
+  web
 
 docker network ls
 

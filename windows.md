@@ -3,6 +3,7 @@
 - [Unique Features](#unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
+    - [Date & Time](#date--time)
     - [Query .Net Framwork Versions](#query-net-framwork-versions)
     - [Auto Login](#auto-login)
 - [CMD Commands](#cmd-commands)
@@ -30,11 +31,14 @@
 <!-- /TOC -->
 # Unique Features
 10: Free RemoteFX, WSL
-2016: NFS Server
+2016: NFS Server, Hyper-V DDA
 
 # RUN
 ## Startup Folder
 - shell:startup
+## Date & Time
+- timedate.cpl
+ntp.sjtu.edu.cn [202.120.2.100]
 
 ## Query .Net Framwork Versions
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP

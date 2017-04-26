@@ -1,10 +1,12 @@
 <!-- TOC -->
 
-- [Install(kernel>=3.10)](#installkernel310)
+- [Install CE](#install-ce)
     - [Ubuntu](#ubuntu)
     - [Debian Jessie](#debian-jessie)
 - [Storage](#storage)
 - [Mirror](#mirror)
+- [Proxy](#proxy)
+- [Move data dir](#move-data-dir)
 - [Swarm](#swarm)
 - [node IP](#node-ip)
 - [service VIP](#service-vip)
@@ -14,27 +16,31 @@
 
 <!-- /TOC -->
 
-# Install(kernel>=3.10)
-```
-wget -qO- https://get.docker.com/ | sh
-curl -fsSL https://get.docker.com/ | sh
-```
+# Install CE
 
 ## Ubuntu
 https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
 ```
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
 
 apt update && apt install -y docker-ce
 ```
 
 ## Debian Jessie
+https://docs.docker.com/engine/installation/linux/debian/
 ```
 apt-get purge "lxc-docker*"
 apt-get purge "docker.io*"
@@ -46,7 +52,6 @@ apt-get update
 apt-cache policy docker-engine
 apt install -y --allow-unauthenticated docker-engine
 ```
-Ref: https://docs.docker.com/engine/installation/linux/debian/
 
 # Storage
 https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
@@ -55,8 +60,34 @@ http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-driver
 
 # Mirror
 V1: https://docs.docker.com/v1.6/articles/registry_mirror/
+```
+echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
+service docker restart
+```
 
---registry-mirror=http://hub-mirror.c.163.com
+# Proxy
+https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
+```
+mkdir -p /etc/systemd/system/docker.service.d
+
+cat > /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
+[Service]
+Environment="HTTP_PROXY=http://192.168.88.11:1080/" "NO_PROXY=localhost,127.0.0.1,192.168.*.*.172.16.*.*"
+EOF
+
+sudo systemctl daemon-reload
+systemctl restart docker
+
+systemctl show --property=Environment docker
+
+```
+# Move data dir
+```
+service docker stop
+mv /var/lib/docker /root/data/docker
+ln -s /root/data/docker /var/lib/docker
+service docker start
+```
 
 # Swarm
 TCP port 2377 for cluster management communications

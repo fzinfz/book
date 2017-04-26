@@ -30,8 +30,10 @@
 - [System](#system)
     - [CPU](#cpu)
     - [disk](#disk)
-        - [LVM](#lvm)
+        - [mkpart, format, mount](#mkpart-format-mount)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
+        - [LVM](#lvm)
+        - [Swap](#swap)
     - [files](#files)
     - [time](#time)
     - [language](#language)
@@ -50,7 +52,6 @@
 - [Nginx](#nginx)
     - [Display file as text](#display-file-as-text)
 - [SELinux](#selinux)
-- [Storage](#storage)
 - [Serial Console](#serial-console)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
@@ -152,9 +153,9 @@ update-grub
 
 ### VT-d
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on"
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on modprobe.blacklist=ahci,radeon,nouveau,nvidiafb,snd_hda_intel"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on"
-modprobe.blacklist=ahci,radeon,nouveau
+
 
 lspci -nn 
 lspci -nnk -d 8086:1521 
@@ -163,7 +164,7 @@ lspci -nnk -d 8086:1521
 
 add IOMMU GROUP
 
-echo '0000:00:1f.2' | sudo tee /sys/bus/pci/devices/0000:00:1f.2/driver/unbind
+echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
 echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 ```
 
@@ -346,27 +347,39 @@ sudo watch -n 1 'dmidecode -t processor | grep Speed'
 ```
 
 ## disk
+### mkpart, format, mount
+```
+parted -s /dev/sdb mklabel gpt
+parted -s /dev/sdb unit mib mkpart primary 0% 100%
+mkfs.ext4 /dev/sdb1
+mkdir /data
+echo >> /etc/fstab
+echo /dev/vdb1               /root/data       ext4    defaults,noatime 0 0 >> /etc/fstab
+mount /root/data
+```
+
+### Convert between MBR and GPT
+```
+sudo sgdisk -g /dev/sda
+sudo sgdisk -m /dev/sda
+sudo partprobe -s
+```
+
 ### LVM
 ```
 pvs
 pvdisplay -v -m
-lvcreate -L 10G VolGroup00 -n lvolhome
-mkfs.ext4 /dev/mapper/VolGroup00-lvolhome
-mount /dev/mapper/VolGroup00-lvolhome /home
+lvcreate -L 80G ubuntu-vg -n data
+```
 
+### Swap
+```
 swapoff -v /dev/mapper/ubuntu--vg-swap_1
 lvm lvreduce /dev/mapper/ubuntu--vg-swap_1 -L -19G
 mkswap /dev/mapper/ubuntu--vg-swap_1
 swapon -va
 
 echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
-
-```
-### Convert between MBR and GPT
-```
-sudo sgdisk -g /dev/sda
-sudo sgdisk -m /dev/sda
-sudo partprobe -s
 ```
 
 ## files
@@ -480,18 +493,6 @@ location /somedir {
 ```
 getenforce
 semanage port -a -t mongod_port_t -p tcp 27017
-```
-
-# Storage
-```
-parted -s /dev/vdb mklabel gpt
-parted -s /dev/vdb unit mib mkpart primary 0% 100%
-mkfs.ext4 /dev/vdb1
-
-mkdir /mnt/blockstorage
-echo >> /etc/fstab
-echo /dev/vdb1               /mnt/blockstorage       ext4    defaults,noatime 0 0 >> /etc/fstab
-mount /mnt/blockstorage
 ```
 
 # Serial Console

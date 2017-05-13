@@ -30,6 +30,8 @@
 - [Data](#data)
 - [Cloud](#cloud)
     - [Pricing](#pricing)
+        - [Instance](#instance)
+        - [Traffic](#traffic)
     - [Free](#free)
     - [Trial](#trial)
 - [Hardware](#hardware-1)
@@ -153,14 +155,28 @@ https://docs.wso2.com/display/DSS301/Excel+Sample
 ## Pricing
 https://aws.amazon.com/free/  
 https://aws.amazon.com/ec2/pricing/  
+https://aws.amazon.com/ec2/pricing/reserved-instances/pricing/
+https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/
+Traffic: https://aws.amazon.com/ec2/pricing/on-demand/
 https://calculator.s3.amazonaws.com/index.html
 
 https://azure.microsoft.com/en-us/pricing/calculator/   
 https://azure.microsoft.com/en-us/pricing/details/app-service/  
+https://azure.microsoft.com/en-us/pricing/details/bandwidth/
 
 https://cloud.google.com/pricing/  
 https://cloud.google.com/compute/pricing  
 https://cloud.google.com/storage/pricing
+
+### Instance
+Amazon: 5% vGPU + 0.5GB, 3 Year Reserved Instance $69
+Google: 20% vGPU + 0.60GB,	Free - $4.09
+Microsoft: 1vGPU + 0.75 GiB, 	~$13.40/mo
+
+### Traffic
+Amazon: 1GB to 10 TB / month $0.090 per GB, Singapore to China 	$0.120 per GB
+Google: $0.12 - $0.23 / GB, Singapore to China $0.23
+Microsoft: 5 GB - 10 TB 2 /Month $0.087 - $0.181 per GB, Japan to China $0.138 per GB
 
 https://www.vultr.com/pricing/  
 https://www.linode.com/pricing   

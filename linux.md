@@ -61,6 +61,8 @@
 - [RouterOS](#routeros)
 - [X](#x)
 - [ANDROID](#android)
+- [PHP](#php)
+- [QCloud](#qcloud)
 
 <!-- /TOC -->
 
@@ -279,9 +281,9 @@ tc qdisc show
 
 ## Proxy
 ```
-export http_proxy=http://192.168.88.10:1080/  
+export http_proxy=http://127.0.0.1:1081/  
 export https_proxy=$http_proxy   
-export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*"  
+export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*,tencentyun.com"  
 export ftp_proxy=$http_proxy  
 export rsync_proxy=$http_proxy
 ```
@@ -540,3 +542,18 @@ fastboot oem edl-reboot
 
 adb push filename /sdcard/.
 ```
+
+# PHP
+https://getcomposer.org/doc/01-basic-usage.md
+```
+curl -sS https://getcomposer.org/installer | php && \
+php composer.phar  install && \
+php composer.phar update
+```
+https://getcomposer.org/doc/articles/versions.md
+~1.2.3 is equivalent to >=1.2.3 <1.3.0
+^1.2.3 is equivalent to >=1.2.3 <2.0.0
+
+# QCloud
+/usr/local/sa/agent
+/usr/local/qcloud/monitor/barad/admin

@@ -1,0 +1,4 @@
+sudo defaults write /Library/Preferences/com.apple.windowserver.plist DisplayResolutionEnabled -bool true
+
+wget https://bootstrap.pypa.io/3.2/get-pip.py
+sudo python get-pip.py

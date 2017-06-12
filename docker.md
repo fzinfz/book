@@ -132,6 +132,7 @@ ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
 # Run
 https://docs.docker.com/engine/reference/run/
 
+```
 --user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
 
 --dns=[]           : Set custom dns servers for the container
@@ -147,7 +148,6 @@ https://docs.docker.com/engine/reference/run/
 --ip=""            : Sets the container's Ethernet device's IPv4 address
 --link-local-ip=[] : Sets one or more container's Ethernet device's link local IPv4/IPv6 addresses
 
-```
 echo test | docker run --rm -i alpine cat
 ```
 

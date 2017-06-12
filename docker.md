@@ -130,6 +130,23 @@ ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
 ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
 
 # Run
+https://docs.docker.com/engine/reference/run/
+
+--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
+
+--dns=[]           : Set custom dns servers for the container
+--network="bridge" : Connect a container to a network
+                      'bridge': create a network stack on the default Docker bridge
+                      'none': no networking
+                      'container:<name|id>': reuse another container's network stack
+                      'host': use the Docker host network stack
+                      '<network-name>|<network-id>': connect to a user-defined network
+--network-alias=[] : Add network-scoped alias for the container
+--add-host=""      : Add a line to /etc/hosts (host:IP)
+--mac-address=""   : Sets the container's Ethernet device's MAC address
+--ip=""            : Sets the container's Ethernet device's IPv4 address
+--link-local-ip=[] : Sets one or more container's Ethernet device's link local IPv4/IPv6 addresses
+
 ```
 echo test | docker run --rm -i alpine cat
 ```

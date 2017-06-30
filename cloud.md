@@ -1,6 +1,14 @@
 # Google
 https://cloud.google.com/storage/docs/gcs-fuse
 
+# gcloud
+```
+curl https://sdk.cloud.google.com | bash
+
+gcloud auth application-default login
+```
+
+# gcs
 ```
 export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
 echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list

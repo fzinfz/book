@@ -172,13 +172,7 @@ echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
 ### QEMU
 ```
-modprobe -r kvm_intel
-modprobe kvm_intel nested=1
-qemu-system-x86_64 -enable-kvm -cpu host
-echo options kvm_intel nested=1 >> /etc/modprobe.d/modprobe.conf
-
 systool -m kvm_intel -v | grep nested
-egrep --color=auto 'vmx|svm' /proc/cpuinfo
 
 virsh domxml-to-native qemu-argv demo.xml > demo.sh
 
@@ -193,7 +187,6 @@ EOF
 virsh domxml-from-native qemu-argv demo.args > demo.xml
 
 virsh list --all
-
 
 vi /etc/libvirt/qemu/VM_NAME.xml
 
@@ -254,40 +247,8 @@ ethtool -K ens3 gro off gso off tso off
 
 http://darkk.net.ru/redsocks/
 
-## Enable TCP BBR of Kernel 4.9
-[docs](./Links.html#tcp-bbr-congestion-based-congestion-control)
 
-### Manually Load and check BBR module(Optional)
 ```
-modprobe tcp_bbr
-lsmod | grep bbr
-sysctl net.ipv4.tcp_available_congestion_control
-```
-
-### Enable tcp_congestion_control
-```
-echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
-sysctl -p
-reboot
-```
-
-### Check
-```
-sysctl net.core.default_qdisc
-sysctl net.ipv4 | grep control
-tc qdisc show   
-```
-
-## Proxy
-```
-export http_proxy=http://127.0.0.1:1081/  
-export https_proxy=$http_proxy   
-export no_proxy="localhost,127.0.0.1,192.168.*.*,10.*.*.*,172.16.*.*,tencentyun.com"  
-export ftp_proxy=$http_proxy  
-export rsync_proxy=$http_proxy
-```
-
 ## Firewall
 ### iptables
 ```
@@ -325,14 +286,10 @@ sudo ufw disable
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 ```
-sysbench --test=cpu run
 sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
-
-dd if=/dev/zero of=/root/testfile bs=200M count=1 oflag=direct   
-dd if=/dev/zero of=/root/testfile bs=512 count=1000 oflag=direct
 ```
 # vi/vim
 ```
@@ -342,12 +299,6 @@ ciw => change word from cursor
 ```
 
 # System
-## CPU
-```
-sudo watch -n 1  cat /sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_cur_freq
-sudo watch -n 1 'dmidecode -t processor | grep Speed'
-```
-
 ## disk
 ### mkpart, format, mount
 ```

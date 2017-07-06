@@ -59,7 +59,8 @@ https://docs.docker.com/engine/userguide/storagedriver/selectadriver/
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
 
 # Mirror
-V1: https://docs.docker.com/v1.6/articles/registry_mirror/
+https://cr.console.aliyun.com/#/accelerator
+
 ```
 echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
 service docker restart

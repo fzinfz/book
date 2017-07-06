@@ -17,41 +17,11 @@
 <!-- /TOC -->
 
 # Install CE
+https://get.docker.com/
 
-## Ubuntu
-https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
-```
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-apt-key fingerprint 0EBFCD88
-
-apt update && apt install -y docker-ce
-```
-
-## Debian Jessie
-https://docs.docker.com/engine/installation/linux/debian/
-```
-apt-get purge "lxc-docker*"
-apt-get purge "docker.io*"
-apt-get install apt-transport-https ca-certificates gnupg2
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo deb http://ftp.de.debian.org/debian jessie-backports main >> /etc/apt/sources.list
-echo deb https://apt.dockerproject.org/repo debian-jessie main >> /etc/apt/sources.list
-apt-get update
-apt-cache policy docker-engine
-apt install -y --allow-unauthenticated docker-engine
-```
+# Export & Import
+docker save -o <save image to path> <image name>
+docker load -i <path to image tar file>
 
 # Storage
 https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  

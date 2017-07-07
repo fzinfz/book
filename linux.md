@@ -113,7 +113,6 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 
 ## apt
 ```
-apt-get update
 apt-get install linux-base -t jessie-backports
 apt-cache search linux-image | grep linux-image-4
 apt install linux-image-4.10.0-9-generic linux-image-extra-4.10.0-9-generic
@@ -145,27 +144,8 @@ uname -a
 cat /etc/*-release
 ```
 
-# Grub
-## Ubuntu / Debian
-```
-awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
-vi /etc/default/grub
-update-grub
-```
-
 ### VT-d
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on modprobe.blacklist=ahci,radeon,nouveau,nvidiafb,snd_hda_intel"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on"
-
-
-lspci -nn 
-lspci -nnk -d 8086:1521 
--nn		Show both textual and numeric ID's (names & numbers)
--k		Show kernel drivers handling each device
-
-add IOMMU GROUP
-
 echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
 echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 ```

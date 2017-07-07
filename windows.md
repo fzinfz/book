@@ -154,3 +154,12 @@ bcdboot c:\windows /s h: /f UEFI
 ## Uninstall software in safemode
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /T REG_SZ /F /D "Service"
 net start msiserver
+
+# VS proxy
+ %ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe.config
+  find the <system.net> block, and add this code:
+  ```
+ <defaultProxy enabled="true" useDefaultCredentials="true">  
+    <proxy bypassonlocal="True" proxyaddress=" HYPERLINK "http://<yourproxy:port#" http://<yourproxy:port#>"/>  
+</defaultProxy> 
+```

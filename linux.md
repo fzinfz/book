@@ -9,18 +9,11 @@
     - [apt](#apt)
     - [deb manually](#deb-manually)
 - [Check release & kernel](#check-release--kernel)
-- [Grub](#grub)
-    - [Ubuntu / Debian](#ubuntu--debian)
         - [VT-d](#vt-d)
         - [QEMU](#qemu)
         - [vagrant](#vagrant)
     - [CentOS](#centos)
 - [Networking](#networking)
-    - [Enable TCP BBR of Kernel 4.9](#enable-tcp-bbr-of-kernel-49)
-        - [Manually Load and check BBR module(Optional)](#manually-load-and-check-bbr-moduleoptional)
-        - [Enable tcp_congestion_control](#enable-tcp_congestion_control)
-        - [Check](#check)
-    - [Proxy](#proxy)
     - [Firewall](#firewall)
         - [iptables](#iptables)
         - [CentOS](#centos-1)
@@ -28,7 +21,6 @@
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
 - [System](#system)
-    - [CPU](#cpu)
     - [disk](#disk)
         - [mkpart, format, mount](#mkpart-format-mount)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
@@ -228,7 +220,6 @@ ethtool -K ens3 gro off gso off tso off
 http://darkk.net.ru/redsocks/
 
 
-```
 ## Firewall
 ### iptables
 ```

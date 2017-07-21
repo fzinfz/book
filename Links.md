@@ -33,8 +33,10 @@
         - [Instance](#instance)
         - [Traffic](#traffic)
     - [Free](#free)
-    - [Trial](#trial)
 - [Hardware](#hardware-1)
+- [Networking](#networking-1)
+    - [Mikrotik](#mikrotik)
+        - [PCQ](#pcq)
 
 <!-- /TOC -->
 

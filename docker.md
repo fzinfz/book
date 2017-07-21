@@ -1,8 +1,7 @@
 <!-- TOC -->
 
 - [Install CE](#install-ce)
-    - [Ubuntu](#ubuntu)
-    - [Debian Jessie](#debian-jessie)
+- [Export & Import](#export--import)
 - [Storage](#storage)
 - [Mirror](#mirror)
 - [Proxy](#proxy)

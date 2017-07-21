@@ -219,7 +219,10 @@ ethtool -K ens3 gro off gso off tso off
 
 http://darkk.net.ru/redsocks/
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38e88c0a697702c30112cfed0438613a72acf776
 ## Firewall
 ### iptables
 ```

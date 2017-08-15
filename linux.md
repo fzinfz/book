@@ -207,6 +207,8 @@ ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient
 dhclient -r eth0
 dhclient eth0
 
+ip route add default via 192.168.1.1
+
 tcpdump -i eno16777736 port 27017
 
 nmap -sV -p6379 127.0.0.1
@@ -225,7 +227,7 @@ http://darkk.net.ru/redsocks/
 iptables -I INPUT -i docker0 -j ACCEPT
 iptables -I INPUT -s  localhost -j ACCEPT
 
-iptables -A INPUT --dport 5355 -j DROP
+iptables -A INPUT --dport 81 -j DROP
 iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
 iptables -A INPUT -p udp --dport 161 -j ACCEPT
 iptables-save

@@ -61,6 +61,9 @@
 # Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
+# Diagram
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
+
 # Repository
 ## Redhat
 ```
@@ -197,63 +200,7 @@ grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
 grub2-editenv list 
 ```
 
-# Networking
-```
-ls -l /sys/class/net/
-ip addr show dev eth1
-ifconfig ens7 10.99.0.10/16 up
-ip addr flush dev eth0
-ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient  
-dhclient -r eth0
-dhclient eth0
 
-ip route add default via 192.168.1.1
-
-tcpdump -i eno16777736 port 27017
-
-nmap -sV -p6379 127.0.0.1
-
-echo 'check tcp-segmentation-offload, generic-segmentation/receive-offload status'
-ethtool -k ens3
-ethtool -K ens3 gro off gso off tso off
-
-```
-
-http://darkk.net.ru/redsocks/
-
-## Firewall
-### iptables
-```
-iptables -I INPUT -i docker0 -j ACCEPT
-iptables -I INPUT -s  localhost -j ACCEPT
-
-iptables -A INPUT --dport 81 -j DROP
-iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
-iptables -A INPUT -p udp --dport 161 -j ACCEPT
-iptables-save
-iptables -L --line-numbers
-iptables -D INPUT 2
-```
-### CentOS
-```
-firewall-cmd --permanent --zone=public \
---add-rich-rule="rule family="ipv4" \
-source address="1.2.3.4/32" \
-port protocol="tcp" port="4567" accept"
-
-firewall-cmd --zone=public --add-port=4433/tcp --permanent
-firewall-cmd --zone=public --add-port=4433/udp--permanent
-firewall-cmd --reload
-firewall-cmd --list-all
-
-service firewalld stop 
-```
-### Ubuntu 16
-```
-sudo ufw allow 11200:11299/tcp
-sudo ufw status verbose
-sudo ufw disable
-```
 
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Common](#common)
+    - [disable ipv6](#disable-ipv6)
 - [systemd-networkd.service](#systemd-networkdservice)
 - [systemd.netdev](#systemdnetdev)
     - [Kind](#kind)
@@ -47,10 +48,38 @@ ethtool -K ens3 gro off gso off tso off
 
 http://darkk.net.ru/redsocks/
 
+## disable ipv6
+```
+echo "net.ipv6.conf.all.disable_ipv6=1"  >> /etc/sysctl.conf
+sysctl  -p
+```
 
 # systemd-networkd.service
 /usr/lib/systemd/systemd-networkd
+https://wiki.archlinux.org/index.php/systemd-networkd
 https://www.freedesktop.org/software/systemd/man/systemd.netdev.html#
+
+```
+systemctl status systemd-networkd.service
+systemctl restart systemd-networkd.service
+
+# networkctl list
+IDX LINK             TYPE               OPERATIONAL SETUP     
+  1 lo               loopback           carrier     unmanaged 
+  2 enp3s0           ether              no-carrier  unmanaged 
+  3 eno1             ether              degraded    unmanaged 
+  4 eno2             ether              degraded    configured
+  7 docker0          ether              routable    unmanaged 
+  9 vethec09cbe      ether              degraded    unmanaged 
+ 11 veth5185e04      ether              degraded    unmanaged 
+ 12 zt0              ether              routable    unmanaged 
+ 13 br0              ether              routable    configured
+ 14 macvtap0         ether              degraded    unmanaged 
+ 15 vnet0            ether              degraded    unmanaged 
+ 16 br8              ether              off         unmanaged 
+ 18 macvtap1         ether              degraded    unmanaged 
+ 19 vnet1            ether              degraded    unmanaged 
+```
 
 # systemd.netdev
 local administration network directory `/etc/systemd/network`
@@ -99,6 +128,7 @@ Compare with macvtap.network below.
 
 # systemd.network
 https://www.freedesktop.org/software/systemd/man/systemd.network.html
+
 ## static.network
 [Match]
 Name=enp2s0

@@ -21,19 +21,22 @@
 - [GO Simple Tunnel](#go-simple-tunnel)
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
+- [govpn](#govpn)
 
 <!-- /TOC -->
 
 # Shadowsocks
-https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions
+[Official](https://github.com/shadowsocks/) | 
+[Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
+([raw](https://raw.githubusercontent.com/wiki/shadowsocks/shadowsocks/Feature-Comparison-across-Different-Versions.md)) 
 
 # v2ray
-https://www.v2ray.com/chapter_02/01_overview.html
+https://www.v2ray.com/chapter_02/01_overview.html  
 https://toutyrater.github.io/v2ray-guide-pages/
 
 # Transparent Proxy
-https://github.com/sorz/moproxy
-https://www.v2ray.com/chapter_02/protocols/dokodemo.html
+https://github.com/sorz/moproxy  
+https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
 https://github.com/shadowsocks/shadowsocks-libev#advanced-usage
 
 # 中文手册
@@ -41,8 +44,8 @@ https://github.com/shadowsocks/shadowsocks-libev#advanced-usage
 https://toutyrater.github.io/
 
 ## Shadowsocks
-https://lvii.gitbooks.io/outman/content/ss.client.html
-https://neroxps.gitbooks.io/compile-shadowsocks-rss-libev/content/
+https://lvii.gitbooks.io/outman/content/ss.client.html  
+https://neroxps.gitbooks.io/compile-shadowsocks-rss-libev/content/  
 https://github.com/softwaredownload/openwrt-fanqiang
 
 # Manager
@@ -55,7 +58,7 @@ https://hub.docker.com/r/fzinfz/ss-panel/
 https://hub.docker.com/r/fzinfz/ss/
 
 ```
-docker run -d -v /config.json:/etc/v2ray/config.json v2ray/official/
+docker run -d -v /config.json:/etc/v2ray/config.json v2ray/official/  
 docker run -dt mritd/v2ray -c "..encode with http://www.bejson.com/zhuanyi/ .."
 ```
 
@@ -70,8 +73,10 @@ https://github.com/fzinfz/scripts/blob/master/bbr_enable.sh
 
 ## KCPTun
 https://github.com/xtaci/kcptun
+```
 ./server_linux_amd64 -t "127.0.0.1:8388" -l ":554" -mode fast2  // 转发到服务器的本地8388端口
 ./client_darwin_amd64 -r "服务器IP地址:554" -l ":8388" -mode fast2 
+```
 
 # Reversed Proxy
 ## Google
@@ -100,3 +105,6 @@ https://github.com/phuslu/goproxy/blob/wiki/SimpleGuide.md
 
 # goproxy with msocks protocal
 https://github.com/shell909090/goproxy
+
+# govpn
+http://www.cypherpunks.ru/govpn/

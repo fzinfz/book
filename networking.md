@@ -41,6 +41,8 @@ https://tools.ietf.org/html/rfc3031     Multiprotocol Label Switching Architectu
 https://tools.ietf.org/html/rfc5036 / Obsoletes: 3036   LDP Specification
 
 # VPLS 
+https://en.wikipedia.org/wiki/Pseudo-wire
+
 ## Mikrotik
 https://tools.ietf.org/html/rfc4761     VPLS Using BGP for Auto-Discovery and Signaling
 https://tools.ietf.org/html/rfc4762     VPLS Using LDP Signaling

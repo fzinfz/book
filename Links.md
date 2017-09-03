@@ -202,9 +202,4 @@ DigitalOcean $20: https://cloud.docker.com
 # Hardware
 RS232 3pin： http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A)
 
-# Networking
-## Mikrotik 
-### PCQ
-https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
-http://mum.mikrotik.com/presentations/US08/janism.pdf  
-https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
+

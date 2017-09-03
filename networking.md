@@ -1,8 +1,8 @@
 <!-- TOC -->
 
-- [Windows](#windows)
-- [All platforms](#all-platforms)
-- [Router OS](#router-os)
+- [Tools for Windows](#tools-for-windows)
+- [Tools for All platforms](#tools-for-all-platforms)
+- [Router OSes](#router-oses)
 - [MPLS](#mpls)
     - [Mikrotik](#mikrotik)
 - [VPLS](#vpls)
@@ -17,16 +17,16 @@
 - [Subnet Helper](#subnet-helper)
 
 <!-- /TOC -->
-# Windows
+# Tools for Windows 
 Microsoft Message Analyzer: https://www.microsoft.com/en-us/download/details.aspx?id=44226
 Microsoft Network Monitor(2010): https://www.microsoft.com/en-us/download/details.aspx?id=4865
 BTest: https://mikrotik.com/download/btest.exe
 Force socks: https://www.socksproxychecker.com/sockscap.html
 
-# All platforms
+# Tools for All platforms
 Wireshark: https://www.wireshark.org/download.html
 
-# Router OS
+# Router OSes
 https://wiki.vyos.net/wiki/User_Guide
 https://mikrotik.com/download
 https://www.clearos.com/clearfoundation/software/clearos-7-community    
@@ -70,6 +70,10 @@ https://github.com/eqvinox/vpls-iproute2/commits/vpls
 https://wiki.vyos.net/wiki/Proposed_enhancements 
 
 # Mikrotik 
+```
+put [resolve google.com server 8.8.8.8]
+```
+
 ## PCQ
 https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
 http://mum.mikrotik.com/presentations/US08/janism.pdf  

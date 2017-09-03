@@ -63,7 +63,7 @@ https://www.freedesktop.org/software/systemd/man/systemd.netdev.html#
 systemctl status systemd-networkd.service
 systemctl restart systemd-networkd.service
 
-# networkctl list
+# networkctl lisft
 IDX LINK             TYPE               OPERATIONAL SETUP     
   1 lo               loopback           carrier     unmanaged 
   2 enp3s0           ether              no-carrier  unmanaged 

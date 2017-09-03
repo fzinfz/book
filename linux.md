@@ -1,23 +1,18 @@
 <!-- TOC -->
 
 - [Interactive notes](#interactive-notes)
+- [Diagram](#diagram)
 - [Repository](#repository)
+- [Package Management](#package-management)
     - [Redhat](#redhat)
         - [EPEL](#epel)
     - [Ubuntu](#ubuntu)
     - [Debian](#debian)
+    - [yum](#yum)
     - [apt](#apt)
     - [deb manually](#deb-manually)
 - [Check release & kernel](#check-release--kernel)
-        - [VT-d](#vt-d)
-        - [QEMU](#qemu)
-        - [vagrant](#vagrant)
     - [CentOS](#centos)
-- [Networking](#networking)
-    - [Firewall](#firewall)
-        - [iptables](#iptables)
-        - [CentOS](#centos-1)
-        - [Ubuntu 16](#ubuntu-16)
 - [Benchmark](#benchmark)
 - [vi/vim](#vivim)
 - [System](#system)
@@ -34,27 +29,13 @@
     - [password](#password)
     - [font](#font)
     - [systemctl](#systemctl)
-- [Package Management](#package-management)
-- [yum](#yum)
 - [Files](#files)
-- [Openstack](#openstack)
-    - [Ubuntu](#ubuntu-1)
-- [Dropbox](#dropbox)
-    - [link account](#link-account)
-- [Nginx](#nginx)
-    - [Display file as text](#display-file-as-text)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
-- [VSphere / ESXi](#vsphere--esxi)
-    - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
-    - [Config](#config)
-        - [Backup](#backup)
-        - [Restore](#restore)
-- [RouterOS](#routeros)
 - [X](#x)
 - [ANDROID](#android)
-- [PHP](#php)
-- [QCloud](#qcloud)
+- [Dropbox](#dropbox)
+    - [link account](#link-account)
 
 <!-- /TOC -->
 
@@ -65,6 +46,7 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
 # Repository
+# Package Management
 ## Redhat
 ```
 subscription-manager register
@@ -83,6 +65,7 @@ rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
 yum install yum-plugin-fastestmirror
 yum --enablerepo=elrepo-kernel install kernel-ml
 ```
+
 ## Ubuntu
 Main - Canonical-supported free and open-source software.  
 Universe - Community-maintained free and open-source software.  
@@ -106,6 +89,11 @@ echo deb http://ftp.debian.org/debian experimental main >> /etc/apt/sources.list
 echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list
 ```
 
+## yum
+```
+yum-config-manager --disable c7-media
+```
+
 ## apt
 ```
 apt-get install linux-base -t jessie-backports
@@ -118,6 +106,7 @@ apt-get install --only-upgrade docker-engine
 
 apt policy docker-ce | head -n 20
 ```
+
 ## deb manually
 ```
 wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
@@ -139,59 +128,6 @@ uname -a
 cat /etc/*-release
 ```
 
-### VT-d
-```
-echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
-echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
-```
-
-### QEMU
-```
-systool -m kvm_intel -v | grep nested
-
-virsh domxml-to-native qemu-argv demo.xml > demo.sh
-
-cat > demo.args <<EOF
-LC_ALL=C PATH=/bin HOME=/home/test USER=test \
-LOGNAME=test /usr/bin/qemu -S -M pc -m 214 -smp 1 \
--nographic -monitor pty -no-acpi -boot c -hda \
-/dev/HostVG/QEMUGuest1 -net none -serial none \
--parallel none -usb
-EOF
-
-virsh domxml-from-native qemu-argv demo.args > demo.xml
-
-virsh list --all
-
-vi /etc/libvirt/qemu/VM_NAME.xml
-
-  <features>
-    ...
-    <kvm>
-      <hidden state='on'/>
-    </kvm>
-  </features>
-
-  <qemu:commandline>                                              
-  <qemu:arg value='-set'/>                                          
-  <qemu:arg value='device.hostdev0.x-vga=on'/>      
-  </qemu:commandline>
-
-
-```
-
-### vagrant
-```
-sudo apt-get install vagrant 
-sudo apt-get install libz-dev
-vagrant plugin install vagrant-mutate
-vagrant mutate http://files.vagrantup.com/precise32.box libvirt
-vagrant plugin install vagrant-libvirt
-
-vagrant plugin install vagrant-lxc
-
-```
-
 ## CentOS
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -199,8 +135,6 @@ awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
 grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
 grub2-editenv list 
 ```
-
-
 
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
@@ -210,6 +144,7 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
+
 # vi/vim
 ```
 cw => change word
@@ -308,12 +243,6 @@ SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
 -S, --since=, -U, --until=
 ```
 
-# Package Management
-# yum
-yum-config-manager --disable c7-media
-
-
-
 # Files
 ```
 cat > file <<'EOL'
@@ -331,36 +260,6 @@ rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --
 - The ~/.bash_profile would be used once, at login.
 - The ~/.bashrc script is read every time a shell is started.
 
-# Openstack
-## Ubuntu
-```
-sudo apt-add-repository ppa:juju/stable
-sudo apt-add-repository ppa:conjure-up/next
-sudo apt update && sudo apt install -y conjure-up &&  conjure-up
-```
-
-# Dropbox
-## link account
-`~/.dropbox-dist/dropboxd`  
-dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
-unlink: https://www.dropbox.com/account#security  
-
-
-# Nginx
-## Display file as text
-```
-location /code/ {
-    # All files in it
-    location ~* {
-        add_header Content-Type text/plain;
-    }
-}
-
-location /somedir {
-        autoindex on;
-}
-```
-
 # SELinux
 ```
 getenforce
@@ -375,34 +274,10 @@ screen /dev/ttyUSB0 115200
 picocom -b 115200 /dev/ttyUSB0
 ```
 
-# VSphere / ESXi
-## Raw disk mapping (RDM)
-```
-ls -alh /vmfs/devices/disks
-vmkfstools -r /vmfs/devices/disks/<device> example.vmdk
-vmkfstools -z /vmfs/devices/disks/<device> example.vmdk
-```
-[Ref](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1026256)
-
-## Config
-[Ref](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2042141)
-### Backup
-`vim-cmd hostsvc/firmware/backup_config`
-### Restore
-```
-vim-cmd hostsvc/maintenance_mode_enter
-vim-cmd hostsvc/firmware/restore_config /tmp/configBundle.tgz
-```
-
-
-# RouterOS
-put [resolve google.com server 8.8.8.8]
-
 # X
 ```
 vncserver -kill :1
 ```
-
 
 # ANDROID
 ```
@@ -413,17 +288,8 @@ fastboot oem edl-reboot
 adb push filename /sdcard/.
 ```
 
-# PHP
-https://getcomposer.org/doc/01-basic-usage.md
-```
-curl -sS https://getcomposer.org/installer | php && \
-php composer.phar  install && \
-php composer.phar update
-```
-https://getcomposer.org/doc/articles/versions.md
-~1.2.3 is equivalent to >=1.2.3 <1.3.0
-^1.2.3 is equivalent to >=1.2.3 <2.0.0
-
-# QCloud
-/usr/local/sa/agent
-/usr/local/qcloud/monitor/barad/admin
+# Dropbox
+## link account
+`~/.dropbox-dist/dropboxd`  
+dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
+unlink: https://www.dropbox.com/account#security  

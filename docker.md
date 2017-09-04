@@ -3,7 +3,6 @@
 - [Install CE](#install-ce)
 - [Export & Import](#export--import)
 - [Storage](#storage)
-- [Mirror](#mirror)
 - [Proxy](#proxy)
 - [Move data dir](#move-data-dir)
 - [Swarm](#swarm)
@@ -12,6 +11,10 @@
 - [Run](#run)
 - [CoreOS](#coreos)
 - [Kubernetes](#kubernetes)
+- [badger](#badger)
+- [Windows/Mac](#windowsmac)
+- [China Mirrors](#china-mirrors)
+    - [boot2docker](#boot2docker)
 
 <!-- /TOC -->
 
@@ -26,14 +29,6 @@ docker load -i <path to image tar file>
 https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
 ![](https://docs.docker.com/engine/userguide/storagedriver/images/driver-pros-cons.png)
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
-
-# Mirror
-https://cr.console.aliyun.com/#/accelerator
-
-```
-echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
-service docker restart
-```
 
 # Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
@@ -136,3 +131,33 @@ update_engine_client -update
 
 # Kubernetes
 http://kubernetes.io/docs/getting-started-guides/
+
+
+# badger
+https://microbadger.com
+
+# Windows/Mac
+https://docs.docker.com/engine/installation/windows/  
+https://docs.docker.com/machine/drivers/  
+https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
+
+# China Mirrors
+https://hpc.aliyun.com/doc/docker%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1  
+
+https://servers.ustclug.org/2015/05/new-docker-hub-registry-mirror/ 
+```
+docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn 
+```
+
+https://cr.console.aliyun.com/#/accelerator
+
+```
+echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
+service docker restart
+```
+
+## boot2docker
+https://github.com/boot2docker/boot2docker
+```
+echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
+```

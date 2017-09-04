@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Shell](#shell)
 - [Interactive notes](#interactive-notes)
 - [Diagram](#diagram)
 - [Repository](#repository)
@@ -39,6 +40,10 @@
 
 <!-- /TOC -->
 
+# Shell
+http://explainshell.com/
+https://www.netsarang.com/xshell_download.html
+
 # Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
@@ -56,6 +61,7 @@ subscription-manager repos --enable rhel-7-server-extras-rpms
 yum install epel-release
 rm -f /var/run/yum.pid <PID> && yum remove PackageKit
 ```
+Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/ 
 
 ### EPEL
 http://elrepo.org/tiki/tiki-index.php

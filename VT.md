@@ -12,7 +12,10 @@
     - [vmdk](#vmdk)
 - [vagrant](#vagrant)
 - [Openstack](#openstack)
+    - [Images](#images)
     - [Ubuntu](#ubuntu)
+- [LXD](#lxd)
+- [IOMMU](#iommu)
 
 <!-- /TOC -->
 
@@ -31,6 +34,9 @@ echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 ```
 
 ## QEMU
+disk convert: https://cloudbase.it/qemu-img-windows/  
+[Building ARM containers on any x86 machine, even DockerHub](https://resin.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub/)
+
 ```
 systool -m kvm_intel -v | grep nested
 
@@ -95,6 +101,8 @@ The tool also reverts a vmdk which was blown up, back into a thin file! ([Ref](h
 
 
 # vagrant
+https://atlas.hashicorp.com/boxes/  
+Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.user.js
 ```
 sudo apt-get install vagrant 
 sudo apt-get install libz-dev
@@ -107,9 +115,36 @@ vagrant plugin install vagrant-lxc
 ```
 
 # Openstack
+http://conjure-up.io/docs/en/users/#getting-started
+
+http://docs.openstack.org/developer/devstack/  
+http://docs.openstack.org/developer/devstack/guides/single-machine.html
+
+http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
+https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
+
+## Images
+http://docs.openstack.org/image-guide/obtain-images.html  
+http://cdimage.debian.org/cdimage/openstack/
+http://linuximages.de/openstack/arch/
+
 ## Ubuntu
 ```
 sudo apt-add-repository ppa:juju/stable
 sudo apt-add-repository ppa:conjure-up/next
 sudo apt update && sudo apt install -y conjure-up &&  conjure-up
 ```
+
+# LXD
+https://www.ubuntu.com/cloud/lxd
+http://insights.ubuntu.com/2016/03/14/the-lxd-2-0-story-prologue/
+https://insights.ubuntu.com/2016/04/13/stephane-graber-lxd-2-0-docker-in-lxd-712/  
+
+https://github.com/lxc/lxd#how-can-i-run-docker-inside-a-lxd-container
+
+# IOMMU
+https://pve.proxmox.com/wiki/Pci_passthrough
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
+https://wiki.debian.org/VGAPassthrough
+
+https://github.com/awilliam/rom-parser

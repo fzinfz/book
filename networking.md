@@ -21,6 +21,11 @@
 - [VRF](#vrf)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
+- [MAC addresss <-> Vender](#mac-addresss---vender)
+- [DHCP Options](#dhcp-options)
+- [Tuning](#tuning)
+- [TCP BBR](#tcp-bbr)
+- [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 
 <!-- /TOC -->
 # SDN
@@ -124,5 +129,25 @@ Think of this feature as VLAN for layer 3
 http://l7-filter.sourceforge.net/protocols
 
 # Subnet Helper
-https://mikrotik.com/img/netaddresses2.pdf
+http://www.balticnetworkstraining.com/subnet-calculator/  
+http://www.mikrotik.com/img/netaddresses2.pdf
 
+# MAC addresss <-> Vender
+http://aruljohn.com/mac.pl
+
+# DHCP Options
+http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+
+# Tuning
+https://fasterdata.es.net/assets/Papers-and-Publications/100G-Tuning-TechEx2016.tierney.pdf
+
+# TCP BBR
+https://www.ietf.org/proceedings/97/slides/slides-97-iccrg-bbr-congestion-control-02.pdf   
+http://www.thequilt.net/wp-content/uploads/BBR-TCP-Opportunities.pdf
+http://queue.acm.org/detail.cfm?id=3022184
+http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.pdf
+
+# Introspectable tunnels to localhost
+https://github.com/inconshreveable/ngrok
+https://github.com/fatedier/frp
+https://github.com/lovedboy/gortcp

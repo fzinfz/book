@@ -21,6 +21,7 @@
     - [iptables](#iptables)
     - [CentOS](#centos)
     - [Ubuntu 16](#ubuntu-16)
+- [TC](#tc)
 
 <!-- /TOC -->
 
@@ -235,3 +236,6 @@ sudo ufw allow 11200:11299/tcp
 sudo ufw status verbose
 sudo ufw disable
 ```
+
+# TC
+http://events.linuxfoundation.org/sites/events/files/slides/Linux_traffic_control.pdf  

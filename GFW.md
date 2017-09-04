@@ -15,13 +15,13 @@
     - [KCPTun](#kcptun)
 - [Reversed Proxy](#reversed-proxy)
     - [Google](#google)
+- [govpn](#govpn)
 - [Other tools](#other-tools)
 - [LightSword](#lightsword)
 - [ShadowVPN](#shadowvpn)
 - [GO Simple Tunnel](#go-simple-tunnel)
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
-- [govpn](#govpn)
 
 <!-- /TOC -->
 
@@ -86,6 +86,9 @@ OneMirror is a Docker image of Nginx, which already configured Google Search, Go
 docker run -p 80:80 -d bohan/onemirror
 ```
 
+# govpn
+http://www.cypherpunks.ru/govpn/
+
 # Other tools
 https://pbs.twimg.com/media/B6MjT6cCYAA-U3C.png:large
 
@@ -105,6 +108,3 @@ https://github.com/phuslu/goproxy/blob/wiki/SimpleGuide.md
 
 # goproxy with msocks protocal
 https://github.com/shell909090/goproxy
-
-# govpn
-http://www.cypherpunks.ru/govpn/

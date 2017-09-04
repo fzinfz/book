@@ -1,5 +1,11 @@
 <!-- TOC -->
 
+- [SDN](#sdn)
+    - [Switch](#switch)
+    - [Controller](#controller)
+        - [Python](#python)
+        - [C++](#c)
+        - [JAVA](#java)
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
@@ -17,6 +23,34 @@
 - [Subnet Helper](#subnet-helper)
 
 <!-- /TOC -->
+# SDN
+## Switch
+https://github.com/openvswitch/ovs
+ovs-vswitchd
+ovsdb-server
+ovs-dpctl, a tool for configuring the switch kernel module.
+ovs-vsctl, a utility for querying and updating the configuration of ovs-vswitchd.
+ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
+
+ovs-ofctl, a utility for querying and controlling OpenFlow switches and controllers.
+ovs-pki, a utility for creating and managing the public-key infrastructure for OpenFlow switches.
+ovs-testcontroller, a simple OpenFlow controller that may be useful for testing (though not for production).
+A patch to tcpdump that enables it to parse OpenFlow messages.
+
+## Controller
+### Python
+http://ryu.readthedocs.io/en/latest/getting_started.html
+https://hub.docker.com/r/osrg/ryu-book/
+
+### C++
+https://github.com/Juniper/contrail-controller
+https://github.com/Juniper/contrail-vrouter
+
+### JAVA
+https://hub.docker.com/r/opendaylight/odl/
+https://hub.docker.com/r/onosproject/onos/
+https://github.com/floodlight/floodlight
+
 # Tools for Windows 
 Microsoft Message Analyzer: https://www.microsoft.com/en-us/download/details.aspx?id=44226
 Microsoft Network Monitor(2010): https://www.microsoft.com/en-us/download/details.aspx?id=4865
@@ -48,7 +82,6 @@ https://tools.ietf.org/html/rfc4761     VPLS Using BGP for Auto-Discovery and Si
 https://tools.ietf.org/html/rfc4762     VPLS Using LDP Signaling
 https://tools.ietf.org/html/rfc4447     (cisco-style Signaling)
 https://tools.ietf.org/html/rfc4623     PWE3 Fragmentation and Reassembly
-
 
 ## OpenBSD
 https://github.com/rwestphal/openbsd-ldpd/wiki/VPLS-basic-test-setup

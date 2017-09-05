@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [Unique Features](#unique-features)
+- [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
     - [Date & Time](#date--time)
@@ -27,10 +27,11 @@
     - [Fix boot partiton](#fix-boot-partiton)
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
+- [VS proxy](#vs-proxy)
 
 <!-- /TOC -->
-# Unique Features
-10: Free RemoteFX, WSL
+# Edition Unique Features
+10: Free RemoteFX, WSL  
 2016: NFS Server, Hyper-V DDA
 
 # RUN

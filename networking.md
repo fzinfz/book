@@ -131,6 +131,9 @@ http://l7-filter.sourceforge.net/protocols
 # Subnet Helper
 http://www.balticnetworkstraining.com/subnet-calculator/  
 http://www.mikrotik.com/img/netaddresses2.pdf
+E.g.:
+.96-127/27: #2^5
+.0-127/25: #2^7
 
 # MAC addresss <-> Vender
 http://aruljohn.com/mac.pl

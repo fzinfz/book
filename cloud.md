@@ -44,7 +44,7 @@ ls gcsfuse
 https://aws.amazon.com/free/  
 https://aws.amazon.com/ec2/pricing/  
 https://aws.amazon.com/ec2/pricing/reserved-instances/pricing/
-https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/
+https://aws.amazon.com/blogs/aws/ec2-update-t2-nano-instances-now-available/  
 Traffic: https://aws.amazon.com/ec2/pricing/on-demand/
 https://calculator.s3.amazonaws.com/index.html
 
@@ -82,5 +82,5 @@ https://cloud.google.com/free/docs/always-free-usage-limits
 https://aws.amazon.com/free/
 https://tryappservice.azure.com 
 
-https://azure.microsoft.com/en-us/offers/ms-azr-0044p/
+https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
 DigitalOcean $20: https://cloud.docker.com

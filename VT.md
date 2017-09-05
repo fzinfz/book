@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [KVM/libvirt](#kvmlibvirt)
+    - [MacVTap](#macvtap)
     - [shutdown timeout](#shutdown-timeout)
     - [VT-d](#vt-d)
     - [QEMU](#qemu)
@@ -20,6 +21,18 @@
 <!-- /TOC -->
 
 # KVM/libvirt
+## MacVTap
+http://virt.kernelnewbies.org/MacVTap  
+ `private` mode exists that behaves like a `VEPA` mode endpoint in the absence of a hairpin aware switch. Most switches today do not support hairpin mode.      
+ ![](https://seravo.fi/wp-content/uploads/2012/10/hairpin.png)   
+ `Bridge`, connecting all endpoints directly to each other. when inter-guest communication is performance critical.
+
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Administration_Guide/sect-attch-nic-physdev.html    
+`passthrough` attaches a virtual function of a SRIOV capable NIC directly to a VM **without losing the migration capability**.
+
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Host_Configuration_and_Guest_Installation_Guide/App_Macvtap.html  
+when a guest virtual machine is configured to use a type='direct' network interface such as macvtap, ..., the guest cannot communicate with its own host.
+
 ## shutdown timeout
 /etc/init.d/libvirt-guests
 ON_SHUTDOWN=shutdown

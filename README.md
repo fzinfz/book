@@ -1,5 +1,6 @@
 # About
-This gitbook is for system admininstration notes.
+This gitbook is for system admininstration notes.  
+If you want to leave a message, please cliek the "+" button near related paragraphs.
 
 For coding notes, please visit: 
 http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/ 

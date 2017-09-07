@@ -1,5 +1,9 @@
 <!-- TOC -->
 
+- [Open Source Software for Routing](#open-source-software-for-routing)
+- [BGP](#bgp)
+    - [Private AS](#private-as)
+- [Virtual networking modes](#virtual-networking-modes)
 - [SDN](#sdn)
     - [Switch](#switch)
     - [Controller](#controller)
@@ -24,10 +28,35 @@
 - [MAC addresss <-> Vender](#mac-addresss---vender)
 - [DHCP Options](#dhcp-options)
 - [Tuning](#tuning)
-- [TCP BBR](#tcp-bbr)
+- [TCP congestion control](#tcp-congestion-control)
+    - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 
 <!-- /TOC -->
+
+# Open Source Software for Routing 
+https://conference.apnic.net/__data/assets/pdf_file/0020/50681/osr_apnic34_1346044930.pdf
+
+# BGP 
+https://github.com/Exa-Networks/exabgp
+implement SDN by transforming BGP messages into friendly plain text or JSON
+
+http://bird.network.cz/
+http://www.openbgpd.org/ftp.html
+
+
+https://github.com/openstack/networking-bagpipe
+BGP-based VPNs as a backend for Neutron
+
+## Private AS
+https://tools.ietf.org/html/rfc6996#section-5
+64512 - 65534
+4200000000 - 4294967294
+
+# Virtual networking modes
+https://thenewstack.io/hackers-guide-kubernetes-networking/  
+![](https://cdn.thenewstack.io/media/2017/02/7a021d86-virtual-networking-1024x380.png)
+
 # SDN
 ## Switch
 https://github.com/openvswitch/ovs
@@ -144,7 +173,10 @@ http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtm
 # Tuning
 https://fasterdata.es.net/assets/Papers-and-Publications/100G-Tuning-TechEx2016.tierney.pdf
 
-# TCP BBR
+# TCP congestion control
+https://en.wikipedia.org/wiki/TCP_congestion_control#Algorithms
+
+## BBR
 https://www.ietf.org/proceedings/97/slides/slides-97-iccrg-bbr-congestion-control-02.pdf   
 http://www.thequilt.net/wp-content/uploads/BBR-TCP-Opportunities.pdf
 http://queue.acm.org/detail.cfm?id=3022184

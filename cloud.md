@@ -82,5 +82,5 @@ https://cloud.google.com/free/docs/always-free-usage-limits
 https://aws.amazon.com/free/
 https://tryappservice.azure.com 
 
-https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
+$200: https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
 DigitalOcean $20: https://cloud.docker.com

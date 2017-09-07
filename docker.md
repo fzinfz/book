@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Install CE](#install-ce)
+- [Dockerfile code snippets](#dockerfile-code-snippets)
 - [Export & Import](#export--import)
 - [Storage](#storage)
 - [Proxy](#proxy)
@@ -19,7 +20,16 @@
 <!-- /TOC -->
 
 # Install CE
-https://get.docker.com/
+    curl -fsSL get.docker.com | sh
+
+# Dockerfile code snippets
+```
+RUN apt update && apt install -y 
+    --no-install-recommends && rm -r /var/lib/apt/lists/*
+
+RUN apk add --no-cache --virtual .build-deps'  
+    && apk del .build-deps
+```
 
 # Export & Import
 docker save -o <save image to path> <image name>
@@ -90,9 +100,10 @@ docker network create \
 docker network ls
 
 # node IP
-ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
+    ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
+
 # service VIP
-ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
+    ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
 
 # Run
 https://docs.docker.com/engine/reference/run/

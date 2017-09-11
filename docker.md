@@ -2,6 +2,8 @@
 
 - [Install CE](#install-ce)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
+    - [alpine](#alpine)
+    - [apt](#apt)
 - [Export & Import](#export--import)
 - [Storage](#storage)
 - [Proxy](#proxy)
@@ -23,17 +25,22 @@
     curl -fsSL get.docker.com | sh
 
 # Dockerfile code snippets
-```
-RUN apt update && apt install -y 
-    --no-install-recommends && rm -r /var/lib/apt/lists/*
+## alpine
+    # install pip3
+    wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 
-RUN apk add --no-cache --virtual .build-deps'  
-    && apk del .build-deps
-```
+    RUN apt update && apt install -y 
+        --no-install-recommends && rm -r /var/lib/apt/lists/*
+
+## apt    
+    RUN apk add --no-cache --virtual .build-deps  \
+        curl ca-certificates jq \
+        && apk del .build-deps
+
 
 # Export & Import
-docker save -o <save image to path> <image name>
-docker load -i <path to image tar file>
+    docker save -o <save image to path> <image name>
+    docker load -i <path to image tar file>
 
 # Storage
 https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
@@ -153,7 +160,7 @@ https://docs.docker.com/machine/drivers/
 https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
 
 # China Mirrors
-https://hpc.aliyun.com/doc/docker%E9%95%9C%E5%83%8F%E6%9C%8D%E5%8A%A1  
+https://cr.console.aliyun.com/#/accelerator
 
 https://servers.ustclug.org/2015/05/new-docker-hub-registry-mirror/ 
 ```

@@ -16,6 +16,7 @@
 - [Reversed Proxy](#reversed-proxy)
     - [Google](#google)
 - [govpn](#govpn)
+- [HTTP tunnel in Go: goflyway](#http-tunnel-in-go-goflyway)
 - [Other tools](#other-tools)
 - [LightSword](#lightsword)
 - [ShadowVPN](#shadowvpn)
@@ -88,6 +89,9 @@ docker run -p 80:80 -d bohan/onemirror
 
 # govpn
 http://www.cypherpunks.ru/govpn/
+
+# HTTP tunnel in Go: goflyway
+https://github.com/coyove/goflyway
 
 # Other tools
 https://pbs.twimg.com/media/B6MjT6cCYAA-U3C.png:large

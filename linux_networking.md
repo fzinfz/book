@@ -19,6 +19,9 @@
 - [systemd.link](#systemdlink)
 - [Firewall](#firewall)
     - [iptables](#iptables)
+        - [NAT](#nat)
+        - [Trace](#trace)
+        - [Log manually](#log-manually)
     - [CentOS](#centos)
     - [Ubuntu 16](#ubuntu-16)
 - [TC](#tc)
@@ -216,6 +219,37 @@ iptables-save
 iptables -L --line-numbers
 iptables -D INPUT 2
 ```
+
+
+
+### NAT
+http://www.netfilter.org/documentation/HOWTO//NAT-HOWTO-3.html
+      _____                                     _____
+     /     \                                   /     \
+   PREROUTING -->[Routing ]----------------->POSTROUTING----->
+     \D-NAT/     [Decision]                    \S-NAT/
+                     |                            ^
+                     |                            |
+                     --------> Local Process ------
+
+Masquerading is a specialized form of SNAT  
+Port forwarding, load sharing, and transparent proxying are all forms of DNAT.
+
+http://www.netfilter.org/documentation/HOWTO//NAT-HOWTO-6.html
+http://ipset.netfilter.org/iptables-extensions.man.html
+
+### Trace
+http://backreference.org/2010/06/11/iptables-debugging/
+
+    modprobe nf_log_ipv4
+    sysctl net.netfilter.nf_log.2=nf_log_ipv4
+    iptables -t raw -A OUTPUT -p icmp -j TRACE
+    iptables -t raw -A PREROUTING -p icmp -j TRACE
+    vi /var/log/kern.log
+    
+### Log manually   
+http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
+
 ## CentOS
 ```
 firewall-cmd --permanent --zone=public \

@@ -1,7 +1,8 @@
 <!-- TOC -->
 
 - [API](#api)
-    - [tag & latest release](#tag--latest-release)
+    - [tag](#tag)
+    - [latest release](#latest-release)
 - [Tools](#tools)
 - [Download from github](#download-from-github)
 - [commit & push](#commit--push)
@@ -14,9 +15,13 @@
 # API
 https://developer.github.com/v3/repos/
 
-## tag & latest release
-https://api.github.com/repos/django/django/tags
-https://api.github.com/repos/ParsePlatform/Parse-SDK-Android/releases/latest
+## tag
+    curl -sSL https://api.github.com/repos/django/django/tags \
+        | jq '.[0].zipball_url' | xargs -t wget -O file.zip
+
+## latest release        
+    curl -sSL https://api.github.com/repos/ParsePlatform/Parse-SDK-Android/releases/latest \
+        | jq '.zipball_url' | xargs -t wget -O file.zip
 
 # Tools
 https://rawgit.com/  

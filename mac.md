@@ -3,6 +3,9 @@
 - [HighDPI](#highdpi)
 - [pip](#pip)
 - [brew & gnu tools](#brew--gnu-tools)
+- [Hackintosh](#hackintosh)
+    - [Build an OS X boot disk](#build-an-os-x-boot-disk)
+    - [On QEMU/KVM](#on-qemukvm)
 
 <!-- /TOC -->
 
@@ -29,3 +32,11 @@ brew install grep --with-default-names
 brew install gnu-tar --with-default-names
 brew install gawk
 ```
+
+# Hackintosh
+## Build an OS X boot disk
+http://diskmakerx.com/
+https://www.hackintosh.zone/file/1029-macpwn-for-hackintosh-high-sierra/
+
+## On QEMU/KVM
+https://github.com/kholia/OSX-KVM

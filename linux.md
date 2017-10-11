@@ -1,7 +1,8 @@
 <!-- TOC -->
 
 - [Shell](#shell)
-- [Interactive notes](#interactive-notes)
+    - [Exit code](#exit-code)
+    - [Interactive notes](#interactive-notes)
 - [Diagram](#diagram)
 - [Repository](#repository)
 - [Package Management](#package-management)
@@ -15,7 +16,6 @@
 - [Check release & kernel](#check-release--kernel)
     - [CentOS](#centos)
 - [Benchmark](#benchmark)
-- [vi/vim](#vivim)
 - [System](#system)
     - [disk](#disk)
         - [mkpart, format, mount](#mkpart-format-mount)
@@ -44,7 +44,17 @@
 http://explainshell.com/
 https://www.netsarang.com/xshell_download.html
 
-# Interactive notes
+## Exit code
+http://tldp.org/LDP/abs/html/exitcodes.html
+1	Catchall for general errors
+2	Misuse of shell builtins
+126	Command invoked cannot execute
+127	"command not found"	illegal_command	Possible problem with $PATH or a typo
+128+n	Fatal error signal "n"	
+    kill -9 $PPID of script	$? returns 137 (128 + 9)
+130	Script terminated by Control-C
+
+## Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Diagram
@@ -149,13 +159,6 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
-```
-
-# vi/vim
-```
-cw => change word
-ciw => change word from cursor
-:w !sudo tee % => sudo save
 ```
 
 # System

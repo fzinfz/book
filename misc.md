@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [vi/vim](#vivim)
 - [UEFI Shell](#uefi-shell)
 - [Hardware](#hardware)
     - [CPUID to arch](#cpuid-to-arch)
@@ -10,6 +11,13 @@
 - [Sync](#sync)
 
 <!-- /TOC -->
+
+# vi/vim
+```
+cw => change word
+ciw => change word from cursor
+:w !sudo tee % => sudo save
+```
 
 # UEFI Shell
 https://software.intel.com/en-us/articles/uefi-shell

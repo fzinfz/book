@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [.Net versions query](#net-versions-query)
 - [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
@@ -30,6 +31,10 @@
 - [VS proxy](#vs-proxy)
 
 <!-- /TOC -->
+# .Net versions query
+    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
+    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+    
 # Edition Unique Features
 10: Free RemoteFX, WSL  
 2016: NFS Server, Hyper-V DDA

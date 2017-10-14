@@ -121,6 +121,9 @@ apt show linux-image-extra-4.10*
 apt-get install --only-upgrade docker-engine
 
 apt policy docker-ce | head -n 20
+
+apt-get autoclean
+apt list --installed
 ```
 
 ## deb manually
@@ -186,12 +189,17 @@ sudo partprobe -s
 pvs
 pvdisplay -v -m
 lvcreate -L 80G ubuntu-vg -n data
+
+lvresize -L +20G /dev/debian9-vg/root
+resize2fs /dev/debian9-vg/root
+
+lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
 ```
 
 ### Swap
 ```
 swapoff -v /dev/mapper/ubuntu--vg-swap_1
-lvm lvreduce /dev/mapper/ubuntu--vg-swap_1 -L -19G
+
 mkswap /dev/mapper/ubuntu--vg-swap_1
 swapon -va
 
@@ -257,11 +265,10 @@ SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
 cat > file <<'EOL'
 EOL
 
-sudo ncdu
-sudo du -hcd 2  / | more
-sudo  du -a / | sort -n -r | head -n 20
-sudo apt-get autoclean
-apt list --installed
+ncdu --exclude='/root/data/*' /
+
+du -hcd 2  / | more
+du -a / | sort -n -r | head -n 20
 
 rsync -aP  /root/_bin root@remote:/root
 rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --remove-source-files

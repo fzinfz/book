@@ -9,6 +9,9 @@
 - [MySQL Cluster](#mysql-cluster)
 - [Excel](#excel)
 - [Sync](#sync)
+- [Instant Notifications](#instant-notifications)
+- [IoT](#iot)
+- [taobao](#taobao)
 
 <!-- /TOC -->
 
@@ -42,3 +45,12 @@ https://docs.wso2.com/display/DSS301/Excel+Sample
 
 # Sync
 https://www.resilio.com/platforms/desktop/
+
+# Instant Notifications 
+http://instapush.im/
+
+# IoT
+https://www.xively.com/
+
+# taobao
+http://pt42.cn/taobaobasket_index.htm

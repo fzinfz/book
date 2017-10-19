@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [KVM/libvirt](#kvmlibvirt)
+    - [Pool](#pool)
     - [MacVTap](#macvtap)
     - [shutdown timeout](#shutdown-timeout)
     - [VT-d](#vt-d)
@@ -19,10 +20,17 @@
     - [Ubuntu](#ubuntu)
 - [LXD](#lxd)
 - [IOMMU](#iommu)
+- [VDI](#vdi)
+    - [Virtualized Application Solutions (Shared GPU)](#virtualized-application-solutions-shared-gpu)
+    - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
+    - [Virtual Remote Workstation Solutions (Dedicated GPU)](#virtual-remote-workstation-solutions-dedicated-gpu)
 
 <!-- /TOC -->
 
 # KVM/libvirt
+## Pool
+    virsh pool-edit defaul
+    
 ## MacVTap
 http://virt.kernelnewbies.org/MacVTap  
  `private` mode exists that behaves like a `VEPA` mode endpoint in the absence of a hairpin aware switch. Most switches today do not support hairpin mode.      
@@ -53,6 +61,7 @@ when a guest virtual machine is configured to use a type='direct' network interf
     systool -m kvm_intel -v | grep nested
 
 booting with `kvm-intel.nested=1` argument on the kernel command line
+virt-manager：enable `Copy host CPU configuration` checkbox 
 
 ## QEMU
 ### disk convert
@@ -130,6 +139,7 @@ http://conjure-up.io/docs/en/users/#getting-started
 
 http://docs.openstack.org/developer/devstack/  
 http://docs.openstack.org/developer/devstack/guides/single-machine.html
+    ./stack.sh:main:224     xenial|yakkety|zesty|stretch|jessie|f24|f25|f26|opensuse-42.2|opensuse-42.3|rhel7|kvmibm1
 
 http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
 https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
@@ -157,3 +167,19 @@ https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
 https://wiki.debian.org/VGAPassthrough
 
 https://github.com/awilliam/rom-parser
+
+# VDI
+http://www.nvidia.com/object/xendesktop-vgpu.html
+
+## Virtualized Application Solutions (Shared GPU)
+Citrix XenApp 6.5 with OpenGL Add-on and Citrix XenDesktop 7 Hosted-Shared delivery
+
+## Virtual Desktop Solutions (Shared GPU)
+XenDesktop FP1 with NVIDIA GRID™ vGPU™1
+Microsoft RemoteFX in Windows Server 2012
+VMware Horizon View 5.2 with vSGA2
+
+## Virtual Remote Workstation Solutions (Dedicated GPU)
+Citrix XenDesktop 5.6 
+Citrix XenDesktop 7 VDI delivery
+VMware View 5.3 with vDGA

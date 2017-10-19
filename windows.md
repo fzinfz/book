@@ -29,8 +29,10 @@
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [VS proxy](#vs-proxy)
+- [Tools](#tools-1)
 
 <!-- /TOC -->
+
 # .Net versions query
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
@@ -162,10 +164,12 @@ REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /
 net start msiserver
 
 # VS proxy
- %ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe.config
-  find the <system.net> block, and add this code:
-  ```
- <defaultProxy enabled="true" useDefaultCredentials="true">  
-    <proxy bypassonlocal="True" proxyaddress=" HYPERLINK "http://<yourproxy:port#" http://<yourproxy:port#>"/>  
-</defaultProxy> 
-```
+%ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe.config
+find the <system.net> block, and add this code:
+  
+    <defaultProxy enabled="true" useDefaultCredentials="true">  
+        <proxy bypassonlocal="True" proxyaddress=" HYPERLINK "http://<yourproxy:port#" http://<yourproxy:port#>"/>  
+    </defaultProxy> 
+
+# Tools
+https://www.hanselman.com/tools

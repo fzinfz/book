@@ -4,6 +4,7 @@
     - [Exit code](#exit-code)
     - [Interactive notes](#interactive-notes)
 - [Diagram](#diagram)
+- [sudoers](#sudoers)
 - [Repository](#repository)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
@@ -18,7 +19,9 @@
 - [Benchmark](#benchmark)
 - [System](#system)
     - [disk](#disk)
+        - [check info](#check-info)
         - [mkpart, format, mount](#mkpart-format-mount)
+        - [mount CIFS](#mount-cifs)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
         - [LVM](#lvm)
         - [Swap](#swap)
@@ -37,28 +40,35 @@
 - [ANDROID](#android)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
+- [Ubuntu snap](#ubuntu-snap)
+    - [Proxy](#proxy)
 
 <!-- /TOC -->
 
 # Shell
-http://explainshell.com/
+http://explainshell.com/  
 https://www.netsarang.com/xshell_download.html
 
 ## Exit code
-http://tldp.org/LDP/abs/html/exitcodes.html
-1	Catchall for general errors
-2	Misuse of shell builtins
-126	Command invoked cannot execute
-127	"command not found"	illegal_command	Possible problem with $PATH or a typo
-128+n	Fatal error signal "n"	
-    kill -9 $PPID of script	$? returns 137 (128 + 9)
-130	Script terminated by Control-C
+http://tldp.org/LDP/abs/html/exitcodes.html  
+    1	Catchall for general errors
+    2	Misuse of shell builtins
+    126	Command invoked cannot execute
+    127	"command not found"	illegal_command	Possible problem with $PATH or a typo
+    128+n	Fatal error signal "n"	
+        kill -9 $PPID of script	$? returns 137 (128 + 9)
+    130	Script terminated by Control-C
 
 ## Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
+
+# sudoers
+/etc/sudoers
+    root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
+    %supergroup  ALL=(ALL) NOPASSWD:ALL
 
 # Repository
 # Package Management
@@ -166,23 +176,27 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
 # System
 ## disk
+### check info
+    tune2fs -l /dev/sda1 | grep -i count
+
 ### mkpart, format, mount
-```
-parted -s /dev/sdb mklabel gpt
-parted -s /dev/sdb unit mib mkpart primary 0% 100%
-mkfs.ext4 /dev/sdb1
-mkdir /data
-echo >> /etc/fstab
-echo /dev/vdb1               /root/data       ext4    defaults,noatime 0 0 >> /etc/fstab
-mount /root/data
-```
+    parted -s /dev/sdb mklabel gpt
+    parted -s /dev/sdb unit mib mkpart primary 0% 100%
+    mkfs.ext4 /dev/sdb1
+    mkdir /data
+    echo >> /etc/fstab
+    echo /dev/vdb1               /root/data       ext4    defaults,noatime 0 0 >> /etc/fstab
+    mount /root/data
+
+### mount CIFS
+https://wiki.ubuntu.com/MountWindowsSharesPermanently
+    vi /etc/fstab
+    //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
 
 ### Convert between MBR and GPT
-```
-sudo sgdisk -g /dev/sda
-sudo sgdisk -m /dev/sda
-sudo partprobe -s
-```
+    sudo sgdisk -g /dev/sda
+    sudo sgdisk -m /dev/sda
+    sudo partprobe -s
 
 ### LVM
 ```
@@ -309,3 +323,10 @@ adb push filename /sdcard/.
 `~/.dropbox-dist/dropboxd`  
 dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
 unlink: https://www.dropbox.com/account#security  
+
+# Ubuntu snap
+run without `root`
+## Proxy
+    vi /etc/environment
+    systemctl restart snapd
+

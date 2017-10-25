@@ -30,6 +30,8 @@
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [VS proxy](#vs-proxy)
 - [Tools](#tools-1)
+- [AD](#ad)
+    - [DC DNS](#dc-dns)
 
 <!-- /TOC -->
 
@@ -173,3 +175,7 @@ find the <system.net> block, and add this code:
 
 # Tools
 https://www.hanselman.com/tools
+
+# AD
+## DC DNS
+https://blogs.msdn.microsoft.com/servergeeks/2014/07/12/dns-records-that-are-required-for-proper-functionality-of-active-directory/ (4. DC Record - _ldap._tcp.dc._msdcs.<DnsDomainName>)  

@@ -13,5 +13,5 @@
 * [Git](git.md)
 * [GFW](GFW.md)
 * [Cloud](cloud.md)
-* [Elastic Stack](ELK.md)
+* [BI](BI.md)
 * [Miscellaneous](misc.md)

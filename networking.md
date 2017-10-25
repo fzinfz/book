@@ -31,6 +31,7 @@
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
+- [IDS/IPS](#idsips)
 
 <!-- /TOC -->
 
@@ -186,3 +187,7 @@ http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.
 https://github.com/inconshreveable/ngrok
 https://github.com/fatedier/frp
 https://github.com/lovedboy/gortcp
+
+# IDS/IPS
+Snort(NIDS&NIDS): https://doc.pfsense.org/index.php/Setup_Snort_Package  
+OSSEC(HIDS): https://ossec.github.io/docs/manual/supported-systems.html

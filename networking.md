@@ -32,6 +32,10 @@
     - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 - [IDS/IPS](#idsips)
+    - [Snort(NIDS/NIDS)](#snortnidsnids)
+    - [OSSEC(HIDS)](#ossechids)
+    - [Suricata(NIDS/NIPS/MSM)](#suricatanidsnipsmsm)
+    - [Compare](#compare)
 
 <!-- /TOC -->
 
@@ -189,5 +193,25 @@ https://github.com/fatedier/frp
 https://github.com/lovedboy/gortcp
 
 # IDS/IPS
-Snort(NIDS&NIDS): https://doc.pfsense.org/index.php/Setup_Snort_Package  
-OSSEC(HIDS): https://ossec.github.io/docs/manual/supported-systems.html
+Network Intrusion Detection System (NIDS) engine
+Network Intrusion Prevention System (NIPS) engine
+Network Security Monitoring (NSM) engine
+
+## Snort(NIDS/NIDS)
+https://doc.pfsense.org/index.php/Setup_Snort_Package
+
+## OSSEC(HIDS)
+https://en.wikipedia.org/wiki/OSSEC  
+log analysis, integrity checking, Windows registry monitoring, rootkit detection, time-based alerting, and active response.
+
+https://ossec.github.io/docs/manual/supported-systems.html
+
+## Suricata(NIDS/NIPS/MSM)
+Suricata is a network IDS, IPS and NSM engine.
+https://github.com/OISF/suricata
+https://suricata-ids.org/features/all-features/
+w/ pfSense: http://elatov.github.io/2016/11/setup-suricata-on-pfsense/
+w/ Mikrotik: https://forum.mikrotik.com/viewtopic.php?t=111727
+
+## Compare
+https://www.aldeid.com/wiki/Suricata-vs-snort

@@ -19,6 +19,8 @@
 https://github.com/anilbaranyelken/tulpar  
 https://github.com/dpnishant/raptor
 
+[Intrusion Detection/Prevention](/networking.html#idsips)
+
 # WAF
 ## ModSecurity
 https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual  

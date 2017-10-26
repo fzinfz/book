@@ -218,7 +218,7 @@ w/ Mikrotik: https://forum.mikrotik.com/viewtopic.php?t=111727
 https://www.aldeid.com/wiki/Suricata-vs-snort
 
 # How to hack
-https://github.com/ethicalhack3r/DVWA
+https://github.com/ethicalhack3r/DVWA  
 a PHP/MySQL web application that is damn vulnerable. 
 
 https://www.youtube.com/playlist?list=PL0-xwzAwzllx4w5OYdRoVTqlNvQ7xALNM

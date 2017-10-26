@@ -1,6 +1,8 @@
 <!-- TOC -->
 
 - [Web Vulnerability Scanner](#web-vulnerability-scanner)
+    - [Tools list](#tools-list)
+    - [Tools](#tools)
 - [WAF](#waf)
     - [ModSecurity](#modsecurity)
         - [Application Supported](#application-supported)
@@ -15,14 +17,17 @@
 <!-- /TOC -->
 
 # Web Vulnerability Scanner
+## Tools list
 https://github.com/infoslack/awesome-web-hacking  
 http://www.toolswatch.org/2017/02/2016-top-security-tools-as-voted-by-toolswatch-org-readers/  
 https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools  
 
-OWASP Zed Attack Proxy: https://github.com/zaproxy/zaproxy/wiki/Introduction  
+## Tools
+OWASP Zed Attack Proxy:  
+https://github.com/zaproxy/zaproxy/wiki/Introduction  
+https://null-byte.wonderhowto.com/how-to/hack-like-pro-hack-web-apps-part-6-using-owasp-zap-find-vulnerabilities-0168129/
 OWASP Web Testing Framework: https://owtf.github.io/  
 OWASP Web Testing Environment Project: https://www.owasp.org/index.php/OWASP_Web_Testing_Environment_Project  
-https://null-byte.wonderhowto.com/how-to/hack-like-pro-hack-web-apps-part-6-using-owasp-zap-find-vulnerabilities-0168129/
 
 https://github.com/sullo/nikto  
 https://github.com/subgraph/Vega/wiki  

@@ -1,8 +1,8 @@
 <!-- TOC -->
 
+    - [Interactive notes](#interactive-notes)
 - [Shell](#shell)
     - [Exit code](#exit-code)
-    - [Interactive notes](#interactive-notes)
 - [Diagram](#diagram)
 - [sudoers](#sudoers)
 - [chown](#chown)
@@ -24,6 +24,7 @@
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
         - [mkpart, format, mount](#mkpart-format-mount)
         - [LVM, resize fs](#lvm-resize-fs)
+        - [btrfs](#btrfs)
         - [Swap](#swap)
         - [mount CIFS](#mount-cifs)
     - [files](#files)
@@ -46,6 +47,9 @@
 
 <!-- /TOC -->
 
+## Interactive notes
+http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+
 # Shell
 http://explainshell.com/  
 https://www.netsarang.com/xshell_download.html
@@ -59,9 +63,6 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     128+n	Fatal error signal "n"	
         kill -9 $PPID of script	$? returns 137 (128 + 9)
     130	Script terminated by Control-C
-
-## Interactive notes
-http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
@@ -213,6 +214,10 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
     lvreduce --size -40G /dev/debian9-vg/root
     lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
+
+### btrfs
+    btrfs filesystem usage /
+    dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
 
 ### Swap
     swapoff -v /dev/mapper/ubuntu--vg-swap_1

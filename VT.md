@@ -1,14 +1,16 @@
 <!-- TOC -->
 
+- [qemu-img](#qemu-img)
+    - [Windows](#windows)
+    - [Linux](#linux)
 - [KVM/libvirt](#kvmlibvirt)
     - [Pool](#pool)
     - [Driver](#driver)
     - [MacVTap](#macvtap)
-    - [shutdown timeout](#shutdown-timeout)
-    - [VT-d](#vt-d)
+    - [Shutdown timeout](#shutdown-timeout)
     - [Nested](#nested)
-    - [QEMU](#qemu)
-        - [disk convert](#disk-convert)
+    - [VT-d](#vt-d)
+    - [GPU Passthrough](#gpu-passthrough)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
     - [Config](#config)
@@ -28,6 +30,15 @@
     - [Solutions](#solutions)
 
 <!-- /TOC -->
+
+# qemu-img
+## Windows
+https://cloudbase.it/qemu-img-windows/
+
+## Linux
+    qemu-img -h | tail -n1  # Supported formats
+    tar -xvf x.ova
+    qemu-img convert -O qcow2 x.vmdk x.qcow2
 
 # KVM/libvirt
 ## Pool
@@ -49,16 +60,12 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Vi
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Host_Configuration_and_Guest_Installation_Guide/App_Macvtap.html  
 when a guest virtual machine is configured to use a type='direct' network interface such as macvtap, ..., the guest cannot communicate with its own host.
 
-## shutdown timeout
+## Shutdown timeout
     vi /etc/init.d/libvirt-guests
         ON_SHUTDOWN=shutdown
         SHUTDOWN_TIMEOUT=10
 
     systemctl enable libvirt-guests.service
-
-## VT-d
-    echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
-    echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
 ## Nested
     cat /sys/module/kvm_intel/parameters/nested
@@ -78,11 +85,11 @@ booting with `kvm-intel.nested=1` argument on the kernel command line, or:
 
 virt-manager：enable `Copy host CPU configuration` checkbox 
 
-## QEMU
-### disk convert
-https://cloudbase.it/qemu-img-windows/  
+## VT-d
+    echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
+    echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
-[Building ARM containers on any x86 machine, even DockerHub](https://resin.io/blog/building-arm-containers-on-any-x86-machine-even-dockerhub/)
+## GPU Passthrough
 
     virsh domxml-to-native qemu-argv demo.xml > demo.sh
 
@@ -107,9 +114,9 @@ https://cloudbase.it/qemu-img-windows/
             </kvm>
         </features>
 
-        <qemu:commandline>                                              
-        <qemu:arg value='-set'/>                                          
-        <qemu:arg value='device.hostdev0.x-vga=on'/>      
+        <qemu:commandline>
+        <qemu:arg value='-set'/>
+        <qemu:arg value='device.hostdev0.x-vga=on'/>
         </qemu:commandline>
 
 # VSphere / ESXi

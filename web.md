@@ -10,12 +10,22 @@
     - [Cloud](#cloud)
     - [Hardware](#hardware)
 - [Nginx](#nginx)
-    - [Display file as text](#display-file-as-text)
 - [SNI](#sni)
 
 <!-- /TOC -->
 
 # Web Vulnerability Scanner
+https://github.com/infoslack/awesome-web-hacking  
+http://www.toolswatch.org/2017/02/2016-top-security-tools-as-voted-by-toolswatch-org-readers/  
+https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools  
+
+OWASP Zed Attack Proxy: https://github.com/zaproxy/zaproxy/wiki/Introduction  
+OWASP Web Testing Framework: https://owtf.github.io/  
+OWASP Web Testing Environment Project: https://www.owasp.org/index.php/OWASP_Web_Testing_Environment_Project  
+https://null-byte.wonderhowto.com/how-to/hack-like-pro-hack-web-apps-part-6-using-owasp-zap-find-vulnerabilities-0168129/
+
+https://github.com/sullo/nikto  
+https://github.com/subgraph/Vega/wiki  
 https://github.com/anilbaranyelken/tulpar  
 https://github.com/dpnishant/raptor
 
@@ -54,19 +64,18 @@ http://help.sonicwall.com/help/sw/eng/8112/8/0/0/content/Chapter2_Overview.03.28
 https://www.cisco.com/c/en/us/products/collateral/application-networking-services/ace-web-application-firewall/data_sheet_c78-458627.html
 
 # Nginx
-## Display file as text
-```
-location /code/ {
-    # All files in it
-    location ~* {
-        add_header Content-Type text/plain;
-    }
-}
 
-location /somedir {
-        autoindex on;
-}
-```
+    # Display file as text
+    location /code/ {
+        # All files in it
+        location ~* {
+            add_header Content-Type text/plain;
+        }
+    }
+
+    location /somedir {
+            autoindex on;
+    }
 
 # SNI
 Server Name Indication (SNI) is an extension to the TLS  

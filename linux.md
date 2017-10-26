@@ -5,6 +5,7 @@
     - [Interactive notes](#interactive-notes)
 - [Diagram](#diagram)
 - [sudoers](#sudoers)
+- [chown](#chown)
 - [Repository](#repository)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
@@ -20,11 +21,11 @@
 - [System](#system)
     - [disk](#disk)
         - [check info](#check-info)
-        - [mkpart, format, mount](#mkpart-format-mount)
-        - [mount CIFS](#mount-cifs)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
-        - [LVM](#lvm)
+        - [mkpart, format, mount](#mkpart-format-mount)
+        - [LVM, resize fs](#lvm-resize-fs)
         - [Swap](#swap)
+        - [mount CIFS](#mount-cifs)
     - [files](#files)
     - [time](#time)
     - [language](#language)
@@ -69,6 +70,9 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 /etc/sudoers
     root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
     %supergroup  ALL=(ALL) NOPASSWD:ALL
+
+# chown
+    chown -h myuser:mygroup mysymbolic
 
 # Repository
 # Package Management
@@ -179,6 +183,11 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 ### check info
     tune2fs -l /dev/sda1 | grep -i count
 
+### Convert between MBR and GPT
+    sudo sgdisk -g /dev/sda
+    sudo sgdisk -m /dev/sda
+    sudo partprobe -s
+
 ### mkpart, format, mount
     parted -s /dev/sdb mklabel gpt
     parted -s /dev/sdb unit mib mkpart primary 0% 100%
@@ -188,37 +197,36 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     echo /dev/vdb1               /root/data       ext4    defaults,noatime 0 0 >> /etc/fstab
     mount /root/data
 
+### LVM, resize fs
+    pvs
+    pvdisplay -v -m
+    lvcreate -L 80G ubuntu-vg -n data
+
+    lvresize -L +20G /dev/debian9-vg/root
+    resize2fs /dev/debian9-vg/root
+
+    yum install e4fsprogs
+    resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
+
+    btrfsctl -r -500m /media/Alpha
+    btrfs filesystem resize -500m /media/Alpha
+
+    lvreduce --size -40G /dev/debian9-vg/root
+    lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
+
+### Swap
+    swapoff -v /dev/mapper/ubuntu--vg-swap_1
+
+    mkswap /dev/mapper/ubuntu--vg-swap_1
+    swapon -va
+
+    echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
+
 ### mount CIFS
 https://wiki.ubuntu.com/MountWindowsSharesPermanently
     vi /etc/fstab
     //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
 
-### Convert between MBR and GPT
-    sudo sgdisk -g /dev/sda
-    sudo sgdisk -m /dev/sda
-    sudo partprobe -s
-
-### LVM
-```
-pvs
-pvdisplay -v -m
-lvcreate -L 80G ubuntu-vg -n data
-
-lvresize -L +20G /dev/debian9-vg/root
-resize2fs /dev/debian9-vg/root
-
-lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
-```
-
-### Swap
-```
-swapoff -v /dev/mapper/ubuntu--vg-swap_1
-
-mkswap /dev/mapper/ubuntu--vg-swap_1
-swapon -va
-
-echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
-```
 
 ## files
 ```
@@ -227,6 +235,7 @@ updatedb
 locate -S
 lsof -p <PID>
 ```
+
 ## time 
 ```
 sudo timedatectl set-ntp true

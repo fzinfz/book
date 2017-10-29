@@ -22,7 +22,9 @@
     - [disk](#disk)
         - [check info](#check-info)
         - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
-        - [mkpart, format, mount](#mkpart-format-mount)
+        - [mkpart, format](#mkpart-format)
+    - [fstab](#fstab)
+    - [recovery mount](#recovery-mount)
         - [LVM, resize fs](#lvm-resize-fs)
         - [btrfs](#btrfs)
         - [Swap](#swap)
@@ -39,11 +41,15 @@
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
 - [X](#x)
-- [ANDROID](#android)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
     - [Proxy](#proxy)
+- [pip](#pip)
+    - [Proxy](#proxy-1)
+    - [Installing from local](#installing-from-local)
+- [grub boot repair](#grub-boot-repair)
+    - [ubuntu](#ubuntu)
 
 <!-- /TOC -->
 
@@ -78,24 +84,22 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 # Repository
 # Package Management
 ## Redhat
-```
-subscription-manager register
-subscription-manager attach --auto
-subscription-manager repos --enable rhel-7-server-optional-rpms
-subscription-manager repos --enable rhel-7-server-extras-rpms
-yum install epel-release
-rm -f /var/run/yum.pid <PID> && yum remove PackageKit
-```
+    subscription-manager register
+    subscription-manager attach --auto
+    subscription-manager repos --enable rhel-7-server-optional-rpms
+    subscription-manager repos --enable rhel-7-server-extras-rpms
+    yum install epel-release
+    rm -f /var/run/yum.pid <PID> && yum remove PackageKit
+
 Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/ 
 
 ### EPEL
 http://elrepo.org/tiki/tiki-index.php
-```
-rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-yum install yum-plugin-fastestmirror
-yum --enablerepo=elrepo-kernel install kernel-ml
-```
+
+    rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+    rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+    yum install yum-plugin-fastestmirror
+    yum --enablerepo=elrepo-kernel install kernel-ml
 
 ## Ubuntu
 Main - Canonical-supported free and open-source software.  
@@ -189,14 +193,23 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     sudo sgdisk -m /dev/sda
     sudo partprobe -s
 
-### mkpart, format, mount
+### mkpart, format
     parted -s /dev/sdb mklabel gpt
     parted -s /dev/sdb unit mib mkpart primary 0% 100%
     mkfs.ext4 /dev/sdb1
-    mkdir /data
-    echo >> /etc/fstab
-    echo /dev/vdb1               /root/data       ext4    defaults,noatime 0 0 >> /etc/fstab
-    mount /root/data
+
+## fstab
+    /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
+    //192.168.88.10/_ISO /mnt/ISO/ cifs username=user,password=pwd 0 0
+    /dev/mapper/x--vg--root /home           btrfs   defaults,subvol=@home 0       2
+
+<dump> is checked by the dump(ext2/3 filesystem backup) utility. This field is usually set to 0, which disables the check.
+<fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 
+1 for the root device, 2 for other partitions, 0 to disable checking. 
+[Arch] If the root file system is btrfs, set to 0 instead of 1.
+
+## recovery mount
+    mount -o rw,remount /
 
 ### LVM, resize fs
     pvs
@@ -261,9 +274,7 @@ ssh-keygen -R hostname
 ```
 
 ## password
-```
 echo user:pwd | chpasswd
-```
 
 ## font
 ```
@@ -323,15 +334,6 @@ picocom -b 115200 /dev/ttyUSB0
 vncserver -kill :1
 ```
 
-# ANDROID
-```
-miflash lock: 
-fastboot oem edl
-fastboot oem edl-reboot
-
-adb push filename /sdcard/.
-```
-
 # Dropbox
 ## link account
 `~/.dropbox-dist/dropboxd`  
@@ -344,3 +346,20 @@ run without `root`
     vi /etc/environment
     systemctl restart snapd
 
+# pip
+## Proxy
+    export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
+    pip install --proxy=https://user@mydomain:port  somepackage
+
+## Installing from local
+    pip install --download DIR -r requirements.txt
+    pip wheel --wheel-dir DIR -r requirements.txt
+    pip install --no-index --find-links=DIR -r requirements.txt
+
+# grub boot repair
+https://sourceforge.net/p/boot-repair-cd/home/Home/
+
+## ubuntu
+    sudo add-apt-repository ppa:yannubuntu/boot-repair
+    sudo apt-get update
+    sudo apt-get install -y boot-repair && boot-repair

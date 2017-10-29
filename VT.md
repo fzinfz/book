@@ -19,7 +19,7 @@
     - [vmdk](#vmdk)
 - [Vagrant](#vagrant)
 - [Openstack](#openstack)
-    - [Hardware requirements](#hardware-requirements)
+    - [Hardware requirements & design](#hardware-requirements--design)
     - [devstack](#devstack)
     - [Images](#images)
     - [Ubuntu](#ubuntu)
@@ -30,6 +30,8 @@
     - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
     - [Virtual Remote Workstation Solutions (Dedicated GPU)](#virtual-remote-workstation-solutions-dedicated-gpu)
     - [Solutions](#solutions)
+- [oVirt](#ovirt)
+- [RDO/Packstack](#rdopackstack)
 
 <!-- /TOC -->
 
@@ -159,7 +161,7 @@ Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.us
 
 
 # Openstack
-## Hardware requirements
+## Hardware requirements & design
 https://docs.openstack.org/newton/install-guide-rdo/overview.html#example-architecture
 at least two nodes (hosts):controller(2 NICs) + compute(2 NICs)  
 Optional services such as Block Storage and Object Storage require additional nodes.
@@ -168,15 +170,15 @@ Optional services such as Block Storage and Object Storage require additional no
 http://docs.openstack.org/developer/devstack/guides/single-machine.html
 Use of postgresql in devstack is deprecated, and will be removed during the Pike cycle
 
+    export GIT_BASE=http://github.com  # fix git clone hangs issue
+    export no_proxy=127.0.0.1,192.168.88.15    # don't use *; fix: Could not determine a suitable URL for the plugin
+
     sudo useradd -s /bin/bash -d /opt/stack -m stack
     echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
     sudo su - stack
     git clone https://git.openstack.org/openstack-dev/devstack
 
     ./stack.sh:main:224     xenial|yakkety|zesty|stretch|jessie|f24|f25|f26|opensuse-42.2|opensuse-42.3|rhel7|kvmibm1
-
-    export GIT_BASE=http://github.com  # fix git clone hangs issue
-    export no_proxy=127.0.0.1,192.168.88.15    # don't use *; fix: Could not determine a suitable URL for the plugin
 
 http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
 https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
@@ -188,10 +190,8 @@ http://linuximages.de/openstack/arch/
 
 ## Ubuntu
 http://conjure-up.io/docs/en/users/#getting-started
-
-    sudo apt-add-repository ppa:juju/stable
-    sudo apt-add-repository ppa:conjure-up/next
-    sudo apt update && sudo apt install -y conjure-up &&  conjure-up
+    snap install conjure-up --classic
+    conjure-up openstack
 
 # LXD
 https://www.ubuntu.com/cloud/lxd
@@ -229,3 +229,22 @@ https://www.openstack.org/videos/boston-2017/virtual-desktop-infrastructure-vdi-
 https://guacamole.incubator.apache.org/
 https://hub.docker.com/r/guacamole/guacamole/
 HTML5 remote desktop gateway. supports VNC, RDP, and SSH.
+
+# oVirt
+    yum install http://resources.ovirt.org/pub/yum-repo/ovirt-release41.rpm
+    yum -y install ovirt-engine
+    engine-setup
+
+# RDO/Packstack
+https://www.rdoproject.org/install/packstack/    
+    sudo systemctl disable firewalld
+    sudo systemctl stop firewalld
+    sudo systemctl disable NetworkManager
+    sudo systemctl stop NetworkManager
+    sudo systemctl enable network
+    sudo systemctl start network
+
+    yum install -y centos-release-openstack-pike && \
+    yum update -y  && \
+    yum install -y openstack-packstack && \
+    packstack --allinone || packstack --answer-file=FILE

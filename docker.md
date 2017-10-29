@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Install CE](#install-ce)
+    - [on RHEL](#on-rhel)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
     - [alpine](#alpine)
     - [apt](#apt)
@@ -25,6 +26,13 @@
 
 # Install CE
     curl -fsSL get.docker.com | sh
+
+## on RHEL
+    sudo yum install -y yum-utils
+    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum makecache fast
+    sudo yum -y install docker-ce
+    sudo systemctl start docker
 
 # Dockerfile code snippets
 ## alpine

@@ -12,6 +12,8 @@
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
 - [taobao](#taobao)
+- [ANDROID](#android)
+    - [miflash unlock](#miflash-unlock)
 
 <!-- /TOC -->
 
@@ -46,7 +48,7 @@ https://docs.wso2.com/display/DSS301/Excel+Sample
 # Sync
 https://www.resilio.com/platforms/desktop/
 
-# Instant Notifications 
+# Instant Notifications
 http://instapush.im/
 
 # IoT
@@ -54,3 +56,10 @@ https://www.xively.com/
 
 # taobao
 http://pt42.cn/taobaobasket_index.htm
+
+# ANDROID
+    adb push filename /sdcard/.
+
+## miflash unlock
+    fastboot oem edl
+    fastboot oem edl-reboot

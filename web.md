@@ -34,6 +34,12 @@ https://github.com/subgraph/Vega/wiki
 https://github.com/anilbaranyelken/tulpar  
 https://github.com/dpnishant/raptor
 
+# How to hack
+https://github.com/ethicalhack3r/DVWA  
+a PHP/MySQL web application that is damn vulnerable. 
+
+https://www.youtube.com/playlist?list=PL0-xwzAwzllx4w5OYdRoVTqlNvQ7xALNM
+
 [Intrusion Detection/Prevention](/networking.html#idsips)
 
 # WAF

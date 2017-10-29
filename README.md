@@ -1,17 +1,17 @@
 # About
-This gitbook is for system admininstration notes.  
+This gitbook is mainly for system admininstration notes.  
 If you want to leave a message, please cliek the "+" button near related paragraphs.
 
-For coding notes, please visit: 
-http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/ 
-[[Source](https://github.com/fzinfz/notes/)]   
-
-# Projects
+# Other Repositories
 ## Docker Hub Images
 https://hub.docker.com/r/fzinfz/  [[Source](https://github.com/fzinfz/docker-images/)]
 
 ## Linux shell scripts
 https://github.com/fzinfz/scripts
+
+## Interactive coding notes
+http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/ 
+[[Source](https://github.com/fzinfz/notes/)]   
 
 ## python module: ssmanager web hook
 https://github.com/fzinfz/ssmanager-nopanel

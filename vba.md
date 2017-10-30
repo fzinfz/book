@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [Book: Excel 2007 VBA Programmer's Reference](#book-excel-2007-vba-programmers-reference)
+- [Books](#books)
 - [Basic](#basic)
 - [String & Regex](#string--regex)
 - [MsgBox](#msgbox)
@@ -14,13 +14,11 @@
 - [Filter](#filter)
 - [Hyperlinks](#hyperlinks)
 - [Time](#time)
-- [XML parser](#xml-parser)
-- [SQL](#sql)
 
 <!-- /TOC -->
 
-# Book: Excel 2007 VBA Programmer's Reference
-http://i.msdn.microsoft.com/Aa199411.colorin%28en-us,office.10%29.gif
+# Books
+[Excel 2007 VBA Programmer's Reference](http://www.wrox.com/WileyCDA/WroxTitle/Excel-2007-VBA-Programmer-s-Reference.productCd-0470046430,descCd-DOWNLOAD.html)
 
 # Basic
 sheets = worksheet + chart
@@ -156,33 +154,3 @@ If you use If Cells(row,col) = “”, the test will be true for a formula that 
     End If
 
     today = Format(TInfo.GMT + 8 / 24, "yyyy/mm/dd") 'force to be +8:00
-
-# XML parser
-    Dim objXML As DOMDocument
-    Set objXML = New DOMDocument
-
-    strXML = ThisWorkbook.Path & "\xml\ferro_work_sbis_conf.xml"
-    If Not objXML.Load(strXML) Then 'strXML is the string with XML
-        Err.Raise objXML.parseError.ErrorCode, , objXML.parseError.reason
-    End If
-
-    download_sr_save_path = objXML.selectSingleNode("//name[text()='download_sr_save_path']").parentNode.selectSingleNode("path").Text
-
-# SQL
-    Dim conn_central As New Connection
-    Dim rsSales As New Recordset
-    conn_central.Open "Provider=Microsoft.Jet.OLEDB.4.0;" _
-        & "Extended Properties=Excel 8.0;" _
-        & "Data Source=" & wb_central
-
-    Sql = "update [backlog$] as b inner join [Excel 8.0;Database=" & config.path_wb_owner & "].[Owner$] as o on (b.`Root Cause - Platforms Windows Level 1` = o.`Level 1 Classification`) and (b.`Root Cause - Platforms Windows Level 2` = o.`Level 2 Classification`) set b.`PFA Owner` = o.`PFA Owner` "
-    rsSales.Open Sql, conn_central, adOpenKeyset, adLockBatchOptimistic
-
-    conn_central.Execute Sql
-    Set wks = Worksheets.Add
-
-    For i = 0 To rsSales.Fields.count - 1
-        wks.Cells(1, i + 1).Value = rsSales.Fields(i).Name
-    Next
-
-    wks.Range("A2").CopyFromRecordset rsSales

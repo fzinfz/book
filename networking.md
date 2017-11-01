@@ -4,12 +4,6 @@
 - [BGP](#bgp)
     - [Private AS](#private-as)
 - [Virtual networking modes](#virtual-networking-modes)
-- [SDN](#sdn)
-    - [Switch](#switch)
-    - [Controller](#controller)
-        - [Python](#python)
-        - [C++](#c)
-        - [JAVA](#java)
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
@@ -36,7 +30,6 @@
     - [OSSEC(HIDS)](#ossechids)
     - [Suricata(NIDS/NIPS/MSM)](#suricatanidsnipsmsm)
     - [Compare](#compare)
-- [How to hack](#how-to-hack)
 
 <!-- /TOC -->
 
@@ -62,34 +55,6 @@ https://tools.ietf.org/html/rfc6996#section-5
 # Virtual networking modes
 https://thenewstack.io/hackers-guide-kubernetes-networking/  
 ![](https://cdn.thenewstack.io/media/2017/02/7a021d86-virtual-networking-1024x380.png)
-
-# SDN
-## Switch
-https://github.com/openvswitch/ovs
-ovs-vswitchd
-ovsdb-server
-ovs-dpctl, a tool for configuring the switch kernel module.
-ovs-vsctl, a utility for querying and updating the configuration of ovs-vswitchd.
-ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
-
-ovs-ofctl, a utility for querying and controlling OpenFlow switches and controllers.
-ovs-pki, a utility for creating and managing the public-key infrastructure for OpenFlow switches.
-ovs-testcontroller, a simple OpenFlow controller that may be useful for testing (though not for production).
-A patch to tcpdump that enables it to parse OpenFlow messages.
-
-## Controller
-### Python
-http://ryu.readthedocs.io/en/latest/getting_started.html
-https://hub.docker.com/r/osrg/ryu-book/
-
-### C++
-https://github.com/Juniper/contrail-controller  
-https://github.com/Juniper/contrail-vrouter
-
-### JAVA
-https://hub.docker.com/r/opendaylight/odl/  
-https://hub.docker.com/r/onosproject/onos/  
-https://github.com/floodlight/floodlight
 
 # Tools for Windows 
 Microsoft Message Analyzer: https://www.microsoft.com/en-us/download/details.aspx?id=44226  

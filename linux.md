@@ -48,8 +48,10 @@
 - [pip](#pip)
     - [Proxy](#proxy-1)
     - [Installing from local](#installing-from-local)
-- [grub boot repair](#grub-boot-repair)
+- [grub](#grub)
+    - [boot repair](#boot-repair)
     - [ubuntu](#ubuntu)
+- [JAVA_HOME](#java_home)
 
 <!-- /TOC -->
 
@@ -61,7 +63,8 @@ http://explainshell.com/
 https://www.netsarang.com/xshell_download.html
 
 ## Exit code
-http://tldp.org/LDP/abs/html/exitcodes.html  
+http://tldp.org/LDP/abs/html/exitcodes.html
+
     1	Catchall for general errors
     2	Misuse of shell builtins
     126	Command invoked cannot execute
@@ -75,6 +78,7 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 
 # sudoers
 /etc/sudoers
+
     root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
     %supergroup  ALL=(ALL) NOPASSWD:ALL
 
@@ -274,7 +278,7 @@ ssh-keygen -R hostname
 ```
 
 ## password
-echo user:pwd | chpasswd
+    echo user:pwd | chpasswd
 
 ## font
 ```
@@ -285,7 +289,7 @@ apt-get install  xfonts-base
 https://wiki.archlinux.org/index.php/systemd
 
 ```
-systemctl status    
+systemctl status
 
 systemctl
 systemctl --failed
@@ -356,10 +360,19 @@ run without `root`
     pip wheel --wheel-dir DIR -r requirements.txt
     pip install --no-index --find-links=DIR -r requirements.txt
 
-# grub boot repair
+# grub 
+    vi /etc/default/grub
+        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
+    update-grub
+
+## boot repair
 https://sourceforge.net/p/boot-repair-cd/home/Home/
+    apt install linux-image-*  # if vmlinuz & initrd.img missing
 
 ## ubuntu
     sudo add-apt-repository ppa:yannubuntu/boot-repair
     sudo apt-get update
     sudo apt-get install -y boot-repair && boot-repair
+
+# JAVA_HOME
+    echo export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" >> /etc/profile

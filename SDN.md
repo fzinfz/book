@@ -1,6 +1,8 @@
 <!-- TOC -->
 
-- [OWS](#ows)
+- [Open vSwitch](#open-vswitch)
+    - [Tutorial](#tutorial)
+    - [Remote Controller](#remote-controller)
 - [Mininet](#mininet)
     - [Install](#install)
     - [Python Interpreter](#python-interpreter)
@@ -19,18 +21,24 @@
 
 <!-- /TOC -->
 
-# OWS
+# Open vSwitch
 https://github.com/openvswitch/ovs
-ovs-vswitchd
-ovsdb-server
-ovs-dpctl, a tool for configuring the switch kernel module.
-ovs-vsctl, a utility for querying and updating the configuration of ovs-vswitchd.
-ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
 
-ovs-ofctl, a utility for querying and controlling OpenFlow switches and controllers.
-ovs-pki, a utility for creating and managing the public-key infrastructure for OpenFlow switches.
-ovs-testcontroller, a simple OpenFlow controller that may be useful for testing (though not for production).
-A patch to tcpdump that enables it to parse OpenFlow messages.
+    ovs-vswitchd
+    ovsdb-server
+    ovs-dpctl, a tool for configuring the switch kernel module.
+    ovs-vsctl, a utility for querying and updating the configuration of ovs-vswitchd.
+    ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
+    ovs-ofctl, a utility for querying and controlling OpenFlow switches and controllers.
+    ovs-pki, a utility for creating and managing the public-key infrastructure for OpenFlow switches.
+    ovs-testcontroller, a simple OpenFlow controller that may be useful for testing
+    A patch to tcpdump that enables it to parse OpenFlow messages.
+
+## Tutorial
+http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openflow-lets-get-started
+
+## Remote Controller
+ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633
 
 # Mininet
 ## Install

@@ -25,9 +25,6 @@
     - [CentOS](#centos)
     - [Ubuntu 16](#ubuntu-16)
 - [tc](#tc)
-- [pip](#pip)
-    - [Proxy](#proxy)
-    - [Installing from local](#installing-from-local)
 
 <!-- /TOC -->
 

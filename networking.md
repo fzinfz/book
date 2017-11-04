@@ -30,6 +30,8 @@
     - [OSSEC(HIDS)](#ossechids)
     - [Suricata(NIDS/NIPS/MSM)](#suricatanidsnipsmsm)
     - [Compare](#compare)
+- [Multi WAN](#multi-wan)
+- [Transparent Proxy](#transparent-proxy)
 
 <!-- /TOC -->
 
@@ -181,3 +183,40 @@ w/ Mikrotik: https://forum.mikrotik.com/viewtopic.php?t=111727
 
 ## Compare
 https://www.aldeid.com/wiki/Suricata-vs-snort
+
+# Multi WAN
+pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  
+VYOS: https://wiki.vyos.net/wiki/WAN_load_balancing  
+OpenBSD: https://www.openbsd.org/faq/pf/pools.html#outgoing  
+OpenWRT: https://wiki.openwrt.org/doc/howto/mwan3  
+ROS: https://mum.mikrotik.com/presentations/US12/tomas.pdf  
+
+# Transparent Proxy
+https://github.com/darkk/redsocks  
+Linux/iptables, OpenBSD/pf and FreeBSD/ipfw are supported.
+
+http://lucumr.pocoo.org/2013/1/6/osx-wifi-proxy/
+
+    sudo sysctl -w net.inet.ip.forwarding=1
+
+        base {
+            log_debug = on;
+            log_info = on;
+            log = stderr;
+            daemon = off;
+            redirector = generic;
+        }
+
+        redsocks {
+            local_ip = 0.0.0.0;
+            local_port = 12345;
+
+            ip = 127.0.0.1;
+            port = 8889;
+
+            // known types: socks4, socks5, http-connect, http-relay
+            type = socks5;
+        }
+
+    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1
+    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 443 in via en1

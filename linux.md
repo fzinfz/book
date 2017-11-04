@@ -18,25 +18,25 @@
 - [Check release & kernel](#check-release--kernel)
     - [CentOS](#centos)
 - [Benchmark](#benchmark)
-- [System](#system)
-    - [disk](#disk)
-        - [check info](#check-info)
-        - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
-        - [mkpart, format](#mkpart-format)
+- [disk](#disk)
+    - [check info](#check-info)
+    - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
+    - [mkpart, format](#mkpart-format)
     - [fstab](#fstab)
     - [recovery mount](#recovery-mount)
-        - [LVM, resize fs](#lvm-resize-fs)
-        - [btrfs](#btrfs)
-        - [Swap](#swap)
-        - [mount CIFS](#mount-cifs)
-    - [files](#files)
-    - [time](#time)
-    - [language](#language)
-    - [history without line numbers](#history-without-line-numbers)
-    - [ssh](#ssh)
-    - [password](#password)
-    - [font](#font)
-    - [systemctl](#systemctl)
+    - [LVM, resize fs](#lvm-resize-fs)
+        - [Add disk to vg](#add-disk-to-vg)
+    - [btrfs](#btrfs)
+    - [Swap](#swap)
+    - [mount CIFS](#mount-cifs)
+- [files](#files)
+- [time](#time)
+- [language](#language)
+- [history without line numbers](#history-without-line-numbers)
+- [ssh](#ssh)
+- [password](#password)
+- [font](#font)
+- [systemctl](#systemctl)
 - [Files](#files)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
@@ -48,10 +48,11 @@
 - [pip](#pip)
     - [Proxy](#proxy-1)
     - [Installing from local](#installing-from-local)
-- [grub](#grub)
     - [boot repair](#boot-repair)
     - [ubuntu](#ubuntu)
 - [JAVA_HOME](#java_home)
+- [I18N & I10N](#i18n--i10n)
+- [Chrome](#chrome)
 
 <!-- /TOC -->
 
@@ -77,10 +78,9 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
 # sudoers
-/etc/sudoers
-
-    root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
-    %supergroup  ALL=(ALL) NOPASSWD:ALL
+    sudo visudo
+        root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
+        %supergroup  ALL=(ALL) NOPASSWD:ALL
 
 # chown
     chown -h myuser:mygroup mysymbolic
@@ -129,9 +129,7 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 ```
 
 ## yum
-```
-yum-config-manager --disable c7-media
-```
+    yum-config-manager --disable c7-media
 
 ## apt
 ```
@@ -187,17 +185,16 @@ wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.g
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
 
-# System
-## disk
-### check info
+# disk
+## check info
     tune2fs -l /dev/sda1 | grep -i count
 
-### Convert between MBR and GPT
+## Convert between MBR and GPT
     sudo sgdisk -g /dev/sda
     sudo sgdisk -m /dev/sda
     sudo partprobe -s
 
-### mkpart, format
+## mkpart, format
     parted -s /dev/sdb mklabel gpt
     parted -s /dev/sdb unit mib mkpart primary 0% 100%
     mkfs.ext4 /dev/sdb1
@@ -215,7 +212,7 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 ## recovery mount
     mount -o rw,remount /
 
-### LVM, resize fs
+## LVM, resize fs
     pvs
     pvdisplay -v -m
     lvcreate -L 80G ubuntu-vg -n data
@@ -232,11 +229,16 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     lvreduce --size -40G /dev/debian9-vg/root
     lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
 
-### btrfs
+### Add disk to vg
+    pvcreate /dev/sdb
+    vgextend ubuntu-vg /dev/sdb
+
+
+## btrfs
     btrfs filesystem usage /
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
 
-### Swap
+## Swap
     swapoff -v /dev/mapper/ubuntu--vg-swap_1
 
     mkswap /dev/mapper/ubuntu--vg-swap_1
@@ -244,13 +246,13 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
-### mount CIFS
+## mount CIFS
 https://wiki.ubuntu.com/MountWindowsSharesPermanently
     vi /etc/fstab
     //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
 
 
-## files
+# files
 ```
 apt-get install mlocate
 updatedb
@@ -258,34 +260,34 @@ locate -S
 lsof -p <PID>
 ```
 
-## time 
+# time 
 ```
 sudo timedatectl set-ntp true
 TZ='Asia/Shanghai'; export TZ
 ```
 
-## language
+# language
 EN: `LC_ALL=C bash`
 
-## history without line numbers  
+# history without line numbers
 `history | cut -c 8-`
 
-## ssh
+# ssh
 ```
-sudo apt-get install openssh-server 
+sudo apt-get install openssh-server
 
 ssh-keygen -R hostname
 ```
 
-## password
+# password
     echo user:pwd | chpasswd
 
-## font
+# font
 ```
 apt-get install  xfonts-base
 ```
 
-## systemctl
+# systemctl
 https://wiki.archlinux.org/index.php/systemd
 
 ```
@@ -360,11 +362,6 @@ run without `root`
     pip wheel --wheel-dir DIR -r requirements.txt
     pip install --no-index --find-links=DIR -r requirements.txt
 
-# grub 
-    vi /etc/default/grub
-        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
-    update-grub
-
 ## boot repair
 https://sourceforge.net/p/boot-repair-cd/home/Home/
     apt install linux-image-*  # if vmlinuz & initrd.img missing
@@ -376,3 +373,17 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 
 # JAVA_HOME
     echo export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" >> /etc/profile
+
+# I18N & I10N
+    apt install -y locales-all
+    locale -a
+    dpkg-reconfigure locales
+
+    yum grouplist chinese-support
+
+    sudo apt-get install -y ttf-wqy-microhei  #文泉驿-微米黑
+    sudo apt-get install -y ttf-wqy-zenhei  #文泉驿-正黑
+    sudo apt-get install -y xfonts-wqy #文泉驿-点阵宋体
+
+# Chrome
+    chromium --no-sandbox # start as root

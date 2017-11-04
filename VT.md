@@ -25,6 +25,7 @@
     - [Ubuntu](#ubuntu)
 - [LXD](#lxd)
 - [IOMMU](#iommu)
+- [GRUB](#grub)
 - [VDI](#vdi)
     - [Virtualized Application Solutions (Shared GPU)](#virtualized-application-solutions-shared-gpu)
     - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
@@ -206,6 +207,11 @@ https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
 https://wiki.debian.org/VGAPassthrough
 
 https://github.com/awilliam/rom-parser
+
+# GRUB 
+    vi /etc/default/grub
+        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
+    update-grub
 
 # VDI
 http://www.nvidia.com/object/xendesktop-vgpu.html

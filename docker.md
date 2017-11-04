@@ -21,6 +21,7 @@
 - [Windows/Mac](#windowsmac)
 - [China Mirrors](#china-mirrors)
     - [boot2docker](#boot2docker)
+- [Security](#security)
 
 <!-- /TOC -->
 
@@ -206,3 +207,6 @@ https://github.com/boot2docker/boot2docker
 ```
 echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
 ```
+
+# Security
+    docker run --security-opt seccomp:unconfined  # may fix chromium start error

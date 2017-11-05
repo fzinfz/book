@@ -9,10 +9,6 @@ https://hub.docker.com/r/fzinfz/  [[Source](https://github.com/fzinfz/docker-ima
 ## Linux shell scripts
 https://github.com/fzinfz/scripts
 
-## Interactive coding notes
-http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/ 
-[[Source](https://github.com/fzinfz/notes/)]   
-
 ## python module: ssmanager web hook
 https://github.com/fzinfz/ssmanager-nopanel
 

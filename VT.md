@@ -10,6 +10,7 @@
     - [Shutdown timeout](#shutdown-timeout)
     - [Nested](#nested)
     - [VT-d](#vt-d)
+    - [UEFI](#uefi)
     - [GPU Passthrough](#gpu-passthrough)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
@@ -18,12 +19,6 @@
         - [Restore](#restore)
     - [vmdk](#vmdk)
 - [Vagrant](#vagrant)
-- [Openstack](#openstack)
-    - [Releases](#releases)
-    - [Hardware requirements & design](#hardware-requirements--design)
-    - [devstack](#devstack)
-    - [Images](#images)
-    - [Ubuntu](#ubuntu)
 - [LXD](#lxd)
 - [IOMMU](#iommu)
 - [GRUB](#grub)
@@ -95,6 +90,11 @@ virt-manager：enable `Copy host CPU configuration` checkbox
     echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
     echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
+## UEFI
+    apt install -y ovmf
+    systemctl restart libvirtd
+    # select UEFI while creating VM
+
 ## GPU Passthrough
 
     virsh domxml-to-native qemu-argv demo.xml > demo.sh
@@ -162,60 +162,6 @@ Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.us
     vagrant plugin install vagrant-lxc
 
     vagrant box add hashicorp/precise64 && tar *.box -C out_folder
-
-# Openstack
-## Releases
-https://releases.openstack.org/
-Series	Status	Initial Release Date	Next Phase	EOL Date
-Queens	Under Development	scheduled	 	TBD
-Pike	Phase I – Latest release	2017-08-30	Phase II – Maintained release on 2018-02-26	2018-09-03
-Ocata	Phase II – Maintained release	2017-02-22	Phase III – Legacy release on 2018-02-26	2018-02-26
-Newton	Phase II – Maintained release	2016-10-06	Phase III – Legacy release on 2017-10-09	2017-10-11
-Mitaka	EOL	2016-04-07	 	2017-04-10
-Liberty	EOL	2015-10-15	 	2016-11-17
-Kilo	EOL	2015-04-30	 	2016-05-02
-Juno	EOL	2014-10-16	 	2015-12-07
-Icehouse	EOL	2014-04-17	 	2015-07-02
-Havana	EOL	2013-10-17	 	2014-09-30
-Grizzly	EOL	2013-04-04	 	2014-03-29
-Folsom	EOL	2012-09-27	 	2013-11-19
-Essex	EOL	2012-04-05	 	2013-05-06
-Diablo	EOL	2011-09-22	 	2013-05-06
-Cactus	Deprecated	2011-04-15
-Bexar	Deprecated	2011-02-03
-Austin	Deprecated	2010-10-21
-
-## Hardware requirements & design
-https://docs.openstack.org/newton/install-guide-rdo/overview.html#example-architecture
-at least two nodes (hosts):controller(2 NICs) + compute(2 NICs)  
-Optional services such as Block Storage and Object Storage require additional nodes.
-
-## devstack
-http://docs.openstack.org/developer/devstack/guides/single-machine.html
-Use of postgresql in devstack is deprecated, and will be removed during the Pike cycle
-
-    export GIT_BASE=http://github.com  # fix git clone hangs issue
-    export no_proxy=127.0.0.1,192.168.88.15    # don't use *; fix: Could not determine a suitable URL for the plugin
-
-    sudo useradd -s /bin/bash -d /opt/stack -m stack
-    echo "stack ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/stack
-    sudo su - stack
-    git clone https://git.openstack.org/openstack-dev/devstack
-
-    ./stack.sh:main:224     xenial|yakkety|zesty|stretch|jessie|f24|f25|f26|opensuse-42.2|opensuse-42.3|rhel7|kvmibm1
-
-http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
-https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
-
-## Images
-http://docs.openstack.org/image-guide/obtain-images.html  
-http://cdimage.debian.org/cdimage/openstack/
-http://linuximages.de/openstack/arch/
-
-## Ubuntu
-http://conjure-up.io/docs/en/users/#getting-started
-    snap install conjure-up --classic
-    conjure-up openstack
 
 # LXD
 https://www.ubuntu.com/cloud/lxd

@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [Diagram](#diagram)
+- [Components](#components)
 - [Releases](#releases)
 - [Hardware requirements & design](#hardware-requirements--design)
 - [devstack](#devstack)
@@ -8,8 +8,29 @@
 - [Ubuntu](#ubuntu)
 
 <!-- /TOC -->
-# Diagram
-![](https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/OpenStack_main_services.svg/1280px-OpenStack_main_services.svg.png)
+# Components
+https://en.wikipedia.org/wiki/OpenStack#Components
+
+    Compute (Nova)
+    Networking (Neutron)
+    Block storage (Cinder)
+    Identity (Keystone)
+    Image (Glance)
+    Object storage (Swift)
+    Dashboard (Horizon)
+    Orchestration (Heat)
+    Workflow (Mistral)
+    Telemetry (Ceilometer)
+    Database (Trove)
+    Elastic map reduce (Sahara)
+    Bare metal (Ironic)
+    Messaging (Zaqar)
+    Shared file system (Manila)
+    DNS (Designate)
+    Search (Searchlight)
+    Key manager (Barbican)
+    Container orchestration (Magnum)
+    Rule-based alarm actions (Aodh)
 
 # Releases
 https://releases.openstack.org/

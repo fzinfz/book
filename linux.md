@@ -1,12 +1,14 @@
 <!-- TOC -->
 
-    - [Interactive notes](#interactive-notes)
+- [Interactive notes](#interactive-notes)
 - [Shell](#shell)
-    - [Exit code](#exit-code)
+- [Exit code](#exit-code)
 - [Diagram](#diagram)
-- [sudoers](#sudoers)
-- [chown](#chown)
-- [Repository](#repository)
+- [Permission](#permission)
+    - [add user to group](#add-user-to-group)
+    - [password](#password)
+    - [sudoers](#sudoers)
+    - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
         - [EPEL](#epel)
@@ -34,7 +36,6 @@
 - [language](#language)
 - [history without line numbers](#history-without-line-numbers)
 - [ssh](#ssh)
-- [password](#password)
 - [font](#font)
 - [systemctl](#systemctl)
 - [Files](#files)
@@ -57,14 +58,14 @@
 
 <!-- /TOC -->
 
-## Interactive notes
+# Interactive notes
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Shell
 http://explainshell.com/  
 https://www.netsarang.com/xshell_download.html
 
-## Exit code
+# Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
 
     1	Catchall for general errors
@@ -78,15 +79,21 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
-# sudoers
+# Permission
+## add user to group
+sudo adduser foobar www-data
+
+## password
+    echo user:pwd | chpasswd
+
+## sudoers
     sudo visudo
         root    ALL=(ALL) ALL # {terminals}=({users}) {commands}
         %supergroup  ALL=(ALL) NOPASSWD:ALL
 
-# chown
+## chown
     chown -h myuser:mygroup mysymbolic
 
-# Repository
 # Package Management
 ## Redhat
     subscription-manager register
@@ -279,9 +286,6 @@ sudo apt-get install openssh-server
 
 ssh-keygen -R hostname
 ```
-
-# password
-    echo user:pwd | chpasswd
 
 # font
 ```

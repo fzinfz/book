@@ -26,7 +26,8 @@ ciw => change word from cursor
 
 # UEFI Shell
 https://software.intel.com/en-us/articles/uefi-shell
-
+    map # list disks
+    help bcfg
 
 # Hardware
 ## CPUID to arch

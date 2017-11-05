@@ -4,10 +4,14 @@
 - [Open vSwitch](#open-vswitch)
     - [Tutorial](#tutorial)
     - [Remote Controller](#remote-controller)
+- [OpenFlow 1.3 Software Switch](#openflow-13-software-switch)
 - [Mininet](#mininet)
     - [Install](#install)
+    - [Supported switch & controller](#supported-switch--controller)
     - [Run](#run)
-- [Controller - OCaml - frenetic](#controller---ocaml---frenetic)
+    - [Remote control](#remote-control)
+- [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
+    - [Install](#install-1)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
@@ -34,6 +38,7 @@
 - [Controller - Ruby - Trema](#controller---ruby---trema)
 - [Controller - Python - Faucet OpenFlow 1.3](#controller---python---faucet-openflow-13)
 - [Controller - Powershell - Microsoft SDN](#controller---powershell---microsoft-sdn)
+- [Routing framework - Kulfi](#routing-framework---kulfi)
 - [Controller - More](#controller---more)
 - [Open Security Controller - JAVA](#open-security-controller---java)
 - [C++ simulation library and framework - OMNeT++](#c-simulation-library-and-framework---omnet)
@@ -44,6 +49,9 @@
 # Course
 http://www.cse.wustl.edu/~jain/tutorials/
 http://www.cs.kent.edu/~mallouzi/Software%20Defined%20Networking/
+http://www.cs.fsu.edu/~xyuan/cis5930/
+https://www.cs.princeton.edu/~jrex/papers/
+https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY
 
 # Open vSwitch
 https://github.com/openvswitch/ovs
@@ -66,6 +74,9 @@ http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openf
 
 ## Remote Controller
     ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633
+
+# OpenFlow 1.3 Software Switch
+https://github.com/CPqD/ofsoftswitch13
 
 # Mininet
 ## Install
@@ -96,6 +107,21 @@ http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openf
     -0: (default) -0[fx] installs OpenFlow 1.0 versions
     -3: -3[fx] installs OpenFlow 1.3 versions
 
+## Supported switch & controller
+    default/vs/ovsk=OVSSwitch
+    lxbr=LinuxBridge
+    user=UserSwitch
+    ivs=IVSSwitch
+    ovsbr=OVSBridge
+
+    ovsc=OVSController
+    none=NullController
+    remote=RemoteController
+    default=DefaultController
+    nox=NOX # NOX_CORE_DIR env var
+    ryu=Ryu
+    ref=Controller
+
 ## Run
 http://mininet.org/api/classmininet_1_1topo_1_1Topo.html
 
@@ -108,8 +134,24 @@ http://mininet.org/api/classmininet_1_1topo_1_1Topo.html
     mininet> py locals()
     mininet> py h1
 
-# Controller - OCaml - frenetic
+## Remote control
+https://github.com/mininet/mininet/wiki/FAQ#how-can-i-control-my-mininet-hosts-remotely
+https://github.com/mininet/mininet/wiki/FAQ#how-can-i-add-a-rest-interface-to-mininet
+
+# Controller - OCaml - Frenetic
 https://github.com/frenetic-lang/frenetic (.ova provided)
+http://www-users.cselabs.umn.edu/classes/Spring-2016/csci8211/Lecture-Notes/csci8211-Frenetic-Pyretic.pptx
+
+## Source build
+    mkdir src && cd src
+    git clone https://github.com/frenetic-lang/frenetic
+    cd ..
+    opam pin add frenetic src/frenetic -n -k git
+    opam install -y frenetic
+    sudo pip install -e  src/frenetic/lang/python
+
+## Install
+https://gist.githubusercontent.com/basus/cd48c8e4e9d14f853cea4f45f7e0edaf/raw/b6d698a16e1de5fa7d0daef7f7a36a57a9766ae1/frenetic.sh
 
 # Controller - Python - Ryu
     git clone git://github.com/osrg/ryu.git
@@ -205,16 +247,25 @@ Form a cluster of three instances, from one of the target machines
     /opt/onos/bin/onos-form-cluster $TARGET_MACHINE_1_IP ... $TARGET_MACHINE_N_IP
 
 # Controller - JAVA - Floodlight
-https://github.com/floodlight/floodlight
+https://floodlight.atlassian.net/wiki/spaces/floodlightcontroller/pages/1343544/Installation+Guide
+
+    sudo apt-get install build-essential ant maven python-dev
+    git clone git://github.com/floodlight/floodlight.git
+    cd floodlight
+    git submodule init
+    git submodule update
+    ant
+    sudo mkdir /var/lib/floodlight
+    sudo chmod 777 /var/lib/floodlight
 
 # Controller - Calico
-https://github.com/projectcalico/calico
+https://github.com/projectcalico/calico  
 enabling cloud native application connectivity and policy  
 integrates with Kubernetes, Apache Mesos, Docker, OpenStack and more
 
 # Controller - Scala/JAVA - MidoNet
-https://github.com/midonet/midonet
-use with OpenStack, vanilla Linux hosts, Docker, Mesos, etc.
+https://github.com/midonet/midonet  
+use with OpenStack, vanilla Linux hosts, Docker, Mesos, etc.  
 MidoNet supports virtual L2 switches, virtual L3 routing, distributed, stateful source NAT and distributed stateful L4 TCP load balancing.
 
     curl -sL quickstart.midonet.org | sudo bash
@@ -228,8 +279,11 @@ http://faucet.nz/
 # Controller - Powershell - Microsoft SDN
 https://github.com/Microsoft/SDN
 
+# Routing framework - Kulfi
+https://github.com/merlin-lang/kulfi  
+
 # Controller - More
-http://yuba.stanford.edu/~casado/of-sw.html
+http://yuba.stanford.edu/~casado/of-sw.html  
 https://www.sdxcentral.com/sdn/definitions/sdn-controllers/open-source-sdn-controllers/
 
 # Open Security Controller - JAVA
@@ -239,4 +293,5 @@ https://www.opensecuritycontroller.org/documentation/tutorials/openstack_workloa
 https://omnetpp.org/models
 
 # Programming - P4
+http://www.inf.usi.ch/faculty/soule/teaching/2015-fall/netpl/
 https://p4.org/

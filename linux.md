@@ -53,6 +53,7 @@
 - [JAVA_HOME](#java_home)
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
+- [Proxy](#proxy-2)
 
 <!-- /TOC -->
 
@@ -387,3 +388,7 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 
 # Chrome
     chromium --no-sandbox # start as root
+
+# Proxy
+    export http_proxy=http://proxy_ip:1080
+    export https_proxy=http://proxy_ip:1080

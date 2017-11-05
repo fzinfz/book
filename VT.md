@@ -19,6 +19,7 @@
     - [vmdk](#vmdk)
 - [Vagrant](#vagrant)
 - [Openstack](#openstack)
+    - [Releases](#releases)
     - [Hardware requirements & design](#hardware-requirements--design)
     - [devstack](#devstack)
     - [Images](#images)
@@ -160,8 +161,30 @@ Get Direct link: https://github.com/everyx/vagrant-box-download-helper-everyx.us
 
     vagrant plugin install vagrant-lxc
 
+    vagrant box add hashicorp/precise64 && tar *.box -C out_folder
 
 # Openstack
+## Releases
+https://releases.openstack.org/
+Series	Status	Initial Release Date	Next Phase	EOL Date
+Queens	Under Development	scheduled	 	TBD
+Pike	Phase I – Latest release	2017-08-30	Phase II – Maintained release on 2018-02-26	2018-09-03
+Ocata	Phase II – Maintained release	2017-02-22	Phase III – Legacy release on 2018-02-26	2018-02-26
+Newton	Phase II – Maintained release	2016-10-06	Phase III – Legacy release on 2017-10-09	2017-10-11
+Mitaka	EOL	2016-04-07	 	2017-04-10
+Liberty	EOL	2015-10-15	 	2016-11-17
+Kilo	EOL	2015-04-30	 	2016-05-02
+Juno	EOL	2014-10-16	 	2015-12-07
+Icehouse	EOL	2014-04-17	 	2015-07-02
+Havana	EOL	2013-10-17	 	2014-09-30
+Grizzly	EOL	2013-04-04	 	2014-03-29
+Folsom	EOL	2012-09-27	 	2013-11-19
+Essex	EOL	2012-04-05	 	2013-05-06
+Diablo	EOL	2011-09-22	 	2013-05-06
+Cactus	Deprecated	2011-04-15
+Bexar	Deprecated	2011-02-03
+Austin	Deprecated	2010-10-21
+
 ## Hardware requirements & design
 https://docs.openstack.org/newton/install-guide-rdo/overview.html#example-architecture
 at least two nodes (hosts):controller(2 NICs) + compute(2 NICs)  

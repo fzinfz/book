@@ -8,6 +8,7 @@
     - [Snapshot And Restore](#snapshot-and-restore)
         - [Backup](#backup)
         - [Check](#check)
+- [Excel](#excel)
 
 <!-- /TOC -->
 # Superset vs Redash vs Metabase
@@ -47,3 +48,5 @@ PUT /_snapshot/bak_1/snapshot_1?wait_for_completion=true
 GET /_snapshot/bak_1
 ```
 
+# Excel
+https://docs.wso2.com/display/DSS301/Excel+Sample

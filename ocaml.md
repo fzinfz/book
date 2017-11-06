@@ -1,7 +1,9 @@
 <!-- TOC -->
 
 - [Init](#init)
+- [opam](#opam)
 - [Jupyter](#jupyter)
+- [Course](#course)
 
 <!-- /TOC -->
 # Init
@@ -22,5 +24,27 @@
             with Not_found -> ()
         ;;
 
+# opam
+    opam list -a         # List all available packages
+    opam update          # Update the packages database
+    opam upgrade         # Bring everything to the latest version possible    
+
+    opam switch list --all
+    opam switch <version> && eval $(opam config env)
+
+    opam pin add camlpdf ~/src/camlpdf                            # path
+    opam pin list
+
+    opam install depext
+    opam depext <packages>
+    opam list --rec --required-by <package>,<package>... --external
+
+    opam switch export file.export  # from the previous switch
+    opam switch <new switch>
+    opam switch import file.export
+
 # Jupyter
 https://github.com/akabe/docker-ocaml-jupyter-datascience
+
+# Course
+http://www.cs.cornell.edu/courses/cs3110/

@@ -11,6 +11,8 @@
     - [Run](#run)
     - [Remote control](#remote-control)
 - [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
+    - [Source build](#source-build)
+    - [Manual](#manual)
     - [Install](#install-1)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker)
@@ -149,6 +151,11 @@ http://www-users.cselabs.umn.edu/classes/Spring-2016/csci8211/Lecture-Notes/csci
     opam pin add frenetic src/frenetic -n -k git
     opam install -y frenetic
     sudo pip install -e  src/frenetic/lang/python
+
+## Manual
+    git clone https://github.com/frenetic-lang/manual.git
+    cd programmers_guide/code
+    programmers_guide/frenetic_programmers_guide.pdf
 
 ## Install
 https://gist.githubusercontent.com/basus/cd48c8e4e9d14f853cea4f45f7e0edaf/raw/b6d698a16e1de5fa7d0daef7f7a36a57a9766ae1/frenetic.sh

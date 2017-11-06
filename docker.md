@@ -43,14 +43,17 @@
     RUN apt update && apt install -y 
         --no-install-recommends && rm -r /var/lib/apt/lists/*
 
-## apt    
+## apt
     RUN apk add --no-cache --virtual .build-deps  \
         curl ca-certificates jq \
         && apk del .build-deps
 
 
 # Export & Import
-    docker save -o <save image to path> <image name>
+    # Commit a container to image
+    docker commit conainter_id  user/image_name:tag
+
+    docker save -o <path> <image name>
     docker load -i <path to image tar file>
 
 # Storage

@@ -9,6 +9,7 @@
 - [add origin](#add-origin)
 - [sync with original repo](#sync-with-original-repo)
 - [log](#log)
+- [Submodules](#submodules)
 
 <!-- /TOC -->
 
@@ -54,3 +55,7 @@ http://nbviewer.jupyter.org/
 
 # log
     git log --since=2.weeks
+
+# Submodules
+https://git-scm.com/book/en/v2/Git-Tools-Submodules    
+treat the two projects as separate yet still be able to use one from within the other.

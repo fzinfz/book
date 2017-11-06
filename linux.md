@@ -2,6 +2,7 @@
 
 - [Interactive notes](#interactive-notes)
 - [Shell](#shell)
+- [top](#top)
 - [Exit code](#exit-code)
 - [Diagram](#diagram)
 - [Permission](#permission)
@@ -31,9 +32,9 @@
     - [btrfs](#btrfs)
     - [Swap](#swap)
     - [mount CIFS](#mount-cifs)
+- [Download](#download)
 - [files](#files)
 - [time](#time)
-- [language](#language)
 - [history without line numbers](#history-without-line-numbers)
 - [ssh](#ssh)
 - [font](#font)
@@ -65,6 +66,15 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 http://explainshell.com/  
 https://www.netsarang.com/xshell_download.html
 
+# top
+    * 1 - Single Cpu       Off (thus multiple cpus)
+    * c - Command line     Off (name, not cmdline)
+    * i - Idle tasks       On  (show all tasks)
+    j - Str align right  Off (not right justify)
+    V - Forest view      On  (show as branches)
+    f - sort/hide columns
+    (`*')  could be overridden through the command-line.
+
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
 
@@ -80,6 +90,8 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
 # Permission
+    sudo !!    # sudo last command
+
 ## add user to group
 sudo adduser foobar www-data
 
@@ -259,6 +271,10 @@ https://wiki.ubuntu.com/MountWindowsSharesPermanently
     vi /etc/fstab
     //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
 
+# Download
+    wget -O diff_name.zip http://...
+    curl -O http://...
+    curl -o diff_name.zip http://
 
 # files
 ```
@@ -273,9 +289,6 @@ lsof -p <PID>
 sudo timedatectl set-ntp true
 TZ='Asia/Shanghai'; export TZ
 ```
-
-# language
-EN: `LC_ALL=C bash`
 
 # history without line numbers
 `history | cut -c 8-`

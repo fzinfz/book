@@ -4,6 +4,7 @@
 - [relayd](#relayd)
 - [PF](#pf)
 - [ZFS](#zfs)
+- [DTrace](#dtrace)
 
 <!-- /TOC -->
 
@@ -50,3 +51,6 @@ https://www.freebsd.org/cgi/man.cgi?query=zpool
     zpool status pool_name
     zpool iostat -v pool_name 5
     zpool list -v pool_name
+
+# DTrace
+https://wiki.freebsd.org/DTrace/Tutorial

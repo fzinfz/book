@@ -3,6 +3,7 @@
 - [Web Vulnerability Scanner](#web-vulnerability-scanner)
     - [Tools list](#tools-list)
     - [Tools](#tools)
+- [How to hack](#how-to-hack)
 - [WAF](#waf)
     - [ModSecurity](#modsecurity)
         - [Application Supported](#application-supported)
@@ -13,6 +14,7 @@
     - [Hardware](#hardware)
 - [Nginx](#nginx)
 - [SNI](#sni)
+- [Varnish](#varnish)
 
 <!-- /TOC -->
 
@@ -92,3 +94,7 @@ https://www.cisco.com/c/en/us/products/collateral/application-networking-service
 Server Name Indication (SNI) is an extension to the TLS  
 allows a server to present multiple certificates on the same IP address and TCP port number  
 Wiki: https://en.wikipedia.org/wiki/Server_Name_Indication
+
+# Varnish
+https://hub.docker.com/r/centos/varnish-4-centos7/  
+https://access.redhat.com/containers/?tab=overview#/search/varnish

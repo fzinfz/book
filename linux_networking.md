@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [Common](#common)
+- [Basic](#basic)
     - [disable ipv6](#disable-ipv6)
 - [systemd-networkd.service](#systemd-networkdservice)
 - [systemd.netdev](#systemdnetdev)
@@ -25,10 +25,11 @@
     - [CentOS](#centos)
     - [Ubuntu 16](#ubuntu-16)
 - [tc](#tc)
+- [LVS](#lvs)
 
 <!-- /TOC -->
 
-# Common
+# Basic
 ```
 ls -l /sys/class/net/
 ip addr show dev eth1
@@ -49,8 +50,6 @@ ethtool -k ens3
 ethtool -K ens3 gro off gso off tso off
 
 ```
-
-http://darkk.net.ru/redsocks/
 
 ## disable ipv6
 ```
@@ -273,3 +272,10 @@ sudo ufw disable
 
 # tc
 http://events.linuxfoundation.org/sites/events/files/slides/Linux_traffic_control.pdf  
+
+# LVS
+http://kb.linuxvirtualserver.org/wiki/IPVS  
+https://github.com/torvalds/linux/tree/master/net/netfilter/ipvs   
+IPVS - an advanced layer-4 load balancing solution， NAT/Direct Routing/IP Tunneling
+
+

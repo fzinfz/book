@@ -16,6 +16,7 @@
 * [GFW](GFW.md)
 * [Cloud](cloud.md)
 * [BI](BI.md)
+* [Server Manage](mgmt.md)
 * [Programming](programming.md)
   * [VBA](vba.md)
   * [OCaml](ocaml.md)

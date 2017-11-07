@@ -31,6 +31,7 @@
     - [Suricata(NIDS/NIPS/MSM)](#suricatanidsnipsmsm)
     - [Compare](#compare)
 - [Multi WAN](#multi-wan)
+- [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
 
 <!-- /TOC -->
@@ -190,6 +191,20 @@ VYOS: https://wiki.vyos.net/wiki/WAN_load_balancing
 OpenBSD: https://www.openbsd.org/faq/pf/pools.html#outgoing  
 OpenWRT: https://wiki.openwrt.org/doc/howto/mwan3  
 ROS: https://mum.mikrotik.com/presentations/US12/tomas.pdf  
+
+# Load Balancing
+https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
+
+    Reverse proxying (AKA Layer-7 switching)
+        Varnish Cache
+        Nginx
+        Squid
+        Apache mod_proxy
+        Relayd
+    TCP connection redirection (AKA Layer-4 switching)
+        IPVS, part of the LVS suite
+        Ha-proxy
+        Relayd
 
 # Transparent Proxy
 https://github.com/darkk/redsocks  

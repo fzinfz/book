@@ -5,6 +5,8 @@
 - [PF](#pf)
 - [ZFS](#zfs)
 - [DTrace](#dtrace)
+- [CAM Target Layer(ctl)](#cam-target-layerctl)
+    - [HA cluster](#ha-cluster)
 
 <!-- /TOC -->
 
@@ -54,3 +56,9 @@ https://www.freebsd.org/cgi/man.cgi?query=zpool
 
 # DTrace
 https://wiki.freebsd.org/DTrace/Tutorial
+
+# CAM Target Layer(ctl)
+The ctl subsystem provides	SCSI target devices emulation
+
+## HA cluster
+https://bsdmag.org/nearly-online-zpool-switching-two-freebsd-machines/

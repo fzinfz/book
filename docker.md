@@ -22,6 +22,8 @@
 - [China Mirrors](#china-mirrors)
     - [boot2docker](#boot2docker)
 - [Security](#security)
+- [Tools](#tools)
+    - [S6 - a process supervisor](#s6---a-process-supervisor)
 
 <!-- /TOC -->
 
@@ -213,3 +215,7 @@ echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var
 
 # Security
     docker run --security-opt seccomp:unconfined  # may fix chromium start error
+
+# Tools
+## S6 - a process supervisor
+https://github.com/just-containers/s6-overlay

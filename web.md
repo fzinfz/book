@@ -18,6 +18,10 @@
 
 <!-- /TOC -->
 
+# Debugging
+https://mitmproxy.org/  
+allows traffic flows to be intercepted, inspected, modified and replayed.
+
 # Web Vulnerability Scanner
 ## Tools list
 https://github.com/infoslack/awesome-web-hacking  

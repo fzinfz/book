@@ -1,7 +1,9 @@
 <!-- TOC -->
 
+- [All In One](#all-in-one)
 - [Shadowsocks](#shadowsocks)
 - [v2ray](#v2ray)
+- [Brook - Go](#brook---go)
 - [Transparent Proxy](#transparent-proxy)
 - [中文手册](#中文手册)
     - [V2ray](#v2ray)
@@ -29,6 +31,10 @@
 
 <!-- /TOC -->
 
+# All In One
+https://github.com/StreisandEffect/streisand  
+L2TP/IPsec, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, a Tor bridge, and WireGuard
+
 # Shadowsocks
 [Official](https://github.com/shadowsocks/) | 
 [Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
@@ -38,10 +44,12 @@
 https://www.v2ray.com/chapter_02/01_overview.html  
 https://toutyrater.github.io/v2ray-guide-pages/
 
+# Brook - Go
+https://github.com/txthinking/brook
+
 # Transparent Proxy
-https://github.com/sorz/moproxy  
-https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
-https://github.com/shadowsocks/shadowsocks-libev#advanced-usage
+https://github.com/shadowsocks/shadowsocks-libev#advanced-usage  
+Check `Networking` page for more.
 
 # 中文手册
 ## V2ray
@@ -112,7 +120,7 @@ https://medium.com/@UnsignedInt8
 # ShadowVPN
 https://github.com/OkamiSupport/How-to-build-your-own-private-network
 
-# GO Simple Tunnel  
+# GO Simple Tunnel
 https://github.com/ginuerzh/gost  
 [PPTP, redsocks, iptables, https/socks5全局上网](https://docs.google.com/document/d/1OGIrebKWq__Lt0ADxprxapevC1BEzPaR6ry9XY_WDdA/edit#heading=h.qh7wl45v71jq)
 

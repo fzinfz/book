@@ -8,7 +8,7 @@
     - [Ansible - Python](#ansible---python)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
-    - [SaltStack](#saltstack)
+    - [SaltStack - Python](#saltstack---python)
 - [CI](#ci)
     - [Jenkins - JAVA](#jenkins---java)
     - [Travis - Ruby/JS](#travis---rubyjs)
@@ -63,8 +63,8 @@ https://puppet.com/docs # Puppet Enterprise vs Open Source
 ## Chef - Ruby
 https://hub.docker.com/r/chef/chef/
 
-## SaltStack
-https://github.com/saltstack/salt
+## SaltStack - Python
+https://github.com/saltstack/salt  
 https://hub.docker.com/r/saltstack/
 
 # CI

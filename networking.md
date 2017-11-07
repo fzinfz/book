@@ -33,6 +33,12 @@
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
+    - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
+    - [V2Ray - Go](#v2ray---go)
+    - [redsocks - C](#redsocks---c)
+    - [Tinyproxy - C](#tinyproxy---c)
+    - [moproxy - Rust](#moproxy---rust)
+    - [ipfw](#ipfw)
 
 <!-- /TOC -->
 
@@ -207,31 +213,24 @@ https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
         Relayd
 
 # Transparent Proxy
+## avege - Go port of redsocks
+https://github.com/avege/avege  
+
+## V2Ray - Go
+https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
+
+## redsocks - C
 https://github.com/darkk/redsocks  
 Linux/iptables, OpenBSD/pf and FreeBSD/ipfw are supported.
 
-http://lucumr.pocoo.org/2013/1/6/osx-wifi-proxy/
+Use on Mac: http://lucumr.pocoo.org/2013/1/6/osx-wifi-proxy/
 
-    sudo sysctl -w net.inet.ip.forwarding=1
+## Tinyproxy - C
+https://github.com/tinyproxy/tinyproxy
 
-        base {
-            log_debug = on;
-            log_info = on;
-            log = stderr;
-            daemon = off;
-            redirector = generic;
-        }
+## moproxy - Rust
+https://github.com/sorz/moproxy  
 
-        redsocks {
-            local_ip = 0.0.0.0;
-            local_port = 12345;
-
-            ip = 127.0.0.1;
-            port = 8889;
-
-            // known types: socks4, socks5, http-connect, http-relay
-            type = socks5;
-        }
-
+## ipfw
     sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1
     sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 443 in via en1

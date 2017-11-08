@@ -3,7 +3,7 @@
 - [Storage](#storage)
 - [Tools](#tools)
 - [User](#user)
-- [Create table](#create-table)
+- [Create Table](#create-table)
 - [Create Procedure](#create-procedure)
 
 <!-- /TOC -->
@@ -23,12 +23,10 @@ One `logical data block` corresponds to a specific number of bytes of physical d
 http://www.oracle.com/technetwork/developer-tools/index.html
 
 # User
-ALTER USER hr ACCOUNT UNLOCK;
-ALTER USER hr IDENTIFIED BY hr_password;
+    ALTER USER hr ACCOUNT UNLOCK;
+    ALTER USER hr IDENTIFIED BY hr_password;
 
-# Create table
-https://docs.oracle.com/cd/B28359_01/server.111/b28310/tables003.htm#ADMIN11004
-
+# Create Table
 https://docs.oracle.com/cd/B28359_01/server.111/b28310/tables003.htm#ADMIN11004
 ![](https://docs.oracle.com/cd/B28359_01/server.111/b28286/img/create_table.gif) 
 
@@ -74,7 +72,13 @@ https://docs.oracle.com/cd/B28359_01/server.111/b28286/clauses.htm#SQLRF021
         NEXT 1048576 -- in bytes the size of the next extent to be allocated to the object.
         MINEXTENTS 1 -- In locally managed tablespaces, determine the initial segment size in conjunction with PCTINCREASE, INITIAL and NEXT
         MAXEXTENTS 2147483645 -- valid only for objects in dictionary-managed tablespaces
-    PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+        PCTINCREASE 0 -- Oracle recommends a setting of 0 as a way to minimize fragmentation and avoid the possibility of very large temporary segments during processing.
+        FREELISTS 1 -- each free list group contains one free list
+        FREELIST GROUPS 1 -- In tablespaces with manual segment-space management, statically partition the segment free space in an Oracle Real Application Clusters environment.
+        BUFFER_POOL DEFAULT 
+        FLASH_CACHE DEFAULT 
+        CELL_FLASH_CACHE DEFAULT
+    )
 
 ![](https://docs.oracle.com/cd/B28359_01/server.111/b28286/img/storage_clause.gif)  
 https://docs.oracle.com/cd/B28359_01/server.111/b28286/clauses009.htm#SQLRF30013

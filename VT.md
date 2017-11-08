@@ -3,6 +3,8 @@
 - [qemu-img](#qemu-img)
     - [Windows](#windows)
     - [Linux](#linux)
+- [IOMMU](#iommu)
+    - [GRUB](#grub)
 - [KVM/libvirt](#kvmlibvirt)
     - [Pool](#pool)
     - [Driver](#driver)
@@ -11,7 +13,17 @@
     - [Nested](#nested)
     - [VT-d](#vt-d)
     - [UEFI](#uefi)
-    - [GPU Passthrough](#gpu-passthrough)
+    - [virsh](#virsh)
+    - [GPU assignment](#gpu-assignment)
+- [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
+    - [GVT-g](#gvt-g)
+        - [KVMGT](#kvmgt)
+- [SPICE & QXL guest driver](#spice--qxl-guest-driver)
+- [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
+    - [Virtualized Application Solutions (Shared GPU)](#virtualized-application-solutions-shared-gpu)
+    - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
+    - [Virtual Remote Workstation Solutions (Dedicated GPU)](#virtual-remote-workstation-solutions-dedicated-gpu)
+- [VDI Solutions - Open Source](#vdi-solutions---open-source)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
     - [Config](#config)
@@ -20,15 +32,7 @@
     - [vmdk](#vmdk)
 - [Vagrant](#vagrant)
 - [LXD](#lxd)
-- [IOMMU](#iommu)
-- [GRUB](#grub)
-- [VDI](#vdi)
-    - [Virtualized Application Solutions (Shared GPU)](#virtualized-application-solutions-shared-gpu)
-    - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
-    - [Virtual Remote Workstation Solutions (Dedicated GPU)](#virtual-remote-workstation-solutions-dedicated-gpu)
-    - [Solutions](#solutions)
 - [oVirt](#ovirt)
-- [RDO/Packstack](#rdopackstack)
 
 <!-- /TOC -->
 
@@ -40,6 +44,16 @@ https://cloudbase.it/qemu-img-windows/
     qemu-img -h | tail -n1  # Supported formats
     tar -xvf x.ova
     qemu-img convert -O qcow2 x.vmdk x.qcow2
+
+# IOMMU
+https://pve.proxmox.com/wiki/Pci_passthrough
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
+https://github.com/awilliam/rom-parser
+
+## GRUB
+    vi /etc/default/grub
+        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
+    update-grub
 
 # KVM/libvirt
 ## Pool
@@ -95,35 +109,64 @@ virt-manager：enable `Copy host CPU configuration` checkbox
     systemctl restart libvirtd
     # select UEFI while creating VM
 
-## GPU Passthrough
-
-    virsh domxml-to-native qemu-argv demo.xml > demo.sh
-
-    cat > demo.args <<EOF
-    LC_ALL=C PATH=/bin HOME=/home/test USER=test \
-    LOGNAME=test /usr/bin/qemu -S -M pc -m 214 -smp 1 \
-    -nographic -monitor pty -no-acpi -boot c -hda \
-    /dev/HostVG/QEMUGuest1 -net none -serial none \
-    -parallel none -usb
-    EOF
-
-    virsh domxml-from-native qemu-argv demo.args > demo.xml
-
+## virsh
     virsh list --all
 
-    vi /etc/libvirt/qemu/VM_NAME.xml
+    virsh domxml-to-native qemu-argv demo.xml > demo.sh
+    virsh domxml-from-native qemu-argv demo.args > demo.xml
 
-        <features>
-            ...
-            <kvm>
-            <hidden state='on'/>
-            </kvm>
-        </features>
+## GPU assignment
+https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf
+https://wiki.debian.org/VGAPassthrough
 
-        <qemu:commandline>
-        <qemu:arg value='-set'/>
-        <qemu:arg value='device.hostdev0.x-vga=on'/>
-        </qemu:commandline>
+# Intel® Graphics Virtualization Technology
+![](https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_figure_1.png) 
+![](https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_figure_2.png) 
+![](https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_figure_3.png)
+
+* –d (Intel® GVT –d): vDGA: virtual dedicated graphics acceleration (one VM to one physical GPU)
+* –s (Intel® GVT -s): vSGA: virtual shared graphics acceleration (multiple VMs to one physical GPU)
+* –g (Intel® GVT -g): vGPU: virtual graphics processing unit (multiple VMs to one physical GPU)
+
+## GVT-g
+https://01.org/igvt-g/blogs/wangbo85/2017/intel-gvt-g-kvmgt-public-release-q22017  
+kernel 4.10+ / QEMU 2.9+ / Xeon(r) E3_v4 and E3_v5 / Core(tm) Gen 5th(Broadwell)+  
+X11VNC for Linux guest  
+TightVNC, HP RGS, RDP for Windows guest  
+
+https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide  
+For KVMGT, you also can use the current upstream Linux kernel and QEMU directly since all the enabling patches have been upstreamed.  
+For XenGT, you must use the repositories we provided.
+
+### KVMGT
+grub：  intel_iommu=igfx_off i915.hvm_boot_foreground=1 i915.enable_gvt=1 kvm.ignore_msrs=1
+
+# SPICE & QXL guest driver
+https://www.spice-space.org/download.html
+
+# VDI Solutions - Nvidia
+http://www.nvidia.com/object/xendesktop-vgpu.html
+(Right bottom section: "Partner Solutions")
+
+## Virtualized Application Solutions (Shared GPU)
+Citrix XenApp 6.5 with OpenGL Add-on and Citrix XenDesktop 7 Hosted-Shared delivery
+
+## Virtual Desktop Solutions (Shared GPU)
+XenDesktop FP1 with NVIDIA GRID™ vGPU™1
+Microsoft RemoteFX in Windows Server 2012
+VMware Horizon View 5.2 with vSGA2
+
+## Virtual Remote Workstation Solutions (Dedicated GPU)
+Citrix XenDesktop 5.6 
+Citrix XenDesktop 7 VDI delivery
+VMware View 5.3 with vDGA
+
+# VDI Solutions - Open Source
+https://www.openstack.org/videos/boston-2017/virtual-desktop-infrastructure-vdi-with-openstack
+
+https://guacamole.incubator.apache.org/
+https://hub.docker.com/r/guacamole/guacamole/
+HTML5 remote desktop gateway. supports VNC, RDP, and SSH.
 
 # VSphere / ESXi
 ## Raw disk mapping (RDM)
@@ -170,56 +213,7 @@ https://insights.ubuntu.com/2016/04/13/stephane-graber-lxd-2-0-docker-in-lxd-712
 
 https://github.com/lxc/lxd#how-can-i-run-docker-inside-a-lxd-container
 
-# IOMMU
-https://pve.proxmox.com/wiki/Pci_passthrough
-https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
-https://wiki.debian.org/VGAPassthrough
-
-https://github.com/awilliam/rom-parser
-
-# GRUB 
-    vi /etc/default/grub
-        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
-    update-grub
-
-# VDI
-http://www.nvidia.com/object/xendesktop-vgpu.html
-
-## Virtualized Application Solutions (Shared GPU)
-Citrix XenApp 6.5 with OpenGL Add-on and Citrix XenDesktop 7 Hosted-Shared delivery
-
-## Virtual Desktop Solutions (Shared GPU)
-XenDesktop FP1 with NVIDIA GRID™ vGPU™1
-Microsoft RemoteFX in Windows Server 2012
-VMware Horizon View 5.2 with vSGA2
-
-## Virtual Remote Workstation Solutions (Dedicated GPU)
-Citrix XenDesktop 5.6 
-Citrix XenDesktop 7 VDI delivery
-VMware View 5.3 with vDGA
-
-## Solutions
-https://www.openstack.org/videos/boston-2017/virtual-desktop-infrastructure-vdi-with-openstack
-
-https://guacamole.incubator.apache.org/
-https://hub.docker.com/r/guacamole/guacamole/
-HTML5 remote desktop gateway. supports VNC, RDP, and SSH.
-
 # oVirt
     yum install http://resources.ovirt.org/pub/yum-repo/ovirt-release41.rpm
     yum -y install ovirt-engine
     engine-setup
-
-# RDO/Packstack
-https://www.rdoproject.org/install/packstack/    
-    sudo systemctl disable firewalld
-    sudo systemctl stop firewalld
-    sudo systemctl disable NetworkManager
-    sudo systemctl stop NetworkManager
-    sudo systemctl enable network
-    sudo systemctl start network
-
-    yum install -y centos-release-openstack-pike && \
-    yum update -y  && \
-    yum install -y openstack-packstack && \
-    packstack --allinone || packstack --answer-file=FILE

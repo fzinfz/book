@@ -4,8 +4,9 @@
 - [Releases](#releases)
 - [Hardware requirements & design](#hardware-requirements--design)
 - [devstack](#devstack)
-- [Images](#images)
-- [Ubuntu](#ubuntu)
+- [Ubuntu conjure-up](#ubuntu-conjure-up)
+- [RDO/Packstack](#rdopackstack)
+- [Instance Images](#instance-images)
 
 <!-- /TOC -->
 # Components
@@ -76,13 +77,28 @@ Use of postgresql in devstack is deprecated, and will be removed during the Pike
 http://docs.openstack.org/developer/openstack-ansible/developer-docs/quickstart-aio.html  
 https://developer.rackspace.com/blog/life-without-devstack-openstack-development-with-osa/  
 
-# Images
-http://docs.openstack.org/image-guide/obtain-images.html  
-http://cdimage.debian.org/cdimage/openstack/  
-http://linuximages.de/openstack/arch/
-
-# Ubuntu
+# Ubuntu conjure-up
 http://conjure-up.io/docs/en/users/#getting-started
 
     snap install conjure-up --classic
     conjure-up openstack
+
+# RDO/Packstack
+https://www.rdoproject.org/install/packstack/
+
+    sudo systemctl disable firewalld
+    sudo systemctl stop firewalld
+    sudo systemctl disable NetworkManager
+    sudo systemctl stop NetworkManager
+    sudo systemctl enable network
+    sudo systemctl start network
+
+    yum install -y centos-release-openstack-pike && \
+    yum update -y  && \
+    yum install -y openstack-packstack && \
+    packstack --allinone || packstack --answer-file=FILE    
+
+# Instance Images
+http://docs.openstack.org/image-guide/obtain-images.html  
+http://cdimage.debian.org/cdimage/openstack/  
+http://linuximages.de/openstack/arch/    

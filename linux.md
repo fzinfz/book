@@ -18,8 +18,11 @@
     - [yum](#yum)
     - [apt](#apt)
     - [deb manually](#deb-manually)
-- [Check release & kernel](#check-release--kernel)
+- [Release & kernel](#release--kernel)
     - [CentOS](#centos)
+    - [Debian](#debian-1)
+    - [Ubuntu](#ubuntu-1)
+    - [RHEL](#rhel)
 - [Benchmark](#benchmark)
 - [disk](#disk)
     - [check info](#check-info)
@@ -181,20 +184,49 @@ dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0
 ```
 Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
 
-# Check release & kernel
-```
-lsb_release -a
-uname -a
-cat /etc/*-release
-```
+# Release & kernel
+    lsb_release -a
+    uname -a
+    cat /etc/*-release
 
 ## CentOS
-```
-grub2-mkconfig -o /boot/grub2/grub.cfg
-awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
-grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
-grub2-editenv list 
-```
+    grub2-mkconfig -o /boot/grub2/grub.cfg
+    awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
+    grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
+    grub2-editenv list
+
+## Debian
+https://en.wikipedia.org/wiki/Debian_version_history#Release_table
+
+    6.0	Squeeze	2.6.32
+    7	Wheezy 3.2
+    8	Jessie 3.16 April/May 2020
+    9	Stretch	4.9	June 2022
+    10	Buster
+    11	Bullseye
+
+## Ubuntu
+https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version
+
+    12.04   Precise Pangolin 3.2+
+    12.10   Quantal Quetzal  3.5
+    13.04   Raring Ringtail  3.8
+    13.10   Saucy Salamander 3.11
+    14.04   Trusty Tahr      3.13
+    14.10   Utopic Unicorn   3.16
+    15.04   Vivid Vervet     3.19
+    15.10   Wily Werewolf    4.2
+    16.04   Xenial Xerus     4.4
+    16.10   Yakkety Yak      4.8
+    17.04   Zesty Zapus      4.10
+    17.10   Artful Aardvark  4.13
+
+## RHEL
+https://access.redhat.com/articles/3078
+
+    7   3.10
+    6   2.6.32
+    5   2.6.18
 
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png

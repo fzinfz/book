@@ -54,10 +54,10 @@ https://docs.oracle.com/cd/B19306_01/server.102/b14200/clauses002.htm
     ) 
     ORGANIZATION INDEX -- index-organized table. 
 
-ORGANIZATION: the order in which the data rows of the table are stored.  
->  HEAP: the data rows of table are stored in no particular order. This is the *default*.  
->  INDEX: table is created as an index-organized table. In an index-organized table, the data rows are held in an index defined on the primary key for the table.
-> EXTERNAL: table is a read-only table located outside the database.
+ORGANIZATION: the order in which the data rows of the table are stored.
+- HEAP: the data rows of table are stored in no particular order. This is the *default*.
+- INDEX: table is created as an index-organized table. In an index-organized table, the data rows are held in an index defined on the primary key for the table.
+- EXTERNAL: table is a read-only table located outside the database.
 
     NOCOMPRESS -- whether to compress data segments to reduce disk use
     PCTFREE 10 -- NOCOMPRESS use the PCTFREE default value of 10, to maximize compress while still allowing for some future DML changes to the data

@@ -16,6 +16,7 @@
 * [GFW](GFW.md)
 * [Cloud](cloud.md)
 * [BI](BI.md)
+* [Oracle][oracle.md]
 * [DevOps](DevOps.md)
 * [Programming](programming.md)
   * [VBA](vba.md)

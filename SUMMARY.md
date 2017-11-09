@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * [Linux](linux.md)
-  * [Linux Networking](linux_nw.md)
-* [Networking](nw.md)
+  * [Linux Networking](linux_networking.md)
+* [Networking](networking.md)
   * [SDN](SDN.md)
   * [Web](web.md)
   * [Security](nw_security.md)

@@ -70,8 +70,6 @@ a PHP/MySQL web application that is damn vulnerable.
 
 https://www.youtube.com/playlist?list=PL0-xwzAwzllx4w5OYdRoVTqlNvQ7xALNM
 
-[Intrusion Detection/Prevention](/networking.html#idsips)
-
 # WAF
 ## ModSecurity
 https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual  

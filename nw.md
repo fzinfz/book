@@ -13,7 +13,7 @@
     - [Mikrotik](#mikrotik-1)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
-- [Mikrotik](#mikrotik-2)
+- [Mikrotik code samples](#mikrotik-code-samples)
     - [PCQ](#pcq)
 - [PPP BCP](#ppp-bcp)
 - [VRF](#vrf)
@@ -25,11 +25,6 @@
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
-- [IDS/IPS](#idsips)
-    - [Snort(NIDS/NIDS)](#snortnidsnids)
-    - [OSSEC(HIDS)](#ossechids)
-    - [Suricata(NIDS/NIPS/MSM)](#suricatanidsnipsmsm)
-    - [Compare](#compare)
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
@@ -92,18 +87,19 @@ https://tools.ietf.org/html/rfc5036 / Obsoletes: 3036   LDP Specification
 https://en.wikipedia.org/wiki/Pseudo-wire
 
 ## Mikrotik
-https://tools.ietf.org/html/rfc4761     VPLS Using BGP for Auto-Discovery and Signaling
-https://tools.ietf.org/html/rfc4762     VPLS Using LDP Signaling
-https://tools.ietf.org/html/rfc4447     (cisco-style Signaling)
-https://tools.ietf.org/html/rfc4623     PWE3 Fragmentation and Reassembly
+https://tools.ietf.org/html/rfc4761     VPLS Using BGP for Auto-Discovery and Signaling  
+https://tools.ietf.org/html/rfc4762     VPLS Using LDP Signaling  
+https://tools.ietf.org/html/rfc4447     (cisco-style Signaling)  
+https://tools.ietf.org/html/rfc4623     PWE3 Fragmentation and Reassembly  
 
 ## OpenBSD
 https://github.com/rwestphal/openbsd-ldpd/wiki/VPLS-basic-test-setup
 https://github.com/openbsd/src/blob/master/usr.sbin/ldpd/l2vpn.c
-RFC4447:
-- Section 6.2: control word negotiation
-- Section 5.4.3: pseudowire status negotiation
-- PWid group wildcard
+
+    RFC4447:
+    - Section 6.2: control word negotiation
+    - Section 5.4.3: pseudowire status negotiation
+    - PWid group wildcard
 
 ## Linux
 https://github.com/rwestphal/quagga-ldpd/wiki/ldpd-basic-test-setup
@@ -116,7 +112,7 @@ https://github.com/eqvinox/vpls-iproute2/commits/vpls
 
 https://wiki.vyos.net/wiki/Proposed_enhancements 
 
-# Mikrotik 
+# Mikrotik code samples
 ```
 put [resolve google.com server 8.8.8.8]
 ```
@@ -166,30 +162,6 @@ http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.
 https://github.com/inconshreveable/ngrok
 https://github.com/fatedier/frp
 https://github.com/lovedboy/gortcp
-
-# IDS/IPS
-Network Intrusion Detection System (NIDS) engine  
-Network Intrusion Prevention System (NIPS) engine  
-Network Security Monitoring (NSM) engine
-
-## Snort(NIDS/NIDS)
-https://doc.pfsense.org/index.php/Setup_Snort_Package
-
-## OSSEC(HIDS)
-https://en.wikipedia.org/wiki/OSSEC  
-log analysis, integrity checking, Windows registry monitoring, rootkit detection, time-based alerting, and active response.
-
-https://ossec.github.io/docs/manual/supported-systems.html
-
-## Suricata(NIDS/NIPS/MSM)
-Suricata is a network IDS, IPS and NSM engine.  
-https://github.com/OISF/suricata  
-https://suricata-ids.org/features/all-features/  
-w/ pfSense: http://elatov.github.io/2016/11/setup-suricata-on-pfsense/  
-w/ Mikrotik: https://forum.mikrotik.com/viewtopic.php?t=111727
-
-## Compare
-https://www.aldeid.com/wiki/Suricata-vs-snort
 
 # Multi WAN
 pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  

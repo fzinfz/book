@@ -1,17 +1,14 @@
 <!-- TOC -->
 
-- [RS232 3pin](#rs232-3pin)
 - [Power Connectors](#power-connectors)
     - [Industrial](#industrial)
 - [UPS](#ups)
     - [Offline/standby](#offlinestandby)
     - [Line-interactive](#line-interactive)
     - [Online/double-conversion](#onlinedouble-conversion)
+- [RS232 3pin](#rs232-3pin)
 
 <!-- /TOC -->
-
-# RS232 3pin
-http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A)
 
 # Power Connectors
 https://en.wikipedia.org/wiki/IEC_60320#Appliance_couplers  
@@ -34,3 +31,7 @@ https://en.wikipedia.org/wiki/Industrial_and_multiphase_power_plugs_and_sockets
 
 ## Online/double-conversion
 the batteries are always connected to the inverter
+
+# RS232 3pin
+[RS232簡單接法(3線)](http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A))
+![](https://pic.pimg.tw/flykof/4a729ba808337.jpg)

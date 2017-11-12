@@ -59,6 +59,7 @@
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
 - [Proxy](#proxy-2)
+- [Test ip & port](#test-ip--port)
 
 <!-- /TOC -->
 
@@ -441,3 +442,8 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 # Proxy
     export http_proxy=http://proxy_ip:1080
     export https_proxy=http://proxy_ip:1080
+
+# Test ip & port
+    curl ifconfig.co/json
+    curl ifconfig.co/port/8080
+

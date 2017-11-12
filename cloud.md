@@ -9,6 +9,8 @@
         - [Instance](#instance)
         - [Traffic](#traffic)
     - [Free](#free)
+- [HIDS uninstall](#hids-uninstall)
+    - [jcloud](#jcloud)
 
 <!-- /TOC -->
 
@@ -84,3 +86,9 @@ https://tryappservice.azure.com
 
 $200: https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
 DigitalOcean $20: https://cloud.docker.com
+
+# HIDS uninstall
+## jcloud
+    wget http://hids.s-sq.jcloud.com/jcloudhids_linux64_V1.0.tar.gz
+    tar zxvf jcloudhids_linux64_V1.0.tar.gz
+    ./jcloudhids_linux64_V1.0.19216/uninstall.py

@@ -13,10 +13,6 @@
     - [Mikrotik](#mikrotik-1)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
-- [Mikrotik code samples](#mikrotik-code-samples)
-    - [PCQ](#pcq)
-- [PPP BCP](#ppp-bcp)
-- [VRF](#vrf)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
 - [MAC addresss <-> Vender](#mac-addresss---vender)
@@ -34,6 +30,7 @@
     - [Tinyproxy - C](#tinyproxy---c)
     - [moproxy - Rust](#moproxy---rust)
     - [ipfw](#ipfw)
+- [NetFlow Software](#netflow-software)
 
 <!-- /TOC -->
 
@@ -112,24 +109,6 @@ https://github.com/eqvinox/vpls-iproute2/commits/vpls
 
 https://wiki.vyos.net/wiki/Proposed_enhancements 
 
-# Mikrotik code samples
-```
-put [resolve google.com server 8.8.8.8]
-```
-
-## PCQ
-https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
-http://mum.mikrotik.com/presentations/US08/janism.pdf  
-https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
-
-# PPP BCP
-https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
-
-# VRF
-https://docs.cumulusnetworks.com/display/DOCS/Virtual+Routing+and+Forwarding+-+VRF
-multiple independent routing tables working simultaneously on the same router or switch
-Think of this feature as VLAN for layer 3
-
 # L7 filters
 http://l7-filter.sourceforge.net/protocols
 
@@ -206,3 +185,6 @@ https://github.com/sorz/moproxy
 ## ipfw
     sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1
     sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 443 in via en1
+
+# NetFlow Software
+https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/networking_solutions_products_genericcontent0900aecd805ff72b.html

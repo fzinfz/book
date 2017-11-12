@@ -26,6 +26,7 @@
     - [Ubuntu 16](#ubuntu-16)
 - [tc](#tc)
 - [LVS](#lvs)
+- [Virtual routing and forwarding](#virtual-routing-and-forwarding)
 
 <!-- /TOC -->
 
@@ -214,6 +215,7 @@ iptables -I INPUT -s  localhost -j ACCEPT
 iptables -A INPUT --dport 81 -j DROP
 iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
 iptables -A INPUT -p udp --dport 161 -j ACCEPT
+
 iptables-save
 iptables -L --line-numbers
 iptables -D INPUT 2
@@ -278,4 +280,9 @@ http://kb.linuxvirtualserver.org/wiki/IPVS
 https://github.com/torvalds/linux/tree/master/net/netfilter/ipvs   
 IPVS - an advanced layer-4 load balancing solution， NAT/Direct Routing/IP Tunneling
 
+# Virtual routing and forwarding
+https://docs.cumulusnetworks.com/display/DOCS/Virtual+Routing+and+Forwarding+-+VRF  
+multiple independent routing tables working simultaneously on the same router or switch
+Think of this feature as VLAN for layer 3
 
+https://www.kernel.org/doc/Documentation/networking/vrf.txt

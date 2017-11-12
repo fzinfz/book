@@ -1,14 +1,22 @@
 <!-- TOC -->
 
+- [Endianness](#endianness)
 - [Power Connectors](#power-connectors)
     - [Industrial](#industrial)
 - [UPS](#ups)
     - [Offline/standby](#offlinestandby)
     - [Line-interactive](#line-interactive)
     - [Online/double-conversion](#onlinedouble-conversion)
+- [Raspberry PI](#raspberry-pi)
+    - [Console](#console)
 - [RS232 3pin](#rs232-3pin)
 
 <!-- /TOC -->
+
+# Endianness
+https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html
+In big endian, you store the most significant byte(MSB) in the smallest address.  
+In little endian, you store the least significant byte(LSB) in the smallest address
 
 # Power Connectors
 https://en.wikipedia.org/wiki/IEC_60320#Appliance_couplers  
@@ -32,6 +40,21 @@ https://en.wikipedia.org/wiki/Industrial_and_multiphase_power_plugs_and_sockets
 ## Online/double-conversion
 the batteries are always connected to the inverter
 
+# Raspberry PI
+```
+/opt/vc/bin/vcgencmd measure_temp
+```
+## Console
+/dev/ttyAMA0
+```
+Speed (baud rate): 115200
+Bits: 8
+Parity: None
+Stop Bits: 1
+Flow Control: None
+```
+
 # RS232 3pin
-[RS232簡單接法(3線)](http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A))
+[RS232簡單接法(3線)](http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A))  
 ![](https://pic.pimg.tw/flykof/4a729ba808337.jpg)
+

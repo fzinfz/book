@@ -62,7 +62,8 @@
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
 - [Proxy](#proxy-2)
-- [Test ip & port](#test-ip--port)
+- [DNS](#dns)
+- [AD](#ad)
 
 <!-- /TOC -->
 
@@ -498,7 +499,13 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
     export http_proxy=http://proxy_ip:1080
     export https_proxy=http://proxy_ip:1080
 
-# Test ip & port
-    curl ifconfig.co/json
-    curl ifconfig.co/port/8080
+    sudo apt install -y proxychains
+    vi /etc/proxychains.conf
 
+# DNS
+    /etc/nsswitch.conf
+        #hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
+        hosts:          files dns  # fix nslookup works but ping not work
+
+# AD
+https://wiki.samba.org/index.php/Setting_up_Samba_as_an_NT4_PDC_(Quick_Start)

@@ -18,10 +18,6 @@
     - [Registry locations](#registry-locations)
     - [NFS mount](#nfs-mount)
     - [Fix cifs/share mount:](#fix-cifsshare-mount)
-- [Powershell](#powershell)
-- [Hyper-V](#hyper-v)
-    - [Check support](#check-support)
-    - [Turn Off](#turn-off)
 - [Installation](#installation)
     - [Tools](#tools)
     - [Force OOBE](#force-oobe)
@@ -94,46 +90,6 @@ netsh interface ip set address "Ethernet adapter Ethernet 2" static 192.168.3.5 
 ```
 net use * /del /yes
 net use h: \\192.168.0.1\docs /user:ServerB\user Password 
-```
-
-# Powershell
-Set-ExecutionPolicy RemoteSigned
-Enable-PSRemoting -Force
-
-Import-Module ServerManager
-Add-WindowsFeature RDS-Virtualization
-
-```Powershell
-#list top processes sort by memory
-Get-Process | Sort WorkingSet -Descending  | select-object  Id, Name, 
-@{Name='WorkingSet(Mb)';Expression={"{0:N2}" -f ($_.WorkingSet / 1Mb)}}, 
-@{Name='PrivateMemorySize(Mb)';Expression={"{0:N2}" -f ($_.PrivateMemorySize / 1Mb)}}, 
-@{Name='PM(Mb)';Expression={"{0:N2}" -f ($_. PM/ 1Mb)}}, 
-@{Name='NPM(Mb)';Expression={"{0:N2}" -f ($_. NPM/ 1Mb)}}  `
- -First 10 | Format-Table
-
-#sum memory of all processes
-Get-Process  | measure-object -sum 'PrivateMemorySize', PM,NPM,WS  |  
-select-object  @{Name='Sum(Gb)';Expression={"{0:N2}" -f ($_.sum / 1Gb  ) }  } ,count, Property
-
-#list and grep process members
-Get-Process | Get-Member | findstr Mem
-
-#another way to query process
-Get-WMIObject Win32_Process | 
-```
-
-# Hyper-V 
-## Check support
-- systeminfo
- 
-## Turn Off  
-```
-C:\>bcdedit /copy {current} /d "No Hyper-V" 
-The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
-
-C:\>bcdedit /set {ff-23-113-824e-5c5144ea} hypervisorlaunchtype off 
-The operation completed successfully.
 ```
 
 # Installation

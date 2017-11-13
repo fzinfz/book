@@ -25,6 +25,9 @@
 - [qemu-img](#qemu-img)
     - [Windows](#windows)
     - [Linux](#linux)
+- [Hyper-V](#hyper-v)
+    - [Check support](#check-support)
+    - [Turn Off](#turn-off)
 
 <!-- /TOC -->
 
@@ -170,3 +173,16 @@ https://cloudbase.it/qemu-img-windows/
     qemu-img -h | tail -n1  # Supported formats
     tar -xvf x.ova
     qemu-img convert -O qcow2 x.vmdk x.qcow2    
+
+# Hyper-V
+## Check support
+    systeminfo
+
+## Turn Off
+```
+C:\>bcdedit /copy {current} /d "No Hyper-V" 
+The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
+
+C:\>bcdedit /set {ff-23-113-824e-5c5144ea} hypervisorlaunchtype off 
+The operation completed successfully.
+```

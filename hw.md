@@ -35,6 +35,7 @@ https://en.wikipedia.org/wiki/Industrial_and_multiphase_power_plugs_and_sockets
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Standby_UPS_Diagram_SVG.svg/525px-Standby_UPS_Diagram_SVG.svg.png)
 
 ## Line-interactive
+https://youtu.be/Fj7e3WGUKO8?t=521  
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Line-Interactive_UPS_Diagram_SVG.svg/750px-Line-Interactive_UPS_Diagram_SVG.svg.png)
 
 ## Online/double-conversion

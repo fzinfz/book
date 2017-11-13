@@ -1,21 +1,30 @@
 <!-- TOC -->
 
 - [GPU assignment](#gpu-assignment)
+- [NVIDIA Certified](#nvidia-certified)
+- [AMD](#amd)
 - [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
     - [GVT-g](#gvt-g)
         - [KVMGT](#kvmgt)
 - [SPICE & QXL guest driver](#spice--qxl-guest-driver)
 - [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
-    - [Virtualized Application Solutions (Shared GPU)](#virtualized-application-solutions-shared-gpu)
-    - [Virtual Desktop Solutions (Shared GPU)](#virtual-desktop-solutions-shared-gpu)
-    - [Virtual Remote Workstation Solutions (Dedicated GPU)](#virtual-remote-workstation-solutions-dedicated-gpu)
 - [VDI Solutions - Open Source](#vdi-solutions---open-source)
+    - [Apache Guacamole](#apache-guacamole)
+    - [KVM-VDI by Vilnius University](#kvm-vdi-by-vilnius-university)
 
 <!-- /TOC -->
 
 # GPU assignment
-https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf
+The state of GPU assignment in QEMU/KVM: https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf
+
 https://wiki.debian.org/VGAPassthrough
+
+# NVIDIA Certified
+http://www.nvidia.com/object/grid-certified-servers.html  
+GRID vGPU is a licensed feature on Tesla M6, Tesla M10, and Tesla M60.
+
+# AMD
+AMD MxGPU is the world’s first hardware-based virtualized GPU solution, is built on industry standard SR-IOV (Single-Root I/O Virtualization) technology. Supprot VMWARE & Citrix.
 
 # Intel® Graphics Virtualization Technology
 ![](https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_figure_1.png) 
@@ -46,22 +55,31 @@ https://www.spice-space.org/download.html
 http://www.nvidia.com/object/xendesktop-vgpu.html
 (Right bottom section: "Partner Solutions")
 
-## Virtualized Application Solutions (Shared GPU)
-Citrix XenApp 6.5 with OpenGL Add-on and Citrix XenDesktop 7 Hosted-Shared delivery
+    ## Virtualized Application Solutions (Shared GPU)
+    Citrix XenApp 6.5 with OpenGL Add-on and Citrix XenDesktop 7 Hosted-Shared delivery
 
-## Virtual Desktop Solutions (Shared GPU)
-XenDesktop FP1 with NVIDIA GRID™ vGPU™1
-Microsoft RemoteFX in Windows Server 2012
-VMware Horizon View 5.2 with vSGA2
+![](http://www.nvidia.com/content/cloud-computing/images/gridtechnology-softwarediagram-xenapp.png)
 
-## Virtual Remote Workstation Solutions (Dedicated GPU)
-Citrix XenDesktop 5.6 
-Citrix XenDesktop 7 VDI delivery
-VMware View 5.3 with vDGA
+    ## Virtual Desktop Solutions (Shared GPU)
+    XenDesktop FP1 with NVIDIA GRID™ vGPU™1
+    Microsoft RemoteFX in Windows Server 2012
+    VMware Horizon View 5.2 with vSGA2
+
+    ## Virtual Remote Workstation Solutions (Dedicated GPU)
+    Citrix XenDesktop 5.6
+    Citrix XenDesktop 7 VDI delivery
+    VMware View 5.3 with vDGA
 
 # VDI Solutions - Open Source
 https://www.openstack.org/videos/boston-2017/virtual-desktop-infrastructure-vdi-with-openstack
 
-https://guacamole.incubator.apache.org/
-https://hub.docker.com/r/guacamole/guacamole/
+## Apache Guacamole
+https://guacamole.incubator.apache.org/  
+https://hub.docker.com/r/guacamole/guacamole/  
 HTML5 remote desktop gateway. supports VNC, RDP, and SSH.
+
+## KVM-VDI by Vilnius University
+https://github.com/Seitanas/kvm-vdi/wiki  
+supported backends: plain QEMU-KVM and OpenStack (still in development).
+
+https://www.neblogas.lt/2016/07/18/technical-info-ovirt-agent-sso/

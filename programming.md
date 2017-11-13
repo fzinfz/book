@@ -1,8 +1,8 @@
 # Interactive coding notes
-http://nbviewer.jupyter.org/github/fzinfz/notes/tree/master/ 
-[[Source](https://github.com/fzinfz/notes/)]
+http://nbviewer.jupyter.org/github/fzinfz/scripts/tree/master/jupyter/ 
+[[Source](https://github.com/fzinfz/scripts/tree/master/jupyter)]
 
-# Powershell/Python
+# Powershell/Python/etc
 https://github.com/fzinfz/scripts
 
 # Markdown

@@ -11,16 +11,14 @@
 <!-- /TOC -->
 
 # TCP congestion control
+    sysctl net.inet.tcp.cc
+    net.inet.tcp.cc.available: newreno
+    net.inet.tcp.cc.algorithm: newreno
 
-```
-sysctl net.inet.tcp.cc
-net.inet.tcp.cc.available: newreno
-net.inet.tcp.cc.algorithm: newreno
+    kldload cccubic
+    kldload ccvegas
+    kldload cccdg
 
-kldload cccubic
-kldload ccvegas
-kldload cccdg
-```
 
 # relayd
 https://man.openbsd.org/relayd.conf.5

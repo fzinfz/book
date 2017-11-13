@@ -16,6 +16,7 @@
     - [Ubuntu](#ubuntu)
     - [Debian](#debian)
     - [yum](#yum)
+    - [dpkg](#dpkg)
     - [apt](#apt)
     - [deb manually](#deb-manually)
 - [Release & kernel](#release--kernel)
@@ -34,15 +35,17 @@
         - [Add disk to vg](#add-disk-to-vg)
     - [btrfs](#btrfs)
     - [Swap](#swap)
-    - [mount CIFS](#mount-cifs)
-- [Download](#download)
+    - [mount ISO/NFS/CIFS](#mount-isonfscifs)
+- [wget/curl](#wgetcurl)
+    - [curl github](#curl-github)
 - [files](#files)
+    - [rsync](#rsync)
+    - [compress/uncompress](#compressuncompress)
 - [time](#time)
 - [history without line numbers](#history-without-line-numbers)
 - [ssh](#ssh)
 - [font](#font)
 - [systemctl](#systemctl)
-- [Files](#files)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
 - [X](#x)
@@ -154,6 +157,9 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 
 ## yum
     yum-config-manager --disable c7-media
+
+## dpkg
+    dpkg --get-selections
 
 ## apt
 ```
@@ -299,25 +305,90 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
-## mount CIFS
+## mount ISO/NFS/CIFS
+    mount -o loop,ro x.iso /mnt/cd
+
+    mount.nfs nfs_server:/dir /dir
+    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
+
 https://wiki.ubuntu.com/MountWindowsSharesPermanently
     vi /etc/fstab
     //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
 
-# Download
+# wget/curl
     wget -O diff_name.zip http://...
     curl -O http://...
     curl -o diff_name.zip http://
 
-# files
-```
-apt-get install mlocate
-updatedb
-locate -S
-lsof -p <PID>
-```
 
-# time 
+## curl github
+https://github.com/settings/tokens
+
+    curl -H 'Authorization: token INSERT_ACCESS_TOKEN_HERE' \
+        -H 'Accept: application/vnd.github.v3.raw' -O -L \
+        https://api.github.com/repos/owner/repo/contents/path
+
+# files
+- The ~/.bash_profile would be used once, at login.
+- The ~/.bashrc script is read every time a shell is started.
+
+String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files
+
+    apt-get install mlocate
+    updatedb
+    locate -S
+    lsof -p <PID>
+
+    ls --help | grep -E '[-][tr]\b'
+    -r, --reverse              reverse order while sorting
+                                extension -X, size -S, time -t, version -v
+    -t                         sort by modification time, newest first
+
+    find /home -iname tecmint.txt
+
+    mkdir -p /not/existing/folder
+
+    cat > file <<'EOL'
+    EOL
+
+    ncdu --exclude='/root/data/*' /
+
+    du -hcd 2  / | more
+    du -a / | sort -n -r | head -n 20
+
+## rsync
+    rsync -aP  /root/_bin root@remote:/root
+    rsync -aP -e "ssh -p 10220" /local root@remote:/dir   --remove-source-files
+        -v, --verbose               increase verbosity
+        -a, --archive               archive mode; equals -rlptgoD (no -H,-A,-X)
+            --no-OPTION             turn off an implied OPTION (e.g. --no-D)
+        -r, --recursive             recurse into directories
+        -l, --links                 copy symlinks as symlinks
+        -p, --perms                 preserve permissions
+        -o, --owner                 preserve owner (super-user only)
+        -g, --group                 preserve group
+        -D                          same as --devices --specials
+        -t, --times                 preserve modification times
+        -S, --sparse                handle sparse files efficiently
+        -e, --rsh=COMMAND           specify the remote shell to use
+            --partial               keep partially transferred files
+            --partial-dir=DIR       put a partially transferred file into DIR
+        -z, --compress              compress file data during the transfer
+            --progress              show progress during transfer
+        -P                          same as --partial --progress
+
+## compress/uncompress
+    tar -zcvf new.tar.gz directory-name
+
+    tar -ztvf my-data.tar.gz
+    tar -tvf my-data.tar.gz
+    tar -tvf my-data.tar.gz '*.py'
+
+    tar -zxvf toExtract.tar.gz
+
+    gunzip file.gz
+
+# time
 ```
 sudo timedatectl set-ntp true
 TZ='Asia/Shanghai'; export TZ
@@ -355,22 +426,6 @@ sudo systemctl daemon-reload
 SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
 -S, --since=, -U, --until=
 ```
-
-# Files
-```
-cat > file <<'EOL'
-EOL
-
-ncdu --exclude='/root/data/*' /
-
-du -hcd 2  / | more
-du -a / | sort -n -r | head -n 20
-
-rsync -aP  /root/_bin root@remote:/root
-rsync -aP -e "ssh -p 10220" /root/data/docker-config root@remote:/root/data   --remove-source-files
-```
-- The ~/.bash_profile would be used once, at login.
-- The ~/.bashrc script is read every time a shell is started.
 
 # SELinux
 ```

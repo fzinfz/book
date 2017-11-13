@@ -1,8 +1,5 @@
 <!-- TOC -->
 
-- [qemu-img](#qemu-img)
-    - [Windows](#windows)
-    - [Linux](#linux)
 - [IOMMU](#iommu)
 - [KVM/libvirt](#kvmlibvirt)
     - [Pool](#pool)
@@ -23,17 +20,13 @@
 - [Vagrant](#vagrant)
 - [LXD](#lxd)
 - [oVirt](#ovirt)
+- [Intel vPro](#intel-vpro)
+- [qemu-system](#qemu-system)
+- [qemu-img](#qemu-img)
+    - [Windows](#windows)
+    - [Linux](#linux)
 
 <!-- /TOC -->
-
-# qemu-img
-## Windows
-https://cloudbase.it/qemu-img-windows/
-
-## Linux
-    qemu-img -h | tail -n1  # Supported formats
-    tar -xvf x.ova
-    qemu-img convert -O qcow2 x.vmdk x.qcow2
 
 # IOMMU
 https://pve.proxmox.com/wiki/Pci_passthrough
@@ -156,3 +149,24 @@ https://github.com/lxc/lxd#how-can-i-run-docker-inside-a-lxd-container
     yum install http://resources.ovirt.org/pub/yum-repo/ovirt-release41.rpm
     yum -y install ovirt-engine
     engine-setup
+
+# Intel vPro
+https://en.wikipedia.org/wiki/Intel_vPro  
+Intel vPro technology is an umbrella marketing term used by Intel for a large collection of computer hardware technologies, including Hyperthreading, Turbo Boost 3.0, VT-x, VT-d, Trusted Execution Technology (TXT), and Intel Active Management Technology (AMT).[1] When the vPro brand was launched (circa 2007), it was identified primarily with AMT,[2][3] thus some journalists still consider AMT to be the essence of vPro.[4]
+
+# qemu-system
+    qemu-system-aarch64       qemu-system-m68k          qemu-system-mipsel        qemu-system-s390x         qemu-system-unicore32
+    qemu-system-alpha         qemu-system-microblaze    qemu-system-moxie         qemu-system-sh4           qemu-system-x86_64
+    qemu-system-arm           qemu-system-microblazeel  qemu-system-or32          qemu-system-sh4eb         qemu-system-x86_64-spice
+    qemu-system-cris          qemu-system-mips          qemu-system-ppc           qemu-system-sparc         qemu-system-xtensa
+    qemu-system-i386          qemu-system-mips64        qemu-system-ppc64         qemu-system-sparc64       qemu-system-xtensaeb
+    qemu-system-lm32          qemu-system-mips64el      qemu-system-ppcemb        qemu-system-tricore      
+
+# qemu-img
+## Windows
+https://cloudbase.it/qemu-img-windows/
+
+## Linux
+    qemu-img -h | tail -n1  # Supported formats
+    tar -xvf x.ova
+    qemu-img convert -O qcow2 x.vmdk x.qcow2    

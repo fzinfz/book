@@ -1,7 +1,6 @@
 <!-- TOC -->
 
-- [Interactive notes](#interactive-notes)
-- [Shell](#shell)
+- [alias, functions and notes](#alias-functions-and-notes)
 - [top](#top)
 - [Exit code](#exit-code)
 - [Diagram](#diagram)
@@ -45,7 +44,6 @@
     - [compress/uncompress](#compressuncompress)
 - [time](#time)
 - [history without line numbers](#history-without-line-numbers)
-- [ssh](#ssh)
 - [font](#font)
 - [systemctl](#systemctl)
 - [SELinux](#selinux)
@@ -67,15 +65,13 @@
 - [DNS](#dns)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
+- [tools](#tools)
 
 <!-- /TOC -->
 
-# Interactive notes
+# alias, functions and notes
+https://github.com/fzinfz/scripts/blob/master/init.sh  
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
-
-# Shell
-http://explainshell.com/  
-https://www.netsarang.com/xshell_download.html
 
 # top
     * 1 - Single Cpu       Off (thus multiple cpus)
@@ -417,16 +413,6 @@ TZ='Asia/Shanghai'; export TZ
 # history without line numbers
 `history | cut -c 8-`
 
-# ssh
-    sudo apt-get install openssh-server
-
-    ssh-keygen -R hostname
-
-    ssh-keygen -t rsa -C "test@gmail.com"
-    chmod 600 ~/.ssh/id_rsa
-    # start the ssh-agent in the background   eval $(ssh-agent -s)
-    ssh-add ~/.ssh/id_rsa
-
 # font
 ```
 apt-get install  xfonts-base
@@ -546,3 +532,9 @@ https://hoytech.com/vmtouch/
     Plotting filesystem cache usage over time
     Maintaining "soft quotas" of cache usage
     Speeding up batch/cron jobs
+
+
+# tools
+http://explainshell.com/  
+https://www.netsarang.com/xshell_download.html  
+https://mobaxterm.mobatek.net/features.html  

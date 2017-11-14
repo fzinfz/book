@@ -3,7 +3,11 @@
 - [Monitoring](#monitoring)
     - [Pandora FMS](#pandora-fms)
     - [Cacti - PHP](#cacti---php)
+    - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
     - [Nagios - C](#nagios---c)
+    - [open-falcon - Go/JS](#open-falcon---gojs)
+    - [Munin - Perl/Shell](#munin---perlshell)
+    - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
     - [Ansible - Python](#ansible---python)
     - [Puppet - Ruby](#puppet---ruby)
@@ -46,8 +50,25 @@ https://github.com/pandorafms/pandorafms#screenshots
 ## Cacti - PHP
 https://github.com/Cacti/cacti
 
+## Zabbix - C/PHP/JAVA
+https://hub.docker.com/u/zabbix/  
+
 ## Nagios - C
 https://github.com/NagiosEnterprises/nagioscore
+
+## open-falcon - Go/JS
+https://github.com/open-falcon/falcon-plus/tree/master/docker
+
+## Munin - Perl/Shell
+networked resource monitoring tool  
+http://munin-monitoring.org/  
+http://guide.munin-monitoring.org/en/latest/tutorial/index.html  
+
+## netdata - C/Python/JS/Shell
+https://github.com/firehol/netdata (with screenshots)  
+https://github.com/firehol/netdata/wiki/Installation
+
+    bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
 
 # Management
 ## Ansible - Python

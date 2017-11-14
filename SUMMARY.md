@@ -27,6 +27,7 @@
   * [VBA](vba.md)
   * [OCaml](ocaml.md)
   * [Powershell](powershell.md)
+  * [django](django.md)
 * [Android/iOS](phone.md)
 * [Hardware](hw.md)
 * [Miscellaneous](misc.md)

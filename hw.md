@@ -9,7 +9,10 @@
     - [Online/double-conversion](#onlinedouble-conversion)
 - [Raspberry PI](#raspberry-pi)
     - [Console](#console)
+- [Arduino](#arduino)
+    - [Tutorials](#tutorials)
 - [RS232 3pin](#rs232-3pin)
+- [Resolution](#resolution)
 
 <!-- /TOC -->
 
@@ -55,7 +58,33 @@ Stop Bits: 1
 Flow Control: None
 ```
 
+# Arduino
+https://www.arduino.cc/en/Products.Compare
+
+## Tutorials
+http://tronixstuff.com/2013/12/12/arduino-tutorials-chapter-22-aref-pin/
+
 # RS232 3pin
 [RS232簡單接法(3線)](http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A))  
 ![](https://pic.pimg.tw/flykof/4a729ba808337.jpg)
 
+# Resolution
+
+    SQCIF = 128x96
+    QCIF = 176x144
+    QVGA = 320x240
+    CIF = 352x240/288
+    HVGA = 640x240
+    VGA = 640x480
+    2 CIF = 704x240/288
+    4 CIF = 704x480/576
+    D1 CROPPED = 704x480/576
+    D1 = 720x480/576
+
+    D1 (525) 720 x 480 is in NTSC
+    D1 (625) 720 x 576 is in PAL
+
+    720p is 1280 x 720. (921,600 total pixels)
+    1080p is 1920x1080. (2,073,600 total pixels)
+    3MP is 2048 x 1536. (3,145,728 total pixels)
+    5MP is 2560 x 1920. (4,915,200 total pixels)

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Mikrotik](#mikrotik)
+    - [Diagram](#diagram)
     - [CLI](#cli)
     - [PCQ](#pcq)
     - [PPP BCP](#ppp-bcp)
@@ -14,6 +15,9 @@
 <!-- /TOC -->
 
 # Mikrotik
+## Diagram
+![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)
+
 ## CLI
     put [resolve google.com server 8.8.8.8]
 

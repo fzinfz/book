@@ -30,12 +30,14 @@
     - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
     - [mkpart, format](#mkpart-format)
     - [fstab](#fstab)
+    - [NTFS](#ntfs)
+    - [mount ISO/NFS/CIFS](#mount-isonfscifs)
+        - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
     - [recovery mount](#recovery-mount)
     - [LVM, resize fs](#lvm-resize-fs)
         - [Add disk to vg](#add-disk-to-vg)
     - [btrfs](#btrfs)
     - [Swap](#swap)
-    - [mount ISO/NFS/CIFS](#mount-isonfscifs)
 - [wget/curl](#wgetcurl)
     - [curl github](#curl-github)
 - [files](#files)
@@ -64,6 +66,7 @@
 - [Proxy](#proxy-2)
 - [DNS](#dns)
 - [AD](#ad)
+- [cache diagnostics](#cache-diagnostics)
 
 <!-- /TOC -->
 
@@ -101,7 +104,8 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     sudo !!    # sudo last command
 
 ## add user to group
-sudo adduser foobar www-data
+    sudo adduser foobar www-data
+    sudo usermod -a -G ftp tony
 
 ## password
     echo user:pwd | chpasswd
@@ -158,6 +162,7 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 
 ## yum
     yum-config-manager --disable c7-media
+    yum --nogpgcheck localinstall xx.rpm
 
 ## dpkg
     dpkg --get-selections
@@ -247,7 +252,15 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
 # disk
 ## check info
+    lsblk
     tune2fs -l /dev/sda1 | grep -i count
+
+    gdisk -l /dev/sda  #fdisk many give wrong GPT partiton
+
+    # file -s /dev/vda
+        /dev/vda: DOS/MBR boot sector
+    # file -s /dev/vda1
+        /dev/vda1: Linux rev 1.0 ext4 filesystem data, UUID=... (needs journal recovery) (extents) (large files) (huge files)
 
 ## Convert between MBR and GPT
     sudo sgdisk -g /dev/sda
@@ -261,13 +274,29 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
 ## fstab
     /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
+    /dev/cdrom              /media/CentOS           auto    user,noauto,exec,utf8        0    0
     //192.168.88.10/_ISO /mnt/ISO/ cifs username=user,password=pwd 0 0
+    //servername/sharename /media/windowsshare cifs guest,uid=1000,iocharset=utf8 0 0
     /dev/mapper/x--vg--root /home           btrfs   defaults,subvol=@home 0       2
+    /dev/sda2       /mymnt/win   ntfs-3g  rw,umask=0000,defaults 0 0
 
 <dump> is checked by the dump(ext2/3 filesystem backup) utility. This field is usually set to 0, which disables the check.
 <fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 
 1 for the root device, 2 for other partitions, 0 to disable checking. 
 [Arch] If the root file system is btrfs, set to 0 instead of 1.
+
+## NTFS
+https://wiki.archlinux.org/index.php/NTFS-3G
+
+## mount ISO/NFS/CIFS
+    mount -o loop,ro x.iso /mnt/cd
+    mount.nfs nfs_server:/dir /dir
+    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
+    mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
+
+### NFS performance monitoring and tuning
+https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  
+http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
 
 ## recovery mount
     mount -o rw,remount /
@@ -293,7 +322,6 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     pvcreate /dev/sdb
     vgextend ubuntu-vg /dev/sdb
 
-
 ## btrfs
     btrfs filesystem usage /
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
@@ -306,21 +334,10 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
-## mount ISO/NFS/CIFS
-    mount -o loop,ro x.iso /mnt/cd
-
-    mount.nfs nfs_server:/dir /dir
-    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
-
-https://wiki.ubuntu.com/MountWindowsSharesPermanently
-    vi /etc/fstab
-    //servername/sharename  /media/windowsshare  cifs  guest,uid=1000,iocharset=utf8  0  0
-
 # wget/curl
     wget -O diff_name.zip http://...
     curl -O http://...
     curl -o diff_name.zip http://
-
 
 ## curl github
 https://github.com/settings/tokens
@@ -356,6 +373,8 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
 
     du -hcd 2  / | more
     du -a / | sort -n -r | head -n 20
+
+    ls -1 $PWD | wc -l  # count files
 
 ## rsync
     rsync -aP  /root/_bin root@remote:/root
@@ -399,11 +418,14 @@ TZ='Asia/Shanghai'; export TZ
 `history | cut -c 8-`
 
 # ssh
-```
-sudo apt-get install openssh-server
+    sudo apt-get install openssh-server
 
-ssh-keygen -R hostname
-```
+    ssh-keygen -R hostname
+
+    ssh-keygen -t rsa -C "test@gmail.com"
+    chmod 600 ~/.ssh/id_rsa
+    # start the ssh-agent in the background   eval $(ssh-agent -s)
+    ssh-add ~/.ssh/id_rsa
 
 # font
 ```
@@ -509,3 +531,18 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 
 # AD
 https://wiki.samba.org/index.php/Setting_up_Samba_as_an_NT4_PDC_(Quick_Start)
+
+# cache diagnostics 
+https://hoytech.com/vmtouch/
+
+    git clone https://github.com/hoytech/vmtouch.git
+    cd vmtouch && make && sudo make install
+
+    Discovering which files your OS is caching
+    Telling the OS to cache or evict certain files or regions of files
+    Locking files into memory so the OS won't evict them
+    Preserving virtual memory profile when failing over servers
+    Keeping a "hot-standby" file-server
+    Plotting filesystem cache usage over time
+    Maintaining "soft quotas" of cache usage
+    Speeding up batch/cron jobs

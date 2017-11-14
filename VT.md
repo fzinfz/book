@@ -17,6 +17,7 @@
         - [Backup](#backup)
         - [Restore](#restore)
     - [vmdk](#vmdk)
+    - [Inject driver](#inject-driver)
 - [Vagrant](#vagrant)
 - [LXD](#lxd)
 - [oVirt](#ovirt)
@@ -126,6 +127,10 @@ https://www.kernel.org/doc/Documentation/vfio.txt
 
 The tool also reverts a vmdk which was blown up, back into a thin file! ([Ref](http://www.how2blog.de/?p=98))
 
+## Inject driver
+http://www.v-front.de/2014/12/how-to-make-your-unsupported-nic-work.html  
+https://vibsdepot.v-front.de/wiki/index.php/List_of_currently_available_ESXi_packages  
+http://www.v-front.de/p/esxi-customizer-ps.html
 
 # Vagrant
 https://atlas.hashicorp.com/boxes/  

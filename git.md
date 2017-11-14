@@ -12,8 +12,10 @@
 - [stashing](#stashing)
 - [add origin](#add-origin)
 - [sync with original repo](#sync-with-original-repo)
+- [remove file](#remove-file)
 - [log](#log)
 - [Submodules](#submodules)
+- [Cheatsheet](#cheatsheet)
 
 <!-- /TOC -->
 
@@ -66,6 +68,7 @@ http://nbviewer.jupyter.org/
     git stash drop stash@{0}
 
 # add origin
+    git remote -v
     git remote add origin https://github.com/XXXX/YYY.git
     git config --global push.default simple
     git push --set-upstream origin master
@@ -79,9 +82,15 @@ http://nbviewer.jupyter.org/
 
     git pull origin master # fetch + merge
 
+# remove file
+    git filter-branch --tree-filter 'rm -f my_file' HEAD
+
 # log
     git log --since=2.weeks
 
 # Submodules
 https://git-scm.com/book/en/v2/Git-Tools-Submodules    
 treat the two projects as separate yet still be able to use one from within the other.
+
+# Cheatsheet
+https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf

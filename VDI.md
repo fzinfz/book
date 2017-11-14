@@ -11,6 +11,8 @@
 - [VDI Solutions - Open Source](#vdi-solutions---open-source)
     - [Apache Guacamole](#apache-guacamole)
     - [KVM-VDI by Vilnius University](#kvm-vdi-by-vilnius-university)
+- [IDV](#idv)
+    - [XenClient(discontinued)](#xenclientdiscontinued)
 
 <!-- /TOC -->
 
@@ -83,3 +85,7 @@ https://github.com/Seitanas/kvm-vdi/wiki
 supported backends: plain QEMU-KVM and OpenStack (still in development).
 
 https://www.neblogas.lt/2016/07/18/technical-info-ovirt-agent-sso/
+
+# IDV
+## XenClient(discontinued)
+Diagram: https://www.citrix.com/blogs/wp-content/uploads/2014/10/XenClient-Architectural-Diagram.jpg

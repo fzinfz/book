@@ -9,6 +9,7 @@
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
     - [SaltStack - Python](#saltstack---python)
+    - [Fabric - Python 2](#fabric---python-2)
 - [CI](#ci)
     - [Jenkins - JAVA](#jenkins---java)
     - [Travis - Ruby/JS](#travis---rubyjs)
@@ -66,6 +67,10 @@ https://hub.docker.com/r/chef/chef/
 ## SaltStack - Python
 https://github.com/saltstack/salt  
 https://hub.docker.com/r/saltstack/
+
+## Fabric - Python 2
+https://github.com/fabric/fabric  
+a Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks.
 
 # CI
 ## Jenkins - JAVA

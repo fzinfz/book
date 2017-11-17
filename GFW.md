@@ -4,6 +4,8 @@
 - [Shadowsocks](#shadowsocks)
 - [v2ray](#v2ray)
 - [Brook - Go](#brook---go)
+- [fastd](#fastd)
+- [tinc](#tinc)
 - [Transparent Proxy](#transparent-proxy)
 - [中文手册](#中文手册)
     - [V2ray](#v2ray)
@@ -45,8 +47,38 @@ L2TP/IPsec, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, a Tor bri
 https://www.v2ray.com/chapter_02/01_overview.html  
 https://toutyrater.github.io/v2ray-guide-pages/
 
+    "inbound": {
+        "protocol": "http",
+        "port":8123,
+        "settings": {
+            "timeout": 0
+        }
+    },
+    "inbound": {
+        "port": 1080,           // 本地监听端口
+        "listen": "0.0.0.0",
+        "protocol": "socks",    // 使用 Socks(5) 传入协议
+        "settings": {
+            "auth": "noauth",     // 不认证
+            "udp": false,         // 不开启 UDP 转发
+            "ip": "127.0.0.1"     // 当开启 UDP 时，V2Ray 需要知道本机的 IP 地址
+        }
+    },
+
 # Brook - Go
 https://github.com/txthinking/brook
+
+# fastd
+https://projects.universe-factory.net/projects/fastd/wiki  
+
+    deb http://ftp.de.debian.org/debian sid main
+    deb https://repo.universe-factory.net/debian/ sid main
+
+https://nilsschneider.net/2013/02/17/fastd-tutorial.html  
+https://github.com/digineo/fastd
+
+# tinc
+https://www.tinc-vpn.org/
 
 # Transparent Proxy
 https://github.com/shadowsocks/shadowsocks-libev#advanced-usage  

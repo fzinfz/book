@@ -60,7 +60,9 @@ netstat -ano | findstr LISTEN
 netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
 route add 192.168.0.0  MASK 255.255.0.0 10.0.0.1
 route add 172.16.0.0  MASK 255.255.0.0 10.0.0.1
-netsh interface ip set address "Ethernet adapter Ethernet 2" static 192.168.3.5 255.255.255.0 192.168.3.2
+netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.168.3.2
+
+SUBST X: "D:\Folder_to_map"
 ```
 
 # CMD Tools

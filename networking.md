@@ -24,11 +24,12 @@
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
-    - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
+    - [Any Proxy - Go](#any-proxy---go)
     - [V2Ray - Go](#v2ray---go)
     - [redsocks - C](#redsocks---c)
     - [Tinyproxy - C](#tinyproxy---c)
     - [moproxy - Rust](#moproxy---rust)
+    - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
     - [ipfw](#ipfw)
 - [NetFlow Software](#netflow-software)
 - [IPV6](#ipv6)
@@ -165,11 +166,59 @@ https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
         Relayd
 
 # Transparent Proxy
-## avege - Go port of redsocks
-https://github.com/avege/avege  
+## Any Proxy - Go
+https://github.com/ryanchapman/go-any-proxy  
+http://blog.rchapman.org/posts/Transparently_proxying_any_tcp_connection/
+
+    ./any_proxy -l :3129 -p "proxy_ip:1080"
+    iptables -t nat -A WEBPROXY -p tcp --dport 443 -j REDIRECT --to-ports 3129
 
 ## V2Ray - Go
 https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
+TPROXY required for UDP
+
+    "inboundDetour": [ {
+        "protocol": "dokodemo-door",
+        "port": 20088,
+        "settings": {
+            "network": "tcp,udp",
+            "timeout": 10,
+            "followRedirect": true
+        }
+    } ],
+
+    iptables -t nat -N V2RAY
+
+    # Ignore your V2Ray server's addresses
+    # It's very IMPORTANT, just be careful.
+    iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
+
+    # Ignore LANs and any other addresses you'd like to bypass the proxy
+    # See Wikipedia and RFC5735 for full list of reserved networks.
+    iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 127.0.0.0/8 -j RETURN
+    iptables -t nat -A V2RAY -d 169.254.0.0/16 -j RETURN
+    iptables -t nat -A V2RAY -d 172.16.0.0/12 -j RETURN
+    iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
+    iptables -t nat -A V2RAY -d 224.0.0.0/4 -j RETURN
+    iptables -t nat -A V2RAY -d 240.0.0.0/4 -j RETURN
+
+    # Anything else should be redirected to Dokodemo-door's local port
+    iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 20088
+    iptables -t nat -A OUTPUT -p tcp -j V2RAY
+
+    # Add any UDP rules
+    iptables -t mangle -N V2RAY
+    iptables -t mangle -N V2RAY_MARK
+
+    ip route add local default dev lo table 100
+    ip rule add fwmark 1 lookup 100
+    iptables -t mangle -A V2RAY -p udp --dport 53 -j TPROXY --on-port 20088 --tproxy-mark 0x01/0x01
+    iptables -t mangle -A V2RAY_MARK -p udp --dport 53 -j MARK --set-mark 1    
+
+    iptables -t mangle -A PREROUTING -j V2RAY
+    iptables -t mangle -A OUTPUT -j V2RAY_MARK
 
 ## redsocks - C
 https://github.com/darkk/redsocks  
@@ -182,6 +231,9 @@ https://github.com/tinyproxy/tinyproxy
 
 ## moproxy - Rust
 https://github.com/sorz/moproxy  
+
+## avege - Go port of redsocks
+https://github.com/avege/avege  
 
 ## ipfw
     sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1

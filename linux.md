@@ -177,6 +177,8 @@ apt policy docker-ce | head -n 20
 
 apt-get autoclean
 apt list --installed
+
+rm -r /var/lib/apt/lists/*
 ```
 
 ## deb manually

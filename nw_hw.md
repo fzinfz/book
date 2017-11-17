@@ -6,10 +6,11 @@
     - [PCQ](#pcq)
     - [PPP BCP](#ppp-bcp)
 - [ER-X](#er-x)
+    - [enable apt](#enable-apt)
     - [List dhcp/static clients](#list-dhcpstatic-clients)
     - [RIP](#rip)
     - [Firmware](#firmware)
-- [Unifi-AC-Lite](#unifi-ac-lite)
+- [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Commands](#commands)
 
 <!-- /TOC -->
@@ -51,6 +52,19 @@ Mem:           249        226         22          0         24         94
 Swap:            0          0          0
 ```
 
+## enable apt
+https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS
+
+    configure
+    set system package repository wheezy components 'main contrib non-free'
+    set system package repository wheezy distribution wheezy 
+    set system package repository wheezy url http://http.us.debian.org/debian
+    commit
+    save
+    exit
+    sudo apt-get update
+    apt-cache search supervisor
+
 ## List dhcp/static clients
 https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-and-Static/td-p/697223  
 
@@ -82,10 +96,9 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
     set interfaces ethernet eth1 address 192.168.3.2/24
     commit
 
-# Unifi-AC-Lite
+# Unifi-AC-Lite/LR
 ```
 system type             : Qualcomm Atheros QCA956X rev 0
-
 processor               : 0
 cpu model               : MIPS 74Kc V5.0
 BogoMIPS                : 385.84
@@ -93,16 +106,18 @@ wait instruction        : yes
 microsecond timers      : yes
 tlb_entries             : 32
 extra interrupt vector  : yes
-hardware watchpoint     : yes, count: 4, address/irw mask: [0x0000, 0x01e8, 0x0058, 0x0048]
+hardware watchpoint     : yes, count: 4, ...
 ASEs implemented        : mips16 dsp
 
 BZ.v3.7.5# free -m
              total         used         free       shared      buffers
-Mem:        126316        62272        64044            0            0
+Mem:(Lite)        126316        62272        64044            0            0
 -/+ buffers:              62272        64044
+Mem:(LR)        126272        66764        59508            0            0
+-/+ buffers:              66764        59508
 Swap:            0            0            0
 ```
 
 ## Commands
     BZ.v3.7.5# info
-    BZ.v3.7.5# set-inform http://unifi-controller:8080/inform
+    BZ.v3.7.5# set-inform http://unifi:8080/inform

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Basic](#basic)
+- [disk](#disk)
 - [list top processes sort by memory](#list-top-processes-sort-by-memory)
 - [sum memory of all processes](#sum-memory-of-all-processes)
 - [list and grep process members](#list-and-grep-process-members)
@@ -14,7 +15,6 @@
 
     Import-Module ServerManager
     Add-WindowsFeature RDS-Virtualization
-
 
 # disk
     GWMI -namespace root\cimv2 -class win32_volume | FL -property DriveLetter, DeviceID

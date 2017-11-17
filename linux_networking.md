@@ -17,13 +17,17 @@
     - [bridge-slave-interface-vlan.network](#bridge-slave-interface-vlannetwork)
     - [macvtap.network](#macvtapnetwork)
 - [systemd.link](#systemdlink)
-- [Firewall](#firewall)
-    - [iptables](#iptables)
-        - [NAT](#nat)
-        - [Trace](#trace)
-        - [Log manually](#log-manually)
-    - [CentOS](#centos)
-    - [Ubuntu 16](#ubuntu-16)
+- [iptables](#iptables)
+    - [table / chain](#table--chain)
+    - [rules](#rules)
+    - [NAT](#nat)
+    - [Trace](#trace)
+    - [Log manually](#log-manually)
+    - [Transparent Proxy - jump to `networking` page.](#transparent-proxy---jump-to-networking-page)
+- [iptables frontend](#iptables-frontend)
+    - [CentOS firewall-cmd](#centos-firewall-cmd)
+    - [Ubuntu - ufw](#ubuntu---ufw)
+- [ip rule](#ip-rule)
 - [tc](#tc)
 - [LVS](#lvs)
 - [Virtual routing and forwarding](#virtual-routing-and-forwarding)
@@ -59,8 +63,8 @@ sysctl  -p
 ```
 
 # systemd-networkd.service
-/usr/lib/systemd/systemd-networkd
-https://wiki.archlinux.org/index.php/systemd-networkd
+/usr/lib/systemd/systemd-networkd  
+https://wiki.archlinux.org/index.php/systemd-networkd  
 https://www.freedesktop.org/software/systemd/man/systemd.netdev.html#
 
 ```
@@ -86,47 +90,47 @@ IDX LINK             TYPE               OPERATIONAL SETUP
 ```
 
 # systemd.netdev
-local administration network directory `/etc/systemd/network`
-system network directory `/usr/lib/systemd/network`
-volatile runtime network directory `/run/systemd/network`
-`/run` is temporary and `/usr/lib` is for vendors
-symlink with the same name pointing to `/dev/null` disables the configuration file entirely
+    local administration network directory `/etc/systemd/network`
+    system network directory `/usr/lib/systemd/network`
+    volatile runtime network directory `/run/systemd/network`
+    `/run` is temporary and `/usr/lib` is for vendors
+    symlink with the same name pointing to `/dev/null` disables the configuration file entirely
 
 ## Kind
-`bridge`	A bridge device is a software switch, and each of its slave devices and the bridge itself are ports of the switch.
-`tap`	A persistent Level 2 tunnel between a network device and a device node.
-`tun`	A persistent Level 3 tunnel between a network device and a device node.
-`veth`	An Ethernet tunnel between a pair of network devices.
-`sit`	An IPv6 over IPv4 tunnel.
-`vti`	An IPv4 over IPSec tunnel.
+    `bridge`	A bridge device is a software switch, and each of its slave devices and the bridge itself are ports of the switch.
+    `tap`	A persistent Level 2 tunnel between a network device and a device node.
+    `tun`	A persistent Level 3 tunnel between a network device and a device node.
+    `veth`	An Ethernet tunnel between a pair of network devices.
+    `sit`	An IPv6 over IPv4 tunnel.
+    `vti`	An IPv4 over IPSec tunnel.
 
 ## Examples
 ### bridge.netdev
-[NetDev]
-Name=bridge0
-Kind=bridge
+    [NetDev]
+    Name=bridge0
+    Kind=bridge
 
-[Match]
-Virtualization=no
+    [Match]
+    Virtualization=no
 
 ### dummy.netdev
-[NetDev]
-Name=dummy-test
-Kind=dummy
-MACAddress=12:34:56:78:9a:bc
+    [NetDev]
+    Name=dummy-test
+    Kind=dummy
+    MACAddress=12:34:56:78:9a:bc
 
 ### vlan1.netdev
-[NetDev]
-Name=vlan1
-Kind=vlan
+    [NetDev]
+    Name=vlan1
+    Kind=vlan
 
-[VLAN]
-Id=1
+    [VLAN]
+    Id=1
 
 ### macvtap.netdev 
-[NetDev]
-Name=macvtap-test
-Kind=macvtap
+    [NetDev]
+    Name=macvtap-test
+    Kind=macvtap
 
 Compare with macvtap.network below.
 
@@ -134,112 +138,115 @@ Compare with macvtap.network below.
 https://www.freedesktop.org/software/systemd/man/systemd.network.html
 
 ## static.network
-[Match]
-Name=enp2s0
+    [Match]
+    Name=enp2s0
 
-[Network]
-Address=192.168.0.15/24
-Gateway=192.168.0.1
+    [Network]
+    Address=192.168.0.15/24
+    Gateway=192.168.0.1
 
 ## dhcp.network
-[Match]
-Name=en*
+    [Match]
+    Name=en*
 
-[Network]
-DHCP=yes
+    [Network]
+    DHCP=yes
 
 ## A bridge with two enslaved links
-```
-# /etc/systemd/network/25-bridge-static.network
-[Match]
-Name=bridge0
+    # /etc/systemd/network/25-bridge-static.network
+    [Match]
+    Name=bridge0
 
-[Network]
-...
-# /etc/systemd/network/25-bridge-slave-interface-1.network
-[Match]
-Name=enp2s0
+    [Network]
+    ...
 
-[Network]
-Bridge=bridge0
+    # /etc/systemd/network/25-bridge-slave-interface-1.network
+    [Match]
+    Name=enp2s0
 
-# /etc/systemd/network/25-bridge-slave-interface-x.network 
-```
+    [Network]
+    Bridge=bridge0
+
+    # /etc/systemd/network/25-bridge-slave-interface-x.network 
 
 ## bridge-slave-interface-vlan.network
-[Match]
-Name=enp2s0
+    [Match]
+    Name=enp2s0
 
-[Network]
-Bridge=bridge0
+    [Network]
+    Bridge=bridge0
 
-[BridgeVLAN]
-VLAN=1-32
-PVID=42
-EgressUntagged=42
+    [BridgeVLAN]
+    VLAN=1-32
+    PVID=42
+    EgressUntagged=42
 
-[BridgeVLAN]
-VLAN=100-200
+    [BridgeVLAN]
+    VLAN=100-200
 
-[BridgeVLAN]
-EgressUntagged=300-400
+    [BridgeVLAN]
+    EgressUntagged=300-400
 
-VLAN=
-The VLAN ID allowed on the port. 
+    VLAN=
+    The VLAN ID allowed on the port. 
 
-EgressUntagged=
-The VLAN ID specified here will be used to untag frames on egress. 
-Configuring EgressUntagged= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well. 
+    EgressUntagged=
+    The VLAN ID specified here will be used to untag frames on egress. 
+    Configuring EgressUntagged= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well. 
 
-PVID=
-The Port VLAN ID specified here is assigned to all untagged frames at ingress. PVID= can be used only once. 
-Configuring PVID= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well.
+    PVID=
+    The Port VLAN ID specified here is assigned to all untagged frames at ingress. PVID= can be used only once. 
+    Configuring PVID= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well.
 
 ## macvtap.network
-[Match]
-Name=enp0s25
+    [Match]
+    Name=enp0s25
 
-[Network]
-MACVTAP=macvtap-test
+    [Network]
+    MACVTAP=macvtap-test
 
 # systemd.link
-Network link configuration is performed by the net_setup_link udev builtin.
+Network link configuration is performed by the net_setup_link udev builtin.  
 udev (userspace /dev) is a device manager for the Linux kernel. As the successor of devfsd and hotplug, udev primarily manages device nodes in the /dev directory.
 
-# Firewall
-## iptables
-```
-iptables -I INPUT -i docker0 -j ACCEPT
-iptables -I INPUT -s  localhost -j ACCEPT
+# iptables
+## table / chain
+    iptables -t nat -L # filter(default), nat, mangle, raw and security
+    iptables -t nat -F SHADOWSOCKS  # empty chain rules
+    iptables -t nat -X SHADOWSOCKS  # delete empty chain
 
-iptables -A INPUT --dport 81 -j DROP
-iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
-iptables -A INPUT -p udp --dport 161 -j ACCEPT
+    iptables -t nat -L -n -v -x
+    iptables -L --line-numbers
+    iptables -D INPUT 2
 
-iptables-save
-iptables -L --line-numbers
-iptables -D INPUT 2
-```
+    iptables-save
 
+## rules
+    iptables -I INPUT -i docker0 -j ACCEPT
+    iptables -I INPUT -s localhost -j ACCEPT
 
+    iptables -A INPUT --dport 81 -j DROP
+    iptables -A INPUT -p tcp -m multiport  --dport 3306,6379 -j DROP
+    iptables -A INPUT -p udp --dport 161 -j ACCEPT
 
-### NAT
+## NAT
 http://www.netfilter.org/documentation/HOWTO//NAT-HOWTO-3.html
-      _____                                     _____
-     /     \                                   /     \
-   PREROUTING -->[Routing ]----------------->POSTROUTING----->
-     \D-NAT/     [Decision]                    \S-NAT/
-                     |                            ^
-                     |                            |
-                     --------> Local Process ------
+
+        _____                                     _____
+        /     \                                   /     \
+    PREROUTING -->[Routing ]----------------->POSTROUTING----->
+        \D-NAT/     [Decision]                    \S-NAT/
+                        |                            ^
+                        |                            |
+                        --------> Local Process ------
 
 Masquerading is a specialized form of SNAT  
 Port forwarding, load sharing, and transparent proxying are all forms of DNAT.
 
-http://www.netfilter.org/documentation/HOWTO//NAT-HOWTO-6.html
+http://www.netfilter.org/documentation/HOWTO//NAT-HOWTO-6.html  
 http://ipset.netfilter.org/iptables-extensions.man.html
 
-### Trace
+## Trace
 http://backreference.org/2010/06/11/iptables-debugging/
 
     modprobe nf_log_ipv4
@@ -247,11 +254,14 @@ http://backreference.org/2010/06/11/iptables-debugging/
     iptables -t raw -A OUTPUT -p icmp -j TRACE
     iptables -t raw -A PREROUTING -p icmp -j TRACE
     vi /var/log/kern.log
-    
-### Log manually   
+
+## Log manually
 http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
 
-## CentOS
+## Transparent Proxy - jump to `networking` page.
+
+# iptables frontend
+## CentOS firewall-cmd
 ```
 firewall-cmd --permanent --zone=public \
 --add-rich-rule="rule family="ipv4" \
@@ -265,12 +275,19 @@ firewall-cmd --list-all
 
 service firewalld stop 
 ```
-## Ubuntu 16
+
+## Ubuntu - ufw
 ```
 sudo ufw allow 11200:11299/tcp
 sudo ufw status verbose
 sudo ufw disable
 ```
+
+# ip rule
+    # ip rule show
+    0:	from all lookup local 
+    32766:	from all lookup main 
+    32767:	from all lookup default
 
 # tc
 http://events.linuxfoundation.org/sites/events/files/slides/Linux_traffic_control.pdf  

@@ -24,11 +24,11 @@
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
-    - [Any Proxy - Go](#any-proxy---go)
     - [V2Ray - Go](#v2ray---go)
     - [redsocks - C](#redsocks---c)
     - [Tinyproxy - C](#tinyproxy---c)
     - [moproxy - Rust](#moproxy---rust)
+    - [Any Proxy - Go](#any-proxy---go)
     - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
     - [ipfw](#ipfw)
 - [NetFlow Software](#netflow-software)
@@ -166,16 +166,9 @@ https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
         Relayd
 
 # Transparent Proxy
-## Any Proxy - Go
-https://github.com/ryanchapman/go-any-proxy  
-http://blog.rchapman.org/posts/Transparently_proxying_any_tcp_connection/
-
-    ./any_proxy -l :3129 -p "proxy_ip:1080"
-    iptables -t nat -A WEBPROXY -p tcp --dport 443 -j REDIRECT --to-ports 3129
-
 ## V2Ray - Go
 https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
-TPROXY required for UDP
+TPROXY required for UDP, Linux support only
 
     "inboundDetour": [ {
         "protocol": "dokodemo-door",
@@ -188,12 +181,8 @@ TPROXY required for UDP
     } ],
 
     iptables -t nat -N V2RAY
+    iptables -t nat -I V2RAY -p tcp --dport 4433 -j RETURN  # bypass Port
 
-    # Ignore your V2Ray server's addresses
-    # It's very IMPORTANT, just be careful.
-    iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
-
-    # Ignore LANs and any other addresses you'd like to bypass the proxy
     # See Wikipedia and RFC5735 for full list of reserved networks.
     iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
     iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
@@ -206,7 +195,8 @@ TPROXY required for UDP
 
     # Anything else should be redirected to Dokodemo-door's local port
     iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 20088
-    iptables -t nat -A OUTPUT -p tcp -j V2RAY
+    iptables -t nat -I OUTPUT -p tcp -j V2RAY
+    iptables -t nat -I PREROUTING -p tcp -j V2RAY
 
     # Add any UDP rules
     iptables -t mangle -N V2RAY
@@ -215,7 +205,7 @@ TPROXY required for UDP
     ip route add local default dev lo table 100
     ip rule add fwmark 1 lookup 100
     iptables -t mangle -A V2RAY -p udp --dport 53 -j TPROXY --on-port 20088 --tproxy-mark 0x01/0x01
-    iptables -t mangle -A V2RAY_MARK -p udp --dport 53 -j MARK --set-mark 1    
+    iptables -t mangle -A V2RAY_MARK -p udp --dport 53 -j MARK --set-mark 1
 
     iptables -t mangle -A PREROUTING -j V2RAY
     iptables -t mangle -A OUTPUT -j V2RAY_MARK
@@ -231,6 +221,12 @@ https://github.com/tinyproxy/tinyproxy
 
 ## moproxy - Rust
 https://github.com/sorz/moproxy  
+
+## Any Proxy - Go
+https://github.com/ryanchapman/go-any-proxy  
+TCP CONNECTION
+
+    ./any_proxy -l :7777 -p "proxy_ip:1080"
 
 ## avege - Go port of redsocks
 https://github.com/avege/avege  

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
     - [Diagram](#diagram)
     - [CLI](#cli)
@@ -10,10 +11,18 @@
     - [List dhcp/static clients](#list-dhcpstatic-clients)
     - [RIP](#rip)
     - [Firmware](#firmware)
+    - [custom scripts](#custom-scripts)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Commands](#commands)
+    - [Issues](#issues)
 
 <!-- /TOC -->
+
+# arm/mipsel/x86 packages
+http://pkg.entware.net/binaries/
+
+    tar xvfz *.ipk
+    tar xvfz data.tar.gz
 
 # Mikrotik
 ## Diagram
@@ -96,6 +105,10 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
     set interfaces ethernet eth1 address 192.168.3.2/24
     commit
 
+## custom scripts    
+    chmod +x /config/scripts/post-config.d/yourscript.sh
+        #!/bin/bash
+
 # Unifi-AC-Lite/LR
 ```
 system type             : Qualcomm Atheros QCA956X rev 0
@@ -121,3 +134,6 @@ Swap:            0            0            0
 ## Commands
     BZ.v3.7.5# info
     BZ.v3.7.5# set-inform http://unifi:8080/inform
+
+## Issues
+Every minor setting change on controller causes SSID reset.

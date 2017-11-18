@@ -155,7 +155,6 @@ https://github.com/OkamiSupport/How-to-build-your-own-private-network
 
 # GO Simple Tunnel
 https://github.com/ginuerzh/gost  
-[PPTP, redsocks, iptables, https/socks5全局上网](https://docs.google.com/document/d/1OGIrebKWq__Lt0ADxprxapevC1BEzPaR6ry9XY_WDdA/edit#heading=h.qh7wl45v71jq)
 
 # goproxy for GAE
 https://github.com/phuslu/goproxy/blob/wiki/SimpleGuide.md

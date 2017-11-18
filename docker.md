@@ -35,14 +35,14 @@
     sudo systemctl start docker
 
 # Dockerfile code snippets
+## apt
+    RUN apt update && apt install -y 
+        --no-install-recommends && rm -r /var/lib/apt/lists/*
+
 ## alpine
     # install pip3
     wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 
-    RUN apt update && apt install -y 
-        --no-install-recommends && rm -r /var/lib/apt/lists/*
-
-## apt
     RUN apk add --no-cache --virtual .build-deps  \
         curl ca-certificates jq \
         && apk del .build-deps

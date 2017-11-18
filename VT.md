@@ -8,7 +8,8 @@
     - [Shutdown timeout](#shutdown-timeout)
     - [Nested](#nested)
     - [vfio](#vfio)
-        - [GRUB](#grub)
+        - [Raw disk mapping](#raw-disk-mapping)
+    - [GRUB](#grub)
     - [UEFI](#uefi)
     - [virsh](#virsh)
 - [VSphere / ESXi](#vsphere--esxi)
@@ -88,7 +89,14 @@ https://www.kernel.org/doc/Documentation/vfio.txt
     echo '0000:42:00.1' | sudo tee /sys/bus/pci/devices/0000:42:00.1/driver/unbind
     echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
-### GRUB
+### Raw disk mapping
+    <disk type='block' device='disk'>
+        <driver name='qemu' type='raw'/>
+        <source dev='/dev/md/storage'/>
+        <target dev='vdb' bus='virtio'/>
+    </disk>
+
+## GRUB
     vi /etc/default/grub
         GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
     update-grub

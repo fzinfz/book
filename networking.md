@@ -168,15 +168,14 @@ https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
 # Transparent Proxy
 ## V2Ray - Go
 https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
-TPROXY required for UDP, Linux support only
 
     "inboundDetour": [ {
         "protocol": "dokodemo-door",
         "port": 20088,
         "settings": {
-            "network": "tcp,udp",
+            "network": "tcp,udp",   // TPROXY required for UDP
             "timeout": 10,
-            "followRedirect": true
+            "followRedirect": true  // Linux support only
         }
     } ],
 

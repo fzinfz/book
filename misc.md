@@ -1,11 +1,11 @@
 <!-- TOC -->
 
 - [vi/vim](#vivim)
+- [VSCode extensions](#vscode-extensions)
 - [UEFI Shell](#uefi-shell)
 - [Hardware](#hardware)
     - [CPUID to arch](#cpuid-to-arch)
     - [CPU flag](#cpu-flag)
-    - [RS232 3pin](#rs232-3pin)
 - [MySQL Cluster](#mysql-cluster)
 - [Sync](#sync)
 - [Instant Notifications](#instant-notifications)
@@ -19,6 +19,10 @@
     cw => change word
     ciw => change word from cursor
     :w !sudo tee %      ===> sudo save
+
+# VSCode extensions
+AlanWalk.markdown-toc
+shardulm94.trailing-spaces
 
 # UEFI Shell
 https://software.intel.com/en-us/articles/uefi-shell

@@ -178,6 +178,14 @@ Intel vPro technology is an umbrella marketing term used by Intel for a large co
     qemu-system-i386          qemu-system-mips64        qemu-system-ppc64         qemu-system-sparc64       qemu-system-xtensaeb
     qemu-system-lm32          qemu-system-mips64el      qemu-system-ppcemb        qemu-system-tricore      
 
+    # qemu-system-x86_64 -M ?
+    Supported machines are:
+    pc                   Standard PC (i440FX + PIIX, 1996) (alias of pc-i440fx-2.9)
+    pc-i440fx-2.9        Standard PC (i440FX + PIIX, 1996) (default)
+    q35                  Standard PC (Q35 + ICH9, 2009) (alias of pc-q35-2.9)
+    isapc                ISA-only PC
+    none                 empty machine
+
 # qemu-img
 ## Windows
 https://cloudbase.it/qemu-img-windows/

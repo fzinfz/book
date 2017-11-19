@@ -4,6 +4,8 @@
 - [top](#top)
 - [Exit code](#exit-code)
 - [Diagram](#diagram)
+- [X11](#x11)
+    - [Forwarding](#forwarding)
 - [Permission](#permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
@@ -13,6 +15,7 @@
     - [Redhat](#redhat)
         - [EPEL](#epel)
     - [Ubuntu](#ubuntu)
+        - [CN mirrors](#cn-mirrors)
     - [Debian](#debian)
     - [yum](#yum)
     - [dpkg](#dpkg)
@@ -58,6 +61,7 @@
     - [Installing from local](#installing-from-local)
     - [boot repair](#boot-repair)
     - [ubuntu](#ubuntu)
+- [modules](#modules)
 - [JAVA_HOME](#java_home)
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
@@ -95,6 +99,16 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
+
+# X11
+## Forwarding
+https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
+
+    AllowTcpForwarding yes
+    X11Forwarding yes
+    X11DisplayOffset 10
+    X11UseLocalhost yes
+
 
 # Permission
     sudo !!    # sudo last command
@@ -138,9 +152,9 @@ Main - Canonical-supported free and open-source software.
 Universe - Community-maintained free and open-source software.  
 Restricted - Proprietary drivers for devices.  
 Multiverse - Software restricted by copyright or legal issues.  
-```
-echo deb http://archive.ubuntu.com/ubuntu zesty main  >> /etc/apt/sources.list
-```
+
+### CN mirrors
+https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
 
 ## Debian
 → experimental  
@@ -199,6 +213,7 @@ Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
     lsb_release -a
     uname -a
     cat /etc/*-release
+    vi /boot/config* # compiled parameters
 
 ## CentOS
     grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -310,11 +325,9 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
-    btrfsctl -r -500m /media/Alpha
-    btrfs filesystem resize -500m /media/Alpha
+    btrfs filesystem resize -500m /
 
-    lvreduce --size -40G /dev/debian9-vg/root
-    lvextend -l +100%FREE /dev/debian9-vg/root --resize-fs 
+    lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
 
 ### Add disk to vg
     pvcreate /dev/sdb
@@ -326,7 +339,7 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
 
 ## Swap
     swapoff -v /dev/mapper/ubuntu--vg-swap_1
-
+    lvreduce --size -22G /dev/debian9-vg/swap
     mkswap /dev/mapper/ubuntu--vg-swap_1
     swapon -va
 
@@ -487,6 +500,9 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
     sudo add-apt-repository ppa:yannubuntu/boot-repair
     sudo apt-get update
     sudo apt-get install -y boot-repair && boot-repair
+
+# modules
+/etc/modules-load.d/modules.conf # boot load
 
 # JAVA_HOME
     echo export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" >> /etc/profile

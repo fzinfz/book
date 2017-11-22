@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Monitoring](#monitoring)
+    - [Elastic Beats](#elastic-beats)
     - [Pandora FMS](#pandora-fms)
     - [Cacti - PHP](#cacti---php)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
@@ -21,6 +22,9 @@
 <!-- /TOC -->
 
 # Monitoring
+## Elastic Beats
+https://www.elastic.co/products/beats
+
 ## Pandora FMS
 https://github.com/pandorafms/pandorafms#screenshots
 

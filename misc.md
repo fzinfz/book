@@ -15,7 +15,8 @@
 <!-- /TOC -->
 
 # vi/vim
-    :%s/pattern/replace/g_  # i/I: case in/sensitive
+    go to line: Esc , line#, Shift-g
+    :%s/pattern/replace/g_  # i/I: case in/sensitive    
     cw => change word
     ciw => change word from cursor
     :w !sudo tee %      ===> sudo save

@@ -3,6 +3,7 @@
 - [alias, functions and notes](#alias-functions-and-notes)
 - [top](#top)
 - [Exit code](#exit-code)
+- [File descriptor](#file-descriptor)
 - [Diagram](#diagram)
 - [X11](#x11)
     - [Forwarding](#forwarding)
@@ -20,7 +21,6 @@
     - [yum](#yum)
     - [dpkg](#dpkg)
     - [apt](#apt)
-    - [deb manually](#deb-manually)
 - [Release & kernel](#release--kernel)
     - [CentOS](#centos)
     - [Debian](#debian-1)
@@ -97,6 +97,11 @@ http://tldp.org/LDP/abs/html/exitcodes.html
         kill -9 $PPID of script	$? returns 137 (128 + 9)
     130	Script terminated by Control-C
 
+# File descriptor
+    0: stdin; 1: stdout; 2: stderr
+    2>&1: redirects stderr to stdout
+    2>&1 >/dev/null
+
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
@@ -108,7 +113,6 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     X11Forwarding yes
     X11DisplayOffset 10
     X11UseLocalhost yes
-
 
 # Permission
     sudo !!    # sudo last command
@@ -195,20 +199,6 @@ apt list --installed
 rm -r /var/lib/apt/lists/*
 ```
 
-## deb manually
-```
-wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
-
-ar x linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
-tar -Jxf data.tar.xz
-install -m644 boot/vmlinuz-4.9.0-rc8-amd64 /boot/vmlinuz-4.9.0-rc8-amd64
-cp -Rav lib/modules/4.9.0-rc8-amd64 /lib/modules/
-depmod -a 4.9.0-rc8-amd64
-
-dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
-```
-Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
-
 # Release & kernel
     lsb_release -a
     uname -a
@@ -265,7 +255,7 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
 
 # disk
 ## check info
-    lsblk
+    lsblk -f # check file system type
     tune2fs -l /dev/sda1 | grep -i count
 
     gdisk -l /dev/sda  #fdisk many give wrong GPT partiton

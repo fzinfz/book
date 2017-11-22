@@ -1,6 +1,8 @@
 <!-- TOC -->
 
+- [Xen vs KVM](#xen-vs-kvm)
 - [IOMMU](#iommu)
+- [Xen](#xen)
 - [KVM/libvirt](#kvmlibvirt)
     - [Pool](#pool)
     - [Driver](#driver)
@@ -33,10 +35,27 @@
 
 <!-- /TOC -->
 
+# Xen vs KVM
+http://drsalbertspijkers.blogspot.co.uk/2017/05/kvm-kernel-virtual-machine-or-xen.html  
+![](https://4.bp.blogspot.com/-we18-TvbbgE/WSfqL65mC6I/AAAAAAAACeA/lcC-3Xn6vxcXVdQb1_BR7PklQu4doFWdQCLcB/s640/virtualization_xen_kvm.png)
+
 # IOMMU
-https://pve.proxmox.com/wiki/Pci_passthrough
-https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
-https://github.com/awilliam/rom-parser
+https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt  
+https://pve.proxmox.com/wiki/Pci_passthrough  
+https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF  
+https://github.com/awilliam/rom-parser  
+
+# Xen
+https://www.xenproject.org/users/getting-started.html  
+Xen Project and Performance
+
+https://wiki.xenproject.org/wiki/Compiling_Xen_From_Source
+
+    make xenconfig # kernel 4.2+
+
+https://wiki.debian.org/Xen
+
+    apt-get install xen-system
 
 # KVM/libvirt
 ## Pool

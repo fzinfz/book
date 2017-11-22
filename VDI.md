@@ -4,6 +4,7 @@
 - [NVIDIA Certified](#nvidia-certified)
 - [AMD](#amd)
 - [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
+    - [Optional Firmware](#optional-firmware)
     - [GVT-g](#gvt-g)
 - [SPICE & QXL guest driver](#spice--qxl-guest-driver)
 - [XenServer](#xenserver)
@@ -38,6 +39,13 @@ https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_f
 * –s (Intel® GVT -s): vSGA: virtual shared graphics acceleration (multiple VMs to one physical GPU)
 * –g (Intel® GVT -g): vGPU: virtual graphics processing unit (multiple VMs to one physical GPU)
 
+## Optional Firmware
+https://01.org/linuxgraphics/downloads/firmware
+
+GuC：designed to perform graphics workload scheduling on the various graphics parallel engines.  
+DMC: low-power idle states. It provides capability to save and restore display registers across these low-power states independently from the OS/Kernel.  
+HUC: offload some of the media functions from the CPU to GPU.  
+
 ## GVT-g
 https://01.org/igvt-g/blogs/wangbo85/2017/intel-gvt-g-kvmgt-public-release-q22017  
 kernel 4.10+ / QEMU 2.9+ / [Xeon E3_v4+ / Core Gen 5th(Broadwell)+](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Eighth_generation)  
@@ -51,7 +59,10 @@ https://01.org/linuxgraphics/downloads/intel-graphics-update-tool-linux-os-v2.0.
 
 https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide  
 For KVMGT, you also can use the current upstream Linux kernel and QEMU directly since all the enabling patches have been upstreamed.  
-For XenGT, you must use the repositories we provided.
+https://github.com/intel/gvt-linux/tree/gvt-staging/drivers/gpu/drm/i915/gvt
+
+For XenGT, you must use the repositories we provided.  
+https://github.com/intel/Igvtg-xen/tree/xengt-stable-4.9/
 
     vi /etc/default/grub
         i915.hvm_boot_foreground=1 i915.enable_gvt=1 kvm.ignore_msrs=1 intel_iommu=igfx_off drm.debug=0
@@ -60,24 +71,37 @@ For XenGT, you must use the repositories we provided.
         V4 means it is "Broadwell" platform, 
         V5 means it is "Skylake" or "Kabylake" platform
 
-    uuid -n 3 | xargs -n1 -I {} sudo sh -c \
-    "echo {} > /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/create"
+    vgpu_create="/sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/create"
+    echo "673475f6-cd28-11e7-9d1e-773e86af553a" > $vgpu_create
+    ls /sys/bus/pci/devices/0000:00:02.0/
+    uuid -n 3 | xargs -n1 -I {} sudo sh -c "echo {} > $vgpu_create"
 
+    git clone -b gvt-stable-4.12 https://github.com/intel/gvt-linux.git
+    git clone -b gvt-staging https://github.com/intel/gvt-linux.git ./gvt-linux-staging
+    git clone -b xengt-stable-4.9 https://github.com/01org/igvtg-xen
     git clone -b stable-2.9.0 https://github.com/intel/Igvtg-qemu.git
     modprobe vfio_mdev
     modprobe vfio_iommu_type1
+
+    echo ""|make oldconfig
+    CONFIG_DRM_I915_GVT
+    CONFIG_DRM_I915_GVT_KVMGT
+    CONFIG_DRM_I915_GVT_XENGT
+    CONFIG_VFIO_MDEV
+    CONFIG_VFIO_MDEV_DEVICE
 
 https://www.openstack.org/assets/presentation-media/Enable-GPU-virtualization-in-OpenStack.pdf
 
 https://www.kraxel.org/blog/2017/01/virtual-gpu-support-landing-upstream/
 
-    <qemu:commandline>
-        <qemu:arg value='-device'/>
-        <qemu:arg value='vfio-pci,addr=05.0,sysfsdev=/sys/class/mdev_bus/0000:00:02.0/673475f6-cd28-11e7-9d1e-773e86af553a'/>
-    </qemu:commandline>
+    <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+        <qemu:commandline>
+            <qemu:arg value='-device'/>
+            <qemu:arg value='vfio-pci,addr=05.0,sysfsdev=/sys/class/mdev_bus/0000:00:02.0/673475f6-cd28-11e7-9d1e-773e86af553a'/>
+        </qemu:commandline>
 
     /usr/bin/qemu-system-x86_64 \
-        -m 2048 -smp 2 -M pc -cpu host \
+        -m 4048 -smp 4 -M pc -cpu host \
         -name gvt-g-guest \
         -cdrom /data/win10.iso \
         -drive file=/data/win10.img,index=0,media=disk,format=raw  \
@@ -87,9 +111,9 @@ https://www.kraxel.org/blog/2017/01/virtual-gpu-support-landing-upstream/
         -serial stdio \
         -vnc :1 \
         -machine kernel_irqchip=on \
-        -global PIIX4_PM.disable_s3=1 -global PIIX4_PM.disable_s4=1 \        
+        -global PIIX4_PM.disable_s3=1 -global PIIX4_PM.disable_s4=1 \
         -usb -usbdevice tablet \
-        -device vfio-pci,sysfsdev=/sys/bus/pci/devices/0000:00:02.0/673475f6-cd28-11e7-9d1e-773e86af553a,rombar=0    
+        -device vfio-pci,sysfsdev=/sys/bus/pci/devices/0000:00:02.0/673475f6-cd28-11e7-9d1e-773e86af553a,rombar=0
 
 # SPICE & QXL guest driver
 https://www.spice-space.org/download.html

@@ -31,6 +31,7 @@
 - [tc](#tc)
 - [LVS](#lvs)
 - [Virtual routing and forwarding](#virtual-routing-and-forwarding)
+- [DNS](#dns)
 
 <!-- /TOC -->
 
@@ -303,3 +304,8 @@ multiple independent routing tables working simultaneously on the same router or
 Think of this feature as VLAN for layer 3
 
 https://www.kernel.org/doc/Documentation/networking/vrf.txt
+
+# DNS
+    /etc/nsswitch.conf
+        #hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
+        hosts:          files dns  # fix nslookup works but ping not work

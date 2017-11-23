@@ -7,7 +7,6 @@
 - [Diagram](#diagram)
 - [X11](#x11)
     - [Forwarding](#forwarding)
-- [Permission](#permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
     - [sudoers](#sudoers)
@@ -21,25 +20,8 @@
     - [yum](#yum)
     - [dpkg](#dpkg)
     - [apt](#apt)
-- [Release & kernel](#release--kernel)
-    - [CentOS](#centos)
-    - [Debian](#debian-1)
-    - [Ubuntu](#ubuntu-1)
-    - [RHEL](#rhel)
+- [Grub](#grub)
 - [Benchmark](#benchmark)
-- [disk](#disk)
-    - [check info](#check-info)
-    - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
-    - [mkpart, format](#mkpart-format)
-    - [fstab](#fstab)
-    - [NTFS](#ntfs)
-    - [mount ISO/NFS/CIFS](#mount-isonfscifs)
-        - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
-    - [recovery mount](#recovery-mount)
-    - [LVM, resize fs](#lvm-resize-fs)
-        - [Add disk to vg](#add-disk-to-vg)
-    - [btrfs](#btrfs)
-    - [Swap](#swap)
 - [wget/curl](#wgetcurl)
     - [curl github](#curl-github)
 - [files](#files)
@@ -66,16 +48,19 @@
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
 - [Proxy](#proxy-2)
-- [DNS](#dns)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
+- [WOL](#wol)
 - [tools](#tools)
+- [USB Persistence](#usb-persistence)
 
 <!-- /TOC -->
 
 # alias, functions and notes
 https://github.com/fzinfz/scripts/blob/master/init.sh  
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+
+    !!    # sudo last command
 
 # top
     * 1 - Single Cpu       Off (thus multiple cpus)
@@ -113,9 +98,6 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     X11Forwarding yes
     X11DisplayOffset 10
     X11UseLocalhost yes
-
-# Permission
-    sudo !!    # sudo last command
 
 ## add user to group
     sudo adduser foobar www-data
@@ -199,50 +181,11 @@ apt list --installed
 rm -r /var/lib/apt/lists/*
 ```
 
-# Release & kernel
-    lsb_release -a
-    uname -a
-    cat /etc/*-release
-    vi /boot/config* # compiled parameters
-
-## CentOS
+# Grub
     grub2-mkconfig -o /boot/grub2/grub.cfg
     awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
     grub2-editenv list
-
-## Debian
-https://en.wikipedia.org/wiki/Debian_version_history#Release_table
-
-    6.0	Squeeze	2.6.32
-    7	Wheezy 3.2
-    8	Jessie 3.16 April/May 2020
-    9	Stretch	4.9	June 2022
-    10	Buster
-    11	Bullseye
-
-## Ubuntu
-https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version
-
-    12.04   Precise Pangolin 3.2+
-    12.10   Quantal Quetzal  3.5
-    13.04   Raring Ringtail  3.8
-    13.10   Saucy Salamander 3.11
-    14.04   Trusty Tahr      3.13
-    14.10   Utopic Unicorn   3.16
-    15.04   Vivid Vervet     3.19
-    15.10   Wily Werewolf    4.2
-    16.04   Xenial Xerus     4.4
-    16.10   Yakkety Yak      4.8
-    17.04   Zesty Zapus      4.10
-    17.10   Artful Aardvark  4.13
-
-## RHEL
-https://access.redhat.com/articles/3078
-
-    7   3.10
-    6   2.6.32
-    5   2.6.18
 
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
@@ -252,88 +195,6 @@ sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
-
-# disk
-## check info
-    lsblk -f # check file system type
-    tune2fs -l /dev/sda1 | grep -i count
-
-    gdisk -l /dev/sda  #fdisk many give wrong GPT partiton
-
-    # file -s /dev/vda
-        /dev/vda: DOS/MBR boot sector
-    # file -s /dev/vda1
-        /dev/vda1: Linux rev 1.0 ext4 filesystem data, UUID=... (needs journal recovery) (extents) (large files) (huge files)
-
-## Convert between MBR and GPT
-    sudo sgdisk -g /dev/sda
-    sudo sgdisk -m /dev/sda
-    sudo partprobe -s
-
-## mkpart, format
-    parted -s /dev/sdb mklabel gpt
-    parted -s /dev/sdb unit mib mkpart primary 0% 100%
-    mkfs.ext4 /dev/sdb1
-
-## fstab
-    /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
-    /dev/cdrom              /media/CentOS           auto    user,noauto,exec,utf8        0    0
-    //192.168.88.10/_ISO /mnt/ISO/ cifs username=user,password=pwd 0 0
-    //servername/sharename /media/windowsshare cifs guest,uid=1000,iocharset=utf8 0 0
-    /dev/mapper/x--vg--root /home           btrfs   defaults,subvol=@home 0       2
-    /dev/sda2       /mymnt/win   ntfs-3g  rw,umask=0000,defaults 0 0
-
-<dump> is checked by the dump(ext2/3 filesystem backup) utility. This field is usually set to 0, which disables the check.
-<fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 
-1 for the root device, 2 for other partitions, 0 to disable checking. 
-[Arch] If the root file system is btrfs, set to 0 instead of 1.
-
-## NTFS
-https://wiki.archlinux.org/index.php/NTFS-3G
-
-## mount ISO/NFS/CIFS
-    mount -o loop,ro x.iso /mnt/cd
-    mount.nfs nfs_server:/dir /dir
-    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
-    mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
-
-### NFS performance monitoring and tuning
-https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  
-http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
-
-## recovery mount
-    mount -o rw,remount /
-
-## LVM, resize fs
-    pvs
-    pvdisplay -v -m
-    lvcreate -L 80G ubuntu-vg -n data
-
-    lvresize -L +20G /dev/debian9-vg/root
-    resize2fs /dev/debian9-vg/root
-
-    yum install e4fsprogs
-    resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
-
-    btrfs filesystem resize -500m /
-
-    lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
-
-### Add disk to vg
-    pvcreate /dev/sdb
-    vgextend ubuntu-vg /dev/sdb
-
-## btrfs
-    btrfs filesystem usage /
-    dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
-
-## Swap
-    swapoff -v /dev/mapper/ubuntu--vg-swap_1
-    lvreduce --size -22G /dev/debian9-vg/swap
-    mkswap /dev/mapper/ubuntu--vg-swap_1
-    swapon -va
-
-    echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
 # wget/curl
     wget -O diff_name.zip http://...
@@ -518,11 +379,6 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
     sudo apt install -y proxychains
     vi /etc/proxychains.conf
 
-# DNS
-    /etc/nsswitch.conf
-        #hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
-        hosts:          files dns  # fix nslookup works but ping not work
-
 # AD
 https://wiki.samba.org/index.php/Setting_up_Samba_as_an_NT4_PDC_(Quick_Start)
 
@@ -541,8 +397,22 @@ https://hoytech.com/vmtouch/
     Maintaining "soft quotas" of cache usage
     Speeding up batch/cron jobs
 
+# WOL
+    ethtool enp1s0  | grep Wake-on
+
+    p (PHY activity)
+    u (unicast activity)
+    m (multicast activity)
+    b (broadcast activity)
+    g (magic packet activity) *
+    a (ARP activity)
+    d (disabled)
 
 # tools
 http://explainshell.com/  
 https://www.netsarang.com/xshell_download.html  
 https://mobaxterm.mobatek.net/features.html  
+
+# USB Persistence
+https://docs.kali.org/downloading/kali-linux-live-usb-persistence  
+http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence  

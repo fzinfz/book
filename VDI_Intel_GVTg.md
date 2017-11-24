@@ -6,7 +6,6 @@
 - [Kernel Compiling](#kernel-compiling)
     - [KVMGT](#kvmgt)
     - [XENGT](#xengt)
-- [vfio](#vfio)
 - [GRUB](#grub)
 - [mdev](#mdev)
 - [QEMU](#qemu)
@@ -40,7 +39,10 @@ https://www.kraxel.org/blog/2017/01/virtual-gpu-support-landing-upstream/
     CONFIG_DRM_I915_GVT_XENGT # XENGT
     CONFIG_VFIO_MDEV
     CONFIG_VFIO_MDEV_DEVICE
-    cat .config | grep -P 'I915|VFIO'
+    CONFIG_VFIO_IOMMU_TYPE1
+
+    cat .config | grep -P 'I915|VFIO|KVM'
+    lsmod | grep -P -i 'vfio|kvm|i915'
 
 ## KVMGT
 For KVMGT, you also can use the current upstream Linux kernel and QEMU directly since all the enabling patches have been upstreamed.  
@@ -57,11 +59,6 @@ https://github.com/intel/Igvtg-xen/tree/xengt-stable-4.9/
 https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#332-build-qemu--xen-for-xengt
 
     git clone -b xengt-stable-4.9 https://github.com/01org/igvtg-xen  # ~111MB
-
-# vfio
-    modprobe vfio_mdev
-    modprobe vfio_iommu_type1
-    lsmod | grep -P -i 'vfio|kvm|i915'
 
 # GRUB
     vi /etc/default/grub # KVMGT

@@ -17,7 +17,7 @@
 * [Virtualization](VT.md)
   * [OpenStack](openstack.md)
   * [VDI](VDI.md)
-  * [Intel GVT-g](VDI_intel_GVTg.md)
+  * [Intel GVT-g](VDI_Intel_GVTg.md)
 * [Storage(SW)](storage.md)
 * [Windows](windows.md)
 * [BSD](bsd.md)

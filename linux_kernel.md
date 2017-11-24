@@ -1,6 +1,10 @@
 <!-- TOC -->
 
 - [Check](#check)
+- [Compiling](#compiling)
+    - [debug](#debug)
+    - [.config](#config)
+- [Install deb manually](#install-deb-manually)
 - [Releases](#releases)
     - [Debian](#debian)
     - [Ubuntu](#ubuntu)
@@ -22,10 +26,6 @@
     - [Linux 4.0 Released 12 April, 2015](#linux-40-released-12-april-2015)
     - [Linux 3.10 Released 30 June, 2013](#linux-310-released-30-june-2013)
     - [Linux 2.6.32 Released 3 December, 2009](#linux-2632-released-3-december-2009)
-- [Compiling](#compiling)
-    - [debug](#debug)
-    - [.config](#config)
-- [Install deb manually](#install-deb-manually)
 
 <!-- /TOC -->
 
@@ -33,6 +33,31 @@
     lsb_release -a
     uname -a
     cat /etc/*-release
+
+# Compiling
+https://www.ibm.com/developerworks/community/blogs/5144904d-5d75-45ed-9d2b-cf1754ee936a/entry/kernel-build-system?lang=en (Chinese)
+
+## debug
+    scripts/config --enable DEBUG_INFO
+    make clean
+
+## .config
+oldconfig: /boot/config*  # compiled parameters
+Force pass overwriten: https://lists.kernelnewbies.org/pipermail/kernelnewbies/2013-May/008287.html
+
+# Install deb manually
+```
+wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
+
+ar x linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
+tar -Jxf data.tar.xz
+install -m644 boot/vmlinuz-4.9.0-rc8-amd64 /boot/vmlinuz-4.9.0-rc8-amd64
+cp -Rav lib/modules/4.9.0-rc8-amd64 /lib/modules/
+depmod -a 4.9.0-rc8-amd64
+
+dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
+```
+Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/    
 
 # Releases
 https://kernelnewbies.org/LinuxVersions
@@ -109,28 +134,3 @@ livepatch is not feature complete, yet it provides a basic infrastructure
 
 ## Linux 3.10 Released 30 June, 2013
 ## Linux 2.6.32 Released 3 December, 2009
-
-# Compiling
-https://www.ibm.com/developerworks/community/blogs/5144904d-5d75-45ed-9d2b-cf1754ee936a/entry/kernel-build-system?lang=en (Chinese)
-
-## debug
-    scripts/config --enable DEBUG_INFO
-    make clean
-
-## .config
-oldconfig: /boot/config*  # compiled parameters
-Force pass overwriten: https://lists.kernelnewbies.org/pipermail/kernelnewbies/2013-May/008287.html
-
-# Install deb manually
-```
-wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
-
-ar x linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
-tar -Jxf data.tar.xz
-install -m644 boot/vmlinuz-4.9.0-rc8-amd64 /boot/vmlinuz-4.9.0-rc8-amd64
-cp -Rav lib/modules/4.9.0-rc8-amd64 /lib/modules/
-depmod -a 4.9.0-rc8-amd64
-
-dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
-```
-Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/    

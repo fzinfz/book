@@ -4,6 +4,8 @@
 - [IOMMU](#iommu)
 - [Xen](#xen)
 - [KVM/libvirt](#kvmlibvirt)
+    - [Debug](#debug)
+    - [virsh](#virsh)
     - [Pool](#pool)
     - [Driver](#driver)
     - [MacVTap](#macvtap)
@@ -13,7 +15,6 @@
         - [Raw disk mapping](#raw-disk-mapping)
     - [GRUB](#grub)
     - [UEFI](#uefi)
-    - [virsh](#virsh)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
     - [Config](#config)
@@ -26,6 +27,7 @@
 - [oVirt](#ovirt)
 - [Intel vPro](#intel-vpro)
 - [qemu-system](#qemu-system)
+    - [Q35](#q35)
 - [qemu-img](#qemu-img)
     - [Windows](#windows)
     - [Linux](#linux)
@@ -51,6 +53,7 @@ Xen Project and Performance
 
 https://wiki.xenproject.org/wiki/Compiling_Xen_From_Source
 
+    apt-get build-dep xen   # `deb-src` required
     make xenconfig # kernel 4.2+
 
 https://wiki.debian.org/Xen
@@ -58,6 +61,57 @@ https://wiki.debian.org/Xen
     apt-get install xen-system
 
 # KVM/libvirt
+https://libvirt.org/news.html
+
+    v3.10.0 (unreleased)
+        qemu: Add vmcoreinfo feature
+            Starting with QEMU 2.11, the guest can save kernel debug details when this feature is enabled and the kernel supports it.
+    3.9.0 (2017-11-02)
+    v3.8.0 (2017-10-04)
+    v3.7.0 (2017-09-04)
+        bhyve: Support autoport for VNC ports
+        qemu: Added support for setting heads of virtio GPU
+
+
+## Debug
+https://fedoraproject.org/wiki/How_to_debug_Virtualization_problems
+
+    virt-host-validate
+    virsh capabilities
+
+http://events.linuxfoundation.org/sites/events/files/slides/Debugging-libvirt-QEMU-in-OpenStack-2015-CloudOpen-Eu.pdf
+
+    /etc/libvirt/libvirtd.conf
+        log_filters="1:qemu 1:libvirt 3:security 3:event 3:util 3:file" log_outputs="1:file:/var/log/libvirt/libvirtd.log"
+    systemctl restart libvirtd
+
+https://libvirt.org/logging.html
+
+    export LIBVIRT_DEBUG=1
+    export LIBVIRT_LOG_FILTERS="1:qemu 1:libvirt"
+    export LIBVIRT_LOG_OUTPUTS="1:journald 1:file:/tmp/virsh.log"
+
+    LIBVIRT_LOG_FILTERS:
+        x:name  (log message only)
+        x:+name (log message + stack trace)
+        1: DEBUG
+        2: INFO
+        3: WARNING
+        4: ERROR
+
+    LIBVIRT_LOG_OUTPUTS
+        stderr output goes to stderr
+        syslog:name use syslog for the output and use the given name as the ident
+        file:file_path output to a file, with the given filepath
+        journald output goes to systemd journal
+
+## virsh
+    virsh list --all
+    export EDITOR=vim # for `virsh edit`
+
+    virsh domxml-to-native qemu-argv demo.xml > demo.sh
+    virsh domxml-from-native qemu-argv demo.args > demo.xml
+
 ## Pool
     virsh pool-edit default     # debian 9 default: /var/lib/libvirt/images/
 
@@ -124,12 +178,6 @@ https://www.kernel.org/doc/Documentation/vfio.txt
     apt install -y ovmf
     systemctl restart libvirtd
     # select UEFI while creating VM
-
-## virsh
-    virsh list --all
-
-    virsh domxml-to-native qemu-argv demo.xml > demo.sh
-    virsh domxml-from-native qemu-argv demo.args > demo.xml
 
 # VSphere / ESXi
 ## Raw disk mapping (RDM)
@@ -204,6 +252,14 @@ Intel vPro technology is an umbrella marketing term used by Intel for a large co
     q35                  Standard PC (Q35 + ICH9, 2009) (alias of pc-q35-2.9)
     isapc                ISA-only PC
     none                 empty machine
+
+## Q35
+https://www.linux-kvm.org/images/0/06/2012-forum-Q35.pdf
+
+    Q35 has IOMMU
+    Q35 has PCIe Switches vs PCI Bridges (I440FX/PIIX4) 
+
+https://wiki.qemu.org/Features/Q35
 
 # qemu-img
 ## Windows

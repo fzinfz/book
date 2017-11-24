@@ -1,3 +1,13 @@
+<!-- TOC -->
+
+- [Articles](#articles)
+- [Go Environment variables](#go-environment-variables)
+
+<!-- /TOC -->
+
+# Articles
+https://www.zhihu.com/question/21409296 (Chinese)
+
 # Go Environment variables
 https://golang.org/cmd/go/#hdr-Environment_variables
 

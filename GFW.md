@@ -26,6 +26,7 @@
 - [Other tools](#other-tools)
 - [LightSword](#lightsword)
 - [ShadowVPN](#shadowvpn)
+- [gohop VPN - go](#gohop-vpn---go)
 - [GO Simple Tunnel](#go-simple-tunnel)
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
@@ -152,6 +153,9 @@ https://medium.com/@UnsignedInt8
 
 # ShadowVPN
 https://github.com/OkamiSupport/How-to-build-your-own-private-network
+
+# gohop VPN - go
+https://github.com/bigeagle/gohop
 
 # GO Simple Tunnel
 https://github.com/ginuerzh/gost  

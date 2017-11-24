@@ -4,7 +4,6 @@
 - [NVIDIA Certified](#nvidia-certified)
 - [AMD](#amd)
 - [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
-- [Update tool](#update-tool)
 - [Optional Firmware](#optional-firmware)
 - [SPICE & QXL guest driver](#spice--qxl-guest-driver)
 - [XenServer](#xenserver)
@@ -41,18 +40,14 @@ https://01.org/sites/default/files/users/u16902/graphics_virtualization_update_f
 
 Visit `Intel GVT-g` page for more.
 
-# Update tool
-https://01.org/linuxgraphics/downloads/intel-graphics-update-tool-linux-os-v2.0.5
-
-    wget https://download.01.org/gfx/RPM-GPG-GROUP-KEY-ilg
-    sudo apt-key add RPM-GPG-GROUP-KEY-ilg
-
 # Optional Firmware
 https://01.org/linuxgraphics/downloads/firmware
 
 GuC：designed to perform graphics workload scheduling on the various graphics parallel engines.  
 DMC: low-power idle states. It provides capability to save and restore display registers across these low-power states independently from the OS/Kernel.  
 HUC: offload some of the media functions from the CPU to GPU.  
+
+    ls /lib/firmware/i915/ -l
 
 # SPICE & QXL guest driver
 https://www.spice-space.org/download.html

@@ -5,9 +5,8 @@
 - [mkpart, format](#mkpart-format)
 - [fstab](#fstab)
 - [NTFS](#ntfs)
-- [mount ISO/NFS/CIFS](#mount-isonfscifs)
+- [mount/umount](#mountumount)
     - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
-- [recovery mount](#recovery-mount)
 - [LVM, resize fs](#lvm-resize-fs)
     - [Add disk to vg](#add-disk-to-vg)
 - [btrfs](#btrfs)
@@ -52,18 +51,18 @@
 # NTFS
 https://wiki.archlinux.org/index.php/NTFS-3G
 
-# mount ISO/NFS/CIFS
+#  mount/umount
     mount -o loop,ro x.iso /mnt/cd
     mount.nfs nfs_server:/dir /dir
     mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
     mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
+    mount -o rw,remount /   # recovery
+    umount -l /PATH/OF/BUSY-DEVICE
+    umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
 
 ## NFS performance monitoring and tuning
 https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  
 http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
-
-# recovery mount
-    mount -o rw,remount /
 
 # LVM, resize fs
     pvs

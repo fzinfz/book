@@ -25,6 +25,7 @@
 - [wget/curl](#wgetcurl)
     - [curl github](#curl-github)
 - [files](#files)
+    - [tar](#tar)
     - [rsync](#rsync)
     - [compress/uncompress](#compressuncompress)
 - [time](#time)
@@ -84,8 +85,8 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 
 # File descriptor
     0: stdin; 1: stdout; 2: stderr
-    2>&1: redirects stderr to stdout
     2>&1 >/dev/null
+    ssh-add 2>/dev/null
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
@@ -141,6 +142,8 @@ Multiverse - Software restricted by copyright or legal issues.
 
 ### CN mirrors
 https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
+
+    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
 
 ## Debian
 → experimental  
@@ -237,6 +240,18 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
     du -a / | sort -n -r | head -n 20
 
     ls -1 $PWD | wc -l  # count files
+
+## tar
+    tar -xvf {tarball.tar} {special_file}
+
+    -j : filter archive through bzip2, use to decompress .bz2 files.
+    -z: filter archive through gzip, use to decompress .gz files.
+
+    -x: instructs tar to extract files.
+    -t: List the contents of an archive.
+
+    -v: Verbose (show progress while extracting files).
+    -f: specifies filename / tarball name.
 
 ## rsync
     rsync -aP  /root/_bin root@remote:/root

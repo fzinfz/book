@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Endianness](#endianness)
+- [Protection ring](#protection-ring)
 - [Power Connectors](#power-connectors)
     - [Industrial](#industrial)
 - [UPS](#ups)
@@ -20,6 +21,9 @@
 https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html  
 In big endian, you store the most significant byte(MSB) in the smallest address.  
 In little endian, you store the least significant byte(LSB) in the smallest address
+
+# Protection ring
+![](https://en.wikipedia.org/wiki/File:Priv_rings.svg)
 
 # Power Connectors
 https://en.wikipedia.org/wiki/IEC_60320#Appliance_couplers  

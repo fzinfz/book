@@ -1,23 +1,30 @@
 <!-- TOC -->
 
-- [Doc](#doc)
+- [Memory Management Unit (MMU)](#memory-management-unit-mmu)
+- [kmalloc & vmalloc](#kmalloc--vmalloc)
+- [System Management Mode (SMM)](#system-management-mode-smm)
+- [Memory Map](#memory-map)
+    - [system memory](#system-memory)
+        - [Legacy Region](#legacy-region)
+    - [Firmware Perspective - Platform Initialization (PI) specification](#firmware-perspective---platform-initialization-pi-specification)
+        - [Pre-EFI-initialization (PEI) phase](#pre-efi-initialization-pei-phase)
 - [free](#free)
-- [dmesg | grep e820](#dmesg--grep-e820)
+- [dmesg](#dmesg)
 - [/proc/iomem](#prociomem)
 - [/proc/vmallocinfo](#procvmallocinfo)
 
 <!-- /TOC -->
 
-# Doc
+# Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf
 
-Memory Management Unit (MMU) translates the virtual address into the physical RAM address 
-Paging solves the external fragmenta>on problem by using fixed sized 
-units in both physical and virtual memory
-The address “0x1000” maps to different physical addresses in different 
-processes 
+    MMU translates the virtual address into the physical RAM address 
+    Paging solves the external fragmenta>on problem by using fixed sized 
+    units in both physical and virtual memory
+    The address “0x1000” maps to different physical addresses in different 
+    processes 
 
-    # P23
+    # P23 => diagram
     Virtual address = VPN :: offset
         Virtual page number (VPN) is an index into a page table
         Page table determines page frame number (PFN)
@@ -33,18 +40,96 @@ processes
     – ___7_th virtual page is address 0x2000 (3rd physical page) 
     • Physical address = _0x2000_ + _0x468_ =  _0x2468_
 
-# free
-              total        used        free      shared  buff/cache   available
-Mem:       23596328     4675168    10635496       74832     8285664    18466200
-Swap:       1511420           0     1511420
+# kmalloc & vmalloc
+https://static.lwn.net/images/pdf/LDD3/ch08.pdf
 
-# dmesg | grep e820
+    `kmalloc` is fast (unless it blocks) and 
+    doesn’t clear the memory it obtains; the allocated region still holds its previous content.* 
+    The allocated region is also contiguous in physical memory. 
+
+    `vmalloc` allocates a contiguous memory region in the virtual address space. 
+    Although the pages are not consecutive in physical memory (each page is retrieved with a separate call to alloc_page),
+    the kernel sees them as a contiguous range of addresses. 
+    vmalloc returns 0 (the NULL address) if an error occurs, 
+    otherwise, it returns a pointer to a linear memory area of size at least size.
+
+# System Management Mode (SMM)
+http://invisiblethingslab.com/resources/misc09/smm_cache_fun.pdf
+
+    SMM is the most privileged CPU operation mode on x86/x86_64 architectures. 
+    code lives in SMRAM. 
+    limit access to SMRAM memory only to system ﬁrmware (BIOS). 
+    after loading the SMM code into SMRAM, can (and should) later "lock down" system conﬁguration..., even for an OS kernel (or a hypervisor). 
+
+# Memory Map
+https://firmware.intel.com/sites/default/files/resources/A_Tour_Beyond_BIOS_Memory_Map_in%20UEFI_BIOS.pdf
+
+    Typical memory map includes the storage accessed by processor directly.
+    1) Physical memory. E.g. main memory, SMRAM (SMM stolen memory), integrated graphic stolen memory.
+    2) Memory Mapped IO.
+
+## system memory
+    the main dynamic random access memory (DRAM)
+    1) Legacy region less-than 1MiB
+    2) Main memory between 1MiB and 4GiB
+    3) Main memory great-than 4GiB
+
+### Legacy Region
+    for legacy OS or device consideration. 
+     0–640KiB (0-0xA0000): DOS Area. (normally) for legacy OS (DOS) or boot loader usage.
+     640–768KiB (0xA0000-0xC0000): SMRAM/Legacy Video Buffer Area. This region can
+    be configured as SMM memory, or mapped IO for legacy video buffer.
+     768–896KiB (0xC0000-0xE0000): Expansion Area for legacy option ROM. This region
+    is DRAM and could be locked to be read-only.
+     896KiB–1MiB (0xE0000-0x100000): System BIOS Area. This region could be DRAM
+    or could be configured as memory IO to flash region.
+
+## Firmware Perspective - Platform Initialization (PI) specification
+### Pre-EFI-initialization (PEI) phase
+no memory map term in PEI phase. The “memory map” concept is reported by in PEI Hand-of-Block (HOB).
+
+### Driver eXecution Environment (DXE) Phase
+Global Coherency Domain Services (GCD) are used to manage the memory and I/O resources visible to the boot processor, including GCD memory space map, and GCD IO space map.
+
+## OS Perspective
+GetMemoryMap() interface returns an array of UEFI memory descriptors.  
+no UEFI memory map for S3 resume, because S3 resume only has PEI phase.  
+The memory map should NOT be changed in S4 resume phase, because OS restores the system memory from disk directly.  
+
+legacy ACPI specification: INT15 E820H function call, or E820 table. 
+
+The difference is that E820 table does not have runtime concept,  
+so memory mapped I/O and memory mapped I/O port space allowed for virtual mode calls to UEFI run-time functions does not exist.
+
+# free
+                total        used        free      shared  buff/cache   available
+    Mem:       23596328     4675168    10635496       74832     8285664    18466200
+    Swap:       1511420           0     1511420
+
+# dmesg
+```
+grep -i efi
+[    0.000000] efi: EFI v2.50 by American Megatrends
+[    0.363043] pci 0000:00:02.0: BAR 2: assigned to efifb   
+[    0.368065] Registered efivars operations
+[    0.903316] efifb: probing for efifb     # efifb is only for EFI booted Intel Macs
+[    0.903324] efifb: framebuffer at 0xc0000000, using 3072k, total 3072k
+[    0.903325] efifb: mode is 1024x768x32, linelength=4096, pages=1
+[    0.903326] efifb: scrolling: redraw
+[    0.903327] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
+[    0.905314] fb0: EFI VGA frame buffer device
+[    1.098604] EFI Variables Facility v0.08 2004-May-17
+[    1.324444] fb: switching to inteldrmfb from EFI VGA # inteldrmfb: intel drm frame buffer
+
+grep e820
 [    0.000000] e820: BIOS-provided physical RAM map:
 
 [    0.000000] e820: last_pfn = 0x66e000 max_arch_pfn = 0x400000000	# ‭2^34 = 17 179 869 184‬
 [    0.000000] e820: last_pfn = 0x4f400 max_arch_pfn = 0x400000000
+```
 
 # /proc/iomem
+```
 00000000-00000fff : Reserved                #     4 095    0b          ‭1111 1111 1111‬
 [    0.000000] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
 00001000-00057fff : System RAM              # ‭  360 447‬    0b‭0101 0111 1111 1111 1111‬
@@ -92,8 +177,10 @@ Swap:       1511420           0     1511420
 [    0.425877] e820: reserve RAM buffer [mem 0x4e26d000-0x4fffffff]     # ‭-31 010 815‬
 4e5ae000-4ea1afff : System RAM                      ‭# 1 319 219 199‬       ‭ -4 640 767‬
 [    0.000000] BIOS-e820: [mem 0x000000004e5ae000-0x000000004ea1afff] usable
+[    0.000000] efi:  ACPI 2.0=0x4ea1b000  ACPI=0x4ea1b000  SMBIOS=0x4f2cf000  ESRT=0x4a4393d8 
 4ea1b000-4edf1fff : ACPI Non-volatile Storage       # ‭1 323 245 567‬        ‭-4 026 367‬
 [    0.000000] BIOS-e820: [mem 0x000000004ea1b000-0x000000004edf1fff] ACPI NVS
+[    0.000000] ACPI: UEFI 0x000000004EA4AEA0 000042 (v01 INTEL  EDK2     00000002      01000013)
 [    0.425877] e820: reserve RAM buffer [mem 0x4ea1b000-0x4fffffff]     # ‭-22 958 079‬
 4edf2000-4f39cfff : Reserved                        # ‭1 329 188 863‬        -5 943 295‬
 [    0.000000] BIOS-e820: [mem 0x000000004edf2000-0x000000004f39cfff] reserved
@@ -186,35 +273,38 @@ ff000000-ffffffff : Reserved        # ‭4 294 967 295‬, ‭-16 777 215‬
   4ddec9000-4de11dfff : Kernel bss
 66e000000-66fffffff : RAM buffer    # ‭‭27 648 851 967‬, -33 554 431‬
 [    0.425878] e820: reserve RAM buffer [mem 0x66e000000-0x66fffffff]
+```
 
 # /proc/vmallocinfo
-    0xffffb2a680000000 ~= ‭1.845×10^19 bits ~= 2EiB
-    0xffffffffc0cfe000 - 0xffffb2a680000000 = 0x4d5940cfe000  = 8.5045734793216 × 10^13
+```
+0xffffb2a680000000 ~= ‭1.845×10^19 bits ~= 2EiB
+0xffffffffc0cfe000 - 0xffffb2a680000000 = 0x4d5940cfe000  = 8.5045734793216 × 10^13
 
-    Addr                                     Diff
-    0xffffb2a680000000-0xffffb2a680002000    8192 hpet_enable+0x39/0x2ca phys=0x00000000fed00000 ioremap             ‭# -8 192‬
-    0xffffb2a680002000-0xffffb2a680004000    8192 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea43000 ioremap
-    0xffffb2a680004000-0xffffb2a680006000    8192 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004edf1000 ioremap
-    0xffffb2a680006000-0xffffb2a680008000    8192 dmar_parse_one_drhd+0x1db/0x560 phys=0x00000000fed90000 ioremap
-    0xffffb2a680008000-0xffffb2a68000e000   24576 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea43000 ioremap
-    0xffffb2a68000e000-0xffffb2a680010000    8192 dmar_parse_one_drhd+0x1db/0x560 phys=0x00000000fed91000 ioremap
-    0xffffb2a680010000-0xffffb2a680014000   16384 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea47000 ioremap
-    0xffffb2a680014000-0xffffb2a680017000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea49000 ioremap
-    0xffffb2a680018000-0xffffb2a68001b000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4a000 ioremap
-    0xffffb2a68001c000-0xffffb2a68001f000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4b000 ioremap
-    0xffffb2a680020000-0xffffb2a680025000   20480 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4c000 ioremap
-    0xffffb2a680025000-0xffffb2a680036000   69632 alloc_large_system_hash+0x181/0x23e pages=16 vmalloc N0=16        # ‭-69 632‬
-    0xffffb2a680036000-0xffffb2a68003f000   36864 alloc_large_system_hash+0x181/0x23e pages=8 vmalloc N0=8          # -36 864‬
-    0xffffb2a680040000-0xffffb2a68006a000  172032 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea1b000 ioremap
-    0xffffb2a68006a000-0xffffb2a68206b000 33558528 alloc_large_system_hash+0x181/0x23e pages=8192 vmalloc vpages N0=8192
-    0xffffb2a68206b000-0xffffb2a68306c000 16781312 alloc_large_system_hash+0x181/0x23e pages=4096 vmalloc vpages N0=4096
-    0xffffb2a68306c000-0xffffb2a6830ed000  528384 alloc_large_system_hash+0x181/0x23e pages=128 vmalloc N0=128
-    0xffffb2a6830ed000-0xffffb2a68316e000  528384 alloc_large_system_hash+0x181/0x23e pages=128 vmalloc N0=128
-    0xffffb2a68316e000-0xffffb2a683170000    8192 bpf_prog_alloc+0x3e/0xb0 pages=1 vmalloc N0=1
-    0xffffb2a683170000-0xffffb2a683175000   20480 _do_fork+0xcf/0x3a0 pages=4 vmalloc N0=4
-    ... *total* 674 lines ...
-    0xffffffffc0c88000-0xffffffffc0cb6000  188416 load_module+0x1401/0x2c20 pages=45 vmalloc N0=45
-    0xffffffffc0cbe000-0xffffffffc0cc4000   24576 load_module+0x1401/0x2c20 pages=5 vmalloc N0=5
-    0xffffffffc0cc4000-0xffffffffc0cdd000  102400 load_module+0x1401/0x2c20 pages=24 vmalloc N0=24
-    0xffffffffc0ce2000-0xffffffffc0ceb000   36864 load_module+0x1401/0x2c20 pages=8 vmalloc N0=8
-    0xffffffffc0cef000-0xffffffffc0cfe000   61440 load_module+0x1401/0x2c20 pages=14 vmalloc N0=14
+Addr                                     Diff
+0xffffb2a680000000-0xffffb2a680002000    8192 hpet_enable+0x39/0x2ca phys=0x00000000fed00000 ioremap
+0xffffb2a680002000-0xffffb2a680004000    8192 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea43000 ioremap
+0xffffb2a680004000-0xffffb2a680006000    8192 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004edf1000 ioremap
+0xffffb2a680006000-0xffffb2a680008000    8192 dmar_parse_one_drhd+0x1db/0x560 phys=0x00000000fed90000 ioremap
+0xffffb2a680008000-0xffffb2a68000e000   24576 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea43000 ioremap
+0xffffb2a68000e000-0xffffb2a680010000    8192 dmar_parse_one_drhd+0x1db/0x560 phys=0x00000000fed91000 ioremap
+0xffffb2a680010000-0xffffb2a680014000   16384 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea47000 ioremap
+0xffffb2a680014000-0xffffb2a680017000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea49000 ioremap
+0xffffb2a680018000-0xffffb2a68001b000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4a000 ioremap
+0xffffb2a68001c000-0xffffb2a68001f000   12288 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4b000 ioremap
+0xffffb2a680020000-0xffffb2a680025000   20480 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea4c000 ioremap
+0xffffb2a680025000-0xffffb2a680036000   69632 alloc_large_system_hash+0x181/0x23e pages=16 vmalloc N0=16
+0xffffb2a680036000-0xffffb2a68003f000   36864 alloc_large_system_hash+0x181/0x23e pages=8 vmalloc N0=8
+0xffffb2a680040000-0xffffb2a68006a000  172032 acpi_os_map_iomem+0x17c/0x1b0 phys=0x000000004ea1b000 ioremap
+0xffffb2a68006a000-0xffffb2a68206b000 33558528 alloc_large_system_hash+0x181/0x23e pages=8192 vmalloc vpages N0=8192
+0xffffb2a68206b000-0xffffb2a68306c000 16781312 alloc_large_system_hash+0x181/0x23e pages=4096 vmalloc vpages N0=4096
+0xffffb2a68306c000-0xffffb2a6830ed000  528384 alloc_large_system_hash+0x181/0x23e pages=128 vmalloc N0=128
+0xffffb2a6830ed000-0xffffb2a68316e000  528384 alloc_large_system_hash+0x181/0x23e pages=128 vmalloc N0=128
+0xffffb2a68316e000-0xffffb2a683170000    8192 bpf_prog_alloc+0x3e/0xb0 pages=1 vmalloc N0=1
+0xffffb2a683170000-0xffffb2a683175000   20480 _do_fork+0xcf/0x3a0 pages=4 vmalloc N0=4
+... *total* 674 lines ...
+0xffffffffc0c88000-0xffffffffc0cb6000  188416 load_module+0x1401/0x2c20 pages=45 vmalloc N0=45
+0xffffffffc0cbe000-0xffffffffc0cc4000   24576 load_module+0x1401/0x2c20 pages=5 vmalloc N0=5
+0xffffffffc0cc4000-0xffffffffc0cdd000  102400 load_module+0x1401/0x2c20 pages=24 vmalloc N0=24
+0xffffffffc0ce2000-0xffffffffc0ceb000   36864 load_module+0x1401/0x2c20 pages=8 vmalloc N0=8
+0xffffffffc0cef000-0xffffffffc0cfe000   61440 load_module+0x1401/0x2c20 pages=14 vmalloc N0=14
+```

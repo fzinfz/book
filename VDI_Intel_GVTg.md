@@ -73,8 +73,7 @@ https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#332-build-qemu--xen-for
         V5 means it is "Skylake" or "Kabylake" platform
 
     vgpu_create="/sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/create"
-    echo "673475f6-cd28-11e7-9d1e-773e86af553a" > $vgpu_create
-    uuid -n 1 | xargs -n1 -I {} sudo sh -c "echo {} > $vgpu_create"
+    echo "a297db4a-f4c2-11e6-90f6-d3b88d6c9525" > $vgpu_create
     ls /sys/bus/pci/devices/0000:00:02.0/   # check created vgpu
 
     /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description

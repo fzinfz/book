@@ -2,9 +2,10 @@
 
 * [Introduction](README.md)
 * [Linux](linux.md)
-  * [Linux Networking](linux_networking.md)
-  * [Kernel](linux_kernel.md)
   * [Storage](linux_storage.md)
+  * [Linux Networking](linux_networking.md)
+  * [Kernel](linux_kernel.md)  
+  * [Memory](linux_memory.md)
 * [Networking](networking.md)
   * [SDN](SDN.md)
   * [Web](web.md)

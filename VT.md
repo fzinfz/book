@@ -34,6 +34,7 @@ https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt
 https://pve.proxmox.com/wiki/Pci_passthrough  
 https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF  
 https://github.com/awilliam/rom-parser  
+https://github.com/systemdaemon/systemd/blob/master/src/linux/Documentation/vfio.txt
 
 # Xen
 https://www.xenproject.org/users/getting-started.html  

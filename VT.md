@@ -15,6 +15,7 @@
 - [oVirt](#ovirt)
 - [Intel vPro](#intel-vpro)
 - [qemu-system](#qemu-system)
+    - [Releases](#releases)
     - [Q35](#q35)
 - [qemu-img](#qemu-img)
     - [Windows](#windows)
@@ -122,6 +123,28 @@ Intel vPro technology is an umbrella marketing term used by Intel for a large co
     q35                  Standard PC (Q35 + ICH9, 2009) (alias of pc-q35-2.9)
     isapc                ISA-only PC
     none                 empty machine
+
+## Releases
+https://wiki.qemu.org/ChangeLog
+    2.11
+        KVM can advertise Hyper-V frequency MSRs when the TSC frequency is stable and known
+        QXL adds support for chunked cursors.
+        Support for generic PCIe to PCI bridge device pcie-pci-bridge, which supports SHPC and can replace the i82801b11 DMI to PCI bridge.
+        PCI bridges can pass information to the firmware regarding reservation of bus numbers, IO space and memory.
+        Support for TPM emulator
+        Experimental support for NVIDIA GPUDirect Cliques
+    2.10.0 - Debian 10 & Ubuntu 17.10 artful 18.04 bionic
+        QEMU is broken since 2.10 with Linux kernels < v3.15
+        Support for Solaris 9 and earlier has been removed.
+        qxl and virtio-gpu support two new properties for the default display resolution, xres and yres
+        Support for the vxhs(Veritas HyperScale) network protocol
+        "qemu-img resize" supports preallocation of the new parts of the image.
+        additional docker targets have been added which allow cross compilation build tests for arm, powerpc and mips. Run "make docker" for help.
+    2.8 - Debian 9 stretch / 8 jessie-backports & Ubuntu 17.04 zesty/zesty-updates
+    2.5 - Ubuntu 16.04 xenial/xenial-updates
+    2.1 - Debian 8 jessie
+    2.0 - Ubuntu 14.04 trusty/trusty-updates
+
 
 ## Q35
 https://www.linux-kvm.org/images/0/06/2012-forum-Q35.pdf

@@ -1,7 +1,7 @@
 # About
 This gitbook is mainly for system admininstration notes.  
 <---- Click topics or search in the left panel.  
-If you want to leave a comment, please cliek the "+" button near related paragraphs or [start a discussion](https://www.gitbook.com/book/fzinfz/notes/discussions/new).
+Leave a comment by clicking the "+" button near related paragraphs or [start a discussion](https://www.gitbook.com/book/fzinfz/notes/discussions/new).
 
 # Other Repositories
 ## Docker Hub Images

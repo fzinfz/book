@@ -8,8 +8,8 @@
     - [XENGT](#xengt)
 - [GRUB](#grub)
 - [mdev](#mdev)
-- [QEMU](#qemu)
 - [libvirt](#libvirt)
+- [QEMU](#qemu)
 - [Openstack](#openstack)
 
 <!-- /TOC -->
@@ -74,7 +74,7 @@ https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#332-build-qemu--xen-for
 
     vgpu_create="/sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/create"
     echo "a297db4a-f4c2-11e6-90f6-d3b88d6c9525" > $vgpu_create
-    ls /sys/bus/pci/devices/0000:00:02.0/   # check created vgpu
+    ls /sys/bus/pci/devices/0000:00:02.0/
 
     /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/i915-GVTg_V5_4/description
     low_gm_size: 128MB
@@ -89,26 +89,6 @@ https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#332-build-qemu--xen-for
     fence: 4
     resolution: 1024x768
     weight: 2
-
-# QEMU
-    git clone -b stable-2.9.0 https://github.com/intel/Igvtg-qemu.git  # ~184MB
-    apt-get install -y libsdl2-dev libpixman-1-dev libspice-server-dev
-    qemu-system-x86_64 --version
-
-    /usr/bin/qemu-system-x86_64 \
-        -m 4048 -smp 4 -M pc -cpu host \
-        -name gvt-g-guest \
-        -cdrom /data/win10.iso \
-        -drive file=/data/win10.img,index=0,media=disk,format=raw  \
-        -bios /usr/bin/bios.bin -enable-kvm \
-        -vga qxl \
-        -k en-us \
-        -serial stdio \
-        -vnc :1 \
-        -machine kernel_irqchip=on \
-        -global PIIX4_PM.disable_s3=1 -global PIIX4_PM.disable_s4=1 \
-        -usb -usbdevice tablet \
-        -device vfio-pci,sysfsdev=/sys/bus/pci/devices/0000:00:02.0/673475f6-cd28-11e7-9d1e-773e86af553a,rombar=0
 
 # libvirt
     <os>
@@ -138,6 +118,11 @@ https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide#332-build-qemu--xen-for
     # workaround 'error opening /dev/vfio/#: Permission denied'
     sudo aa-complain /usr/sbin/libvirtd
     sudo aa-complain /etc/apparmor.d/libvirt/libvirt-*
+
+# QEMU
+    git clone -b stable-2.9.0 https://github.com/intel/Igvtg-qemu.git  # ~184MB
+    apt-get install -y libsdl2-dev libpixman-1-dev libspice-server-dev
+    qemu-system-x86_64 --version
 
 # Openstack
 https://www.openstack.org/assets/presentation-media/Enable-GPU-virtualization-in-OpenStack.pdf

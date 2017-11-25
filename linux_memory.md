@@ -8,6 +8,8 @@
         - [Legacy Region](#legacy-region)
     - [Firmware Perspective - Platform Initialization (PI) specification](#firmware-perspective---platform-initialization-pi-specification)
         - [Pre-EFI-initialization (PEI) phase](#pre-efi-initialization-pei-phase)
+        - [Driver eXecution Environment (DXE) Phase](#driver-execution-environment-dxe-phase)
+    - [OS Perspective](#os-perspective)
 - [free](#free)
 - [dmesg](#dmesg)
 - [/proc/iomem](#prociomem)
@@ -129,6 +131,7 @@ grep e820
 ```
 
 # /proc/iomem
+with related e820/efi/ACPI dmesg
 ```
 00000000-00000fff : Reserved                #     4 095    0b          ‭1111 1111 1111‬
 [    0.000000] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
@@ -166,6 +169,7 @@ grep e820
 
 3b77c000-3b77cfff : ACPI Non-volatile Storage      # ‭997 707 775‬, ‭-4 095‬
 [    0.000000] BIOS-e820: [mem 0x000000003b77c000-0x000000003b77cfff] ACPI NVS  # -4 095‬
+[    0.326856] PM: Registering ACPI NVS region [mem 0x3b77c000-0x3b77cfff] (4096 bytes)
 [    0.425876] e820: reserve RAM buffer [mem 0x3b77c000-0x3bffffff]        # - ‭8 929 279‬
 3b77d000-3b77dfff : Reserved                                                    # ‭-4 095‬
 [    0.000000] BIOS-e820: [mem 0x000000003b77d000-0x000000003b77dfff] reserved
@@ -181,6 +185,31 @@ grep e820
 4ea1b000-4edf1fff : ACPI Non-volatile Storage       # ‭1 323 245 567‬        ‭-4 026 367‬
 [    0.000000] BIOS-e820: [mem 0x000000004ea1b000-0x000000004edf1fff] ACPI NVS
 [    0.000000] ACPI: UEFI 0x000000004EA4AEA0 000042 (v01 INTEL  EDK2     00000002      01000013)
+[    0.000000] ACPI: RSDP 0x000000004EA1B000 000024 (v02 ALASKA)
+[    0.000000] ACPI: XSDT 0x000000004EA1B0A8 0000CC (v01 ALASKA A M I    01072009 AMI  00010013)
+[    0.000000] ACPI: FACP 0x000000004EA43908 000114 (v06 ALASKA A M I    01072009 AMI  00010013)
+[    0.000000] ACPI: DSDT 0x000000004EA1B208 028700 (v02 ALASKA A M I    01072009 INTL 20160422)
+[    0.000000] ACPI: FACS 0x000000004EDF1C40 000040
+[    0.000000] ACPI: APIC 0x000000004EA43A20 000084 (v03 ALASKA A M I    01072009 AMI  00010013)
+[    0.000000] ACPI: FPDT 0x000000004EA43AA8 000044 (v01 ALASKA A M I    01072009 AMI  00010013)
+[    0.000000] ACPI: MCFG 0x000000004EA43AF0 00003C (v01 ALASKA A M I    01072009 MSFT 00000097)
+[    0.000000] ACPI: SSDT 0x000000004EA43B30 0003BC (v01 SataRe SataTabl 00001000 INTL 20160422)
+[    0.000000] ACPI: FIDT 0x000000004EA43EF0 00009C (v01 ALASKA A M I    01072009 AMI  00010013)
+[    0.000000] ACPI: SSDT 0x000000004EA43F90 003159 (v02 SaSsdt SaSsdt   00003000 INTL 20160422)
+[    0.000000] ACPI: SSDT 0x000000004EA470F0 00255F (v02 PegSsd PegSsdt  00001000 INTL 20160422)
+[    0.000000] ACPI: HPET 0x000000004EA49650 000038 (v01 INTEL  SKL      00000001 MSFT 0000005F)
+[    0.000000] ACPI: SSDT 0x000000004EA49688 000DE5 (v02 INTEL  Ther_Rvp 00001000 INTL 20160422)
+[    0.000000] ACPI: SSDT 0x000000004EA4A470 000A2A (v02 INTEL  xh_rvp08 00000000 INTL 20160422)
+[    0.000000] ACPI: UEFI 0x000000004EA4AEA0 000042 (v01 INTEL  EDK2     00000002      01000013)
+[    0.000000] ACPI: SSDT 0x000000004EA4AEE8 000EDE (v02 CpuRef CpuSsdt  00003000 INTL 20160422)
+[    0.000000] ACPI: LPIT 0x000000004EA4BDC8 000094 (v01 INTEL  SKL      00000000 MSFT 0000005F)
+[    0.000000] ACPI: WSMT 0x000000004EA4BE60 000028 (v01 INTEL  SKL      00000000 MSFT 0000005F)
+[    0.000000] ACPI: SSDT 0x000000004EA4BE88 00029F (v02 INTEL  sensrhub 00000000 INTL 20160422)
+[    0.000000] ACPI: SSDT 0x000000004EA4C128 003002 (v02 INTEL  PtidDevc 00001000 INTL 20160422)
+[    0.000000] ACPI: DBGP 0x000000004EA4F130 000034 (v01 INTEL           00000002 MSFT 0000005F)
+[    0.000000] ACPI: DBG2 0x000000004EA4F168 000054 (v00 INTEL           00000002 MSFT 0000005F)
+[    0.000000] ACPI: DMAR 0x000000004EA4F1C0 0000A8 (v01 INTEL  SKL      00000001 INTL 00000001)
+[    0.326856] PM: Registering ACPI NVS region [mem 0x4ea1b000-0x4edf1fff] (4026368 bytes)
 [    0.425877] e820: reserve RAM buffer [mem 0x4ea1b000-0x4fffffff]     # ‭-22 958 079‬
 4edf2000-4f39cfff : Reserved                        # ‭1 329 188 863‬        -5 943 295‬
 [    0.000000] BIOS-e820: [mem 0x000000004edf2000-0x000000004f39cfff] reserved
@@ -232,6 +261,7 @@ grep e820
   dffc0000-dffdffff : pnp 00:08
 e0000000-efffffff : PCI MMCONFIG 0000 [bus 00-ff]       # ‭-268 435 455‬, PCI extended config space
 [    0.000000] BIOS-e820: [mem 0x00000000e0000000-0x00000000efffffff] reserved
+[    0.328378] PCI: MMCONFIG at [mem 0xe0000000-0xefffffff] reserved in E820
   e0000000-efffffff : Reserved
     e0000000-efffffff : pnp 00:08
 fd000000-fe7fffff : PCI Bus 0000:00                                             # ‭-25 165 823‬
@@ -251,6 +281,7 @@ fec00000-fec00fff : Reserved        # ‭4 273 999 871‬
 fed00000-fed00fff : Reserved        # ‭4 275 048 447‬
 [    0.000000] BIOS-e820: [mem 0x00000000fed00000-0x00000000fed00fff] reserved
   fed00000-fed003ff : HPET 0
+[    0.000000] ACPI: HPET id: 0x8086a201 base: 0xfed00000
     fed00000-fed003ff : PNP0103:00
 fed10000-fed17fff : pnp 00:08
 fed18000-fed18fff : pnp 00:08
@@ -261,6 +292,7 @@ fed90000-fed90fff : dmar0
 fed91000-fed91fff : dmar1
 fee00000-fee00fff : Local APIC      # ‭4 276 097 023‬, -4 095
 [    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+[    0.000000] ACPI: Local APIC address 0xfee00000
   fee00000-fee00fff : Reserved
 ff000000-ffffffff : Reserved        # ‭4 294 967 295‬, ‭-16 777 215‬
 [    0.000000] BIOS-e820: [mem 0x00000000ff000000-0x00000000ffffffff] reserved

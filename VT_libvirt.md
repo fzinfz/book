@@ -21,12 +21,16 @@ https://libvirt.org/news.html
     v3.10.0 (unreleased)
         qemu: Add vmcoreinfo feature
             Starting with QEMU 2.11, the guest can save kernel debug details when this feature is enabled and the kernel supports it.
-    3.9.0 (2017-11-02)
+    3.9.0 (2017-11-02) - Debian 10 buster / sid
     v3.8.0 (2017-10-04)
     v3.7.0 (2017-09-04)
         bhyve: Support autoport for VNC ports
         qemu: Added support for setting heads of virtio GPU
-
+    v3.6.0 (2017-08-02) - Ubuntu 17.10 artful / 18.04 bionic
+        Handle hotplug change on VLAN configuration using OVS
+        fix some minor bugs when using 'host-model' CPU.
+    v3.0.0 (2017-01-17) - Debian 9 stretch & 8 jessie-backports
+    v2.5.0 (2016-12-04) - Ubuntu 17.04 zesty
 
 # Debug
 https://fedoraproject.org/wiki/How_to_debug_Virtualization_problems
@@ -65,7 +69,8 @@ gdb: https://access.redhat.com/blogs/766093/posts/2690881
 # virsh
     virsh list --all
     export EDITOR=vim # for `virsh edit`
-
+    virsh dumpxml GuestID > guest.xml
+    virsh define  guest.xml
     virsh domxml-to-native qemu-argv demo.xml > demo.sh
     virsh domxml-from-native qemu-argv demo.args > demo.xml
 
@@ -74,7 +79,9 @@ gdb: https://access.redhat.com/blogs/766093/posts/2690881
 
 # Driver
 https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso  
-baloon (dynamic memory management)： https://pve.proxmox.com/wiki/Dynamic_Memory_Management
+https://github.com/torvalds/linux/blob/master/drivers/virtio/Kconfig  
+VIRTIO_BALLOON supports increasing and decreasing the amount of memory within a KVM guest.  
+VIRTIO_MMIO support for memory mapped virtio platform device driver.
 
 # MacVTap
 http://virt.kernelnewbies.org/MacVTap  

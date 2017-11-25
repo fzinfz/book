@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [GPU assignment](#gpu-assignment)
+    - [virtio-gpu](#virtio-gpu)
 - [NVIDIA Certified](#nvidia-certified)
 - [AMD](#amd)
 - [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
@@ -20,6 +21,10 @@
 The state of GPU assignment in QEMU/KVM: https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf
 
 https://wiki.debian.org/VGAPassthrough
+
+## virtio-gpu
+https://www.linux-kvm.org/images/0/09/Qemu-gfx-2016.pdf  
+https://github.com/qemu/qemu/blob/master/include/hw/virtio/virtio-gpu.h
 
 # NVIDIA Certified
 http://www.nvidia.com/object/grid-certified-servers.html  

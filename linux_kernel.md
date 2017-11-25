@@ -6,26 +6,25 @@
     - [.config](#config)
 - [Install deb manually](#install-deb-manually)
 - [Releases](#releases)
-    - [Debian](#debian)
-    - [Ubuntu](#ubuntu)
-    - [RHEL](#rhel)
-    - [Linux 4.14 Released 12 November, 2017](#linux-414-released-12-november-2017)
-    - [Linux 4.13 Released 3 September, 2017](#linux-413-released-3-september-2017)
-    - [Linux 4.12 Released 2 July, 2017](#linux-412-released-2-july-2017)
-    - [Linux 4.11 Released 30 April, 2017](#linux-411-released-30-april-2017)
-    - [Linux 4.10 Released 19 February, 2017](#linux-410-released-19-february-2017)
-    - [Linux 4.9 Released 11 December, 2016](#linux-49-released-11-december-2016)
-    - [Linux 4.8 Released 2 October, 2016](#linux-48-released-2-october-2016)
-    - [Linux 4.7 Released 24 July, 2016](#linux-47-released-24-july-2016)
-    - [Linux 4.6 Released 15 May, 2016](#linux-46-released-15-may-2016)
-    - [Linux 4.5 Released 13 March, 2016](#linux-45-released-13-march-2016)
-    - [Linux 4.4 Released 10 January, 2016](#linux-44-released-10-january-2016)
-    - [Linux 4.3 Released 1 November, 2015](#linux-43-released-1-november-2015)
-    - [Linux 4.2 Released 30 August, 2015](#linux-42-released-30-august-2015)
-    - [Linux 4.1 Released 21 June, 2015](#linux-41-released-21-june-2015)
-    - [Linux 4.0 Released 12 April, 2015](#linux-40-released-12-april-2015)
-    - [Linux 3.10 Released 30 June, 2013](#linux-310-released-30-june-2013)
-    - [Linux 2.6.32 Released 3 December, 2009](#linux-2632-released-3-december-2009)
+    - [4.14 - 12 November, 2017](#414---12-november-2017)
+    - [4.13 - 3 September, 2017 - Ubuntu 17.10 Artful](#413---3-september-2017---ubuntu-1710-artful)
+    - [4.12 - 2 July, 2017](#412---2-july-2017)
+    - [4.11 - 30 April, 2017](#411---30-april-2017)
+    - [4.10 - 19 February, 2017 - Ubuntu 17.04 Zesty](#410---19-february-2017---ubuntu-1704-zesty)
+    - [4.9 - 11 December, 2016 - Debian 9 Stretch](#49---11-december-2016---debian-9-stretch)
+    - [4.8 - 2 October, 2016 - Ubuntu 16.10 Yakkety](#48---2-october-2016---ubuntu-1610-yakkety)
+    - [4.7 - 24 July, 2016](#47---24-july-2016)
+    - [4.6 - 15 May, 2016](#46---15-may-2016)
+    - [4.5 - 13 March, 2016](#45---13-march-2016)
+    - [4.4 - 10 January, 2016 - Ubuntu 16.04 Xenial](#44---10-january-2016---ubuntu-1604-xenial)
+    - [4.3 - 1 November, 2015](#43---1-november-2015)
+    - [4.2 - 30 August, 2015](#42---30-august-2015)
+    - [4.1 - 21 June, 2015](#41---21-june-2015)
+    - [4.0 - 12 April, 2015](#40---12-april-2015)
+    - [3.16 - 3 August, 2014 - Debian 8 Jessie](#316---3-august-2014---debian-8-jessie)
+    - [3.13 - 19 January, 2014 - Ubuntu 14.04 Trusty](#313---19-january-2014---ubuntu-1404-trusty)
+    - [3.10 - 30 June, 2013 -  - RHEL 7](#310---30-june-2013------rhel-7)
+    - [2.6.32 - 3 December, 2009 - RHEL 6](#2632---3-december-2009---rhel-6)
 
 <!-- /TOC -->
 
@@ -62,40 +61,18 @@ Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/
 # Releases
 https://kernelnewbies.org/LinuxVersions
 
-## Debian
-https://en.wikipedia.org/wiki/Debian_version_history#Release_table
+[RHEL](https://access.redhat.com/articles/3078) | 
+[Ubuntu](https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version) | 
+[Debian](https://en.wikipedia.org/wiki/Debian_version_history#Release_table)
 
-    6.0	Squeeze	2.6.32
-    7	Wheezy 3.2
-    8	Jessie 3.16 April/May 2020
-    9	Stretch	4.9	June 2022
+    6.0	Squeeze	2.6.32  -> LTS until February 2016
+    7	Wheezy 3.2  -> LTS until May 2018
+    8	Jessie 3.16 -> LTS until April/May 2020
+    9	Stretch	4.9	-> LTS until June 2022
     10	Buster
     11	Bullseye
 
-## Ubuntu
-https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version
-
-    12.04   Precise Pangolin 3.2+
-    12.10   Quantal Quetzal  3.5
-    13.04   Raring Ringtail  3.8
-    13.10   Saucy Salamander 3.11
-    14.04   Trusty Tahr      3.13
-    14.10   Utopic Unicorn   3.16
-    15.04   Vivid Vervet     3.19
-    15.10   Wily Werewolf    4.2
-    16.04   Xenial Xerus     4.4
-    16.10   Yakkety Yak      4.8
-    17.04   Zesty Zapus      4.10
-    17.10   Artful Aardvark  4.13
-
-## RHEL
-https://access.redhat.com/articles/3078
-
-    7   3.10
-    6   2.6.32
-    5   2.6.18
-
-## Linux 4.14 Released 12 November, 2017
+## 4.14 - 12 November, 2017
 XEN: introduce the frontend for the newly introduced PV Calls procotol
 igb: support BCM54616 PHY
 ixgbe: add initial support for xdp redirect
@@ -103,34 +80,36 @@ phy: Add USB charger support
 xhci: Support enabling of compliance mode for xhci 1.1
 mediatek: Add controller support for MT2712 and MT7622 commit, add MSI support for MT2712 and MT7622
 
-## Linux 4.13 Released 3 September, 2017
+## 4.13 - 3 September, 2017 - Ubuntu 17.10 Artful
 
-## Linux 4.12 Released 2 July, 2017
+## 4.12 - 2 July, 2017
 
-## Linux 4.11 Released 30 April, 2017
+## 4.11 - 30 April, 2017
 
-## Linux 4.10 Released 19 February, 2017
+## 4.10 - 19 February, 2017 - Ubuntu 17.04 Zesty
 
-## Linux 4.9 Released 11 December, 2016
+## 4.9 - 11 December, 2016 - Debian 9 Stretch
 
-## Linux 4.8 Released 2 October, 2016
+## 4.8 - 2 October, 2016 - Ubuntu 16.10 Yakkety
 
-## Linux 4.7 Released 24 July, 2016
+## 4.7 - 24 July, 2016
 
-## Linux 4.6 Released 15 May, 2016
+## 4.6 - 15 May, 2016
 
-## Linux 4.5 Released 13 March, 2016
+## 4.5 - 13 March, 2016
 
-## Linux 4.4 Released 10 January, 2016
+## 4.4 - 10 January, 2016 - Ubuntu 16.04 Xenial
 
-## Linux 4.3 Released 1 November, 2015
+## 4.3 - 1 November, 2015
 
-## Linux 4.2 Released 30 August, 2015
+## 4.2 - 30 August, 2015
 
-## Linux 4.1 Released 21 June, 2015
+## 4.1 - 21 June, 2015
 
-## Linux 4.0 Released 12 April, 2015
+## 4.0 - 12 April, 2015
 livepatch is not feature complete, yet it provides a basic infrastructure
 
-## Linux 3.10 Released 30 June, 2013
-## Linux 2.6.32 Released 3 December, 2009
+## 3.16 - 3 August, 2014 - Debian 8 Jessie 
+## 3.13 - 19 January, 2014 - Ubuntu 14.04 Trusty
+## 3.10 - 30 June, 2013 -  - RHEL 7
+## 2.6.32 - 3 December, 2009 - RHEL 6

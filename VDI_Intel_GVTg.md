@@ -21,6 +21,7 @@ https://01.org/igvt-g/blogs/wangbo85/2017/intel-gvt-g-kvmgt-public-release-q2201
     lspci -v -s 00:02.0
 
 # Update tool
+https://download.01.org/gfx/repos/src/  
 https://01.org/linuxgraphics/downloads/intel-graphics-update-tool-linux-os-v2.0.5
 
     wget https://download.01.org/gfx/RPM-GPG-GROUP-KEY-ilg
@@ -43,6 +44,8 @@ https://www.kraxel.org/blog/2017/01/virtual-gpu-support-landing-upstream/
 
     cat .config | grep -P 'I915|VFIO|KVM'
     lsmod | grep -P -i 'vfio|kvm|i915'
+
+https://download.01.org/GVT-g/
 
 ## KVMGT
 For KVMGT, you also can use the current upstream Linux kernel and QEMU directly since all the enabling patches have been upstreamed.  

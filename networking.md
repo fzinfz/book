@@ -182,7 +182,7 @@ https://www.v2ray.com/chapter_02/protocols/dokodemo.html
     iptables -t nat -N V2RAY
     iptables -t nat -I V2RAY -p tcp --dport 4433 -j RETURN  # bypass Port
 
-    # See Wikipedia and RFC5735 for full list of reserved networks.
+    # https://tools.ietf.org/html/rfc5735#page-6
     iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
     iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
     iptables -t nat -A V2RAY -d 127.0.0.0/8 -j RETURN

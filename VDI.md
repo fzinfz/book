@@ -24,7 +24,9 @@ https://wiki.debian.org/VGAPassthrough
 
 ## virtio-gpu
 https://www.linux-kvm.org/images/0/09/Qemu-gfx-2016.pdf  
-https://github.com/qemu/qemu/blob/master/include/hw/virtio/virtio-gpu.h
+https://github.com/qemu/qemu/blob/master/hw/display/virtio-gpu.c
+
+ARMv8/arm-64: use virtio-gpu because the legacy VGA framebuffer is very troublesome on aarch64
 
 # NVIDIA Certified
 http://www.nvidia.com/object/grid-certified-servers.html  

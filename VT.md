@@ -1,7 +1,8 @@
 <!-- TOC -->
 
-- [Xen vs KVM](#xen-vs-kvm)
+- [OVMF (Open Virtual Machine Firmware)](#ovmf-open-virtual-machine-firmware)
 - [IOMMU](#iommu)
+- [Xen vs KVM](#xen-vs-kvm)
 - [Xen](#xen)
 - [VSphere / ESXi](#vsphere--esxi)
     - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
@@ -17,6 +18,7 @@
 - [qemu-system](#qemu-system)
     - [Releases](#releases)
     - [Q35](#q35)
+- [OSX on KVM](#osx-on-kvm)
 - [qemu-img](#qemu-img)
     - [Windows](#windows)
     - [Linux](#linux)
@@ -26,9 +28,9 @@
 
 <!-- /TOC -->
 
-# Xen vs KVM
-http://drsalbertspijkers.blogspot.co.uk/2017/05/kvm-kernel-virtual-machine-or-xen.html  
-![](https://4.bp.blogspot.com/-we18-TvbbgE/WSfqL65mC6I/AAAAAAAACeA/lcC-3Xn6vxcXVdQb1_BR7PklQu4doFWdQCLcB/s640/virtualization_xen_kvm.png)
+# OVMF (Open Virtual Machine Firmware)
+http://www.linux-kvm.org/downloads/lersek/ovmf-whitepaper-c770f8c.txt  
+a sub-project of Intel's EFI Development Kit II (edk2)
 
 # IOMMU
 https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt  
@@ -36,6 +38,10 @@ https://pve.proxmox.com/wiki/Pci_passthrough
 https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF  
 https://github.com/awilliam/rom-parser  
 https://github.com/systemdaemon/systemd/blob/master/src/linux/Documentation/vfio.txt
+
+# Xen vs KVM
+http://drsalbertspijkers.blogspot.co.uk/2017/05/kvm-kernel-virtual-machine-or-xen.html  
+![](https://4.bp.blogspot.com/-we18-TvbbgE/WSfqL65mC6I/AAAAAAAACeA/lcC-3Xn6vxcXVdQb1_BR7PklQu4doFWdQCLcB/s640/virtualization_xen_kvm.png)
 
 # Xen
 https://www.xenproject.org/users/getting-started.html  
@@ -126,6 +132,7 @@ Intel vPro technology is an umbrella marketing term used by Intel for a large co
 
 ## Releases
 https://wiki.qemu.org/ChangeLog
+
     2.11
         KVM can advertise Hyper-V frequency MSRs when the TSC frequency is stable and known
         QXL adds support for chunked cursors.
@@ -153,6 +160,11 @@ https://www.linux-kvm.org/images/0/06/2012-forum-Q35.pdf
     Q35 has PCIe Switches vs PCI Bridges (I440FX/PIIX4) 
 
 https://wiki.qemu.org/Features/Q35
+
+# OSX on KVM
+https://github.com/kholia/OSX-KVM
+
+https://www.contrib.andrew.cmu.edu/~somlo/OSXKVM/
 
 # qemu-img
 ## Windows

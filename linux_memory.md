@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Basic](#basic)
 - [Memory Management Unit (MMU)](#memory-management-unit-mmu)
 - [kmalloc & vmalloc](#kmalloc--vmalloc)
 - [System Management Mode (SMM)](#system-management-mode-smm)
@@ -16,6 +17,11 @@
 - [/proc/vmallocinfo](#procvmallocinfo)
 
 <!-- /TOC -->
+
+# Basic
+https://en.wikipedia.org/wiki/PCI_configuration_space  
+
+  The system's firmware, device drivers or the operating system program the `Base Address Registers` (commonly called BARs) to inform the device of its address mapping by writing configuration commands to the PCI controller. 
 
 # Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf

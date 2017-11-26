@@ -3,8 +3,8 @@
 - [Install CE](#install-ce)
     - [on RHEL](#on-rhel)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
-    - [alpine](#alpine)
     - [apt](#apt)
+    - [alpine](#alpine)
 - [Export & Import](#export--import)
 - [Storage](#storage)
 - [Proxy](#proxy)
@@ -25,6 +25,7 @@
 <!-- /TOC -->
 
 # Install CE
+    apt search docker | grep ^docker
     curl -fsSL get.docker.com | sh
 
 ## on RHEL

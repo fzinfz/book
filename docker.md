@@ -1,65 +1,97 @@
 <!-- TOC -->
 
-- [Install CE](#install-ce)
-    - [on RHEL](#on-rhel)
+- [Install & Management](#install--management)
+- [Config](#config)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
     - [apt](#apt)
     - [alpine](#alpine)
-- [Export & Import](#export--import)
+    - [badger](#badger)
 - [Storage](#storage)
-- [Proxy](#proxy)
-- [Move data dir](#move-data-dir)
-- [Swarm](#swarm)
-- [node IP](#node-ip)
-- [service VIP](#service-vip)
 - [Run](#run)
+- [Proxy](#proxy)
+- [Swarm](#swarm)
 - [CoreOS](#coreos)
-- [badger](#badger)
+- [boot2docker](#boot2docker)
 - [Windows/Mac](#windowsmac)
-- [China Mirrors](#china-mirrors)
-    - [boot2docker](#boot2docker)
-- [Security](#security)
 - [Tools](#tools)
     - [S6 - a process supervisor](#s6---a-process-supervisor)
 
 <!-- /TOC -->
 
-# Install CE
-    apt search docker | grep ^docker
-    curl -fsSL get.docker.com | sh
+# Install & Management
+    source /dev/stdin <<< "$(curl -sS https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh)"
 
-## on RHEL
-    sudo yum install -y yum-utils
-    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    sudo yum makecache fast
-    sudo yum -y install docker-ce
-    sudo systemctl start docker
+# Config
+https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
+```
+/etc/docker/daemon.json
+{
+    "live-restore": true,   # containers remain running if daemon unavailable
+    "graph": "/data/docker-fs",
+    "storage-driver": "overlay",
+    "registry-mirrors": [
+        "https://registry.docker-cn.com",
+        "https://docker.mirrors.ustc.edu.cn",
+        "http://hub-mirror.c.163.com"],
+    # https://cr.console.aliyun.com/#/accelerator
+}
+kill -HUP <processID> # reload the configuration
+```
 
 # Dockerfile code snippets
 ## apt
-    RUN apt update && apt install -y 
-        --no-install-recommends && rm -r /var/lib/apt/lists/*
+```
+RUN apt update && apt install -y 
+    --no-install-recommends && rm -r /var/lib/apt/lists/*
+```
 
 ## alpine
+```
     # install pip3
     wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 
     RUN apk add --no-cache --virtual .build-deps  \
         curl ca-certificates jq \
         && apk del .build-deps
+```
 
-
-# Export & Import
-    # Commit a container to image
-    docker commit conainter_id  user/image_name:tag
-
-    docker save -o <path> <image name>
-    docker load -i <path to image tar file>
+## badger
+https://microbadger.com
 
 # Storage
 https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
 ![](https://docs.docker.com/engine/userguide/storagedriver/images/driver-pros-cons.png)
+
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
+
+# Run
+https://docs.docker.com/engine/reference/run/
+
+```
+--user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
+
+--dns=[]           : Set custom dns servers for the container
+--network="bridge" : Connect a container to a network
+                      'bridge': create a network stack on the default Docker bridge
+                      'none': no networking
+                      'container:<name|id>': reuse another container's network stack
+                      'host': use the Docker host network stack
+                      '<network-name>|<network-id>': connect to a user-defined network
+--network-alias=[] : Add network-scoped alias for the container
+--add-host=""      : Add a line to /etc/hosts (host:IP)
+--mac-address=""   : Sets the container's Ethernet device's MAC address
+--ip=""            : Sets the container's Ethernet device's IPv4 address
+--link-local-ip=[] : Sets one or more container's Ethernet device's link local IPv4/IPv6 addresses
+
+Volume labels  
+`:z` => shared  
+`:Z` => private
+
+`--entrypoint` will clear out `CMD`
+
+echo test | docker run --rm -i alpine cat
+docker run --security-opt seccomp:unconfined  # may fix chromium start error
+```
 
 # Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
@@ -76,13 +108,6 @@ systemctl restart docker
 
 systemctl show --property=Environment docker
 
-```
-# Move data dir
-```
-service docker stop
-mv /var/lib/docker /root/data/docker
-ln -s /root/data/docker /var/lib/docker
-service docker start
 ```
 
 # Swarm
@@ -110,49 +135,22 @@ docker service ls
 docker service ps nginx
 docker inspect <ID> | grep Err
 ```
+
 https://docs.docker.com/engine/reference/commandline/service_create/
 
-docker network create \
-  --driver overlay \
-  --subnet 10.66.3.0/24 \
-  --opt encrypted \
-  web
+    docker network create \
+        --driver overlay \
+        --subnet 10.66.3.0/24 \
+        --opt encrypted \
+        web
 
-docker network ls
+    docker network ls
 
-# node IP
+    # node IP
     ip addr | grep -P -o '\d+\.\d+\.\d+\.\d+(?=/24)'
 
-# service VIP
+    # service VIP
     ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
-
-# Run
-https://docs.docker.com/engine/reference/run/
-
-```
---user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
-
---dns=[]           : Set custom dns servers for the container
---network="bridge" : Connect a container to a network
-                      'bridge': create a network stack on the default Docker bridge
-                      'none': no networking
-                      'container:<name|id>': reuse another container's network stack
-                      'host': use the Docker host network stack
-                      '<network-name>|<network-id>': connect to a user-defined network
---network-alias=[] : Add network-scoped alias for the container
---add-host=""      : Add a line to /etc/hosts (host:IP)
---mac-address=""   : Sets the container's Ethernet device's MAC address
---ip=""            : Sets the container's Ethernet device's IPv4 address
---link-local-ip=[] : Sets one or more container's Ethernet device's link local IPv4/IPv6 addresses
-
-echo test | docker run --rm -i alpine cat
-```
-
-Volume labels  
-`:z` => shared  
-`:Z` => private
-
-`--entrypoint` will clear out `CMD`
 
 # CoreOS
 https://coreos.com/releases/
@@ -161,37 +159,15 @@ vi /etc/coreos/update.conf
 update_engine_client -update
 ```
 
-# badger
-https://microbadger.com
+# boot2docker
+https://github.com/boot2docker/boot2docker
+
+    echo EXTRA_ARGS="--foo=bar"  >>  /var/lib/boot2docker/profile
 
 # Windows/Mac
 https://docs.docker.com/engine/installation/windows/  
 https://docs.docker.com/machine/drivers/  
 https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
-
-# China Mirrors
-https://cr.console.aliyun.com/#/accelerator
-
-https://servers.ustclug.org/2015/05/new-docker-hub-registry-mirror/ 
-```
-docker login -u anonymouse -p anonymouse docker.mirrors.ustc.edu.cn 
-```
-
-https://cr.console.aliyun.com/#/accelerator
-
-```
-echo "DOCKER_OPTS=\"--registry-mirror=http://hub-mirror.c.163.com\"" >> /etc/default/docker
-service docker restart
-```
-
-## boot2docker
-https://github.com/boot2docker/boot2docker
-```
-echo EXTRA_ARGS="--registry-mirror=https://docker.mirrors.ustc.edu.cn"  >>  /var/lib/boot2docker/profile
-```
-
-# Security
-    docker run --security-opt seccomp:unconfined  # may fix chromium start error
 
 # Tools
 ## S6 - a process supervisor

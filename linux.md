@@ -3,6 +3,7 @@
 - [alias, functions and notes](#alias-functions-and-notes)
 - [top](#top)
 - [Exit code](#exit-code)
+- [Signal](#signal)
 - [File descriptor](#file-descriptor)
 - [Diagram](#diagram)
 - [X11](#x11)
@@ -82,6 +83,11 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     128+n	Fatal error signal "n"	
         kill -9 $PPID of script	$? returns 137 (128 + 9)
     130	Script terminated by Control-C
+
+# Signal
+    kill -l
+    1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
+    6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL ... 64) SIGRTMAX
 
 # File descriptor
     0: stdin; 1: stdout; 2: stderr

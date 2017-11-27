@@ -28,13 +28,14 @@
 - [Tools](#tools-1)
 - [AD](#ad)
     - [DC DNS](#dc-dns)
+- [Graphic](#graphic)
 
 <!-- /TOC -->
 
 # .Net versions query
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
-    
+
 # Edition Unique Features
 10: Free RemoteFX, WSL  
 2016: NFS Server, Hyper-V DDA
@@ -137,3 +138,31 @@ https://www.hanselman.com/tools
 # AD
 ## DC DNS
 https://blogs.msdn.microsoft.com/servergeeks/2014/07/12/dns-records-that-are-required-for-proper-functionality-of-active-directory/ (4. DC Record - _ldap._tcp.dc._msdcs.<DnsDomainName>)  
+
+# Graphic
+https://docs.microsoft.com/en-us/windows-hardware/drivers/display/  
+https://en.wikipedia.org/wiki/Windows_Display_Driver_Model
+
+XDDM/XPDM:Windows 2000 and Windows XP, removal of XDDM from Windows 8  
+Windows Display Driver Model (WDDM): Windows Vista+  
+
+    WDDM 2.0 - Windows 10+
+        reduce workload on the kernel-mode driver for GPUs that support virtual memory addressing
+        DXGI 1.4
+            Cheaper adapter enumeration
+            Video memory budget tracking
+            Direct3D 12 Swapchain Changes
+
+    WDDM 2.1 - 1607+
+        Shader Model 6.0 (mandatory for feature levels 12_0 and 12_1)
+        DXGI 1.5
+            HDR10 - a 10-bit high dynamic range
+            Wide Color Gamut
+
+    WDDM 2.2 - 1703+
+        tailored for virtual, augmented and mixed reality with stereoscopic rendering for the Windows Holographic platform
+        DXGI 1.6: High Dynamic Range (HDR) Detection
+
+    WDDM 2.3 - 1709+
+        10-bit HDR playback over HDMI
+        Video processing and video decode acceleration in DirectX* 12

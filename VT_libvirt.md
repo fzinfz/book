@@ -129,7 +129,7 @@ https://www.kernel.org/doc/Documentation/vfio.txt
 ## Raw disk mapping
     <disk type='block' device='disk'>
         <driver name='qemu' type='raw'/>
-        <source dev='/dev/md/storage'/>
+        <source dev='/dev/sdb'/>
         <target dev='vdb' bus='virtio'/>
     </disk>
 

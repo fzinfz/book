@@ -11,10 +11,14 @@
         - [Pre-EFI-initialization (PEI) phase](#pre-efi-initialization-pei-phase)
         - [Driver eXecution Environment (DXE) Phase](#driver-execution-environment-dxe-phase)
     - [OS Perspective](#os-perspective)
-- [free](#free)
 - [dmesg](#dmesg)
 - [/proc/iomem](#prociomem)
+- [free](#free)
+    - [drop_caches](#drop_caches)
+- [/proc/meminfo](#procmeminfo)
 - [/proc/vmallocinfo](#procvmallocinfo)
+- [/proc/PID/maps](#procpidmaps)
+- [pmap](#pmap)
 
 <!-- /TOC -->
 
@@ -22,6 +26,14 @@
 https://en.wikipedia.org/wiki/PCI_configuration_space  
 
   The system's firmware, device drivers or the operating system program the `Base Address Registers` (commonly called BARs) to inform the device of its address mapping by writing configuration commands to the PCI controller. 
+
+https://stackoverflow.com/questions/1477885  
+Anon blocks are "large" blocks allocated via malloc or mmap 
+
+https://stackoverflow.com/questions/79923  
+The stack is the memory set aside as scratch space for a thread of execution.  
+The heap is memory set aside for dynamic allocation.  
+Each thread gets a stack, while there's typically only one heap for the application
 
 # Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf
@@ -109,25 +121,27 @@ legacy ACPI specification: INT15 E820H function call, or E820 table.
 The difference is that E820 table does not have runtime concept,  
 so memory mapped I/O and memory mapped I/O port space allowed for virtual mode calls to UEFI run-time functions does not exist.
 
-# free
-                total        used        free      shared  buff/cache   available
-    Mem:       23596328     4675168    10635496       74832     8285664    18466200
-    Swap:       1511420           0     1511420
-
 # dmesg
 ```
-grep -i efi
+grep -i -P 'bar|efi'
 [    0.000000] efi: EFI v2.50 by American Megatrends
-[    0.363043] pci 0000:00:02.0: BAR 2: assigned to efifb   
-[    0.368065] Registered efivars operations
-[    0.903316] efifb: probing for efifb     # efifb is only for EFI booted Intel Macs
-[    0.903324] efifb: framebuffer at 0xc0000000, using 3072k, total 3072k
-[    0.903325] efifb: mode is 1024x768x32, linelength=4096, pages=1
-[    0.903326] efifb: scrolling: redraw
-[    0.903327] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
-[    0.905314] fb0: EFI VGA frame buffer device
-[    1.098604] EFI Variables Facility v0.08 2004-May-17
-[    1.324444] fb: switching to inteldrmfb from EFI VGA # inteldrmfb: intel drm frame buffer
+[    0.000000] efi:  ACPI 2.0=0x4ea1b000  ACPI=0x4ea1b000  SMBIOS=0x4f2cf000  ESRT=0x4a4393d8 
+[    0.000000] ACPI: UEFI 0x000000004EA4AEA0 000042 (v01 INTEL  EDK2     00000002      01000013)
+[    0.000000] Booting paravirtualized kernel on bare hardware
+[    0.000000] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645519600211568 ns
+[    0.362690] pci 0000:00:02.0: BAR 2: assigned to efifb
+[    0.367538] Registered efivars operations
+[    0.439687] pci 0000:00:1d.0: BAR 14: assigned [mem 0x90000000-0x901fffff]
+[    0.439694] pci 0000:00:1d.0: BAR 15: assigned [mem 0x90200000-0x903fffff 64bit pref]
+[    0.439697] pci 0000:00:1d.0: BAR 13: assigned [io  0x2000-0x2fff]
+[    0.899370] efifb: probing for efifb
+[    0.899378] efifb: framebuffer at 0xc0000000, using 3072k, total 3072k
+[    0.899379] efifb: mode is 1024x768x32, linelength=4096, pages=1
+[    0.899380] efifb: scrolling: redraw
+[    0.899382] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
+[    0.901366] fb0: EFI VGA frame buffer device
+[    1.093848] EFI Variables Facility v0.08 2004-May-17
+[    1.341142] fb: switching to inteldrmfb from EFI VGA
 
 grep e820
 [    0.000000] e820: BIOS-provided physical RAM map:
@@ -231,7 +245,9 @@ with related e820/efi/ACPI dmesg
 90000000-dfffffff : PCI Bus 0000:00                 # ‭3 758 096 383‬
 [    0.000000] e820: [mem 0x90000000-0xdfffffff] available for PCI devices
   90000000-901fffff : PCI Bus 0000:02
+[    0.439687] pci 0000:00:1d.0: BAR 14: assigned [mem 0x90000000-0x901fffff]
   90200000-903fffff : PCI Bus 0000:02
+[    0.439694] pci 0000:00:1d.0: BAR 15: assigned [mem 0x90200000-0x903fffff 64bit pref]
   c0000000-cfffffff : 0000:00:02.0
   d0000000-d00fffff : PCI Bus 0000:01
     d0000000-d000ffff : 0000:01:00.0
@@ -296,11 +312,11 @@ fed20000-fed3ffff : pnp 00:08
 fed45000-fed8ffff : pnp 00:08
 fed90000-fed90fff : dmar0
 fed91000-fed91fff : dmar1
-fee00000-fee00fff : Local APIC      # ‭4 276 097 023‬, -4 095
+fee00000-fee00fff : Local APIC      #  ‭4 276 097 023‬,          -4 095
 [    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
 [    0.000000] ACPI: Local APIC address 0xfee00000
   fee00000-fee00fff : Reserved
-ff000000-ffffffff : Reserved        # ‭4 294 967 295‬, ‭-16 777 215‬
+ff000000-ffffffff : Reserved        #  ‭4 294 967 295‬,     ‭-16 777 215‬
 [    0.000000] BIOS-e820: [mem 0x00000000ff000000-0x00000000ffffffff] reserved
   ff000000-ffffffff : INT0800:00
     ff000000-ffffffff : pnp 00:08
@@ -309,9 +325,83 @@ ff000000-ffffffff : Reserved        # ‭4 294 967 295‬, ‭-16 777 215‬
   4dcc00000-4dd512035 : Kernel code
   4dd512036-4ddc6963f : Kernel data
   4ddec9000-4de11dfff : Kernel bss
-66e000000-66fffffff : RAM buffer    # ‭‭27 648 851 967‬, -33 554 431‬
+66e000000-66fffffff : RAM buffer    # ‭‭27 648 851 967‬,     -33 554 431‬
 [    0.425878] e820: reserve RAM buffer [mem 0x66e000000-0x66fffffff]
 ```
+
+# free
+    (-b)          total        used        free      shared  buff/cache   available
+    Mem:    24162639872  4534853632  1459580928    18784256 18168205312 19195252736
+    Swap:    1547694080           0  1547694080
+
+## drop_caches
+    # https://www.kernel.org/doc/Documentation/sysctl/vm.txt
+    To free pagecache:
+      echo 1 > /proc/sys/vm/drop_caches
+    To free reclaimable slab objects (includes dentries and inodes):
+      echo 2 > /proc/sys/vm/drop_caches
+    To free slab objects and pagecache:
+      echo 3 > /proc/sys/vm/drop_caches
+
+# /proc/meminfo
+https://www.kernel.org/doc/Documentation/filesystems/proc.txt  
+https://github.com/torvalds/linux/blob/master/fs/proc/meminfo.c#L69  
+https://access.redhat.com/solutions/406773
+
+    (-k)          total        used        free      shared  buff/cache   available
+    Mem:       23596328!    4427588     1423044 @     18344 %  17745696    18746344 *
+    Swap:       1511420 #         0     1511420 $
+
+    DirectMap4k:      873316 kB
+    DirectMap2M:    22136832 kB
+    DirectMap1G:     1048576 kB
+    MemTotal:       23596328 kB !
+    MemFree:         1414772 kB @
+    MemAvailable:   18740376 kB *   |     * - @ = ‭17325604‬
+    Buffers:          114644 kB ^
+    Cached:         16486288 kB &
+    SwapCached:            0 kB
+
+    Active:          7221088 kB
+    Inactive:       13322468 kB
+    Active(anon):    3942288 kB
+    Inactive(anon):    22612 kB
+    Active(file):    3278800 kB
+    Inactive(file): 13299856 kB
+
+    Unevictable:        5312 kB
+    Mlocked:            5312 kB
+    SwapTotal:       1511420 kB #
+    SwapFree:        1511420 kB $
+    Dirty:              1100 kB
+    Writeback:             0 kB
+    AnonPages:       3925548 kB
+    Mapped:           198832 kB
+    Shmem:             18344 kB %
+    Slab:            1506884 kB
+    SReclaimable:    1147068 kB
+    SUnreclaim:       359816 kB
+    KernelStack:        6016 kB
+    PageTables:        15344 kB
+    NFS_Unstable:          0 kB
+    Bounce:                0 kB
+    WritebackTmp:          0 kB
+    CommitLimit:    13309584 kB
+    Committed_AS:    5284228 kB
+    VmallocTotal:   34359738367 kB
+    VmallocUsed:           0 kB
+    VmallocChunk:          0 kB
+    HardwareCorrupted:     0 kB
+    AnonHugePages:   3610624 kB
+    ShmemHugePages:        0 kB
+    ShmemPmdMapped:        0 kB
+    CmaTotal:              0 kB
+    CmaFree:               0 kB
+    HugePages_Total:       0
+    HugePages_Free:        0
+    HugePages_Rsvd:        0
+    HugePages_Surp:        0
+    Hugepagesize:       2048 kB
 
 # /proc/vmallocinfo
 ```
@@ -345,4 +435,53 @@ Addr                                     Diff
 0xffffffffc0cc4000-0xffffffffc0cdd000  102400 load_module+0x1401/0x2c20 pages=24 vmalloc N0=24
 0xffffffffc0ce2000-0xffffffffc0ceb000   36864 load_module+0x1401/0x2c20 pages=8 vmalloc N0=8
 0xffffffffc0cef000-0xffffffffc0cfe000   61440 load_module+0x1401/0x2c20 pages=14 vmalloc N0=14
+```
+
+
+# /proc/PID/maps
+```
+00400000-0147b000 r-xp 00000000 fd:02 175042                             /usr/bin/docker-containerd
+0167a000-0167b000 r--p 0107a000 fd:02 175042                             /usr/bin/docker-containerd
+0167b000-016d1000 rw-p 0107b000 fd:02 175042                             /usr/bin/docker-containerd
+016d1000-016f6000 rw-p 00000000 00:00 0 
+01e77000-01e98000 rw-p 00000000 00:00 0                                  [heap]
+c000000000-c000004000 rw-p 00000000 00:00 0 
+c41ff90000-c420000000 rw-p 00000000 00:00 0 
+...
+c420d00000-c420e00000 rw-p 00000000 00:00 0
+7f0800000000-7f0800021000 rw-p 00000000 00:00 0
+...
+7f083d1f6000-7f083d209000 rw-p 00000000 00:00 0 
+7f083d209000-7f083d20a000 r--p 00027000 fd:02 424477                     /lib/x86_64-linux-gnu/ld-2.26.so
+7f083d20a000-7f083d20b000 rw-p 00028000 fd:02 424477                     /lib/x86_64-linux-gnu/ld-2.26.so
+7f083d20b000-7f083d20c000 rw-p 00000000 00:00 0 
+7ffdc1dce000-7ffdc1def000 rw-p 00000000 00:00 0                          [stack]
+7ffdc1df0000-7ffdc1df3000 r--p 00000000 00:00 0                          [vvar]
+7ffdc1df3000-7ffdc1df5000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+```
+
+# pmap
+```
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND 
+29217 root      20   0 1002568  28988  15316 S   0.0  0.1   1:15.21 docker-containe
+
+29217:   docker-containerd --config /var/run/docker/containerd/containerd.toml
+0000000000400000  16876K r-x-- docker-containerd         # ‭  4 194 304‬
+000000000167a000      4K r---- docker-containerd         ‭#  23 568 384‬
+000000000167b000    344K rw--- docker-containerd
+00000000016d1000    148K rw---   [ anon ]
+0000000001e77000    132K rw---   [ anon ]     # /proc/PID/maps: [heap]
+000000c000000000     16K rw---   [ anon ]
+...
+000000c420d00000   1024K rw---   [ anon ]        #     ‭842 364 092 416‬
+00007f0800000000    132K rw---   [ anon ]        # ‭139 672 336 465 920‬
+...
+00007f083d20a000      4K rw--- ld-2.26.so        # ‭139 673 362 014 208‬
+00007f083d20b000      4K rw---   [ anon ]
+00007ffdc1dce000    132K rw---   [ stack ]
+00007ffdc1df0000     12K r----   [ anon ]     # /proc/PID/maps: [vvar]
+00007ffdc1df3000      8K r-x--   [ anon ]     # /proc/PID/maps: [vdso]
+ffffffffff600000      4K r-x--   [ anon ]     # /proc/PID/maps: [vsyscall]
+ total          1002572K                               # 1 026 633 728
 ```

@@ -39,7 +39,7 @@ Each thread gets a stack, while there's typically only one heap for the applicat
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf
 
     MMU translates the virtual address into the physical RAM address 
-    Paging solves the external fragmenta>on problem by using fixed sized 
+    Paging solves the external fragmentation problem by using fixed sized 
     units in both physical and virtual memory
     The address “0x1000” maps to different physical addresses in different 
     processes 

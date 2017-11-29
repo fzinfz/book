@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [vi/vim](#vivim)
+    - [VISUAL BLOCK mode](#visual-block-mode)
 - [VSCode extensions](#vscode-extensions)
 - [UEFI Shell](#uefi-shell)
 - [Hardware](#hardware)
@@ -20,6 +21,9 @@
     cw => change word
     ciw => change word from cursor
     :w !sudo tee %      ===> sudo save
+
+## VISUAL BLOCK mode
+    Ctrl+V；【select】；Shift + I; 【type text】; Esc
 
 # VSCode extensions
 AlanWalk.markdown-toc

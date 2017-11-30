@@ -8,6 +8,7 @@
 - [top](#top)
 - [X11](#x11)
     - [Forwarding](#forwarding)
+- [User & Permission](#user--permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
     - [sudoers](#sudoers)
@@ -104,6 +105,7 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     X11DisplayOffset 10
     X11UseLocalhost yes
 
+# User & Permission
 ## add user to group
     sudo adduser foobar www-data
     sudo usermod -a -G ftp tony
@@ -169,6 +171,8 @@ echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.
 
 ## dpkg
     dpkg --get-selections
+
+To install .deb manually, visit `linux/kernel` page.
 
 ## apt
 ```

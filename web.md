@@ -8,12 +8,12 @@
     - [TLS Extensions - Certificate Status Request](#tls-extensions---certificate-status-request)
     - [Certificate formats](#certificate-formats)
     - [ECDSA vs RSA](#ecdsa-vs-rsa)
-- [Free SSL](#free-ssl)
+- [SSL](#ssl)
     - [Let's Encrypt](#lets-encrypt)
     - [Cloudflare](#cloudflare)
     - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
 - [Nginx](#nginx)
-    - [SSL](#ssl)
+    - [SSL](#ssl-1)
     - [plain text/index/debug/proxy](#plain-textindexdebugproxy)
     - [upstream](#upstream)
 - [HAProxy Health Check](#haproxy-health-check)
@@ -23,9 +23,9 @@
 - [Varnish](#varnish)
 - [Github pages](#github-pages)
 - [Cloudflare](#cloudflare-1)
-    - [SSL Modes](#ssl-modes)
     - [CNAME Flattening](#cname-flattening)
-    - [page rule](#page-rule)
+    - [SSL Modes](#ssl-modes)
+    - [HTTPS](#https)
 - [Google Analytics](#google-analytics)
     - [Enhanced Link Attribution](#enhanced-link-attribution)
 
@@ -97,7 +97,7 @@ https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-in
 with ECDSA you can get the same level of security as RSA but with smaller keys.  
 legacy browsers may not support
 
-# Free SSL
+# SSL
 ## Let's Encrypt
 https://certbot.eff.org/
 
@@ -219,6 +219,15 @@ https://help.github.com/articles/setting-up-an-apex-domain/
     192.30.252.154
 
 # Cloudflare 
+## CNAME Flattening
+https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/
+
+For example, CNAME 6equj5.wordplumblr.com for Foo.com. when Foo.com started using too many resources WordPlumblr could have updated the CNAME and isolated Foo.com from the rest of the customers.
+
+the biggest edge case had to do with email sent from Microsoft Exchange mail servers.
+
+"flattens" the CNAME chain, a way to support a CNAME at the root, but still follow the RFC and return an IP address for any query for the root record. 
+
 ## SSL Modes
 https://www.cloudflare.com/ssl/  
 `Flexible`: not encrypts traffic from Cloudflare to your origin server.  
@@ -229,19 +238,12 @@ Opportunistic Encryption: for HTTP-only domains
 Data centers without access to private keys will experience a slight initial delay.  
 HSTS forces clients to use secure connections for every request
 
+## HTTPS
+[Automatic HTTPS Rewrites](https://support.cloudflare.com/hc/en-us/articles/227227647) safely eliminates **mixed content** issues by rewriting insecure URLs dynamically from known secure hosts to their secure counterpart.
 
-## CNAME Flattening
-https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/
+[Page Rules - Always Use HTTPS](https://support.cloudflare.com/hc/en-us/articles/218411427#https)
 
-## page rule
-https://support.cloudflare.com/hc/en-us/articles/218411427
-
-HTTPS Rewrites:  
-https://www.cloudflare.com/website-optimization/automatic-https-rewrite/   
-Automatic-HTTPS-Rewrites：https://support.cloudflare.com/hc/en-us/articles/227227647  
-redirect to HTTPS/SSL： https://support.cloudflare.com/hc/en-us/articles/200170536
-
-Forcing HTTPS does not resolve issues with mixed content, as browsers check the protocol of included resources before making a request. You will need to use only relative links or HTTPS links on pages that you force to HTTPS. 
+[Page Rules - Forwarding URL](https://support.cloudflare.com/hc/en-us/articles/200170536)
 
 # Google Analytics
 https://analytics.google.com/analytics/web/#/.../admin/property/settings

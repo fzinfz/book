@@ -4,7 +4,7 @@
 - [Compiling](#compiling)
     - [debug](#debug)
     - [.config](#config)
-- [Install deb manually](#install-deb-manually)
+- [Install .deb manually](#install-deb-manually)
 - [Releases](#releases)
     - [4.14 + 12 November, 2017](#414--12-november-2017)
     - [4.13 - 3 September, 2017 - Ubuntu 17.10 Artful](#413---3-september-2017---ubuntu-1710-artful)
@@ -45,7 +45,7 @@ https://www.ibm.com/developerworks/community/blogs/5144904d-5d75-45ed-9d2b-cf175
 oldconfig: /boot/config*  # compiled parameters  
 Force pass overwriten: https://lists.kernelnewbies.org/pipermail/kernelnewbies/2013-May/008287.html
 
-# Install deb manually
+# Install .deb manually
 ```
 wget http://mirrors.kernel.org/debian/pool/main/l/linux/linux-image-4.9.0-rc8-amd64-unsigned_4.9~rc8-1~exp1_amd64.deb
 

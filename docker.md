@@ -19,12 +19,14 @@
 <!-- /TOC -->
 
 # Install & Management
-    source /dev/stdin <<< "$(curl -sS https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh)"
+    url=https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh
+    source /dev/stdin <<< "$(curl -sS $url)"
 
 # Config
 https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
 ```
-/etc/docker/daemon.json
+/etc/docker/daemon.json     # delete `,` & `#...`
+# `dockerd` for debugging: https://docs.docker.com/engine/admin/
 {
     "live-restore": true,   # containers remain running if daemon unavailable
     "graph": "/data/docker-fs",
@@ -35,7 +37,6 @@ https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configurat
         "http://hub-mirror.c.163.com"],
     # https://cr.console.aliyun.com/#/accelerator
 }
-kill -HUP <processID> # reload the configuration
 ```
 
 # Dockerfile code snippets

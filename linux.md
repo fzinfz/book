@@ -1,9 +1,8 @@
 <!-- TOC -->
 
-- [alias, functions and notes](#alias-functions-and-notes)
+- [Bash](#bash)
 - [Exit code](#exit-code)
 - [Signal](#signal)
-- [File descriptor](#file-descriptor)
 - [Diagram](#diagram)
 - [top](#top)
 - [X11](#x11)
@@ -56,10 +55,22 @@
 
 <!-- /TOC -->
 
-# alias, functions and notes
-http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+# Bash
+https://www.gnu.org/software/bash/manual/bashref.html
 
-    curl -sS https://raw.githubusercontent.com/fzinfz/scripts/master/init.sh | bash
+    url=https://raw.githubusercontent.com/fzinfz/scripts/master/init.sh # alias & functions
+    source /dev/stdin <<< "$(curl -sS $url)"
+
+    set
+        -x                      debug
+        -T                      If  set, any traps on DEBUG and RETURN are inherited
+        -o functrace/errtrace
+
+    0: stdin; 1: stdout; 2: stderr              # File descriptor
+    2>&1 >/dev/null
+    ssh-add 2>/dev/null
+
+http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
@@ -76,11 +87,6 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     kill -l
     1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
     6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL ... 64) SIGRTMAX
-
-# File descriptor
-    0: stdin; 1: stdout; 2: stderr
-    2>&1 >/dev/null
-    ssh-add 2>/dev/null
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)

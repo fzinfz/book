@@ -1,21 +1,30 @@
 <!-- TOC -->
 
-- [Course](#course)
-- [Open vSwitch](#open-vswitch)
-    - [Tutorial](#tutorial)
-    - [Remote Controller](#remote-controller)
-- [OpenFlow 1.3 Software Switch](#openflow-13-software-switch)
+- [Courses](#courses)
+- [Switch](#switch)
+    - [C - Open vSwitch - OpenFlow 1.0+](#c---open-vswitch---openflow-10)
+        - [Tools](#tools)
+        - [Install & Config](#install--config)
+        - [Port bonding](#port-bonding)
+        - [Port mirroring](#port-mirroring)
+        - [Notes](#notes)
+    - [C - OpenFlow 1.3 Software Switch - OpenFlow 1.3](#c---openflow-13-software-switch---openflow-13)
+    - [C - Lagopus OpenFlow 1.3](#c---lagopus-openflow-13)
 - [Mininet](#mininet)
     - [Install](#install)
     - [Supported switch & controller](#supported-switch--controller)
     - [Run](#run)
     - [Remote control](#remote-control)
+- [Controller - Python - Faucet OpenFlow 1.3](#controller---python---faucet-openflow-13)
+    - [Docker](#docker)
+    - [ovs-vsctl](#ovs-vsctl)
+    - [Config with ACL and router](#config-with-acl-and-router)
 - [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
     - [Source build](#source-build)
     - [Manual](#manual)
     - [Install](#install-1)
 - [Controller - Python - Ryu](#controller---python---ryu)
-    - [Docker](#docker)
+    - [Docker](#docker-1)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
     - [Debug](#debug)
 - [Controller - C - OVN](#controller---c---ovn)
@@ -24,11 +33,11 @@
 - [Controller - JAVA - ODL](#controller---java---odl)
     - [Releases](#releases)
     - [Ports](#ports)
-    - [Docker](#docker-1)
+    - [Docker](#docker-2)
     - [Init](#init)
 - [Controller - JAVA - ONOS](#controller---java---onos)
     - [Ports](#ports-1)
-    - [Docker](#docker-2)
+    - [Docker](#docker-3)
         - [Cluster](#cluster)
     - [Init](#init-1)
     - [WebUI](#webui)
@@ -38,9 +47,9 @@
 - [Controller - Calico](#controller---calico)
 - [Controller - Scala/JAVA - MidoNet](#controller---scalajava---midonet)
 - [Controller - Ruby - Trema](#controller---ruby---trema)
-- [Controller - Python - Faucet OpenFlow 1.3](#controller---python---faucet-openflow-13)
 - [Controller - Powershell - Microsoft SDN](#controller---powershell---microsoft-sdn)
 - [Routing framework - Kulfi](#routing-framework---kulfi)
+- [Controller - POX(inactive) - python](#controller---poxinactive---python)
 - [Controller - More](#controller---more)
 - [Open Security Controller - JAVA](#open-security-controller---java)
 - [C++ simulation library and framework - OMNeT++](#c-simulation-library-and-framework---omnet)
@@ -48,37 +57,117 @@
 
 <!-- /TOC -->
 
-# Course
+# Courses
 http://www.cse.wustl.edu/~jain/tutorials/
 http://www.cs.kent.edu/~mallouzi/Software%20Defined%20Networking/
 http://www.cs.fsu.edu/~xyuan/cis5930/
 https://www.cs.princeton.edu/~jrex/papers/
 https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY
 
-# Open vSwitch
+# Switch
+## C - Open vSwitch - OpenFlow 1.0+
+http://docs.openvswitch.org/en/latest/faq/openflow/  
+version 2.8: OF 1.0-1.4; 1.5/1.6 missing features, must be enabled by user.  
+All current versions of ovs-ofctl enable only OpenFlow 1.0 by default.
+
+    ovs-ofctl -O OpenFlow13 dump-flows br0
+
 https://github.com/openvswitch/ovs
 
-    ovs-vswitchd
-    ovsdb-server
-    ovs-dpctl, a tool for configuring the switch kernel module.
-    ovs-vsctl, a utility for querying and updating the configuration of ovs-vswitchd.
-    ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
-    ovs-ofctl, a utility for querying and controlling OpenFlow switches and controllers.
-    ovs-pki, a utility for creating and managing the public-key infrastructure for OpenFlow switches.
-    ovs-testcontroller, a simple OpenFlow controller that may be useful for testing
-    A patch to tcpdump that enables it to parse OpenFlow messages.
+[ovs-vswitchd](http://openvswitch.org/support/dist-docs/ovs-vswitchd.8.html) | 
+[ovs-vswitchd.conf.db](http://openvswitch.org/support/dist-docs/ovs-vswitchd.conf.db.5.html)  
+[ovsdb-server](http://openvswitch.org/support/dist-docs/ovsdb-server.1.html)  
+[ovs-dpctl](http://openvswitch.org/support/dist-docs/ovs-dpctl.8.html), a tool for configuring the switch kernel module.  
+[ovs-vsctl](http://openvswitch.org/support/dist-docs/ovs-vsctl.8.html), a utility for querying and updating the configuration of ovs-vswitchd.  
+[ovs-appctl](http://openvswitch.org/support/dist-docs/ovs-appctl.8.html), a utility that sends commands to running Open vSwitch daemons.  
 
-    ovs-vsctl add-br ovsbr
-    ovs-vsctl list-br
+### Tools
+- [ovs-ofctl](http://openvswitch.org/support/dist-docs/ovs-ofctl.8.html), a utility for querying and controlling OpenFlow switches and controllers.  
+- [ovs-pki](http://openvswitch.org/support/dist-docs/ovs-pki.8.html), a utility for creating and managing the public-key infrastructure for OpenFlow switches.  
+- [ovs-testcontroller](http://openvswitch.org/support/dist-docs/ovs-testcontroller.8.html), a simple OpenFlow controller that may be useful for testing
+- A patch to tcpdump that enables it to parse OpenFlow messages.
 
-## Tutorial
-http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openflow-lets-get-started
+http://docs.openvswitch.org/en/latest/ref/  
+ovn* ovsdb* ovs-* vtep[-ctl]
 
-## Remote Controller
-    ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633
+### Install & Config
+    apt install -y openvswitch-switch
+    systemctl status openvswitch-switch.service
 
-# OpenFlow 1.3 Software Switch
+http://docs.openvswitch.org/en/latest/faq/configuration/
+
+    ovs-vsctl add-br br0
+    ovs-vsctl add-port br0 eth0             # trunk port (the default)
+    ovs-vsctl add-port br0 tap0 tag=9       # access port
+    ovs-vsctl add-port br0 eth0 tag=9 vlan_mode=native-tagged
+
+        native-tagged
+                A native-tagged port resembles a  trunk  port,  with  the
+                exception  that  a  packet  without an 802.1Q header that
+                ingresses on a native-tagged  port  is  in  the  ``native
+                VLAN’’ (specified in the tag column).
+
+        native-untagged
+                A  native-untagged  port  resembles a native-tagged port,
+                with the exception that  a  packet  that  egresses  on  a
+                native-untagged  port in the native VLAN will not have an
+                802.1Q header.
+
+    ovs-vsctl set port tap0 tag=9           # set existing port
+    ovs-vsctl show
+    ovs-vsctl list-br / del-br
+    ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633 # set Remote Controller
+
+    ovs-vsctl get Interface eth0 ofport
+    ovs-vsctl -- --columns=name,ofport list Interface   # print the entire mapping
+
+### Port bonding
+    ovs-vsctl add-bond br0 bond0 eth0 eth1  # ovs-vswitchd.conf.db(5) for options
+
+each of the interfaces in my bonded port shows up as an individual OpenFlow port.  
+Open vSwitch makes individual bond interfaces visible as OpenFlow ports, rather than the bond as a whole.
+
+### Port mirroring
+    # eth0 + tap0 mirrored to tap1
+    ovs-vsctl add-port br0 eth0
+    ovs-vsctl set bridge br0 stp_enable=true    # not well tested
+    ovs-vsctl add-port br0 tap0
+    ovs-vsctl add-port br0 tap1 \
+        -- --id=@p get port tap1 \
+        -- --id=@m create mirror name=m0 select-all=true output-port=@p \
+        -- set bridge br0 mirrors=@m
+    ovs-vsctl clear bridge br0 mirrors # disable mirror
+
+[RSPAN VLAN](https://github.com/osrg/openvswitch/blob/master/FAQ#L243), mirroring of all traffic to that VLAN  
+Mirroring to a VLAN can disrupt a network that contains unmanaged switches. 
+
+### Notes
+A physical Ethernet device that is part of an Open vSwitch bridge should not have an IP address.
+
+"normalization": a flow cannot match on an L3 field without saying what L3 protocol is in use.
+
+    ovs-ofctl add-flow br0 ip,nw_dst=192.168.0.1,actions=drop
+    ovs-ofctl add-flow br0 arp,nw_dst=192.168.0.1,actions=drop
+
+"tp_src=1234" will be ignored.  
+Instead, write "tcp,tp_src=1234", or "udp,tp_src=1234".
+
+ofport value -1 means that the interface could not be created due to an error.  
+ofport value [] means that the interface hasn't been created yet.
+
+`ovs-dpctl dump-flows` queries a kernel datapath  
+`ovs-ofctl dump-flows` queries an OpenFlow switch
+
+[ovs-vsctl with faucet](#ovs-vsctl)
+
+## C - OpenFlow 1.3 Software Switch - OpenFlow 1.3
 https://github.com/CPqD/ofsoftswitch13
+
+## C - Lagopus OpenFlow 1.3
+https://github.com/lagopus/lagopus  
+VLAN, QinQ, MAC-in-MAC, MPLS and PBB.  
+tunnel protocol processing for overlay-type networking with GRE, VxLAN and GTP.
+Memory: 2GB or more  
 
 # Mininet
 ## Install
@@ -139,6 +228,57 @@ http://mininet.org/api/classmininet_1_1topo_1_1Topo.html
 ## Remote control
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-control-my-mininet-hosts-remotely
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-add-a-rest-interface-to-mininet
+
+# Controller - Python - Faucet OpenFlow 1.3
+http://faucet.nz/  
+for multi table OpenFlow 1.3 switches, that implements layer 2 switching, VLANs, ACLs, and layer 3 IPv4 and IPv6 routing, static and via BGP.
+
+    sudo pip install faucet
+    sudo pip install git+https://github.com/faucetsdn/faucet.git
+    sudo vi /etc/ryu/faucet/faucet.yaml
+    check_faucet_config.py /etc/ryu/faucet.yaml # verify config
+    ryu-manager faucet.faucet --verbose
+    pkill -HUP -f faucet.faucet
+
+## Docker
+    # http://docs.openvswitch.org/en/latest/tutorials/faucet/#overview
+    wget -O faucet-tutorial.yaml https://git.io/vbLFr
+    docker run -v $(pwd)/faucet-tutorial.yaml:/etc/ryu/faucet/faucet.yaml \
+        --net host -d --name faucet \
+        faucet/faucet
+    netstat -lntup | grep 6653
+
+    docker exec -it faucet cat /var/log/ryu/faucet/faucet.log   # check log
+    docker exec faucet pkill -HUP -f faucet.faucet      # update configuration
+
+## ovs-vsctl
+    faucet_ip=127.0.0.1   # don't use domain name
+    ovs-vsctl add-br br0 \
+         -- set bridge br0 other-config:datapath-id=0000000000000001 \
+         -- add-port br0 p1 -- set interface p1 ofport_request=1 \
+         -- add-port br0 p2 -- set interface p2 ofport_request=2 \
+         -- add-port br0 p3 -- set interface p3 ofport_request=3 \
+         -- add-port br0 p4 -- set interface p4 ofport_request=4 \
+         -- add-port br0 p5 -- set interface p5 ofport_request=5 \
+         -- set-controller br0 tcp:$faucet_ip:6653 \
+         -- set controller br0 connection-mode=out-of-band
+
+    cat /var/log/openvswitch/ovs-vswitchd.log
+    ovs-vsctl del-br br0
+
+https://github.com/osrg/openvswitch/blob/master/FAQ  
+"in-band": controllers are actually part of the network that is being controlled. occasionally they can cause unexpected behavior.
+
+    ovs-appctl bridge/dump-flows br0      # full OpenFlow flow table, including hidden flows
+    ovs-vsctl set bridge br0 other-config:disable-in-band=true # disables in-band control entirely
+
+## Config with ACL and router
+https://github.com/faucetsdn/faucet/tree/master/etc/ryu/faucet
+
+    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/faucet.yaml
+    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/acls.yaml
+    mkdir -p faucet.conf.d && mv -t faucet.conf.d/ faucet.yaml acls.yaml
+    docker run -v $(pwd)/faucet.conf.d/:/etc/ryu/faucet/ \
 
 # Controller - OCaml - Frenetic
 https://github.com/frenetic-lang/frenetic (.ova provided)
@@ -280,14 +420,14 @@ MidoNet supports virtual L2 switches, virtual L3 routing, distributed, stateful 
 # Controller - Ruby - Trema
 https://github.com/trema/trema
 
-# Controller - Python - Faucet OpenFlow 1.3
-http://faucet.nz/
-
 # Controller - Powershell - Microsoft SDN
 https://github.com/Microsoft/SDN
 
 # Routing framework - Kulfi
 https://github.com/merlin-lang/kulfi  
+
+# Controller - POX(inactive) - python
+http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openflow-lets-get-started
 
 # Controller - More
 http://yuba.stanford.edu/~casado/of-sw.html  

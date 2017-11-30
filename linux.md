@@ -15,11 +15,8 @@
     - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
-        - [EPEL](#epel)
     - [Ubuntu](#ubuntu)
-        - [CN mirrors](#cn-mirrors)
     - [Debian](#debian)
-    - [yum](#yum)
     - [dpkg](#dpkg)
     - [apt](#apt)
 - [Grub](#grub)
@@ -60,8 +57,9 @@
 <!-- /TOC -->
 
 # alias, functions and notes
-https://github.com/fzinfz/scripts/blob/master/init.sh  
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+
+    curl -sS https://raw.githubusercontent.com/fzinfz/scripts/master/init.sh | bash
 
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
@@ -123,6 +121,8 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
 
 # Package Management
 ## Redhat
+Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/
+
     subscription-manager register
     subscription-manager attach --auto
     subscription-manager repos --enable rhel-7-server-optional-rpms
@@ -130,10 +130,11 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     yum install epel-release
     rm -f /var/run/yum.pid <PID> && yum remove PackageKit
 
-Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/ 
+    yum-config-manager --disable c7-media
+    yum --nogpgcheck localinstall xx.rpm
 
-### EPEL
-http://elrepo.org/tiki/tiki-index.php
+    ### EPEL
+    http://elrepo.org/tiki/tiki-index.php
 
     rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
     rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
@@ -146,31 +147,24 @@ Universe - Community-maintained free and open-source software.
 Restricted - Proprietary drivers for devices.  
 Multiverse - Software restricted by copyright or legal issues.  
 
-### CN mirrors
-https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
-
+    # https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/
     deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
 
 ## Debian
 → experimental  
 → unstable(Sid) → testing → stable  
-Debian Unstable - repository where new & untested packages are introduced.  
-Debian Testing - repository with packages from unstable, if no bug are found within 10 days.  
+Unstable - repository where new & untested packages are introduced.  
+Testing - repository with packages from unstable, if no bug are found within 10 days.  
 
-main consists of DFSG-compliant packages, which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.  
-contrib packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).  
-non-free contains software that does not comply with the DFSG.  
-```
-echo deb http://ftp.debian.org/debian experimental main >> /etc/apt/sources.list
-echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list
-```
+`main` consists of DFSG-compliant packages, which do not rely on software outside this area to operate. These are the only packages considered part of the Debian distribution.  
+`contrib` packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).  
+`non-free` contains software that does not comply with the DFSG.  
 
-## yum
-    yum-config-manager --disable c7-media
-    yum --nogpgcheck localinstall xx.rpm
+    deb http://deb.debian.org/debian/ experimental main contrib non-free
+    deb https://mirrors.tuna.tsinghua.edu.cn/debian stretch main contrib non-free
 
 ## dpkg
-    dpkg --get-selections
+    dpkg --get-selections   # list installed
 
 To install .deb manually, visit `linux/kernel` page.
 

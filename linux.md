@@ -1,11 +1,11 @@
 <!-- TOC -->
 
 - [alias, functions and notes](#alias-functions-and-notes)
-- [top](#top)
 - [Exit code](#exit-code)
 - [Signal](#signal)
 - [File descriptor](#file-descriptor)
 - [Diagram](#diagram)
+- [top](#top)
 - [X11](#x11)
     - [Forwarding](#forwarding)
     - [add user to group](#add-user-to-group)
@@ -62,17 +62,6 @@
 https://github.com/fzinfz/scripts/blob/master/init.sh  
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
-    !!    # sudo last command
-
-# top
-    * 1 - Single Cpu       Off (thus multiple cpus)
-    * c - Command line     Off (name, not cmdline)
-    * i - Idle tasks       On  (show all tasks)
-    j - Str align right  Off (not right justify)
-    V - Forest view      On  (show as branches)
-    f - sort/hide columns
-    (`*')  could be overridden through the command-line.
-
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
 
@@ -96,6 +85,15 @@ http://tldp.org/LDP/abs/html/exitcodes.html
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
+
+# top
+    * 1 - Single Cpu       Off (thus multiple cpus)
+    * c - Command line     Off (name, not cmdline)
+    * i - Idle tasks       On  (show all tasks)
+    j - Str align right  Off (not right justify)
+    V - Forest view      On  (show as branches)
+    f - sort/hide columns
+    (`*')  could be overridden through the command-line.
 
 # X11
 ## Forwarding

@@ -58,19 +58,19 @@
 <!-- /TOC -->
 
 # Courses
-http://www.cse.wustl.edu/~jain/tutorials/
-http://www.cs.kent.edu/~mallouzi/Software%20Defined%20Networking/
-http://www.cs.fsu.edu/~xyuan/cis5930/
-https://www.cs.princeton.edu/~jrex/papers/
-https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY
+http://www.cse.wustl.edu/~jain/tutorials/  
+http://www.cs.kent.edu/~mallouzi/Software%20Defined%20Networking/  
+http://www.cs.fsu.edu/~xyuan/cis5930/  
+https://www.cs.princeton.edu/~jrex/papers/  
+https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY  
 
 # Switch
 ## C - Open vSwitch - OpenFlow 1.0+
 http://docs.openvswitch.org/en/latest/faq/openflow/  
-version 2.8: OF 1.0-1.4; 1.5/1.6 missing features, must be enabled by user.  
+version 2.8: OF 1.0-1.4; 1.5/1.6 missing features  
 All current versions of ovs-ofctl enable only OpenFlow 1.0 by default.
 
-    ovs-ofctl -O OpenFlow13 dump-flows br0
+    ovs-ofctl -O OpenFlow13 dump-flows br0  # enable support for later versions
 
 https://github.com/openvswitch/ovs
 
@@ -88,7 +88,8 @@ https://github.com/openvswitch/ovs
 - A patch to tcpdump that enables it to parse OpenFlow messages.
 
 http://docs.openvswitch.org/en/latest/ref/  
-ovn* ovsdb* ovs-* vtep[-ctl]
+ovn-* ovsdb-* ovs-* vtep[-ctl]  
+VTEP: VXLAN Tunnel End Point
 
 ### Install & Config
     apt install -y openvswitch-switch
@@ -158,7 +159,8 @@ ofport value [] means that the interface hasn't been created yet.
 `ovs-dpctl dump-flows` queries a kernel datapath  
 `ovs-ofctl dump-flows` queries an OpenFlow switch
 
-[ovs-vsctl with faucet](#ovs-vsctl)
+[ovs-vsctl with faucet](#ovs-vsctl) | 
+[Youtube](https://www.youtube.com/channel/UCH8GBLyxWkJDfZG32kr3Y4g)
 
 ## C - OpenFlow 1.3 Software Switch - OpenFlow 1.3
 https://github.com/CPqD/ofsoftswitch13

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Bash](#bash)
+- [Init scripts](#init-scripts)
 - [Exit code](#exit-code)
 - [Signal](#signal)
 - [Diagram](#diagram)
@@ -71,6 +72,11 @@ https://www.gnu.org/software/bash/manual/bashref.html
     ssh-add 2>/dev/null
 
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+
+# Init scripts
+- [/etc/init.d/](https://debian-administration.org/article/28/Making_scripts_run_at_boot_time_with_Debian): add a new service to start when the machine boots
+- `~/.bash_profile`: once, at login.
+- `~/.bashrc`: every time a shell is started.
 
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
@@ -220,9 +226,6 @@ https://github.com/settings/tokens
         https://api.github.com/repos/owner/repo/contents/path
 
 # files
-- The ~/.bash_profile would be used once, at login.
-- The ~/.bashrc script is read every time a shell is started.
-
 String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files
 
     apt-get install mlocate

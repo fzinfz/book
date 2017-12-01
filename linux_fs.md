@@ -3,9 +3,9 @@
 - [Check info](#check-info)
 - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
 - [mkpart, format](#mkpart-format)
-- [fstab](#fstab)
 - [NTFS](#ntfs)
 - [mount/umount](#mountumount)
+    - [fstab](#fstab)
     - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
 - [LVM, resize fs](#lvm-resize-fs)
     - [Add disk to vg](#add-disk-to-vg)
@@ -35,7 +35,20 @@
     parted -s /dev/sdb unit mib mkpart primary 0% 100%
     mkfs.ext4 /dev/sdb1
 
-# fstab
+# NTFS
+https://wiki.archlinux.org/index.php/NTFS-3G
+
+# mount/umount
+    mount -o loop,ro x.iso /mnt/cd
+    mount.nfs nfs_server:/dir /dir
+    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
+    mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
+    mount -v 192.168.88.10:/ /data/  # mount NFS 4.2
+    mount -o rw,remount /   # recovery
+    umount -l /PATH/OF/BUSY-DEVICE
+    umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
+
+## fstab
     /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
     /dev/cdrom              /media/CentOS           auto    user,noauto,exec,utf8        0    0
     //192.168.88.10/_ISO /mnt/ISO/ cifs username=user,password=pwd 0 0
@@ -47,18 +60,6 @@
 <fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 
 1 for the root device, 2 for other partitions, 0 to disable checking. 
 [Arch] If the root file system is btrfs, set to 0 instead of 1.
-
-# NTFS
-https://wiki.archlinux.org/index.php/NTFS-3G
-
-#  mount/umount
-    mount -o loop,ro x.iso /mnt/cd
-    mount.nfs nfs_server:/dir /dir
-    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
-    mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
-    mount -o rw,remount /   # recovery
-    umount -l /PATH/OF/BUSY-DEVICE
-    umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
 
 ## NFS performance monitoring and tuning
 https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  

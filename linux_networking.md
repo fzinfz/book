@@ -1,6 +1,9 @@
 <!-- TOC -->
 
 - [Basic](#basic)
+    - [debug](#debug)
+    - [tuntap](#tuntap)
+    - [Features](#features)
     - [disable ipv6](#disable-ipv6)
 - [systemd-networkd.service](#systemd-networkdservice)
 - [systemd.netdev](#systemdnetdev)
@@ -36,32 +39,39 @@
 <!-- /TOC -->
 
 # Basic
-```
-ls -l /sys/class/net/
-ip addr show dev eth1
-ifconfig ens7 10.99.0.10/16 up
-ip addr flush dev eth0
-ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient  
-dhclient -r eth0
-dhclient eth0
+https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf
 
-ip route add default via 192.168.1.1
+    ls -l /sys/class/net/   # E.g.: ens3 -> ../../devices/pci0000:00/0000:00:03.0/virtio0/net/ens3
+    ip addr show dev eth1
 
-tcpdump -i eno16777736 port 27017
+    ifconfig ens7 10.99.0.10/16 up
+    ip addr add 192.168.6.13/24 dev eth0 && ip link set eth0 up
 
-nmap -sV -p6379 127.0.0.1
+    ip addr flush dev eth0
+    ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient
 
-echo 'check tcp-segmentation-offload, generic-segmentation/receive-offload status'
-ethtool -k ens3
-ethtool -K ens3 gro off gso off tso off
+    ip route add default via 192.168.1.1
 
-```
+## debug
+    tcpdump -i any port 27017
+    nmap -sV -p6379 127.0.0.1
+
+## tuntap
+    ip tuntap add mode tap dev tap1
+            tap1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+            link/ether a2:05:e8:7f:d9:e8 brd ff:ff:ff:ff:ff:ff
+
+    ip tuntap add mode tun dev tun1
+            tun1: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN group default qlen 500
+            link/none
+
+## Features
+    ethtool -k ens3 | grep offload              # list Features
+    ethtool -K ens3 gro off gso off tso off     # set tcp-segmentation-offload, generic-segmentation/receive-offload
 
 ## disable ipv6
-```
-echo "net.ipv6.conf.all.disable_ipv6=1"  >> /etc/sysctl.conf
-sysctl  -p
-```
+    echo "net.ipv6.conf.all.disable_ipv6=1"  >> /etc/sysctl.conf
+    sysctl  -p
 
 # systemd-networkd.service
 /usr/lib/systemd/systemd-networkd  

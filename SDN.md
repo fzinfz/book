@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Courses](#courses)
+- [Openflow Roadmap](#openflow-roadmap)
 - [Switch](#switch)
     - [C - Open vSwitch - OpenFlow 1.0+](#c---open-vswitch---openflow-10)
         - [Tools](#tools)
@@ -15,18 +16,18 @@
     - [Supported switch & controller](#supported-switch--controller)
     - [Run](#run)
     - [Remote control](#remote-control)
-- [Controller - Python - Faucet OpenFlow 1.3](#controller---python---faucet-openflow-13)
+- [Controller - Python - Faucet - OpenFlow 1.3](#controller---python---faucet---openflow-13)
     - [Docker](#docker)
     - [ovs-vsctl](#ovs-vsctl)
     - [Config with ACL and router](#config-with-acl-and-router)
-- [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
-    - [Source build](#source-build)
-    - [Manual](#manual)
-    - [Install](#install-1)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker-1)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
     - [Debug](#debug)
+- [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
+    - [Source build](#source-build)
+    - [Manual](#manual)
+    - [Install](#install-1)
 - [Controller - C - OVN](#controller---c---ovn)
 - [Controller - C++ - OpenContrail by Juniper](#controller---c---opencontrail-by-juniper)
     - [Kubernetes](#kubernetes)
@@ -64,6 +65,9 @@ http://www.cs.fsu.edu/~xyuan/cis5930/
 https://www.cs.princeton.edu/~jrex/papers/  
 https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY  
 
+# Openflow Roadmap
+V1.0-1.5: http://speed.cis.nctu.edu.tw/~ydlin/miscpub/indep_frank.pdf (Page 5)
+
 # Switch
 ## C - Open vSwitch - OpenFlow 1.0+
 http://docs.openvswitch.org/en/latest/faq/openflow/  
@@ -94,6 +98,7 @@ VTEP: VXLAN Tunnel End Point
 ### Install & Config
     apt install -y openvswitch-switch
     systemctl status openvswitch-switch.service
+    ovs-vswitchd -V # check version
 
 http://docs.openvswitch.org/en/latest/faq/configuration/
 
@@ -115,12 +120,10 @@ http://docs.openvswitch.org/en/latest/faq/configuration/
                 802.1Q header.
 
     ovs-vsctl set port tap0 tag=9           # set existing port
-    ovs-vsctl show
-    ovs-vsctl list-br / del-br
     ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633 # set Remote Controller
 
     ovs-vsctl get Interface eth0 ofport
-    ovs-vsctl -- --columns=name,ofport list Interface   # print the entire mapping
+    ovs-vsctl -- --columns=name,ofport,admin_state,statistics list Interface   # mapping
 
 ### Port bonding
     ovs-vsctl add-bond br0 bond0 eth0 eth1  # ovs-vswitchd.conf.db(5) for options
@@ -139,8 +142,7 @@ Open vSwitch makes individual bond interfaces visible as OpenFlow ports, rather 
         -- set bridge br0 mirrors=@m
     ovs-vsctl clear bridge br0 mirrors # disable mirror
 
-[RSPAN VLAN](https://github.com/osrg/openvswitch/blob/master/FAQ#L243), mirroring of all traffic to that VLAN  
-Mirroring to a VLAN can disrupt a network that contains unmanaged switches. 
+[RSPAN VLAN](https://github.com/osrg/openvswitch/blob/master/FAQ#L243), mirroring of all traffic to that VLAN. Mirroring to a VLAN can disrupt a network that contains unmanaged switches. 
 
 ### Notes
 A physical Ethernet device that is part of an Open vSwitch bridge should not have an IP address.
@@ -150,8 +152,7 @@ A physical Ethernet device that is part of an Open vSwitch bridge should not hav
     ovs-ofctl add-flow br0 ip,nw_dst=192.168.0.1,actions=drop
     ovs-ofctl add-flow br0 arp,nw_dst=192.168.0.1,actions=drop
 
-"tp_src=1234" will be ignored.  
-Instead, write "tcp,tp_src=1234", or "udp,tp_src=1234".
+"tp_src=1234" will be ignored. write "tcp,tp_src=1234", or "udp,tp_src=1234".
 
 ofport value -1 means that the interface could not be created due to an error.  
 ofport value [] means that the interface hasn't been created yet.
@@ -231,7 +232,7 @@ http://mininet.org/api/classmininet_1_1topo_1_1Topo.html
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-control-my-mininet-hosts-remotely
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-add-a-rest-interface-to-mininet
 
-# Controller - Python - Faucet OpenFlow 1.3
+# Controller - Python - Faucet - OpenFlow 1.3
 http://faucet.nz/  
 for multi table OpenFlow 1.3 switches, that implements layer 2 switching, VLANs, ACLs, and layer 3 IPv4 and IPv6 routing, static and via BGP.
 
@@ -254,19 +255,24 @@ for multi table OpenFlow 1.3 switches, that implements layer 2 switching, VLANs,
     docker exec faucet pkill -HUP -f faucet.faucet      # update configuration
 
 ## ovs-vsctl
-    faucet_ip=127.0.0.1   # don't use domain name
+    IP_faucet=127.0.0.1   # don't use domain name
+    ip tuntap add mode tap dev tap1
+
     ovs-vsctl add-br br0 \
          -- set bridge br0 other-config:datapath-id=0000000000000001 \
-         -- add-port br0 p1 -- set interface p1 ofport_request=1 \
-         -- add-port br0 p2 -- set interface p2 ofport_request=2 \
-         -- add-port br0 p3 -- set interface p3 ofport_request=3 \
-         -- add-port br0 p4 -- set interface p4 ofport_request=4 \
-         -- add-port br0 p5 -- set interface p5 ofport_request=5 \
-         -- set-controller br0 tcp:$faucet_ip:6653 \
+         -- set-controller br0 tcp:$IP_faucet:6653 \
          -- set controller br0 connection-mode=out-of-band
 
+    ovs-vsctl add-port br0 tap1 -- set interface tap1 ofport_request=1
+    ovs-vsctl add-port br0 tap2 -- set interface tap2 ofport_request=2
+    ovs-vsctl add-port br0 tap3 -- set interface tap3 ofport_request=3
+
+    ip addr add 192.168.6.13/24 dev tap3
+
     cat /var/log/openvswitch/ovs-vswitchd.log
-    ovs-vsctl del-br br0
+    ovs-vsctl show
+    ovs-ofctl dump-flows br0
+    ovs-vsctl --if-exists del-br br0
 
 https://github.com/osrg/openvswitch/blob/master/FAQ  
 "in-band": controllers are actually part of the network that is being controlled. occasionally they can cause unexpected behavior.
@@ -281,26 +287,6 @@ https://github.com/faucetsdn/faucet/tree/master/etc/ryu/faucet
     wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/acls.yaml
     mkdir -p faucet.conf.d && mv -t faucet.conf.d/ faucet.yaml acls.yaml
     docker run -v $(pwd)/faucet.conf.d/:/etc/ryu/faucet/ \
-
-# Controller - OCaml - Frenetic
-https://github.com/frenetic-lang/frenetic (.ova provided)
-http://www-users.cselabs.umn.edu/classes/Spring-2016/csci8211/Lecture-Notes/csci8211-Frenetic-Pyretic.pptx
-
-## Source build
-    mkdir src && cd src
-    git clone https://github.com/frenetic-lang/frenetic
-    cd ..
-    opam pin add frenetic src/frenetic -n -k git
-    opam install -y frenetic
-    sudo pip install -e  src/frenetic/lang/python
-
-## Manual
-    git clone https://github.com/frenetic-lang/manual.git
-    cd programmers_guide/code
-    programmers_guide/frenetic_programmers_guide.pdf
-
-## Install
-https://gist.githubusercontent.com/basus/cd48c8e4e9d14f853cea4f45f7e0edaf/raw/b6d698a16e1de5fa7d0daef7f7a36a57a9766ae1/frenetic.sh
 
 # Controller - Python - Ryu
     git clone git://github.com/osrg/ryu.git
@@ -321,6 +307,26 @@ http://ryu.readthedocs.io/en/latest/writing_ryu_app.html
     PyCharm Settings | Python Debugger | Gevent compatible debugging
     ryu-manager = ryu.cmd.manager:main
     ryu = ryu.cmd.ryu_base:main
+
+# Controller - OCaml - Frenetic
+https://github.com/frenetic-lang/frenetic (.ova provided)
+http://www-users.cselabs.umn.edu/classes/Spring-2016/csci8211/Lecture-Notes/csci8211-Frenetic-Pyretic.pptx
+
+## Source build
+    mkdir src && cd src
+    git clone https://github.com/frenetic-lang/frenetic
+    cd ..
+    opam pin add frenetic src/frenetic -n -k git
+    opam install -y frenetic
+    sudo pip install -e  src/frenetic/lang/python
+
+## Manual
+    git clone https://github.com/frenetic-lang/manual.git
+    cd programmers_guide/code
+    programmers_guide/frenetic_programmers_guide.pdf
+
+## Install
+https://gist.githubusercontent.com/basus/cd48c8e4e9d14f853cea4f45f7e0edaf/raw/b6d698a16e1de5fa7d0daef7f7a36a57a9766ae1/frenetic.sh
 
 # Controller - C - OVN
 https://docs.openstack.org/networking-ovn/latest/admin/features.html

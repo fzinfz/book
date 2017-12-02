@@ -55,6 +55,7 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     //servername/sharename /media/windowsshare cifs guest,uid=1000,iocharset=utf8 0 0
     /dev/mapper/x--vg--root /home           btrfs   defaults,subvol=@home 0       2
     /dev/sda2       /mymnt/win   ntfs-3g  rw,umask=0000,defaults 0 0
+    NFS_server:/    /data nfs rsize=8192,wsize=8192,timeo=14,intr
 
 <dump> is checked by the dump(ext2/3 filesystem backup) utility. This field is usually set to 0, which disables the check.
 <fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 

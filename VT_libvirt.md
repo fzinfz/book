@@ -5,6 +5,7 @@
 - [virsh](#virsh)
 - [Pool](#pool)
 - [Driver](#driver)
+- [OVS](#ovs)
 - [MacVTap](#macvtap)
 - [Shutdown timeout](#shutdown-timeout)
 - [Nested](#nested)
@@ -82,6 +83,16 @@ https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/v
 https://github.com/torvalds/linux/blob/master/drivers/virtio/Kconfig  
 VIRTIO_BALLOON supports increasing and decreasing the amount of memory within a KVM guest.  
 VIRTIO_MMIO support for memory mapped virtio platform device driver.
+
+# OVS
+http://docs.openvswitch.org/en/latest/howto/libvirt/
+
+    <interface type='bridge'>
+        <mac address='52:54:00:71:b1:b6'/>
+        <source bridge='br1'/>
+        <virtualport type='openvswitch'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
 
 # MacVTap
 http://virt.kernelnewbies.org/MacVTap  

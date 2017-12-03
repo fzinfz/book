@@ -91,6 +91,7 @@ http://docs.openvswitch.org/en/latest/howto/libvirt/
         <mac address='52:54:00:71:b1:b6'/>
         <source bridge='br1'/>
         <virtualport type='openvswitch'/>
+        <model type='virtio'/>
         <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
     </interface>
 

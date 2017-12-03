@@ -1,7 +1,6 @@
 <!-- TOC -->
 
 - [Courses](#courses)
-- [Openflow Roadmap](#openflow-roadmap)
 - [Mininet](#mininet)
     - [Install](#install)
     - [Supported switch & controller](#supported-switch--controller)
@@ -17,12 +16,13 @@
 - [Controller - Python - Faucet - OpenFlow 1.3](#controller---python---faucet---openflow-13)
     - [Docs](#docs)
     - [faucet.yaml](#faucetyaml)
-        - [**Port**](#port)
-        - [**Router**](#router)
-        - [**VLAN**](#vlan)
+        - [DP](#dp)
+        - [Port](#port)
+        - [Router](#router)
+        - [VLAN](#vlan)
     - [Manually install](#manually-install)
     - [Docker](#docker)
-    - [ovs-vsctl](#ovs-vsctl)
+    - [OVS](#ovs)
     - [Config with ACL and router](#config-with-acl-and-router)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker-1)
@@ -67,10 +67,8 @@ http://www.cse.wustl.edu/~jain/tutorials/
 http://www.cs.kent.edu/~mallouzi/Software%20Defined%20Networking/  
 http://www.cs.fsu.edu/~xyuan/cis5930/  
 https://www.cs.princeton.edu/~jrex/papers/  
+http://zoo.cs.yale.edu/classes/cs434/cs434-2017-spring/lectures/02-prognet-openflow.pdf  
 https://www.youtube.com/playlist?list=PLpherdrLyny8YN4M24iRJBMCXkLcGbmhY  
-
-# Openflow Roadmap
-V1.0-1.5: http://speed.cis.nctu.edu.tw/~ydlin/miscpub/indep_frank.pdf (Page 5)
 
 # Mininet
 ## Install
@@ -201,9 +199,6 @@ http://docs.openvswitch.org/en/latest/faq/configuration/
     ovs-vsctl --if-exists del-port tap1
     ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633 # set Remote Controller
 
-    ovs-vsctl get Interface eth0 ofport
-    ovs-vsctl -- --columns=name,ofport,admin_state,statistics list Interface   # mapping
-
 ## Port bonding
     ovs-vsctl add-bond br0 bond0 eth0 eth1  # ovs-vswitchd.conf.db(5) for options
 
@@ -239,7 +234,7 @@ ofport value [] means that the interface hasn't been created yet.
 `ovs-dpctl dump-flows` queries a kernel datapath  
 `ovs-ofctl dump-flows` queries an OpenFlow switch
 
-[ovs-vsctl with faucet](#ovs-vsctl) | 
+[OVS with faucet](#ovs) | 
 [Youtube](https://www.youtube.com/channel/UCH8GBLyxWkJDfZG32kr3Y4g)
 
 # Controller - Python - Faucet - OpenFlow 1.3
@@ -248,24 +243,27 @@ for multi table OpenFlow 1.3 switches, that implements layer 2 switching, VLANs,
 
 ## Docs
 http://docs.openvswitch.org/en/latest/tutorials/faucet/#overview  
-https://github.com/faucetsdn/faucet/tree/master/docs [PDF](https://media.readthedocs.org/pdf/faucet/latest/faucet.pdf)
+https://github.com/faucetsdn/faucet/tree/master/docs [PDF](https://media.readthedocs.org/pdf/faucet/latest/faucet.pdf)  
+http://costiser.ro/2017/03/07/sdn-lesson-2-introducing-faucet-as-an-openflow-controller/#.WiOhNkqWa1s  
 
 ## faucet.yaml
+### DP
 https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
 
 | Attribute | Default | Description |
 | --------- | ------- | ----------- |
-| dp_id | None|    Name for this dp, used for stats reporting and configuration | 
+| dp_id | None| Name for this dp, used for stats reporting and configuration | 
 | timeout | 300|    inactive MAC timeout | 
 | arp_neighbor_timeout | 500|    ARP and neighbor timeout (seconds) | 
+| stack | None|    stacking config, when cross connecting multiple DPs | 
+| vlan_acl_table | None|   | 
+| vlan_table | None|   | 
+| port_acl_table | None|    The table for internally associating vlans | 
 
-### **Port**
+### Port
 
 | Attribute | Default | Description |
 | --------- | ------- | ----------- |
-| name | None|   | 
-| description | None|   | 
-| enabled | True|   | 
 | number | None|   | 
 | acl_in | None|   | 
 | native_vlan | None|   | 
@@ -277,25 +275,23 @@ https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
 | mirror_destination | False|   | 
 | max_hosts | 255|   maximum number of hosts | 
 
-### **Router**
+### Router
 
 | Attribute | Default | Description |
 | --------- | ------- | ----------- |
 | vlans | None|   | 
 
-### **VLAN**
+### VLAN
 
 | Attribute | Default | Description |
 | --------- | ------- | ----------- |
-| name | None|   | 
-| description | None|   | 
 | acl_in | None|   | 
 | routes | None|   | 
 | vid | None|   | 
 | faucet_vips | None|   | 
 | max_hosts | 255|    Limit number of hosts that can be learned on a VLAN. | 
-| proactive_arp_limit | None|    Don't proactively ARP for hosts if over this limit (None unlimited) | 
-| proactive_nd_limit | None|    Don't proactively ND for hosts if over this limit (None unlimited) | 
+| proactive_arp_limit | None| proactively ARP for hosts (None unlimited) | 
+| proactive_nd_limit | None| proactively ND for hosts (None unlimited) | 
 | unicast_flood | True|   | 
 
 ## Manually install
@@ -319,12 +315,14 @@ https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
     docker exec -it faucet cat /var/log/ryu/faucet/faucet.log   # check log
     docker exec faucet pkill -HUP -f faucet.faucet      # update configuration
 
-## ovs-vsctl
+## OVS
     IP_faucet=127.0.0.1   # don't use domain name
     ovs-vsctl add-br br0 \
          -- set bridge br0 other-config:datapath-id=0000000000000002 \
          -- set-controller br0 tcp:$IP_faucet:6653 \
-         -- set controller br0 connection-mode=out-of-band
+         -- set controller br0 connection-mode=out-of-band  # remember to change dpid
+    ovs-vsctl add-port br0 enp3s0 -- set interface enp3s0 ofport_request=1
+    ovs-vsctl -- --columns=name,ofport,admin_state,statistics,mac_in_use list Interface   # mapping
 
     for i in 1 2 3; do
         ip tuntap add mode tap dev tap$i
@@ -332,29 +330,15 @@ https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
         ovs-ofctl mod-port br0 tap$i up
     done
 
-    ip addr add 192.168.6.11/24 dev tap1
-
     cat /var/log/openvswitch/ovs-vswitchd.log
     ovs-vsctl show
-    ovs-ofctl dump-flows br0
     ovs-vsctl --if-exists del-br br0
     ovs-appctl ofproto/trace br0 in_port=tap1
 
     ovs-appctl vlog/list
     ovs-appctl vlog/set ANY:file:dbg
 
-https://github.com/faucetsdn/faucet/blob/master/docs/architecture.rst
-
     ovs-ofctl dump-flows br0
-        Table 0： Port-based ACLs
-        Table 1： Ingress VLAN processing
-        Table 2： VLAN-based ACLs
-        Table 3： Ingress L2 processing, MAC learning
-        Table 4： L3 forwarding for IPv4
-        Table 5： L3 forwarding for IPv6
-        Table 6： Virtual IP processing, e.g. for router IP addresses implemented by Faucet
-        Table 7： Egress L2 processing
-        Table 8： Flooding
 
 https://github.com/osrg/openvswitch/blob/master/FAQ  
 "in-band": controllers are actually part of the network that is being controlled. occasionally they can cause unexpected behavior.

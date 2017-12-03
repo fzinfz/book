@@ -101,9 +101,9 @@ IDX LINK             TYPE               OPERATIONAL SETUP
 ```
 
 # systemd.netdev
-    local administration network directory `/etc/systemd/network`
-    system network directory `/usr/lib/systemd/network`
-    volatile runtime network directory `/run/systemd/network`
+    ls /etc/systemd/network     # local administration network directory
+    ls /usr/lib/systemd/network # system network directory
+    ls /run/systemd/network     # volatile runtime network directory
     `/run` is temporary and `/usr/lib` is for vendors
     symlink with the same name pointing to `/dev/null` disables the configuration file entirely
 

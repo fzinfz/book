@@ -1,8 +1,8 @@
 <!-- TOC -->
 
 - [Monitoring](#monitoring)
-    - [Elastic Beats](#elastic-beats)
-    - [Pandora FMS](#pandora-fms)
+    - [Elastic Beats - Go](#elastic-beats---go)
+    - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
     - [Cacti - PHP](#cacti---php)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
     - [Nagios - C](#nagios---c)
@@ -22,10 +22,23 @@
 <!-- /TOC -->
 
 # Monitoring
-## Elastic Beats
-https://www.elastic.co/products/beats
+## Elastic Beats - Go
+https://www.elastic.co/products/beats  
+https://github.com/elastic/beats  
 
-## Pandora FMS
+    Log Files Beats
+    Metricbeat
+    Metrics Beats
+    Packetbeat
+    Network Data Beats
+    Winlogbeat
+    Windows Event Logs Beats
+    Auditbeat
+    Audit Data Beats
+    Heartbeat
+    Uptime Monitoring
+
+## Pandora FMS - PHP/Perl
 https://github.com/pandorafms/pandorafms#screenshots
 
     # Auto docker

@@ -3,7 +3,6 @@
 
 - [Roadmap](#roadmap)
 - [Classifiers](#classifiers)
-- [Architecture](#architecture)
 - [Tracing](#tracing)
 - [ovs-ofctl dump-flows br0](#ovs-ofctl-dump-flows-br0)
 
@@ -17,17 +16,18 @@ V1.0-1.4: http://flowgrammable.org/sdn/openflow/classifiers/
 
     dl_type = 0x0806    # ARP, Optional: switch must indicate support in FeatureRes)
     dl_type = 0x0800    # IPv4
+    dl_type = 0x88cc    # Link Layer Discovery Protocol (LLDP)
     nw_proto = 1    # ICMPv4
     nw_proto = 6    # TCP
     nw_proto: 17    # UDP
     tp_src: 68      # Bootpc, UDP 0.0.0.0:68 -> 255.255.255.255:67
     tp_dst: 67      # Bootps, 192.168.1.1:67 -> 255.255.255.255:68
 
-# Architecture
-https://github.com/faucetsdn/faucet/blob/master/docs/architecture.rst
+    vlan_tci=       # TCI (tag control information), 2-byte
 
 # Tracing
-http://docs.openvswitch.org/en/latest/topics/tracing/
+http://docs.openvswitch.org/en/latest/topics/tracing/  
+https://overlaid.net/2017/02/15/openflow-basic-concepts-and-theory/
 
 # ovs-ofctl dump-flows br0
 ```
@@ -44,9 +44,13 @@ statistics          : {collisions=0, rx_bytes=0, rx_crc_err=0, rx_dropped=0, rx_
 mac_in_use          : "2a:18:94:e4:38:49"
 
 http://openvswitch.org/support/dist-docs/ovs-ofctl.8.txt
+
               resubmit:port
               resubmit([port],[table])
               resubmit([port],[table],connection tracking state)
+
+            strip_vlan
+                     Strips the VLAN tag from a packet if it is present.
 
 NXST_FLOW reply (xid=0x4):
 Table 0： Port-based ACLs

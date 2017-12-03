@@ -23,7 +23,6 @@
     - [Manually install](#manually-install)
     - [Docker](#docker)
     - [OVS](#ovs)
-    - [Config with ACL and router](#config-with-acl-and-router)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker-1)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
@@ -244,9 +243,11 @@ for multi table OpenFlow 1.3 switches, that implements layer 2 switching, VLANs,
 ## Docs
 http://docs.openvswitch.org/en/latest/tutorials/faucet/#overview  
 https://github.com/faucetsdn/faucet/tree/master/docs [PDF](https://media.readthedocs.org/pdf/faucet/latest/faucet.pdf)  
-http://costiser.ro/2017/03/07/sdn-lesson-2-introducing-faucet-as-an-openflow-controller/#.WiOhNkqWa1s  
+http://costiser.ro/2017/03/07/sdn-lesson-2-introducing-faucet-as-an-openflow-controller
 
 ## faucet.yaml
+http://faucet.readthedocs.io/en/latest/configuration.html#configuration-options
+
 ### DP
 https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
 
@@ -304,8 +305,12 @@ https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
 [FAUCET_LOG_LEVEL / GAUGE_LOG_LEVEL](https://docs.python.org/3/library/logging.html#levels)
 
 ## Docker
-    curl -O https://raw.githubusercontent.com/fzinfz/scripts/master/faucet/2-vlans-simple.yaml
-    docker run -v $(pwd)/2-vlans-simple.yaml:/etc/ryu/faucet/faucet.yaml \
+https://github.com/faucetsdn/faucet/tree/master/etc/ryu/faucet
+
+    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/faucet.yaml
+    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/acls.yaml
+    mkdir -p faucet.conf.d && mv -t faucet.conf.d/ faucet.yaml acls.yaml
+    docker run -v $(pwd)/faucet.conf.d/:/etc/ryu/faucet/ \
         --net host --name faucet \
         -e FAUCET_LOG_LEVEL='DEBUG' \
         -e GAUGE_LOG_LEVEL='DEBUG' \
@@ -318,11 +323,11 @@ https://github.com/faucetsdn/faucet/blob/master/docs/default_conf_doc.md
 ## OVS
     IP_faucet=127.0.0.1   # don't use domain name
     ovs-vsctl add-br br0 \
-         -- set bridge br0 other-config:datapath-id=0000000000000002 \
+         -- set bridge br0 other-config:datapath-id=0000000000000001 \
          -- set-controller br0 tcp:$IP_faucet:6653 \
-         -- set controller br0 connection-mode=out-of-band  # remember to change dpid
+         -- set controller br0 connection-mode=out-of-band
     ovs-vsctl add-port br0 enp3s0 -- set interface enp3s0 ofport_request=1
-    ovs-vsctl -- --columns=name,ofport,admin_state,statistics,mac_in_use list Interface   # mapping
+    ovs-vsctl -- --columns=name,ofport,link_speed,admin_state,statistics,mac_in_use list Interface   # mapping
 
     for i in 1 2 3; do
         ip tuntap add mode tap dev tap$i
@@ -345,14 +350,6 @@ https://github.com/osrg/openvswitch/blob/master/FAQ
 
     ovs-appctl bridge/dump-flows br0      # full OpenFlow flow table, including hidden flows
     ovs-vsctl set bridge br0 other-config:disable-in-band=true # disables in-band control entirely
-
-## Config with ACL and router
-https://github.com/faucetsdn/faucet/tree/master/etc/ryu/faucet
-
-    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/faucet.yaml
-    wget https://raw.githubusercontent.com/faucetsdn/faucet/master/etc/ryu/faucet/acls.yaml
-    mkdir -p faucet.conf.d && mv -t faucet.conf.d/ faucet.yaml acls.yaml
-    docker run -v $(pwd)/faucet.conf.d/:/etc/ryu/faucet/ \
 
 # Controller - Python - Ryu
     git clone git://github.com/osrg/ryu.git

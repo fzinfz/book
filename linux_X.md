@@ -28,6 +28,7 @@
 - [vnc](#vnc)
 - [VGA Switcheroo](#vga-switcheroo)
 - [PRIME](#prime)
+- [GPGPU (General-purpose computing on GPU)](#gpgpu-general-purpose-computing-on-gpu)
 
 <!-- /TOC -->
 
@@ -301,3 +302,6 @@ PRIME is a technology used to manage hybrid graphics found on recent laptops (Op
 
 https://devtalk.nvidia.com/default/topic/957814/prime-and-prime-synchronization/  
 https://negativo17.org/complex-setup-with-nvidia-optimus-nouveau-prime-on-fedora-20/
+
+# GPGPU (General-purpose computing on GPU)
+https://wiki.archlinux.org/index.php/GPGPU

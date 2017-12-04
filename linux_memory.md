@@ -19,6 +19,8 @@
 - [/proc/vmallocinfo](#procvmallocinfo)
 - [/proc/PID/maps](#procpidmaps)
 - [pmap](#pmap)
+- [Global Graphics Translation Table (GTT)](#global-graphics-translation-table-gtt)
+- [KVM MMU Virtualization](#kvm-mmu-virtualization)
 
 <!-- /TOC -->
 
@@ -485,3 +487,20 @@ PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 ffffffffff600000      4K r-x--   [ anon ]     # /proc/PID/maps: [vsyscall]
  total          1002572K                               # 1 026 633 728
 ```
+
+# Global Graphics Translation Table (GTT)
+address mapping from the GPU virtual address space to physical addresses. 
+
+# KVM MMU Virtualization
+https://events.static.linuxfound.org/slides/2011/linuxcon-japan/lcj2011_guangrong.pdf
+
+  GFN: Guest Frame Number
+  PFN: Host Page Frame Number
+
+  GPA: Guest Physical Address
+  HVA: Host Virtual Address
+  HPA: Host Physical Address
+
+  Hard MMU
+  • NPT on SVM from AMD
+  • EPT on VMX from Intel

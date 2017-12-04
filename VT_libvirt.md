@@ -69,6 +69,7 @@ gdb: https://access.redhat.com/blogs/766093/posts/2690881
 
 # virsh
     virsh list --all
+    virsh destroy ... # force off
     export EDITOR=vim # for `virsh edit`
     virsh dumpxml GuestID > guest.xml
     virsh define  guest.xml

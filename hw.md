@@ -2,6 +2,7 @@
 
 - [Endianness](#endianness)
 - [Protection ring](#protection-ring)
+- [GPU - AMD](#gpu---amd)
 - [Power Connectors](#power-connectors)
     - [Industrial](#industrial)
 - [UPS](#ups)
@@ -24,6 +25,13 @@ In little endian, you store the least significant byte(LSB) in the smallest addr
 
 # Protection ring
 ![](https://en.wikipedia.org/wiki/File:Priv_rings.svg)
+
+# GPU - AMD
+https://en.wikipedia.org/wiki/List_of_AMD_graphics_processing_units#API_Overview
+
+Vulkan is a low-overhead, cross-platform 3D graphics and compute API.  
+its predecessor: OpenGL  
+supported since Graphics Core Next (Southern Islands) 1
 
 # Power Connectors
 https://en.wikipedia.org/wiki/IEC_60320#Appliance_couplers  

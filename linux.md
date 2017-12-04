@@ -4,10 +4,9 @@
 - [Init scripts](#init-scripts)
 - [Exit code](#exit-code)
 - [Signal](#signal)
+- [kill](#kill)
 - [Diagram](#diagram)
 - [top](#top)
-- [X11](#x11)
-    - [Forwarding](#forwarding)
 - [User & Permission](#user--permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
@@ -33,7 +32,6 @@
 - [systemctl](#systemctl)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
-- [X](#x)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
@@ -94,6 +92,9 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
     6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL ... 64) SIGRTMAX
 
+# kill
+    pkill -KILL -u {username}
+
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
@@ -105,15 +106,6 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     V - Forest view      On  (show as branches)
     f - sort/hide columns
     (`*')  could be overridden through the command-line.
-
-# X11
-## Forwarding
-https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
-
-    AllowTcpForwarding yes
-    X11Forwarding yes
-    X11DisplayOffset 10
-    X11UseLocalhost yes
 
 # User & Permission
 ## add user to group
@@ -340,11 +332,6 @@ https://wiki.openwrt.org/doc/hardware/port.serial
 cat openwrt-lantiq-ram-u-boot.asc > /dev/ttyUSB0
 screen /dev/ttyUSB0 115200
 picocom -b 115200 /dev/ttyUSB0
-```
-
-# X
-```
-vncserver -kill :1
 ```
 
 # Dropbox

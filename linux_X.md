@@ -2,7 +2,12 @@
 
 - [Architecture](#architecture)
 - [DRM](#drm)
+- [Driver source](#driver-source)
+- [Kernel Mode Setting (KMS)](#kernel-mode-setting-kms)
+    - [Installation](#installation)
+- [Direct Rendering Infrastructure (DRI)](#direct-rendering-infrastructure-dri)
 - [XFree86](#xfree86)
+- [Wayland](#wayland)
 - [X Window System (X11 or X)](#x-window-system-x11-or-x)
     - [Releases](#releases)
         - [X11R7.6](#x11r76)
@@ -11,6 +16,9 @@
     - [X.Org Server](#xorg-server)
         - [RandR ("resize and rotate")](#randr-resize-and-rotate)
     - [Additional specialized X server binaries](#additional-specialized-x-server-binaries)
+- [OpenGL](#opengl)
+- [X Clients](#x-clients)
+    - [Window Manager](#window-manager)
 - [Xsecurity](#xsecurity)
 - [xhost](#xhost)
 - [xauth](#xauth)
@@ -18,12 +26,15 @@
 - [mons - manage three monitors on X](#mons---manage-three-monitors-on-x)
 - [Forwarding](#forwarding)
 - [vnc](#vnc)
-- [Wayland](#wayland)
+- [VGA Switcheroo](#vga-switcheroo)
+- [PRIME](#prime)
 
 <!-- /TOC -->
 
 # Architecture
 ![](https://en.wikipedia.org/wiki/File:Schema_of_the_layers_of_the_graphical_user_interface.svg)
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Linux_graphics_drivers_DRI_Wayland.svg/560px-Linux_graphics_drivers_DRI_Wayland.svg.png)
 
 # DRM
 https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Hardware_support
@@ -40,8 +51,59 @@ tegra	Nvidia Tegra20, Tegra30 SoCs
 
 bochs	Virtual VGA cards using the Bochs dispi vga interface (such as QEMU stdvga)
 
+https://keyj.emphy.de/files/linuxgraphics_en.pdf (page 35)
+
+https://www.kernel.org/doc/Documentation/fb/framebuffer.txt  
+The frame buffer device provides an abstraction for the graphics hardware.
+
+http://betteros.org/tut/graphics1.php  
+Supposedly, fbdev is the "old" way of doing things, and KMS/DRM is the "new" way.
+
+https://elinux.org/images/7/71/Elce11_dae.pdf  
+Control all HW thru a single device node
+
+https://events.linuxfoundation.org/sites/events/files/slides/brezillon-drm-kms.pdf  
+https://01.org/linuxgraphics/gfx-docs/drm/gpu/introduction.html
+
+    dmesg | grep modesetting
+    cat /sys/class/drm/card0/device/{label,uevent}
+
+GEM (Graphics Execution Manager): Framework for buffer management.
+
+# Driver source
+https://cgit.freedesktop.org/xorg/driver/  
+https://cgit.freedesktop.org/xorg/driver/xf86-video-ati/log/
+
+# Kernel Mode Setting (KMS)
+https://wiki.archlinux.org/index.php/kernel_mode_setting  
+Previously, setting up the video card was the job of the X server.  
+kernel is now able to set the mode of the video card. This makes fancy graphics during bootup, virtual console and X fast switching possible, among other things.
+
+## Installation
+    Any vga= options in your bootloader as these will conflict with the native resolution enabled by KMS.
+    Any video= lines that enable a framebuffer that conflicts with the driver.
+    Any other framebuffer drivers (such as uvesafb)
+
+    Intel, Nouveau, ATI and AMDGPU drivers already enable KMS automatically.
+    The proprietary NVIDIA driver supports KMS (since 364.12), which has to be manually enabled.
+    The proprietary AMD Catalyst driver does not support KMS
+
+# Direct Rendering Infrastructure (DRI)
+a framework for allowing direct access to graphics hardware under the X Window System in a safe, efficient way. The main use of DRI is to provide hardware acceleration for the Mesa implementation of OpenGL. DRI has also been adapted to provide OpenGL acceleration on a framebuffer console without a display server running.[citation needed]
+
 # XFree86
 version 4.8.0 released on 15 December 2008
+
+# Wayland
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wayland_display_server_protocol.svg/525px-Wayland_display_server_protocol.svg.png)  
+![](https://en.wikipedia.org/wiki/File:Wayland_protocol_architecture.svg)  
+a prospective replacement for X.   
+It works directly with the GPU hardware, via DRI. Wayland can run an X.org server as a client, which can be rootless  
+based on EGL and DRI
+
+Ubuntu 17.10 (Artful Aardvark) ships Wayland as default  
+Fedora 25+ uses Wayland for the default GNOME 3.22 desktop session  
+RebeccaBlackOS: https://sourceforge.net/projects/rebeccablackos/files/
 
 # X Window System (X11 or X)
 https://en.wikipedia.org/wiki/X_Window_System  
@@ -86,13 +148,20 @@ The Xorg server relies on the operating system's native module loader support fo
         X.Org X Server 1.19.5
         X Protocol Version 11, Revision 0
 
+https://keyj.emphy.de/files/linuxgraphics_en.pdf  
+    X Server manages input (keyboard, mouse, ...) and output (graphics only)
+
+    The X Protocol can be extended with new functionality via Extensions. Examples:
+    ◾ XSHM (»X Shared Memory«) – faster local display of bitmap graphics
+    ◾ Xv (»X Video«) – hardware-accelerated video display
+    ◾ GLX – OpenGL on X
+    ◾ Xinerama – multi-monitor support
+    ◾ XRandR (»X Resize and Rotate«) – graphics mode setting without restarting the X
+    Server
+    ◾ XRender – modern anti-aliased, alpha-blended 2D graphics
+        ▸ today used for (almost) every 2D graphics application
+
 ### RandR ("resize and rotate")
-communications protocol written as an extension to the X11 protocol.   
-An implementation of RandR is part of the X.Org Server.
-
-resize, rotate and reflect the root window of a screen.   
-setting the screen refresh rate.
-
     xrandr
         Screen 0: minimum 0 x 0, current 1234 x 823, maximum 4096 x 4096
 
@@ -116,6 +185,30 @@ setting the screen refresh rate.
 
     Xwin
     is an X server that runs under the Cygwin environment: https://x.cygwin.com
+
+# OpenGL
+https://keyj.emphy.de/files/linuxgraphics_en.pdf
+
+    OpenGL driver runs in userspace as part of the application process
+
+    additional API required as »glue« to the windowing system:
+    ▸ GLX for the X Window System
+    ▸ WGL (Windows), AGL (Mac OS X)
+    ▸ EGL for OpenGL ES (Embedded Linux, Android, iOS, ...)
+        ◦ available on all systems, will eventually supersede GLX etc.
+
+    Mesa is an open source OpenGL implementation
+
+# X Clients
+https://keyj.emphy.de/files/linuxgraphics_en.pdf
+
+    X Clients don’t implement the X11 protocol directly, but use libraries:
+    ▸ traditionally Xlib
+    ▸ newer, leaner alternative: XCB (»X11 C Bindings«)
+    ▸ toolkits (Motif, Gtk, Qt, ...) internally use Xlib or XCB, too
+
+## Window Manager
+special X Client that manages the positions of the top-level windows and draws window frames (»decorations«)
 
 # Xsecurity
 https://www.x.org/releases/current/doc/man/man7/Xsecurity.7.xhtml
@@ -162,8 +255,7 @@ https://www.x.org/releases/current/doc/man/man7/Xsecurity.7.xhtml
     xauth list
 
 # echo $DISPLAY
-[host]:display#.screen#
-
+    [host]:display#.screen#
 
 # mons - manage three monitors on X
     git clone --recursive https://github.com/Ventto/mons.git
@@ -184,12 +276,28 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
 # vnc
     vncserver -kill :1
 
-# Wayland
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Wayland_display_server_protocol.svg/525px-Wayland_display_server_protocol.svg.png)  
-![](https://en.wikipedia.org/wiki/File:Wayland_protocol_architecture.svg)  
-a prospective replacement for X.   
-It works directly with the GPU hardware, via DRI. Wayland can run an X.org server as a client, which can be rootless
+# VGA Switcheroo
+https://01.org/linuxgraphics/gfx-docs/drm/gpu/vga-switcheroo.html
 
-Ubuntu 17.10 (Artful Aardvark) ships Wayland as default  
-Fedora 25+ uses Wayland for the default GNOME 3.22 desktop session  
-https://sourceforge.net/projects/rebeccablackos/files/
+Linux subsystem for laptop hybrid graphics. 2 flavors:
+- muxed: both GPUs can drive all displays
+- muxless: only one connected to outputs. The other one is merely used to offload rendering, its results are copied over PCIe into the framebuffer. On Linux this is supported with DRI PRIME.
+
+# PRIME
+https://wiki.archlinux.org/index.php/PRIME
+
+PRIME is a technology used to manage hybrid graphics found on recent laptops (Optimus for NVIDIA, AMD Dynamic Switchable Graphics for Radeon). PRIME GPU offloading and Reverse PRIME is an attempt to support muxless hybrid graphics in the Linux kernel.
+
+    xrandr --listproviders  # check support
+    xrandr --setprovideroffloadsink 1 0
+    xrandr --setprovideroffloadsink radeon Intel
+    DRI_PRIME=1 glxinfo | grep "OpenGL renderer"
+
+    # Discrete card as primary GPU, XRandR 1.4+
+    xrandr --setprovideroutputsource Intel nouveau
+
+        dedicated GPU’s output is copied over to the integrated GPU
+        ◦ not saving power (quite the contrary – both GPUs are active!)
+
+https://devtalk.nvidia.com/default/topic/957814/prime-and-prime-synchronization/  
+https://negativo17.org/complex-setup-with-nvidia-optimus-nouveau-prime-on-fedora-20/

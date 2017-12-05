@@ -2,8 +2,10 @@
 
 - [systemctl](#systemctl)
 - [Units](#units)
+- [target](#target)
+- [Config](#config)
 - [debug](#debug)
-- [journalctl](#journalctl)
+- [journald](#journald)
 - [systemd-networkd.service](#systemd-networkdservice)
 - [systemd.netdev](#systemdnetdev)
     - [Kind](#kind)
@@ -26,8 +28,8 @@
 https://wiki.archlinux.org/index.php/systemd
 
 ```
-/usr/lib/systemd/system/: units provided by installed packages
-/etc/systemd/system/: units installed by the system administrator
+systemctl list-dependencies
+systemctl list-dependencies libvirtd --all
 
 systemctl status [___.service]
 systemctl | grep ssh
@@ -36,6 +38,9 @@ systemctl daemon-reload    # scanning for new or changed units
 
 systemctl enable unit   # start on boot
 systemctl mask unit     # make it impossible to start
+
+sudo systemd-analyze plot > /tmp/systemd-startup.svg
+fbi /tmp/systemd-startup.svg
 ```
 
 # Units
@@ -46,6 +51,46 @@ systemctl mask unit     # make it impossible to start
 - .socket
 - .slice
 
+More: https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+
+    # when running in system mode (--system)
+    ls -l /run/systemd/system	    # Runtime units
+    ls -l /usr/lib/systemd/system	# Units of installed packages
+    ls -l /etc/systemd/system	    # Local configuration, by SA
+
+# target
+https://wiki.archlinux.org/index.php/systemd#Create_custom_target
+
+    SysV Runlevel	systemd Target	                                        Notes
+    0	            runlevel0.target, poweroff.target	                    Halt the system.
+    1, s, single	runlevel1.target, rescue.target	                        Single user mode.
+    2, 4	        runlevel2.target, runlevel4.target, multi-user.target	User-defined/Site-specific runlevels. By default, identical to 3.
+    3	            runlevel3.target, multi-user.target	                    usually login via multiple consoles or network.
+    5	            runlevel5.target, graphical.target	                    Multi-user, graphical.
+    6	            runlevel6.target, reboot.target	                        Reboot
+    emergency	    emergency.target	                                    Emergency shell
+
+    systemctl isolate multi-user.target         # switch to target
+    systemctl get-default                       # current target
+    systemctl set-default multi-user.target
+
+# Config
+http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_custom_unit_file.3F  
+/etc/systemd/system/foobar.service.d/*.conf # override settings
+
+    systemctl cat unit
+    systemctl edit --full ssh
+    systemctl edit --force new
+
+    [Unit]
+    Description=new
+
+    [Service]
+    ExecStart=/usr/sbin/new-daemon
+
+    [Install]
+    WantedBy=multi-user.target
+
 # debug
 https://wiki.debian.org/systemd#Debugging
 
@@ -53,9 +98,16 @@ https://wiki.debian.org/systemd#Debugging
         LogLevel=debug
         LogTarget=syslog-or-kmsg
 
-# journalctl
-SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
--S, --since=, -U, --until=
+# journald
+    # http://man7.org/linux/man-pages/man5/journald.conf.5.html
+    sudo mkdir -p /var/log/journal  # persistent storage
+
+    journalctl -u unit
+
+    SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
+    -S, --since=, -U, --until=
+
+https://wiki.archlinux.org/index.php/systemd#Journal
 
 # systemd-networkd.service
 /usr/lib/systemd/systemd-networkd  

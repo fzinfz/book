@@ -7,7 +7,8 @@
     - [alpine](#alpine)
     - [badger](#badger)
 - [Storage](#storage)
-- [Run](#run)
+- [run](#run)
+- [container update](#container-update)
 - [Proxy](#proxy)
 - [Swarm](#swarm)
 - [CoreOS](#coreos)
@@ -65,7 +66,7 @@ https://docs.docker.com/engine/userguide/storagedriver/selectadriver/
 
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
 
-# Run
+# run
 https://docs.docker.com/engine/reference/run/
 
 ```
@@ -93,6 +94,15 @@ Volume labels
 echo test | docker run --rm -i alpine cat
 docker run --security-opt seccomp:unconfined  # may fix chromium start error
 ```
+
+# container update
+https://docs.docker.com/engine/reference/commandline/container_update/
+
+docker container update [OPTIONS] CONTAINER [CONTAINER...]
+
+    --memory , -m		Memory limit
+    --memory-reservation		Memory soft limit
+    --restart
 
 # Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy

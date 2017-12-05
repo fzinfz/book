@@ -2,7 +2,9 @@
 
 - [Bash](#bash)
 - [Init](#init)
+    - [supervisord](#supervisord)
 - [Exit code](#exit-code)
+- [Syslog Message Severities](#syslog-message-severities)
 - [Signals](#signals)
 - [kill](#kill)
 - [top](#top)
@@ -68,17 +70,21 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 # Init
 
-    ls -l /usr/lib/systemd  # check `systemd` page for more
-    ls -l /usr/share/upstart
-    ls -l /etc/init.d # SysV init
+    ls -R -l /etc/rc*
+
+    ls -l /usr/lib/systemd      # check `systemd` page for more
+    ls -l /usr/share/upstart    # last release 2014; 3 years ago
+    ls -l /etc/init.d           # SysV init
 
     cat /etc/modules-load.d/*
 
-systemd-sysv: /sbin/init -> /lib/systemd/systemd
+    apt install systemd-sysv    # make link: /sbin/init -> /lib/systemd/systemd
 
-- [/etc/init.d/](https://debian-administration.org/article/28/Making_scripts_run_at_boot_time_with_Debian): add a new service to start when the machine boots
-- `~/.bash_profile`: once, at login.
-- `~/.bashrc`: every time a shell is started.
+    vi ~/.bash_profile          # once, at login.
+    vi ~/.bashrc                # every time a shell is started.
+
+## supervisord
+http://supervisord.org/running.html
 
 # Exit code
 http://tldp.org/LDP/abs/html/exitcodes.html
@@ -90,6 +96,18 @@ http://tldp.org/LDP/abs/html/exitcodes.html
     128+n	Fatal error signal "n"	
         kill -9 $PPID of script	$? returns 137 (128 + 9)
     130	Script terminated by Control-C
+
+# Syslog Message Severities
+https://tools.ietf.org/html/rfc5424#section-6.2.1
+
+    0       Emergency: system is unusable
+    1       Alert: action must be taken immediately
+    2       Critical: critical conditions
+    3       Error: error conditions
+    4       Warning: warning conditions
+    5       Notice: normal but significant condition
+    6       Informational: informational messages
+    7       Debug: debug-level messages
 
 # Signals
     kill -l

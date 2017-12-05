@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [Linux](linux.md)
+  * [Systemd](linux_systemd.md)
   * [File System](linux_fs.md)
   * [X](linux_X.md)
   * [Kernel](linux_kernel.md)

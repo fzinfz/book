@@ -7,6 +7,7 @@
 - [Tools](#tools)
 - [proxy](#proxy)
 - [Download from github](#download-from-github)
+    - [curl github](#curl-github)
 - [commit & push](#commit--push)
 - [branch](#branch)
 - [stashing](#stashing)
@@ -47,6 +48,13 @@ http://nbviewer.jupyter.org/
     cd docker_practice
     git config user.name "yourname"
     git config user.email "your email"
+
+## curl github
+https://github.com/settings/tokens
+
+    curl -H 'Authorization: token INSERT_ACCESS_TOKEN_HERE' \
+        -H 'Accept: application/vnd.github.v3.raw' -O -L \
+        https://api.github.com/repos/owner/repo/contents/path
 
 # commit & push
     git commit -am "save arezzo files"

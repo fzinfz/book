@@ -9,7 +9,8 @@
 - [Switch - C - Lagopus - OpenFlow 1.3](#switch---c---lagopus---openflow-13)
 - [Switch - C - OpenFlow 1.3 Software Switch](#switch---c---openflow-13-software-switch)
 - [Switch - C - Open vSwitch - OpenFlow 1.0+](#switch---c---open-vswitch---openflow-10)
-    - [Install & Config](#install--config)
+    - [Install](#install-1)
+    - [Config](#config)
     - [Port bonding](#port-bonding)
     - [Port mirroring](#port-mirroring)
     - [Notes](#notes)
@@ -30,7 +31,7 @@
 - [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
     - [Source build](#source-build)
     - [Manual](#manual)
-    - [Install](#install-1)
+    - [Install](#install-2)
 - [Controller - C - OVN](#controller---c---ovn)
 - [Controller - C++ - OpenContrail by Juniper](#controller---c---opencontrail-by-juniper)
     - [Kubernetes](#kubernetes)
@@ -170,11 +171,12 @@ http://docs.openvswitch.org/en/latest/ref/
 ovn-* ovsdb-* ovs-* vtep[-ctl]  
 VTEP: VXLAN Tunnel End Point
 
-## Install & Config
+## Install
     apt install -y openvswitch-switch
     systemctl status openvswitch-switch.service
     ovs-vswitchd -V # check version
 
+## Config
 http://docs.openvswitch.org/en/latest/faq/configuration/
 
     ovs-vsctl add-br br0

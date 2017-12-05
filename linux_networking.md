@@ -5,28 +5,13 @@
     - [tuntap](#tuntap)
     - [Features](#features)
     - [disable ipv6](#disable-ipv6)
-- [systemd-networkd.service](#systemd-networkdservice)
-- [systemd.netdev](#systemdnetdev)
-    - [Kind](#kind)
-    - [Examples](#examples)
-        - [bridge.netdev](#bridgenetdev)
-        - [dummy.netdev](#dummynetdev)
-        - [vlan1.netdev](#vlan1netdev)
-        - [macvtap.netdev](#macvtapnetdev)
-- [systemd.network](#systemdnetwork)
-    - [static.network](#staticnetwork)
-    - [dhcp.network](#dhcpnetwork)
-    - [A bridge with two enslaved links](#a-bridge-with-two-enslaved-links)
-    - [bridge-slave-interface-vlan.network](#bridge-slave-interface-vlannetwork)
-    - [macvtap.network](#macvtapnetwork)
-- [systemd.link](#systemdlink)
 - [iptables](#iptables)
     - [table / chain](#table--chain)
     - [rules](#rules)
     - [NAT](#nat)
     - [Trace](#trace)
     - [Log manually](#log-manually)
-    - [Transparent Proxy - jump to `networking` page.](#transparent-proxy---jump-to-networking-page)
+    - [Transparent Proxy](#transparent-proxy)
 - [iptables frontend](#iptables-frontend)
     - [CentOS firewall-cmd](#centos-firewall-cmd)
     - [Ubuntu - ufw](#ubuntu---ufw)
@@ -51,6 +36,7 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     ifconfig eth0 0.0.0.0 0.0.0.0 && dhclient
 
     ip route add default via 192.168.1.1
+    ip route show table all
 
 ## debug
     tcpdump -i any port 27017
@@ -73,160 +59,13 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     echo "net.ipv6.conf.all.disable_ipv6=1"  >> /etc/sysctl.conf
     sysctl  -p
 
-# systemd-networkd.service
-/usr/lib/systemd/systemd-networkd  
-https://wiki.archlinux.org/index.php/systemd-networkd  
-https://www.freedesktop.org/software/systemd/man/systemd.netdev.html#
-
-```
-systemctl status systemd-networkd.service
-systemctl restart systemd-networkd.service
-
-# networkctl list
-IDX LINK             TYPE               OPERATIONAL SETUP     
-  1 lo               loopback           carrier     unmanaged 
-  2 enp3s0           ether              no-carrier  unmanaged 
-  3 eno1             ether              degraded    unmanaged 
-  4 eno2             ether              degraded    configured
-  7 docker0          ether              routable    unmanaged 
-  9 vethec09cbe      ether              degraded    unmanaged 
- 11 veth5185e04      ether              degraded    unmanaged 
- 12 zt0              ether              routable    unmanaged 
- 13 br0              ether              routable    configured
- 14 macvtap0         ether              degraded    unmanaged 
- 15 vnet0            ether              degraded    unmanaged 
- 16 br8              ether              off         unmanaged 
- 18 macvtap1         ether              degraded    unmanaged 
- 19 vnet1            ether              degraded    unmanaged 
-```
-
-# systemd.netdev
-    ls /etc/systemd/network     # local administration network directory
-    ls /usr/lib/systemd/network # system network directory
-    ls /run/systemd/network     # volatile runtime network directory
-    `/run` is temporary and `/usr/lib` is for vendors
-    symlink with the same name pointing to `/dev/null` disables the configuration file entirely
-
-## Kind
-    `bridge`	A bridge device is a software switch, and each of its slave devices and the bridge itself are ports of the switch.
-    `tap`	A persistent Level 2 tunnel between a network device and a device node.
-    `tun`	A persistent Level 3 tunnel between a network device and a device node.
-    `veth`	An Ethernet tunnel between a pair of network devices.
-    `sit`	An IPv6 over IPv4 tunnel.
-    `vti`	An IPv4 over IPSec tunnel.
-
-## Examples
-### bridge.netdev
-    [NetDev]
-    Name=bridge0
-    Kind=bridge
-
-    [Match]
-    Virtualization=no
-
-### dummy.netdev
-    [NetDev]
-    Name=dummy-test
-    Kind=dummy
-    MACAddress=12:34:56:78:9a:bc
-
-### vlan1.netdev
-    [NetDev]
-    Name=vlan1
-    Kind=vlan
-
-    [VLAN]
-    Id=1
-
-### macvtap.netdev 
-    [NetDev]
-    Name=macvtap-test
-    Kind=macvtap
-
-Compare with macvtap.network below.
-
-# systemd.network
-https://www.freedesktop.org/software/systemd/man/systemd.network.html
-
-## static.network
-    [Match]
-    Name=enp2s0
-
-    [Network]
-    Address=192.168.0.15/24
-    Gateway=192.168.0.1
-
-## dhcp.network
-    [Match]
-    Name=en*
-
-    [Network]
-    DHCP=yes
-
-## A bridge with two enslaved links
-    # /etc/systemd/network/25-bridge-static.network
-    [Match]
-    Name=bridge0
-
-    [Network]
-    ...
-
-    # /etc/systemd/network/25-bridge-slave-interface-1.network
-    [Match]
-    Name=enp2s0
-
-    [Network]
-    Bridge=bridge0
-
-    # /etc/systemd/network/25-bridge-slave-interface-x.network 
-
-## bridge-slave-interface-vlan.network
-    [Match]
-    Name=enp2s0
-
-    [Network]
-    Bridge=bridge0
-
-    [BridgeVLAN]
-    VLAN=1-32
-    PVID=42
-    EgressUntagged=42
-
-    [BridgeVLAN]
-    VLAN=100-200
-
-    [BridgeVLAN]
-    EgressUntagged=300-400
-
-    VLAN=
-    The VLAN ID allowed on the port. 
-
-    EgressUntagged=
-    The VLAN ID specified here will be used to untag frames on egress. 
-    Configuring EgressUntagged= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well. 
-
-    PVID=
-    The Port VLAN ID specified here is assigned to all untagged frames at ingress. PVID= can be used only once. 
-    Configuring PVID= implicates the use of VLAN= above and will enable the VLAN ID for ingress as well.
-
-## macvtap.network
-    [Match]
-    Name=enp0s25
-
-    [Network]
-    MACVTAP=macvtap-test
-
-# systemd.link
-Network link configuration is performed by the net_setup_link udev builtin.  
-udev (userspace /dev) is a device manager for the Linux kernel. As the successor of devfsd and hotplug, udev primarily manages device nodes in the /dev directory.
-
 # iptables
 ## table / chain
     iptables -t nat -L # filter(default), nat, mangle, raw and security
-    iptables -t nat -F SHADOWSOCKS  # empty chain rules
-    iptables -t nat -X SHADOWSOCKS  # delete empty chain
+    iptables -t nat -F ...  # empty chain rules
+    iptables -t nat -X ...  # delete empty chain
 
-    iptables -t nat -L -n -v -x
+    iptables -t nat -L -n -x -v # --numeric IP/Port --exact packet and byte counters --verbose
     iptables -L --line-numbers
     iptables -D INPUT 2
 
@@ -269,7 +108,38 @@ http://backreference.org/2010/06/11/iptables-debugging/
 ## Log manually
 http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
 
-## Transparent Proxy - jump to `networking` page.
+## Transparent Proxy
+    iptables -t nat -N TP
+    iptables -t nat -I TP -p tcp --dport 4433 -j RETURN  # bypass Port
+
+    # https://tools.ietf.org/html/rfc5735#page-6
+    iptables -t nat -A TP -d 0.0.0.0/8 -j RETURN
+    iptables -t nat -A TP -d 10.0.0.0/8 -j RETURN
+    iptables -t nat -A TP -d 127.0.0.0/8 -j RETURN
+    iptables -t nat -A TP -d 169.254.0.0/16 -j RETURN
+    iptables -t nat -A TP -d 172.16.0.0/12 -j RETURN
+    iptables -t nat -A TP -d 192.168.0.0/16 -j RETURN
+    iptables -t nat -A TP -d 224.0.0.0/4 -j RETURN
+    iptables -t nat -A TP -d 240.0.0.0/4 -j RETURN
+
+    # Anything else should be redirected to Dokodemo-door's local port
+    iptables -t nat -A TP -p tcp -j REDIRECT --to-ports 20088
+    iptables -t nat -I OUTPUT -p tcp -j TP
+    iptables -t nat -I PREROUTING -p tcp -j TP
+
+    # Add any UDP rules
+    iptables -t mangle -N TP
+    iptables -t mangle -A TP -p udp --dport 53 -j TPROXY --on-port 20088 --tproxy-mark 0x01/0x01
+    iptables -t mangle -A PREROUTING -j TP
+
+    iptables -t mangle -N TP_MARK
+    iptables -t mangle -A TP_MARK -p udp --dport 53 -j MARK --set-mark 1
+    iptables -t mangle -A OUTPUT -j TP_MARK
+
+    ip route add local default dev lo table 100
+    ip rule add fwmark 1 lookup 100
+
+    ip rule del fwmark 1 lookup 100 # disable UDP
 
 # iptables frontend
 ## CentOS firewall-cmd
@@ -295,10 +165,36 @@ sudo ufw disable
 ```
 
 # ip rule
-    # ip rule show
-    0:	from all lookup local 
-    32766:	from all lookup main 
-    32767:	from all lookup default
+    Priority: 0, Selector: match anything, Action: lookup routing
+            table local (ID 255).  The local table is a special routing
+            table containing high priority control routes for local and
+            broadcast addresses.
+
+    Priority: 32766, Selector: match anything, Action: lookup
+            routing table main (ID 254).  The main table is the normal
+            routing table containing all non-policy routes. This rule may
+            be deleted and/or overridden with other ones by the
+            administrator.
+
+    Priority: 32767, Selector: match anything, Action: lookup
+            routing table default (ID 253).  The default table is empty.
+            It is reserved for some post-processing if no previous default
+            rules selected the packet.  This rule may also be deleted.
+
+    # cat /etc/iproute2/rt_tables
+
+        #
+        # reserved values
+        #
+        255	local
+        254	main
+        253	default
+        0	unspec
+        #
+        # local
+        #
+        #1	inr.ruhep
+
 
 # tc
 http://events.linuxfoundation.org/sites/events/files/slides/Linux_traffic_control.pdf  

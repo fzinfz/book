@@ -5,6 +5,7 @@
     - [cipher or cypher](#cipher-or-cypher)
     - [Cryptography libraries compare](#cryptography-libraries-compare)
     - [X.509](#x509)
+    - [Certificate Revocation List (or CRL)](#certificate-revocation-list-or-crl)
     - [TLS Extensions - Certificate Status Request](#tls-extensions---certificate-status-request)
     - [Certificate formats](#certificate-formats)
     - [ECDSA vs RSA](#ecdsa-vs-rsa)
@@ -74,10 +75,17 @@ X.509 is a standard that defines the format of public key certificates.
 used in many Internet protocols, including TLS/SSL, which is the basis for HTTPS  
 contains a public key and an identity (a hostname, or an organization, or an individual)  
 
+## Certificate Revocation List (or CRL) 
+"a list of digital certificates that have been revoked by the issuing Certificate Authority (CA) before their scheduled expiration date and should no longer be trusted."
+
 ## TLS Extensions - Certificate Status Request
 https://tools.ietf.org/html/rfc4366#section-3.6  
 Constrained clients may wish to use a certificate-status protocol such as [Online Certificate Status Protocol - OCSP](https://tools.ietf.org/html/rfc2560) to check the validity of server certificates,   in order to avoid transmission of CRLs and therefore save bandwidth on constrained networks.  
 This extension allows for such information to be sent in the TLS handshake, saving roundtrips and resources.
+
+https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol  
+
+[Verifying](https://www.digicert.com/util/utility-test-ocsp-and-crl-access-from-a-server.htm)
 
 ## Certificate formats
 https://serverfault.com/questions/9708

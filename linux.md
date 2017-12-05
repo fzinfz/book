@@ -1,11 +1,10 @@
 <!-- TOC -->
 
 - [Bash](#bash)
-- [Init scripts](#init-scripts)
+- [Init](#init)
 - [Exit code](#exit-code)
-- [Signal](#signal)
+- [Signals](#signals)
 - [kill](#kill)
-- [Diagram](#diagram)
 - [top](#top)
 - [User & Permission](#user--permission)
     - [add user to group](#add-user-to-group)
@@ -19,38 +18,34 @@
     - [dpkg](#dpkg)
     - [apt](#apt)
 - [Grub](#grub)
+    - [boot repair](#boot-repair)
+        - [ubuntu](#ubuntu)
 - [Benchmark](#benchmark)
 - [wget/curl](#wgetcurl)
-    - [curl github](#curl-github)
 - [files](#files)
     - [tar](#tar)
     - [rsync](#rsync)
     - [compress/uncompress](#compressuncompress)
-- [time](#time)
 - [history without line numbers](#history-without-line-numbers)
+- [time](#time)
 - [font](#font)
-- [systemctl](#systemctl)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
     - [Proxy](#proxy)
-- [pip](#pip)
-    - [Proxy](#proxy-1)
-    - [Installing from local](#installing-from-local)
-    - [boot repair](#boot-repair)
-    - [ubuntu](#ubuntu)
-- [modules](#modules)
 - [JAVA_HOME](#java_home)
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
-- [Proxy](#proxy-2)
+- [Proxy](#proxy-1)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
 - [WOL](#wol)
-- [tools](#tools)
+- [Tools - Online](#tools---online)
+- [Tools - Windows](#tools---windows)
 - [USB Persistence](#usb-persistence)
+- [Diagram](#diagram)
 
 <!-- /TOC -->
 
@@ -71,7 +66,16 @@ https://www.gnu.org/software/bash/manual/bashref.html
 
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
-# Init scripts
+# Init
+
+    ls -l /usr/lib/systemd  # check `systemd` page for more
+    ls -l /usr/share/upstart
+    ls -l /etc/init.d # SysV init
+
+    cat /etc/modules-load.d/*
+
+systemd-sysv: /sbin/init -> /lib/systemd/systemd
+
 - [/etc/init.d/](https://debian-administration.org/article/28/Making_scripts_run_at_boot_time_with_Debian): add a new service to start when the machine boots
 - `~/.bash_profile`: once, at login.
 - `~/.bashrc`: every time a shell is started.
@@ -87,16 +91,13 @@ http://tldp.org/LDP/abs/html/exitcodes.html
         kill -9 $PPID of script	$? returns 137 (128 + 9)
     130	Script terminated by Control-C
 
-# Signal
+# Signals
     kill -l
     1) SIGHUP       2) SIGINT       3) SIGQUIT      4) SIGILL       5) SIGTRAP
     6) SIGABRT      7) SIGBUS       8) SIGFPE       9) SIGKILL ... 64) SIGRTMAX
 
 # kill
     pkill -KILL -u {username}
-
-# Diagram
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
 # top
     * 1 - Single Cpu       Off (thus multiple cpus)
@@ -196,6 +197,15 @@ rm -r /var/lib/apt/lists/*
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
     grub2-editenv list
 
+## boot repair
+https://sourceforge.net/p/boot-repair-cd/home/Home/
+    apt install linux-image-*  # if vmlinuz & initrd.img missing
+
+### ubuntu
+    sudo add-apt-repository ppa:yannubuntu/boot-repair
+    sudo apt-get update
+    sudo apt-get install -y boot-repair && boot-repair
+
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 ```
@@ -209,13 +219,6 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     wget -O diff_name.zip http://...
     curl -O http://...
     curl -o diff_name.zip http://
-
-## curl github
-https://github.com/settings/tokens
-
-    curl -H 'Authorization: token INSERT_ACCESS_TOKEN_HERE' \
-        -H 'Accept: application/vnd.github.v3.raw' -O -L \
-        https://api.github.com/repos/owner/repo/contents/path
 
 # files
 String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files
@@ -288,36 +291,18 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
 
     gunzip file.gz
 
+# history without line numbers
+    history | cut -c 8-
+
 # time
 ```
 sudo timedatectl set-ntp true
 TZ='Asia/Shanghai'; export TZ
 ```
 
-# history without line numbers
-`history | cut -c 8-`
-
 # font
 ```
 apt-get install  xfonts-base
-```
-
-# systemctl
-https://wiki.archlinux.org/index.php/systemd
-
-```
-systemctl status
-
-systemctl
-systemctl --failed
-
-systemctl list-unit-files
-systemctl enable xxx
-
-sudo systemctl daemon-reload
-
-SYSTEMD_LESS="FRXMK" journalctl -u docker -n 100
--S, --since=, -U, --until=
 ```
 
 # SELinux
@@ -346,28 +331,6 @@ run without `root`
     vi /etc/environment
     systemctl restart snapd
 
-# pip
-## Proxy
-    export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
-    pip install --proxy=https://user@mydomain:port  somepackage
-
-## Installing from local
-    pip install --download DIR -r requirements.txt
-    pip wheel --wheel-dir DIR -r requirements.txt
-    pip install --no-index --find-links=DIR -r requirements.txt
-
-## boot repair
-https://sourceforge.net/p/boot-repair-cd/home/Home/
-    apt install linux-image-*  # if vmlinuz & initrd.img missing
-
-## ubuntu
-    sudo add-apt-repository ppa:yannubuntu/boot-repair
-    sudo apt-get update
-    sudo apt-get install -y boot-repair && boot-repair
-
-# modules
-/etc/modules-load.d/modules.conf # boot load
-
 # JAVA_HOME
     echo export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" >> /etc/profile
 
@@ -395,7 +358,7 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 # AD
 https://wiki.samba.org/index.php/Setting_up_Samba_as_an_NT4_PDC_(Quick_Start)
 
-# cache diagnostics 
+# cache diagnostics
 https://hoytech.com/vmtouch/
 
     git clone https://github.com/hoytech/vmtouch.git
@@ -421,11 +384,16 @@ https://hoytech.com/vmtouch/
     a (ARP activity)
     d (disabled)
 
-# tools
+# Tools - Online
 http://explainshell.com/  
+
+# Tools - Windows
 https://www.netsarang.com/xshell_download.html  
 https://mobaxterm.mobatek.net/features.html  
 
 # USB Persistence
 https://docs.kali.org/downloading/kali-linux-live-usb-persistence  
 http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence  
+
+# Diagram
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)

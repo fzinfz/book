@@ -30,7 +30,6 @@
     - [moproxy - Rust](#moproxy---rust)
     - [Any Proxy - Go](#any-proxy---go)
     - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
-    - [ipfw](#ipfw)
 - [NetFlow Software](#netflow-software)
 - [IPV6](#ipv6)
 
@@ -179,36 +178,6 @@ https://www.v2ray.com/chapter_02/protocols/dokodemo.html
         }
     } ],
 
-    iptables -t nat -N V2RAY
-    iptables -t nat -I V2RAY -p tcp --dport 4433 -j RETURN  # bypass Port
-
-    # https://tools.ietf.org/html/rfc5735#page-6
-    iptables -t nat -A V2RAY -d 0.0.0.0/8 -j RETURN
-    iptables -t nat -A V2RAY -d 10.0.0.0/8 -j RETURN
-    iptables -t nat -A V2RAY -d 127.0.0.0/8 -j RETURN
-    iptables -t nat -A V2RAY -d 169.254.0.0/16 -j RETURN
-    iptables -t nat -A V2RAY -d 172.16.0.0/12 -j RETURN
-    iptables -t nat -A V2RAY -d 192.168.0.0/16 -j RETURN
-    iptables -t nat -A V2RAY -d 224.0.0.0/4 -j RETURN
-    iptables -t nat -A V2RAY -d 240.0.0.0/4 -j RETURN
-
-    # Anything else should be redirected to Dokodemo-door's local port
-    iptables -t nat -A V2RAY -p tcp -j REDIRECT --to-ports 20088
-    iptables -t nat -I OUTPUT -p tcp -j V2RAY
-    iptables -t nat -I PREROUTING -p tcp -j V2RAY
-
-    # Add any UDP rules
-    iptables -t mangle -N V2RAY
-    iptables -t mangle -N V2RAY_MARK
-
-    ip route add local default dev lo table 100
-    ip rule add fwmark 1 lookup 100
-    iptables -t mangle -A V2RAY -p udp --dport 53 -j TPROXY --on-port 20088 --tproxy-mark 0x01/0x01
-    iptables -t mangle -A V2RAY_MARK -p udp --dport 53 -j MARK --set-mark 1
-
-    iptables -t mangle -A PREROUTING -j V2RAY
-    iptables -t mangle -A OUTPUT -j V2RAY_MARK
-
 ## redsocks - C
 https://github.com/darkk/redsocks  
 Linux/iptables, OpenBSD/pf and FreeBSD/ipfw are supported.
@@ -229,10 +198,6 @@ TCP CONNECTION
 
 ## avege - Go port of redsocks
 https://github.com/avege/avege  
-
-## ipfw
-    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1
-    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 443 in via en1
 
 # NetFlow Software
 https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/networking_solutions_products_genericcontent0900aecd805ff72b.html

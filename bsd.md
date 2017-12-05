@@ -3,6 +3,7 @@
 - [TCP congestion control](#tcp-congestion-control)
 - [relayd](#relayd)
 - [PF](#pf)
+    - [ipfw](#ipfw)
 - [ZFS](#zfs)
 - [DTrace](#dtrace)
 - [CAM Target Layer(ctl)](#cam-target-layerctl)
@@ -19,7 +20,6 @@
     kldload ccvegas
     kldload cccdg
 
-
 # relayd
 https://man.openbsd.org/relayd.conf.5
 layer 3 and/or layer 7 load-balancer, application layer gateway, or transparent proxy
@@ -35,6 +35,10 @@ https://man.openbsd.org/pf.conf
         to ! 10.1.2.3 port != ssh 
     pass in proto tcp from any os "OpenBSD" 
     pass in proto tcp from route "DTAG" 
+
+## ipfw
+    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 80 in via en1
+    sudo ipfw add fwd 127.0.0.1,12345 tcp from not me to any 443 in via en1
 
 # ZFS
 https://www.freebsd.org/cgi/man.cgi?query=zpool

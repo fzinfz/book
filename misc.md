@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Chrome](#chrome)
 - [vi/vim](#vivim)
     - [VISUAL BLOCK mode](#visual-block-mode)
 - [VSCode extensions](#vscode-extensions)
@@ -14,6 +15,8 @@
 - [Taobao](#taobao)
 
 <!-- /TOC -->
+# Chrome
+F12 -> Ctrl+Shift+P -> "screenshot"
 
 # vi/vim
     go to line: Esc , line#, Shift-g

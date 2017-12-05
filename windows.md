@@ -25,10 +25,13 @@
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [VS proxy](#vs-proxy)
-- [Tools](#tools-1)
 - [AD](#ad)
     - [DC DNS](#dc-dns)
 - [Graphic](#graphic)
+- [Storge](#storge)
+- [Tools](#tools-1)
+- [sysinternals tools](#sysinternals-tools)
+    - [process explorer](#process-explorer)
 
 <!-- /TOC -->
 
@@ -132,9 +135,6 @@ find the <system.net> block, and add this code:
         <proxy bypassonlocal="True" proxyaddress=" HYPERLINK "http://<yourproxy:port#" http://<yourproxy:port#>"/>  
     </defaultProxy> 
 
-# Tools
-https://www.hanselman.com/tools
-
 # AD
 ## DC DNS
 https://blogs.msdn.microsoft.com/servergeeks/2014/07/12/dns-records-that-are-required-for-proper-functionality-of-active-directory/ (4. DC Record - _ldap._tcp.dc._msdcs.<DnsDomainName>)  
@@ -166,3 +166,16 @@ Windows Display Driver Model (WDDM): Windows Vista+
     WDDM 2.3 - 1709+
         10-bit HDR playback over HDMI
         Video processing and video decode acceleration in DirectX* 12
+
+# Storge
+dynamic disks support the creation of new multipartition volumes
+
+# Tools
+https://www.hanselman.com/tools
+
+# sysinternals tools
+https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite
+
+## process explorer
+- search opened file
+- locate handle process

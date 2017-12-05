@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Check](#check)
+- [.deb download](#deb-download)
 - [Compiling](#compiling)
     - [debug](#debug)
     - [.config](#config)
@@ -33,6 +34,12 @@
     lsb_release -a
     uname -a
     cat /etc/*-release
+
+commit log: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/
+
+# .deb download
+http://kernel.ubuntu.com/~kernel-ppa/mainline/  
+http://kernel.ubuntu.com/~kernel-ppa/mainline/daily/current/
 
 # Compiling
 https://www.ibm.com/developerworks/community/blogs/5144904d-5d75-45ed-9d2b-cf1754ee936a/entry/kernel-build-system?lang=en (Chinese)

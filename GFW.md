@@ -48,6 +48,8 @@ L2TP/IPsec, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, a Tor bri
 https://www.v2ray.com/chapter_02/01_overview.html  
 https://toutyrater.github.io/v2ray-guide-pages/
 
+loglevel： "debug"、"info"、"warning"、"error" 和 "none"
+
     "inbound": {
         "protocol": "http",
         "port":8123,

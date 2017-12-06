@@ -77,8 +77,6 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
-    btrfs filesystem resize -500m /
-
     lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
 
 ## Add disk to vg
@@ -86,6 +84,7 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     vgextend ubuntu-vg /dev/sdb
 
 # btrfs
+    btrfs filesystem resize +60G /data
     btrfs filesystem usage /
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
 

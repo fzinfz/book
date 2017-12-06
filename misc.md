@@ -60,3 +60,7 @@ https://www.xively.com/
 
 # Taobao
 http://pt42.cn/taobaobasket_index.htm
+
+# XMR
+## AMD GPU miner
+https://github.com/genesismining/sgminer-gm

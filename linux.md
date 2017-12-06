@@ -20,6 +20,7 @@
     - [dpkg](#dpkg)
     - [apt](#apt)
 - [Grub](#grub)
+    - [grub-customizer](#grub-customizer)
     - [boot repair](#boot-repair)
         - [ubuntu](#ubuntu)
 - [Benchmark](#benchmark)
@@ -52,7 +53,7 @@
 <!-- /TOC -->
 
 # Bash
-https://www.gnu.org/software/bash/manual/bashref.html
+https://www.gnu.org/software/bash/manual/bash.html
 
     url=https://raw.githubusercontent.com/fzinfz/scripts/master/init.sh # alias & functions
     source /dev/stdin <<< "$(curl -sS $url)"
@@ -61,6 +62,12 @@ https://www.gnu.org/software/bash/manual/bashref.html
         -x                      debug
         -T                      If  set, any traps on DEBUG and RETURN are inherited
         -o functrace/errtrace
+
+    shopt [-pqsu] [-o] [optname …]
+        -s: Enable (set) each optname.
+        -u: Disable (unset) each optname.
+
+    shopt -s expand_aliases     # when the shell is not interactive
 
     0: stdin; 1: stdout; 2: stderr              # File descriptor
     2>&1 >/dev/null
@@ -214,6 +221,11 @@ rm -r /var/lib/apt/lists/*
     awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
     grub2-editenv list
+
+## grub-customizer
+    sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+    sudo apt-get update
+    sudo apt-get install grub-customizer
 
 ## boot repair
 https://sourceforge.net/p/boot-repair-cd/home/Home/

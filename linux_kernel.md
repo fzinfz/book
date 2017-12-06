@@ -6,6 +6,12 @@
     - [debug](#debug)
     - [.config](#config)
 - [Install .deb manually](#install-deb-manually)
+- [initrd (initial ramdisk)](#initrd-initial-ramdisk)
+    - [initrd scheme](#initrd-scheme)
+    - [initramfs scheme](#initramfs-scheme)
+        - [update-initramfs -u](#update-initramfs--u)
+        - [dracut](#dracut)
+        - [mkinitcpio](#mkinitcpio)
 - [Releases](#releases)
     - [4.14 + 12 November, 2017](#414--12-november-2017)
     - [4.13 - 3 September, 2017 - Ubuntu 17.10 Artful](#413---3-september-2017---ubuntu-1710-artful)
@@ -65,6 +71,37 @@ depmod -a 4.9.0-rc8-amd64
 dracut -f -v --hostonly -k '/lib/modules/4.9.0-rc8-amd64'  /boot/initramfs-4.9.0-rc8-amd64.img 4.9.0-rc8-amd64
 ```
 Ref: https://www.mf8.biz/linux-kernel-with-tcp-bbr/    
+
+# initrd (initial ramdisk)
+https://en.wikipedia.org/wiki/Initial_ramdisk  
+initrd and initramfs refer to two different methods of achieving this.   
+
+    lsinitramfs /initrd.img
+
+## initrd scheme
+the image may be a file system image (optionally compressed)  
+executes /sbin/init to begin the normal user-space boot process
+
+## initramfs scheme
+available since the Linux kernel 2.6.13  
+the image may be a cpio archive (optionally compressed)  
+Tiny Core Linux and Puppy Linux can run entirely from initrd.
+
+### update-initramfs -u
+keeps track of  the  existing  initramfs  archives  in  /boot.
+
+### dracut
+create initial ramdisk images for preloading modules
+
+/usr/lib/dracut/modules.d
+
+    /etc/dracut.conf.d/local.conf
+        add_drivers+="vfio vfio_iommu_type1 vfio_pci vfio_virqfd"
+    dracut --force  # create /boot/initramfs-*.img
+
+### mkinitcpio
+https://wiki.archlinux.org/index.php/Mkinitcpio
+mkinitcpio is the next generation of initramfs creation.
 
 # Releases
 https://kernelnewbies.org/LinuxVersions

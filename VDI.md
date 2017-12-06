@@ -28,6 +28,8 @@ https://github.com/qemu/qemu/blob/master/hw/display/virtio-gpu.c
 
 ARMv8/arm-64: use virtio-gpu because the legacy VGA framebuffer is very troublesome on aarch64
 
+https://docs.opennebula.org/5.4/deployment/open_cloud_host_setup/pci_passthrough.html#loading-vfio-driver-in-initrd
+
 # NVIDIA Certified
 http://www.nvidia.com/object/grid-certified-servers.html  
 GRID vGPU is a licensed feature on Tesla M6, Tesla M10, and Tesla M60.

@@ -4,6 +4,8 @@
 - [HTML5](#html5)
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
+- [media type (MIME type or content type)](#media-type-mime-type-or-content-type)
+- [pdf.js](#pdfjs)
 - [CSS box model](#css-box-model)
     - [box-sizing](#box-sizing)
     - [content](#content)
@@ -20,7 +22,8 @@
 <!-- /TOC -->
 
 # HTML5
-https://www.w3.org/TR/html5
+https://www.w3.org/TR/html5  
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 
 ## lang
 empty string indicates that the primary language is unknown
@@ -30,6 +33,23 @@ http://www.ietf.org/rfc/bcp/bcp47.txt
 
 ## Subresource Integrity
 https://www.w3.org/TR/SRI/#resource-integrity
+
+# media type (MIME type or content type)
+http://www.iana.org/assignments/media-types/media-types.xhtml#application
+
+    application/pdf
+    audio
+    font
+    example
+    image
+    message
+    model
+    multipart
+    text
+    video
+
+# pdf.js
+https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 
 # CSS box model
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model  

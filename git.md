@@ -31,7 +31,7 @@ https://developer.github.com/v3/repos/
     curl -sSL https://api.github.com/repos/django/django/tags \
         | jq '.[0].zipball_url' | xargs -t wget -O file.zip
 
-## latest release        
+## latest release
     curl -sSL https://api.github.com/repos/ParsePlatform/Parse-SDK-Android/releases/latest \
         | jq '.zipball_url' | xargs -t wget -O file.zip
 

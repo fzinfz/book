@@ -90,7 +90,7 @@ SUBST X: "D:\Folder_to_map"
 - https://technet.microsoft.com/en-in/library/cc750583(en-us).aspx
 
 ## NFS mount
-- mount ip-of-NFS-Server:/Share-Name  x:
+    mount ip-of-NFS-Server:/Share-Name  x:
 
 ## Fix cifs/share mount:
 ```

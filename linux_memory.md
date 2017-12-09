@@ -1,6 +1,8 @@
 <!-- TOC -->
 
 - [Basic](#basic)
+- [cgroup](#cgroup)
+- [Hugepages](#hugepages)
 - [Memory Management Unit (MMU)](#memory-management-unit-mmu)
 - [kmalloc & vmalloc](#kmalloc--vmalloc)
 - [System Management Mode (SMM)](#system-management-mode-smm)
@@ -36,6 +38,15 @@ https://stackoverflow.com/questions/79923
 The stack is the memory set aside as scratch space for a thread of execution.  
 The heap is memory set aside for dynamic allocation.  
 Each thread gets a stack, while there's typically only one heap for the application
+
+https://linux-mm.org/LinuxMMDocumentation
+
+# cgroup
+http://elixir.free-electrons.com/linux/latest/source/Documentation/cgroup-v1/memory.txt
+
+# Hugepages
+https://wiki.debian.org/Hugepages#Enabling_HugeTlbPage  
+bigger pages, the CPU/OS have less entries to look-up
 
 # Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf

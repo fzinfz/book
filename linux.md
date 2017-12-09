@@ -48,6 +48,7 @@
 - [Tools - Online](#tools---online)
 - [Tools - Windows](#tools---windows)
 - [USB Persistence](#usb-persistence)
+- [OpenCL](#opencl)
 - [Diagram](#diagram)
 
 <!-- /TOC -->
@@ -278,7 +279,7 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
     ls -1 $PWD | wc -l  # count files
 
 ## tar
-    tar -xvf {tarball.tar} {special_file}
+    tar -xvf {tarball.tar} {special_file} -C /target/directory
 
     -j : filter archive through bzip2, use to decompress .bz2 files.
     -z: filter archive through gzip, use to decompress .gz files.
@@ -424,6 +425,9 @@ https://mobaxterm.mobatek.net/features.html
 # USB Persistence
 https://docs.kali.org/downloading/kali-linux-live-usb-persistence  
 http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence  
+
+# OpenCL
+ installable client driver loader (ICD Loader) may expose multiple separate vendor installable client drivers (Vendor ICDs) for OpenCL.
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)

@@ -40,7 +40,7 @@ https://wiki.archlinux.org/index.php/NTFS-3G
 
 # mount/umount
     mount -o loop,ro x.iso /mnt/cd
-    mount.nfs nfs_server:/dir /dir
+    mount.nfs nfs_server:/dir /dir  #  apt install -y nfs-common
     mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
     mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
     mount -v 192.168.88.10:/ /data/  # mount NFS 4.2

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [API](#api)
 - [Install & Management](#install--management)
 - [Config](#config)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
@@ -9,6 +10,7 @@
 - [Storage](#storage)
 - [run](#run)
 - [container update](#container-update)
+- [Detach](#detach)
 - [Proxy](#proxy)
 - [Swarm](#swarm)
 - [CoreOS](#coreos)
@@ -18,6 +20,14 @@
     - [S6 - a process supervisor](#s6---a-process-supervisor)
 
 <!-- /TOC -->
+# API
+https://docs.docker.com/develop/sdk/#api-version-matrix
+
+    Docker version	Maximum API version	Change log
+    17.10	1.33	
+    17.05	1.29	--cpus
+    1.13	1.25	--cpu-rt-period/runtime
+    1.12	1.24	not recommend running versions prior to 1.12
 
 # Install & Management
     url=https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh
@@ -67,11 +77,14 @@ https://docs.docker.com/engine/userguide/storagedriver/selectadriver/
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
 
 # run
-https://docs.docker.com/engine/reference/run/
+https://docs.docker.com/engine/reference/run/  
+https://docs.docker.com/engine/admin/resource_constraints/
 
 ```
 --user=[ user | user:group | uid | uid:gid | user:gid | uid:group ]
 
+-m, --memory=""
+-c, --cpu-shares=0	CPU shares (relative weight)
 --dns=[]           : Set custom dns servers for the container
 --network="bridge" : Connect a container to a network
                       'bridge': create a network stack on the default Docker bridge
@@ -84,6 +97,7 @@ https://docs.docker.com/engine/reference/run/
 --mac-address=""   : Sets the container's Ethernet device's MAC address
 --ip=""            : Sets the container's Ethernet device's IPv4 address
 --link-local-ip=[] : Sets one or more container's Ethernet device's link local IPv4/IPv6 addresses
+--read-only        ：prohibiting writes to locations other than the specified volumes
 
 Volume labels  
 `:z` => shared  
@@ -99,10 +113,14 @@ docker run --security-opt seccomp:unconfined  # may fix chromium start error
 https://docs.docker.com/engine/reference/commandline/container_update/
 
 docker container update [OPTIONS] CONTAINER [CONTAINER...]
-
+    --cpus="1.5"        # one and a half of the CPUs
+    --cpu-shares , -c
     --memory , -m		Memory limit
     --memory-reservation		Memory soft limit
     --restart
+
+# Detach
+    Ctrl+p & Ctrl+q
 
 # Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy

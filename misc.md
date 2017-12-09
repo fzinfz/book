@@ -13,6 +13,8 @@
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
 - [Taobao](#taobao)
+- [Steamio](#steamio)
+- [Coins](#coins)
 
 <!-- /TOC -->
 # Chrome
@@ -61,6 +63,15 @@ https://www.xively.com/
 # Taobao
 http://pt42.cn/taobaobasket_index.htm
 
-# XMR
-## AMD GPU miner
-https://github.com/genesismining/sgminer-gm
+# Steamio
+50% in Steem Power, and 50% in liquid STEEM/SBD(Steem Dollar).  
+Authors also have the option to decline payout, or be paid in 100% Steem Power!  
+https://steemit.com/market  
+
+# Coins
+https://whattomine.com/coins
+https://bitinfocharts.com/comparison/price-eth-xmr.html  
+https://bitinfocharts.com/comparison/difficulty-xmr.html  
+https://bitinfocharts.com/monero/  
+
+    ./monero-wallet-cli --generate-from-keys New_Wallet_Name.abc

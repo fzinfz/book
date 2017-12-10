@@ -15,7 +15,8 @@
         - [Application Supported](#application-supported)
         - [pfsense](#pfsense)
         - [Open Web Application Security Project](#open-web-application-security-project)
-    - [Nginx/OpenResty](#nginxopenresty)
+    - [Nginx](#nginx)
+    - [OpenResty](#openresty)
     - [Cloud](#cloud)
     - [Hardware](#hardware)
 
@@ -90,12 +91,15 @@ http://pfsensesetup.com/wp-content/uploads/2014/10/pfsense_modsecurity01.png
 https://coreruleset.org/
 https://hub.docker.com/r/owasp/modsecurity/
 
-## Nginx/OpenResty 
+## Nginx
 https://hub.docker.com/r/nodeintegration/nginx-modsecurity/  
-https://github.com/p0pr0ck5/lua-resty-waf  
 https://github.com/alexazhou/VeryNginx  
 https://www.nginx.com/products/nginx-waf/#free-trial  
 https://github.com/nbs-system/naxsi (Nginx Anti XSS & SQL Injection)
+
+## OpenResty
+https://github.com/p0pr0ck5/lua-resty-waf  
+High-performance WAF built on the OpenResty stack
 
 ## Cloud
 https://www.cloudflare.com/waf/  

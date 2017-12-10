@@ -48,6 +48,15 @@ http://elixir.free-electrons.com/linux/latest/source/Documentation/cgroup-v1/mem
 https://wiki.debian.org/Hugepages#Enabling_HugeTlbPage  
 bigger pages, the CPU/OS have less entries to look-up
 
+  sudo sysctl -w vm.nr_hugepages=128
+
+  /etc/security/limits.conf  # Exit and re-login to take effect.
+    * soft memlock 262144
+    * hard memlock 262144
+
+  vi /root/.bashrc
+    ulimit -u unlimited
+
 # Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf
 

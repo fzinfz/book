@@ -27,6 +27,7 @@
     - [CNAME Flattening](#cname-flattening)
     - [SSL Modes](#ssl-modes)
     - [HTTPS](#https)
+    - [Real IP](#real-ip)
 - [Google Analytics](#google-analytics)
     - [Enhanced Link Attribution](#enhanced-link-attribution)
 
@@ -252,6 +253,11 @@ HSTS forces clients to use secure connections for every request
 [Page Rules - Always Use HTTPS](https://support.cloudflare.com/hc/en-us/articles/218411427#https)
 
 [Page Rules - Forwarding URL](https://support.cloudflare.com/hc/en-us/articles/200170536)
+
+## Real IP
+https://support.cloudflare.com/hc/en-us/articles/200170986
+
+https://support.cloudflare.com/hc/en-us/articles/200170706-How-do-I-restore-original-visitor-IP-with-Nginx-
 
 # Google Analytics
 https://analytics.google.com/analytics/web/#/.../admin/property/settings

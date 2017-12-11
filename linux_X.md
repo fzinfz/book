@@ -274,6 +274,13 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     export XAUTHORITY=~fzinfz/.Xauthority
     xauth add $(xauth -f ~fzinfz/.Xauthority list|tail -1)
 
+re-attachable: http://xpra.org/
+
+    apt install -y xpra         # remote
+    xpra start :13              # remote
+    xpra attach ssh:remote:13   # local
+    DISPLAY=:13 xeyes           # remote
+
 # vnc
     vncserver -kill :1
 

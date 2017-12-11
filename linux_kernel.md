@@ -9,7 +9,6 @@
 - [initrd (initial ramdisk)](#initrd-initial-ramdisk)
     - [initrd scheme](#initrd-scheme)
     - [initramfs scheme](#initramfs-scheme)
-        - [update-initramfs -u](#update-initramfs--u)
         - [dracut](#dracut)
         - [mkinitcpio](#mkinitcpio)
 - [Releases](#releases)
@@ -86,9 +85,9 @@ executes /sbin/init to begin the normal user-space boot process
 available since the Linux kernel 2.6.13  
 the image may be a cpio archive (optionally compressed)  
 Tiny Core Linux and Puppy Linux can run entirely from initrd.
-
-### update-initramfs -u
-keeps track of  the  existing  initramfs  archives  in  /boot.
+ 
+    /etc/initramfs-tools/modules
+    update-initramfs -u
 
 ### dracut
 create initial ramdisk images for preloading modules

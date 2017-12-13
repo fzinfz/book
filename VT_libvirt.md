@@ -147,8 +147,8 @@ https://www.kernel.org/doc/Documentation/vfio.txt
     </disk>
 
 # GRUB
-    vi /etc/default/grub
-        GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas"
+    cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT
+        intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas,ahci,radeon,nouveau,nvidiafb,snd_hda_intel,...
     update-grub
 
 # UEFI

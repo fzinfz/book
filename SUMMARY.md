@@ -30,6 +30,7 @@
 * [Cloud](cloud.md)
 * [BI](BI.md)
 * [Oracle](oracle.md)
+* [MySQL & MariaDB](mysql.md)
 * [DevOps](DevOps.md)
 * [Programming](programming.md)
   * [Git](git.md)

@@ -5,7 +5,6 @@
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
 - [media type (MIME type or content type)](#media-type-mime-type-or-content-type)
-- [pdf.js](#pdfjs)
 - [CSS box model](#css-box-model)
     - [box-sizing](#box-sizing)
     - [content](#content)
@@ -17,6 +16,10 @@
     - [Version 3](#version-3)
     - [Version 4](#version-4)
     - [Grid system](#grid-system)
+- [whitespace and wrap](#whitespace-and-wrap)
+- [js](#js)
+    - [text](#text)
+- [pdf.js](#pdfjs)
     - [Demo](#demo)
 
 <!-- /TOC -->
@@ -47,9 +50,6 @@ http://www.iana.org/assignments/media-types/media-types.xhtml#application
     multipart
     text
     video
-
-# pdf.js
-https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 
 # CSS box model
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model  
@@ -129,6 +129,25 @@ https://getbootstrap.com/docs/3.3/css/#grid
 
 Rows must be placed within a .container[-fluid] for proper alignment and padding.
 Columns create gutters (gaps between column content) via `padding`. That padding is offset in rows for the first and last column via negative margin on `.rows`.
+
+# whitespace and wrap
+https://css-tricks.com/almanac/properties/w/whitespace/
+
+| |New lines|	Spaces and tabs|	Text wrapping|
+|---|---|---|---|
+|normal|	Collapse|	Collapse|	Wrap|
+|pre|	Preserve|	Preserve|	No| |wrap|
+|nowrap|	Collapse|	Collapse|	No| |wrap|
+|pre-wrap|	Preserve|	Preserve|	Wrap|
+|pre-line|	Preserve|	Collapse|	Wrap|
+
+# js
+## text
+    <div id="divA">This is <span>some</span> text</div>
+    textContent: "This is some text"
+
+# pdf.js
+https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 
 ## Demo
 https://fzinfz.github.io/scripts/

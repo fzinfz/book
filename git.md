@@ -3,9 +3,10 @@
 - [Workflow](#workflow)
     - [commit](#commit)
     - [log](#log)
-    - [reset, checkout, and revert](#reset-checkout-and-revert)
+    - [branch and merge](#branch-and-merge)
+    - [Undo](#undo)
     - [stashing](#stashing)
-    - [remote, and push](#remote-and-push)
+    - [remote and push](#remote-and-push)
         - [delete remote branch](#delete-remote-branch)
 - [config](#config)
 - [filter-branch](#filter-branch)
@@ -46,10 +47,20 @@ https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-wo
     git show [path] # details of last commit log
     git log --since=2.weeks
 
-## reset, checkout, and revert
+## branch and merge
+    git branch -a       # list all
+    git checkout -b dev # create and checkout a new branch
+    git checkout dev
+
+    git merge master
+        --squash              create a single commit instead of doing a merge
+        --abort               abort the current in-progress merge
+
+## Undo
 https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting
 
-    git revert HEAD~2   # undo 2 changes on a public branch
+    git checkout -- <file>    # discard changes in working directory
+
     git reset HEAD~2    # undo 2 changes that haven’t been shared
     git reset <paths>   # opposite of `git add <paths>`
         --soft                reset HEAD only
@@ -58,12 +69,7 @@ https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting
         --merge               reset HEAD, index and working tree
         --keep                reset HEAD but keep local changes
 
-    git branch -a       # list all
-    git checkout -b dev # create and checkout a new branch
-    git checkout dev
-    git merge master
-        --squash              create a single commit instead of doing a merge
-        --abort               abort the current in-progress merge
+    git revert HEAD~2   # undo 2 changes on a public branch
 
 https://stackoverflow.com/questions/3639342
 
@@ -80,7 +86,7 @@ https://stackoverflow.com/questions/3639342
     git stash drop
     git stash drop stash@{0}
 
-## remote, and push
+## remote and push
 https://git-scm.com/book/en/v2/Git-Internals-The-Refspec
 
     git remote -v

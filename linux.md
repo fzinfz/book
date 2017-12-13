@@ -69,6 +69,7 @@ https://www.gnu.org/software/bash/manual/bash.html
         -u: Disable (unset) each optname.
 
     shopt -s expand_aliases     # when the shell is not interactive
+    alias foo='...'
 
     0: stdin; 1: stdout; 2: stderr              # File descriptor
     2>&1 >/dev/null

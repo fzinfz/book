@@ -2,13 +2,16 @@
 
 - [OpenGL, OpenCL, CUDA APIs](#opengl-opencl-cuda-apis)
 - [OpenGL](#opengl)
+    - [Libraries](#libraries)
+    - [transform feedback](#transform-feedback)
 - [OpenSubdiv](#opensubdiv)
 - [Open Machine Learning project (OpenML)](#open-machine-learning-project-openml)
 - [OpenGL Shading Language (GLSL)](#opengl-shading-language-glsl)
-- [Melt](#melt)
+- [melt](#melt)
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
 - [blender](#blender)
+- [Audio](#audio)
 
 <!-- /TOC -->
 
@@ -16,7 +19,24 @@
 http://www.ozone3d.net/gpu_caps_viewer/
 
 # OpenGL
-https://open.gl/feedback
+https://open.gl
+https://github.com/Polytonic/Glitter
+
+![](https://open.gl/media/img/c2_pipeline.png)
+
+- vertices: the points from which shapes like triangles will later be constructed
+- vertex shader： program on GPU, projects vertices with a 3D world position onto your 2D screen! passes attributes like color and texture coordinates further down the pipeline.
+- geometry shader, optional
+
+## Libraries
+    SFML： cross-platform C++
+    SDL：  cross-platform C
+    GLFW： C，only: window and context creation and input management
+    other options, like freeglut and OpenGLUT
+
+## transform feedback
+retrieve the vertices after they've passed through the vertex or geometry shaders  
+NOT sent vertex data to the graphics processor and only produced drawn pixels in framebuffers in return
 
 # OpenSubdiv
 a set of open source libraries that implement high performance subdivision surface (subdiv) evaluation on massively parallel CPU and GPU architectures. 
@@ -31,7 +51,7 @@ created by the OpenGL ARB (OpenGL Architecture Review Board) to give developers 
 Cross-platform compatibility including GNU/Linux, macOS and Windows.  
 Each hardware vendor includes the GLSL compiler in their driver, thus allowing each vendor to create code optimized for their particular graphics card’s architecture.
 
-# Melt
+# melt
 MLT Multimedia Framework
 
     melt -query # List all of the registered services
@@ -49,3 +69,7 @@ https://www.blender.org/
 
 https://docs.blender.org/manual/en/dev/render/cycles/gpu_rendering.html  
 only support graphics cards with GCN architecture 2.0 and above)
+
+# Audio
+https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
+https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio

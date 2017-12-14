@@ -5,6 +5,7 @@
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
 - [media type (MIME type or content type)](#media-type-mime-type-or-content-type)
+- [Events](#events)
 - [CSS box model](#css-box-model)
     - [box-sizing](#box-sizing)
     - [content](#content)
@@ -51,6 +52,14 @@ http://www.iana.org/assignments/media-types/media-types.xhtml#application
     text
     video
 
+# Events
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+cut/copy/paste  
+input: the value of an <input>, <select>, or <textarea> element is changed  
+ValueChange: mainly for an accessibility purpose, e.g.: <progress>  
+change(Firefox OS specific, any change made to a file inside a given storage area)
+
 # CSS box model
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model  
 Every box is composed of four parts (or areas), defined by their respective edges.  
@@ -91,6 +100,32 @@ extends the border area to include an empty area used to separate the element fr
 
 When margin collapsing occurs, the margin area is not clearly defined since margins are shared between boxes.  
 https://developer.mozilla.org/en/CSS/margin_collapsing
+
+# Spacing
+https://getbootstrap.com/docs/4.0/utilities/spacing/
+
+    {property}{sides}-{size} for xs
+    {property}{sides}-{sm, md, lg, xl}-{size}
+
+    m - margin
+    p - padding
+
+    t - top
+    b - bottom
+    l - left
+    r - right
+    x - *-left and *-right
+    y - *-top and *-bottom
+    blank - all 4 sides
+
+    0 - 0
+    1 -$spacer * .25
+    2 -$spacer * .5
+    3 -$spacer
+    4 -$spacer * 1.5
+    5 -$spacer * 3
+    auto - margin auto
+
 
 # Mobile
 https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
@@ -133,13 +168,13 @@ Columns create gutters (gaps between column content) via `padding`. That padding
 # whitespace and wrap
 https://css-tricks.com/almanac/properties/w/whitespace/
 
-| |New lines|	Spaces and tabs|	Text wrapping|
-|---|---|---|---|
-|normal|	Collapse|	Collapse|	Wrap|
-|pre|	Preserve|	Preserve|	No| |wrap|
-|nowrap|	Collapse|	Collapse|	No| |wrap|
-|pre-wrap|	Preserve|	Preserve|	Wrap|
-|pre-line|	Preserve|	Collapse|	Wrap|
+|   | New lines | Spaces and tabs | Text wrapping |
+| --- | --- | --- | --- |
+| normal | Collapse | Collapse | Wrap |
+| pre | Preserve | Preserve | No wrap |
+| nowrap | Collapse | Collapse | No wrap |
+| pre-wrap | Preserve | Preserve | Wrap |
+| pre-line | Preserve | Collapse | Wrap |
 
 # js
 ## text

@@ -214,5 +214,6 @@ https://github.com/settings/tokens
 https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf
 
 # Tools
-raw file with proper Content-Type: https://rawgit.com/  
-If .ipynb slow: http://nbviewer.jupyter.org/
+.html to page, etc: https://rawgit.com/  
+.js CDN: https://cdnjs.com/  
+.ipynb fast open: http://nbviewer.jupyter.org/

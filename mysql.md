@@ -52,6 +52,10 @@ Update statistics for data dictionary	Yes	Yes	Yes	Yes	Yes
         can be used in replication configurations
     Example: illustrates how to begin writing new storage engines.
 
+# MySQL Cluster
+http://severalnines.com/blog/mysql-docker-introduction-docker-swarm-mode-and-multi-host-networking  
+https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-ndb-innodb-engines.html
+
 # JSON
 ## MySQL 5.7+
 https://dev.mysql.com/doc/refman/5.7/en/json.html

@@ -9,10 +9,6 @@
     - [Auto Login](#auto-login)
 - [CMD Commands](#cmd-commands)
     - [Networking](#networking)
-- [CMD Tools](#cmd-tools)
-    - [Check and unclock file](#check-and-unclock-file)
-- [GUI Tools](#gui-tools)
-    - [Cross-Platform](#cross-platform)
 - [Configuration](#configuration)
     - [Disable Windows Defender](#disable-windows-defender)
     - [Registry locations](#registry-locations)
@@ -29,9 +25,11 @@
     - [DC DNS](#dc-dns)
 - [Graphic](#graphic)
 - [Storge](#storge)
-- [Tools](#tools-1)
-- [sysinternals tools](#sysinternals-tools)
-    - [process explorer](#process-explorer)
+- [CMD Tools](#cmd-tools)
+    - [Check and unclock file](#check-and-unclock-file)
+- [GUI Tools](#gui-tools)
+    - [sysinternals tools](#sysinternals-tools)
+- [Linux Clients](#linux-clients)
 
 <!-- /TOC -->
 
@@ -68,18 +66,6 @@ netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.1
 
 SUBST X: "D:\Folder_to_map"
 ```
-
-# CMD Tools
-## Check and unclock file
-- https://download.sysinternals.com/files/Handle.zip
-- http://unlocker.en.softonic.com/
-
-# GUI Tools
-- [SoftPerfect RAM Disk](https://www.softperfect.com/products/ramdisk/)
-
-## Cross-Platform
-- http://www.freerdp.com/
-- [Password Recovery](https://hashcat.net/hashcat/)
 
 # Configuration
 ## Disable Windows Defender
@@ -170,12 +156,21 @@ Windows Display Driver Model (WDDM): Windows Vista+
 # Storge
 dynamic disks support the creation of new multipartition volumes
 
-# Tools
-https://www.hanselman.com/tools
+# CMD Tools
+## Check and unclock file
+- https://download.sysinternals.com/files/Handle.zip
+- http://unlocker.en.softonic.com/
 
-# sysinternals tools
+# GUI Tools
+List: https://www.hanselman.com/tools  
+SoftPerfect RAM Disk: https://www.softperfect.com/products/ramdisk
+
+## sysinternals tools
 https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite
 
-## process explorer
-- search opened file
-- locate handle process
+    process explorer
+    - search opened file
+    - locate handle process
+
+# Linux Clients
+http://www.freerdp.com/

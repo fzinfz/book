@@ -2,6 +2,8 @@
 
 - [Endianness](#endianness)
 - [Protection ring](#protection-ring)
+- [UEFI Shell](#uefi-shell)
+- [CPU](#cpu)
 - [GPU - AMD](#gpu---amd)
 - [Power Connectors](#power-connectors)
     - [Industrial](#industrial)
@@ -25,6 +27,16 @@ In little endian, you store the least significant byte(LSB) in the smallest addr
 
 # Protection ring
 ![](https://en.wikipedia.org/wiki/File:Priv_rings.svg)
+
+# UEFI Shell
+https://software.intel.com/en-us/articles/uefi-shell
+
+    map # list disks
+    help bcfg
+
+# CPU
+CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119  
+CPU flags meaning: http://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean  
 
 # GPU - AMD
 https://en.wikipedia.org/wiki/List_of_AMD_graphics_processing_units#API_Overview

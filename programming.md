@@ -3,6 +3,10 @@
 
 - [Interactive coding notes](#interactive-coding-notes)
 - [Scripts of Powershell/Python/etc](#scripts-of-powershellpythonetc)
+- [Editor](#editor)
+    - [vi/vim](#vivim)
+        - [VISUAL BLOCK mode](#visual-block-mode)
+    - [VSCode extensions](#vscode-extensions)
 - [Markdown](#markdown)
     - [Parser](#parser)
     - [Converter](#converter)
@@ -17,6 +21,21 @@ http://nbviewer.jupyter.org/github/fzinfz/scripts/tree/master/jupyter/
 
 # Scripts of Powershell/Python/etc
 https://github.com/fzinfz/scripts
+
+# Editor
+## vi/vim
+    go to line: Esc , line#, Shift-g
+    :%s/pattern/replace/g_  # i/I: case in/sensitive    
+    cw => change word
+    ciw => change word from cursor
+    :w !sudo tee %      ===> sudo save
+
+### VISUAL BLOCK mode
+    Ctrl+V；【select】；Shift + I; 【type text】; Esc
+
+## VSCode extensions
+    AlanWalk.markdown-toc
+    shardulm94.trailing-spaces
 
 # Markdown
 ## Parser

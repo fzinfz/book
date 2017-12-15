@@ -1,5 +1,9 @@
 <!-- TOC -->
 
+- [Switching Database Manager (SDM)](#switching-database-manager-sdm)
+- [protocol data unit (PDU)](#protocol-data-unit-pdu)
+- [MTU](#mtu)
+- [Ethernet Performance](#ethernet-performance)
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
     - [Diagram](#diagram)
@@ -18,11 +22,56 @@
 
 <!-- /TOC -->
 
+# Switching Database Manager (SDM) 
+https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/44921-swdatabase-3750ss-44921.html
+
+Ternary Content Addressable Memory (TCAM): rapid table lookups by ACL engine
+
+    Layer 2 Learning    port learning policies
+    Layer 2 Forwarding  learned unicast and multicast addresses
+    Layer 3 Routing     unicast and multicast route lookups
+    ACL / QoS Table     identify the traffic according to security and QoS ACLs
+
+If these resources are exhausted:  
+Layer 2 Forwarding and Learning, a new learned address will be flooded to all ports within the ingress VLAN.  
+Layer 3 Routing, any L3 unicast and multicast routes will be learned only in software and not programmed into the TCAM. 
+
+# protocol data unit (PDU)
+    The layer 1 (Physical layer) PDU is the bit or, more generally, symbol ("stream").
+    The layer 2 (Data link layer) PDU is the frame.
+    The layer 3 (Network layer) PDU is the packet.
+    The layer 4 (Transport layer) PDU is the segment for TCP or the datagram for UDP.
+
+# MTU
+https://en.wikipedia.org/wiki/Maximum_transmission_unit  
+Ethernet, the maximum frame size is 1518 bytes, 18 bytes of which are overhead (header and FCS), resulting in an MTU of 1500 byte.
+
+|Media for IP transport|Maximum transmission unit (bytes)|Notes|
+|---|---|---|
+|Internet IPv4 path MTU|At least 68,[5] max of 64KB[6]|Practical path MTUs are generally higher. Systems may use Path MTU Discovery[7] to find the actual path MTU.|
+|Internet IPv6 path MTU|At least 1280,[8] max of 64KB, but up to 4GB with optional jumbogram[9]|Practical path MTUs are generally higher. Systems must use Path MTU Discovery[10] to find the actual path MTU.|
+|Ethernet v2|1500[11]|Nearly all IP over Ethernet implementations use the Ethernet V2 frame format.|
+|Ethernet jumbo frames|1501 – 9198 or more[14]|The limit varies by vendor. For correct interoperation, the whole Ethernet network must have the same MTU.[15] Jumbo frames are usually only seen in special-purpose networks.|
+|PPPoE over Ethernet v2|1492[16]|= Ethernet v2 MTU (1500) - PPPoE header (8)|
+|PPPoE over Ethernet jumbo frames|1493 – 9190 or more[17]|= Ethernet Jumbo Frame MTU (1501 - 9198) - PPPoE header (8)|
+|WLAN (802.11)|2304|The maximum MSDU size is 2304 before encryption. WEP will add 8 bytes, WPA-TKIP 20 bytes, and WPA2-CCMP 16 bytes.|
+
+# Ethernet Performance
+https://kb.juniper.net/InfoCenter/index?page=content&id=kb14737
+
+802.1Q，802.1ad (Q-in-Q)，MPLS  
+![](https://kb.juniper.net/library/CUSTOMERSERVICE/14737/min_frame.JPG)  
+![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/14737/Figure3.JPG)  
+![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/doctorpeck/KB%20correction%20image.gif)
+
+a packet will occupy at least 84 / 92 / 96 bytes on the wire  
+1Gbps max PPS: 1,488,095 / 1,358,696 / 1,302,083
+
 # arm/mipsel/x86 packages
 http://pkg.entware.net/binaries/
 
-    tar xvfz *.ipk
-    tar xvfz data.tar.gz
+    tar zxvf *.ipk
+    tar zxvf data.tar.gz
 
 # Mikrotik
 ## Diagram
@@ -90,7 +139,6 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
             connected {
             }
         }
-
 
 ## Firmware
     show version 

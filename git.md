@@ -215,5 +215,5 @@ https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian
 
 # Tools
 .html to page, etc: https://rawgit.com/  
-.js CDN: https://cdnjs.com/  
+.js CDN: https://cdnjs.com/  https://cdn.jsdelivr.net/gh/user/repo@version/file  
 .ipynb fast open: http://nbviewer.jupyter.org/

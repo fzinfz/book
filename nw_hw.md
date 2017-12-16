@@ -4,7 +4,7 @@
 - [protocol data unit (PDU)](#protocol-data-unit-pdu)
 - [MTU](#mtu)
 - [Ethernet Performance](#ethernet-performance)
-    - [Bit Rate](#bit-rate)
+- [Bit Rate](#bit-rate)
 - [design](#design)
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
@@ -69,14 +69,16 @@ https://kb.juniper.net/InfoCenter/index?page=content&id=kb14737
 a packet will occupy at least 12+8+64=84 / 92 / 96 bytes on the wire  
 1Gbps max PPS: 1,488,095 / 1,358,696 / 1,302,083
 
-## Bit Rate
+# Bit Rate
 https://en.wikipedia.org/wiki/Bit_rate
 
-Net bit rate ≤ Gross bit rate (line rate)  
+`Net bit rate` ≤ `Gross bit rate` (`line rate`)  
 IEEE 802.11a wireless network is the net bit rate of between 6 and 54 Mbit/s, while the gross bit rate is between 12 and 72 Mbit/s inclusive of error-correcting codes.  
 Ethernet 100Base-TX physical layer standard is 100 Mbit/s, while the gross bitrate is 125 Mbit/second.
 
-|Standard|Rate|Year|
+https://en.wikipedia.org/wiki/List_of_device_bit_rates
+
+|Standard|Rate||Year|
 |---|---|---|
 |IEEE 802.11a|54 Mbit/s|6.75 MB/s|1999|
 |IEEE 802.11b|11 Mbit/s|1.375 MB/s|1999|
@@ -85,26 +87,6 @@ Ethernet 100Base-TX physical layer standard is 100 Mbit/s, while the gross bitra
 |IEEE 802.11n|600 Mbit/s|75 MB/s|2009|
 |IEEE 802.11ac (maximum theoretical speed)|6.8–6.93 Gbit/s|850–866.25 MB/s|2012|
 |IEEE 802.11ad (maximum theoretical speed)|7.14–7.2 Gbit/s|892.5–900 MB/s|2011|
-
-|Technology|Rate|Year|
-|---|---|---|
-|Bluetooth 2.0+EDR|3 Mbit/s|375 kB/s|2004|
-|Bluetooth 3.0|25 Mbit/s|3.125 MB/s|2009|
-|Bluetooth 4.0|25 Mbit/s|3.125 MB/s|2010|
-|Bluetooth 4.1|25 Mbit/s|MB/s|2013|
-|Bluetooth 4.2|25 Mbit/s|MB/s|2014|
-|Bluetooth 5.0|50 Mbit/s|6.25 MB/s|2016|
-
-https://en.wikipedia.org/wiki/InfiniBand
-
-| |SDR|DDR|QDR|FDR10|FDR|EDR|HDR|NDR|XDR|
-|---|---|---|---|---|---|---|---|---|---|
-|Signaling rate (Gbit/s)|2.5|5|10|10.3125|14.0625[6]|25.78125|50|100|250|
-|Theoretical effective throughput, Gbs, per 1x[7]|2|4|8|10|13.64|25|50|||
-|Speeds for 12x links (Gbit/s)|24|48|96|120|163.64|300|600|||
-|Encoding (bits)|8/10|8/10|8/10|64/66|64/66|64/66|64/66|||
-|Adapter latency (microseconds)[8]|5|2.5|1.3|0.7|0.7|0.5||||
-|Year[9]|2001,2003|2005|2007|2011|2011|2014[7]|2017[7]|after 2020|future|
 
 # design
 https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/white_paper_c11-522337.html  

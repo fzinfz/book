@@ -8,6 +8,7 @@
     - [alpine](#alpine)
     - [badger](#badger)
 - [Storage](#storage)
+- [build](#build)
 - [run](#run)
 - [container update](#container-update)
 - [Detach](#detach)
@@ -75,6 +76,25 @@ https://docs.docker.com/engine/userguide/storagedriver/selectadriver/
 ![](https://docs.docker.com/engine/userguide/storagedriver/images/driver-pros-cons.png)
 
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
+
+# build
+https://docs.docker.com/engine/reference/commandline/build/
+
+    docker build [-f Dockerfile.custom] [--target multi-stage] Dockerfile-Root-Folder
+
+    docker build - < Dockerfile      # no context, local ADD not working
+    curl example.com/remote/Dockerfile | docker build -f - .
+    Get-Content Dockerfile | docker build - # Powershell
+
+    docker build -f ctx/Dockerfile http://server/ctx.tar.gz
+    docker build https://github.com/user/repo.git
+
+|Build Syntax Suffix|Commit Used|Build Context Used|
+|---|---|---|
+|myrepo.git#mytag:myfolder|refs/tags/mytag|/myfolder|
+|myrepo.git#mybranch:myfolder|refs/heads/mybranch|/myfolder|
+
+Squashing does not destroy any existing image, rather it creates a new image.
 
 # run
 https://docs.docker.com/engine/reference/run/  

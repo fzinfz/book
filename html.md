@@ -12,14 +12,17 @@
     - [padding](#padding)
     - [border](#border)
     - [margin](#margin)
+- [Spacing](#spacing)
 - [Mobile](#mobile)
 - [Bootstrap](#bootstrap)
     - [Version 3](#version-3)
     - [Version 4](#version-4)
     - [Grid system](#grid-system)
 - [whitespace and wrap](#whitespace-and-wrap)
+- [robots](#robots)
 - [js](#js)
     - [text](#text)
+- [IIFE (Immediately Invokable Function Expression)](#iife-immediately-invokable-function-expression)
 - [pdf.js](#pdfjs)
     - [Demo](#demo)
 
@@ -176,10 +179,25 @@ https://css-tricks.com/almanac/properties/w/whitespace/
 | pre-wrap | Preserve | Preserve | Wrap |
 | pre-line | Preserve | Collapse | Wrap |
 
+# robots
+    <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+    robots.txt
+        User-agent: Google
+        Disallow:
+
+        User-agent: *
+        Disallow: /tmp/
+
 # js
 ## text
     <div id="divA">This is <span>some</span> text</div>
     textContent: "This is some text"
+
+# IIFE (Immediately Invokable Function Expression)
+    (function() {
+        statements
+    })();
 
 # pdf.js
 https://github.com/mozilla/pdf.js/tree/master/examples/helloworld

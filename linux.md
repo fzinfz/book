@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Bash](#bash)
+    - [tmux](#tmux)
 - [Init](#init)
     - [supervisord](#supervisord)
 - [Exit code](#exit-code)
@@ -25,6 +26,7 @@
         - [ubuntu](#ubuntu)
 - [Benchmark](#benchmark)
 - [wget/curl](#wgetcurl)
+- [ssh redirect](#ssh-redirect)
 - [files](#files)
     - [tar](#tar)
     - [rsync](#rsync)
@@ -75,7 +77,10 @@ https://www.gnu.org/software/bash/manual/bash.html
     2>&1 >/dev/null
     ssh-add 2>/dev/null
 
-http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb]
+
+## tmux
+    ctrl+b x -> kill pane   # /usr/share/doc/tmux/examples/screen-keys.conf
 
 # Init
 
@@ -251,6 +256,11 @@ tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz
     wget -O diff_name.zip http://...
     curl -O http://...
     curl -o diff_name.zip http://
+
+# ssh redirect
+    ssh -L 9000:public.com:80   # visit local:9000 -> public.com:80
+    ssh -R 9000:localhost:3000  # visit remote:9000 -> local:3000, "GatewayPorts yes" in sshd_config
+        -nNT -L ...   # port forwarding only, no shell
 
 # files
 String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files

@@ -14,6 +14,8 @@
   * [Security](nw_security.md)
   * [DNS](dns.md)
   * [Low Level](nw_lowlevel.md)
+  * [TCP](nw_tcp.md)
+  * [Hardware](nw_lowlevel.md)
 * [SDN](SDN.md)
   * [Openflow](openflow.md)
 * [Docker](docker.md)

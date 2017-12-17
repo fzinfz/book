@@ -11,26 +11,18 @@
     - [Applications](#applications)
 - [Extended Unique Identifier (EUI) -64 identifiers](#extended-unique-identifier-eui--64-identifiers)
 - [IEEE 802](#ieee-802)
-- [Ethernet II (DIX Ethernet) & IEEE 802.3 Frame](#ethernet-ii-dix-ethernet--ieee-8023-frame)
+- [Ethernet II (DIX Ethernet) & 802.3 Frame](#ethernet-ii-dix-ethernet--8023-frame)
+    - [EtherType](#ethertype)
     - [MPLS](#mpls)
 - [802.1Q & 802.1ad (Q-in-Q)](#8021q--8021ad-q-in-q)
+    - [Cisco](#cisco)
+- [IEEE P802.1p](#ieee-p8021p)
 - [Bit Rate](#bit-rate)
+    - [Wireless](#wireless)
+- [FC](#fc)
+    - [Layers](#layers)
+- [Wireshark](#wireshark)
 - [Design](#design)
-- [arm/mipsel/x86 packages](#armmipselx86-packages)
-- [Mikrotik](#mikrotik)
-    - [Diagram](#diagram)
-    - [CLI](#cli)
-    - [PCQ](#pcq)
-    - [PPP BCP](#ppp-bcp)
-- [ER-X](#er-x)
-    - [enable apt](#enable-apt)
-    - [List dhcp/static clients](#list-dhcpstatic-clients)
-    - [RIP](#rip)
-    - [Firmware](#firmware)
-    - [custom scripts](#custom-scripts)
-- [Unifi-AC-Lite/LR](#unifi-ac-litelr)
-    - [Commands](#commands)
-    - [Issues](#issues)
 
 <!-- /TOC -->
 
@@ -142,7 +134,7 @@ http://www.ieee802.org/
     802.22 Wireless Regional Area Networks
     802.24 Vertical Applications TAG
 
-# Ethernet II (DIX Ethernet) & IEEE 802.3 Frame
+# Ethernet II (DIX Ethernet) & 802.3 Frame
 https://en.wikipedia.org/wiki/Ethernet_frame  
 A version 1 Ethernet frame was never commercially deployed.
 
@@ -158,11 +150,23 @@ A version 1 Ethernet frame was never commercially deployed.
 |Frame check sequence(32‑bit CRC)|4 octets|
 |Interpacket gap|12 octets|
 
+Layer 2 Ethernet frame:         ← 64–1522 octets →
+Layer 1 Ethernet packet & IPG:	← 72–1530 octets →	← 12 octets →
+
 The header = dst/src MAC + EtherType + optional IEEE 802.1Q tag
+
+|Frame type|Ethertype or length|Payload start two bytes|
+|---|---|---|
+|Ethernet II|≥ 1536|Any|
+|Novell raw IEEE 802.3|≤ 1500|0xFFFF|
+|IEEE 802.2 LLC|≤ 1500|Other|
+|IEEE 802.2 SNAP|≤ 1500|0xAAAA|
 
 EtherType can be used for two different purposes:
 - `<=1500`: the maximum length of the payload field of an Ethernet 802.3 frame is 1500 octets (0x05DC).
 - `>=1536`: protocol encapsulated in the payload of the frame. used as [EtherType](https://www.iana.org/assignments/ieee-802-numbers/ieee-802-numbers.xhtml), the length of the frame is determined by the location of the interpacket gap and valid frame check sequence (FCS).
+
+most popular FCS algorithm is a cyclic redundancy check (CRC)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/7/72/Ethernet_Frame.png)
 
@@ -170,6 +174,43 @@ https://kb.juniper.net/InfoCenter/index?page=content&id=kb14737
 
 a packet will occupy at least 12+8+64=84 / 92 / 96 bytes on the wire  
 1Gbps max PPS: 1,488,095 / 1,358,696 / 1,302,083
+
+## EtherType
+    0x0800  Internet Protocol Version 4 (IPv4)
+    0x86DD  Internet Protocol Version 6 (IPv6)
+
+    0x0806  Address Resolution Protocol (ARP)
+    0x0808  Frame Relay ARP
+    0x8035  Reverse Address Resolution Protocol (RARP)
+
+    0x8847  MPLS
+    0x8848  MPLS with upstream-assigned label
+
+    0x880B  Point-to-Point Protocol (PPP)
+    0x8863  PPP over Ethernet (PPPoE) Discovery Stage
+    0x8864  PPP over Ethernet (PPPoE) Session Stage
+
+    0x8100  IEEE Std 802.1Q   - Customer VLAN Tag Type (C-Tag, formerly
+                                called the Q-Tag) (initially Wellfleet)
+    0x88A8  IEEE Std 802.1Q   - Service VLAN tag identifier (S-Tag)
+
+    0x8808  IEEE Std 802.3    - Ethernet Passive Optical Network (EPON)
+    0x888E  IEEE Std 802.1X   - Port-based network access control
+
+    0x88B5  IEEE Std 802      - Local Experimental Ethertype
+    0x88B6  IEEE Std 802      - Local Experimental Ethertype
+    0x88B7  IEEE Std 802      - OUI Extended Ethertype
+
+    0x88C7  IEEE Std 802.11   - Pre-Authentication (802.11i)
+    0x890D  IEEE Std 802.11   - Fast Roaming Remote Request (802.11r)
+
+    0x88CC  IEEE Std 802.1AB  - Link Layer Discovery Protocol (LLDP)
+    0x88E5  IEEE Std 802.1AE  - Media Access Control Security
+    0x8917  IEEE Std 802.21   - Media Independent Handover Protocol
+    0x88F5  IEEE Std 802.1Q   - Multiple VLAN Registration Protocol(MVRP)
+    0x88F6  IEEE Std 802.1Q   - Multiple Multicast Registration Protocol (MMRP)
+    0x8929  IEEE Std 802.1Qbe - Multiple I-SID Registration Protocol
+    0x8940  IEEE Std 802.1Qbg - ECP Protocol (also used in 802.1BR)
 
 ## MPLS
 ![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/doctorpeck/KB%20correction%20image.gif)
@@ -179,7 +220,53 @@ a packet will occupy at least 12+8+64=84 / 92 / 96 bytes on the wire
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/TCPIP_802.1ad_DoubleTag.svg/2656px-TCPIP_802.1ad_DoubleTag.svg.png)
 
-<table width="400px"><caption>802.1Q tag format</caption><tbody><tr><th width="50%">16 bits</th><th width="9.375%">3 bits</th><th width="3.125%">1 bit</th><th width="37.5%">12 bits</th></tr><tr><td rowspan="2" align="center">TPID</td><td colspan="3" align="center">TCI</td></tr><tr><td align="center">PCP</td><td align="center">DEI</td><td align="center">VID</td></tr></tbody></table>
+<table width="400px">
+   <caption>802.1Q tag format</caption>
+   <tbody>
+      <tr>
+         <th width="50%">16 bits</th>
+         <th width="9.375%">3 bits</th>
+         <th width="3.125%">1 bit</th>
+         <th width="37.5%">12 bits</th>
+      </tr>
+      <tr>
+         <td rowspan="2" align="center">TPID</td>
+         <td colspan="3" align="center">TCI</td>
+      </tr>
+      <tr>
+         <td align="center">PCP</td>
+         <td align="center">DEI</td>
+         <td align="center">VID</td>
+      </tr>
+   </tbody>
+</table>
+
+Tag protocol identifier (TPID)： 0x8100/0x88A8  
+Tag control information (TCI)
+- Priority code point (PCP)： IEEE 802.1p class of service
+- Drop eligible indicator (DEI)/Canonical Format Indicator (CFI)： IEEE 802.1Q-2011 clause 6.9.3
+- VLAN identifier (VID)： up to 4,094 VLANs；0x000 no VLAN; 0x001 default; 0xFFF reserved.
+
+Multiple VLAN Registration Protocol (MVRP), an application of the Multiple Registration Protocol, allowing bridges to negotiate the set of VLANs to be used over a specific link.
+
+## Cisco
+[VLAN Trunking Protocol (VTP)](https://en.wikipedia.org/wiki/VLAN_Trunking_Protocol) is a Cisco proprietary protocol that propagates the definition of Virtual Local Area Networks (VLAN) on the whole local area network.
+
+[Cisco Inter-Switch Link (ISL)](https://en.wikipedia.org/wiki/Cisco_Inter-Switch_Link) is a Cisco Systems proprietary protocol that maintains VLAN information in Ethernet frames as traffic flows between switches and routers, or switches and switches. an alternative to the IEEE 802.1Q standard.
+
+[Dynamic Trunking Protocol (DTP)](https://en.wikipedia.org/wiki/Dynamic_Trunking_Protocol) is a proprietary networking protocol developed by Cisco Systems for the purpose of negotiating trunking on a link between two VLAN-aware switches, and for negotiating the type of trunking encapsulation to be used.
+
+# IEEE P802.1p
+|PCP value|Priority|Acronym|Traffic types|
+|---|---|---|---|
+|1|0 (lowest)|BK|Background|
+|0|1 (default)|BE|Best effort|
+|2|2|EE|Excellent effort|
+|3|3|CA|Critical applications|
+|4|4|VI|Video, < 100 ms latency and jitter|
+|5|5|VO|Voice, < 10 ms latency and jitter|
+|6|6|IC|Internetwork control|
+|7|7 (highest)|NC|Network control|
 
 # Bit Rate
 https://en.wikipedia.org/wiki/Bit_rate
@@ -188,6 +275,7 @@ https://en.wikipedia.org/wiki/Bit_rate
 IEEE 802.11a wireless network is the net bit rate of between 6 and 54 Mbit/s, while the gross bit rate is between 12 and 72 Mbit/s inclusive of error-correcting codes.  
 Ethernet 100Base-TX physical layer standard is 100 Mbit/s, while the gross bitrate is 125 Mbit/second.
 
+## Wireless
 https://en.wikipedia.org/wiki/List_of_device_bit_rates
 
 |Standard|Rate||Year|
@@ -200,126 +288,31 @@ https://en.wikipedia.org/wiki/List_of_device_bit_rates
 |IEEE 802.11ac (maximum theoretical speed)|6.8–6.93 Gbit/s|850–866.25 MB/s|2012|
 |IEEE 802.11ad (maximum theoretical speed)|7.14–7.2 Gbit/s|892.5–900 MB/s|2011|
 
+# FC
+https://en.wikipedia.org/wiki/Fibre_Channel
+
+|NAME|Line-rate (gigabaud)|Line coding|Nominal throughput/direction|Net throughput/direction| Availability|
+|---|---|---|---|
+|8GFC|8.5|8b10b|800|825.8|2005|
+|10GFC|10.51875|64b66b|1,200|1,239|2008|
+|16GFC|14.025|64b66b|1,600|1,652|2011|
+|32GFC "Gen 6"|28.05|64b66b|3,200|3,303|2016[6]|
+|128GFC "Gen 6"|28.05 ×4|64b66b|12,800|13,210|2016[6]|
+
+## Layers
+    FC-4 – Protocol-mapping layer, in which upper level protocols such as SCSI, IP or FICON, are encapsulated into Information Units (IUs) for delivery to FC-2. Current FC-4s include FCP-4, FC-SB-5, and FC-NVMe.
+    FC-3 – Common services layer, a thin layer that could eventually implement functions like encryption or RAID redundancy algorithms; multiport connections;
+    FC-2 – Signaling Protocol, defined by the Fibre Channel Framing and Signaling 4 (FC-FS-4) standard, consists of the low level Fibre Channel protocols; port to port connections;
+    FC-1 – Transmission Protocol, which implements line coding of signals;
+    FC-0 – PHY, includes cabling, connectors etc.;
+
+# Wireshark
+https://wiki.wireshark.org/Ethernet#Frame_Check_Sequence_.28FCS.29_field
+
+    !(eth.addr==08.00.08.15.ca.fe)
+    (eth.dst[0] & 1) && eth.dst!=ff:ff:ff:ff:ff:ff  # Multicast - Broadcast
+
 # Design
 https://www.cisco.com/c/en/us/products/collateral/switches/nexus-5000-series-switches/white_paper_c11-522337.html  
 horizontal distribution area (HDA)  
 access layer, or equipment distribution area (EDA)
-
-# arm/mipsel/x86 packages
-http://pkg.entware.net/binaries/
-
-    tar zxvf *.ipk
-    tar zxvf data.tar.gz
-
-# Mikrotik
-## Diagram
-![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)
-
-## CLI
-    put [resolve google.com server 8.8.8.8]
-
-## PCQ
-https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
-http://mum.mikrotik.com/presentations/US08/janism.pdf  
-https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
-
-## PPP BCP
-https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
-
-# ER-X
-```
-system type             : MT7621
-
-processor               : 3
-cpu model               : MIPS 1004Kc V2.15
-BogoMIPS                : 583.68
-wait instruction        : yes
-microsecond timers      : yes
-tlb_entries             : 32
-extra interrupt vector  : yes
-hardware watchpoint     : yes, count: 4, address/irw mask: [0x0ffc, 0x0ffc, 0x0f                                                    fb, 0x0ffb]
-isa                     : mips1 mips2 mips32r1 mips32r2
-ASEs implemented        : mips16 dsp mt
-
-ubnt@ubnt:~$ free -m
-             total       used       free     shared    buffers     cached
-Mem:           249        226         22          0         24         94
--/+ buffers/cache:        107        141
-Swap:            0          0          0
-```
-
-## enable apt
-https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS
-
-    configure
-    set system package repository wheezy components 'main contrib non-free'
-    set system package repository wheezy distribution wheezy 
-    set system package repository wheezy url http://http.us.debian.org/debian
-    commit
-    save
-    exit
-    sudo apt-get update
-    apt-cache search supervisor
-
-## List dhcp/static clients
-https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-and-Static/td-p/697223  
-
-    set service dhcp-server hostfile-update enable  
-    cat /etc/hosts
-
-## RIP
-    ubnt@ubnt# show protocols rip
-
-        interface switch0
-        interface eth0
-        neighbor 192.168.3.1
-        redistribute {
-            connected {
-            }
-        }
-
-## Firmware
-    show version 
-    add system image http://dl.ubnt.com/...
-    add system image egdeos-120821.tar
-    show system image 
-    reboot
-    show system image storage 
-    set system image default-boot 
-    delete system image 
-
-    set interfaces ethernet eth1 address 192.168.3.2/24
-    commit
-
-## custom scripts    
-    chmod +x /config/scripts/post-config.d/yourscript.sh
-        #!/bin/bash
-
-# Unifi-AC-Lite/LR
-```
-system type             : Qualcomm Atheros QCA956X rev 0
-processor               : 0
-cpu model               : MIPS 74Kc V5.0
-BogoMIPS                : 385.84
-wait instruction        : yes
-microsecond timers      : yes
-tlb_entries             : 32
-extra interrupt vector  : yes
-hardware watchpoint     : yes, count: 4, ...
-ASEs implemented        : mips16 dsp
-
-BZ.v3.7.5# free -m
-             total         used         free       shared      buffers
-Mem:(Lite)        126316        62272        64044            0            0
--/+ buffers:              62272        64044
-Mem:(LR)        126272        66764        59508            0            0
--/+ buffers:              66764        59508
-Swap:            0            0            0
-```
-
-## Commands
-    BZ.v3.7.5# info
-    BZ.v3.7.5# set-inform http://unifi:8080/inform
-
-## Issues
-Every minor setting change on controller causes SSID reset.

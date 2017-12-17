@@ -12,7 +12,8 @@
 - [Extended Unique Identifier (EUI) -64 identifiers](#extended-unique-identifier-eui--64-identifiers)
 - [IEEE 802](#ieee-802)
 - [Ethernet II (DIX Ethernet) & IEEE 802.3 Frame](#ethernet-ii-dix-ethernet--ieee-8023-frame)
-- [802.1Q](#8021q)
+    - [MPLS](#mpls)
+- [802.1Q & 802.1ad (Q-in-Q)](#8021q--8021ad-q-in-q)
 - [Bit Rate](#bit-rate)
 - [Design](#design)
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
@@ -67,6 +68,8 @@ Layer 2 Forwarding and Learning, a new learned address will be flooded to all po
 Layer 3 Routing, any L3 unicast and multicast routes will be learned only in software and not programmed into the TCAM. 
 
 # protocol data unit (PDU)
+https://en.wikipedia.org/wiki/Protocol_data_unit
+
     The layer 1 (Physical layer) PDU is the bit or, more generally, symbol ("stream").
     The layer 2 (Data link layer) PDU is the frame.
     The layer 3 (Network layer) PDU is the packet.
@@ -90,14 +93,16 @@ Ethernet, the maximum frame size is 1518 bytes, 18 bytes of which are overhead (
 https://en.wikipedia.org/wiki/MAC_address  
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MAC-48_Address.svg/950px-MAC-48_Address.svg.png)
 
-12-34-56-78-9A-BC =》 000100{1}【0】 00110100 01010110 01111000 10011010 10111100  
-【0】 in individual addresses and set to 【1】 in group addresses
+12-34-56-78-9A-BC =》 000100{1}[0] 00110100 01010110 01111000 10011010 10111100  
+[0] individual addresses  
+[1] group addresses
 
 ## unicast
 the frame is meant to reach only one receiving NIC.
 transmitted to all nodes within the collision domain.
-    In a modern wired setting the collision domain usually is the length of the Ethernet cable between two network cards. 
-    In a wireless setting, the collision domain is as far as the radio transmitter can reach. 
+- In a modern wired setting the collision domain usually is the length of the Ethernet cable between two network cards.
+- In a wireless setting, the collision domain is as far as the radio transmitter can reach.
+
 A switch will forward a unicast frame through all of its ports (except for the port that originated the frame), an action known as `unicast flood`, if the switch has no knowledge of which port leads to that MAC address. 
 
 ## multicast addressing
@@ -124,6 +129,7 @@ FF:FF:FF:FF:FF:FF. A `broadcast` frame is flooded and is forwarded to and accept
 
 # IEEE 802
 http://www.ieee802.org/
+
     802.1 Higher Layer LAN Protocols Working Group
     802.2 developed the Logical Link Control (LLC) standard. officially disbanded.
     802.3 Ethernet Working Group
@@ -162,17 +168,18 @@ EtherType can be used for two different purposes:
 
 https://kb.juniper.net/InfoCenter/index?page=content&id=kb14737
 
-802.1Q，802.1ad (Q-in-Q)，MPLS  
-![](https://kb.juniper.net/library/CUSTOMERSERVICE/14737/min_frame.JPG)  
-![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/14737/Figure3.JPG)  
-![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/doctorpeck/KB%20correction%20image.gif)
-
 a packet will occupy at least 12+8+64=84 / 92 / 96 bytes on the wire  
 1Gbps max PPS: 1,488,095 / 1,358,696 / 1,302,083
 
-# 802.1Q
+## MPLS
+![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/doctorpeck/KB%20correction%20image.gif)
+
+# 802.1Q & 802.1ad (Q-in-Q)
+![](https://kb.juniper.net/library/CUSTOMERSERVICE/GLOBAL_JTAC/14737/Figure3.JPG)  
+
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/TCPIP_802.1ad_DoubleTag.svg/2656px-TCPIP_802.1ad_DoubleTag.svg.png)
 
+<table width="400px"><caption>802.1Q tag format</caption><tbody><tr><th width="50%">16 bits</th><th width="9.375%">3 bits</th><th width="3.125%">1 bit</th><th width="37.5%">12 bits</th></tr><tr><td rowspan="2" align="center">TPID</td><td colspan="3" align="center">TCI</td></tr><tr><td align="center">PCP</td><td align="center">DEI</td><td align="center">VID</td></tr></tbody></table>
 
 # Bit Rate
 https://en.wikipedia.org/wiki/Bit_rate

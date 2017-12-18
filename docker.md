@@ -13,6 +13,7 @@
 - [container update](#container-update)
 - [Detach](#detach)
 - [Proxy](#proxy)
+- [tini](#tini)
 - [Swarm](#swarm)
 - [CoreOS](#coreos)
 - [boot2docker](#boot2docker)
@@ -158,6 +159,12 @@ systemctl restart docker
 systemctl show --property=Environment docker
 
 ```
+
+# tini
+https://github.com/krallin/tini
+Docker CE 1.13+
+
+    docker run --init
 
 # Swarm
 TCP port 2377 for cluster management communications

@@ -11,7 +11,6 @@
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
 - [blender](#blender)
-- [Audio](#audio)
 
 <!-- /TOC -->
 
@@ -69,7 +68,3 @@ https://www.blender.org/
 
 https://docs.blender.org/manual/en/dev/render/cycles/gpu_rendering.html  
 only support graphics cards with GCN architecture 2.0 and above)
-
-# Audio
-https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
-https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio

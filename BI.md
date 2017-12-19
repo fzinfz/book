@@ -11,6 +11,8 @@
 - [ETL](#etl)
     - [kettle -JAVA](#kettle--java)
 - [Excel](#excel)
+    - [.Net](#net)
+- [Word](#word)
 
 <!-- /TOC -->
 # Superset vs Redash vs Metabase
@@ -50,10 +52,16 @@ PUT /_snapshot/bak_1/snapshot_1?wait_for_completion=true
 GET /_snapshot/bak_1
 ```
 
-
 # ETL
 ## kettle -JAVA
 https://github.com/pentaho/pentaho-kettle
 
 # Excel
 https://docs.wso2.com/display/DSS301/Excel+Sample
+
+## .Net
+https://github.com/tonyqus/npoi  
+https://github.com/JanKallman/EPPlus/wiki/Getting-Started
+
+# Word
+https://github.com/xceedsoftware/DocX

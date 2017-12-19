@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Check](#check)
+- [Commit logs](#commit-logs)
 - [.deb download](#deb-download)
 - [Compiling](#compiling)
     - [debug](#debug)
@@ -40,7 +41,8 @@
     uname -a
     cat /etc/*-release
 
-commit log: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/
+# Commit logs
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/
 
 # .deb download
 http://kernel.ubuntu.com/~kernel-ppa/mainline/  

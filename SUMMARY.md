@@ -25,6 +25,8 @@
   * [VDI](VDI.md)
   * [Intel GVT-g](VDI_Intel_GVTg.md)
   * [OpenStack](openstack.md)
+* [Graphics](graphics.md)
+* [Audio](audio.md)
 * [Storage(SW)](storage.md)
 * [BSD](bsd.md)
   * [Mac](mac.md)

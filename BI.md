@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Dash - Python](#dash---python)
 - [Superset vs Redash vs Metabase](#superset-vs-redash-vs-metabase)
 - [Apache Superset (Caravel/Panoramix)](#apache-superset-caravelpanoramix)
 - [Redash](#redash)
@@ -15,6 +16,9 @@
 - [Word](#word)
 
 <!-- /TOC -->
+# Dash - Python
+https://github.com/plotly/dash
+
 # Superset vs Redash vs Metabase
 https://www.pervasivecomputing.net/data-analytics/superset-vs-redash-vs-metabase
 

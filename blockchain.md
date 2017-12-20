@@ -2,10 +2,13 @@
 
 - [Steamio](#steamio)
 - [Wiki](#wiki)
+- [mnemonic](#mnemonic)
 - [Market](#market)
 - [Reward](#reward)
 - [Efficiency](#efficiency)
 - [Monero](#monero)
+    - [transaction fee](#transaction-fee)
+- [Aeon](#aeon)
 
 <!-- /TOC -->
 
@@ -16,6 +19,10 @@ https://steemit.com/market
 
 # Wiki
 https://everipedia.org
+
+# mnemonic
+mnemonic phrase, mnemonic recovery phrase or mnemonic seed  
+Generally only works with the same wallet software that created it.
 
 # Market
 https://www.coingecko.com  
@@ -35,3 +42,14 @@ https://bitinfocharts.com/comparison/difficulty-xmr.html
 https://bitinfocharts.com/monero/  
 
     ./monero-wallet-cli --generate-from-keys New_Wallet_Name.abc
+
+Own Pool: https://github.com/sammy007/monero-stratum
+
+## transaction fee
+https://www.monero.how/monero-transaction-fees
+https://www.monero.how/monero-transaction-fee-calculator
+
+# Aeon
+https://github.com/shyba/aeon-stak-cpu
+
+Own Pool: https://github.com/sammy007/monero-stratum/tree/aeon

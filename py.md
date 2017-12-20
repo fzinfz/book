@@ -4,6 +4,9 @@
 - [pip](#pip)
     - [Proxy](#proxy)
     - [Installing from local](#installing-from-local)
+- [Google Fire](#google-fire)
+- [pendulum](#pendulum)
+- [Web automation](#web-automation)
 - [VSCode](#vscode)
     - [Remote debugging](#remote-debugging)
 - [Pythonista on IOS](#pythonista-on-ios)
@@ -26,6 +29,33 @@ Debian/Ubuntu
     pip install --download DIR -r requirements.txt
     pip wheel --wheel-dir DIR -r requirements.txt
     pip install --no-index --find-links=DIR -r requirements.txt
+
+# Google Fire
+https://github.com/google/python-fire/blob/master/docs/guide.md#accessing-properties
+
+```python
+import fire
+
+def hello(name):
+  return 'Hello {name}!'.format(name=name)
+
+if __name__ == '__main__':
+  fire.Fire(【hello】)
+
+# .py hello name_value
+```
+
+# pendulum
+https://github.com/sdispater/pendulum#pendulum
+
+    tomorrow = pendulum.now().add(days=1)
+    last_week = pendulum.now().subtract(weeks=1)
+
+    if pendulum.now().is_weekend():
+    past.diff_for_humans()
+
+# Web automation
+https://github.com/tryolabs/requestium
 
 # VSCode
 ## Remote debugging

@@ -10,6 +10,7 @@
 <!-- /TOC -->
 # Chrome
 F12 -> Ctrl+Shift+P -> "screenshot"
+Address: Shift + Del
 
 # Security
 Password Crack: https://hashcat.net/hashcat

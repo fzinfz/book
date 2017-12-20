@@ -3,13 +3,13 @@
 - [Software](#software)
 - [Text To Speech](#text-to-speech)
     - [Offline](#offline)
-    - [IBM](#ibm)
     - [Google](#google)
     - [AWS](#aws)
+    - [IBM](#ibm)
     - [Bing](#bing)
+    - [Baidu - Free for Online](#baidu---free-for-online)
     - [Xunfei](#xunfei)
     - [Tencent](#tencent)
-    - [Baidu - Free for Online](#baidu---free-for-online)
 - [Speech recognition](#speech-recognition)
 
 <!-- /TOC -->
@@ -19,6 +19,8 @@ https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors
 https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio
 
 # Text To Speech
+My rate: Google > AWS Justin >> IBM/Baidu >> Bing/Offline
+
 ## Offline
 https://pyttsx3.readthedocs.io/en/latest/  (no file saving?)
 
@@ -33,15 +35,9 @@ http://espeak.sourceforge.net/commands.html
 
 Swift: https://youtu.be/bl6hEBXuv5Y?t=1057
 
-## IBM
-https://console.bluemix.net/catalog/services/text-to-speech
-
-Free: 10,000 characters per month.  deleted after 30 days of inactivity.  
-Paid: $0.02 USD/THOUSAND CHAR
-
-https://github.com/watson-developer-cloud/python-sdk
-
 ## Google
+https://play.google.com/store/apps/details?id=com.google.android.tts
+
 https://github.com/pndurette/gTTS
 
     gtts-cli -f hello.txt -l 'cs' -o hello.mp3
@@ -51,10 +47,20 @@ https://github.com/pndurette/gTTS
     tts.save("hello.mp3")
 
 ## AWS
+https://console.aws.amazon.com/polly  
 https://aws.amazon.com/polly/pricing/
 
 free: 5 million characters/m/first 12m  
 $4.00 per 1 million characters
+
+## IBM
+https://text-to-speech-demo.ng.bluemix.net  
+https://console.bluemix.net/catalog/services/text-to-speech
+
+Free: 10,000 characters per month.  deleted after 30 days of inactivity.  
+Paid: $0.02 USD/THOUSAND CHAR
+
+https://github.com/watson-developer-cloud/python-sdk
 
 ## Bing
 https://azure.microsoft.com/en-us/services/cognitive-services/speech/  
@@ -68,15 +74,15 @@ https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-api/
 
 https://github.com/westparkcom/Python-Bing-TTS
 
+## Baidu - Free for Online
+http://yuyin.baidu.com/#try  
+http://yuyin.baidu.com/docs/tts/136
+
 ## Xunfei
 http://www.xfyun.cn/services/offline_tts (99+ RMB/m)
 
 ## Tencent
 https://cloud.tencent.com/product/aai (Price unknown)
-
-## Baidu - Free for Online
-http://yuyin.baidu.com/#try  
-http://yuyin.baidu.com/docs/tts/136
 
 # Speech recognition
 https://github.com/Uberi/speech_recognition

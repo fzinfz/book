@@ -3,12 +3,17 @@
 - [Steamio](#steamio)
 - [Wiki](#wiki)
 - [mnemonic](#mnemonic)
+- [Coins compare](#coins-compare)
+    - [API](#api)
 - [Market](#market)
 - [Reward](#reward)
+- [Privacy](#privacy)
 - [Efficiency](#efficiency)
 - [Monero](#monero)
     - [transaction fee](#transaction-fee)
 - [Aeon](#aeon)
+- [ZCoin](#zcoin)
+- [Multi Miner](#multi-miner)
 
 <!-- /TOC -->
 
@@ -24,6 +29,26 @@ https://everipedia.org
 mnemonic phrase, mnemonic recovery phrase or mnemonic seed  
 Generally only works with the same wallet software that created it.
 
+# Coins compare
+https://en.bitcoin.it/wiki/Comparison_of_cryptocurrencies
+
+|Cryptocurrency|Max supply|Algorithm|Proof Type|
+|---|---|---|---|
+|Bitcoin.png Bitcoin|~21,000,000|SHA256|PoW|
+|Bitcoin Cash.png Bitcoin Cash|~21,000,000|SHA256|PoW|
+|Namecoin.png Namecoin|~21,000,000|SHA256 Merged(Bitcoin)|PoW|
+|Dash.png Dash|22,000,000|X11|PoW/PoS|
+|Ethereum.png Ethereum|Infinite|Ethash|PoW|
+|Ethereum Classic-32x32.png Ethereum Classic|Infinite|Ethash|PoW|
+|Litecoin.png Litecoin|~84,000,000|Scrypt|PoW|
+|Monero.png Monero|Not Applicable|CryptoNight|PoW|
+|Zcash-16x16.png Zcash|~21,000,000|Equihash|PoW|
+|Zcoin-800x800.png Zcoin|~21,000,000|Lyra2RE|PoW|
+
+## API
+https://www.cryptocompare.com/api  
+Client site: https://min-api.cryptocompare.com
+
 # Market
 https://www.coingecko.com  
 https://bitinfocharts.com/comparison/price-eth-xmr.html  
@@ -34,8 +59,12 @@ https://en.wikipedia.org/wiki/Bitcoin
 
 https://www.reddit.com/r/Monero/comments/512kwh/useful_for_learning_about_monero_coin_emission/
 
+# Privacy
+https://np.reddit.com/r/privacy/wiki/cryptocurrency#wiki_different_cryptocurrencies
+
 # Efficiency
-https://whattomine.com/coins
+https://whattomine.com/calculators  
+https://www.crypto-coinz.net/crypto-calculator/  
 https://bitinfocharts.com/comparison/difficulty-xmr.html  
 
 # Monero
@@ -53,3 +82,10 @@ https://www.monero.how/monero-transaction-fee-calculator
 https://github.com/shyba/aeon-stak-cpu
 
 Own Pool: https://github.com/sammy007/monero-stratum/tree/aeon
+
+# ZCoin
+https://github.com/JayDDee/cpuminer-opt
+
+# Multi Miner
+https://github.com/tpruvot/cpuminer-multi
+

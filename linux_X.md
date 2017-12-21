@@ -25,6 +25,8 @@
 - [echo $DISPLAY](#echo-display)
 - [mons - manage three monitors on X](#mons---manage-three-monitors-on-x)
 - [Forwarding](#forwarding)
+    - [Debug](#debug)
+    - [xpra](#xpra)
 - [vnc](#vnc)
 - [VGA Switcheroo](#vga-switcheroo)
 - [PRIME](#prime)
@@ -274,6 +276,13 @@ https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
     export XAUTHORITY=~fzinfz/.Xauthority
     xauth add $(xauth -f ~fzinfz/.Xauthority list|tail -1)
 
+## Debug
+https://stackoverflow.com/questions/28392949
+
+    ss -anp | grep 6010     # 127.0.0.1:6010 (= 6000+10 for localhost:10.0)
+    tcpdump -nS -i any port 6010
+
+## xpra 
 re-attachable: http://xpra.org/
 
     apt install -y xpra         # remote

@@ -2,6 +2,7 @@
 
 - [Basic](#basic)
     - [debug](#debug)
+    - [Netlink](#netlink)
     - [tuntap](#tuntap)
     - [Features](#features)
     - [disable ipv6](#disable-ipv6)
@@ -41,6 +42,11 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 ## debug
     tcpdump -i any port 27017
     nmap -sV -p6379 127.0.0.1
+
+## Netlink
+https://en.wikipedia.org/wiki/Netlink
+
+https://github.com/shemminger/iproute2/blob/master/misc/ss.c
 
 ## tuntap
     ip tuntap add mode tap dev tap1

@@ -19,9 +19,11 @@ https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors
 https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio
 
 # Text To Speech
-My rate: Google > AWS Justin >> IBM/Baidu >> Bing/Offline
+My rate: Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/Baidu >> Bing/espeak
 
 ## Offline
+https://en.wikipedia.org/wiki/Comparison_of_speech_synthesizers
+
 https://pyttsx3.readthedocs.io/en/latest/  (no file saving?)
 
     SAPI5 on Windows XP and Windows Vista and Windows 8,8.1 , 10

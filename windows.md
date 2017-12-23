@@ -27,6 +27,8 @@
 - [Storge](#storge)
 - [CMD Tools](#cmd-tools)
     - [Check and unclock file](#check-and-unclock-file)
+- [Server Core](#server-core)
+    - [MMC](#mmc)
 - [GUI Tools](#gui-tools)
     - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
@@ -160,6 +162,17 @@ dynamic disks support the creation of new multipartition volumes
 ## Check and unclock file
 - https://download.sysinternals.com/files/Handle.zip
 - http://unlocker.en.softonic.com/
+
+# Server Core
+https://technet.microsoft.com/en-us/library/jj574205(v=ws.11).aspx
+
+    cscript C:\Windows\System32\Scregedit.wsf /ar 0    # Enable RDS
+
+## MMC
+    Enable-NetFirewallRule -DisplayGroup "Remote Administration"
+
+    cmdkey /add:<ServerName> /user:<UserName> /pass:<password>
+
 
 # GUI Tools
 List: https://www.hanselman.com/tools  

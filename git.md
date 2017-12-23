@@ -22,6 +22,7 @@
     - [Query latest release](#query-latest-release)
 - [Cheatsheet](#cheatsheet)
 - [Tools](#tools)
+- [Gitbook](#gitbook)
 
 <!-- /TOC -->
 
@@ -217,3 +218,17 @@ https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian
 .html to page, etc: https://rawgit.com/  
 .js CDN: https://cdnjs.com/  https://cdn.jsdelivr.net/gh/user/repo@version/file  
 .ipynb fast open: http://nbviewer.jupyter.org/
+
+# Gitbook
+https://toolchain.gitbook.com/structure.html
+
+    book.json
+        {
+            "root": "./docs"
+        }
+
+https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+    LANGS.md
+        * [English](en/)
+        * [Chinese](zh/)

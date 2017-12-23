@@ -84,6 +84,16 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb]
 
 # Init
 
+|Level|Desc|
+|---|---|
+|0|Halt the system.|
+|1|Single-user mode (for special administration).|
+|2|Local Multiuser with Networking but without network service (like NFS)|
+|3|Full Multiuser with Networking|
+|4|Not Used|
+|5|Full Multiuser with Networking and X Windows(GUI)|
+|6|Reboot.|
+
     ls -R -l /etc/rc*
 
     ls -l /usr/lib/systemd      # check `systemd` page for more

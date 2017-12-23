@@ -7,6 +7,7 @@
     - [API](#api)
 - [Market](#market)
 - [Reward](#reward)
+- [Chain Status](#chain-status)
 - [Privacy](#privacy)
 - [Efficiency](#efficiency)
 - [Monero](#monero)
@@ -58,6 +59,9 @@ https://en.wikipedia.org/wiki/Bitcoin
 12.5 bitcoins per block (approximately every ten minutes) until mid 2020,[7] and then afterwards 6.25 bitcoins per block for 4 years until next halving. This halving continues until 2110–40, when 21 million bitcoins will have been issued.
 
 https://www.reddit.com/r/Monero/comments/512kwh/useful_for_learning_about_monero_coin_emission/
+
+# Chain Status
+https://chainradar.com/aeon/blocks
 
 # Privacy
 https://np.reddit.com/r/privacy/wiki/cryptocurrency#wiki_different_cryptocurrencies

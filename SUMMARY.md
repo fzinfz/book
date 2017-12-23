@@ -41,7 +41,7 @@
   * [HTML5/Bootstrap](html.md)
   * [Python](py.md)
     * [Django](py_django.md)
-  * [Go](go.md)
+  * [Go](dev/go.md)
   * [Powershell](powershell.md)
   * [VBA](vba.md)
 * [Hardware](hw.md)

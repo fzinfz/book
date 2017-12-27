@@ -25,6 +25,8 @@ http://pkg.entware.net/binaries/
     tar zxvf data.tar.gz
 
 # Mikrotik
+TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA
+
 ## Diagram
 ![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)
 

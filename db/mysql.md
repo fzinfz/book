@@ -3,28 +3,29 @@
 https://dev.mysql.com/doc/refman/5.7/en/storage-engines.html  
 Compare: Table 15.1 Storage Engines Feature Summary
 
-Feature	MyISAM	Memory	InnoDB	Archive	NDB
-Storage limits	256TB	RAM	64TB	None	384EB
-Transactions	No	No	Yes	No	Yes
-Locking granularity	Table	Table	Row	Row	Row
-MVCC	No	No	Yes	No	No
-Geospatial data type support	Yes	No	Yes	Yes	Yes
-Geospatial indexing support	Yes	No	Yes[a]	No	No
-B-tree indexes	Yes	Yes	Yes	No	No
-T-tree indexes	No	No	No	No	Yes
-Hash indexes	No	Yes	No[b]	No	Yes
-Full-text search indexes	Yes	No	Yes[c]	No	No
-Clustered indexes	No	No	Yes	No	No
-Data caches	No	N/A	Yes	No	Yes
-Index caches	Yes	N/A	Yes	No	Yes
-Compressed data	Yes[d]	No	Yes[e]	Yes	No
-Encrypted data[f]	Yes	Yes	Yes	Yes	Yes
-Cluster database support	No	No	No	No	Yes
-Replication support[g]	Yes	Limited[h]	Yes	Yes	Yes
-Foreign key support	No	No	Yes	No	Yes[i]
-Backup / point-in-time recovery[j]	Yes	Yes	Yes	Yes	Yes
-Query cache support	Yes	Yes	Yes	Yes	Yes
-Update statistics for data dictionary	Yes	Yes	Yes	Yes	Yes
+|Feature|MyISAM|Memory|InnoDB|Archive|NDB|
+|---|---|---|---|---|---|
+|Storage limits|256TB|RAM|64TB|None|384EB|
+|Transactions|No|No|Yes|No|Yes|
+|Locking granularity|Table|Table|Row|Row|Row|
+|MVCC|No|No|Yes|No|No|
+|Geospatial data type support|Yes|No|Yes|Yes|Yes|
+|Geospatial indexing support|Yes|No|Yes[a]|No|No|
+|B-tree indexes|Yes|Yes|Yes|No|No|
+|T-tree indexes|No|No|No|No|Yes|
+|Hash indexes|No|Yes|No[b]|No|Yes|
+|Full-text search indexes|Yes|No|Yes[c]|No|No|
+|Clustered indexes|No|No|Yes|No|No|
+|Data caches|No|N/A|Yes|No|Yes|
+|Index caches|Yes|N/A|Yes|No|Yes|
+|Compressed data|Yes[d]|No|Yes[e]|Yes|No|
+|Encrypted data[f]|Yes|Yes|Yes|Yes|Yes|
+|Cluster database support|No|No|No|No|Yes|
+|Replication support[g]|Yes|Limited[h]|Yes|Yes|Yes|
+|Foreign key support|No|No|Yes|No|Yes[i]|
+|Backup / point-in-time recovery[j]|Yes|Yes|Yes|Yes|Yes|
+|Query cache support|Yes|Yes|Yes|Yes|Yes|
+|Update statistics for data dictionary|Yes|Yes|Yes|Yes|Yes|
 
     CREATE TABLE t1 (i INT) ENGINE = INNODB;
 

@@ -1,7 +1,5 @@
 <!-- TOC -->
 
-- [Steamio](#steamio)
-- [Wiki](#wiki)
 - [mnemonic](#mnemonic)
 - [Coins compare](#coins-compare)
     - [API](#api)
@@ -14,23 +12,20 @@
     - [transaction fee](#transaction-fee)
 - [Aeon](#aeon)
 - [ZCoin](#zcoin)
-- [Multi Miner](#multi-miner)
+- [Miner](#miner)
+- [Steemit Blog](#steemit-blog)
+- [Everipedia Wiki](#everipedia-wiki)
+- [Sia Storage](#sia-storage)
 
 <!-- /TOC -->
-
-# Steamio
-50% in Steem Power, and 50% in liquid STEEM/SBD(Steem Dollar).  
-Authors also have the option to decline payout, or be paid in 100% Steem Power!  
-https://steemit.com/market  
-
-# Wiki
-https://everipedia.org
 
 # mnemonic
 mnemonic phrase, mnemonic recovery phrase or mnemonic seed  
 Generally only works with the same wallet software that created it.
 
 # Coins compare
+https://en.wikipedia.org/wiki/List_of_cryptocurrencies  
+
 https://en.bitcoin.it/wiki/Comparison_of_cryptocurrencies
 
 |Cryptocurrency|Max supply|Algorithm|Proof Type|
@@ -71,6 +66,16 @@ https://whattomine.com/calculators
 https://www.crypto-coinz.net/crypto-calculator/  
 https://bitinfocharts.com/comparison/difficulty-xmr.html  
 
+    # https://bitcoin.stackexchange.com/questions/118
+    D is the current difficulty
+    H is your hash rate in Mhash/s
+    B is block reward in BTC
+    BTC per day = (H*B/D) * 20.11626
+
+https://minergate.com/calculator/cryptonote
+
+    Reward = ((hashrate * block_reward) / current_difficulty) * (1 - pool_fee) * 3600
+
 # Monero
 https://bitinfocharts.com/monero/  
 
@@ -90,6 +95,17 @@ Own Pool: https://github.com/sammy007/monero-stratum/tree/aeon
 # ZCoin
 https://github.com/JayDDee/cpuminer-opt
 
-# Multi Miner
+# Miner
 https://github.com/tpruvot/cpuminer-multi
+
+# Steemit Blog
+50% in Steem Power, and 50% in liquid STEEM/SBD(Steem Dollar).  
+Authors also have the option to decline payout, or be paid in 100% Steem Power!  
+https://steemit.com/market  
+
+# Everipedia Wiki
+https://everipedia.org
+
+# Sia Storage
+https://sia.tech/get-started/
 

@@ -22,8 +22,10 @@
 - [robots](#robots)
 - [js](#js)
     - [text](#text)
-- [IIFE (Immediately Invokable Function Expression)](#iife-immediately-invokable-function-expression)
-- [pdf.js](#pdfjs)
+    - [IIFE (Immediately Invokable Function Expression)](#iife-immediately-invokable-function-expression)
+    - [Chrome](#chrome)
+    - [Tables](#tables)
+    - [pdf.js](#pdfjs)
     - [Demo](#demo)
 
 <!-- /TOC -->
@@ -194,12 +196,21 @@ https://css-tricks.com/almanac/properties/w/whitespace/
     <div id="divA">This is <span>some</span> text</div>
     textContent: "This is some text"
 
-# IIFE (Immediately Invokable Function Expression)
+## IIFE (Immediately Invokable Function Expression)
     (function() {
         statements
     })();
 
-# pdf.js
+## Chrome
+Cross origin requests are only supported for protocol schemes:  
+http, data, chrome, chrome-extension, https.
+
+## Tables
+https://github.com/olifolkerd/tabulator  
+
+
+
+## pdf.js
 https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 
 ## Demo

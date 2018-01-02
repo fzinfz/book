@@ -2,6 +2,7 @@
 
 - [Monitoring](#monitoring)
     - [Elastic Beats - Go](#elastic-beats---go)
+    - [TICK stack](#tick-stack)
     - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
     - [Cacti - PHP](#cacti---php)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
@@ -37,6 +38,16 @@ https://github.com/elastic/beats
     Audit Data Beats
     Heartbeat
     Uptime Monitoring
+
+## TICK stack
+https://gist.github.com/travisjeffery/43f424fbd7ac677adbba304cef6eb58f
+
+|Component|Role|
+|---|---|
+|Telegraf|Data collector|
+|InfluxDB|Stores data|
+|Chronograf|Visualizer|
+|Kapacitor|Alerter|
 
 ## Pandora FMS - PHP/Perl
 https://github.com/pandorafms/pandorafms#screenshots

@@ -68,3 +68,4 @@ HTML(non table): https://domchristie.github.io/to-markdown/
 ## OCR
 https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/OCR  
 https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
+

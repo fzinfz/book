@@ -39,6 +39,8 @@ https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF
 https://github.com/awilliam/rom-parser  
 https://github.com/systemdaemon/systemd/blob/master/src/linux/Documentation/vfio.txt
 
+    intel_iommu=on kvm-intel.nested=1
+
 # Xen vs KVM
 http://drsalbertspijkers.blogspot.co.uk/2017/05/kvm-kernel-virtual-machine-or-xen.html  
 ![](https://4.bp.blogspot.com/-we18-TvbbgE/WSfqL65mC6I/AAAAAAAACeA/lcC-3Xn6vxcXVdQb1_BR7PklQu4doFWdQCLcB/s640/virtualization_xen_kvm.png)

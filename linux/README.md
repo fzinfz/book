@@ -450,5 +450,7 @@ http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence
 # OpenCL
  installable client driver loader (ICD Loader) may expose multiple separate vendor installable client drivers (Vendor ICDs) for OpenCL.
 
+    sudo apt install ocl-icd-opencl-dev
+
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)

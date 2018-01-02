@@ -1,7 +1,6 @@
 <!-- TOC -->
 
 - [IBM](#ibm)
-    - [Container](#container)
 - [Google](#google)
     - [gcloud](#gcloud)
     - [gcs](#gcs)
@@ -18,35 +17,33 @@
 # IBM
     curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
 
-## Container
-https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install
+    bx login -a https://api.ng.bluemix.net -sso
+
+    BLUEMIX_TRACE=path/to/trace.log         # Append API request diagnostics to a log file
+    BLUEMIX_API_KEY=api_key_value           # API key to use during login
 
 # Google
 https://cloud.google.com/storage/docs/gcs-fuse
 
 ## gcloud
-```
-curl https://sdk.cloud.google.com | bash
+    curl https://sdk.cloud.google.com | bash
 
-gcloud auth application-default login
-```
+    gcloud auth application-default login
 
 ## gcs
-```
-export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
-echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install -y gcsfuse
+    export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+    echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | sudo tee /etc/apt/sources.list.d/gcsfuse.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+    sudo apt-get update
+    sudo apt-get install -y gcsfuse
 
-mkdir gcsfuse
-gcsfuse ferro-asia gcsfuse
-ls gcsfuse
-```
+    mkdir gcsfuse
+    gcsfuse ferro-asia gcsfuse
+    ls gcsfuse
 
 # QCloud
-/usr/local/sa/agent
-/usr/local/qcloud/monitor/barad/admin
+    /usr/local/sa/agent
+    /usr/local/qcloud/monitor/barad/admin
 
 # Pricing
 https://aws.amazon.com/free/  

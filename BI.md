@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [Dash - Python](#dash---python)
+- [plotly - for Math](#plotly---for-math)
 - [Superset vs Redash vs Metabase](#superset-vs-redash-vs-metabase)
 - [Apache Superset (Caravel/Panoramix)](#apache-superset-caravelpanoramix)
 - [Redash](#redash)
@@ -16,7 +16,9 @@
 - [Word](#word)
 
 <!-- /TOC -->
-# Dash - Python
+# plotly - for Math
+https://plot.ly/python/getting-started/  
+https://github.com/plotly/plotly.js  
 https://github.com/plotly/dash
 
 # Superset vs Redash vs Metabase

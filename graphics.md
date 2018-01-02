@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [OpenGL, OpenCL, CUDA APIs](#opengl-opencl-cuda-apis)
+- [Check OpenGL, OpenCL, CUDA APIs](#check-opengl-opencl-cuda-apis)
 - [OpenGL](#opengl)
     - [Libraries](#libraries)
     - [transform feedback](#transform-feedback)
@@ -14,8 +14,8 @@
 
 <!-- /TOC -->
 
-# OpenGL, OpenCL, CUDA APIs
-http://www.ozone3d.net/gpu_caps_viewer/
+# Check OpenGL, OpenCL, CUDA APIs
+Windows: http://www.ozone3d.net/gpu_caps_viewer/
 
 # OpenGL
 https://open.gl

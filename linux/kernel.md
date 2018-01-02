@@ -90,6 +90,7 @@ Tiny Core Linux and Puppy Linux can run entirely from initrd.
  
     /etc/initramfs-tools/modules
     update-initramfs -u
+    update-initramfs -d -k 4.13.0-16-generic
 
 ### dracut
 create initial ramdisk images for preloading modules

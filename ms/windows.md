@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [Driver backup](#driver-backup)
+- [Restore OS](#restore-os)
 - [.Net versions query](#net-versions-query)
 - [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
@@ -35,6 +37,15 @@
 
 <!-- /TOC -->
 
+# Driver backup
+    dism /online /export-driver /destination:C:\drivers-backup
+
+# Restore OS
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windows-to-audit-mode-or-oobe
+
+    sysprep /generalize
+    CTRL+SHIFT+F3 to audio mode
+
 # .Net versions query
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
@@ -47,15 +58,14 @@
 ## Startup Folder
 - shell:startup
 ## Date & Time
-- timedate.cpl
-ntp.sjtu.edu.cn [202.120.2.100]
+    timedate.cpl
+        ntp.sjtu.edu.cn [202.120.2.100]
 
 ## Query .Net Framwork Versions
-reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP
+    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP
 
 ## Auto Login
-- netplwiz.exe
-
+    netplwiz.exe
 
 # CMD Commands
 ## Networking

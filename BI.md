@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [plotly - for Math](#plotly---for-math)
+- [Math graph](#math-graph)
 - [Superset vs Redash vs Metabase](#superset-vs-redash-vs-metabase)
 - [Apache Superset (Caravel/Panoramix)](#apache-superset-caravelpanoramix)
 - [Redash](#redash)
@@ -20,6 +21,12 @@
 https://plot.ly/python/getting-started/  
 https://github.com/plotly/plotly.js  
 https://github.com/plotly/dash
+
+# Math graph
+https://www.geogebra.org
+
+https://github.com/mwaskom/seaborn
+https://github.com/mwaskom/seaborn-data
 
 # Superset vs Redash vs Metabase
 https://www.pervasivecomputing.net/data-analytics/superset-vs-redash-vs-metabase

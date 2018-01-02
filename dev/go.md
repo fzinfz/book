@@ -44,3 +44,7 @@ https://golang.org/doc/install/source#environment
     solaris	amd64
     windows	386
     windows	amd64
+
+# Check
+    dpkg -l golang-{go,src} | grep ^ii
+

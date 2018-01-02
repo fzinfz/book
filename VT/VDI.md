@@ -20,6 +20,8 @@
 # GPU assignment
 The state of GPU assignment in QEMU/KVM: https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf
 
+    kvm.ignore_msrs=1
+
 https://wiki.debian.org/VGAPassthrough
 
 ## virtio-gpu

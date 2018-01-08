@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Monitoring](#monitoring)
+    - [Glances - Python](#glances---python)
     - [Elastic Beats - Go](#elastic-beats---go)
     - [TICK stack](#tick-stack)
     - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
@@ -23,6 +24,11 @@
 <!-- /TOC -->
 
 # Monitoring
+## Glances - Python
+https://github.com/nicolargo/glances
+
+    pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
+
 ## Elastic Beats - Go
 https://www.elastic.co/products/beats  
 https://github.com/elastic/beats  

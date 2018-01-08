@@ -23,6 +23,7 @@
 - [Cheatsheet](#cheatsheet)
 - [Tools](#tools)
 - [Gitbook](#gitbook)
+- [Code search](#code-search)
 
 <!-- /TOC -->
 
@@ -231,3 +232,6 @@ https://toolchain.gitbook.com/structure.html
     LANGS.md    # https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
         * [English](en/)
         * [Chinese](zh/)
+
+# Code search
+https://about.sourcegraph.com/

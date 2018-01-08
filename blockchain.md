@@ -92,6 +92,8 @@ https://github.com/shyba/aeon-stak-cpu
 
 Own Pool: https://github.com/sammy007/monero-stratum/tree/aeon
 
+node.aeon.hashvault.pro:11181
+
 # ZCoin
 https://github.com/JayDDee/cpuminer-opt
 

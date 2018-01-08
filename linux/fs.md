@@ -32,7 +32,7 @@
 
 # mkpart, format
     parted -s /dev/sdb mklabel gpt
-    parted -s /dev/sdb unit mib mkpart primary 0% 100%
+    parted -s /dev/sdb unit mib mkpart primary 0% 100% / 1MiB 512MiB
     mkfs.ext4 /dev/sdb1
 
 # NTFS

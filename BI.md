@@ -1,7 +1,10 @@
 <!-- TOC -->
 
+- [Diagram image generator online](#diagram-image-generator-online)
 - [plotly - for Math](#plotly---for-math)
 - [Math graph](#math-graph)
+- [bokeh- Python](#bokeh--python)
+- [HoloViews](#holoviews)
 - [Superset vs Redash vs Metabase](#superset-vs-redash-vs-metabase)
 - [Apache Superset (Caravel/Panoramix)](#apache-superset-caravelpanoramix)
 - [Redash](#redash)
@@ -17,6 +20,9 @@
 - [Word](#word)
 
 <!-- /TOC -->
+# Diagram image generator online
+http://blockdiag.com/en/
+
 # plotly - for Math
 https://plot.ly/python/getting-started/  
 https://github.com/plotly/plotly.js  
@@ -27,6 +33,14 @@ https://www.geogebra.org
 
 https://github.com/mwaskom/seaborn
 https://github.com/mwaskom/seaborn-data
+
+# bokeh- Python
+https://github.com/bokeh/bokeh#interactive-gallery  
+Interactive Web Plotting
+
+# HoloViews
+https://github.com/ioam/holoviews  
+annotate your data and let it visualize itself
 
 # Superset vs Redash vs Metabase
 https://www.pervasivecomputing.net/data-analytics/superset-vs-redash-vs-metabase

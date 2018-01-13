@@ -2,6 +2,7 @@
 
 - [Diagram image generator online](#diagram-image-generator-online)
 - [plotly - for Math](#plotly---for-math)
+- [plot time series data](#plot-time-series-data)
 - [Math graph](#math-graph)
 - [bokeh- Python](#bokeh--python)
 - [HoloViews](#holoviews)
@@ -27,6 +28,11 @@ http://blockdiag.com/en/
 https://plot.ly/python/getting-started/  
 https://github.com/plotly/plotly.js  
 https://github.com/plotly/dash
+
+# plot time series data
+https://stackoverflow.com/questions/44964346/matplotlib-plot-time-series-graph  
+https://stackoverflow.com/questions/19079143/how-to-plot-time-series-in-python  
+https://stackoverflow.com/questions/38837421/simple-way-to-plot-time-series-with-real-dates-using-pandas  
 
 # Math graph
 https://www.geogebra.org

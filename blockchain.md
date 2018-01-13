@@ -8,6 +8,7 @@
 - [Chain Status](#chain-status)
 - [Privacy](#privacy)
 - [Efficiency](#efficiency)
+- [CryptoNote](#cryptonote)
 - [Monero](#monero)
     - [transaction fee](#transaction-fee)
 - [Aeon](#aeon)
@@ -15,6 +16,7 @@
 - [Miner](#miner)
 - [Steemit Blog](#steemit-blog)
 - [Everipedia Wiki](#everipedia-wiki)
+- [AI](#ai)
 - [Sia Storage](#sia-storage)
 
 <!-- /TOC -->
@@ -76,6 +78,9 @@ https://minergate.com/calculator/cryptonote
 
     Reward = ((hashrate * block_reward) / current_difficulty) * (1 - pool_fee) * 3600
 
+# CryptoNote
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Forks-tree-fixed.png/700px-Forks-tree-fixed.png)
+
 # Monero
 https://bitinfocharts.com/monero/  
 
@@ -107,6 +112,9 @@ https://steemit.com/market
 
 # Everipedia Wiki
 https://everipedia.org
+
+# AI
+https://www.deepbrainchain.org
 
 # Sia Storage
 https://sia.tech/get-started/

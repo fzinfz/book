@@ -31,6 +31,7 @@
 - [VGA Switcheroo](#vga-switcheroo)
 - [PRIME](#prime)
 - [GPGPU (General-purpose computing on GPU)](#gpgpu-general-purpose-computing-on-gpu)
+- [radeontop](#radeontop)
 
 <!-- /TOC -->
 
@@ -321,3 +322,6 @@ https://negativo17.org/complex-setup-with-nvidia-optimus-nouveau-prime-on-fedora
 
 # GPGPU (General-purpose computing on GPU)
 https://wiki.archlinux.org/index.php/GPGPU
+
+# radeontop
+    make amdgpu=1   # show VRAM usage. requires libdrm >= 2.4.63

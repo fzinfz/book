@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [IBM](#ibm)
+    - [Container](#container)
 - [Google](#google)
     - [gcloud](#gcloud)
     - [gcs](#gcs)
@@ -17,10 +18,38 @@
 # IBM
     curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
 
+    docker run --name bluemix \
+        -d --restart unless-stopped \
+        --privileged --net host \
+        reachlin/bluemix
+    docker exec -it bluemix bash
+
+https://console.bluemix.net/containers-kubernetes/home/clusters
+
+    bx plugin list
+    bx plugin install container-service -r Bluemix
+
     bx login -a https://api.ng.bluemix.net -sso
+
+    bx cs region
+    bx cs region-set eu-de
+
+    bx cs clusters
+    bx cs cluster-config mycluster
+
+    bx cs workers mycluster # check public IP
 
     BLUEMIX_TRACE=path/to/trace.log         # Append API request diagnostics to a log file
     BLUEMIX_API_KEY=api_key_value           # API key to use during login
+
+## Container
+https://dev-console.stage1.bluemix.net/docs/containers/cs_network_planning.html
+
+NodePort service (free and standard clusters)
+LoadBalancer service (standard clusters only)
+Ingress (standard clusters only)
+
+![](https://dev-console.stage1.bluemix.net/docs/api/content/containers/images/networking.png?lang=en-US)
 
 # Google
 https://cloud.google.com/storage/docs/gcs-fuse

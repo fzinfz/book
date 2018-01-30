@@ -1,23 +1,19 @@
 <!-- TOC -->
 
-- [Kubernetes](#kubernetes)
-- [Public Access](#public-access)
+- [Docs](#docs)
 - [kubectl](#kubectl)
-    - [verbose](#verbose)
+- [Tutorial](#tutorial)
+- [Verbosity](#verbosity)
 - [minikube](#minikube)
-        - [KVM](#kvm)
+    - [KVM](#kvm)
 - [kops](#kops)
-- [IBM](#ibm)
 
 <!-- /TOC -->
 
-# Kubernetes
+# Docs
 https://kubernetes.io/docs/setup/pick-right-solution/#table-of-solutions
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-
-# Public Access
-![](https://console.bluemix.net/docs/api/content/containers/images/networkingdt.png?lang=en)
 
 # kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -29,7 +25,32 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
     sudo snap install kubectl --classic
 
-## verbose
+    kubectl get nodes
+    kubectl proxy --address='0.0.0.0' --accept-hosts='.*' --port=8080
+    kubectl proxy --address=$IP_Private --accept-hosts='^.*$' # http://...:8080/ui
+
+# Tutorial
+    kubectl run nginx --image=nginx
+    kubectl expose deployment/nginx --name=nginx --type=NodePort --port=80 --target-port=80
+    kubectl describe services nginx
+
+    kubectl run hello-world --replicas=2 \
+        --labels="run=load-balancer-example" \
+        --image=gcr.io/google-samples/node-hello:1.0  \
+        --port=8080
+
+    kubectl get deployments hello-world
+    kubectl describe deployments hello-world
+
+    kubectl get replicasets
+    kubectl describe replicasets
+
+    kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+    kubectl describe services my-service
+
+    kubectl get services
+
+# Verbosity
 |Verbosity|Description|
 |---|---|
 |--v=0|Generally useful for this to ALWAYS be visible to an operator.|
@@ -47,7 +68,7 @@ https://github.com/kubernetes/minikube
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     chmod +x minikube kubectl && sudo mv minikube /usr/local/bin/
 
-### KVM
+## KVM
 https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#kvm-driver
 
     sudo usermod -a -G libvirt $(whoami)
@@ -60,19 +81,3 @@ https://github.com/docker/machine/releases
 # kops
 https://github.com/kubernetes/kops#linux  
 kubectl for clusters  
-
-# IBM
-https://console.bluemix.net/containers-kubernetes/home/clusters
-
-    bx plugin list
-    bx plugin install container-service -r Bluemix
-
-    bx cs region
-    bx cs region-set eu-de
-
-    bx cs clusters
-    bx cs cluster-config mycluster
-
-    kubectl get nodes
-    kubectl proxy --address=$IP_Private --accept-hosts='^.*$' \
-        --port=8080  # http://...:8080/ui

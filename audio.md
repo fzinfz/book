@@ -11,6 +11,7 @@
     - [Xunfei](#xunfei)
     - [Tencent](#tencent)
 - [Speech recognition](#speech-recognition)
+    - [Chinese](#chinese)
 
 <!-- /TOC -->
 
@@ -88,3 +89,6 @@ https://cloud.tencent.com/product/aai (Price unknown)
 
 # Speech recognition
 https://github.com/Uberi/speech_recognition
+
+## Chinese
+https://www.zhihu.com/question/28167247 

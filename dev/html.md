@@ -208,8 +208,6 @@ http, data, chrome, chrome-extension, https.
 ## Tables
 https://github.com/olifolkerd/tabulator  
 
-
-
 ## pdf.js
 https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 

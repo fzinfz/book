@@ -3,6 +3,7 @@
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
     - [Diagram](#diagram)
+    - [Wireless](#wireless)
     - [CLI](#cli)
     - [PCQ](#pcq)
     - [PPP BCP](#ppp-bcp)
@@ -30,8 +31,18 @@ TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA
 ## Diagram
 ![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)
 
+## Wireless
+RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mode parameter.
+
 ## CLI
-    put [resolve google.com server 8.8.8.8]
+```
+put [resolve google.com server 8.8.8.8]
+
+/ip hotspot walled-garden
+add dst-host=:^www.bing.com path=":/*\$"
+    >>> regular expression start with a colon (':')
+    >>> $ requires the escape character '\' to stop it from be processed as an actual $)
+```
 
 ## PCQ
 https://wiki.mikrotik.com/wiki/Manual:Queue_Size  

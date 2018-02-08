@@ -18,6 +18,8 @@
 - [Everipedia Wiki](#everipedia-wiki)
 - [AI](#ai)
 - [Sia Storage](#sia-storage)
+- [Review Platform](#review-platform)
+- [DApps](#dapps)
 
 <!-- /TOC -->
 
@@ -119,3 +121,9 @@ https://www.deepbrainchain.org
 # Sia Storage
 https://sia.tech/get-started/
 
+# Review Platform
+https://revain.org/
+
+# DApps
+Mobile Platform: https://status.im/
+Freelancer： https://ethlance.com/

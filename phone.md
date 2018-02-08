@@ -10,6 +10,7 @@
 - [IOS](#ios)
     - [Automation](#automation-1)
     - [Bar/QR code to REST API](#barqr-code-to-rest-api)
+- [Google Authenticator](#google-authenticator)
 
 <!-- /TOC -->
 
@@ -42,3 +43,6 @@ see `appium` above
 
 ## Bar/QR code to REST API
 https://workflow.is/docs/taking-advantage-of-web-apis    
+
+# Google Authenticator
+on multiple devices: delete old config and scan new qr code at the same time

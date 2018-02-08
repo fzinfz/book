@@ -34,11 +34,15 @@ TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA
 ## Wireless
 RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mode parameter.
 
+default-forwarding (on AP) – gives ability to disable the communication between the wireless clients  
+default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
+
 ## CLI
 ```
 put [resolve google.com server 8.8.8.8]
 
 /ip hotspot walled-garden
+ip add dst-address=1.1.1.1 action=accept
 add dst-host=:^www.bing.com path=":/*\$"
     >>> regular expression start with a colon (':')
     >>> $ requires the escape character '\' to stop it from be processed as an actual $)

@@ -47,3 +47,7 @@
   * [Enterprise](hw/ent.md)
 * [Android/iOS](phone.md)
 * [Miscellaneous](misc.md)
+* [Non-CS](life/README.md)
+  * [装修](life/decoration.zh.md)
+  * [社保](life/gov.zh.md)
+  * [健康](life/health.zh.md)

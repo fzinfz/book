@@ -1,12 +1,10 @@
-# About
-This gitbook is mainly for system admininstration notes.  
-<---- Click topics or search in the left panel.  
-Leave a comment by clicking the "+" button near related paragraphs or [start a discussion](https://www.gitbook.com/book/fzinfz/notes/discussions/new).
-
-# Homepage
+# Personal Homepage
 https://ferro.pro
 
-# Other Repositories
+# Non-CS Notes(Chinese mainly)
+https://github.com/fzinfz/book/tree/master/life
+
+# Open Source Toy Projects
 ## Docker Hub Images
 https://hub.docker.com/r/fzinfz/  [[Source](https://github.com/fzinfz/docker-images/)]
 
@@ -19,5 +17,5 @@ https://github.com/fzinfz/ssmanager-nopanel
 ## Django: mobile-first front-end & connection management
 https://github.com/fzinfz/tsadmin
 
-## Django: Import-Mark-Export vCard contacts
+## Django 2.0: Import-Mark-Export vCard contacts
 https://github.com/fzinfz/django-phone

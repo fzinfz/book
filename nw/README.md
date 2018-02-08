@@ -7,10 +7,12 @@
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
-- [MPLS](#mpls)
+- [OSPF](#ospf)
     - [Mikrotik](#mikrotik)
-- [VPLS](#vpls)
+- [MPLS](#mpls)
     - [Mikrotik](#mikrotik-1)
+- [VPLS](#vpls)
+    - [Mikrotik](#mikrotik-2)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
@@ -72,6 +74,13 @@ https://wiki.vyos.net/wiki/User_Guide
 https://mikrotik.com/download  
 https://www.clearos.com/clearfoundation/software/clearos-7-community      
 https://docs.cumulusnetworks.com/display/ROH/Configuring+Cumulus+Quagga
+
+# OSPF
+## Mikrotik
+    /routing ospf instance
+    set [ find default=yes ] redistribute-connected=as-type-1
+    /routing ospf network
+    add area=backbone network=192.168.1.0/24
 
 # MPLS 
 ## Mikrotik 

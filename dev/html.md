@@ -5,6 +5,7 @@
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
 - [media type (MIME type or content type)](#media-type-mime-type-or-content-type)
+- [icons](#icons)
 - [Events](#events)
 - [CSS box model](#css-box-model)
     - [box-sizing](#box-sizing)
@@ -27,6 +28,7 @@
     - [Tables](#tables)
     - [pdf.js](#pdfjs)
     - [Demo](#demo)
+    - [Chrome](#chrome-1)
 
 <!-- /TOC -->
 
@@ -56,6 +58,9 @@ http://www.iana.org/assignments/media-types/media-types.xhtml#application
     multipart
     text
     video
+
+# icons
+https://github.com/encharm/Font-Awesome-SVG-PNG/tree/master/white/svg
 
 # Events
 https://developer.mozilla.org/en-US/docs/Web/Events
@@ -213,3 +218,12 @@ https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 
 ## Demo
 https://fzinfz.github.io/scripts/
+
+## Chrome
+
+    var j = []
+    var list = document.getElementsByClassName("f16 fe")
+
+    for (var i = 0; i < list.length; i++) {
+        j.push(list[i].parentNode.innerText); //second console output
+    }

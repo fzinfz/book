@@ -25,9 +25,9 @@
 http://blockdiag.com/en/
 
 # plotly - for Math
-https://plot.ly/python/getting-started/  
-https://github.com/plotly/plotly.js  
-https://github.com/plotly/dash
+https://plot.ly/api/  
+https://plot.ly/python/  
+https://github.com/plotly/
 
 # plot time series data
 https://stackoverflow.com/questions/44964346/matplotlib-plot-time-series-graph  

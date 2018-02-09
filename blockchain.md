@@ -3,6 +3,7 @@
 - [mnemonic](#mnemonic)
 - [Coins compare](#coins-compare)
     - [API](#api)
+- [Pool](#pool)
 - [Market](#market)
 - [Reward](#reward)
 - [Chain Status](#chain-status)
@@ -48,6 +49,9 @@ https://en.bitcoin.it/wiki/Comparison_of_cryptocurrencies
 ## API
 https://www.cryptocompare.com/api  
 Client site: https://min-api.cryptocompare.com
+
+# Pool
+API/Realtime hash/Mail
 
 # Market
 https://www.coingecko.com  

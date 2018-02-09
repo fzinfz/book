@@ -10,6 +10,9 @@
 - [VSCode](#vscode)
     - [Remote debugging](#remote-debugging)
 - [Pythonista on IOS](#pythonista-on-ios)
+- [MongoDB ORM](#mongodb-orm)
+- [Web Frameworks](#web-frameworks)
+    - [API](#api)
 
 <!-- /TOC -->
 
@@ -74,3 +77,16 @@ ptvsd.wait_for_attach()
 
 # Pythonista on IOS
 https://github.com/Pythonista-Tools/Pythonista-Tools/blob/master/Utilities.md
+
+# MongoDB ORM
+http://ming.readthedocs.io/en/latest/
+
+http://turbogears.readthedocs.io/en/latest/turbogears/mongodb.html
+
+# Web Frameworks
+https://github.com/topics/web-framework?l=python  
+https://wiki.python.org/moin/WebFrameworks
+
+## API
+http://www.hug.rest/
+

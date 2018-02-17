@@ -222,8 +222,8 @@ https://fzinfz.github.io/scripts/
 ## Chrome
 
     var j = []
-    var list = document.getElementsByClassName("f16 fe")
+    var list = document.getElementsByClassName("")
 
     for (var i = 0; i < list.length; i++) {
-        j.push(list[i].parentNode.innerText); //second console output
+        j.push(list[i].parentNode.innerText);
     }

@@ -1,7 +1,10 @@
 <!-- TOC -->
 
 - [弱电](#弱电)
+- [监控](#监控)
 - [强电](#强电)
+    - [电导率](#电导率)
+    - [镀层](#镀层)
 - [水](#水)
 - [气](#气)
 - [空调](#空调)
@@ -18,19 +21,34 @@
     光纤：弱电箱（散热!）-机柜（噪音!）
     IPTV：单独1路（不同VLAN）
     天花板预留AP
-    监控（同轴成本/延迟低，网线灵活多路；拾音器3线）
+
+# 监控
+    同轴成本/延迟低，网线灵活多路，M+N路可调混合DVR
+    云存储/内网穿透/CIFS/WIFI直连/PC客户端/手机回放定位
+    拾音器：内置/3线
 
 # 强电
-    铜铝接线：过渡端子/密封/断路器/
+    铜铝接线：过渡端子/密封。断路器?
     漏电开关：有无测试按钮
-    分表：电网二手表(485/载波抄表)
+    分表：电网二手表(红外/485/载波抄表)
 
 常见电气元件: http://www.sohu.com/a/216349064_488169  
 导线趋肤效应和临近效应：http://www.sohu.com/a/221088726_488169  
 
-金属电导率对照表： http://www.elektrisola.com/cn/conductor-materials/comparison-of-metals.html
-
 ABB低压产品目录： https://library.e.abb.com/public/3ed9d6e55176101f48257d46000d1d62/1SXF000032X2001_022011_OEM.pdf
+
+## 电导率
+http://www.elektrisola.com/cn/conductor-materials/comparison-of-metals.html  
+![](https://pic3.zhimg.com/v2-c62dd9e9abb89511164888df8e558b3a_r.jpg)
+
+## 镀层
+https://www.zhihu.com/question/57329327  
+
+    接线应采用相同的表面处理，铜镀锡与铜镀银接触，锡面会被氧化腐蚀。
+    活泼: 锡>铜>银
+    镀镍：不生铜锈
+    银：价贵；易氧化，在电场的作用下容易迁移
+    要求严格的地方，触点用铂或者铼合金
 
 # 水
     前置过滤器/水压表
@@ -47,6 +65,8 @@ ABB低压产品目录： https://library.e.abb.com/public/3ed9d6e55176101f48257d
 |DN25|32|1|1寸|
 |DN32|40|1 1/4|1.2英寸|
 |DN40|50|1 1/2|1寸半|
+
+PPR低温: https://pic3.zhimg.com/v2-58d30a7e31dbc21117737ed242d53c97_r.jpg
 
 # 气
 |名称|传输|成分|热值(大卡/立方米)|

@@ -38,7 +38,7 @@
 * [DevOps](DevOps.md)
 * [Programming](dev/README.md)
   * [Git](git.md)
-  * [HTML5/Bootstrap](dev/html.md)
+  * [HTML5/BS/JS](dev/html.md)
   * [Python](dev/py.md)
     * [Django](dev/py_django.md)
   * [Powershell](dev/powershell.md)

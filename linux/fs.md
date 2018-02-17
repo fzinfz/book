@@ -11,6 +11,8 @@
     - [Add disk to vg](#add-disk-to-vg)
 - [btrfs](#btrfs)
 - [Swap](#swap)
+- [Benchmark](#benchmark)
+    - [fio](#fio)
 
 <!-- /TOC -->
 
@@ -95,3 +97,8 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     swapon -va
 
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
+
+# Benchmark
+## fio
+
+    git clone https://github.com/axboe/fio.git && cd fio/examples/

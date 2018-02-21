@@ -5,6 +5,7 @@
 - [DB](#db)
     - [PostGIS for PostgreSQL](#postgis-for-postgresql)
     - [GeoCouch for CouchDB](#geocouch-for-couchdb)
+- [GeoIP2](#geoip2)
 - [Solr](#solr)
 - [AMAQ](#amaq)
 - [Tencent](#tencent)
@@ -22,6 +23,9 @@ http://postgis.refractions.net/
 
 ## GeoCouch for CouchDB
 https://github.com/couchbase/geocouch/
+
+# GeoIP2
+https://dev.maxmind.com/geoip/geoip2/downloadable/
 
 # Solr
 https://wiki.apache.org/solr/SpatialSearch

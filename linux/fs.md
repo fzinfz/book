@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Compare](#compare)
 - [Check info](#check-info)
 - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
 - [mkpart, format](#mkpart-format)
@@ -16,7 +17,26 @@
 
 <!-- /TOC -->
 
+# Compare
+https://en.wikipedia.org/wiki/Comparison_of_file_systems
+
+|File system|Host OS|Online grow|Offline grow|Online shrink|Offline shrink|
+|---|---|---|---|---|---|
+|FAT32(X)|misc.|No|3rd-party|No|3rd-party|
+|NTFS|Windows|Yes|Yes|Yes|Yes|
+|ReFS|Windows|Yes|?|No|?|
+|Btrfs[51]|Linux|Yes|No|Yes|No|
+|ext4[52]|Linux|Yes|Yes|No|Yes|
+|HFS+|Linux|No|No|No|No|
+|HFS+|macOS|Yes|No|Yes|No|
+|APFS|macOS|?|?|?|?|
+|ZFS|misc.|Yes|No|No|No|
+|ReiserFS[59]|Linux|Yes|Yes|No|Yes|
+|XFS[60]|Linux|Yes|No|No|No|
+
 # Check info
+    lshw -short -C disk
+    lshw -class disk -class storage
     lsblk -f # check file system type
     tune2fs -l /dev/sda1 | grep -i count
 
@@ -82,7 +102,7 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
 
 ## Add disk to vg
-    pvcreate /dev/sdb
+    pvcreate /dev/sdb   # delete all partitions first
     vgextend ubuntu-vg /dev/sdb
 
 # btrfs
@@ -102,3 +122,8 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
 ## fio
 
     git clone https://github.com/axboe/fio.git && cd fio/examples/
+
+    fio --name=randwrite --ioengine=libaio --group_reporting \
+     --iodepth=1 --rw=randwrite \
+     --direct=1 --bs=4k --numjobs=8 \
+     --size=512M --runtime=30

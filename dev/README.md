@@ -3,6 +3,7 @@
 
 - [Interactive coding notes](#interactive-coding-notes)
 - [Scripts of Powershell/Python/etc](#scripts-of-powershellpythonetc)
+- [GraphQL](#graphql)
 - [vi/vim](#vivim)
     - [VISUAL BLOCK mode](#visual-block-mode)
 - [VSCode](#vscode)
@@ -22,6 +23,27 @@ http://nbviewer.jupyter.org/github/fzinfz/scripts/tree/master/jupyter/
 
 # Scripts of Powershell/Python/etc
 https://github.com/fzinfz/scripts
+
+# GraphQL
+http://graphql.org/  
+a query language and execution engine tied to any backend service. 
+
+    enum Episode { NEWHOPE, EMPIRE, JEDI }
+
+    interface Character {
+        id: String
+        name: String
+        friends: [Character]
+        appearsIn: [Episode]
+    }
+
+    type Human implements Character {
+        id: String
+        name: String
+        friends: [Character]
+        appearsIn: [Episode]
+        homePlanet: String
+    }
 
 # vi/vim
     go to line: Esc , line#, Shift-g

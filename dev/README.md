@@ -14,6 +14,8 @@
     - [Converter](#converter)
 - [Windows Universal](#windows-universal)
     - [OCR](#ocr)
+- [Excel](#excel)
+    - [CSharp](#csharp)
 
 <!-- /TOC -->
 
@@ -91,3 +93,6 @@ HTML(non table): https://domchristie.github.io/to-markdown/
 https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/OCR  
 https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
 
+# Excel
+## CSharp
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-access-office-onterop-objects

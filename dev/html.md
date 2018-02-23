@@ -29,6 +29,8 @@
     - [pdf.js](#pdfjs)
     - [Demo](#demo)
     - [Chrome](#chrome-1)
+- [JQuery](#jquery)
+    - [Events](#events-1)
 
 <!-- /TOC -->
 
@@ -227,3 +229,7 @@ https://fzinfz.github.io/scripts/
     for (var i = 0; i < list.length; i++) {
         j.push(list[i].parentNode.innerText);
     }
+
+# JQuery
+## Events
+http://api.jquery.com/category/events/

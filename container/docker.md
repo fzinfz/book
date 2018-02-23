@@ -9,6 +9,7 @@
     - [badger](#badger)
 - [Storage](#storage)
 - [build](#build)
+- [command line helper](#command-line-helper)
 - [run](#run)
 - [X11 Forwarding](#x11-forwarding)
 - [container update](#container-update)
@@ -97,6 +98,9 @@ https://docs.docker.com/engine/reference/commandline/build/
 |myrepo.git#mybranch:myfolder|refs/heads/mybranch|/myfolder|
 
 Squashing does not destroy any existing image, rather it creates a new image.
+
+# command line helper
+https://html.ferro.pro/cmd.html
 
 # run
 https://docs.docker.com/engine/reference/run/  

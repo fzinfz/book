@@ -17,3 +17,5 @@
     ./manage.py migrate
     ./manage.py compilemessages
     ./manage.py shell < ./foo.py
+
+static files not working when DEBUG=False

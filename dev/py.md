@@ -2,38 +2,40 @@
 
 - [Distribution Default](#distribution-default)
 - [pip](#pip)
-    - [Proxy](#proxy)
     - [Installing from local](#installing-from-local)
+    - [Proxy](#proxy)
 - [Google Fire](#google-fire)
 - [pendulum](#pendulum)
 - [Web automation](#web-automation)
+    - [requestium](#requestium)
 - [VSCode](#vscode)
     - [Remote debugging](#remote-debugging)
 - [Pythonista on IOS](#pythonista-on-ios)
 - [MongoDB ORM](#mongodb-orm)
 - [Web Frameworks](#web-frameworks)
-    - [API Server](#api-server)
     - [aiohttp](#aiohttp)
     - [Sanic](#sanic)
+    - [API Server](#api-server)
 
 <!-- /TOC -->
 
 # Distribution Default
-Debian/Ubuntu
-    wheey   2.7.3   /   3.2
-    jessie  2.7.9   /   3.4
-    stretch  2.7.13 /   3.5
-    buster  2.7.14  /   3.6
+
+    Debian/Ubuntu
+        wheey   2.7.3   /   3.2
+        jessie  2.7.9   /   3.4
+        stretch  2.7.13 /   3.5
+        buster  2.7.14  /   3.6
 
 # pip
-## Proxy
-    export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
-    pip install --proxy=https://user@mydomain:port  somepackage
-
 ## Installing from local
     pip install --download DIR -r requirements.txt
     pip wheel --wheel-dir DIR -r requirements.txt
     pip install --no-index --find-links=DIR -r requirements.txt
+
+## Proxy
+    export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
+    pip install --proxy=https://user@mydomain:port  somepackage
 
 # Google Fire
 https://github.com/google/python-fire/blob/master/docs/guide.md#accessing-properties
@@ -41,13 +43,64 @@ https://github.com/google/python-fire/blob/master/docs/guide.md#accessing-proper
 ```python
 import fire
 
+english = 'Hello World'
+fire.Fire()
+
+# .py english
+
+fire.Fire(lambda obj: type(obj).__name__)
+
+# .py 10 / "10"                 # output: int
+# .py '"10"' / "'10'" / \"10\"  # output: str
+
+# .py '{"name": "David Bieber"}' # notice the quote, output: dict
+# .py {"name":"David Bieber"}    # Wrong. output: str
+
+# .py --obj=True / --obj
+# .py --obj=False / --noobj
+
 def hello(name):
   return 'Hello {name}!'.format(name=name)
 
 if __name__ == '__main__':
-  fire.Fire(【hello】)
+  fire.Fire()
 
 # .py hello name_value
+
+class Calculator(object):
+
+  def add(self, x, y):
+    return x + y
+
+if __name__ == '__main__':
+  fire.Fire(Calculator)
+
+# .py add 10 20
+
+class BrokenCalculator(object):
+
+  def __init__(self, offset=1):
+      self._offset = offset
+
+  def add(self, x, y):
+    return x + y + self._offset
+
+if __name__ == '__main__':
+  fire.Fire(BrokenCalculator)
+
+# .py add 10 20 --offset=0
+
+class Airport(object):
+
+  def __init__(self, code):
+    self.code = code
+    self.name = fn_x(self.code)
+
+if __name__ == '__main__':
+  fire.Fire(Airport)
+
+# .py --code=SJC name
+
 ```
 
 # pendulum
@@ -60,7 +113,9 @@ https://github.com/sdispater/pendulum#pendulum
     past.diff_for_humans()
 
 # Web automation
-https://github.com/tryolabs/requestium
+## requestium
+https://github.com/tryolabs/requestium  
+merges the power of Requests, Selenium, and Parsel into a single integrated tool
 
 # VSCode
 ## Remote debugging
@@ -89,9 +144,6 @@ http://turbogears.readthedocs.io/en/latest/turbogears/mongodb.html
 https://github.com/topics/web-framework?l=python  
 https://wiki.python.org/moin/WebFrameworks
 
-## API Server
-http://www.hug.rest/
-
 ## aiohttp
 https://github.com/aio-libs/aiohttp  
 https://aiohttp.readthedocs.io/en/stable/  
@@ -100,3 +152,6 @@ Web-server has middlewares and pluggable routing.
 
 ## Sanic
 https://github.com/channelcat/sanic
+
+## API Server
+http://www.hug.rest/

@@ -2,6 +2,7 @@
 
 - [data](#data)
 - [init](#init)
+- [Demo](#demo)
 
 <!-- /TOC -->
 
@@ -19,3 +20,7 @@
     ./manage.py shell < ./foo.py
 
 static files not working when DEBUG=False
+
+# Demo
+A small project for testing django features: i18n/templates/admin/shell/fixture/signal/etc.  
+https://github.com/fzinfz/tsadmin/commits/master

@@ -13,10 +13,10 @@
 - [Remove File](#remove-file)
     - [Unpushed commit](#unpushed-commit)
     - [Every commit](#every-commit)
-    - [Github](#github)
+    - [from Github](#from-github)
 - [rebase](#rebase)
 - [Submodules](#submodules)
-- [API](#api)
+- [Github API](#github-api)
     - [Download by tag](#download-by-tag)
     - [curl Github](#curl-github)
     - [Query latest release](#query-latest-release)
@@ -178,7 +178,7 @@ https://manishearth.github.io/blog/2017/03/05/understanding-git-filter-branch/
     git filter-branch --index-filter \
         'git rm --cached --ignore-unmatch filename' HEAD
 
-## Github
+## from Github
 https://help.github.com/articles/removing-sensitive-data-from-a-repository/
 
 # rebase
@@ -194,7 +194,7 @@ https://git-scm.com/book/en/v2/Git-Branching-Rebasing
 https://git-scm.com/book/en/v2/Git-Tools-Submodules    
 treat the two projects as separate yet still be able to use one from within the other.
 
-# API
+# Github API
 https://developer.github.com/v3/repos/
 
 ## Download by tag

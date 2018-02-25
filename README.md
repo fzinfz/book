@@ -8,14 +8,14 @@ https://github.com/fzinfz/book/tree/master/life
 ## Docker Hub Images
 https://hub.docker.com/r/fzinfz/  [[Source](https://github.com/fzinfz/docker-images/)]
 
-## Linux shell scripts
+## Code Snippets
 https://github.com/fzinfz/scripts
 
-## python module: ssmanager web hook
+## Python module: ssmanager web hook
 https://github.com/fzinfz/ssmanager-nopanel
 
-## Django: mobile-first front-end & connection management
+## Django 2: Mobile-first ss-panel based on django 2
 https://github.com/fzinfz/tsadmin
 
-## Django 2.0: Import-Mark-Export vCard contacts
+## Django 2: Import-Mark-Export vCard contacts
 https://github.com/fzinfz/django-phone

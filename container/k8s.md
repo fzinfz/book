@@ -17,6 +17,9 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
 
+kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
+kubectl expose deployment nginx-app --port=80 --name=nginx-http
+
 
 # kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/

@@ -51,6 +51,8 @@ Ingress (standard clusters only)
 
 ![](https://dev-console.stage1.bluemix.net/docs/api/content/containers/images/networking.png?lang=en-US)
 
+[k8s related](container/k8s.md)
+
 # Google
 https://cloud.google.com/storage/docs/gcs-fuse
 

@@ -53,5 +53,5 @@
 ### Non-CS
 
   * [装修](life/decoration.zh.md)
+  * [采购](life/shopping.en.zh.md)
   * [社保](life/gov.cn.md)
-  * [健康](life/health.zh.md)

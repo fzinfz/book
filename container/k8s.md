@@ -15,6 +15,9 @@ https://kubernetes.io/docs/setup/pick-right-solution/#table-of-solutions
 
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
+https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
+
+
 # kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
 

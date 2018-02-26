@@ -2,6 +2,7 @@
 
 - [IBM](#ibm)
     - [Container](#container)
+- [external services](#external-services)
 - [Google](#google)
     - [gcloud](#gcloud)
     - [gcs](#gcs)
@@ -45,13 +46,23 @@ https://console.bluemix.net/containers-kubernetes/home/clusters
 ## Container
 https://dev-console.stage1.bluemix.net/docs/containers/cs_network_planning.html
 
-NodePort service (free and standard clusters)
-LoadBalancer service (standard clusters only)
-Ingress (standard clusters only)
+    NodePort service (free and standard clusters)
+    LoadBalancer service (standard clusters only)
+    Ingress (standard clusters only)
 
 ![](https://dev-console.stage1.bluemix.net/docs/api/content/containers/images/networking.png?lang=en-US)
 
 [k8s related](container/k8s.md)
+
+# external services
+
+https://console.bluemix.net/docs/containers/cs_integrations.html#adding_cluster
+
+    bx service list
+
+    name                    service                  plan   bound apps   last operation
+    Monitoring-tz           Monitoring               lite                create succeeded
+    Visual Recognition-8p   watson_vision_combined   free                create succeeded
 
 # Google
 https://cloud.google.com/storage/docs/gcs-fuse

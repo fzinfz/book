@@ -26,8 +26,8 @@ kubectl expose deployment nginx-app --port=80 --name=nginx-http
 # Objects
 https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
 
-persistent entities
-All objects in REST API are identified by a Name(such as /api/v1/pods/some-name) and a UID.
+persistent entities  
+All objects in REST API are identified by a Name(such as /api/v1/pods/some-name) and a UID.  
 For non-unique user-provided attributes, Kubernetes provides labels and annotations.
 
 ## namespaces

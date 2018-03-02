@@ -9,6 +9,7 @@
     - [fstab](#fstab)
     - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
 - [LVM, resize fs](#lvm-resize-fs)
+    - [check fs type](#check-fs-type)
     - [Add disk to vg](#add-disk-to-vg)
 - [btrfs](#btrfs)
 - [Swap](#swap)
@@ -71,6 +72,8 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
 
 ## fstab
+cat /proc/mounts    # list mounted
+
     /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
     /dev/cdrom              /media/CentOS           auto    user,noauto,exec,utf8        0    0
     //192.168.88.10/_ISO /mnt/ISO/ cifs username=user,password=pwd 0 0
@@ -100,6 +103,9 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
     lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
+
+## check fs type
+    file --dereference -s /dev/mapper/lv_name 
 
 ## Add disk to vg
     pvcreate /dev/sdb   # delete all partitions first

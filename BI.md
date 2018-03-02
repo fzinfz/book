@@ -19,6 +19,7 @@
 - [Excel](#excel)
     - [.Net](#net)
 - [Word](#word)
+- [highcharts](#highcharts)
 
 <!-- /TOC -->
 # Diagram image generator online
@@ -98,3 +99,7 @@ https://github.com/JanKallman/EPPlus/wiki/Getting-Started
 
 # Word
 https://github.com/xceedsoftware/DocX
+
+# highcharts
+https://www.highcharts.com  
+Free for non-commercial

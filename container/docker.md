@@ -37,6 +37,13 @@ https://docs.docker.com/develop/sdk/#api-version-matrix
     url=https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh
     source /dev/stdin <<< "$(curl -sS $url)"
 
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
+
+    sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+
 # Config
 https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
 ```
@@ -45,7 +52,7 @@ https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configurat
 {
     "live-restore": true,   # containers remain running if daemon unavailable
     "graph": "/data/docker-fs",
-    "storage-driver": "overlay",
+    "storage-driver": "overlay2",
     "registry-mirrors": [
         "https://registry.docker-cn.com",
         "https://docker.mirrors.ustc.edu.cn",

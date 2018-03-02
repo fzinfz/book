@@ -48,6 +48,11 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/
 http://kernel.ubuntu.com/~kernel-ppa/mainline/  
 http://kernel.ubuntu.com/~kernel-ppa/mainline/daily/current/
 
+# Dynamic Kernel Module Support (DKMS)
+https://wiki.archlinux.org/index.php/Dynamic_Kernel_Module_Support
+
+DKMS modules automatically rebuilt when a new kernel is installed.
+
 # Compiling
 https://www.ibm.com/developerworks/community/blogs/5144904d-5d75-45ed-9d2b-cf1754ee936a/entry/kernel-build-system?lang=en (Chinese)
 

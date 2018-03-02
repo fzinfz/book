@@ -3,9 +3,13 @@
 - [FUSE](#fuse)
 - [Compare](#compare)
 - [Gluster - C](#gluster---c)
+    - [Quickstart](#quickstart)
     - [Types of Volumes](#types-of-volumes)
     - [RDMA(Remote direct memory access)](#rdmaremote-direct-memory-access)
+    - [Snapshots](#snapshots)
+    - [on ZFS](#on-zfs)
 - [Ceph - C++](#ceph---c)
+    - [Setup](#setup)
     - [Docker](#docker)
     - [CACHE TIERING](#cache-tiering)
     - [UI - inkscope](#ui---inkscope)
@@ -46,6 +50,19 @@ http://www.youritgoeslinux.com/impl/storage/glustervsceph
 software defined distributed storage that can scale to several petabytes.  
 It provides interfaces for object, block and file storage.  
 http://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/
+
+## Quickstart
+http://docs.gluster.org/en/latest/Quick-Start-Guide/Quickstart/
+
+    gluster peer probe server2  # from server1
+    gluster peer probe server1  # from server2
+    # Once this pool has been established, it must be probed from the pool.
+    gluster peer status
+
+    mkdir -p /data/brick1/gv0   # both server1 and server2
+    gluster volume create gv0 replica 2 server1:/data/brick1/gv0 server2:/data/brick1/gv0 # any server
+    gluster volume start gv0
+    gluster volume info
 
 ## Types of Volumes
 
@@ -100,6 +117,13 @@ http://docs.gluster.org/en/latest/Administrator%20Guide/RDMA%20Transport/
 
 As of now only *FUSE client* and gNFS server would support RDMA transport.
 
+## Snapshots
+http://docs.gluster.org/en/latest/Administrator%20Guide/Managing%20Snapshots/  
+GlusterFS volume snapshot feature is based on thinly provisioned LVM snapshot.
+
+## on ZFS
+http://docs.gluster.org/en/latest/Administrator%20Guide/Gluster%20On%20ZFS/
+
 # Ceph - C++
 Ceph uniquely delivers object, block, and file storage in one unified system.  
 A Ceph Storage Cluster consists of two types of daemons:
@@ -107,6 +131,12 @@ A Ceph Storage Cluster consists of two types of daemons:
 * Ceph OSD Daemon: checks its own state and the state of other OSDs and reports back to monitors.
 
 ![](http://docs.ceph.com/docs/jewel/_images/stack.png)
+
+## Setup
+http://docs.ceph.com/docs/master/cephfs/
+
+    STEP 1: METADATA SERVER
+    STEP 2: MOUNT CEPHFS
 
 ## Docker
 http://hub.docker.com/r/ceph/

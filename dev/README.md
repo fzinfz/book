@@ -16,6 +16,8 @@
     - [OCR](#ocr)
 - [Excel](#excel)
     - [CSharp](#csharp)
+- [CSharp](#csharp-1)
+- [.Net Core](#net-core)
 
 <!-- /TOC -->
 
@@ -96,3 +98,9 @@ https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
 # Excel
 ## CSharp
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-access-office-onterop-objects
+
+# CSharp
+async：https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/
+
+# .Net Core
+https://github.com/thangchung/awesome-dotnet-core

@@ -33,17 +33,12 @@ https://github.com/nicolargo/glances
 https://www.elastic.co/products/beats  
 https://github.com/elastic/beats  
 
-    Log Files Beats
-    Metricbeat
-    Metrics Beats
-    Packetbeat
-    Network Data Beats
-    Winlogbeat
-    Windows Event Logs Beats
-    Auditbeat
-    Audit Data Beats
-    Heartbeat
-    Uptime Monitoring
+    Filebeat    Log Files Beats
+    Metricbeat  Metrics Beats
+    Packetbeat  Network Data Beats
+    Winlogbeat  Windows Event Logs Beats
+    Auditbeat   Audit Data Beats
+    Heartbeat   Uptime Monitoring
 
 ## TICK stack
 https://gist.github.com/travisjeffery/43f424fbd7ac677adbba304cef6eb58f

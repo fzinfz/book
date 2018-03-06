@@ -105,7 +105,15 @@ https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/a
 https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.1/html/administration_guide/chap-recommended-configuration_dispersed
 
         disperse-data 8 redundancy 4 transport tcp 
-        server1:/exp/brick1 server1:/exp/brick2 server1:/exp/brick3 server1:/exp/brick4 server2:/exp/brick1 server2:/exp/brick2 server2:/exp/brick3 server2:/exp/brick4 server3:/exp/brick1 server3:/exp/brick2 server3:/exp/brick3 server3:/exp/brick4 server1:/exp/brick5 server1:/exp/brick6 server1:/exp/brick7 server1:/exp/brick8 server2:/exp/brick5 server2:/exp/brick6 server2:/exp/brick7 server2:/exp/brick8  server3:/exp/brick5 server3:/exp/brick6 server3:/exp/brick7 server3:/exp/brick8 server1:/exp/brick9 server1:/exp/brick10 server1:/exp/brick11 server1:/exp/brick12 server2:/exp/brick9 server2:/exp/brick10 server2:/exp/brick11 server2:/exp/brick12 server3:/exp/brick9 server3:/exp/brick10 server3:/exp/brick11 server3:/exp/brick12
+        server1:/exp/brick1 server1:/exp/brick2 server1:/exp/brick3 server1:/exp/brick4 
+        server2:/exp/brick1 server2:/exp/brick2 server2:/exp/brick3 server2:/exp/brick4 
+        server3:/exp/brick1 server3:/exp/brick2 server3:/exp/brick3 server3:/exp/brick4 
+        server1:/exp/brick5 server1:/exp/brick6 server1:/exp/brick7 server1:/exp/brick8 
+        server2:/exp/brick5 server2:/exp/brick6 server2:/exp/brick7 server2:/exp/brick8 
+        server3:/exp/brick5 server3:/exp/brick6 server3:/exp/brick7 server3:/exp/brick8 
+        server1:/exp/brick9 server1:/exp/brick10 server1:/exp/brick11 server1:/exp/brick12 
+        server2:/exp/brick9 server2:/exp/brick10 server2:/exp/brick11 server2:/exp/brick12 
+        server3:/exp/brick9 server3:/exp/brick10 server3:/exp/brick11 server3:/exp/brick12
 
 ![](https://access.redhat.com/webassets/avalon/d/Red_Hat_Storage-3.1-Administration_Guide-en-US/images/382f9dde52bb3628080e247895c274b3/recommended_configuraiton_EC.png)
 

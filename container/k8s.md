@@ -4,8 +4,12 @@
 - [Objects](#objects)
     - [namespaces](#namespaces)
 - [kubectl](#kubectl)
+- [dashboard admin](#dashboard-admin)
+- [expose](#expose)
+- [token](#token)
 - [Tutorial](#tutorial)
 - [yaml](#yaml)
+    - [Command and Arguments](#command-and-arguments)
 - [Verbosity](#verbosity)
 - [minikube](#minikube)
     - [KVM](#kvm)
@@ -20,8 +24,14 @@ https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
 
-kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster"
-kubectl expose deployment nginx-app --port=80 --name=nginx-http
+    kubectl run --image=nginx nginx-app --port=80 --env="DOMAIN=cluster" # deployment "nginx-app" created
+    kubectl expose deployment nginx-app --port=80 --name=nginx-http      # service "nginx-http" exposed
+    kubectl exec nginx-app-5jyvm -- cat /etc/hostname
+
+    kubectl get deployment
+    kubectl get pods -a
+    kubectl logs <pod_name>
+    kubectl version --short
 
 # Objects
 https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
@@ -46,8 +56,6 @@ multiple virtual clusters backed by the same physical cluster
     kube-system: created by the Kubernetes system
     kube-public: readable by all users. reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement
 
-    kubectl --namespace=default get pods
-
 # kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
@@ -59,8 +67,44 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
     sudo snap install kubectl --classic
 
     kubectl get nodes
+    export KUBECONFIG=/path/to/kube-config-mil01-mycluster.yml # 
     kubectl proxy --address='0.0.0.0' --accept-hosts='.*' --port=8080
     kubectl proxy --address=$IP_Private --accept-hosts='^.*$' # http://...:8080/ui
+
+# dashboard admin
+https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges
+
+# expose
+    # from `kubectl expose -h`
+    pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)
+
+    # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000.
+    kubectl expose rc nginx --port=80 --target-port=8000
+
+    # Create a service for a replication controller identified by type and name specified in "nginx-controller.yaml",
+    which serves on port 80 and connects to the containers on port 8000.
+    kubectl expose -f nginx-controller.yaml --port=80 --target-port=8000
+
+    # Create a service for a pod valid-pod, which serves on port 444 with the name "frontend"
+    kubectl expose pod valid-pod --port=444 --name=frontend
+
+    # Create a second service based on the above service, exposing the container port 8443 as port 443 with the name
+    "nginx-https"
+    kubectl expose service nginx --port=443 --target-port=8443 --name=nginx-https
+
+    # Create a service for a replicated streaming application on port 4100 balancing UDP traffic and named 'video-stream'.
+    kubectl expose rc streamer --port=4100 --protocol=udp --name=video-stream
+
+    # Create a service for a replicated nginx using replica set, which serves on port 80 and connects to the containers on
+    port 8000.
+    kubectl expose rs nginx --port=80 --target-port=8000
+
+    # Create a service for an nginx deployment, which serves on port 80 and connects to the containers on port 8000.
+    kubectl expose deployment nginx --port=80 --target-port=8000
+
+# token
+    kubectl describe secret
+    kubectl config view -o jsonpath='{.users[0].user.auth-provider.config.id-token}'
 
 # Tutorial
     kubectl run nginx --image=nginx
@@ -87,6 +131,8 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 # yaml
 
+`apps/v1` is only available in Kubernetes 1.9.0+ clusters.
+
     kubectl create -f nginx.yaml
     kubectl replace -f nginx.yaml   # updates from another source will be lost
     kubectl delete -f nginx.yaml -f redis.yaml
@@ -100,6 +146,23 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
     kubectl get <kind>/<name> -o yaml --export > <kind>_<name>.yaml     # export
 
 syntax: https://kubernetes.io/docs/concepts/overview/object-management-kubectl/declarative-config/
+
+env: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+
+## Command and Arguments
+https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/
+
+|Description|Docker field name|Kubernetes field name|
+|---|---|---|
+|The command run by the container|Entrypoint|command|
+|The arguments passed to the command|Cmd|args|
+
+    spec:
+    containers:
+    - name: command-demo-container
+        image: debian
+        command: ["printenv"]
+        args: ["HOSTNAME", "KUBERNETES_PORT"]
 
 # Verbosity
 |Verbosity|Description|

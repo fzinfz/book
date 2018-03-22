@@ -29,8 +29,9 @@ https://console.bluemix.net/containers-kubernetes/home/clusters
 
     bx plugin list
     bx plugin install container-service -r Bluemix
+    bx plugin update container-service -r Bluemix
 
-    bx login -a https://api.ng.bluemix.net -sso
+    bx login -a https://api.eu-de.bluemix.net -sso
 
     bx cs region
     bx cs region-set eu-de
@@ -39,6 +40,7 @@ https://console.bluemix.net/containers-kubernetes/home/clusters
     bx cs cluster-config mycluster
 
     bx cs workers mycluster # check public IP
+    bx cs worker-update mycluster <node_id>
 
     BLUEMIX_TRACE=path/to/trace.log         # Append API request diagnostics to a log file
     BLUEMIX_API_KEY=api_key_value           # API key to use during login
@@ -51,6 +53,8 @@ https://dev-console.stage1.bluemix.net/docs/containers/cs_network_planning.html
     Ingress (standard clusters only)
 
 ![](https://dev-console.stage1.bluemix.net/docs/api/content/containers/images/networking.png?lang=en-US)
+
+    bx cs cluster-get mycluster # Master URL
 
 [k8s related](container/k8s.md)
 

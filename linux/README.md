@@ -52,6 +52,7 @@
 - [USB Persistence](#usb-persistence)
 - [OpenCL](#opencl)
 - [Diagram](#diagram)
+- [CN Mirrors](#cn-mirrors)
 
 <!-- /TOC -->
 
@@ -454,3 +455,6 @@ http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
+
+# CN Mirrors
+https://mirrors.tuna.tsinghua.edu.cn

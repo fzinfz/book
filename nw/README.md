@@ -23,6 +23,7 @@
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
+    - [frp](#frp)
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
@@ -149,8 +150,31 @@ http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.
 
 # Introspectable tunnels to localhost
 https://github.com/inconshreveable/ngrok
-https://github.com/fatedier/frp
 https://github.com/lovedboy/gortcp
+
+## frp
+https://github.com/fatedier/frp
+
+    docker run --rm -it --entrypoint=/bin/sh hyperapp/frp
+    docker run --name frp  -d --restart unless-stopped --net host hyperapp/frp
+
+    / # cat frps.ini
+    [common]
+    bind_port = 7000
+    privilege_token = xxx
+
+    / # cat frpc.ini
+    [common]
+    server_addr = 127.0.0.1
+    server_port = 7000
+    privilege_token = xxx
+
+    [ssh]
+    type = tcp
+    local_ip = 127.0.0.1
+    local_port = 22
+    remote_port = 6000
+
 
 # Multi WAN
 pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  

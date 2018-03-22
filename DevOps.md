@@ -2,12 +2,12 @@
 
 - [Monitoring](#monitoring)
     - [Glances - Python](#glances---python)
+    - [Nagios - C](#nagios---c)
     - [Elastic Beats - Go](#elastic-beats---go)
     - [TICK stack](#tick-stack)
     - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
     - [Cacti - PHP](#cacti---php)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
-    - [Nagios - C](#nagios---c)
     - [open-falcon - Go/JS](#open-falcon---gojs)
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
@@ -25,9 +25,15 @@
 
 # Monitoring
 ## Glances - Python
-https://github.com/nicolargo/glances
+https://github.com/nicolargo/glances  
+A top/htop alternative
 
     pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
+
+## Nagios - C
+https://github.com/NagiosEnterprises/nagioscore
+https://github.com/NagVis/nagvis
+https://github.com/centreon/centreon
 
 ## Elastic Beats - Go
 https://www.elastic.co/products/beats  
@@ -81,9 +87,6 @@ https://github.com/Cacti/cacti
 
 ## Zabbix - C/PHP/JAVA
 https://hub.docker.com/u/zabbix/  
-
-## Nagios - C
-https://github.com/NagiosEnterprises/nagioscore
 
 ## open-falcon - Go/JS
 https://github.com/open-falcon/falcon-plus/tree/master/docker

@@ -9,6 +9,7 @@
 - [Signals](#signals)
 - [kill](#kill)
 - [top](#top)
+    - [Glances - A top/htop alternative - Python](#glances---a-tophtop-alternative---python)
 - [User & Permission](#user--permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
@@ -51,6 +52,7 @@
 - [Tools - Windows](#tools---windows)
 - [USB Persistence](#usb-persistence)
 - [OpenCL](#opencl)
+- [zFCP](#zfcp)
 - [Diagram](#diagram)
 - [CN Mirrors](#cn-mirrors)
 
@@ -150,6 +152,11 @@ https://tools.ietf.org/html/rfc5424#section-6.2.1
     V - Forest view      On  (show as branches)
     f - sort/hide columns
     (`*')  could be overridden through the command-line.
+
+## Glances - A top/htop alternative - Python
+https://github.com/nicolargo/glances  
+
+    pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
 
 # User & Permission
 ## add user to group
@@ -452,6 +459,11 @@ http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence
  installable client driver loader (ICD Loader) may expose multiple separate vendor installable client drivers (Vendor ICDs) for OpenCL.
 
     sudo apt install ocl-icd-opencl-dev
+
+# zFCP
+device driver that supplements the Linux SCSI stack.
+
+![](https://www.ibm.com/support/knowledgecenter/linuxonibm/com.ibm.linux.z.lgdd/lxzfcp.jpg)
 
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)

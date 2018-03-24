@@ -9,11 +9,16 @@
 - [token](#token)
 - [Tutorial](#tutorial)
 - [yaml](#yaml)
-    - [Command and Arguments](#command-and-arguments)
+    - [syntax](#syn
+    tax)
+        - [env](#env)
+        - [Command and Arguments](#command-and-arguments)
 - [Verbosity](#verbosity)
 - [minikube](#minikube)
     - [KVM](#kvm)
 - [kops](#kops)
+- [Create a Cluster](#create-a-cluster)
+- [Persistent Volumes](#persistent-volumes)
 
 <!-- /TOC -->
 
@@ -130,8 +135,7 @@ https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges
     kubectl get services
 
 # yaml
-
-`apps/v1` is only available in Kubernetes 1.9.0+ clusters.
+Release 1.8: `apps/v1beta1` -> `apps/v1beta2`; 1.9： -> `apps/v1`
 
     kubectl create -f nginx.yaml
     kubectl replace -f nginx.yaml   # updates from another source will be lost
@@ -145,11 +149,14 @@ https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges
     kubectl get -f https://example.com/x.yaml -o yaml                   # print
     kubectl get <kind>/<name> -o yaml --export > <kind>_<name>.yaml     # export
 
-syntax: https://kubernetes.io/docs/concepts/overview/object-management-kubectl/declarative-config/
+## syntax
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/
+https://kubernetes.io/docs/concepts/overview/object-management-kubectl/declarative-config/
 
-env: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+### env
+https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
 
-## Command and Arguments
+### Command and Arguments
 https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/
 
 |Description|Docker field name|Kubernetes field name|
@@ -163,6 +170,8 @@ https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument
         image: debian
         command: ["printenv"]
         args: ["HOSTNAME", "KUBERNETES_PORT"]
+
+Example： https://github.com/kubernetes/kubernetes/blob/master/examples/guestbook/all-in-one/guestbook-all-in-one.yaml
 
 # Verbosity
 |Verbosity|Description|
@@ -195,3 +204,52 @@ https://github.com/docker/machine/releases
 # kops
 https://github.com/kubernetes/kops#linux  
 kubectl for clusters  
+
+# Create a Cluster
+https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
+https://kubernetes.io/docs/getting-started-guides/scratch/#designing-and-preparing
+
+# Persistent Volumes
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+    name: pv0003
+    spec:
+    capacity:
+        storage: 5Gi
+    volumeMode: Filesystem
+    accessModes:
+        - ReadWriteOnce
+    persistentVolumeReclaimPolicy: Recycle
+    storageClassName: slow
+    mountOptions:
+        - hard
+        - nfsvers=4.1
+    nfs:
+        path: /tmp
+        server: 172.17.0.2
+
+|Volume Plugin|ReadWriteOnce|ReadOnlyMany|ReadWriteMany|
+|---|---|---|---|
+|AWSElasticBlockStore|✓|-|-|
+|AzureFile|✓|✓|✓|
+|AzureDisk|✓|-|-|
+|CephFS|✓|✓|✓|
+|Cinder|✓|-|-|
+|FC|✓|✓|-|
+|FlexVolume|✓|✓|-|
+|Flocker|✓|-|-|
+|GCEPersistentDisk|✓|✓|-|
+|Glusterfs|✓|✓|✓|
+|HostPath|✓|-|-|
+|iSCSI|✓|✓|-|
+|PhotonPersistentDisk|✓|-|-|
+|Quobyte|✓|✓|✓|
+|NFS|✓|✓|✓|
+|RBD|✓|✓|-|
+|VsphereVolume|✓|-|- (works when pods are collocated)|
+|PortworxVolume|✓|-|✓|
+|ScaleIO|✓|✓|-|
+|StorageOS|✓|-|-|

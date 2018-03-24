@@ -1,13 +1,16 @@
 <!-- TOC -->
 
+- [SNMP](#snmp)
 - [Monitoring](#monitoring)
-    - [Glances - Python](#glances---python)
     - [Nagios - C](#nagios---c)
-    - [Elastic Beats - Go](#elastic-beats---go)
+    - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
+        - [Docker](#docker)
+    - [Elastic](#elastic)
+        - [Beats - Go](#beats---go)
+        - [alert](#alert)
     - [TICK stack](#tick-stack)
     - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
     - [Cacti - PHP](#cacti---php)
-    - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
     - [open-falcon - Go/JS](#open-falcon---gojs)
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
@@ -23,19 +26,45 @@
 
 <!-- /TOC -->
 
+# SNMP
+https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol
+
+v1: Authentication of clients is performed only by a "community string", in effect a type of password, which is transmitted in cleartext.  
+v2c comprises SNMPv2 without the controversial new SNMP v2 security model, using instead the simple community-based security scheme of SNMPv1. incompatible with SNMPv1 in two key areas: message formats and protocol operations.   
+v2u: greater security than SNMPv1, but without incurring the high complexity of SNMPv2.  
+v3 primarily added security and remote configuration enhancements to SNMP.
+
+the agent connects to the server on port 162  
+port 161 on the agent side is used for queries
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)
+
 # Monitoring
-## Glances - Python
-https://github.com/nicolargo/glances  
-A top/htop alternative
-
-    pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
-
 ## Nagios - C
-https://github.com/NagiosEnterprises/nagioscore
-https://github.com/NagVis/nagvis
-https://github.com/centreon/centreon
+https://github.com/NagiosEnterprises/nagioscore  
+https://github.com/centreon/centreon  
+https://github.com/NagVis/nagvis  
 
-## Elastic Beats - Go
+## Zabbix - C/PHP/JAVA
+https://hub.docker.com/u/zabbix/  
+
+### Docker
+https://www.zabbix.com/documentation/3.4/manual/installation/containers#structure
+
+Example 1: MySQL database support, Zabbix web interface based on the Nginx web server and Zabbix Java gateway.  
+Example 2: PostgreSQL database support, Zabbix web interface based on the Nginx web server and SNMP trap feature.
+
+Default login: Admin/zabbix
+
+    docker run --name some-zabbix-agent \
+        -e ZBX_SERVER_HOST="192.168.88.62" \
+        --privileged -d \
+        zabbix/zabbix-agent
+
+    zabbix_agentd.exe -i --config path\to\zabbix_agentd.win.conf
+
+## Elastic
+### Beats - Go
 https://www.elastic.co/products/beats  
 https://github.com/elastic/beats  
 
@@ -45,6 +74,12 @@ https://github.com/elastic/beats
     Winlogbeat  Windows Event Logs Beats
     Auditbeat   Audit Data Beats
     Heartbeat   Uptime Monitoring
+
+### alert
+https://github.com/Yelp/elastalert
+https://github.com/sirensolutions/sentinl
+
+https://sematext.com/blog/x-pack-alternatives/
 
 ## TICK stack
 https://gist.github.com/travisjeffery/43f424fbd7ac677adbba304cef6eb58f
@@ -84,9 +119,6 @@ https://github.com/pandorafms/pandorafms#screenshots
 
 ## Cacti - PHP
 https://github.com/Cacti/cacti
-
-## Zabbix - C/PHP/JAVA
-https://hub.docker.com/u/zabbix/  
 
 ## open-falcon - Go/JS
 https://github.com/open-falcon/falcon-plus/tree/master/docker

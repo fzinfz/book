@@ -3,6 +3,7 @@
 - [Check](#check)
 - [Commit logs](#commit-logs)
 - [.deb download](#deb-download)
+- [Dynamic Kernel Module Support (DKMS)](#dynamic-kernel-module-support-dkms)
 - [Compiling](#compiling)
     - [debug](#debug)
     - [.config](#config)
@@ -12,6 +13,9 @@
     - [initramfs scheme](#initramfs-scheme)
         - [dracut](#dracut)
         - [mkinitcpio](#mkinitcpio)
+- [tracing](#tracing)
+    - [BPF /eBPF](#bpf-ebpf)
+    - [bcc](#bcc)
 - [Releases](#releases)
     - [4.14 + 12 November, 2017](#414--12-november-2017)
     - [4.13 - 3 September, 2017 - Ubuntu 17.10 Artful](#413---3-september-2017---ubuntu-1710-artful)
@@ -109,6 +113,15 @@ create initial ramdisk images for preloading modules
 ### mkinitcpio
 https://wiki.archlinux.org/index.php/Mkinitcpio
 mkinitcpio is the next generation of initramfs creation.
+
+# tracing
+## BPF /eBPF
+https://qmonnet.github.io/whirl-offload/2016/09/01/dive-into-bpf/
+
+## bcc
+https://github.com/iovisor/bcc/tree/master/tools
+
+![](http://www.brendangregg.com/Perf/bcc_tracing_tools.png)
 
 # Releases
 https://kernelnewbies.org/LinuxVersions

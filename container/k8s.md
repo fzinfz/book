@@ -3,14 +3,20 @@
 - [Docs](#docs)
 - [Objects](#objects)
     - [namespaces](#namespaces)
+- [controllers](#controllers)
+    - [ReplicaSet](#replicaset)
+    - [Replication Controller](#replication-controller)
+    - [Deployment controller](#deployment-controller)
+    - [StatefulSet](#statefulset)
+    - [DaemonSet](#daemonset)
+    - [Job & CronJob](#job--cronjob)
 - [kubectl](#kubectl)
 - [dashboard admin](#dashboard-admin)
 - [expose](#expose)
 - [token](#token)
 - [Tutorial](#tutorial)
 - [yaml](#yaml)
-    - [syntax](#syn
-    tax)
+    - [syntax](#syntax)
         - [env](#env)
         - [Command and Arguments](#command-and-arguments)
 - [Verbosity](#verbosity)
@@ -19,6 +25,9 @@
 - [kops](#kops)
 - [Create a Cluster](#create-a-cluster)
 - [Persistent Volumes](#persistent-volumes)
+- [helm - package manager](#helm---package-manager)
+    - [WebUI](#webui)
+    - [Hub](#hub)
 
 <!-- /TOC -->
 
@@ -61,6 +70,38 @@ multiple virtual clusters backed by the same physical cluster
     kube-system: created by the Kubernetes system
     kube-public: readable by all users. reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster. The public aspect of this namespace is only a convention, not a requirement
 
+# controllers
+## ReplicaSet
+ReplicaSet is the next-generation Replication Controller.  
+ReplicaSet supports the new set-based selector requirements
+
+    kubectl get pods -l 'environment,environment notin (frontend)'
+
+## Replication Controller
+only supports equality-based selector requirements.  
+
+    kubectl get pods -l environment=production,tier=frontend
+
+## Deployment controller
+https://kubernetes.io/docs/concepts/workloads/controllers/deployment/  
+provides declarative updates for Pods and ReplicaSets.
+
+## StatefulSet
+workload API object used to manage stateful applications.  
+Unlike a Deployment, a StatefulSet maintains a sticky identity for each of their Pods.
+
+    Stable, unique network identifiers.
+    Stable, persistent storage.
+    Ordered, graceful deployment and scaling.
+    Ordered, graceful deletion and termination.
+    Ordered, automated rolling updates.
+
+## DaemonSet
+ensures that all (or some) Nodes run a copy of a Pod. 
+
+## Job & CronJob
+https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+
 # kubectl
 https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
@@ -80,7 +121,12 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
 https://github.com/kubernetes/dashboard/wiki/Access-control#admin-privileges
 
 # expose
-    # from `kubectl expose -h`
+https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+
+    kubectl port-forward redis-master 6379:6379
+
+`kubectl expose -h`
+
     pod (po), service (svc), replicationcontroller (rc), deployment (deploy), replicaset (rs)
 
     # Create a service for a replicated nginx, which serves on port 80 and connects to the containers on port 8000.
@@ -171,6 +217,11 @@ https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument
         command: ["printenv"]
         args: ["HOSTNAME", "KUBERNETES_PORT"]
 
+        command:
+        - sh
+        - -c
+        - while true; do sleep 1; done
+
 Example： https://github.com/kubernetes/kubernetes/blob/master/examples/guestbook/all-in-one/guestbook-all-in-one.yaml
 
 # Verbosity
@@ -253,3 +304,19 @@ https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 |PortworxVolume|✓|-|✓|
 |ScaleIO|✓|✓|-|
 |StorageOS|✓|-|-|
+
+# helm - package manager
+https://docs.helm.sh/using_helm/#quickstart
+
+## WebUI
+https://github.com/kubernetes-helm/monocular
+
+    helm repo add monocular https://kubernetes-helm.github.io/monocular
+    helm install monocular/monocular
+    kubectl get ingress
+
+https://github.com/kubeapps/hub  
+navigate and search Helm Charts.
+
+## Hub
+https://hub.kubeapps.com/

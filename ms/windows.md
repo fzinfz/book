@@ -34,6 +34,7 @@
 - [GUI Tools](#gui-tools)
     - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
+- [WLAN Hosted Network](#wlan-hosted-network)
 
 <!-- /TOC -->
 
@@ -197,3 +198,8 @@ https://docs.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite
 
 # Linux Clients
 http://www.freerdp.com/
+
+# WLAN Hosted Network
+    NETSH WLAN show drivers | findstr "Hosted network supported"
+    NETSH WLAN set hostednetwork mode=allow ssid=SF3 key=12345678
+    NETSH WLAN start hostednetwork

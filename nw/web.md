@@ -10,7 +10,9 @@
     - [Certificate formats](#certificate-formats)
     - [ECDSA vs RSA](#ecdsa-vs-rsa)
 - [SSL](#ssl)
+    - [Private Key](#private-key)
     - [Let's Encrypt](#lets-encrypt)
+        - [Wildcard](#wildcard)
     - [Cloudflare](#cloudflare)
     - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
 - [Nginx](#nginx)
@@ -107,6 +109,10 @@ with ECDSA you can get the same level of security as RSA but with smaller keys.
 legacy browsers may not support
 
 # SSL
+## Private Key
+https://info.ssl.com/faq-what-is-a-private-key/  
+private key is a text file used initially to generate a Certificate Signing Request (CSR), and later to secure and verify connections using the certificate created per that request. The private key is used to create a digital signature As you might imagine from the name.
+
 ## Let's Encrypt
 https://certbot.eff.org/
 
@@ -115,6 +121,11 @@ https://certbot.eff.org/
     /etc/letsencrypt/live/example.com/ -> /etc/letsencrypt/archive/example.com/
        cert.pem  chain.pem  fullchain.pem  privkey.pem 
     -> cert1.pem  chain1.pem  fullchain1.pem  privkey1.pem
+
+### Wildcard 
+https://github.com/Neilpang/acme.sh#10-issue-wildcard-certificates
+
+    acme.sh  --issue -d example.com  -d '*.example.com'  --dns dns_cf
 
 ## Cloudflare
 https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)

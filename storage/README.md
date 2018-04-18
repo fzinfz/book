@@ -12,6 +12,7 @@
     - [Setup](#setup)
     - [Docker](#docker)
     - [CACHE TIERING](#cache-tiering)
+    - [Snapshot](#snapshot)
     - [UI - inkscope](#ui---inkscope)
 - [Rook - Go](#rook---go)
 - [IPFS](#ipfs)
@@ -151,6 +152,11 @@ http://hub.docker.com/r/ceph/
 
 ## CACHE TIERING
 ![](http://docs.ceph.com/docs/master/_images/ditaa-2982c5ed3031cac4f9e40545139e51fdb0b33897.png)
+
+## Snapshot
+http://docs.ceph.com/docs/master/rbd/rbd-snapshot/  
+Ceph supports many higher level interfaces, including QEMU, libvirt, OpenStack and CloudStack.  
+Ceph supports the ability to create many copy-on-write (COW) clones of a block device shapshot. Snapshot layering enables Ceph block device clients to create images very quickly.  
 
 ## UI - inkscope
 https://github.com/inkscope/inkscope (with screenshots)  

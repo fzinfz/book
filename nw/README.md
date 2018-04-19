@@ -156,25 +156,36 @@ https://github.com/lovedboy/gortcp
 https://github.com/fatedier/frp
 
     docker run --rm -it --entrypoint=/bin/sh hyperapp/frp
-    docker run --name frp  -d --restart unless-stopped --net host hyperapp/frp
 
-    / # cat frps.ini
-    [common]
-    bind_port = 7000
-    privilege_token = xxx
+    docker run --name frp  -d --restart unless-stopped --net host \
+        -v $PWD/frp/s.ini:/frps.ini hyperapp/frp
 
-    / # cat frpc.ini
-    [common]
-    server_addr = 127.0.0.1
-    server_port = 7000
-    privilege_token = xxx
+    docker run --name frp-client  -d --restart unless-stopped \
+        --entrypoint=/frpc -v $PWD/frp/c.ini:/frpc.ini hyperapp/frp
 
-    [ssh]
-    type = tcp
-    local_ip = 127.0.0.1
-    local_port = 22
-    remote_port = 6000
+```
+/ # cat frps.ini
+[common]
+bind_port = 7000
+privilege_token = xxx
 
+dashboard_port = 7500
+# optional user/pwd，default: admin
+dashboard_user = admin
+dashboard_pwd = admin
+
+/ # cat frpc.ini
+[common]
+server_addr = remote_host
+server_port = 7000
+privilege_token = xxx
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000
+```
 
 # Multi WAN
 pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  

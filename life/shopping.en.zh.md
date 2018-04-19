@@ -17,6 +17,10 @@
 - [电信](#电信)
     - [福厦泉](#福厦泉)
 - [12306](#12306)
+- [吉他](#吉他)
+    - [Yamaha](#yamaha)
+        - [Acoustic 民谣](#acoustic-民谣)
+        - [Classical 古典](#classical-古典)
 
 <!-- /TOC -->
 
@@ -172,3 +176,20 @@ http://www.189.cn/products/10143163191.html
     24小时以上、不足48小时的按票价10%计，
     不足24小时的按票价20%计。
     变更到站: 如新车票票价低于原车票，只需支付差额部分的退票费。
+
+# 吉他
+![](https://img.alicdn.com/imgextra/i3/120593721/TB2iSJMXIsb61BjSszbXXcvMpXa_!!120593721.jpg)
+
+## Yamaha
+### Acoustic 民谣
+FG / FGX Series： https://usa.yamaha.com/products/musical_instruments/guitars_basses/ac_guitars/fg_fgx/specs.html#product-tabs
+
+![](https://usa.yamaha.com/files/2EACEE5108E0412CA57A46FB2FD1D669_12083_1139x545_cbc01e51b9659ef481c37a2abed4e57a.jpg)
+
+### Classical 古典
+合板：  
+![](https://img.alicdn.com/imgextra/i4/120593721/TB2vBsnkyRnpuFjSZFCXXX2DXXa_!!120593721.jpg)
+
+26寸GL1
+
+单板： 云杉 CG122MS 雪松 CG192C

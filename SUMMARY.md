@@ -52,6 +52,7 @@
 
 ### Non-CS
 
+  * [Music](life/music.zh.en.md)
   * [装修](life/decoration.zh.md)
   * [采购](life/shopping.en.zh.md)
   * [社保](life/gov.cn.md)

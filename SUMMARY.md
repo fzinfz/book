@@ -45,6 +45,8 @@
     * [Django](dev/py_django.md)
   * [Powershell](dev/powershell.md)
   * [VBA](dev/vba.md)
+* [J2EE](j2ee/README.md)
+  * [IBM WAS](j2ee/websphere.md)
 * [Hardware](hw/README.md)
   * [Enterprise](hw/ent.md)
 * [Android/iOS](phone.md)

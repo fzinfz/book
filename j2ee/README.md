@@ -1,10 +1,13 @@
 <!-- TOC -->
 
 - [Versions](#versions)
+- [Profile](#profile)
 - [Servlet](#servlet)
+- [EJB](#ejb)
 - [application servers](#application-servers)
     - [Open Source](#open-source)
 - [J2EE tutorial](#j2ee-tutorial)
+- [glassfish](#glassfish)
 
 <!-- /TOC -->
 
@@ -42,6 +45,11 @@
 |Interceptors|1.1|1.2|1.2|
 |Contexts and Dependency Injection for the Java EE Platform|1|1.1|2|
 
+# Profile
+https://stackoverflow.com/questions/24239978/java-ee-web-profile-vs-java-ee-full-platform
+
+![](https://i.stack.imgur.com/CybGj.png)
+
 # Servlet
 https://en.wikipedia.org/wiki/Java_servlet
 
@@ -52,6 +60,9 @@ https://en.wikipedia.org/wiki/Java_servlet
 |Servlet 3.0|December 2009|315|Java EE 6, Java SE 6|Pluggability, Ease of development, Async Servlet, Security, File Uploading|
 |Servlet 2.5|September 2005|154|Java EE 5, Java SE 5|Requires Java SE 5, supports annotation|
 |Servlet 2.4|November 2003|154|J2EE 1.4, J2SE 1.3|web.xml uses XML Schema|
+
+# EJB
+![](http://assets.devx.com/articlefigs/JavaEE6Fig4.JPG)
 
 # application servers
 https://en.wikipedia.org/wiki/List_of_application_servers#Java
@@ -64,4 +75,10 @@ https://github.com/wildfly/wildfly
 
 # J2EE tutorial
 https://javaee.github.io/firstcup/creating-example002.html
+
+# glassfish
+https://blogs.oracle.com/theaquarium/glassfish-docker-images-%E2%80%93-update
+
+	docker run -ti -e ADMIN_PASSWORD=<your-secret-password> -p 4848:4848 -p 8080:8080 -d oracle/glassfish
+	docker run -ti -p 4848:4848 -p 8080:8080 -d oracle/glassfish   # Auto Generated `admin` password
 

@@ -21,6 +21,7 @@
     - [Yamaha](#yamaha)
         - [Acoustic 民谣](#acoustic-民谣)
         - [Classical 古典](#classical-古典)
+- [App](#app)
 
 <!-- /TOC -->
 
@@ -193,3 +194,7 @@ FG / FGX Series： https://usa.yamaha.com/products/musical_instruments/guitars_b
 26寸GL1
 
 单板： 云杉 CG122MS 雪松 CG192C
+
+# App
+卡牛： 导入银行，每次刷新需要验证码
+随手记： 从卡牛导入银行需登陆网银

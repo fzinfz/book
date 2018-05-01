@@ -35,6 +35,7 @@
     - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
+- [简繁体转换](#简繁体转换)
 
 <!-- /TOC -->
 
@@ -203,3 +204,6 @@ http://www.freerdp.com/
     NETSH WLAN show drivers | findstr "Hosted network supported"
     NETSH WLAN set hostednetwork mode=allow ssid=SF3 key=12345678
     NETSH WLAN start hostednetwork
+
+# 简繁体转换
+win10: 先Ctrl+F，按住Ctrl，再按Shift+F

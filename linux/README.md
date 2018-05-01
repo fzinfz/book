@@ -308,6 +308,8 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
     ls -1 $PWD | wc -l  # count files
 
 ## tar
+    tar -czvf name-of-archive.tar.gz /path/to/directory-or-file # Compress
+
     tar -xvf {tarball.tar} {special_file} -C /target/directory
 
     -j : filter archive through bzip2, use to decompress .bz2 files.

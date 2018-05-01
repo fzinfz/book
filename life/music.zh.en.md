@@ -10,8 +10,8 @@
 
 # Basic
 
-    b flat
-    # sharp
+    ♭ flat:  lower in pitch by one semitone (half step)
+    ♯ sharp: higher in pitch by one semitone (half step)
 
 # Guitar
 ## musical alphabet

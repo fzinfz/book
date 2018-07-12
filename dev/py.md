@@ -16,6 +16,7 @@
     - [aiohttp](#aiohttp)
     - [Sanic](#sanic)
     - [API Server](#api-server)
+- [WSDL](#wsdl)
 
 <!-- /TOC -->
 
@@ -155,3 +156,7 @@ https://github.com/channelcat/sanic
 
 ## API Server
 http://www.hug.rest/
+
+# WSDL
+http://www.soapclient.com/xml/soapresponder.wsdl  
+http://download.oracle.com/otn_hosted_doc/jdeveloper/1012/web_services/ws_wsdlstructure.html

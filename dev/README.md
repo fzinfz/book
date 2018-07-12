@@ -15,6 +15,7 @@
 - [Windows Universal](#windows-universal)
     - [OCR](#ocr)
 - [Excel](#excel)
+    - [Formula](#formula)
     - [CSharp](#csharp)
 - [CSharp](#csharp-1)
 - [.Net Core](#net-core)
@@ -96,6 +97,12 @@ https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/OCR
 https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
 
 # Excel
+## Formula
+https://exceljet.net/sites/default/files/styles/function_screen/public/images/formulas/Split%20text%20string%20at%20specific%20character.png?itok=WM1v7nsL
+
+    =LEFT(B5,FIND("_",B5)-1)
+    =RIGHT(B5,LEN(B5)-FIND("_",B5))
+
 ## CSharp
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interop/how-to-access-office-onterop-objects
 

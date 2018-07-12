@@ -90,5 +90,7 @@ https://blogs.oracle.com/theaquarium/glassfish-docker-images-%E2%80%93-update
 Tutorial: https://www.ibm.com/developerworks/rational/library/05/719_app/index.html
 
 ## Eclipse
+eclipse.ini
+
 	-vm
 	path_to\jdk1.8.0_60\bin\javaw.exe

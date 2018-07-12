@@ -15,11 +15,12 @@
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
+    - [Fabric](#fabric)
+    - [invoke](#invoke)
     - [Ansible - Python](#ansible---python)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
     - [SaltStack - Python](#saltstack---python)
-    - [Fabric - Python 2](#fabric---python-2)
 - [CI](#ci)
     - [Jenkins - JAVA](#jenkins---java)
     - [Travis - Ruby/JS](#travis---rubyjs)
@@ -135,6 +136,16 @@ https://github.com/firehol/netdata/wiki/Installation
     bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
 
 # Management
+## Fabric
+https://github.com/fabric/fabric  
+Fabric is a high level Python (2.7, 3.4+) library designed to execute shell commands remotely over SSH, yielding useful Python objects in return.
+
+Fabric (1.x and earlier) was a hybrid project implementing two feature sets: task execution (organization of task functions, execution of them via CLI, and local shell commands) and high level SSH actions (organization of servers/hosts, remote shell commands, and file transfer).
+
+## invoke
+https://github.com/pyinvoke/invoke  
+When planning Fabric 2.x, having the “local” feature set as a standalone library made sense, and it seemed plausible to design the SSH component as a separate layer above. Thus, Invoke was created to focus exclusively on local and abstract concerns, leaving Fabric 2.x concerned only with servers and network commands.
+
 ## Ansible - Python
 https://github.com/ansible/ansible  
 using SSH, with no agents to install on remote systems.
@@ -152,10 +163,6 @@ https://hub.docker.com/r/chef/chef/
 ## SaltStack - Python
 https://github.com/saltstack/salt  
 https://hub.docker.com/r/saltstack/
-
-## Fabric - Python 2
-https://github.com/fabric/fabric  
-a Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks.
 
 # CI
 ## Jenkins - JAVA

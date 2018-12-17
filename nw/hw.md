@@ -126,6 +126,8 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
         #!/bin/bash
 
 # Unifi-AC-Lite/LR
+https://community.ubnt.com/t5/UniFi-Updates-Blog/bg-p/Blog_UniFi
+
 ```
 system type             : Qualcomm Atheros QCA956X rev 0
 processor               : 0

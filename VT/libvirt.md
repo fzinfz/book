@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Releases](#releases)
+- [install](#install)
 - [Debug](#debug)
 - [virsh](#virsh)
 - [Pool](#pool)
@@ -32,6 +33,14 @@ https://libvirt.org/news.html
         fix some minor bugs when using 'host-model' CPU.
     v3.0.0 (2017-01-17) - Debian 9 stretch & 8 jessie-backports
     v2.5.0 (2016-12-04) - Ubuntu 17.04 zesty
+
+# install
+https://help.ubuntu.com/community/KVM/Installation
+
+    kvm-ok
+    apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+    systemctl status libvirtd
+
 
 # Debug
 https://fedoraproject.org/wiki/How_to_debug_Virtualization_problems

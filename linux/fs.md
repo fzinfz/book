@@ -9,7 +9,6 @@
     - [fstab](#fstab)
     - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
 - [LVM, resize fs](#lvm-resize-fs)
-    - [check fs type](#check-fs-type)
     - [Add disk to vg](#add-disk-to-vg)
 - [btrfs](#btrfs)
 - [Swap](#swap)
@@ -92,7 +91,13 @@ https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performanc
 http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
 
 # LVM, resize fs
-    pvs
+
+    lsblk -o+UUID
+
+    pvs -o+vg_uuid,UUID
+    vgrename $vg_uuid new-vg-name
+    vgs -o+vg_uuid
+
     pvdisplay -v -m
     lvcreate -L 80G ubuntu-vg -n data
 
@@ -104,8 +109,6 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
 
     lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
 
-## check fs type
-    file --dereference -s /dev/mapper/lv_name 
 
 ## Add disk to vg
     pvcreate /dev/sdb   # delete all partitions first

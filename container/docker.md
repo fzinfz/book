@@ -3,6 +3,7 @@
 - [API](#api)
 - [Install & Management](#install--management)
 - [Config](#config)
+- [image operations](#image-operations)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
     - [apt](#apt)
     - [alpine](#alpine)
@@ -22,6 +23,8 @@
 - [Windows/Mac](#windowsmac)
 - [Tools](#tools)
     - [S6 - a process supervisor](#s6---a-process-supervisor)
+- [Reversed Proxy](#reversed-proxy)
+    - [traefik](#traefik)
 
 <!-- /TOC -->
 # API
@@ -36,6 +39,7 @@ https://docs.docker.com/develop/sdk/#api-version-matrix
 # Install & Management
     url=https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh
     source /dev/stdin <<< "$(curl -sS $url)"
+    docker_install
 
 https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
 
@@ -43,6 +47,15 @@ https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) \
     stable"
+
+https://help.aliyun.com/document_detail/60742.html
+
+   apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+   curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+   sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+   apt-get -y update
+
+
 
 # Config
 https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
@@ -58,8 +71,14 @@ https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configurat
         "https://docker.mirrors.ustc.edu.cn",
         "http://hub-mirror.c.163.com"],
     # https://cr.console.aliyun.com/#/accelerator
+    # https://mirror.ccs.tencentyun.com
 }
 ```
+
+# image operations
+
+    docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+    docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
 
 # Dockerfile code snippets
 ## apt
@@ -244,3 +263,7 @@ https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
 # Tools
 ## S6 - a process supervisor
 https://github.com/just-containers/s6-overlay
+
+# Reversed Proxy
+## traefik
+https://docs.traefik.io/user-guide/docker-and-lets-encrypt/

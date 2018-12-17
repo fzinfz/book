@@ -17,6 +17,8 @@
 - [ETL](#etl)
     - [kettle -JAVA](#kettle--java)
 - [Excel](#excel)
+    - [xlwings](#xlwings)
+    - [django](#django)
     - [.Net](#net)
 - [Word](#word)
 - [highcharts](#highcharts)
@@ -92,6 +94,13 @@ https://github.com/pentaho/pentaho-kettle
 
 # Excel
 https://docs.wso2.com/display/DSS301/Excel+Sample
+
+## xlwings
+http://docs.xlwings.org/en/stable/converters.html#pandas-dataframe-converter
+
+## django
+django-excel: http://django.pyexcel.org/en/latest/
+django-import-export: https://django-import-export.readthedocs.io/en/latest/
 
 ## .Net
 https://github.com/tonyqus/npoi  

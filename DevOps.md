@@ -162,7 +162,9 @@ https://hub.docker.com/r/chef/chef/
 
 ## SaltStack - Python
 https://github.com/saltstack/salt  
-https://hub.docker.com/r/saltstack/
+https://hub.docker.com/r/saltstack/  
+
+Agentless: https://docs.saltstack.com/en/latest/topics/ssh/index.html
 
 # CI
 ## Jenkins - JAVA

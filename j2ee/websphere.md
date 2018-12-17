@@ -18,6 +18,10 @@ https://www.ibm.com/developerworks/websphere/library/techarticles/1404_vines1/14
 
 ![](https://www.ibm.com/developerworks/websphere/library/techarticles/1404_vines1/images/image001.png)
 
+# License
+since v8.5.5.5: 2G organisation-wide production for free
+
+
 # traditional
 https://developer.ibm.com/wasdev/downloads/#asset/WAS_traditional_for_Developers	
 

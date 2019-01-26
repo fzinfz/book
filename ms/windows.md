@@ -127,6 +127,10 @@ bcdboot c:\windows /s h: /f UEFI
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /T REG_SZ /F /D "Service"
 net start msiserver
 
+# services.msc
+sc create srv_name binpath= D:\_soft\foo.exe type= share start= auto 
+sc delete srv_name
+
 # VS proxy
 %ProgramFiles%\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe.config
 find the <system.net> block, and add this code:

@@ -23,7 +23,7 @@
 <!-- /TOC -->
 
 # Cryptography
-Please visit `web` page.
+Please visit `web/SSL` page.
 
 # IDS/IPS
 Network Intrusion Detection System (NIDS) engine  

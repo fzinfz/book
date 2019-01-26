@@ -117,7 +117,8 @@ https://github.com/cyfdecyf/cow
 https://github.com/iMeiji/shadowsocks_install/wiki/shadowsocks-optimize
 
 ## BBR (Kernel 4.9+)
-https://github.com/fzinfz/scripts/blob/master/bbr_enable.sh
+
+    curl https://raw.githubusercontent.com/fzinfz/scripts/master/bbr_enable.sh | bash
 
 ## KCPTun
 https://github.com/xtaci/kcptun

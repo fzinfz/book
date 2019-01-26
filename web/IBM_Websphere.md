@@ -1,9 +1,4 @@
-<!-- TOC -->
-
-- [liberty](#liberty)
-- [traditional](#traditional)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [liberty](#liberty)auto- [License](#license)auto- [traditional](#traditional)autoauto<!-- /TOC -->
 
 # liberty
 https://www.ibm.com/support/knowledgecenter/en/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/rwlp_feat.html

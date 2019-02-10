@@ -1,4 +1,27 @@
+<!-- TOC -->
 
+- [Cryptography](#cryptography)
+    - [Key exchange or key establishment](#key-exchange-or-key-establishment)
+    - [cipher or cypher](#cipher-or-cypher)
+    - [Cryptography libraries compare](#cryptography-libraries-compare)
+    - [X.509](#x509)
+    - [Certificate Revocation List (or CRL)](#certificate-revocation-list-or-crl)
+    - [TLS Extensions - Certificate Status Request](#tls-extensions---certificate-status-request)
+    - [Certificate formats](#certificate-formats)
+    - [ECDSA vs RSA](#ecdsa-vs-rsa)
+- [SSL](#ssl)
+    - [Private Key](#private-key)
+    - [Let's Encrypt](#lets-encrypt)
+        - [Wildcard](#wildcard)
+    - [Cloudflare](#cloudflare)
+    - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
+- [Nginx](#nginx)
+    - [SSL](#ssl-1)
+- [Cloudflare](#cloudflare-1)
+    - [SSL Modes](#ssl-modes)
+    - [HTTPS](#https)
+
+<!-- /TOC -->
 
 
 # Cryptography
@@ -92,6 +115,12 @@ https://certbot.eff.org/
 https://github.com/Neilpang/acme.sh#10-issue-wildcard-certificates
 
     acme.sh  --issue -d example.com  -d '*.example.com'  --dns dns_cf
+
+https://community.letsencrypt.org/t/wildcard-domain-step-by-step/58250/4
+
+    certbot certonly --server https://acme-v02.api.letsencrypt.org/directory \
+    --manual --preferred-challenges dns \
+    -d 'yourdomain.tld,*.yourdomain.tld'
 
 ## Cloudflare
 https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)

@@ -1,4 +1,10 @@
-<!-- TOC -->autoauto- [liberty](#liberty)auto- [License](#license)auto- [traditional](#traditional)autoauto<!-- /TOC -->
+<!-- TOC -->
+
+- [liberty](#liberty)
+- [License](#license)
+- [traditional](#traditional)
+
+<!-- /TOC -->
 
 # liberty
 https://www.ibm.com/support/knowledgecenter/en/SS7K4U_liberty/com.ibm.websphere.wlp.zseries.doc/ae/rwlp_feat.html
@@ -32,6 +38,12 @@ Version 8.5 and 8.0: not supported for use in a production environment.
 	docker run --name websphere -p 9043:9043 -p 9443:9443 -d ibmcom/websphere-traditional:profile
 	docker exec websphere cat /tmp/PASSWORD 
 	# https://localhost:9043/ibm/console/login.do?action=secure | user: wsadmin
+
+	docker run --name was85 -h was85 \
+	-v $(pwd)/PASSWORD:/tmp/PASSWORD \
+	-p 9043:9043 -p 9443:9443 \
+	-d --restart unless-stopped \
+	ibmcom/websphere-traditional:8.5.5.14-profile
 
 [WAS V8.5 Administration and Configuration Guide for the Full Profile(PDF)](http://www.redbooks.ibm.com/redbooks/pdfs/sg248056.pdf)
 

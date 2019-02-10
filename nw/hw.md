@@ -14,8 +14,7 @@
     - [Firmware](#firmware)
     - [custom scripts](#custom-scripts)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
-    - [Commands](#commands)
-    - [Issues](#issues)
+    - [Controller Web](#controller-web)
 
 <!-- /TOC -->
 
@@ -147,11 +146,12 @@ Mem:(Lite)        126316        62272        64044            0            0
 Mem:(LR)        126272        66764        59508            0            0
 -/+ buffers:              66764        59508
 Swap:            0            0            0
+
+BZ.v3.7.5# info
+BZ.v3.7.5# set-inform http://unifi:8080/inform
 ```
 
-## Commands
-    BZ.v3.7.5# info
-    BZ.v3.7.5# set-inform http://unifi:8080/inform
+## Controller Web
 
-## Issues
-Every minor setting change on controller causes SSID reset.
+    Settings - Sie DEVICE AUTHENTICATION
+    Every minor setting change on controller causes SSID reset.

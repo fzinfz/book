@@ -1,4 +1,17 @@
+<!-- TOC -->
 
+- [Docker](#docker)
+- [Windows](#windows)
+
+<!-- /TOC -->
+
+# Docker
+https://hub.docker.com/r/ibmcom/ibm-http-server
+
+    docker run --name ibm-http-server -h IHS \
+    -d --restart unless-stopped \
+    --net host -v /:/host \
+    ibmcom/ibm-http-server  
 
 # Windows
 

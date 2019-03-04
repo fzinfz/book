@@ -98,11 +98,13 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     vgrename $vg_uuid new-vg-name
     vgs -o+vg_uuid
 
+    vgchange -ay # activate vg
+
     pvdisplay -v -m
     lvcreate -L 80G ubuntu-vg -n data
 
     lvresize -L +20G /dev/debian9-vg/root
-    resize2fs /dev/debian9-vg/root
+    resize2fs /dev/dlvebian9-vg/root
 
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)

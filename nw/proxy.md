@@ -3,6 +3,7 @@
 - [All In One](#all-in-one)
 - [Shadowsocks](#shadowsocks)
 - [v2ray](#v2ray)
+- [clash](#clash)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
@@ -67,6 +68,9 @@ loglevel： "debug"、"info"、"warning"、"error" 和 "none"
             "ip": "127.0.0.1"     // 当开启 UDP 时，V2Ray 需要知道本机的 IP 地址
         }
     },
+
+# clash
+https://github.com/Dreamacro/clash
 
 # Brook - Go
 https://github.com/txthinking/brook

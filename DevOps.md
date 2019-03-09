@@ -16,8 +16,8 @@
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
-    - [Fabric](#fabric)
-    - [invoke](#invoke)
+    - [Fabric - Python library](#fabric---python-library)
+    - [invoke - Python library](#invoke---python-library)
     - [Ansible - Python](#ansible---python)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
@@ -181,13 +181,13 @@ https://github.com/firehol/netdata/wiki/Installation
     bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
 
 # Management
-## Fabric
+## Fabric - Python library
 https://github.com/fabric/fabric  
 Fabric is a high level Python (2.7, 3.4+) library designed to execute shell commands remotely over SSH, yielding useful Python objects in return.
 
 Fabric (1.x and earlier) was a hybrid project implementing two feature sets: task execution (organization of task functions, execution of them via CLI, and local shell commands) and high level SSH actions (organization of servers/hosts, remote shell commands, and file transfer).
 
-## invoke
+## invoke - Python library
 https://github.com/pyinvoke/invoke  
 When planning Fabric 2.x, having the “local” feature set as a standalone library made sense, and it seemed plausible to design the SSH component as a separate layer above. Thus, Invoke was created to focus exclusively on local and abstract concerns, leaving Fabric 2.x concerned only with servers and network commands.
 
@@ -200,7 +200,7 @@ Check "What do I get?" section for comparison.
 
 ## Puppet - Ruby
 https://hub.docker.com/u/puppet/  
-https://puppet.com/docs # Puppet Enterprise vs Open Source
+https://puppet.com/products/why-puppet/puppet-enterprise-and-open-source-puppet
 
 ## Chef - Ruby
 https://hub.docker.com/r/chef/chef/
@@ -215,6 +215,21 @@ Agentless: https://docs.saltstack.com/en/latest/topics/ssh/index.html
 ## Jenkins - JAVA
 https://github.com/jenkinsci/jenkins
 ![](https://jenkins.io/images/blueocean/blueocean-successful-pipeline.png)
+
+https://github.com/jenkinsci/docker/blob/master/README.md#usage
+
+    docker run -d -p 8089:8080 -p 50000:50000 jenkins/jenkins:lts
+    docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+    
+    docker run jenkins/jnlp-slave -url http://jenkins-server:port <secret> <agent name>
+
+https://wiki.jenkins.io/pages/viewpage.action?pageId=75893612
+
+    Open a browser on the slave machine and go to the Jenkins master server url (http://yourjenkinsmaster:8080).
+    Go to Manage Jenkins > Manage Nodes, Click on the newly created slave machine. You will need to login as someone that has the "Connect" Slave permission if you have configured global security.
+    Click on the Launch button to launch agent from browser on slave.
+    
+run on all nodes: elastic-axis
 
 ## Travis - Ruby/JS
 https://github.com/travis-ci/travis-ci

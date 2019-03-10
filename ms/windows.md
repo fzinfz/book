@@ -22,6 +22,7 @@
     - [Fix boot partiton](#fix-boot-partiton)
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
+- [services.msc](#servicesmsc)
 - [VS proxy](#vs-proxy)
 - [AD](#ad)
     - [DC DNS](#dc-dns)
@@ -90,7 +91,17 @@ SUBST X: "D:\Folder_to_map"
 - https://technet.microsoft.com/en-in/library/cc750583(en-us).aspx
 
 ## NFS mount
+
+    Get-WindowsFeature -Name NFS*
+    Install-WindowsFeature -Name NFS-Client
+
     mount ip-of-NFS-Server:/Share-Name  x:
+
+https://unix.stackexchange.com/questions/276292
+
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default]
+    "AnonymousUid"=dword:000003e8
+    "AnonymousGid"=dword:000003e8
 
 ## Fix cifs/share mount:
 ```
@@ -128,7 +139,8 @@ REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /
 net start msiserver
 
 # services.msc
-sc create srv_name binpath= D:\_soft\foo.exe type= share start= auto 
+
+    sc create srv_name binpath= D:\_soft\foo.exe type= share start= auto 
 sc delete srv_name
 
 # VS proxy

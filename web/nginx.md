@@ -1,3 +1,10 @@
+<!-- TOC -->
+
+- [plain text/index/debug/proxy](#plain-textindexdebugproxy)
+- [upstream](#upstream)
+
+<!-- /TOC -->
+
 ## plain text/index/debug/proxy
 https://www.nginx.com/resources/wiki/start/topics/examples/full/
 

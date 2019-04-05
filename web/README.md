@@ -1,5 +1,18 @@
+<!-- TOC -->
 
+- [HAProxy Health Check](#haproxy-health-check)
+- [Squid - caching HTTP, HTTPS, FTP, and more](#squid---caching-http-https-ftp-and-more)
+- [Debugging](#debugging)
+- [SNI](#sni)
+- [Varnish](#varnish)
+- [Cloudflare](#cloudflare)
+    - [CNAME Flattening](#cname-flattening)
+    - [Real IP](#real-ip)
+- [Github pages](#github-pages)
+- [Google Analytics](#google-analytics)
+    - [Enhanced Link Attribution](#enhanced-link-attribution)
 
+<!-- /TOC -->
 
 # HAProxy Health Check
 https://www.haproxy.com/documentation/aloha/7-0/haproxy/healthchecks/#checking-a-http-service

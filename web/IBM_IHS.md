@@ -1,4 +1,18 @@
+<!-- TOC -->
 
+- [Docker](#docker)
+- [Windows](#windows)
+- [conf](#conf)
+
+<!-- /TOC -->
+
+# Docker
+https://hub.docker.com/r/ibmcom/ibm-http-server
+
+    docker run --name ibm-http-server -h IHS \
+    -d --restart unless-stopped \
+    --net host -v /:/host \
+    ibmcom/ibm-http-server  
 
 # Windows
 
@@ -6,3 +20,7 @@
     # Fixed name to address error:
     # The system cannot find the file specified.  : AH00436: No installed service named "IBM HTTP Server V9.0".
     apache.exe -k start
+
+# conf
+
+    Options +Indexes

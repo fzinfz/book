@@ -2,9 +2,10 @@
 
 - [SNMP](#snmp)
 - [Monitoring](#monitoring)
-    - [Nagios - C](#nagios---c)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
         - [Docker](#docker)
+    - [Nagios - C](#nagios---c)
+        - [Docker](#docker-1)
     - [Elastic](#elastic)
         - [Beats - Go](#beats---go)
         - [alert](#alert)
@@ -15,8 +16,8 @@
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
-    - [Fabric](#fabric)
-    - [invoke](#invoke)
+    - [Fabric - Python library](#fabric---python-library)
+    - [invoke - Python library](#invoke---python-library)
     - [Ansible - Python](#ansible---python)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
@@ -41,28 +42,72 @@ port 161 on the agent side is used for queries
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)
 
 # Monitoring
+## Zabbix - C/PHP/JAVA
+https://github.com/zabbix/zabbix
+
+### Docker
+https://www.zabbix.com/documentation/4.0/manual/installation/containers
+
+    docker run --name zabbix-appliance -t \
+        -p 10051:10051 \
+        -p 8083:80 \
+        -d zabbix/zabbix-appliance:latest
+    # Default login: Admin/zabbix
+
+https://hub.docker.com/r/zabbix/zabbix-agent  
+Connect to Zabbix server or Zabbix proxy containers (Active checks)  
+Connects from Zabbix server or Zabbix proxy in other containers (Passive checks)  
+
+    ZABBIX_SERVER=
+    docker run --name zabbix-agent \
+        -e ZBX_SERVER_HOST="$ZABBIX_SERVER" \
+        -e ZBX_PASSIVESERVERS="$ZABBIX_SERVER" \
+        --privileged --net host \
+        -d --restart unless-stopped \
+        zabbix/zabbix-agent
+
+    # Windows agent
+    zabbix_agentd.exe --config C:\_soft\zabbix_agents-4\conf\zabbix_agentd.win.conf --install 
+
+
 ## Nagios - C
 https://github.com/NagiosEnterprises/nagioscore  
 https://github.com/centreon/centreon  
 https://github.com/NagVis/nagvis  
 
-## Zabbix - C/PHP/JAVA
-https://hub.docker.com/u/zabbix/  
-
 ### Docker
-https://www.zabbix.com/documentation/3.4/manual/installation/containers#structure
+https://hub.docker.com/r/jasonrivers/nagios/
 
-Example 1: MySQL database support, Zabbix web interface based on the Nginx web server and Zabbix Java gateway.  
-Example 2: PostgreSQL database support, Zabbix web interface based on the Nginx web server and SNMP trap feature.
+    docker run --name nagios4 --rm -it -p 0.0.0.0:8082:80 jasonrivers/nagios:latest
 
-Default login: Admin/zabbix
+    docker cp nagios4:/opt/nagios/etc ./nagios/etc
+    docker cp nagios4:/opt/nagios/var ./nagios/var
+    docker cp nagios4:/opt/nagiosgraph/etc ./nagios/graph_etc
+    docker cp nagios4:/opt/nagiosgraph/var ./nagios/graph_var
 
-    docker run --name some-zabbix-agent \
-        -e ZBX_SERVER_HOST="192.168.88.62" \
-        --privileged -d \
-        zabbix/zabbix-agent
+    docker run --name nagios4  \
+    -d --restart unless-stopped \
+    -v $PWD/nagios/etc/:/opt/nagios/etc/ \
+    -v $PWD/nagios/var:/opt/nagios/var/ \
+    -v $PWD/nagios/graph_etc:/opt/nagiosgraph/etc \
+    -v $PWD/nagios/graph_var:/opt/nagiosgraph/var \
+    -v $PWD/nagios/custom-plugins:/opt/Custom-Nagios-Plugins \
+    -p 8082:80 jasonrivers/nagios:latest
+    
+    docker exec -it nagios4 htpasswd /opt/nagios/etc/htpasswd.users nagiosadmin 
+    docker exec -it nagios4 cat /opt/nagios/etc/objects/contacts.cfg
+    docker exec -it nagios4 grep ^cfg_ /opt/nagios/etc/nagios.cfg
+    docker restart nagios4 && docker logs nagios4
 
-    zabbix_agentd.exe -i --config path\to\zabbix_agentd.win.conf
+    # nrpe
+    NAGIOS_SERVER=1.2.3.4
+    docker run -d --restart unless-stopped \
+        -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys:ro \
+        -v /var/lib/docker/:/var/lib/docker:ro \
+        --privileged --net=host --ipc=host --pid=host \
+        -e NAGIOS_SERVER="$NAGIOS_SERVER" \
+	    --name nagios_nrpe \
+        mikenowak/nrpe
 
 ## Elastic
 ### Beats - Go
@@ -136,13 +181,13 @@ https://github.com/firehol/netdata/wiki/Installation
     bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
 
 # Management
-## Fabric
+## Fabric - Python library
 https://github.com/fabric/fabric  
 Fabric is a high level Python (2.7, 3.4+) library designed to execute shell commands remotely over SSH, yielding useful Python objects in return.
 
 Fabric (1.x and earlier) was a hybrid project implementing two feature sets: task execution (organization of task functions, execution of them via CLI, and local shell commands) and high level SSH actions (organization of servers/hosts, remote shell commands, and file transfer).
 
-## invoke
+## invoke - Python library
 https://github.com/pyinvoke/invoke  
 When planning Fabric 2.x, having the “local” feature set as a standalone library made sense, and it seemed plausible to design the SSH component as a separate layer above. Thus, Invoke was created to focus exclusively on local and abstract concerns, leaving Fabric 2.x concerned only with servers and network commands.
 
@@ -155,7 +200,7 @@ Check "What do I get?" section for comparison.
 
 ## Puppet - Ruby
 https://hub.docker.com/u/puppet/  
-https://puppet.com/docs # Puppet Enterprise vs Open Source
+https://puppet.com/products/why-puppet/puppet-enterprise-and-open-source-puppet
 
 ## Chef - Ruby
 https://hub.docker.com/r/chef/chef/
@@ -170,6 +215,21 @@ Agentless: https://docs.saltstack.com/en/latest/topics/ssh/index.html
 ## Jenkins - JAVA
 https://github.com/jenkinsci/jenkins
 ![](https://jenkins.io/images/blueocean/blueocean-successful-pipeline.png)
+
+https://github.com/jenkinsci/docker/blob/master/README.md#usage
+
+    docker run -d -p 8089:8080 -p 50000:50000 jenkins/jenkins:lts
+    docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+    
+    docker run jenkins/jnlp-slave -url http://jenkins-server:port <secret> <agent name>
+
+https://wiki.jenkins.io/pages/viewpage.action?pageId=75893612
+
+    Open a browser on the slave machine and go to the Jenkins master server url (http://yourjenkinsmaster:8080).
+    Go to Manage Jenkins > Manage Nodes, Click on the newly created slave machine. You will need to login as someone that has the "Connect" Slave permission if you have configured global security.
+    Click on the Launch button to launch agent from browser on slave.
+    
+run on all nodes: elastic-axis
 
 ## Travis - Ruby/JS
 https://github.com/travis-ci/travis-ci

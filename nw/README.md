@@ -18,7 +18,6 @@
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
 - [MAC addresss <-> Vender](#mac-addresss---vender)
-- [DHCP Options](#dhcp-options)
 - [Tuning](#tuning)
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
@@ -132,9 +131,6 @@ E.g.:
 
 # MAC addresss <-> Vender
 http://aruljohn.com/mac.pl
-
-# DHCP Options
-http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
 
 # Tuning
 https://fasterdata.es.net/assets/Papers-and-Publications/100G-Tuning-TechEx2016.tierney.pdf

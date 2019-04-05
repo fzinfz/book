@@ -19,18 +19,9 @@
     - [Version 3](#version-3)
     - [Version 4](#version-4)
     - [Grid system](#grid-system)
+    - [forms](#forms)
 - [whitespace and wrap](#whitespace-and-wrap)
 - [robots](#robots)
-- [js](#js)
-    - [text](#text)
-    - [IIFE (Immediately Invokable Function Expression)](#iife-immediately-invokable-function-expression)
-    - [Chrome](#chrome)
-    - [Tables](#tables)
-    - [pdf.js](#pdfjs)
-    - [Demo](#demo)
-    - [Chrome](#chrome-1)
-- [JQuery](#jquery)
-    - [Events](#events-1)
 
 <!-- /TOC -->
 
@@ -177,6 +168,17 @@ https://getbootstrap.com/docs/3.3/css/#grid
 Rows must be placed within a .container[-fluid] for proper alignment and padding.
 Columns create gutters (gaps between column content) via `padding`. That padding is offset in rows for the first and last column via negative margin on `.rows`.
 
+## forms
+https://getbootstrap.com/docs/4.0/components/forms/#form-groups
+
+.form-group provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging.
+
+.row for .form-row, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
+
+https://getbootstrap.com/docs/4.3/components/forms/#inline-forms
+
+.form-inline class to display a series of labels, form controls, and buttons on a single horizontal row. 
+
 # whitespace and wrap
 https://css-tricks.com/almanac/properties/w/whitespace/
 
@@ -197,39 +199,3 @@ https://css-tricks.com/almanac/properties/w/whitespace/
 
         User-agent: *
         Disallow: /tmp/
-
-# js
-## text
-    <div id="divA">This is <span>some</span> text</div>
-    textContent: "This is some text"
-
-## IIFE (Immediately Invokable Function Expression)
-    (function() {
-        statements
-    })();
-
-## Chrome
-Cross origin requests are only supported for protocol schemes:  
-http, data, chrome, chrome-extension, https.
-
-## Tables
-https://github.com/olifolkerd/tabulator  
-
-## pdf.js
-https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
-
-## Demo
-https://fzinfz.github.io/scripts/
-
-## Chrome
-
-    var j = []
-    var list = document.getElementsByClassName("")
-
-    for (var i = 0; i < list.length; i++) {
-        j.push(list[i].parentNode.innerText);
-    }
-
-# JQuery
-## Events
-http://api.jquery.com/category/events/

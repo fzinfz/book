@@ -5,6 +5,7 @@
     - [Reset](#reset)
     - [Diagram](#diagram)
     - [Wireless](#wireless)
+        - [Modes](#modes)
     - [CLI](#cli)
     - [PCQ](#pcq)
     - [PPP BCP](#ppp-bcp)
@@ -15,8 +16,8 @@
     - [Firmware](#firmware)
     - [custom scripts](#custom-scripts)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
-    - [Commands](#commands)
-    - [Issues](#issues)
+    - [Controller Web](#controller-web)
+- [NanoStation® M](#nanostation®-m)
 
 <!-- /TOC -->
 
@@ -44,6 +45,12 @@ RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mod
 default-forwarding (on AP) – gives ability to disable the communication between the wireless clients  
 default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
 
+### Modes
+https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
+
+
+
+
 ## CLI
 ```
 put [resolve google.com server 8.8.8.8]
@@ -64,6 +71,9 @@ https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
 https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
 
 # ER-X
+Reset button for about 10 seconds until the eth4 LED flashing/solid. 
+default: static | https://192.168.1.1
+
 ```
 system type             : MT7621
 
@@ -154,11 +164,15 @@ Mem:(Lite)        126316        62272        64044            0            0
 Mem:(LR)        126272        66764        59508            0            0
 -/+ buffers:              66764        59508
 Swap:            0            0            0
+
+BZ.v3.7.5# info
+BZ.v3.7.5# set-inform http://unifi:8080/inform
 ```
 
-## Commands
-    BZ.v3.7.5# info
-    BZ.v3.7.5# set-inform http://unifi:8080/inform
+## Controller Web
 
-## Issues
-Every minor setting change on controller causes SSID reset.
+    Settings - Sie DEVICE AUTHENTICATION
+    Every minor setting change on controller causes SSID reset.
+
+# NanoStation® M
+https://www.ui.com/download/airmax-m/nanostationm

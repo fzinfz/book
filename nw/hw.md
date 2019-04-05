@@ -2,6 +2,7 @@
 
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
+    - [Reset](#reset)
     - [Diagram](#diagram)
     - [Wireless](#wireless)
     - [CLI](#cli)
@@ -26,7 +27,13 @@ http://pkg.entware.net/binaries/
     tar zxvf data.tar.gz
 
 # Mikrotik
-TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA
+TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  
+
+## Reset
+https://wiki.mikrotik.com/wiki/Manual:Reset
+
+    Hold this button before applying power, release after three seconds since powering, to load backup Boot loader.
+    If you keep holding this button for 2 more seconds until LED light starts flashing, release the button to reset RouterOS configuration to default (total 5 seconds)
 
 ## Diagram
 ![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)

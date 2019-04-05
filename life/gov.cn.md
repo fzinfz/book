@@ -3,8 +3,8 @@
 - [照片](#照片)
 - [2险1金](#2险1金)
 - [公积金提取](#公积金提取)
-    - [深圳](#深圳)
     - [广州](#广州)
+    - [深圳](#深圳)
     - [上海](#上海)
     - [杭州](#杭州)
     - [北京](#北京)
@@ -43,6 +43,20 @@
 计算器： http://salarycalculator.sinaapp.com/city/shenzhen
 
 # 公积金提取
+## 广州
+http://www.gzgjj.gov.cn/gzgjj/bszn/list.shtml
+
+    销户提取: 
+    （二）非本市户籍职工与单位解除或者终止劳动关系，未在异地继续缴存，账户封存满半年。
+
+无合同租房： http://www.gzgjj.gov.cn/gzgjj/bszn/201901/cdb19fd6d01c4ff199215eb4a7d29fc2.shtml
+
+    提取频次：每半年可以提取一次。提取额度：600元/人/月。
+
+    广州市珠江新城华就路12号三银大厦2楼
+    周一至周五上午9：00-12：00，下午2：00-5：00（法定节假日除外）
+    联系电话：020-12345、020-12329（移动用户拨打：020-12345）。
+
 ## 深圳
 微信：深圳市住房公积金管理中心　sz12329  
 http://www.szzfgjj.com/ywgz/tql/  
@@ -50,13 +64,6 @@ http://www.szzfgjj.com/ywgz/tql/
 
 http://www.szzfgjj.com/xxgk/gzdt/201711/t20171128_10034947.htm  
 2017年11月14日开始，深圳无房职工每月可提取申请当月应缴存公积金的65%用于支付房租。
-
-## 广州
-http://www.gzgjj.gov.cn/web/static/catalogs/catalog_ff8080813b9be888013b9d7b26f20007/ff8080813b9be888013b9d7b26f20007.html
-
-[移动平台办理](http://www.gzgjj.gov.cn/web/static/articles/catalog_2c94ec8a2c7c601b012c7ca21c8f0003/2016-07-26/article_2c903250546cf2360156264fb14a21ed/2c903250546cf2360156264fb14a21ed.html)
-
-[租房提取](http://www.gzgjj.gov.cn/web/static/articles/catalog_ff8080813b9be888013b9d7b26f20007/2017-05-27/article_2c9032505c4788bb015c481a7d71002a/2c9032505c4788bb015c481a7d71002a.html): 不提供租赁合同和发票的，申请提取600元/人/月用于支付房租
 
 ## 上海
 http://www.shgjj.com/html/ywzntq/index.html
@@ -132,12 +139,7 @@ http://www.bjrbj.gov.cn/xxgk/zcfg/201712/t20171213_69593.html
 
 # 图书馆
 ## 广州
-广州图书馆 开放时间：
-9：00-21：00 (逢周三闭馆)  
+广州图书馆 9：00-21：00 (逢周三闭馆, 周三提供闭馆还书服务时间：10：00－16：00)  
 国家法定节假日开放时间： 9：00-16：00  
-周三提供闭馆还书服务时间：10：00－16：00
 
-天河龙口西总馆 开放时间
-周一至周五：8：30-19：30，  
-周六、日：8:00-18:00  
-（逢周三闭館）
+天河龙口西总馆  周一至周五：8：30-19：30，周六、日：8:00-18:00  （逢周三闭館）

@@ -35,5 +35,9 @@ https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 http://api.jquery.com/category/events/
 
 # vue
+
+    v-bind : 1-way
+    v-model: 2-way = v-bind + v-on
+
 ## api
 https://vuejs.org/v2/api/

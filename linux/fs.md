@@ -8,8 +8,13 @@
 - [mount/umount](#mountumount)
     - [fstab](#fstab)
     - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
-- [LVM, resize fs](#lvm-resize-fs)
+- [LVM](#lvm)
+    - [Check lv filesystem](#check-lv-filesystem)
+    - [Rename](#rename)
+    - [Create](#create)
+    - [Activate vg](#activate-vg)
     - [Add disk to vg](#add-disk-to-vg)
+    - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
 - [Swap](#swap)
 - [Benchmark](#benchmark)
@@ -90,31 +95,42 @@ cat /proc/mounts    # list mounted
 https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  
 http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
 
-# LVM, resize fs
+# LVM
 
     lsblk -o+UUID
-
     pvs -o+vg_uuid,UUID
-    vgrename $vg_uuid new-vg-name
-    vgs -o+vg_uuid
-
-    vgchange -ay # activate vg
-
+    vgs -o+vg_uuid  
     pvdisplay -v -m
-    lvcreate -L 80G ubuntu-vg -n data
 
-    lvresize -L +20G /dev/debian9-vg/root
+## Check lv filesystem
+    file -s /dev/vg1/lv1
+
+## Rename
+    vgrename $vg_uuid new-vg-name
+
+## Create
+    vgcreate vg-name /dev/sdc3
+    lvcreate -L 80G wd500-vg -n data
+    mkfs.btrfs /dev/mapper/wd500--vg-data
+    mount /dev/mapper/wd500--vg-data /data2
+    echo $(cat /proc/mounts | tail -n 1) >> /etc/fstab ; ls /etc/fstab ;
+
+## Activate vg
+    vgchange -ay
+
+## Add disk to vg
+    pvcreate /dev/sdb   # delete all partitions first
+    vgextend ubuntu-vg /dev/sdb
+
+## Resize fs
+
+    lvresize -L +20G /dev/debian9-vg/root # -r, --resizefs
     resize2fs /dev/dlvebian9-vg/root
 
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
     lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
-
-
-## Add disk to vg
-    pvcreate /dev/sdb   # delete all partitions first
-    vgextend ubuntu-vg /dev/sdb
 
 # btrfs
     btrfs filesystem resize +60G /data
@@ -137,4 +153,4 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     fio --name=randwrite --ioengine=libaio --group_reporting \
      --iodepth=1 --rw=randwrite \
      --direct=1 --bs=4k --numjobs=8 \
-     --size=512M --runtime=30
+     --size=512M --runtime=5

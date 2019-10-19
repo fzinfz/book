@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Commands](#commands)
 - [Architecture](#architecture)
 - [DRM](#drm)
 - [Driver source](#driver-source)
@@ -34,6 +35,8 @@
 - [radeontop](#radeontop)
 
 <!-- /TOC -->
+# Commands
+    systemctl restart display-manager # restart
 
 # Architecture
 ![](https://en.wikipedia.org/wiki/File:Schema_of_the_layers_of_the_graphical_user_interface.svg)

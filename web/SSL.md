@@ -122,6 +122,13 @@ https://community.letsencrypt.org/t/wildcard-domain-step-by-step/58250/4
     --manual --preferred-challenges dns \
     -d 'yourdomain.tld,*.yourdomain.tld'
 
+## OpenSSL
+
+# PEM (.pem, .crt, .cer) to PFX
+https://www.ssl.com/how-to/create-a-pfx-p12-certificate-file-using-openssl/
+
+    openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile more.crt
+
 ## Cloudflare
 https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)
 

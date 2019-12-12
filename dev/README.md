@@ -4,11 +4,6 @@
 - [Interactive coding notes](#interactive-coding-notes)
 - [Scripts of Powershell/Python/etc](#scripts-of-powershellpythonetc)
 - [GraphQL](#graphql)
-- [vi/vim](#vivim)
-    - [VISUAL BLOCK mode](#visual-block-mode)
-- [VSCode](#vscode)
-    - [extensions](#extensions)
-    - [Debug Config](#debug-config)
 - [Markdown](#markdown)
     - [Parser](#parser)
     - [Converter](#converter)
@@ -50,26 +45,6 @@ a query language and execution engine tied to any backend service.
         homePlanet: String
     }
 
-# vi/vim
-    go to line: Esc , line#, Shift-g
-    :%s/pattern/replace/g_  # i/I: case in/sensitive    
-    cw => change word
-    ciw => change word from cursor
-    :w !sudo tee %      ===> sudo save
-
-## VISUAL BLOCK mode
-    Ctrl+V；【select】；Shift + I; 【type text】; Esc
-
-# VSCode
-## extensions
-    AlanWalk.markdown-toc
-    shardulm94.trailing-spaces
-
-## Debug Config
-    # launch.json
-    "args": [
-        "--help", ""
-    ],
 
 # Markdown
 ## Parser

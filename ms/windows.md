@@ -91,7 +91,9 @@ SUBST X: "D:\Folder_to_map"
 - https://technet.microsoft.com/en-in/library/cc750583(en-us).aspx
 
 ## NFS mount
+Turn Windows features on or off -> Services for NFS
 
+    # seems not working anymore (Dec 2019)
     Get-WindowsFeature -Name NFS*
     Install-WindowsFeature -Name NFS-Client
 

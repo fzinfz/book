@@ -7,7 +7,6 @@
 - [NTFS](#ntfs)
 - [mount/umount](#mountumount)
     - [fstab](#fstab)
-    - [NFS performance monitoring and tuning](#nfs-performance-monitoring-and-tuning)
 - [LVM](#lvm)
     - [Check lv filesystem](#check-lv-filesystem)
     - [Rename](#rename)
@@ -73,13 +72,8 @@ https://wiki.archlinux.org/index.php/NTFS-3G
 
 # mount/umount
     mount -o loop,ro x.iso /mnt/cd
-    mount.nfs nfs_server:/dir /dir  #  apt install -y nfs-common
-    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir
-    mount -t nfs -o nfsvers=4.1 192.168.4.12:/2T 2T
-    mount -v 192.168.88.10:/ /data/  # mount NFS 4.2
     mount -o rw,remount /   # recovery
     umount -l /PATH/OF/BUSY-DEVICE
-    umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
 
 ## fstab
 
@@ -91,16 +85,11 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     //servername/sharename /media/windowsshare cifs guest,uid=1000,iocharset=utf8 0 0
     /dev/mapper/x--vg--root /home           btrfs   defaults,subvol=@home 0       2
     /dev/sda2       /mymnt/win   ntfs-3g  rw,umask=0000,defaults 0 0
-    NFS_server:/    /data nfs rsize=8192,wsize=8192,timeo=14,intr
 
 <dump> is checked by the dump(ext2/3 filesystem backup) utility. This field is usually set to 0, which disables the check.
 <fsck>/<pass> sets the order for filesystem checks at boot time; see fsck(8). 
 1 for the root device, 2 for other partitions, 0 to disable checking. 
 [Arch] If the root file system is btrfs, set to 0 instead of 1.
-
-## NFS performance monitoring and tuning
-https://www.ibm.com/support/knowledgecenter/en/ssw_aix_71/com.ibm.aix.performance/nfs_perf_mon_tun.htm  
-http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pdf
 
 # LVM
 
@@ -130,6 +119,7 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
     vgextend ubuntu-vg /dev/sdb
 
 ## Resize fs
+PV thrink: gparted
 
     lvresize -L +20G /dev/debian9-vg/root # -r, --resizefs
     resize2fs /dev/dlvebian9-vg/root

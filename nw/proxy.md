@@ -3,6 +3,7 @@
 - [All In One](#all-in-one)
 - [Shadowsocks](#shadowsocks)
 - [v2ray](#v2ray)
+    - [with router](#with-router)
 - [clash](#clash)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
@@ -47,7 +48,10 @@ L2TP/IPsec, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, a Tor bri
 
 # v2ray
 https://www.v2ray.com/chapter_02/01_overview.html  
-https://toutyrater.github.io/v2ray-guide-pages/
+https://github.com/v2ray/manual/blob/master/zh_cn/chapter_02/protocols/vmess.md
+
+https://toutyrater.github.io/v2ray-guide-pages/  
+https://github.com/ToutyRater/v2ray-guide/blob/master/basic/vmess.md
 
 loglevel： "debug"、"info"、"warning"、"error" 和 "none"
 
@@ -68,6 +72,9 @@ loglevel： "debug"、"info"、"warning"、"error" 和 "none"
             "ip": "127.0.0.1"     // 当开启 UDP 时，V2Ray 需要知道本机的 IP 地址
         }
     },
+
+## with router
+https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 
 # clash
 https://github.com/Dreamacro/clash

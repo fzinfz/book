@@ -58,8 +58,14 @@ https://en.wikipedia.org/wiki/Comparison_of_file_systems
     sudo partprobe -s
 
 # mkpart, format
+https://wiki.archlinux.org/index.php/Parted
+
     parted -s /dev/sdb mklabel gpt
     parted -s /dev/sdb unit mib mkpart primary 0% 100% / 1MiB 512MiB
+
+    mkpart primary fat32 1MiB 512MiB
+    set 1 esp on
+    
     mkfs.ext4 /dev/sdb1
 
 # NTFS
@@ -76,7 +82,8 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     umount --force /PATH/OF/BUSY-NFS(NETWORK-FILE-SYSTEM)
 
 ## fstab
-cat /proc/mounts    # list mounted
+
+    cat /proc/mounts    # list mounted
 
     /dev/vdb1               /root/data       ext4    defaults,noatime 0 0
     /dev/cdrom              /media/CentOS           auto    user,noauto,exec,utf8        0    0
@@ -97,7 +104,7 @@ http://www.nfsv4bat.org/Documents/ConnectAThon/2013/NewGenerationofTesting-v2.pd
 
 # LVM
 
-    lsblk -o+UUID
+    lsblk -o NAME,TYPE,FSTYPE,MOUNTPOINT,RM,MAJ:MIN,UUID
     pvs -o+vg_uuid,UUID
     vgs -o+vg_uuid  
     pvdisplay -v -m

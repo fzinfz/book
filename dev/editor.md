@@ -15,8 +15,11 @@
     ciw => change word from cursor
     :w !sudo tee %      ===> sudo save
 
+    ~/.vimrc
+    set nocompatible # fix array not working in insert mode
+
 ## VISUAL BLOCK mode
-    Ctrl+V；【select】；Shift + I; 【type text】; Esc
+    Ctrl+V；【select block】；Shift + I; 【type text】; Esc
 
 # VSCode
 ## extensions

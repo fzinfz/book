@@ -21,6 +21,7 @@
         - [Command and Arguments](#command-and-arguments)
 - [Verbosity](#verbosity)
 - [minikube](#minikube)
+    - [Bare metal](#bare-metal)
     - [KVM](#kvm)
 - [kops](#kops)
 - [Create a Cluster](#create-a-cluster)
@@ -237,10 +238,16 @@ Example： https://github.com/kubernetes/kubernetes/blob/master/examples/guestbo
 |--v=8|Display HTTP request contents.|
 
 # minikube
-https://github.com/kubernetes/minikube
+https://github.com/kubernetes/minikube   
 
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     chmod +x minikube kubectl && sudo mv minikube /usr/local/bin/
+
+## Bare metal
+https://minikube.sigs.k8s.io/docs/start/linux/
+
+    minikube start --vm-driver=none && minikube config set vm-driver none
+    minikube logs
 
 ## KVM
 https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#kvm-driver

@@ -105,7 +105,6 @@ https://toutyrater.github.io/
 ## Shadowsocks
 https://lvii.gitbooks.io/outman/content/ss.client.html  
 https://neroxps.gitbooks.io/compile-shadowsocks-rss-libev/content/  
-https://github.com/softwaredownload/openwrt-fanqiang
 
 # Manager
 https://github.com/fzinfz/ssmanager-nopanel

@@ -12,6 +12,7 @@
 - [Nested](#nested)
 - [vfio](#vfio)
     - [Raw disk mapping](#raw-disk-mapping)
+- [Qemu](#qemu)
 - [GRUB](#grub)
 - [UEFI](#uefi)
 
@@ -149,11 +150,17 @@ https://www.kernel.org/doc/Documentation/vfio.txt
     echo 8086 1d02 | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
 ## Raw disk mapping
+Support partion
+
     <disk type='block' device='disk'>
-        <driver name='qemu' type='raw'/>
-        <source dev='/dev/sdb'/>
+        <source dev='/dev/sdbX'/>
+        <source dev='/dev/disk/by-uuid/000E473B0007AD2C'/>        
         <target dev='vdb' bus='virtio'/>
     </disk>
+
+# Qemu
+
+    qemu-img resize foo.qcow2 +2G # file size will increase when actual size grows
 
 # GRUB
     cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT

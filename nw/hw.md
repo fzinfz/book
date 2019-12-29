@@ -9,12 +9,21 @@
     - [CLI](#cli)
     - [PCQ](#pcq)
     - [PPP BCP](#ppp-bcp)
+- [UBNT](#ubnt)
+    - [UNMS](#unms)
 - [ER-X](#er-x)
-    - [enable apt](#enable-apt)
-    - [List dhcp/static clients](#list-dhcpstatic-clients)
-    - [RIP](#rip)
+    - [Reset](#reset-1)
+    - [Console](#console)
+    - [bootloader](#bootloader)
     - [Firmware](#firmware)
+        - [OpenWRT](#openwrt)
     - [custom scripts](#custom-scripts)
+    - [Web Setup Wizards](#web-setup-wizards)
+        - [Switch](#switch)
+    - [CLI](#cli-1)
+        - [enable apt](#enable-apt)
+        - [List dhcp/static clients](#list-dhcpstatic-clients)
+        - [RIP](#rip)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Controller Web](#controller-web)
 - [NanoStation® M](#nanostation®-m)
@@ -22,7 +31,7 @@
 <!-- /TOC -->
 
 # arm/mipsel/x86 packages
-http://pkg.entware.net/binaries/
+http://pkg.entware.net/binaries/mipsel/
 
     tar zxvf *.ipk
     tar zxvf data.tar.gz
@@ -50,7 +59,6 @@ https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 
 
 
-
 ## CLI
 ```
 put [resolve google.com server 8.8.8.8]
@@ -70,10 +78,11 @@ https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
 ## PPP BCP
 https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
 
-# ER-X
-Reset button for about 10 seconds until the eth4 LED flashing/solid. 
-default: static | https://192.168.1.1
+# UBNT
+## UNMS
+curl -fsSL https://unms.com/v1/install > /tmp/unms_inst.sh && sudo bash /tmp/unms_inst.sh
 
+# ER-X
 ```
 system type             : MT7621
 
@@ -87,45 +96,37 @@ extra interrupt vector  : yes
 hardware watchpoint     : yes, count: 4, address/irw mask: [0x0ffc, 0x0ffc, 0x0f                                                    fb, 0x0ffb]
 isa                     : mips1 mips2 mips32r1 mips32r2
 ASEs implemented        : mips16 dsp mt
-
-ubnt@ubnt:~$ free -m
-             total       used       free     shared    buffers     cached
-Mem:           249        226         22          0         24         94
--/+ buffers/cache:        107        141
-Swap:            0          0          0
 ```
 
-## enable apt
-https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS
+## Reset
+Reset button for about 10 seconds until the eth4 LED flashing/solid. 
+default: static | https://192.168.1.1 (eth0)
 
-    configure
-    set system package repository wheezy components 'main contrib non-free'
-    set system package repository wheezy distribution wheezy 
-    set system package repository wheezy url http://http.us.debian.org/debian
-    commit
-    save
-    exit
-    sudo apt-get update
-    apt-cache search supervisor
+## Console
+Pinout: https://openwrt.org/_media/media/ubiquiti/edgerouter-x-sfp2.jpg  
+My TTL cables: green/red/yellow/grey | Putty: 57600 8-N-1  
 
-## List dhcp/static clients
-https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-and-Static/td-p/697223  
+https://help.ubnt.com/hc/en-us/articles/360018189493-EdgeRouter-Manual-TFTP-Recovery#3  
+https://dl.ui.com/firmwares/edgemax/v2.0.x/ER-e50.recovery.v2.0.6.5208541.190708.0508.16de5fdde.img (>100M)  
 
-    set service dhcp-server hostfile-update enable  
-    cat /etc/hosts
+    The baud rate for ER-X / ER-X-SFP / ER-10X and EP-R6 console connections is 57600 instead of 115200.
+    Hold down the 1 (number one) key as the router starts up
 
-## RIP
-    ubnt@ubnt# show protocols rip
+    1: System Load Linux to SDRAM via TFTP.
+    Please Input new ones /or Ctrl-C to discard
+            Input device IP (172.16.3.212) ==:192.168.1.20
+            Input server IP (172.16.3.210) ==:192.168.1.10
+            Input Linux Kernel filename (vme50) ==:ER-e50.recovery.v2.0.6.5208541.190708.0508.16de5fdde.img
+        
+## bootloader
+https://help.ubnt.com/hc/en-us/articles/360009932554-EdgeRouter-How-to-Update-the-Bootloader
 
-        interface switch0
-        interface eth0
-        neighbor 192.168.3.1
-        redistribute {
-            connected {
-            }
-        }
+    show system boot-image
+    add system boot-image
 
 ## Firmware
+https://www.ui.com/download/edgemax/edgerouter-x
+
     show version 
     add system image http://dl.ubnt.com/...
     add system image egdeos-120821.tar
@@ -138,9 +139,67 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
     set interfaces ethernet eth1 address 192.168.3.2/24
     commit
 
+### OpenWRT
+https://openwrt.org/toh/ubiquiti/ubiquiti_edgerouter_x_er-x_ka
+
 ## custom scripts    
     chmod +x /config/scripts/post-config.d/yourscript.sh
         #!/bin/bash
+
+## Web Setup Wizards
+### Switch
+
+     switch switch0 {
+         address dhcp
+         switch-port {
+             interface eth0 {
+             }
+             interface eth1 {
+             }
+             interface eth2 {
+             }
+             interface eth3 {
+             }
+             interface eth4 {
+             }
+         }
+     }
+
+## CLI
+
+    ubnt@ubnt:~$ configure
+    [edit]
+    ubnt@ubnt# show
+    
+### enable apt
+https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS
+
+    configure
+    set system package repository wheezy components 'main contrib non-free'
+    set system package repository wheezy distribution wheezy 
+    set system package repository wheezy url http://http.us.debian.org/debian
+    commit
+    save
+    exit
+    sudo apt-get update
+    apt-cache search supervisor
+    
+### List dhcp/static clients
+https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-and-Static/td-p/697223  
+
+    set service dhcp-server hostfile-update enable  
+    cat /etc/hosts
+    
+### RIP
+    ubnt@ubnt# show protocols rip
+
+        interface switch0
+        interface eth0
+        neighbor 192.168.3.1
+        redistribute {
+            connected {
+            }
+        }
 
 # Unifi-AC-Lite/LR
 https://community.ubnt.com/t5/UniFi-Updates-Blog/bg-p/Blog_UniFi

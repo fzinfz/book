@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Download](#download)
 - [Bash](#bash)
     - [tmux](#tmux)
 - [Init](#init)
@@ -26,12 +27,15 @@
     - [boot repair](#boot-repair)
         - [ubuntu](#ubuntu)
 - [Benchmark](#benchmark)
-- [wget/curl](#wgetcurl)
 - [ssh redirect](#ssh-redirect)
+- [web](#web)
+    - [wget](#wget)
+    - [curl](#curl)
 - [files](#files)
-    - [tar](#tar)
-    - [rsync](#rsync)
+    - [find](#find)
+    - [grep](#grep)
     - [compress/uncompress](#compressuncompress)
+    - [rsync](#rsync)
 - [history without line numbers](#history-without-line-numbers)
 - [time](#time)
 - [font](#font)
@@ -58,6 +62,9 @@
 
 <!-- /TOC -->
 
+# Download
+http://releases.ubuntu.com/18.04/ 
+
 # Bash
 https://www.gnu.org/software/bash/manual/bash.html
 
@@ -80,9 +87,10 @@ https://www.gnu.org/software/bash/manual/bash.html
     2>&1 >/dev/null
     ssh-add 2>/dev/null
 
-http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb]
+http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
 ## tmux
+
     ctrl+b x -> kill pane   # /usr/share/doc/tmux/examples/screen-keys.conf
 
 # Init
@@ -270,16 +278,30 @@ wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.g
 tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
 
-# wget/curl
-    wget -O diff_name.zip http://...
-    curl -O http://...
-    curl -o diff_name.zip http://
-
 # ssh redirect
     ssh -L 9000:public.com:80   # visit local:9000 -> public.com:80
     ssh -R 9000:localhost:3000  # visit remote:9000 -> local:3000, "GatewayPorts yes" in sshd_config
         -nNT -L ...   # port forwarding only, no shell
 
+# web
+## wget 
+
+    wget -O diff_name.zip http://...
+
+## curl
+
+    curl -O http://...
+    curl -o diff_name.zip http://
+
+    curl -sSL $1
+
+      -f, --fail          Fail silently (no output at all) on HTTP errors (H)
+      -s, --silent        Silent mode (don't output anything)
+      -S, --show-error    Show error. With -s, make curl show errors when they occur
+      -L, --location      Follow redirects (H)
+      -o, --output FILE   Write to FILE instead of stdout
+      -O, --remote-name   Write output to a file named as the remote file
+      
 # files
 String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace-a-string-in-a-files
 
@@ -293,8 +315,6 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
                                 extension -X, size -S, time -t, version -v
     -t                         sort by modification time, newest first
 
-    find /home -iname tecmint.txt
-
     mkdir -p /not/existing/folder
 
     cat > file <<'EOL'
@@ -307,21 +327,57 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
 
     ls -1 $PWD | wc -l  # count files
 
-## tar
+## find
+
+    find /home -iname tecmint.txt
+    find $1 -iname $2
+    # find . ! -readable / -writable / -executabl
+    # find . ! -perm -g=w
+
+    find -regextype posix-extended -regex ".*[.](py|sh)" -exec chmod +x {} \;
+
+## grep
+
+    grep --color=auto -rn -P "${regex}" ${path}
+    # -r, --recursive           like --directories=recurse
+    # -n, --line-number         print line number with output lines
+    # -P, --perl-regexp         PATTERN is a Perl regular expression
+
+## compress/uncompress
+
+    gunzip file.gz
+
     tar -czvf name-of-archive.tar.gz /path/to/directory-or-file # Compress
 
+    tar -tvf my-data.tar.gz '*.py'
+    
+    tar -zxvf toExtract.tar.gz
     tar -xvf {tarball.tar} {special_file} -C /target/directory
 
-    -j : filter archive through bzip2, use to decompress .bz2 files.
-    -z: filter archive through gzip, use to decompress .gz files.
+    tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
+    tar -tvf archive.tar         # List all files in archive.tar verbosely.
+    tar -xf archive.tar          # Extract all files from archive.tar.
+        -t, --list                 list the contents of an archive
+        -j, --bzip2                filter the archive through bzip2
+        -c, --create               create a new archive    
+        -x, --extract, --get       extract files from an archive    
+        -z, --gzip, --gunzip, --ungzip   filter the archive through gzip
+        -v, --verbose              verbosely list files processed
+        -f, --file=ARCHIVE         use archive file or device ARCHIVE
 
-    -x: instructs tar to extract files.
-    -t: List the contents of an archive.
+    zip [options] zipfile files_list
+        -r   recurse into directories
+        -x   exclude the following names
+        -v   verbose operation/print version info
 
-    -v: Verbose (show progress while extracting files).
-    -f: specifies filename / tarball name.
+        -m   move into zipfile (delete OS files) !!
+        -d   delete entries in zipfile !!!
+        -u   update: only changed or new files
 
 ## rsync
+
+    rsync -aP -e "ssh -p $3" $1 root@$2
+
     rsync -aP  /root/_bin root@remote:/root
     rsync -aP -e "ssh -p 10220" /local root@remote:/dir   --remove-source-files
         -v, --verbose               increase verbosity
@@ -341,17 +397,6 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
         -z, --compress              compress file data during the transfer
             --progress              show progress during transfer
         -P                          same as --partial --progress
-
-## compress/uncompress
-    tar -zcvf new.tar.gz directory-name
-
-    tar -ztvf my-data.tar.gz
-    tar -tvf my-data.tar.gz
-    tar -tvf my-data.tar.gz '*.py'
-
-    tar -zxvf toExtract.tar.gz
-
-    gunzip file.gz
 
 # history without line numbers
     history | cut -c 8-

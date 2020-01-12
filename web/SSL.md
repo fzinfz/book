@@ -13,6 +13,8 @@
     - [Private Key](#private-key)
     - [Let's Encrypt](#lets-encrypt)
         - [Wildcard](#wildcard)
+    - [OpenSSL](#openssl)
+- [PEM (.pem, .crt, .cer) to PFX](#pem-pem-crt-cer-to-pfx)
     - [Cloudflare](#cloudflare)
     - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
 - [Nginx](#nginx)
@@ -88,9 +90,13 @@ https://serverfault.com/questions/9708
 `PKCS12`, enhanced security versus the plain-text PEM format. can contain private key material.
 
     certmgr.msc # Windows
+    openssl req -newkey rsa:2048 -nodes -keyout server.key -x509 -days 365 -out server.pem # Gen self-signed cert    
     openssl x509 -noout -text -in cerfile.cer/.pem/.crt [-inform pem/der]   # Show Info
     openssl x509 -out converted.pem -inform der -in to-convert.der          # Convert
     openssl pkcs12 -in file-to-convert..pkcs12/.pfx/.p12 -out converted-file.pem -nodes
+
+
+
 
 ## ECDSA vs RSA
 https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/  

@@ -3,7 +3,6 @@
 - [Chrome](#chrome)
 - [nano](#nano)
 - [Security](#security)
-- [Sync](#sync)
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
 - [Taobao](#taobao)
@@ -19,9 +18,6 @@ CTRL + K:           cut/delete
 
 # Security
 Password Crack: https://hashcat.net/hashcat
-
-# Sync
-https://www.resilio.com/platforms/desktop/
 
 # Instant Notifications
 http://instapush.im/

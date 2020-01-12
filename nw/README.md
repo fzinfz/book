@@ -148,7 +148,11 @@ https://github.com/inconshreveable/ngrok
 https://github.com/lovedboy/gortcp
 
 https://github.com/ehang-io/nps  
-https://github.com/fatedier/frp  (20200112: p2p/xtcp under dev)
+https://ehang-io.github.io/nps/#/example?id=p2p%e6%9c%8d%e5%8a%a1  
+
+    ./npc nat # p2p will not work if server/client both Symmetric Nat
+
+https://github.com/fatedier/frp  ( Jan 12 2020: p2p/xtcp under dev)
 
 # Multi WAN
 pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  

@@ -1,12 +1,14 @@
 <!-- TOC -->
 
+- [IPMI](#ipmi)
+    - [Dell idrac](#dell-idrac)
 - [OS](#os)
     - [IBM Advanced Interactive eXecutive(AIX)](#ibm-advanced-interactive-executiveaix)
     - [IBM i](#ibm-i)
     - [HP-UX](#hp-ux)
 - [Software](#software)
     - [IBM PowerVM](#ibm-powervm)
-    - [PowerKVM](#powerkvm)
+    - [IBM PowerKVM](#ibm-powerkvm)
     - [IBM PowerHA](#ibm-powerha)
     - [IBM PowerSC](#ibm-powersc)
 - [IBM Power Systems](#ibm-power-systems)
@@ -14,6 +16,10 @@
 - [IBM PurePower System](#ibm-purepower-system)
 
 <!-- /TOC -->
+
+# IPMI
+## Dell idrac
+virtual console: open port 443 + 5900
 
 # OS
 ## IBM Advanced Interactive eXecutive(AIX)
@@ -42,7 +48,7 @@ PowerVM for PowerLinux only supports Linux and VIO Servers as guests and can run
 PowerVP: Secure and scalable server virtualization environment for AIX, IBM i and Linux applications  
 PowerVC: Advanced virtualization management and cloud management for Power Systems
 
-## PowerKVM
+## IBM PowerKVM
 https://www.ibm.com/developerworks/community/blogs/fe313521-2e95-46f2-817d-44a4f27eba32/entry/Virtualization_Options_for_Power_Linux
 only supported on the “L” models. NOT on the S824L GPU model, nor any POWER7 systems.  
 PowerKVM does not support the pHyp interface, so OPAL (OpenPower Abstraction Layer), which is an alternative hardware interface, was created.  

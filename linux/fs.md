@@ -18,6 +18,7 @@
 - [Swap](#swap)
 - [Benchmark](#benchmark)
     - [fio](#fio)
+- [SMART](#smart)
 
 <!-- /TOC -->
 
@@ -151,3 +152,22 @@ PV thrink: gparted
      --iodepth=1 --rw=randwrite \
      --direct=1 --bs=4k --numjobs=8 \
      --size=512M --runtime=5
+
+# SMART
+https://wiki.archlinux.org/index.php/S.M.A.R.T.
+
+    smartctl --info /dev/sdf
+    
+    smartctl --test=short /dev/sdf     
+
+    smartctl --all /dev/sdf
+
+    smartctl -l selftest /dev/sdf
+    smartctl -l xerror /dev/sdf
+    -l TYPE, --log=TYPE
+            Show device log. TYPE: error, selftest, selective, directory[,g|s],
+                                xerror[,N][,error], xselftest[,N][,selftest],
+                                background, sasphy[,reset], sataphy[,reset],
+                                scttemp[sts,hist], scttempint,N[,p],
+                                scterc[,N,M], devstat[,N], ssd,
+                                gplog,N[,RANGE], smartlog,N[,RANGE]

@@ -107,8 +107,8 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb]
 
     apt install systemd-sysv    # make link: /sbin/init -> /lib/systemd/systemd
 
-    vi ~/.bash_profile          # once, at login.
-    vi ~/.bashrc                # every time a shell is started.
+    vi ~/.bash_profile          # login shells
+    vi ~/.bashrc                # non-login shells
 
 ## supervisord
 http://supervisord.org/running.html

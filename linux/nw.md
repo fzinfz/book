@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Basic](#basic)
+    - [Port listening](#port-listening)
     - [debug](#debug)
     - [Netlink](#netlink)
     - [tuntap](#tuntap)
@@ -38,6 +39,16 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 
     ip route add default via 192.168.1.1
     ip route show table all
+
+## Port listening
+   
+    # netstat -lntup | grep 8888
+    tcp        0      0 0.0.0.0:8888            0.0.0.0:*               LISTEN      5119/python         
+    tcp6       0      0 :::8888                 :::*                    LISTEN      5119/python     
+
+    # ss -lntup | grep 8888
+    tcp   LISTEN  0       128                    0.0.0.0:8888         0.0.0.0:*      users:(("jupyter-noteboo",pid=5119,fd=7))                                      
+    tcp   LISTEN  0       128                       [::]:8888            [::]:*      users:(("jupyter-noteboo",pid=5119,fd=6))       
 
 ## debug
     tcpdump -i any port 27017
@@ -113,6 +124,13 @@ http://backreference.org/2010/06/11/iptables-debugging/
 
 ## Log manually
 http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
+
+    iptables_log_INPUT_DROP() {
+        iptables -N LOGGING
+        iptables -A INPUT -j LOGGING
+        iptables -A LOGGING -m limit --limit 2/min -j LOG --log-prefix "IPTables-Dropped: " --log-level 4
+        iptables -A LOGGING -j DROP
+    }
 
 ## Transparent Proxy
     iptables -t nat -N TP

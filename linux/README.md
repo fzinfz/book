@@ -54,7 +54,10 @@
 - [WOL](#wol)
 - [Tools - Online](#tools---online)
 - [Tools - Windows](#tools---windows)
+- [CPU](#cpu)
+    - [check_cpu_core_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
+- [Video](#video)
 - [OpenCL](#opencl)
 - [zFCP](#zfcp)
 - [Diagram](#diagram)
@@ -63,7 +66,12 @@
 <!-- /TOC -->
 
 # Download
-http://releases.ubuntu.com/18.04/ 
+http://releases.ubuntu.com/18.04/  (Desktop Version may have package conflicts.)
+
+http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/mini.iso  
+( Mirror only http://us.archive.ubuntu.com/ , need proxy, local DNS not working )
+
+Debug: Console 4 or /var/log/syslog
 
 # Bash
 https://www.gnu.org/software/bash/manual/bash.html
@@ -92,6 +100,7 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 ## tmux
 
     ctrl+b x -> kill pane   # /usr/share/doc/tmux/examples/screen-keys.conf
+    cat /usr/share/doc/tmux/examples/screen-keys.conf | grep '\bbind \w'
 
 # Init
 
@@ -272,10 +281,10 @@ https://sourceforge.net/p/boot-repair-cd/home/Home/
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 ```
-sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
+    sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 
-wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
-tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
+    wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
+    tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
 ```
 
 # ssh redirect
@@ -327,6 +336,9 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
 
     ls -1 $PWD | wc -l  # count files
 
+    file /bin/ps
+    ldd /bin/ps
+    
 ## find
 
     find /home -iname tecmint.txt
@@ -400,6 +412,7 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
 
 # history without line numbers
     history | cut -c 8-
+      -a	append history lines from this session to the history file  ~/.bash_history    
 
 # time
 ```
@@ -498,9 +511,29 @@ http://explainshell.com/
 https://www.netsarang.com/xshell_download.html  
 https://mobaxterm.mobatek.net/features.html  
 
+# CPU
+
+    getconf LONG_BIT
+
+## check_cpu_core_mapping
+https://www.ibm.com/support/knowledgecenter/en/SSQPD3_2.6.0/com.ibm.wllm.doc/mappingcpustocore.html  
+same physical/core ID  =》 simultaneous multi threads (SMTs) / HT
+
+    cat /proc/cpuinfo  | grep -P 'processor|physical id|core id|^$'
+
+    pip install walnut    # pretty print
+    for c in sorted([ ( int(c['processor']), int(c['physical id']), int(c['core id']) ) for c in cpu.dict().values()]): print c
+
 # USB Persistence
 https://docs.kali.org/downloading/kali-linux-live-usb-persistence  
 http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence  
+
+# Video
+https://askubuntu.com/questions/28033/how-to-check-the-information-of-current-installed-video-drivers
+
+    dpkg -l amdgpu-pro
+    glxinfo | grep direct
+    GALLIUM_HUD=help glxgears
 
 # OpenCL
  installable client driver loader (ICD Loader) may expose multiple separate vendor installable client drivers (Vendor ICDs) for OpenCL.

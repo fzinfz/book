@@ -152,6 +152,11 @@ https://ehang-io.github.io/nps/#/example?id=p2p%e6%9c%8d%e5%8a%a1
 
     ./npc nat # p2p will not work if server/client both Symmetric Nat
 
+    source /dev/stdin ehang-io/nps <<< "$(curl -fsSL https://raw.githubusercontent.com/fzinfz/scripts/master/github--repo.sh)" | grep linux | grep amd64
+
+    openssl genrsa -out server.key 2048
+    openssl rsa -in server.key -outform PEM -pubout -out server.pem
+
 https://github.com/fatedier/frp  ( Jan 12 2020: p2p/xtcp under dev)
 
 # Multi WAN

@@ -2,7 +2,6 @@
 
 - [Basic](#basic)
 - [cgroup](#cgroup)
-- [Hugepages](#hugepages)
 - [Memory Management Unit (MMU)](#memory-management-unit-mmu)
 - [kmalloc & vmalloc](#kmalloc--vmalloc)
 - [System Management Mode (SMM)](#system-management-mode-smm)
@@ -23,6 +22,9 @@
 - [pmap](#pmap)
 - [Global Graphics Translation Table (GTT)](#global-graphics-translation-table-gtt)
 - [KVM MMU Virtualization](#kvm-mmu-virtualization)
+- [Hardware](#hardware)
+    - [Numa](#numa)
+- [Hugepages](#hugepages)
 
 <!-- /TOC -->
 
@@ -44,18 +46,6 @@ https://linux-mm.org/LinuxMMDocumentation
 # cgroup
 http://elixir.free-electrons.com/linux/latest/source/Documentation/cgroup-v1/memory.txt
 
-# Hugepages
-https://wiki.debian.org/Hugepages#Enabling_HugeTlbPage  
-bigger pages, the CPU/OS have less entries to look-up
-
-  sudo sysctl -w vm.nr_hugepages=128
-
-  /etc/security/limits.conf  # Exit and re-login to take effect.
-    * soft memlock 262144
-    * hard memlock 262144
-
-  vi /root/.bashrc
-    ulimit -u unlimited
 
 # Memory Management Unit (MMU)
 https://cseweb.ucsd.edu/classes/su09/cse120/lectures/Lecture7.pdf
@@ -524,3 +514,69 @@ https://events.static.linuxfound.org/slides/2011/linuxcon-japan/lcj2011_guangron
   Hard MMU
   • NPT on SVM from AMD
   • EPT on VMX from Intel
+
+
+# Hardware
+  lshw -C memory
+
+## Numa
+
+  numactl -H
+    available: 2 nodes (0-1)
+    node 0 cpus: 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30
+    node 0 size: 16053 MB
+    node 0 free: 149 MB
+    node 1 cpus: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31
+    node 1 size: 16122 MB
+    node 1 free: 78 MB
+    node distances:
+    node   0   1 
+      0:  10  20 
+      1:  20  10 
+
+# Hugepages
+https://wiki.debian.org/Hugepages#Enabling_HugeTlbPage  
+bigger pages, the CPU/OS have less entries to look-up
+
+  sudo sysctl -w vm.nr_hugepages=128
+
+  /etc/security/limits.conf  # Exit and re-login to take effect.
+    * soft memlock 262144
+    * hard memlock 262144
+
+  vi /root/.bashrc
+    ulimit -u unlimited
+
+  apt install hugepages -y
+    hugeadm --pool-list
+        Size           Minimum  Current  Maximum  Default
+        2097152           0        0        0        *
+        1073741824        0        0        0         
+
+  grep Huge /proc/meminfo 
+        AnonHugePages:  18466816 kB
+        ShmemHugePages:        0 kB
+        HugePages_Total:       0
+        HugePages_Free:        0
+        HugePages_Rsvd:        0
+        HugePages_Surp:        0
+        Hugepagesize:       2048 kB
+        Hugetlb:               0 kB
+
+  grep -R "" /sys/kernel/mm/hugepages/ /proc/sys/vm/*huge*
+        /sys/kernel/mm/hugepages/hugepages-2048kB/free_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-2048kB/resv_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-2048kB/surplus_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages_mempolicy:0
+        /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-2048kB/nr_overcommit_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/free_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/resv_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/surplus_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages_mempolicy:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_hugepages:0
+        /sys/kernel/mm/hugepages/hugepages-1048576kB/nr_overcommit_hugepages:0
+        /proc/sys/vm/hugetlb_shm_group:0
+        /proc/sys/vm/nr_hugepages:0
+        /proc/sys/vm/nr_hugepages_mempolicy:0
+        /proc/sys/vm/nr_overcommit_hugepages:0

@@ -2,6 +2,7 @@
 
 - [Releases](#releases)
 - [install](#install)
+- [Config](#config)
 - [Debug](#debug)
 - [virsh](#virsh)
 - [Pool](#pool)
@@ -13,6 +14,7 @@
 - [vfio](#vfio)
     - [Raw disk mapping](#raw-disk-mapping)
 - [Qemu](#qemu)
+- [qcow2](#qcow2)
 - [GRUB](#grub)
 - [UEFI](#uefi)
 
@@ -42,6 +44,11 @@ https://help.ubuntu.com/community/KVM/Installation
     apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
     systemctl status libvirtd
 
+# Config
+
+    /etc/libvirt/qemu
+
+https://wiki.libvirt.org/page/FAQ#Where_are_VM_config_files_stored.3F_How_do_I_edit_a_VM.27s_XML_config.3F
 
 # Debug
 https://fedoraproject.org/wiki/How_to_debug_Virtualization_problems
@@ -153,14 +160,20 @@ https://www.kernel.org/doc/Documentation/vfio.txt
 Support partion
 
     <disk type='block' device='disk'>
-        <source dev='/dev/sdbX'/>
-        <source dev='/dev/disk/by-uuid/000E473B0007AD2C'/>        
+        <source dev='/dev/sdbX'/>    
         <target dev='vdb' bus='virtio'/>
     </disk>
+
+        <source dev='/dev/disk/by-uuid/F82C62B02C626998'/>    
 
 # Qemu
 
     qemu-img resize foo.qcow2 +2G # file size will increase when actual size grows
+
+# qcow2
+
+    apt install libguestfs-tools
+    guestmount -a foo.qcow2 -i --ro /mnt/foo
 
 # GRUB
     cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT

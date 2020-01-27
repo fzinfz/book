@@ -13,10 +13,12 @@
     - [Create](#create)
     - [Activate vg](#activate-vg)
     - [Add disk to vg](#add-disk-to-vg)
+    - [Remove diskfrom vg](#remove-diskfrom-vg)
     - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
 - [Swap](#swap)
 - [Benchmark](#benchmark)
+    - [dd](#dd)
     - [fio](#fio)
 - [SMART](#smart)
 
@@ -72,9 +74,16 @@ https://wiki.archlinux.org/index.php/Parted
 https://wiki.archlinux.org/index.php/NTFS-3G
 
 # mount/umount
-    mount -o loop,ro x.iso /mnt/cd
+
     mount -o rw,remount /   # recovery
     umount -l /PATH/OF/BUSY-DEVICE
+
+    mount -o loop,ro $path $mount_point # ISO
+    
+    mount.nfs $1:$2 $3
+    mount -tnfs4 -ominorversion=1 server_nfs_4.1:/dir\
+
+    echo $path $mount_point cifs username=$user,password=$passwd 0 0 >>  /etc/fstab # SMB
 
 ## fstab
 
@@ -93,11 +102,34 @@ https://wiki.archlinux.org/index.php/NTFS-3G
 [Arch] If the root file system is btrfs, set to 0 instead of 1.
 
 # LVM
-
-    lsblk -o NAME,TYPE,FSTYPE,MOUNTPOINT,RM,MAJ:MIN,UUID
-    pvs -o+vg_uuid,UUID
-    vgs -o+vg_uuid  
+    
     pvdisplay -v -m
+
+                Wiping internal VG cache
+                Wiping cache of LVM-capable devices
+            --- Physical volume ---
+            PV Name               /dev/sde1
+            VG Name               wd500-vg
+            PV Size               <422.53 GiB / not usable 0   
+            Allocatable           yes 
+            PE Size               4.00 MiB
+            Total PE              108167
+            Free PE               5523
+            Allocated PE          102644
+            PV UUID               nPoenO-vin9-wkZF-4Dxh-5WT2-yU3f-EtAMs5
+            
+            --- Physical Segments ---
+            Physical extent 0 to 5522:
+                FREE
+            Physical extent 5523 to 95122:
+                Logical volume	/dev/wd500-vg/data
+                Logical extents	0 to 89599
+            Physical extent 95123 to 95366:
+                Logical volume	/dev/wd500-vg/swap_1
+                Logical extents	0 to 243
+            Physical extent 95367 to 108166:
+                Logical volume	/dev/wd500-vg/data
+                Logical extents	89600 to 102399
 
 ## Check lv filesystem
     file -s /dev/vg1/lv1
@@ -118,6 +150,12 @@ https://wiki.archlinux.org/index.php/NTFS-3G
 ## Add disk to vg
     pvcreate /dev/sdb   # delete all partitions first
     vgextend ubuntu-vg /dev/sdb
+
+## Remove diskfrom vg
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/disk_remove_ex
+
+    pvmove /dev/sdb1
+    vgreduce myvg /dev/sdb1
 
 ## Resize fs
 PV thrink: gparted
@@ -144,6 +182,11 @@ PV thrink: gparted
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
 # Benchmark
+## dd
+    
+        dd if=/dev/zero of=/tmp/test_iops bs=512  count=10000 oflag=direct
+        dd if=/dev/zero of=/tmp/test_bw   bs=200M count=1     oflag=direct
+
 ## fio
 
     git clone https://github.com/axboe/fio.git && cd fio/examples/

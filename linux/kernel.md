@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Check](#check)
+- [delete](#delete)
 - [Commit logs](#commit-logs)
 - [.deb download](#deb-download)
 - [Dynamic Kernel Module Support (DKMS)](#dynamic-kernel-module-support-dkms)
@@ -41,9 +42,16 @@
 <!-- /TOC -->
 
 # Check
+
     lsb_release -a
     uname -a
     cat /etc/*-release
+    dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+'
+
+# delete
+
+    apt purge ...
+    dpkg --purge ...
 
 # Commit logs
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/

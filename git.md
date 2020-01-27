@@ -9,6 +9,7 @@
     - [remote and push](#remote-and-push)
         - [delete remote branch](#delete-remote-branch)
 - [config](#config)
+    - [Proxy](#proxy)
 - [filter-branch](#filter-branch)
 - [Remove File](#remove-file)
     - [Unpushed commit](#unpushed-commit)
@@ -150,6 +151,12 @@ https://git-scm.com/book/en/v2/Git-Internals-The-Refspec
         --add                 add a new variable: name value
         --unset               remove a variable: name [value-regex]
         --unset-all           remove all matches: name [value-regex]
+
+    git config --global push.default simple
+    git config --list --show-origin
+    
+## Proxy
+    git config --global http.proxy http://$IP:$Port
 
 # filter-branch
 https://manishearth.github.io/blog/2017/03/05/understanding-git-filter-branch/

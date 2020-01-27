@@ -21,6 +21,9 @@
 ## Dell idrac
 virtual console: open port 443 + 5900
 
+    action=powerstatus # powerdown powerup graceshutdown hardreset powercycle
+    ssh root@${host} "racadm serveraction ${action}"    
+
 # OS
 ## IBM Advanced Interactive eXecutive(AIX)
 https://en.wikipedia.org/wiki/IBM_AIX  

@@ -37,6 +37,8 @@
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
 - [简繁体转换](#简繁体转换)
+- [mstsc client](#mstsc-client)
+    - [CredSSP](#credssp)
 
 <!-- /TOC -->
 
@@ -225,3 +227,8 @@ http://www.freerdp.com/
 
 # 简繁体转换
 win10: 先Ctrl+F，按住Ctrl，再按Shift+F
+
+# mstsc client
+## CredSSP
+gpedit.msc - Computer Configuration > Administrative Templates > System > Credentials Delegation
+Encryption Oracle Remediation policy: Enabled > Protection Level: Vulnerable

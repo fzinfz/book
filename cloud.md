@@ -10,9 +10,12 @@
 - [Pricing](#pricing)
     - [Instance](#instance)
     - [Traffic](#traffic)
-    - [Free](#free)
+- [Free](#free)
+    - [Always Free](#always-free)
+        - [GCP](#gcp)
 - [HIDS uninstall](#hids-uninstall)
     - [jcloud](#jcloud)
+- [aliyun](#aliyun)
 
 <!-- /TOC -->
 
@@ -72,9 +75,10 @@ https://console.bluemix.net/docs/containers/cs_integrations.html#adding_cluster
 https://cloud.google.com/storage/docs/gcs-fuse
 
 ## gcloud
-    curl https://sdk.cloud.google.com | bash
 
-    gcloud auth application-default login
+    curl https://sdk.cloud.google.com | bash
+    source ~/.bashrc
+    gcloud auth login
 
 ## gcs
     export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
@@ -131,7 +135,7 @@ https://www.qingcloud.com/pricing/plan
 https://www.sinacloud.com/index/price.html   
 https://www.daocloud.io/pricing/public.html  
 
-## Free 
+# Free 
 https://cloud.google.com/free/docs/always-free-usage-limits  
 https://aws.amazon.com/free/  
 https://tryappservice.azure.com  
@@ -139,6 +143,15 @@ https://www.ibm.com/cloud/pricing
 
 $200: https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
 DigitalOcean $20: https://cloud.docker.com
+
+## Always Free
+### GCP
+https://cloud.google.com/free/docs/gcp-free-tier#always-free
+
+    GCE: 1 non-preemptible f1-micro in us-west1/central1/east1 + 30GB + 1 GB network egress* + IP
+    GCS: 5 GB + 1 GB network egress*
+    Firestore DB: 1 GB storage
+
 
 # HIDS uninstall
 ## jcloud

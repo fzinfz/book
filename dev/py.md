@@ -1,9 +1,11 @@
 <!-- TOC -->
 
 - [Distribution Default](#distribution-default)
+- [Jupyter](#jupyter)
 - [pip](#pip)
     - [Installing from local](#installing-from-local)
     - [Proxy](#proxy)
+- [pypi](#pypi)
 - [Google Fire](#google-fire)
 - [pendulum](#pendulum)
 - [Web automation](#web-automation)
@@ -22,11 +24,15 @@
 
 # Distribution Default
 
-    Debian/Ubuntu
-        wheey   2.7.3   /   3.2
-        jessie  2.7.9   /   3.4
-        stretch  2.7.13 /   3.5
-        buster  2.7.14  /   3.6
+    Debian 7 wheezy   2.7.3   /   3.2
+    Debian 8 jessie   2.7.9   /   3.4
+    Debian 9 stretch  2.7.13  /   3.5
+    Debian 10 buster  2.7.14  /   3.6
+
+# Jupyter
+
+  %reload_ext autoreload
+  %autoreload 2
 
 # pip
 ## Installing from local
@@ -37,6 +43,11 @@
 ## Proxy
     export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
     pip install --proxy=https://user@mydomain:port  somepackage
+
+# pypi
+https://packaging.python.org/tutorials/distributing-packages/
+
+    twine upload --repository testpypi dist/*
 
 # Google Fire
 https://github.com/google/python-fire/blob/master/docs/guide.md#accessing-properties

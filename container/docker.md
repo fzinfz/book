@@ -1,84 +1,36 @@
 <!-- TOC -->
 
-- [API](#api)
-- [Install & Management](#install--management)
-- [Config](#config)
-- [image operations](#image-operations)
+- [Scripts](#scripts)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
     - [apt](#apt)
     - [alpine](#alpine)
-    - [badger](#badger)
-- [Storage](#storage)
-- [build](#build)
-- [command line helper](#command-line-helper)
-- [run](#run)
-- [cp](#cp)
-- [X11 Forwarding](#x11-forwarding)
-- [container update](#container-update)
-- [Detach](#detach)
-- [Proxy](#proxy)
-- [tini](#tini)
-- [Swarm](#swarm)
-- [CoreOS](#coreos)
-- [boot2docker](#boot2docker)
-- [Windows/Mac](#windowsmac)
-- [Tools](#tools)
+    - [tini](#tini)
     - [S6 - a process supervisor](#s6---a-process-supervisor)
-- [Reversed Proxy](#reversed-proxy)
-    - [traefik](#traefik)
+- [badger](#badger)
+- [Storage](#storage)
+- [Commands](#commands)
+    - [build](#build)
+    - [container/image operations](#containerimage-operations)
+    - [cp](#cp)
+    - [run](#run)
+        - [X11 Forwarding](#x11-forwarding)
+    - [container update](#container-update)
+    - [Clean up](#clean-up)
+    - [Detach](#detach)
+- [Config](#config)
+    - [Proxy](#proxy)
+- [Swarm](#swarm)
+- [OS](#os)
+    - [CoreOS](#coreos)
+    - [boot2docker](#boot2docker)
+- [Windows/Mac](#windowsmac)
+- [Images](#images)
+    - [Reversed Proxy - traefik](#reversed-proxy---traefik)
 
 <!-- /TOC -->
-# API
-https://docs.docker.com/develop/sdk/#api-version-matrix
+# Scripts
 
-    Docker version	Maximum API version	Change log
-    17.10	1.33	
-    17.05	1.29	--cpus
-    1.13	1.25	--cpu-rt-period/runtime
-    1.12	1.24	not recommend running versions prior to 1.12
-
-# Install & Management
-    url=https://raw.githubusercontent.com/fzinfz/docker-images/master/init.sh
-    source /dev/stdin <<< "$(curl -sS $url)"
-    docker_install
-
-https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
-
-    sudo add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-
-https://help.aliyun.com/document_detail/60742.html
-
-   apt-get -y install apt-transport-https ca-certificates curl software-properties-common
-   curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-   sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
-   apt-get -y update
-
-
-# Config
-https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
-```
-/etc/docker/daemon.json     # delete `,` & `#...`
-# `dockerd` for debugging: https://docs.docker.com/engine/admin/
-{
-    "live-restore": true,   # containers remain running if daemon unavailable
-    "graph": "/data/docker-fs",
-    "storage-driver": "overlay2",
-    "registry-mirrors": [
-        "https://registry.docker-cn.com",
-        "https://docker.mirrors.ustc.edu.cn",
-        "http://hub-mirror.c.163.com"],
-    # https://cr.console.aliyun.com/#/accelerator
-    # https://mirror.ccs.tencentyun.com
-}
-```
-
-# image operations
-
-    docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
-    docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/docker.sh)"
 
 # Dockerfile code snippets
 ## apt
@@ -89,24 +41,35 @@ RUN apt update && apt install -y
 
 ## alpine
 ```
-    # install pip3
-    wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
+# install pip3
+RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 
-    RUN apk add --no-cache --virtual .build-deps  \
-        curl ca-certificates jq \
-        && apk del .build-deps
+RUN apk add --no-cache --virtual .build-deps  \
+    curl ca-certificates jq \
+    && apk del .build-deps
 ```
 
-## badger
+## tini
+https://github.com/krallin/tini  
+
+    docker run --init
+
+## S6 - a process supervisor
+https://github.com/just-containers/s6-overlay
+
+# badger
 https://microbadger.com
 
 # Storage
-https://docs.docker.com/engine/userguide/storagedriver/selectadriver/  
-![](https://docs.docker.com/engine/userguide/storagedriver/images/driver-pros-cons.png)
+https://docs.docker.com/storage/storagedriver/select-storage-driver/#docker-engine---community
+
+    When possible, overlay2 is the recommended storage driver. 
+    Supported backing filesystems: xfs with ftype=1, ext4 ( where /var/lib/docker/ is located )
 
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
-
-# build
+   
+# Commands   
+## build
 https://docs.docker.com/engine/reference/commandline/build/
 
     docker build [-f Dockerfile.custom] [--target multi-stage] Dockerfile-Root-Folder
@@ -125,10 +88,23 @@ https://docs.docker.com/engine/reference/commandline/build/
 
 Squashing does not destroy any existing image, rather it creates a new image.
 
-# command line helper
-https://html.ferro.pro/cmd.html
+## container/image operations
+    
+    docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
 
-# run
+    docker export container_name > container.tar
+    docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+
+    docker save image_name > image.tar
+    docker load < image.tar[.gz]
+
+## cp
+https://docs.docker.com/engine/reference/commandline/cp/
+
+    docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+    docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+        
+## run
 https://docs.docker.com/engine/reference/run/  
 https://docs.docker.com/engine/admin/resource_constraints/
 
@@ -161,17 +137,13 @@ echo test | docker run --rm -i alpine cat
 docker run --security-opt seccomp:unconfined  # may fix chromium start error
 ```
 
-# cp
-https://docs.docker.com/engine/reference/commandline/cp/
-
-    docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
-    docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
-
-# X11 Forwarding
+### X11 Forwarding
 http://wiki.ros.org/docker/Tutorials/GUI  
 https://people.ece.cornell.edu/skand/post/x-forwarding-on-docker/
 
-# container update
+    --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw"
+
+## container update
 https://docs.docker.com/engine/reference/commandline/container_update/
 
 docker container update [OPTIONS] CONTAINER [CONTAINER...]
@@ -181,10 +153,34 @@ docker container update [OPTIONS] CONTAINER [CONTAINER...]
     --memory-reservation		Memory soft limit
     --restart
 
-# Detach
+## Clean up
+
+    docker container prune
+    docker system prune  # Remove unused data
+
+## Detach
+
     Ctrl+p & Ctrl+q
 
-# Proxy
+# Config
+https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configuration-file
+```
+/etc/docker/daemon.json     # delete `,` & `#...`
+# `dockerd` for debugging: https://docs.docker.com/engine/admin/
+{
+    "live-restore": true,   # containers remain running if daemon unavailable
+    "graph": "/data/docker-fs",
+    "storage-driver": "overlay2",
+    "registry-mirrors": [
+        "https://registry.docker-cn.com",
+        "https://docker.mirrors.ustc.edu.cn",
+        "http://hub-mirror.c.163.com"],
+    # https://cr.console.aliyun.com/#/accelerator
+    # https://mirror.ccs.tencentyun.com
+}
+```
+
+## Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
 ```
 mkdir -p /etc/systemd/system/docker.service.d
@@ -200,12 +196,6 @@ systemctl restart docker
 systemctl show --property=Environment docker
 
 ```
-
-# tini
-https://github.com/krallin/tini
-Docker CE 1.13+
-
-    docker run --init
 
 # Swarm
 TCP port 2377 for cluster management communications
@@ -249,15 +239,17 @@ https://docs.docker.com/engine/reference/commandline/service_create/
     # service VIP
     ip addr | grep -P -o '\d+\.(?!255)\d+\.\d+\.\d+(?=/32)'
 
-# CoreOS
+# OS
+## CoreOS
 https://coreos.com/releases/
 ```
 vi /etc/coreos/update.conf
 update_engine_client -update
 ```
-
-# boot2docker
-https://github.com/boot2docker/boot2docker
+    
+## boot2docker
+https://github.com/boot2docker/boot2docker  
+Lightweight Linux for Docker
 
     echo EXTRA_ARGS="--foo=bar"  >>  /var/lib/boot2docker/profile
 
@@ -266,10 +258,6 @@ https://docs.docker.com/engine/installation/windows/
 https://docs.docker.com/machine/drivers/  
 https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
 
-# Tools
-## S6 - a process supervisor
-https://github.com/just-containers/s6-overlay
-
-# Reversed Proxy
-## traefik
+# Images
+## Reversed Proxy - traefik
 https://docs.traefik.io/user-guide/docker-and-lets-encrypt/

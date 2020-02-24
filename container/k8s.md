@@ -241,8 +241,9 @@ Example： https://github.com/kubernetes/kubernetes/blob/master/examples/guestbo
 https://github.com/kubernetes/minikube   
 
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    chmod +x minikube kubectl && sudo mv minikube /usr/local/bin/
-
+    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.8.0/bin/linux/amd64/kubectl
+    chmod +x minikube kubectl  && mv minikube kubectl /usr/local/bin/
+    
 ## Bare metal
 https://minikube.sigs.k8s.io/docs/start/linux/
 

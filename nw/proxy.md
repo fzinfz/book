@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [All In One](#all-in-one)
+- [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [v2ray](#v2ray)
     - [with router](#with-router)
@@ -37,9 +37,11 @@
 
 <!-- /TOC -->
 
-# All In One
-https://github.com/StreisandEffect/streisand  
-L2TP/IPsec, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, a Tor bridge, and WireGuard
+# zerotier
+
+    curl -s https://install.zerotier.com | sudo bash
+    service zerotier-one status
+    zerotier-cli status
 
 # Shadowsocks
 [Official](https://github.com/shadowsocks/) | 

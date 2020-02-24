@@ -1,8 +1,8 @@
 <!-- TOC -->
 
-- [Setup](#setup)
-- [Modules](#modules)
-    - [QNetworkProxy](#qnetworkproxy)
+- [Lib](#lib)
+    - [pyqt](#pyqt)
+        - [QNetworkProxy](#qnetworkproxy)
 - [Apps](#apps)
     - [Browser](#browser)
         - [qutebrowser](#qutebrowser)
@@ -10,12 +10,14 @@
 
 <!-- /TOC -->
 
-# Setup
+# Lib
+https://www.google.com/search?q=best+cross-platform+GUI+toolkits
+
+## pyqt
 
     pip install PyQt5
 
-# Modules
-## QNetworkProxy
+### QNetworkProxy
 https://doc.qt.io/qt-5/qnetworkproxy.html
 
 # Apps
@@ -30,4 +32,9 @@ Proxy Types: https://github.com/qutebrowser/qutebrowser/blob/86fca3e99ee4836f5f5
 https://github.com/alandmoore/admbrowser
 
     HTTPS, FTP, SOCKS, or authenticated proxy is not currently supported
+
+
+
+
+
 

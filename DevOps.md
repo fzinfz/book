@@ -3,16 +3,17 @@
 - [SNMP](#snmp)
 - [Monitoring](#monitoring)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
-        - [Docker](#docker)
+        - [server - Docker](#server---docker)
+        - [agent](#agent)
     - [Nagios - C](#nagios---c)
-        - [Docker](#docker-1)
+        - [Docker](#docker)
     - [Elastic](#elastic)
         - [Beats - Go](#beats---go)
+    - [Cacti - PHP](#cacti---php)
         - [alert](#alert)
     - [TICK stack](#tick-stack)
     - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
-    - [Cacti - PHP](#cacti---php)
-    - [open-falcon - Go/JS](#open-falcon---gojs)
+    - [open-falcon - Go + Python Flask](#open-falcon---go--python-flask)
     - [Munin - Perl/Shell](#munin---perlshell)
     - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
@@ -42,10 +43,12 @@ port 161 on the agent side is used for queries
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)
 
 # Monitoring
+https://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems
+
 ## Zabbix - C/PHP/JAVA
 https://github.com/zabbix/zabbix
 
-### Docker
+### server - Docker 
 https://www.zabbix.com/documentation/4.0/manual/installation/containers
 
     docker run --name zabbix-appliance -t \
@@ -54,21 +57,20 @@ https://www.zabbix.com/documentation/4.0/manual/installation/containers
         -d zabbix/zabbix-appliance:latest
     # Default login: Admin/zabbix
 
-https://hub.docker.com/r/zabbix/zabbix-agent  
-Connect to Zabbix server or Zabbix proxy containers (Active checks)  
-Connects from Zabbix server or Zabbix proxy in other containers (Passive checks)  
+### agent
 
-    ZABBIX_SERVER=
-    docker run --name zabbix-agent \
-        -e ZBX_SERVER_HOST="$ZABBIX_SERVER" \
-        -e ZBX_PASSIVESERVERS="$ZABBIX_SERVER" \
-        --privileged --net host \
-        -d --restart unless-stopped \
-        zabbix/zabbix-agent
+    Active : zabbix_agentd: active checks ->  zabbix_server: trapper  :10051  
+        ServerActive=
+        
+    Passive: zabbix_server: poller        ->  zabbix_agentd: listener :10050\
+        Server=
 
-    # Windows agent
-    zabbix_agentd.exe --config C:\_soft\zabbix_agents-4\conf\zabbix_agentd.win.conf --install 
+    # Windows agent, run under admininstrator cmd
+    zabbix_agentd.exe --config zabbix_agentd.win.conf --install
 
+    # Debian/Ubuntu
+    apt install zabbix-agent
+    service zabbix-agent start
 
 ## Nagios - C
 https://github.com/NagiosEnterprises/nagioscore  
@@ -121,6 +123,13 @@ https://github.com/elastic/beats
     Auditbeat   Audit Data Beats
     Heartbeat   Uptime Monitoring
 
+## Cacti - PHP
+https://github.com/Cacti/cacti
+
+https://hub.docker.com/r/smcline06/cacti
+
+    docker pull smcline06/cacti:latest
+    
 ### alert
 https://github.com/Yelp/elastalert
 https://github.com/sirensolutions/sentinl
@@ -163,11 +172,11 @@ https://github.com/pandorafms/pandorafms#screenshots
 
     apt install -y pandorafms-agent
 
-## Cacti - PHP
-https://github.com/Cacti/cacti
+## open-falcon - Go + Python Flask
+https://github.com/open-falcon/falcon-plus/tree/master/docker  
+v0.3: May 30, 2019
 
-## open-falcon - Go/JS
-https://github.com/open-falcon/falcon-plus/tree/master/docker
+https://github.com/open-falcon/falcon-plus/blob/master/docker/README.md
 
 ## Munin - Perl/Shell
 networked resource monitoring tool  

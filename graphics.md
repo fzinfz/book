@@ -10,6 +10,7 @@
 - [melt](#melt)
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
+- [Premiere](#premiere)
 - [blender](#blender)
 
 <!-- /TOC -->
@@ -61,6 +62,11 @@ https://movit.sesse.net/
 # Kdenlive
     sudo add-apt-repository ppa:kdenlive/kdenlive-stable    # GPU support
     sudo apt-get update
+
+# Premiere
+Window > Essential Graphics -> search `Title`  
+Windows -> Effects -> search `Cross Dissolve`  
+Link video and audio clips: Shift-click -> `Linked Selection` Button  
 
 # blender
 https://www.blender.org/  

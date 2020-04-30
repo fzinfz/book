@@ -1,11 +1,15 @@
 <!-- TOC -->
 
+- [Free](#free)
 - [storage](#storage)
 - [cli](#cli)
     - [vm](#vm)
     - [disk](#disk)
 
 <!-- /TOC -->
+
+# Free
+https://portal.azure.com/#blade/Microsoft_Azure_Billing/FreeServicesBlade
 
 # storage
 https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types
@@ -43,9 +47,19 @@ https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest
     az vm list --output table --show-details
     az vm stop/deallocate/start --resource-group linux --name ubuntu-2     
 
+`deallocate` to stop billing & `disk update`
+
 ## disk
 https://docs.microsoft.com/en-us/cli/azure/disk?view=azure-cli-latest#az-disk-update
 
+Locally-redundant storage (LRS)
+
     az disk list --resource-group linux --output table
-    az disk update --resource-group linux --name ubuntu-2_OsDisk_1_74250d56f08040e1a48f38b9198148f7 --size-gb 32    
+    az disk update --resource-group linux --name ubuntu-2_OsDisk_1_74250d56f08040e1a48f38b9198148f7 --size-gb 32 # Reducing disk/snapshot size is not supported. create new snapshot/disks.
     az disk update --resource-group linux --name ubuntu-2_OsDisk_1_74250d56f08040e1a48f38b9198148f7 --sku Premium_LRS
+
+    az disk create --location eastasia --sku Premium_LRS -g linux -n data-1 --size-gb 10
+    
+https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach
+
+    az vm disk attach -g linux --vm-name ubuntu-2 --name data-1 # --new

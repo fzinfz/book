@@ -2,16 +2,18 @@
 
 - [Software](#software)
 - [Text To Speech](#text-to-speech)
+    - [Azure](#azure)
+    - [Baidu](#baidu)
     - [Offline](#offline)
     - [Google](#google)
     - [AWS](#aws)
     - [IBM](#ibm)
     - [Bing](#bing)
-    - [Baidu - Free for Online](#baidu---free-for-online)
     - [Xunfei](#xunfei)
     - [Tencent](#tencent)
 - [Speech recognition](#speech-recognition)
     - [Chinese](#chinese)
+    - [Azure](#azure-1)
 
 <!-- /TOC -->
 
@@ -20,7 +22,20 @@ https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors
 https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio
 
 # Text To Speech
-My rate: Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/Baidu >> Bing/espeak
+My rate: Microsoft Edge > Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/Baidu >> Bing/espeak
+
+## Azure
+https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech
+
+https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
+
+	5M characters free per month
+    
+## Baidu
+https://developer.baidu.com/vcast  
+
+http://yuyin.baidu.com/#try  
+http://yuyin.baidu.com/docs/tts/136
 
 ## Offline
 https://en.wikipedia.org/wiki/Comparison_of_speech_synthesizers
@@ -77,10 +92,6 @@ https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-api/
 
 https://github.com/westparkcom/Python-Bing-TTS
 
-## Baidu - Free for Online
-http://yuyin.baidu.com/#try  
-http://yuyin.baidu.com/docs/tts/136
-
 ## Xunfei
 http://www.xfyun.cn/services/offline_tts (99+ RMB/m)
 
@@ -92,3 +103,8 @@ https://github.com/Uberi/speech_recognition
 
 ## Chinese
 https://www.zhihu.com/question/28167247 
+
+## Azure
+https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
+
+    5 audio hours free per month

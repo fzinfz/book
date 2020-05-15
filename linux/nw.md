@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [GUI tool](#gui-tool)
 - [Basic](#basic)
     - [Port listening](#port-listening)
     - [debug](#debug)
@@ -24,6 +25,11 @@
 - [DNS](#dns)
 
 <!-- /TOC -->
+
+# GUI tool
+
+    nm-connection-editor
+    /etc/init.d/network-manager restart
 
 # Basic
 https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf

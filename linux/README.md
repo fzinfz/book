@@ -260,7 +260,7 @@ rm -r /var/lib/apt/lists/*
 
 # Grub
     grub2-mkconfig -o /boot/grub2/grub.cfg
-    awk -F\' '/menuentry / {print $2}' /boot/grub2/grub.cfg
+    awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
     grub2-editenv list
 
@@ -386,6 +386,8 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
         -m   move into zipfile (delete OS files) !!
         -d   delete entries in zipfile !!!
         -u   update: only changed or new files
+
+     xz --decompress file.xz # -dgrub
 
 ## rsync
 

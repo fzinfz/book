@@ -39,6 +39,7 @@
 - [简繁体转换](#简繁体转换)
 - [mstsc client](#mstsc-client)
     - [CredSSP](#credssp)
+- [Disk tools](#disk-tools)
 
 <!-- /TOC -->
 
@@ -232,3 +233,6 @@ win10: 先Ctrl+F，按住Ctrl，再按Shift+F
 ## CredSSP
 gpedit.msc - Computer Configuration > Administrative Templates > System > Credentials Delegation
 Encryption Oracle Remediation policy: Enabled > Protection Level: Vulnerable
+
+# Disk tools
+DM Disk Editor and Data Recovery  https://dmde.com/  (view for viewing)

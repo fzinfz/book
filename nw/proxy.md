@@ -21,8 +21,6 @@
     - [KCPTun](#kcptun)
     - [dragonite-java](#dragonite-java)
     - [UDPspeeder](#udpspeeder)
-- [Reversed Proxy](#reversed-proxy)
-    - [Google](#google)
 - [govpn](#govpn)
 - [HTTP tunnel in Go: goflyway](#http-tunnel-in-go-goflyway)
 - [Other tools](#other-tools)
@@ -144,14 +142,6 @@ https://github.com/dragonite-network/dragonite-java
 
 ## UDPspeeder
 https://github.com/wangyu-/UDPspeeder
-
-# Reversed Proxy
-## Google
-https://github.com/bohanyang/onemirror  
-OneMirror is a Docker image of Nginx, which already configured Google Search, Google Fonts and Gravatar proxy.
-```
-docker run -p 80:80 -d bohan/onemirror
-```
 
 # govpn
 http://www.cypherpunks.ru/govpn/

@@ -1,11 +1,13 @@
 <!-- TOC -->
 
-- [plain text/index/debug/proxy](#plain-textindexdebugproxy)
-- [upstream](#upstream)
+- [plain text/index/debug](#plain-textindexdebug)
+- [Forward Proxy](#forward-proxy)
+- [Reverse Proxy](#reverse-proxy)
+    - [For Google](#for-google)
 
 <!-- /TOC -->
 
-## plain text/index/debug/proxy
+# plain text/index/debug
 https://www.nginx.com/resources/wiki/start/topics/examples/full/
 
     worker_processes  5;  ## Default: 1
@@ -26,11 +28,31 @@ https://www.nginx.com/resources/wiki/start/topics/examples/full/
         # debug, info, notice, warn, error, crit, alert, or emerg
     }
 
-    location / {
-        proxy_pass http://foo:8000;                                  # Reverse Proxy
+# Forward Proxy
+https://www.alibabacloud.com/blog/how-to-use-nginx-as-an-https-forward-proxy-server_595799
+
+    server {
+        listen  443;
+        
+        # dns resolver used by forward proxying
+        resolver  114.114.114.114;
+
+        # forward proxy for CONNECT request
+        proxy_connect;
+        proxy_connect_allow            443;
+        proxy_connect_connect_timeout  10s;
+        proxy_connect_read_timeout     10s;
+        proxy_connect_send_timeout     10s;
+
+        # forward proxy for non-CONNECT request
+        location / {
+            proxy_pass http://$host;
+            proxy_set_header Host $host;
+        }
     }
 
-## upstream
+
+# Reverse Proxy
 http://nginx.org/en/docs/http/ngx_http_upstream_hc_module.html
 
     upstream backend {
@@ -49,3 +71,10 @@ http://nginx.org/en/docs/http/ngx_http_upstream_hc_module.html
     }
 
 Nginx health checks is available as part of commercial subscription.
+
+## For Google
+https://github.com/bohanyang/onemirror  
+OneMirror is a Docker image of Nginx, which already configured Google Search, Google Fonts and Gravatar proxy.
+```
+docker run -p 80:80 -d bohan/onemirror
+```

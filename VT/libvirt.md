@@ -17,6 +17,7 @@
 - [qcow2](#qcow2)
 - [GRUB](#grub)
 - [UEFI](#uefi)
+- [Troubleshooting](#troubleshooting)
 
 <!-- /TOC -->
 
@@ -184,3 +185,9 @@ Support partion
     apt install -y ovmf
     systemctl restart libvirtd
     # select UEFI while creating VM
+
+# Troubleshooting
+
+    error while adding virt-manager NFS pool:
+        libvirtd[...]: cannot open volume '...': Transport endpoint is not connected
+    => chmod +r

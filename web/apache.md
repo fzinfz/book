@@ -1,7 +1,8 @@
 <!-- TOC -->
 
 - [httpd.conf](#httpdconf)
-- [apache2](#apache2)
+- [a2enmod](#a2enmod)
+- [ProxyPass](#proxypass)
 - [IBM IHS](#ibm-ihs)
     - [Docker](#docker)
     - [Windows](#windows)
@@ -12,9 +13,18 @@
 
     Options +Indexes
 
-# apache2
+# a2enmod
 
     a2enmod ssl
+
+# ProxyPass
+https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html
+
+    for m in proxy proxy_http proxy_balancer lbmethod_byrequests; do a2enmod $m; echo ----; done
+    systemctl restart apache2; systemctl status apache2
+
+    ProxyPass /tsadmin http://localhost:8000/
+    ProxyPassReverse /tsadmin  http://localhost:8000/
 
 # IBM IHS
 ## Docker

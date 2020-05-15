@@ -13,7 +13,8 @@
     - [Create](#create)
     - [Activate vg](#activate-vg)
     - [Add disk to vg](#add-disk-to-vg)
-    - [Remove diskfrom vg](#remove-diskfrom-vg)
+    - [Remove disk from vg](#remove-disk-from-vg)
+    - [lv operations](#lv-operations)
     - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
 - [Swap](#swap)
@@ -21,6 +22,7 @@
     - [dd](#dd)
     - [fio](#fio)
 - [SMART](#smart)
+- [SAMBA](#samba)
 
 <!-- /TOC -->
 
@@ -86,6 +88,7 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     echo $path $mount_point cifs username=$user,password=$passwd 0 0 >>  /etc/fstab # SMB
 
 ## fstab
+Loss NAS mount may cause hang!
 
     cat /proc/mounts    # list mounted
 
@@ -151,11 +154,15 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     pvcreate /dev/sdb   # delete all partitions first
     vgextend ubuntu-vg /dev/sdb
 
-## Remove diskfrom vg
+## Remove disk from vg
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/disk_remove_ex
 
     pvmove /dev/sdb1
     vgreduce myvg /dev/sdb1
+
+## lv operations
+
+    lvremove sandisk-u2/mint
 
 ## Resize fs
 PV thrink: gparted
@@ -166,7 +173,7 @@ PV thrink: gparted
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
-    lvextend --resize-fs -l +100%FREE /dev/debian9-vg/root 
+    lvextend --resize-fs -l +100%FREE vg/lv
 
 # btrfs
     btrfs filesystem resize +60G /data
@@ -197,6 +204,9 @@ PV thrink: gparted
      --size=512M --runtime=5
 
 # SMART
+
+    apt install smartmontools
+
 https://wiki.archlinux.org/index.php/S.M.A.R.T.
 
     smartctl --info /dev/sdf
@@ -214,3 +224,11 @@ https://wiki.archlinux.org/index.php/S.M.A.R.T.
                                 scttemp[sts,hist], scttempint,N[,p],
                                 scterc[,N,M], devstat[,N], ssd,
                                 gplog,N[,RANGE], smartlog,N[,RANGE]
+
+
+# SAMBA
+
+    apt install samba
+    vi /etc/samba/smb.conf
+    
+    service smbd restart

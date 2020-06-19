@@ -1,6 +1,7 @@
 <!-- TOC -->
 
-- [Free](#free)
+- [Console](#console)
+    - [Services free for 12 months](#services-free-for-12-months)
 - [storage](#storage)
 - [cli](#cli)
     - [vm](#vm)
@@ -8,8 +9,11 @@
 
 <!-- /TOC -->
 
-# Free
+# Console
+## Services free for 12 months
 https://portal.azure.com/#blade/Microsoft_Azure_Billing/FreeServicesBlade
+
+https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade  -- click subscription -> "Overview"
 
 # storage
 https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types

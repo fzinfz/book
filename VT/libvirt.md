@@ -165,7 +165,7 @@ Support partion
         <target dev='vdb' bus='virtio'/>
     </disk>
 
-        <source dev='/dev/disk/by-uuid/F82C62B02C626998'/>    
+        <source dev='/dev/disk/by-uuid/abcd1234'/>    
 
 # Qemu
 

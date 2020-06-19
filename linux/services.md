@@ -10,12 +10,10 @@
 # NFS
 ## Server
 
-    systemctl restart nfs-kernel-server
-
     apt install nfs-kernel-server
 
-    /etc/exports
-    /folder-location *(rw,no_root_squash,no_subtree_check)   
+    vi /etc/exports
+        /data *(rw,no_root_squash,no_subtree_check)   
 
     exportfs -a
     systemctl restart nfs-kernel-server

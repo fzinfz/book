@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [3rd-party Tools](#3rd-party-tools)
+    - [.iso to USB](#iso-to-usb)
 - [Driver backup](#driver-backup)
 - [Restore OS](#restore-os)
 - [.Net versions query](#net-versions-query)
@@ -40,8 +42,16 @@
 - [mstsc client](#mstsc-client)
     - [CredSSP](#credssp)
 - [Disk tools](#disk-tools)
+- [KMS Activation](#kms-activation)
+    - [Office](#office)
 
 <!-- /TOC -->
+
+# 3rd-party Tools
+## .iso to USB
+
+    rufus:   not support mount drive, but can add location; support WTG.
+    Etcher:  may not support Windows
 
 # Driver backup
     dism /online /export-driver /destination:C:\drivers-backup
@@ -101,6 +111,8 @@ Turn Windows features on or off -> Services for NFS
     Install-WindowsFeature -Name NFS-Client
 
     mount ip-of-NFS-Server:/Share-Name  x:
+    mount # show mounted
+    umount -f z:
 
 https://unix.stackexchange.com/questions/276292
 
@@ -236,3 +248,16 @@ Encryption Oracle Remediation policy: Enabled > Protection Level: Vulnerable
 
 # Disk tools
 DM Disk Editor and Data Recovery  https://dmde.com/  (view for viewing)
+
+# KMS Activation
+
+    cd C:\Windows\System32
+    CSCRIPT /NOLOGO SLMGR.VBS /SKMS 192.168.88.101
+    CSCRIPT /NOLOGO SLMGR.VBS /ATO
+
+## Office
+2016/2019/O365 Retail -> VL: https://github.com/kkkgo/office-C2R-to-VOL
+
+    cd OFFICE_DIR
+    CSCRIPT OSPP.VBS /SETHST:192.168.88.101
+    CSCRIPT OSPP.VBS /ACT

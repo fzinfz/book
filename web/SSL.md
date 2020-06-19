@@ -15,11 +15,10 @@
         - [Wildcard](#wildcard)
     - [OpenSSL](#openssl)
 - [PEM (.pem, .crt, .cer) to PFX](#pem-pem-crt-cer-to-pfx)
-    - [Cloudflare](#cloudflare)
     - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
 - [Nginx](#nginx)
     - [SSL](#ssl-1)
-- [Cloudflare](#cloudflare-1)
+- [Cloudflare](#cloudflare)
     - [SSL Modes](#ssl-modes)
     - [HTTPS](#https)
 
@@ -135,9 +134,6 @@ https://www.ssl.com/how-to/create-a-pfx-p12-certificate-file-using-openssl/
 
     openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile more.crt
 
-## Cloudflare
-https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)
-
 ## Mozilla SSL Configuration Generator
 https://mozilla.github.io/server-side-tls/ssl-config-generator/
 
@@ -173,6 +169,7 @@ https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ssl_trusted_certificate /path/to/root_CA_cert_plus_intermediates;
 
 # Cloudflare 
+https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)
 
 ## SSL Modes
 https://www.cloudflare.com/ssl/  

@@ -107,6 +107,8 @@ https://azure.microsoft.com/en-us/pricing/calculator/
 https://azure.microsoft.com/en-us/pricing/details/app-service/  
 https://azure.microsoft.com/en-us/pricing/details/bandwidth/
 
+    5 GB - 10 TB /Month: $0.12 per GB
+
 https://azure.microsoft.com/en-us/pricing/details/ip-addresses/
 
     Dynamic IP address - First Cloud Service VIP: Free  
@@ -145,6 +147,10 @@ https://aws.amazon.com/free/
 
 ## Azure
 $200: https://azure.microsoft.com/en-us/offers/ms-azr-0044p/  
+
+https://azure.microsoft.com/en-us/free/
+
+    15 GB outbound
 
 https://tryappservice.azure.com  
 

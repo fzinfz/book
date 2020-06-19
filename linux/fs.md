@@ -230,5 +230,14 @@ https://wiki.archlinux.org/index.php/S.M.A.R.T.
 
     apt install samba
     vi /etc/samba/smb.conf
-    
+
+    [public]
+        comment = public anonymous access
+        path = /data
+        browsable =yes
+        create mask = 0660
+        directory mask = 0771
+        writable = yes
+        guest ok = yes
+      
     service smbd restart

@@ -25,3 +25,7 @@ visit homepage for 1st guide
 https://caddyserver.com/docs/caddyfile/directives/reverse_proxy
 
     reverse_proxy localhost:8000
+
+    {
+        reverse_proxy /websocket localhost:10000
+    }

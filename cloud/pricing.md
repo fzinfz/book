@@ -79,7 +79,9 @@ https://cloud.google.com/free/docs/always-free-usage-limits
     GCE
         1 non-preemptible f1-micro VM instance per month in one of the following US regions:
         30 GB-months HDD
-
+    GCS: 5 GB + 1 GB network egress*
+    Firestore DB: 1 GB storage
+    
 # Compare
 ## Instance
 GCP: 20% vCPU + 0.60GB,	Free - $4.09  

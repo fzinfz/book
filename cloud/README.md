@@ -20,4 +20,4 @@
 ## qcloud
 
     /usr/local/sa/agent
-    /usr/local/qcloud/monitor/barad/admin    
+    /usr/local/qcloud/monitor/barad/admin        

@@ -22,6 +22,8 @@
 https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
 https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio  
 
+Input/Output equalizer: https://sourceforge.net/projects/equalizerapo/
+
 # Text To Speech
 My rate: Microsoft Neural > Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/Baidu >> espeak
    

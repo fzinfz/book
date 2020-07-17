@@ -43,6 +43,7 @@
     - [CredSSP](#credssp)
 - [Disk tools](#disk-tools)
 - [KMS Activation](#kms-activation)
+    - [Windows](#windows)
     - [Office](#office)
 
 <!-- /TOC -->
@@ -148,8 +149,11 @@ bcdboot c:\windows /s h: /f UEFI
 
 ## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  
-    iaStorV,iaStorAV,storahci: Start => 0  
-    StartOverride => DELETE
+
+    Win7  -> msahci：
+    Win10 -> iaStorV,iaStorAV,storahci: 
+        Start => 0  
+        \StartOverride => DELETE
 
 ## Uninstall software in safemode
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer" /VE /T REG_SZ /F /D "Service"
@@ -218,7 +222,6 @@ https://technet.microsoft.com/en-us/library/jj574205(v=ws.11).aspx
 
     cmdkey /add:<ServerName> /user:<UserName> /pass:<password>
 
-
 # GUI Tools
 List: https://www.hanselman.com/tools  
 SoftPerfect RAM Disk: https://www.softperfect.com/products/ramdisk
@@ -250,13 +253,22 @@ Encryption Oracle Remediation policy: Enabled > Protection Level: Vulnerable
 DM Disk Editor and Data Recovery  https://dmde.com/  (view for viewing)
 
 # KMS Activation
+## Windows
 
-    cd C:\Windows\System32
-    CSCRIPT /NOLOGO SLMGR.VBS /SKMS 192.168.88.101
-    CSCRIPT /NOLOGO SLMGR.VBS /ATO
+    CSCRIPT /NOLOGO C:\Windows\System32\SLMGR.VBS /?  # echo on console
+    
+https://technet.microsoft.com/en-us/library/jj612867.aspx
+
+    slmgr /SKMS 192.168.88.72
+    slmgr /ipk {GVLK}
+    slmgr /ATO
+    slmgr /dli
+    slmgr /upk # back to trial
 
 ## Office
 2016/2019/O365 Retail -> VL: https://github.com/kkkgo/office-C2R-to-VOL
+
+https://docs.microsoft.com/en-us/deployoffice/vlactivation/gvlks
 
     cd OFFICE_DIR
     CSCRIPT OSPP.VBS /SETHST:192.168.88.101

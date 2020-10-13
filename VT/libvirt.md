@@ -13,8 +13,6 @@
 - [Nested](#nested)
 - [vfio](#vfio)
     - [Raw disk mapping](#raw-disk-mapping)
-- [Qemu](#qemu)
-- [qcow2](#qcow2)
 - [GRUB](#grub)
 - [UEFI](#uefi)
 - [Troubleshooting](#troubleshooting)
@@ -166,15 +164,6 @@ Support partion
     </disk>
 
         <source dev='/dev/disk/by-uuid/abcd1234'/>    
-
-# Qemu
-
-    qemu-img resize foo.qcow2 +2G # file size will increase when actual size grows
-
-# qcow2
-
-    apt install libguestfs-tools
-    guestmount -a foo.qcow2 -i --ro /mnt/foo
 
 # GRUB
     cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT

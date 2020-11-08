@@ -21,6 +21,7 @@
 - [Installation](#installation)
     - [Tools](#tools)
     - [Force OOBE](#force-oobe)
+    - [Fix boot](#fix-boot)
     - [Fix boot partiton](#fix-boot-partiton)
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
@@ -134,6 +135,9 @@ net use h: \\192.168.0.1\docs /user:ServerB\user Password
 ## Force OOBE
 - Shift+F10 
 - c:\windows\system32\oobe\msoobe.exe
+
+## Fix boot
+https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/adding-boot-entries#adding-a-new-boot-en
 
 ## Fix boot partiton
 + EFI

@@ -11,6 +11,7 @@
 - [MacVTap](#macvtap)
 - [Shutdown timeout](#shutdown-timeout)
 - [Nested](#nested)
+- [virtiofs](#virtiofs)
 - [vfio](#vfio)
     - [Raw disk mapping](#raw-disk-mapping)
 - [GRUB](#grub)
@@ -148,6 +149,9 @@ booting with `kvm-intel.nested=1` argument on the kernel command line, or:
     sudo modprobe kvm-amd
 
 virt-manager：enable `Copy host CPU configuration` checkbox 
+
+# virtiofs
+https://libvirt.org/kbase/virtiofs.html
 
 # vfio
 https://www.kernel.org/doc/Documentation/vfio.txt

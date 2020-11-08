@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Relative imports in Python 3](#relative-imports-in-python-3)
 - [Distribution Default](#distribution-default)
 - [Jupyter](#jupyter)
 - [pip](#pip)
@@ -21,6 +22,14 @@
 - [WSDL](#wsdl)
 
 <!-- /TOC -->
+
+# Relative imports in Python 3
+https://stackoverflow.com/a/49375740/4769874  
+`from module1` intead of `from .module1`
+
+    # __init__.py
+    import os, sys
+    sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 # Distribution Default
 

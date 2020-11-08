@@ -1,7 +1,8 @@
 <!-- TOC -->
 
-- [SNMP](#snmp)
 - [Monitoring](#monitoring)
+    - [prometheus](#prometheus)
+        - [exporters](#exporters)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
         - [server - Docker](#server---docker)
         - [agent](#agent)
@@ -26,24 +27,29 @@
 - [CI](#ci)
     - [Jenkins - JAVA](#jenkins---java)
     - [Travis - Ruby/JS](#travis---rubyjs)
+- [SNMP](#snmp)
 
 <!-- /TOC -->
 
-# SNMP
-https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol
-
-v1: Authentication of clients is performed only by a "community string", in effect a type of password, which is transmitted in cleartext.  
-v2c comprises SNMPv2 without the controversial new SNMP v2 security model, using instead the simple community-based security scheme of SNMPv1. incompatible with SNMPv1 in two key areas: message formats and protocol operations.   
-v2u: greater security than SNMPv1, but without incurring the high complexity of SNMPv2.  
-v3 primarily added security and remote configuration enhancements to SNMP.
-
-the agent connects to the server on port 162  
-port 161 on the agent side is used for queries
-
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)
-
 # Monitoring
 https://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems
+
+## prometheus
+https://github.com/prometheus/prometheus#prometheus
+
+    docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus
+
+### exporters
+https://prometheus.io/docs/instrumenting/exporters/
+
+https://github.com/prometheus/node_exporter  
+
+    docker run -d
+    --net="host" \
+    --pid="host" \
+    -v "/:/host:ro,rslave" \
+    quay.io/prometheus/node-exporter \
+    --path.rootfs=/host
 
 ## Zabbix - C/PHP/JAVA
 https://github.com/zabbix/zabbix
@@ -242,3 +248,17 @@ run on all nodes: elastic-axis
 
 ## Travis - Ruby/JS
 https://github.com/travis-ci/travis-ci
+
+
+# SNMP
+https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol
+
+v1: Authentication of clients is performed only by a "community string", in effect a type of password, which is transmitted in cleartext.  
+v2c comprises SNMPv2 without the controversial new SNMP v2 security model, using instead the simple community-based security scheme of SNMPv1. incompatible with SNMPv1 in two key areas: message formats and protocol operations.   
+v2u: greater security than SNMPv1, but without incurring the high complexity of SNMPv2.  
+v3 primarily added security and remote configuration enhancements to SNMP.
+
+the agent connects to the server on port 162  
+port 161 on the agent side is used for queries
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)

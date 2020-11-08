@@ -1,6 +1,9 @@
 <!-- TOC -->
 
 - [Download](#download)
+    - [Debian](#debian)
+    - [Ubuntu](#ubuntu)
+- [Mirrors](#mirrors)
 - [Bash](#bash)
     - [tmux](#tmux)
 - [Init](#init)
@@ -18,8 +21,8 @@
     - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
-    - [Ubuntu](#ubuntu)
-    - [Debian](#debian)
+    - [Ubuntu](#ubuntu-1)
+    - [Debian](#debian-1)
     - [dpkg](#dpkg)
     - [apt](#apt)
 - [Grub](#grub)
@@ -66,12 +69,19 @@
 <!-- /TOC -->
 
 # Download
-http://releases.ubuntu.com/18.04/  (Desktop Version may have package conflicts.)
+## Debian
+https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/  
+
+## Ubuntu
+http://ftp.sjtu.edu.cn/ubuntu-cd/
 
 http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/mini.iso  
 ( Mirror only http://us.archive.ubuntu.com/ , need proxy, local DNS not working )
 
 Debug: Console 4 or /var/log/syslog
+
+# Mirrors
+http://mirrors.huaweicloud.com
 
 # Bash
 https://www.gnu.org/software/bash/manual/bash.html

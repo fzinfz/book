@@ -1,11 +1,22 @@
 <!-- TOC -->
 
+- [Note](#note)
+    - [NextCloud](#nextcloud)
 - [Sync](#sync)
     - [ResilioSync/BTSync](#resiliosyncbtsync)
 - [GPU](#gpu)
     - [OpenCL](#opencl)
 
 <!-- /TOC -->
+
+# Note
+## NextCloud
+https://github.com/docker-library/docs/blob/master/nextcloud/README.md#using-the-apache-image
+
+    docker run --name nextcloud -d --restart unless-stopped \
+        -p 8090:80  -v nextcloud:/var/www/html \
+        nextcloud  
+
 
 # Sync
 ## ResilioSync/BTSync

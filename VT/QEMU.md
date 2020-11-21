@@ -1,6 +1,9 @@
 <!-- TOC -->
 
 - [qcow2](#qcow2)
+    - [check](#check)
+    - [copy with real size](#copy-with-real-size)
+    - [mount](#mount)
 - [qemu-img](#qemu-img)
     - [qemu-img-windows](#qemu-img-windows)
 - [virtiofs](#virtiofs)
@@ -14,6 +17,19 @@
 # qcow2
 
     apt install libguestfs-tools
+
+## check
+
+    virt-list-partitions -lht foo.qcow2
+
+## copy with real size
+
+    for f in $(ls); do 
+        qemu-img convert -O qcow2 $f ${TARGET_DIR}/$f 
+    done
+
+## mount
+
     guestmount -a foo.qcow2 -i --ro /mnt/foo
 
 # qemu-img

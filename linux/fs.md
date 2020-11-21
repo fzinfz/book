@@ -4,7 +4,6 @@
 - [Check info](#check-info)
 - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
 - [mkpart, format](#mkpart-format)
-- [NTFS](#ntfs)
 - [mount/umount](#mountumount)
     - [fstab](#fstab)
 - [LVM](#lvm)
@@ -17,6 +16,8 @@
     - [lv operations](#lv-operations)
     - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
+- [f2fs](#f2fs)
+- [NTFS](#ntfs)
 - [Swap](#swap)
 - [Benchmark](#benchmark)
     - [dd](#dd)
@@ -71,9 +72,6 @@ https://wiki.archlinux.org/index.php/Parted
     set 1 esp on
     
     mkfs.ext4 /dev/sdb1
-
-# NTFS
-https://wiki.archlinux.org/index.php/NTFS-3G
 
 # mount/umount
 
@@ -173,12 +171,18 @@ PV thrink: gparted
     yum install e4fsprogs
     resize4fs /dev/debian9-vg/root # resize ext4 if resize2fs error: Filesystem has unsupported feature(s)
 
-    lvextend --resize-fs -l +100%FREE vg/lv
+    lvextend --resize-fs --extents +100%FREE vg/lv # not support btrfs
 
 # btrfs
     btrfs filesystem resize +60G /data
     btrfs filesystem usage /
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
+
+# f2fs
+https://www.kernel.org/doc/Documentation/filesystems/f2fs.txt
+
+# NTFS
+https://wiki.archlinux.org/index.php/NTFS-3G
 
 # Swap
     swapoff -v /dev/mapper/ubuntu--vg-swap_1
@@ -227,6 +231,13 @@ https://wiki.archlinux.org/index.php/S.M.A.R.T.
 
 
 # SAMBA
+docker
+
+    docker run --net host --name samba  \
+        -v /data:/data -d \
+        dperson/samba -p -s "public;/data;yes;no"
+
+apt
 
     apt install samba
     vi /etc/samba/smb.conf

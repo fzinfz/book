@@ -23,6 +23,7 @@
     - [Force OOBE](#force-oobe)
     - [Fix boot](#fix-boot)
     - [Fix boot partiton](#fix-boot-partiton)
+    - [Copy Boot Entries](#copy-boot-entries)
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [services.msc](#servicesmsc)
@@ -140,6 +141,10 @@ net use h: \\192.168.0.1\docs /user:ServerB\user Password
 https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/adding-boot-entries#adding-a-new-boot-en
 
 ## Fix boot partiton
+https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di#command-line-options
+
+    bcdboot C:\Windows /s S:
+
 + EFI
 ```
 diskpart
@@ -150,6 +155,12 @@ assign letter=b
 
 bcdboot c:\windows /s h: /f UEFI
 ```
+
+## Copy Boot Entries 
+
+    bcdedit /copy {current} /d "new" 
+    bcdedit /set {。。。}  device partition=W:
+    bcdedit /set {。。。}  osdevice partition=W:
 
 ## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  

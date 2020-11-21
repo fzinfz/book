@@ -125,6 +125,8 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Vi
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Host_Configuration_and_Guest_Installation_Guide/App_Macvtap.html  
 when a guest virtual machine is configured to use a type='direct' network interface such as macvtap, ..., the guest cannot communicate with its own host.
 
+My workaround: deassign macvtap host NIC's IP, and communicate with host's 2nd NIC.
+
 # Shutdown timeout
     vi /etc/init.d/libvirt-guests
         ON_SHUTDOWN=shutdown

@@ -233,7 +233,7 @@ https://wiki.archlinux.org/index.php/S.M.A.R.T.
 # SAMBA
 docker
 
-    docker run --net host --name samba  \
+    docker run  --restart=unless-stopped --net host --name samba  \ 
         -v /data:/data -d \
         dperson/samba -p -s "public;/data;yes;no"
 

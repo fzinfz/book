@@ -2,6 +2,7 @@
 
 - [Scripts](#scripts)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
+    - [CMD and ENTRYPOINT](#cmd-and-entrypoint)
     - [apt](#apt)
     - [alpine](#alpine)
     - [tini](#tini)
@@ -33,6 +34,13 @@
     source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/docker.sh)"
 
 # Dockerfile code snippets
+## CMD and ENTRYPOINT
+https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact
+
+    ENTRYPOINT [“exec_entry”, “p1_entry”]
+    CMD [“exec_cmd”, “p1_cmd”]
+    => exec_entry p1_entry exec_cmd p1_cmd
+
 ## apt
 ```
 RUN apt update && apt install -y 

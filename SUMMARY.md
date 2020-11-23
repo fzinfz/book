@@ -28,6 +28,7 @@
 * [Docker](container/docker.md)
   * [Kubernetes](container/k8s.md)
 * [Virtualization](VT/README.md)
+  * [QEMU](VT/QEMU.md)
   * [Libvirt](VT/libvirt.md)
   * [VDI](VT/VDI.md)
   * [Intel GVT-g](VT/Intel_GVTg.md)

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [My bash](#my-bash)
 - [Workflow](#workflow)
     - [commit](#commit)
     - [log](#log)
@@ -27,6 +28,10 @@
 - [Code search](#code-search)
 
 <!-- /TOC -->
+
+# My bash
+
+    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/init_git.sh)"
 
 # Workflow
 https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git  

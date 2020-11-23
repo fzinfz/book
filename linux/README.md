@@ -103,6 +103,7 @@ https://www.gnu.org/software/bash/manual/bash.html
 
     0: stdin; 1: stdout; 2: stderr              # File descriptor
     2>&1 >/dev/null
+    &>/dev/null
     ssh-add 2>/dev/null
 
 http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb

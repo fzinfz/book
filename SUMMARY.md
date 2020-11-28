@@ -22,7 +22,7 @@
 * [Web](web/README.md)  
   * [SSL](web/SSL.md)   
   * [nginx](web/nginx.md)  
-  * [Apache/IBM_IHS](web/IBM_IHS.md)  
+  * [Apache/IBM_IHS](web/apache.md)  
   * [j2ee](web/j2ee.md)    
   * [IBM_Websphere](web/IBM_Websphere.md)  
 * [Docker](container/docker.md)

@@ -19,6 +19,7 @@
     - [Clean up](#clean-up)
     - [Detach](#detach)
 - [Config](#config)
+    - [CN Mirrors](#cn-mirrors)
     - [Proxy](#proxy)
 - [Swarm](#swarm)
 - [OS](#os)
@@ -179,14 +180,11 @@ https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configurat
     "live-restore": true,   # containers remain running if daemon unavailable
     "graph": "/data/docker-fs",
     "storage-driver": "overlay2",
-    "registry-mirrors": [
-        "https://registry.docker-cn.com",
-        "https://docker.mirrors.ustc.edu.cn",
-        "http://hub-mirror.c.163.com"],
-    # https://cr.console.aliyun.com/#/accelerator
-    # https://mirror.ccs.tencentyun.com
 }
 ```
+
+## CN Mirrors
+https://yeasy.gitbook.io/docker_practice/install/mirror
 
 ## Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy

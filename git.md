@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Learn](#learn)
 - [My bash](#my-bash)
 - [Workflow](#workflow)
     - [commit](#commit)
@@ -29,9 +30,12 @@
 
 <!-- /TOC -->
 
+# Learn
+https://learngitbranching.js.org/?locale=en_US
+
 # My bash
 
-    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/init_git.sh)"
+    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/git.init.sh)"
 
 # Workflow
 https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git  

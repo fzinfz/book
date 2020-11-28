@@ -36,7 +36,6 @@ brew install gawk
 # Hackintosh
 ## Build an OS X boot disk
 http://diskmakerx.com/
-https://www.hackintosh.zone/file/1029-macpwn-for-hackintosh-high-sierra/
 
 ## On QEMU/KVM
 https://github.com/kholia/OSX-KVM

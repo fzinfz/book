@@ -94,9 +94,6 @@ https://serverfault.com/questions/9708
     openssl x509 -out converted.pem -inform der -in to-convert.der          # Convert
     openssl pkcs12 -in file-to-convert..pkcs12/.pfx/.p12 -out converted-file.pem -nodes
 
-
-
-
 ## ECDSA vs RSA
 https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/  
 with ECDSA you can get the same level of security as RSA but with smaller keys.  

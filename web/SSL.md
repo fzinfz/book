@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Cert check](#cert-check)
 - [Cryptography](#cryptography)
     - [Key exchange or key establishment](#key-exchange-or-key-establishment)
     - [cipher or cypher](#cipher-or-cypher)
@@ -24,6 +25,15 @@
 
 <!-- /TOC -->
 
+# Cert check
+443: https://www.ssllabs.com/ssltest/  
+non-443: https://www.immuniweb.com/ssl/
+
+    openssl s_client -showcerts -connect ${URL}:${PORT}
+
+https://testssl.sh/testssl.sh
+
+    apt-get install -y bsdmainutils
 
 # Cryptography
 ## Key exchange or key establishment

@@ -2,6 +2,7 @@
 
 - [Couchbase vs CouchDB](#couchbase-vs-couchdb)
 - [API Query](#api-query)
+- [key-value](#key-value)
 - [Time Series DBs](#time-series-dbs)
 - [TimescaleDB](#timescaledb)
 - [Riak TS](#riak-ts)
@@ -21,6 +22,9 @@ https://www.couchbase.com/couchbase-vs-couchdb
 
 # API Query
 http://graphql.org/
+
+# key-value
+https://github.com/dgraph-io/badger
 
 # Time Series DBs
 Why relational database instead of NoSQL: 

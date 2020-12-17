@@ -43,6 +43,7 @@
   * [Pricing](cloud/pricing.md)
 * [BI](BI.md)
 * [DB](db/README.md)
+  * [loki](db/loki.md)
   * [PostgreSQL](db/pgsql.md)
   * [MySQL & MariaDB](db/mysql.md)
   * [Oracle](db/oracle.md)

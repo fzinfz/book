@@ -1,6 +1,8 @@
 <!-- TOC -->
 
 - [Monitoring](#monitoring)
+    - [InfluxDB Telegraf](#influxdb-telegraf)
+    - [Grafana Promtail](#grafana-promtail)
     - [prometheus](#prometheus)
         - [exporters](#exporters)
     - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
@@ -33,6 +35,13 @@
 
 # Monitoring
 https://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems
+
+## InfluxDB Telegraf
+https://www.influxdata.com/blog/getting-started-with-influxdb-2-0-scraping-metrics-running-telegraf-querying-data-and-writing-data/
+
+## Grafana Promtail
+https://grafana.com/docs/loki/latest/clients/promtail/  
+[loki](./db/loki)
 
 ## prometheus
 https://github.com/prometheus/prometheus#prometheus

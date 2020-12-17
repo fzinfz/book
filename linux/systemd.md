@@ -4,6 +4,7 @@
 - [Units](#units)
 - [target](#target)
 - [Config](#config)
+    - [add](#add)
 - [debug](#debug)
 - [journald](#journald)
 - [systemd-networkd.service](#systemd-networkdservice)
@@ -90,6 +91,14 @@ http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_cu
 
     [Install]
     WantedBy=multi-user.target
+
+## add
+
+    cp -pv foo.service /etc/systemd/system/
+    systemctl daemon-reload
+    systemctl enable foo
+    systemctl start foo
+    systemctl status foo
 
 # debug
 https://wiki.debian.org/systemd#Debugging

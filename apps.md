@@ -13,10 +13,7 @@
 ## NextCloud
 https://github.com/docker-library/docs/blob/master/nextcloud/README.md#using-the-apache-image
 
-    docker run --name nextcloud -d --restart unless-stopped \
-        -p 8090:80  -v nextcloud:/var/www/html \
-        nextcloud  
-
+https://help.nextcloud.com/t/tutorial-how-to-migrate-mass-data-to-a-new-nextcloud-server/9418
 
 # Sync
 ## ResilioSync/BTSync

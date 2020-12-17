@@ -40,7 +40,7 @@
     - [compress/uncompress](#compressuncompress)
     - [rsync](#rsync)
 - [history without line numbers](#history-without-line-numbers)
-- [time](#time)
+- [hostname](#hostname)
 - [font](#font)
 - [SELinux](#selinux)
 - [Serial Console](#serial-console)
@@ -64,7 +64,6 @@
 - [OpenCL](#opencl)
 - [zFCP](#zfcp)
 - [Diagram](#diagram)
-- [CN Mirrors](#cn-mirrors)
 
 <!-- /TOC -->
 
@@ -81,7 +80,8 @@ http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/curre
 Debug: Console 4 or /var/log/syslog
 
 # Mirrors
-http://mirrors.huaweicloud.com
+http://mirrors.huaweicloud.com  
+https://mirrors.tuna.tsinghua.edu.cn
 
 # Bash
 https://www.gnu.org/software/bash/manual/bash.html
@@ -425,14 +425,13 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
         -P                          same as --partial --progress
 
 # history without line numbers
+
     history | cut -c 8-
       -a	append history lines from this session to the history file  ~/.bash_history    
 
-# time
-```
-sudo timedatectl set-ntp true
-TZ='Asia/Shanghai'; export TZ
-```
+# hostname
+
+    hostnamectl set-hostname GZ2C8G
 
 # font
 ```
@@ -562,5 +561,3 @@ device driver that supplements the Linux SCSI stack.
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
-# CN Mirrors
-https://mirrors.tuna.tsinghua.edu.cn

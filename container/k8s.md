@@ -19,6 +19,7 @@
     - [syntax](#syntax)
         - [env](#env)
         - [Command and Arguments](#command-and-arguments)
+    - [generator](#generator)
 - [Verbosity](#verbosity)
 - [minikube](#minikube)
     - [Bare metal](#bare-metal)
@@ -224,6 +225,9 @@ https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument
         - while true; do sleep 1; done
 
 Example： https://github.com/kubernetes/kubernetes/blob/master/examples/guestbook/all-in-one/guestbook-all-in-one.yaml
+
+## generator
+https://github.com/grafana/tanka
 
 # Verbosity
 |Verbosity|Description|

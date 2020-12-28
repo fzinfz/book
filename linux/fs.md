@@ -174,8 +174,10 @@ PV thrink: gparted
     lvextend --resize-fs --extents +100%FREE vg/lv # not support btrfs
 
 # btrfs
-    btrfs filesystem resize +60G /data
+    btrfs filesystem resize +60G /data # use gparted for shrink
     btrfs filesystem usage /
+    btrfs device usage /data
+
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
 
 # f2fs

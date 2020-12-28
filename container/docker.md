@@ -19,7 +19,7 @@
     - [Clean up](#clean-up)
     - [Detach](#detach)
 - [Config](#config)
-    - [CN Mirrors](#cn-mirrors)
+    - [Mirrors](#mirrors)
     - [Proxy](#proxy)
 - [Swarm](#swarm)
 - [OS](#os)
@@ -183,8 +183,9 @@ https://docs.docker.com/engine/reference/commandline/dockerd//#daemon-configurat
 }
 ```
 
-## CN Mirrors
-https://yeasy.gitbook.io/docker_practice/install/mirror
+## Mirrors
+CN: https://yeasy.gitbook.io/docker_practice/install/mirror
+LAN: https://docs.docker.com/registry/configuration/#proxy
 
 ## Proxy
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy

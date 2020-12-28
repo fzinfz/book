@@ -7,6 +7,7 @@
 - [Bash](#bash)
     - [tmux](#tmux)
 - [Init](#init)
+    - [login & non-login shells](#login--non-login-shells)
     - [supervisord](#supervisord)
 - [Exit code](#exit-code)
 - [Syslog Message Severities](#syslog-message-severities)
@@ -64,6 +65,7 @@
 - [OpenCL](#opencl)
 - [zFCP](#zfcp)
 - [Diagram](#diagram)
+- [diskless](#diskless)
 
 <!-- /TOC -->
 
@@ -135,8 +137,20 @@ http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
 
     apt install systemd-sysv    # make link: /sbin/init -> /lib/systemd/systemd
 
+## login & non-login shells
+
     vi ~/.bash_profile          # login shells
     vi ~/.bashrc                # non-login shells
+
+    # echo $0 # note the '-'
+    -bash
+    # shopt login_shell
+    login_shell     on
+    # bash
+    # echo $0
+    bash
+    # shopt login_shell
+    login_shell     off
 
 ## supervisord
 http://supervisord.org/running.html
@@ -561,3 +575,12 @@ device driver that supplements the Linux SCSI stack.
 # Diagram
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Free_and_open-source-software_display_servers_and_UI_toolkits.svg/1573px-Free_and_open-source-software_display_servers_and_UI_toolkits.svg.png)
 
+# diskless
+https://help.ubuntu.com/community/DisklessUbuntuHowto
+
+https://drbl.org/
+
+    docker run --network=host -d leejoneshane/drbl-server
+
+http://web.mst.edu/~vojtat/pegasus/administration.htm     
+based on Scientific Linux 7 / CentOS 7 / Red Hat Enterprise Linux 7 

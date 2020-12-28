@@ -139,6 +139,7 @@ http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
     }
 
 ## Transparent Proxy
+
     iptables -t nat -N TP
     iptables -t nat -I TP -p tcp --dport 4433 -j RETURN  # bypass Port
 

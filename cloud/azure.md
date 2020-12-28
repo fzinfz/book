@@ -6,6 +6,8 @@
 - [cli](#cli)
     - [vm](#vm)
     - [disk](#disk)
+    - [network lb](#network-lb)
+        - [inbound-nat-rule](#inbound-nat-rule)
 
 <!-- /TOC -->
 
@@ -67,3 +69,8 @@ Locally-redundant storage (LRS)
 https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach
 
     az vm disk attach -g linux --vm-name ubuntu-2 --name data-1 # --new
+
+## network lb
+### inbound-nat-rule
+https://docs.microsoft.com/en-us/cli/azure/network/lb/inbound-nat-rule?view=azure-cli-latest#az_network_lb_inbound_nat_rule_create
+

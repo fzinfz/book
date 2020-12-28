@@ -25,6 +25,7 @@
 - [Multi WAN](#multi-wan)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
+    - [mitmproxy](#mitmproxy)
     - [V2Ray - Go](#v2ray---go)
     - [redsocks - C](#redsocks---c)
     - [Tinyproxy - C](#tinyproxy---c)
@@ -181,6 +182,9 @@ https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
         Relayd
 
 # Transparent Proxy
+## mitmproxy
+https://docs.mitmproxy.org/stable/howto-transparent/
+
 ## V2Ray - Go
 https://www.v2ray.com/chapter_02/protocols/dokodemo.html  
 

@@ -4,6 +4,7 @@
 - [wireguard](#wireguard)
 - [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
+- [xray](#xray)
 - [v2ray](#v2ray)
     - [with router](#with-router)
 - [clash](#clash)
@@ -53,6 +54,19 @@ https://www.wireguard.com/quickstart/
 [Official](https://github.com/shadowsocks/) | 
 [Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
 ([raw](https://raw.githubusercontent.com/wiki/shadowsocks/shadowsocks/Feature-Comparison-across-Different-Versions.md)) 
+
+# xray
+https://github.com/XTLS/  
+https://hub.docker.com/r/teddysun/xray
+
+https://github.com/rprx/v2fly-github-io/blob/master/docs/config/protocols/vless.md#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8C%87%E5%BC%95
+
+    Qv2ray（v2.6.3+），支持 Linux、macOS、Windows
+    v2rayN（v3.21+），支持 Windows
+    v2rayNG（v1.3.0+），支持 Android
+    PassWall（v3.9.35+），支持 OpenWrt
+    v2rayA（v1.0.0+），支持 Linux
+    v2rayU（v3.0.0+），支持 macOS
 
 # v2ray
 https://www.v2ray.com/chapter_02/01_overview.html  

@@ -1,5 +1,8 @@
 <!-- TOC -->
 
+- [PXE](#pxe)
+    - [install](#install)
+    - [disless](#disless)
 - [3rd-party Tools](#3rd-party-tools)
     - [.iso to USB](#iso-to-usb)
 - [Driver backup](#driver-backup)
@@ -41,7 +44,8 @@
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
 - [简繁体转换](#简繁体转换)
-- [mstsc client](#mstsc-client)
+- [mstsc](#mstsc)
+    - [GPU - NVIDIA](#gpu---nvidia)
     - [CredSSP](#credssp)
 - [Disk tools](#disk-tools)
 - [KMS Activation](#kms-activation)
@@ -49,6 +53,14 @@
     - [Office](#office)
 
 <!-- /TOC -->
+
+# PXE
+## install
+https://github.com/zwj4031/netgrubfm/  
+https://space.bilibili.com/14597170/video  
+
+## disless
+
 
 # 3rd-party Tools
 ## .iso to USB
@@ -259,7 +271,11 @@ http://www.freerdp.com/
 # 简繁体转换
 win10: 先Ctrl+F，按住Ctrl，再按Shift+F
 
-# mstsc client
+# mstsc
+## GPU - NVIDIA
+https://developer.nvidia.com/nvidia-opengl-rdp  
+GeForce drivers R440 or later.
+
 ## CredSSP
 gpedit.msc - Computer Configuration > Administrative Templates > System > Credentials Delegation
 Encryption Oracle Remediation policy: Enabled > Protection Level: Vulnerable

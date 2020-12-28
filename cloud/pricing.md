@@ -113,8 +113,7 @@ https://azure.microsoft.com/en-us/pricing/details/bandwidth/
 
 https://azure.microsoft.com/en-us/pricing/details/ip-addresses/
 
-    Dynamic IP address - First Cloud Service VIP: Free  
-    BASIC (CLASSIC) Static IP address(reservation + usage) - First 5: Free
+    BASIC (CLASSIC) + Dynamic IP address + First Cloud Service VIP = free
 
 ## GCP
 https://cloud.google.com/pricing/  

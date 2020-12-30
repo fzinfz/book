@@ -1,7 +1,7 @@
 <!-- TOC -->
 
 - [nebula - go](#nebula---go)
-- [wireguard](#wireguard)
+- [WireGuard - C](#wireguard---c)
 - [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [xray](#xray)
@@ -34,14 +34,13 @@
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [tinyFecVPN](#tinyfecvpn)
-- [WireGuard - C](#wireguard---c)
 
 <!-- /TOC -->
 
 # nebula - go
 https://github.com/slackhq/nebula
 
-# wireguard
+# WireGuard - C
 https://www.wireguard.com/quickstart/
 
 # zerotier
@@ -195,6 +194,3 @@ https://github.com/shell909090/goproxy
 
 # tinyFecVPN
 https://github.com/wangyu-/tinyFecVPN
-
-# WireGuard - C
-https://www.wireguard.com/

@@ -16,6 +16,7 @@
     - [lv operations](#lv-operations)
     - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
+    - [snapshot](#snapshot)
 - [f2fs](#f2fs)
 - [NTFS](#ntfs)
 - [Swap](#swap)
@@ -174,11 +175,24 @@ PV thrink: gparted
     lvextend --resize-fs --extents +100%FREE vg/lv # not support btrfs
 
 # btrfs
+
     btrfs filesystem resize +60G /data # use gparted for shrink
     btrfs filesystem usage /
     btrfs device usage /data
 
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
+
+## snapshot
+
+    btrfs subvolume delete snapshot1/ 
+    # mv snapshot folder will be very slow
+
+    btrfs subvolume snapshot /var/lib/docker /var/lib/docker/btrfs/snapshot_20201230 
+
+    btrfs subvolume list /var/lib/docker
+    
+    mount -o subvolid=298 /dev/sda5 /var/lib/docker
+    subvolid=298,subvol=/btrfs/snapshot_20201230 
 
 # f2fs
 https://www.kernel.org/doc/Documentation/filesystems/f2fs.txt

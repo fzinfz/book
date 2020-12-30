@@ -5,6 +5,7 @@
 - [Config](#config)
 - [Debug](#debug)
 - [virsh](#virsh)
+- [snapshot](#snapshot)
 - [Pool](#pool)
 - [Driver](#driver)
 - [OVS](#ovs)
@@ -92,6 +93,12 @@ gdb: https://access.redhat.com/blogs/766093/posts/2690881
     virsh define  guest.xml
     virsh domxml-to-native qemu-argv demo.xml > demo.sh
     virsh domxml-from-native qemu-argv demo.args > demo.xml
+
+# snapshot
+
+    virsh snapshot-create-as --domain debian --name 'snapshot1'
+    virsh snapshot-list debian
+    qemu-img snapshot -l debian.qcow2 # when VM off
 
 # Pool
     virsh pool-edit default     # debian 9 default: /var/lib/libvirt/images/

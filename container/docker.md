@@ -9,6 +9,7 @@
     - [S6 - a process supervisor](#s6---a-process-supervisor)
 - [badger](#badger)
 - [Storage](#storage)
+    - [btrfs issue](#btrfs-issue)
 - [Commands](#commands)
     - [build](#build)
     - [container/image operations](#containerimage-operations)
@@ -76,7 +77,10 @@ https://docs.docker.com/storage/storagedriver/select-storage-driver/#docker-engi
     Supported backing filesystems: xfs with ftype=1, ext4 ( where /var/lib/docker/ is located )
 
 http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-drivers.html#80  
-   
+
+## btrfs issue
+https://gist.github.com/hopeseekr/cd2058e71d01deca5bae9f4e5a555440
+
 # Commands   
 ## build
 https://docs.docker.com/engine/reference/commandline/build/
@@ -106,6 +110,8 @@ Squashing does not destroy any existing image, rather it creates a new image.
 
     docker save image_name > image.tar
     docker load < image.tar[.gz]
+
+    docker save python | ssh -C 192.168.88.72 docker load
 
 ## cp
 https://docs.docker.com/engine/reference/commandline/cp/
@@ -188,13 +194,16 @@ CN: https://yeasy.gitbook.io/docker_practice/install/mirror
 LAN: https://docs.docker.com/registry/configuration/#proxy
 
 ## Proxy
+https://docs.docker.com/network/proxy/#configure-the-docker-client  
+~/.docker/config.json
+
 https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
 ```
 mkdir -p /etc/systemd/system/docker.service.d
 
 cat > /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
 [Service]
-Environment="HTTP_PROXY=http://192.168.88.11:1080/" "NO_PROXY=localhost,127.0.0.1,192.168.*.*.172.16.*.*"
+Environment="HTTP_PROXY=http://192.168.88.20:1080/" "NO_PROXY=localhost,127.0.0.1,192.168.*.*.172.16.*.*"
 EOF
 
 sudo systemctl daemon-reload

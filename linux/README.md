@@ -26,6 +26,7 @@
     - [Debian](#debian-1)
     - [dpkg](#dpkg)
     - [apt](#apt)
+    - [ssh server](#ssh-server)
 - [Grub](#grub)
     - [grub-customizer](#grub-customizer)
     - [boot repair](#boot-repair)
@@ -283,7 +284,14 @@ apt list --installed
 rm -r /var/lib/apt/lists/*
 ```
 
+## ssh server
+
+    deb http://.../debian/ buster main contrib non-free
+
+    apt install openssh-server # not "openssl"
+
 # Grub
+
     grub2-mkconfig -o /boot/grub2/grub.cfg
     awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
@@ -412,7 +420,7 @@ String replace: http://unix.stackexchange.com/questions/112023/how-can-i-replace
         -d   delete entries in zipfile !!!
         -u   update: only changed or new files
 
-     xz --decompress file.xz # -dgrub
+    xz --decompress file.xz # -dgrub # unxz
 
 ## rsync
 

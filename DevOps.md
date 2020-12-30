@@ -23,6 +23,7 @@
     - [Fabric - Python library](#fabric---python-library)
     - [invoke - Python library](#invoke---python-library)
     - [Ansible - Python](#ansible---python)
+        - [UI](#ui)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
     - [SaltStack - Python](#saltstack---python)
@@ -221,6 +222,16 @@ using SSH, with no agents to install on remote systems.
 
 https://www.ansible.com/blog/red-hat-ansible-automation-engine-vs-tower  
 Check "What do I get?" section for comparison.
+
+### UI
+python: https://github.com/vstconsulting/polemarch  
+node: https://github.com/node-ci/nci-ansible-ui  
+
+docker run -d --name polemarch --restart always \
+    -v /opt/polemarch/projects:/projects \
+    -v /opt/polemarch/hooks:/hooks \
+    vstconsulting/polemarch
+
 
 ## Puppet - Ruby
 https://hub.docker.com/u/puppet/  

@@ -9,6 +9,10 @@
 
 <!-- /TOC -->
 
+# Web
+https://github.com/blueimp/jQuery-File-Upload  
+
+
 # Note
 ## NextCloud
 https://github.com/docker-library/docs/blob/master/nextcloud/README.md#using-the-apache-image

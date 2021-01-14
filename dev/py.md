@@ -6,6 +6,7 @@
 - [pip](#pip)
     - [Installing from local](#installing-from-local)
     - [Proxy](#proxy)
+    - [CN Mirror](#cn-mirror)
 - [pypi](#pypi)
 - [Google Fire](#google-fire)
 - [pendulum](#pendulum)
@@ -54,6 +55,13 @@ https://stackoverflow.com/a/49375740/4769874
 ## Proxy
     export all_proxy="socks5://x:y" # cause python error: Missing dependencies for SOCKS support.
     pip install --proxy=https://user@mydomain:port  somepackage
+
+## CN Mirror
+
+  mkdir -p ~/.pip \
+  && echo '[global]' > ~/.pip/pip.conf \
+  && echo 'index-url =  https://mirrors.aliyun.com/pypi/simple/' >> ~/.pip/pip.conf \
+  && pip install -r requirements.txt
 
 # pypi
 https://packaging.python.org/tutorials/distributing-packages/

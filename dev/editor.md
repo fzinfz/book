@@ -1,7 +1,6 @@
 <!-- TOC -->
 
 - [vi/vim](#vivim)
-    - [VISUAL BLOCK mode](#visual-block-mode)
 - [VSCode](#vscode)
     - [extensions](#extensions)
     - [Debug Config](#debug-config)
@@ -20,8 +19,10 @@
     ~/.vimrc
     set nocompatible # fix array not working in insert mode
 
-## VISUAL BLOCK mode
-
+* Visual Insert Mode  
+    paste: Shift+Insert
+    
+* VISUAL BLOCK mode  
     Ctrl+V；【select block】；Shift + I; 【type text】; Esc
 
 # VSCode

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Web](#web)
 - [Note](#note)
     - [NextCloud](#nextcloud)
 - [Sync](#sync)
@@ -18,6 +19,12 @@ https://github.com/blueimp/jQuery-File-Upload
 https://github.com/docker-library/docs/blob/master/nextcloud/README.md#using-the-apache-image
 
 https://help.nextcloud.com/t/tutorial-how-to-migrate-mass-data-to-a-new-nextcloud-server/9418
+
+if behind rproxy:   
+https://docs.nextcloud.com/server/19/admin_manual/configuration_server/config_sample_php_parameters.html?highlight=overwrite%20cli%20url#proxy-configurations
+
+    'overwritehost' => '...',
+    'overwriteprotocol' => 'https',
 
 # Sync
 ## ResilioSync/BTSync

@@ -1,5 +1,8 @@
 <!-- TOC -->
 
+- [Mesh](#mesh)
+    - [Build - 802.11s](#build---80211s)
+    - [Roaming - 802.11k/r/v](#roaming---80211krv)
 - [Open Source Software for Routing](#open-source-software-for-routing)
 - [BGP](#bgp)
     - [Private AS](#private-as)
@@ -7,12 +10,14 @@
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
-- [OSPF](#ospf)
+- [NAT Hairpin + DDNS](#nat-hairpin--ddns)
     - [Mikrotik](#mikrotik)
-- [MPLS](#mpls)
+- [OSPF](#ospf)
     - [Mikrotik](#mikrotik-1)
-- [VPLS](#vpls)
+- [MPLS](#mpls)
     - [Mikrotik](#mikrotik-2)
+- [VPLS](#vpls)
+    - [Mikrotik](#mikrotik-3)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
@@ -36,6 +41,23 @@
 - [IPV6](#ipv6)
 
 <!-- /TOC -->
+
+# Mesh 
+## Build - 802.11s
+https://en.wikipedia.org/wiki/IEEE_802.11s  
+extends the IEEE 802.11 MAC standard
+
+https://en.wikipedia.org/wiki/Hybrid_Wireless_Mesh_Protocol  
+Hybrid Wireless Mesh Protocol (HWMP) defined in IEEE 802.11s, is a basic routing protocol for a wireless mesh network.
+
+## Roaming - 802.11k/r/v
+https://support.apple.com/en-us/HT202628
+- 802.11r - Fast Basic Service Set Transition (FT) to authenticate PSK/802.1X more quickly
+* 802.11k - search APs; creating an optimized list of channels
+* 802.11v - exchange network topology
+    - BSS transition management + Disassociation Imminent => influence client roaming behavior by providing it the load information of nearby access points.
+    - Directed Multicast Service (DMS): optimizes multicast
+    - BSS Max Idle Service: how long to remain associated when no traffic
 
 # Open Source Software for Routing 
 https://conference.apnic.net/__data/assets/pdf_file/0020/50681/osr_apnic34_1346044930.pdf
@@ -74,6 +96,10 @@ https://wiki.vyos.net/wiki/User_Guide
 https://mikrotik.com/download  
 https://www.clearos.com/clearfoundation/software/clearos-7-community      
 https://docs.cumulusnetworks.com/display/ROH/Configuring+Cumulus+Quagga
+
+# NAT Hairpin + DDNS
+## Mikrotik
+https://youtu.be/_kw_bQyX-3U?t=174
 
 # OSPF
 ## Mikrotik

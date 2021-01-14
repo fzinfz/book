@@ -2,6 +2,7 @@
 
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
 - [Mikrotik](#mikrotik)
+    - [Quickset](#quickset)
     - [Reset](#reset)
     - [Diagram](#diagram)
     - [Wireless](#wireless)
@@ -38,6 +39,22 @@ http://pkg.entware.net/binaries/mipsel/
 
 # Mikrotik
 TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  
+
+check if winbox not working: /webfig/#IP:Services
+
+## Quickset
+
+    CAP: managed by a centralised CAPsMAN server
+
+    CPE: Client device
+
+    BasicAP: Wireless
+    HomeAP: Wireless/Guest; WAN; LAN; VPN; System update/reset/password
+    WISP AP: Wireless Bridge/Router;  VPN; System update/reset/password
+
+    Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
+
+    PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
 
 ## Reset
 https://wiki.mikrotik.com/wiki/Manual:Reset

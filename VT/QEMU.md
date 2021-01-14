@@ -1,9 +1,6 @@
 <!-- TOC -->
 
-- [qcow2](#qcow2)
-    - [check](#check)
-    - [copy with real size](#copy-with-real-size)
-    - [mount](#mount)
+- [scripts](#scripts)
 - [qemu-img](#qemu-img)
     - [qemu-img-windows](#qemu-img-windows)
 - [virtiofs](#virtiofs)
@@ -14,31 +11,13 @@
 
 <!-- /TOC -->
 
-# qcow2
-
-    apt install libguestfs-tools
-
-## check
-
-    virt-list-partitions -lht foo.qcow2
-
-## copy with real size
-
-    for f in $(ls); do 
-        qemu-img convert -O qcow2 $f ${TARGET_DIR}/$f 
-    done
-
-## mount
-
-    guestmount -a foo.qcow2 -i --ro /mnt/foo
+# scripts
+https://github.com/fzinfz/scripts/blob/master/lib/qemu.sh
 
 # qemu-img
 
-    qemu-img -h | tail -n1  # Supported formats
     tar -xvf x.ova
-    qemu-img convert -O qcow2 x.vmdk x.qcow2    
-
-    qemu-img resize foo.qcow2 +2G # file size will increase when actual size grows
+    qemu-img resize foo.qcow2 +2G # thin
 
 ## qemu-img-windows
 https://cloudbase.it/qemu-img-windows/

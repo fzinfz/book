@@ -23,7 +23,6 @@
     - [Fabric - Python library](#fabric---python-library)
     - [invoke - Python library](#invoke---python-library)
     - [Ansible - Python](#ansible---python)
-        - [UI](#ui)
     - [Puppet - Ruby](#puppet---ruby)
     - [Chef - Ruby](#chef---ruby)
     - [SaltStack - Python](#saltstack---python)
@@ -217,21 +216,7 @@ https://github.com/pyinvoke/invoke
 When planning Fabric 2.x, having the “local” feature set as a standalone library made sense, and it seemed plausible to design the SSH component as a separate layer above. Thus, Invoke was created to focus exclusively on local and abstract concerns, leaving Fabric 2.x concerned only with servers and network commands.
 
 ## Ansible - Python
-https://github.com/ansible/ansible  
-using SSH, with no agents to install on remote systems.
-
-https://www.ansible.com/blog/red-hat-ansible-automation-engine-vs-tower  
-Check "What do I get?" section for comparison.
-
-### UI
-python: https://github.com/vstconsulting/polemarch  
-node: https://github.com/node-ci/nci-ansible-ui  
-
-docker run -d --name polemarch --restart always \
-    -v /opt/polemarch/projects:/projects \
-    -v /opt/polemarch/hooks:/hooks \
-    vstconsulting/polemarch
-
+https://github.com/fzinfz/ansible
 
 ## Puppet - Ruby
 https://hub.docker.com/u/puppet/  

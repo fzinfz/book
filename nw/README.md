@@ -75,8 +75,8 @@ BGP-based VPNs as a backend for Neutron
 
 ## Private AS
 https://tools.ietf.org/html/rfc6996#section-5
-64512 - 65534
-4200000000 - 4294967294
+* 64512 - 65534
+* 4200000000 - 4294967294
 
 # Virtual networking modes
 https://thenewstack.io/hackers-guide-kubernetes-networking/  
@@ -100,6 +100,8 @@ https://docs.cumulusnetworks.com/display/ROH/Configuring+Cumulus+Quagga
 # NAT Hairpin + DDNS
 ## Mikrotik
 https://youtu.be/_kw_bQyX-3U?t=174
+
+    dst-address-type=local and also dst-address=!192.168.0.0/16
 
 # OSPF
 ## Mikrotik

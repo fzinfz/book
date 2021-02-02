@@ -126,6 +126,8 @@ http://virt.kernelnewbies.org/MacVTap
  ![](https://seravo.fi/wp-content/uploads/2012/10/hairpin.png)   
  `Bridge`, connecting all endpoints directly to each other. when inter-guest communication is performance critical.
 
+    To support vlan: ip link set dev enp4s0 promisc on
+
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Administration_Guide/sect-attch-nic-physdev.html    
 `passthrough` attaches a virtual function of a SRIOV capable NIC directly to a VM **without losing the migration capability**.
 
@@ -135,6 +137,7 @@ when a guest virtual machine is configured to use a type='direct' network interf
 My workaround: deassign macvtap host NIC's IP, and communicate with host's 2nd NIC.
 
 # Shutdown timeout
+
     vi /etc/init.d/libvirt-guests
         ON_SHUTDOWN=shutdown
         SHUTDOWN_TIMEOUT=10
@@ -142,20 +145,8 @@ My workaround: deassign macvtap host NIC's IP, and communicate with host's 2nd N
     systemctl enable libvirt-guests.service
 
 # Nested
-    cat /sys/module/kvm_intel/parameters/nested
-
-    apt install sysfsutils
-    systool -m kvm_intel -v | grep nested
-
-booting with `kvm-intel.nested=1` argument on the kernel command line, or:
-
-    sudo rmmod kvm-intel
-    sudo sh -c "echo 'options kvm-intel nested=y' >> /etc/modprobe.d/dist.conf"
-    sudo modprobe kvm-intel
-
-    sudo rmmod kvm-amd
-    sudo sh -c "echo 'options kvm-amd nested=1' >> /etc/modprobe.d/dist.conf"
-    sudo modprobe kvm-amd
+booting with `kvm-intel.nested=1` argument on the kernel command line, or:  
+https://www.linux-kvm.org/page/Nested_Guests#How_to_run
 
 virt-manager：enable `Copy host CPU configuration` checkbox 
 

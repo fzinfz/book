@@ -8,12 +8,13 @@
     - [SSH key](#ssh-key)
     - [view conn list](#view-conn-list)
 - [/etc/config/](#etcconfig)
-    - [firewall](#firewall-1)
     - [network](#network)
-- [V2Ray](#v2ray)
+- [QoS](#qos)
+    - [SQM](#sqm)
+    - [nftables](#nftables)
 - [Download](#download)
-    - [x86](#x86)
-        - [ipk](#ipk)
+- [RM2100](#rm2100)
+- [Breed](#breed)
 
 <!-- /TOC -->
 
@@ -25,25 +26,18 @@
 
 # Web UI
 ## firewall
-http://192.168.88.18/cgi-bin/luci/admin/network/firewall  
+/cgi-bin/luci/admin/network/firewall  
 ## iptables
-http://192.168.88.18/cgi-bin/luci/admin/status/iptables  
+/cgi-bin/luci/admin/status/iptables  
 ## SSH key
-http://192.168.88.18/cgi-bin/luci/admin/system/admin   
+/cgi-bin/luci/admin/system/admin   
 ## view conn list
-http://192.168.88.18/cgi-bin/luci/admin/status/realtime/connections 
+/cgi-bin/luci/admin/status/realtime/connections 
 
 # /etc/config/
-## firewall
-WAN INPUT -> ACCEPT ; then reboot
-
 ## network
 https://openwrt.org/docs/guide-user/base-system/basic-networking#network_configuration
-
-LAN DHCP: http://192.168.88.18/cgi-bin/luci/admin/network/network/lan  
-
-    vi /etc/config/network
-                                                                
+                                  
         config interface 'wan'
             option ifname 'eth0'
             option proto 'dhcp'
@@ -58,26 +52,24 @@ LAN DHCP: http://192.168.88.18/cgi-bin/luci/admin/network/network/lan
 
     /etc/init.d/network restart
 
-# V2Ray
-https://github.com/kuoruan/luci-app-v2ray
+H/W Router: wireless interfaces may be added to lan automatically via LUCI, create new for other bridges.
 
-    opkg remove  dnsmasq
+# QoS
+## SQM
+https://openwrt.org/docs/guide-user/network/traffic-shaping/start
 
-https://github.com/kuoruan/openwrt-v2ray  
-https://github.com/kuoruan/openwrt-v2ray/releases  
-view active config: http://192.168.88.18/cgi-bin/luci/admin/services/v2ray/about
-
-    iptables -t nat -I POSTROUTING -j MASQUERADE
-
-https://github.com/felix-fly/v2ray-openwrt
-
-https://github.com/felix-fly/v2ray-dnsmasq-dnscrypt
+## nftables
+https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 
 # Download
-http://openwrt-dist.sourceforge.net/   
+- Pure: http://openwrt-dist.sourceforge.net/   
+- QoS/VPNs: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
 
-## x86
-https://drive.google.com/drive/folders/1PsS3c0P7a4A4KY8plQg4Fla8ZI-PGBb1  
+* eSir: https://drive.google.com/drive/folders/1dqNUrMf9n7i3y1aSh68U5Yf44WQ3KCuh
+* Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
 
-### ipk
-https://drive.google.com/drive/folders/1PptKkVHiWVcEkSASFulYoJ7NJWxVxwvM
+# RM2100
+http://openwrt.ink:88/archives/s-breed
+
+# Breed
+breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade

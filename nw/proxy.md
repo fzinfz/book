@@ -34,6 +34,7 @@
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [tinyFecVPN](#tinyfecvpn)
+- [Subscription URL Generator](#subscription-url-generator)
 
 <!-- /TOC -->
 
@@ -98,7 +99,8 @@ loglevel： "debug"、"info"、"warning"、"error" 和 "none"
 https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 
 # clash
-https://github.com/Dreamacro/clash
+https://github.com/Dreamacro/clash  
+Win GUI: https://docs.cfw.lbyczf.com/contents/quickstart.html
 
 # Brook - Go
 https://github.com/txthinking/brook
@@ -194,3 +196,6 @@ https://github.com/shell909090/goproxy
 
 # tinyFecVPN
 https://github.com/wangyu-/tinyFecVPN
+
+# Subscription URL Generator
+https://sub-web.netlify.app/

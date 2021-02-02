@@ -128,11 +128,21 @@ https://kernelnewbies.org/LinuxVersions
     11	Bullseye
 
 # Kernel Versions
-https://kernelnewbies.org/LinuxChanges
+https://kernelnewbies.org/LinuxChanges  
+https://kernelnewbies.org/Linux_5.10 
+
 
 `+` for Longterm
 
-    5.9 - 11 Oct 2020
+    5.10 + 2020-12-13
+        Ext4 fast commit
+        Faster performance and memory consumption in virtio-fs
+        
+
+
+    5.9 - 2020-10-11
+        New cgroup slab controller shares slab memory
+        NFS: extended attributes RFC 8276
 
     5.4 + 2019-11-24  ->	Dec, 2025
 

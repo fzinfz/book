@@ -50,9 +50,12 @@ check if winbox not working: /webfig/#IP:Services
 
     BasicAP: Wireless
     HomeAP: Wireless/Guest; WAN; LAN; VPN; System update/reset/password
-    WISP AP: Wireless Bridge/Router;  VPN; System update/reset/password
+    Wireless ISP (WISP) AP: 802.11/nstreme/nv2 Wireless Bridge/Router;  VPN; System update/reset/password
 
     Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
+
+not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
+"No supported channel" => reset and run quickset first
 
     PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
 

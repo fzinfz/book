@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [vi/vim](#vivim)
+- [Markdown + LaTeX](#markdown--latex)
 - [VSCode](#vscode)
     - [extensions](#extensions)
     - [Debug Config](#debug-config)
@@ -24,6 +25,9 @@
     
 * VISUAL BLOCK mode  
     Ctrl+V；【select block】；Shift + I; 【type text】; Esc
+
+# Markdown + LaTeX
+https://github.com/pandao/editor.md
 
 # VSCode
 ## extensions

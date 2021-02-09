@@ -46,6 +46,11 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     ip route add default via 192.168.1.1
     ip route show table all
 
+## /etc/network/interfaces
+
+    auto enp1s0
+    iface enp1s0 inet dhcp
+
 ## Port listening
    
     # netstat -lntup | grep 8888
@@ -81,6 +86,11 @@ https://github.com/shemminger/iproute2/blob/master/misc/ss.c
 ## disable ipv6
     echo "net.ipv6.conf.all.disable_ipv6=1"  >> /etc/sysctl.conf
     sysctl  -p
+
+# nftables
+- https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
+- https://wiki.nftables.org/wiki-nftables/index.php/Moving_from_iptables_to_nftables
+- https://openwrt.org/docs/guide-user/firewall/misc/nftables
 
 # iptables
 ## table / chain

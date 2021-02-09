@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Screen sharing](#screen-sharing)
 - [Web](#web)
 - [Note](#note)
     - [NextCloud](#nextcloud)
@@ -14,9 +15,14 @@
 
 <!-- /TOC -->
 
+# Screen sharing
+|Type|Site|Server|Client|Management|
+|---|---|---|---|---|
+|OSS|https://spacedesk.net/|win|win/ios/android/web|ViewOnly|
+|Commercial|https://deskreen.com/|win/mac/linux|web|Touch|
+
 # Web
 https://github.com/blueimp/jQuery-File-Upload  
-
 
 # Note
 ## NextCloud

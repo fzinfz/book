@@ -5,6 +5,7 @@
 - [VSCode](#vscode)
     - [extensions](#extensions)
     - [Debug Config](#debug-config)
+    - [Web](#web)
     - [remtoe-ssh](#remtoe-ssh)
 
 <!-- /TOC -->
@@ -41,6 +42,9 @@ https://github.com/pandao/editor.md
     "args": [
         "--help", ""
     ],
+
+## Web
+https://github.com/conwnet/github1s
 
 ## remtoe-ssh
 https://code.visualstudio.com/docs/remote/ssh

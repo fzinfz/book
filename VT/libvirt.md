@@ -10,6 +10,9 @@
 - [Driver](#driver)
 - [OVS](#ovs)
 - [MacVTap](#macvtap)
+- [VLAN](#vlan)
+    - [Macvlan Bridge](#macvlan-bridge)
+    - [OVS - VLAN tagging transparent](#ovs---vlan-tagging-transparent)
 - [Shutdown timeout](#shutdown-timeout)
 - [Nested](#nested)
 - [virtiofs](#virtiofs)
@@ -121,12 +124,11 @@ http://docs.openvswitch.org/en/latest/howto/libvirt/
     </interface>
 
 # MacVTap
-http://virt.kernelnewbies.org/MacVTap  
- `private` mode exists that behaves like a `VEPA` mode endpoint in the absence of a hairpin aware switch. Most switches today do not support hairpin mode.      
- ![](https://seravo.fi/wp-content/uploads/2012/10/hairpin.png)   
- `Bridge`, connecting all endpoints directly to each other. when inter-guest communication is performance critical.
+https://hicu.be/bridge-vs-macvlan
 
-    To support vlan: ip link set dev enp4s0 promisc on
+- Macvlan Bridge: VM-VM has bridge
+- Macvlan private: VM-VM no communication
+- Macvlan VEPA: VM-VM communicate via VEPA capable switch
 
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Virtualization_Administration_Guide/sect-attch-nic-physdev.html    
 `passthrough` attaches a virtual function of a SRIOV capable NIC directly to a VM **without losing the migration capability**.
@@ -135,6 +137,21 @@ https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Vi
 when a guest virtual machine is configured to use a type='direct' network interface such as macvtap, ..., the guest cannot communicate with its own host.
 
 My workaround: deassign macvtap host NIC's IP, and communicate with host's 2nd NIC.
+
+# VLAN
+## Macvlan Bridge
+
+    ip link set dev enp4s0 promisc on
+
+## OVS - VLAN tagging transparent
+https://libvirt.org/formatdomain.html#setting-vlan-tag-on-supported-network-types-only
+
+    <devices>
+    <interface type='bridge'>
+        <vlan>
+            <tag id='42'/>
+        </vlan>
+        <source bridge='ovsbr0'/>
 
 # Shutdown timeout
 

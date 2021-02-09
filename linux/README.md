@@ -109,7 +109,7 @@ https://www.gnu.org/software/bash/manual/bash.html
     &>/dev/null
     ssh-add 2>/dev/null
 
-http://nbviewer.jupyter.org/github/fzinfz/notes/blob/master/linux.ipynb
+https://git.savannah.gnu.org/cgit/bash.git/
 
 ## tmux
 

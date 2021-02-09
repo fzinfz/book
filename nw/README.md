@@ -39,6 +39,7 @@
     - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
 - [NetFlow Software](#netflow-software)
 - [IPV6](#ipv6)
+- [Guide](#guide)
 
 <!-- /TOC -->
 
@@ -252,3 +253,6 @@ https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/networking
 
 # IPV6
 https://tunnelbroker.net/
+
+# Guide
+https://e.huawei.com/en/eblog/enterprise-networking/wifi6/What-the-difference-between-corporate-Wi-Fi-and-home-Wi-Fi

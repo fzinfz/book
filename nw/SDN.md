@@ -6,15 +6,9 @@
     - [Supported switch & controller](#supported-switch--controller)
     - [Run](#run)
     - [Remote control](#remote-control)
+- [Switch - C - Open vSwitch - OpenFlow 1.0+](#switch---c---open-vswitch---openflow-10)
 - [Switch - C - Lagopus - OpenFlow 1.3](#switch---c---lagopus---openflow-13)
 - [Switch - C - OpenFlow 1.3 Software Switch](#switch---c---openflow-13-software-switch)
-- [Switch - C - Open vSwitch - OpenFlow 1.0+](#switch---c---open-vswitch---openflow-10)
-    - [Install](#install-1)
-    - [Config](#config)
-    - [Port bonding](#port-bonding)
-    - [Port mirroring](#port-mirroring)
-    - [Notes](#notes)
-    - [UI](#ui)
 - [Controller - Python - Faucet - OpenFlow 1.3](#controller---python---faucet---openflow-13)
     - [Docs](#docs)
     - [faucet.yaml](#faucetyaml)
@@ -24,7 +18,6 @@
         - [VLAN](#vlan)
     - [Manually install](#manually-install)
     - [Docker](#docker)
-    - [OVS](#ovs)
 - [Controller - Python - Ryu](#controller---python---ryu)
     - [Docker](#docker-1)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
@@ -32,7 +25,7 @@
 - [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
     - [Source build](#source-build)
     - [Manual](#manual)
-    - [Install](#install-2)
+    - [Install](#install-1)
 - [Controller - C - OVN](#controller---c---ovn)
 - [Controller - C++ - OpenContrail by Juniper](#controller---c---opencontrail-by-juniper)
     - [Kubernetes](#kubernetes)
@@ -131,6 +124,9 @@ http://mininet.org/api/classmininet_1_1topo_1_1Topo.html
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-control-my-mininet-hosts-remotely
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-add-a-rest-interface-to-mininet
 
+# Switch - C - Open vSwitch - OpenFlow 1.0+
+[OVS](./ovs)
+
 # Switch - C - Lagopus - OpenFlow 1.3
 https://github.com/lagopus/lagopus  
 VLAN, QinQ, MAC-in-MAC, MPLS and PBB.  
@@ -139,108 +135,6 @@ Memory: 2GB or more
 
 # Switch - C - OpenFlow 1.3 Software Switch
 https://github.com/CPqD/ofsoftswitch13
-
-# Switch - C - Open vSwitch - OpenFlow 1.0+
-Features mapping: http://docs.openvswitch.org/en/latest/faq/releases/
-
-    # Supported datapaths
-    Linux upstream
-    Linux OVS tree：implemented by the Linux kernel module distributed with the OVS source tree.
-    Userspace：Also known as DPDK, dpif-netdev or dummy datapath. on NetBSD, FreeBSD and Mac OSX.
-    Hyper-V：Also known as the Windows datapath.
-
-http://docs.openvswitch.org/en/latest/faq/openflow/  
-version 2.8: OF 1.0-1.4; 1.5/1.6 missing features  
-All current versions of ovs-ofctl enable only OpenFlow 1.0 by default.
-
-    ovs-ofctl -O OpenFlow13 dump-flows br0  # enable support for later versions
-
-https://github.com/openvswitch/ovs
-
-- [ovs-vswitchd](http://openvswitch.org/support/dist-docs/ovs-vswitchd.8.html) | 
-[ovs-vswitchd.conf.db](http://openvswitch.org/support/dist-docs/ovs-vswitchd.conf.db.5.html)  
-- [ovsdb-server](http://openvswitch.org/support/dist-docs/ovsdb-server.1.html)  
-- [ovs-dpctl](http://openvswitch.org/support/dist-docs/ovs-dpctl.8.html), a tool for configuring the switch kernel module.  
-- [ovs-vsctl](http://openvswitch.org/support/dist-docs/ovs-vsctl.8.html), a utility for querying and updating the configuration of ovs-vswitchd.  
-- [ovs-appctl](http://openvswitch.org/support/dist-docs/ovs-appctl.8.html), a utility that sends commands to running Open vSwitch daemons.  
-- [ovs-ofctl](http://openvswitch.org/support/dist-docs/ovs-ofctl.8.html), a utility for querying and controlling OpenFlow switches and controllers.  
-- [ovs-pki](http://openvswitch.org/support/dist-docs/ovs-pki.8.html), a utility for creating and managing the public-key infrastructure for OpenFlow switches.  
-- [ovs-testcontroller](http://openvswitch.org/support/dist-docs/ovs-testcontroller.8.html), a simple OpenFlow controller that may be useful for testing
-- A patch to tcpdump that enables it to parse OpenFlow messages.
-
-http://docs.openvswitch.org/en/latest/ref/  
-ovn-* ovsdb-* ovs-* vtep[-ctl]  
-VTEP: VXLAN Tunnel End Point
-
-## Install
-    apt install -y openvswitch-switch
-    systemctl status openvswitch-switch.service
-    ovs-vswitchd -V # check version
-
-## Config
-http://docs.openvswitch.org/en/latest/faq/configuration/
-
-    ovs-vsctl add-br br0
-    ovs-vsctl add-port br0 eth0             # trunk port (the default)
-    ovs-vsctl add-port br0 tap0 tag=9       # access port
-    ovs-vsctl add-port br0 eth0 tag=9 vlan_mode=native-tagged
-
-        native-tagged
-                A native-tagged port resembles a  trunk  port,  with  the
-                exception  that  a  packet  without an 802.1Q header that
-                ingresses on a native-tagged  port  is  in  the  ``native
-                VLAN’’ (specified in the tag column).
-
-        native-untagged
-                A  native-untagged  port  resembles a native-tagged port,
-                with the exception that  a  packet  that  egresses  on  a
-                native-untagged  port in the native VLAN will not have an
-                802.1Q header.
-
-    ovs-vsctl set port tap0 tag=9           # set existing port
-    ovs-vsctl --if-exists del-port tap1
-    ovs-vsctl set-controller of-switch tcp:0.0.0.0:6633 # set Remote Controller
-
-## Port bonding
-    ovs-vsctl add-bond br0 bond0 eth0 eth1  # ovs-vswitchd.conf.db(5) for options
-
-each of the interfaces in my bonded port shows up as an individual OpenFlow port.  
-Open vSwitch makes individual bond interfaces visible as OpenFlow ports, rather than the bond as a whole.
-
-## Port mirroring
-    # eth0 + tap0 mirrored to tap1
-    ovs-vsctl add-port br0 eth0
-    ovs-vsctl set bridge br0 stp_enable=true    # not well tested
-    ovs-vsctl add-port br0 tap0
-    ovs-vsctl add-port br0 tap1 \
-        -- --id=@p get port tap1 \
-        -- --id=@m create mirror name=m0 select-all=true output-port=@p \
-        -- set bridge br0 mirrors=@m
-    ovs-vsctl clear bridge br0 mirrors # disable mirror
-
-[RSPAN VLAN](https://github.com/osrg/openvswitch/blob/master/FAQ#L243), mirroring of all traffic to that VLAN. Mirroring to a VLAN can disrupt a network that contains unmanaged switches. 
-
-## Notes
-A physical Ethernet device that is part of an Open vSwitch bridge should not have an IP address.
-
-"normalization": a flow cannot match on an L3 field without saying what L3 protocol is in use.
-
-    ovs-ofctl add-flow br0 ip,nw_dst=192.168.0.1,actions=drop
-    ovs-ofctl add-flow br0 arp,nw_dst=192.168.0.1,actions=drop
-
-"tp_src=1234" will be ignored. write "tcp,tp_src=1234", or "udp,tp_src=1234".
-
-ofport value -1 means that the interface could not be created due to an error.  
-ofport value [] means that the interface hasn't been created yet.
-
-`ovs-dpctl dump-flows` queries a kernel datapath  
-`ovs-ofctl dump-flows` queries an OpenFlow switch
-
-[OVS with faucet](#ovs) | 
-[Youtube](https://www.youtube.com/channel/UCH8GBLyxWkJDfZG32kr3Y4g)
-
-## UI
-https://github.com/nbonnand/ovs-toolbox/wiki
 
 # Controller - Python - Faucet - OpenFlow 1.3
 http://faucet.nz/  
@@ -325,37 +219,6 @@ https://github.com/faucetsdn/faucet/tree/master/etc/ryu/faucet
 
     docker exec -it faucet cat /var/log/ryu/faucet/faucet.log   # check log
     docker exec faucet pkill -HUP -f faucet.faucet      # update configuration
-
-## OVS
-    IP_faucet=127.0.0.1   # don't use domain name
-    ovs-vsctl add-br br0 \
-         -- set bridge br0 other-config:datapath-id=0000000000000001 \
-         -- set-controller br0 tcp:$IP_faucet:6653 \
-         -- set controller br0 connection-mode=out-of-band
-    ovs-vsctl add-port br0 enp3s0 -- set interface enp3s0 ofport_request=1
-    ovs-vsctl -- --columns=name,ofport,link_speed,admin_state,statistics,mac_in_use list Interface   # mapping
-
-    for i in 1 2 3; do
-        ip tuntap add mode tap dev tap$i
-        ovs-vsctl add-port br0 tap$i -- set interface tap$i ofport_request=$i
-        ovs-ofctl mod-port br0 tap$i up
-    done
-
-    cat /var/log/openvswitch/ovs-vswitchd.log
-    ovs-vsctl show
-    ovs-vsctl --if-exists del-br br0
-    ovs-appctl ofproto/trace br0 in_port=tap1
-
-    ovs-appctl vlog/list
-    ovs-appctl vlog/set ANY:file:dbg
-
-    ovs-ofctl dump-flows br0
-
-https://github.com/osrg/openvswitch/blob/master/FAQ  
-"in-band": controllers are actually part of the network that is being controlled. occasionally they can cause unexpected behavior.
-
-    ovs-appctl bridge/dump-flows br0      # full OpenFlow flow table, including hidden flows
-    ovs-vsctl set bridge br0 other-config:disable-in-band=true # disables in-band control entirely
 
 # Controller - Python - Ryu
     git clone git://github.com/osrg/ryu.git

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Web UI](#web-ui)
 - [Scripts](#scripts)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
     - [CMD and ENTRYPOINT](#cmd-and-entrypoint)
@@ -31,6 +32,10 @@
     - [Reversed Proxy - traefik](#reversed-proxy---traefik)
 
 <!-- /TOC -->
+
+# Web UI
+https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/
+
 # Scripts
 
     source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/docker.sh)"

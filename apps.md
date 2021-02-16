@@ -1,7 +1,10 @@
 <!-- TOC -->
 
 - [Screen sharing](#screen-sharing)
-- [Web](#web)
+- [KVM switch](#kvm-switch)
+- [Chrome](#chrome)
+- [nano](#nano)
+- [File Transfer](#file-transfer)
 - [Note](#note)
     - [NextCloud](#nextcloud)
 - [Sync](#sync)
@@ -11,7 +14,10 @@
 - [bench](#bench)
     - [net](#net)
 - [DSM](#dsm)
-- [KVM switch](#kvm-switch)
+- [Security](#security)
+- [Instant Notifications](#instant-notifications)
+- [IoT](#iot)
+- [Taobao](#taobao)
 
 <!-- /TOC -->
 
@@ -21,7 +27,19 @@
 |OSS|https://spacedesk.net/|win|win/ios/android/web|ViewOnly|
 |Commercial|https://deskreen.com/|win/mac/linux|web|Touch|
 
-# Web
+# KVM switch
+https://github.com/debauchee/barrier/   
+Barrier was forked from Symless's Synergy 1.9 codebase.
+
+# Chrome
+F12 -> Ctrl+Shift+P -> "screenshot"
+Address: Shift + Del
+
+# nano
+CTRL + Shift + 6:   mark
+CTRL + K:           cut/delete
+
+# File Transfer
 https://github.com/blueimp/jQuery-File-Upload  
 
 # Note
@@ -59,6 +77,14 @@ https://xpenology.club/install-xpenology-dsm-6-1-x-proxmox/
 
 Ports: https://www.synology.com/en-us/knowledgebase/DSM/tutorial/Network/What_network_ports_are_used_by_Synology_services
 
-# KVM switch
-https://github.com/debauchee/barrier/   
-Barrier was forked from Symless's Synergy 1.9 codebase.
+# Security
+Password Crack: https://hashcat.net/hashcat
+
+# Instant Notifications
+http://instapush.im/
+
+# IoT
+https://www.xively.com/
+
+# Taobao
+http://pt42.cn/taobaobasket_index.htm

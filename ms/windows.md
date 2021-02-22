@@ -125,7 +125,7 @@ Turn Windows features on or off -> Services for NFS
     Get-WindowsFeature -Name NFS*
     Install-WindowsFeature -Name NFS-Client
 
-    mount ip-of-NFS-Server:/Share-Name  x:
+    mount 192.168.88.21:/  x:
     mount # show mounted
     umount -f z:
 

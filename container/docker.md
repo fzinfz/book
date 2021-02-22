@@ -28,8 +28,6 @@
     - [CoreOS](#coreos)
     - [boot2docker](#boot2docker)
 - [Windows/Mac](#windowsmac)
-- [Images](#images)
-    - [Reversed Proxy - traefik](#reversed-proxy---traefik)
 
 <!-- /TOC -->
 
@@ -278,7 +276,3 @@ Lightweight Linux for Docker
 https://docs.docker.com/engine/installation/windows/  
 https://docs.docker.com/machine/drivers/  
 https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
-
-# Images
-## Reversed Proxy - traefik
-https://docs.traefik.io/user-guide/docker-and-lets-encrypt/

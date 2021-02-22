@@ -250,6 +250,8 @@ https://github.com/avege/avege
 
 # NetFlow Software
 https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/networking_solutions_products_genericcontent0900aecd805ff72b.html
+## 
+- https://www.linkedin.com/pulse/wtflow-you-really-still-paying-commercial-solutions-collect-cowart
 
 # IPV6
 https://tunnelbroker.net/

@@ -46,6 +46,8 @@ https://stackoverflow.com/a/49375740/4769874
   %reload_ext autoreload
   %autoreload 2
 
+cell diff: https://jovian-py.readthedocs.io/en/latest/user-guide/version.html#view-differences
+
 # pip
 ## Installing from local
     pip install --download DIR -r requirements.txt

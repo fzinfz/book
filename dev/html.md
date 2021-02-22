@@ -107,6 +107,8 @@ https://developer.mozilla.org/en/CSS/margin_collapsing
 # Spacing
 https://getbootstrap.com/docs/4.0/utilities/spacing/
 
+    Examples: class="mx-auto / pt-3"
+
     {property}{sides}-{size} for xs
     {property}{sides}-{sm, md, lg, xl}-{size}
 

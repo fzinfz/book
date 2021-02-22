@@ -35,9 +35,6 @@ https://github.com/mozilla/pdf.js/tree/master/examples/helloworld
 ## events
 http://api.jquery.com/category/events/
 
-## api
-https://vuejs.org/v2/api/
-
 # node
 ## Schedule
 ![](https://raw.githubusercontent.com/nodejs/Release/master/schedule.svg)

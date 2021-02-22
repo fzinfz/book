@@ -4,6 +4,8 @@
 - [Markdown + LaTeX](#markdown--latex)
 - [VSCode](#vscode)
     - [extensions](#extensions)
+    - [User Config](#user-config)
+    - [Git](#git)
     - [Debug Config](#debug-config)
     - [Web](#web)
     - [remtoe-ssh](#remtoe-ssh)
@@ -35,6 +37,13 @@ https://github.com/pandao/editor.md
 
     AlanWalk.markdown-toc # Settings(Ctrl+,): Set files.eol to "\n" or "\r\n" in vscode settings.
     shardulm94.trailing-spaces
+
+## User Config
+Ctrl+, (Ctrl + P => type ">User Settings") ==> search "foo.bar"
+
+## Git
+
+    "git.path": "C:\\...\\git.exe",
 
 ## Debug Config
 

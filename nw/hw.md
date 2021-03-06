@@ -77,8 +77,6 @@ default-authentication – enables AP to register a client even if it is not in 
 ### Modes
 https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 
-
-
 ## CLI
 ```
 put [resolve google.com server 8.8.8.8]

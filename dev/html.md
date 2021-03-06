@@ -1,6 +1,7 @@
 
 <!-- TOC -->
 
+- [Percent-encoding reserved](#percent-encoding-reserved)
 - [HTML5](#html5)
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
@@ -24,6 +25,11 @@
 - [robots](#robots)
 
 <!-- /TOC -->
+# Percent-encoding reserved
+https://en.wikipedia.org/wiki/Percent-encoding
+|!|#|$|%|&|'|(|)|*|+|,|/|:|;|=|?|@|[|]|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|%21|%23|%24|%25|%26|%27|%28|%29|%2A|%2B|%2C|%2F|%3A|%3B|%3D|%3F|%40|%5B|%5D|
 
 # HTML5
 https://www.w3.org/TR/html5  

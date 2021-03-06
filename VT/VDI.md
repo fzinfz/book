@@ -24,6 +24,8 @@ The state of GPU assignment in QEMU/KVM: https://www.linux-kvm.org/images/b/b3/0
 
 https://wiki.debian.org/VGAPassthrough
 
+https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm
+
 ## virtio-gpu
 https://www.linux-kvm.org/images/0/09/Qemu-gfx-2016.pdf  
 https://github.com/qemu/qemu/blob/master/hw/display/virtio-gpu.c

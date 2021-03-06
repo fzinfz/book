@@ -1,6 +1,8 @@
 <!-- TOC -->
 
 - [Docs](#docs)
+- [Components](#components)
+- [Creating HA clusters](#creating-ha-clusters)
 - [Objects](#objects)
     - [namespaces](#namespaces)
 - [controllers](#controllers)
@@ -48,6 +50,12 @@ https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
     kubectl get pods -a
     kubectl logs <pod_name>
     kubectl version --short
+
+# Components
+https://kubernetes.io/docs/concepts/overview/components/
+
+# Creating HA clusters
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/
 
 # Objects
 https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/

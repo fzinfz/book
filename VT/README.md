@@ -2,6 +2,7 @@
 
 - [OVMF (Open Virtual Machine Firmware)](#ovmf-open-virtual-machine-firmware)
 - [IOMMU](#iommu)
+- [Compare](#compare)
 - [Xen vs KVM](#xen-vs-kvm)
 - [Xen](#xen)
 - [VSphere / ESXi](#vsphere--esxi)
@@ -35,6 +36,12 @@ https://github.com/awilliam/rom-parser
 https://github.com/systemdaemon/systemd/blob/master/src/linux/Documentation/vfio.txt
 
     intel_iommu=on kvm-intel.nested=1
+
+# Compare
+|vendor|storage|
+|:---:|:---:|
+|PVE|LVM-thin/ZFS|
+|libvirtd|qcow2|
 
 # Xen vs KVM
 http://drsalbertspijkers.blogspot.co.uk/2017/05/kvm-kernel-virtual-machine-or-xen.html  

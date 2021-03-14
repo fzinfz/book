@@ -1,10 +1,5 @@
 <!-- TOC -->
 
-- [PXE](#pxe)
-    - [install](#install)
-    - [disless](#disless)
-- [3rd-party Tools](#3rd-party-tools)
-    - [.iso to USB](#iso-to-usb)
 - [Driver backup](#driver-backup)
 - [Restore OS](#restore-os)
 - [.Net versions query](#net-versions-query)
@@ -54,21 +49,8 @@
 
 <!-- /TOC -->
 
-# PXE
-## install
-https://github.com/zwj4031/netgrubfm/  
-https://space.bilibili.com/14597170/video  
-
-## disless
-
-
-# 3rd-party Tools
-## .iso to USB
-
-    rufus:   not support mount drive, but can add location; support WTG.
-    Etcher:  may not support Windows
-
 # Driver backup
+
     dism /online /export-driver /destination:C:\drivers-backup
 
 # Restore OS
@@ -88,6 +70,7 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 # RUN
 ## Startup Folder
 - shell:startup
+
 ## Date & Time
     timedate.cpl
         ntp.sjtu.edu.cn [202.120.2.100]

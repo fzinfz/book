@@ -14,6 +14,8 @@
       /log print file=log.txt
     Port scan
       /system telnet 192.168.1.1 80
+    Check link speed
+     /interface ethernet monitor
     SSH
       /user ssh-keys import public-key-file= user=
       /ip ssh print

@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [.iso to USB](#iso-to-usb)
+- [PXE](#pxe)
 - [Screen sharing](#screen-sharing)
     - [Shell](#shell)
 - [KVM switch](#kvm-switch)
@@ -22,6 +24,16 @@
 
 <!-- /TOC -->
 
+# .iso to USB
+    ventoy:  copy .iso to flash drive directly
+    rufus:   not support mount drive, but can add location; support WTG.
+    Etcher:  may not support Windows
+    https://github.com/nkc3g4/wtg-assistant  : support 16G flash drive
+
+# PXE
+https://github.com/zwj4031/netgrubfm/  
+https://space.bilibili.com/14597170/video  
+
 # Screen sharing
 |Type|Site|Server|Client|Management|
 |---|---|---|---|---|
@@ -34,6 +46,8 @@ https://asciinema.org/
 # KVM switch
 https://github.com/debauchee/barrier/   
 Barrier was forked from Symless's Synergy 1.9 codebase.
+
+h/w: pikvm
 
 # Chrome
 F12 -> Ctrl+Shift+P -> "screenshot"

@@ -19,6 +19,7 @@
     - [bcc](#bcc)
 - [Linux Releases](#linux-releases)
 - [Kernel Versions](#kernel-versions)
+- [linux-next](#linux-next)
 
 <!-- /TOC -->
 
@@ -190,3 +191,7 @@ https://kernelnewbies.org/Linux_5.10
     3.10 - 30 June, 2013 -  - RHEL 7
     3.2 + 4 January, 2012
     2.6.32 - 3 December, 2009 - RHEL 6
+
+# linux-next
+for patches aimed at the next kernel merge window  
+https://www.kernel.org/doc/man-pages/linux-next.html

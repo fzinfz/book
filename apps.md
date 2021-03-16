@@ -37,8 +37,8 @@ https://space.bilibili.com/14597170/video
 # Screen sharing
 |Type|Site|Server|Client|Management|
 |---|---|---|---|---|
-|OSS|https://spacedesk.net/|win|win/ios/android/web|ViewOnly|
-|Commercial|https://deskreen.com/|win/mac/linux|web|Touch|
+|OSS|https://deskreen.com/|win/mac/linux|web|ViewOnly|
+|Commercial|https://spacedesk.net/|win|win/ios/android/web|Touch|
 
 ## Shell
 https://asciinema.org/

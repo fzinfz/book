@@ -1,38 +1,51 @@
 <!-- TOC -->
 
-- [Docs](#docs)
-- [Videos](#videos)
+- [Compare](#compare)
+    - [Docs](#docs)
+    - [Videos](#videos)
 - [Test Suites](#test-suites)
     - [Linux Test Project](#linux-test-project)
     - [LTP-DDT](#ltp-ddt)
     - [Android](#android)
+    - [xfstests](#xfstests)
     - [More](#more)
+    - [Selftests](#selftests)
+        - [KUnit](#kunit)
 - [Test Automation Tools](#test-automation-tools)
+    - [0Day](#0day)
     - [KernelCI - Python](#kernelci---python)
-    - [LAVA - Linaro Automated Validation Architecture - Python](#lava---linaro-automated-validation-architecture---python)
+    - [LAVA - Python](#lava---python)
     - [Fuego - Mitsubishi](#fuego---mitsubishi)
+    - [U-Boot “pytest suite”](#u-boot-pytest-suite)
+    - [tbot - Python](#tbot---python)
     - [labgrid - Python](#labgrid---python)
     - [r4d - Python](#r4d---python)
     - [Yocto project / ptest](#yocto-project--ptest)
-    - [Selftests](#selftests)
-        - [KUnit](#kunit)
+    - [Kerneltests.org](#kerneltestsorg)
     - [More](#more-1)
-- [Static Analysis](#static-analysis)
-- [Papers](#papers)
+- [Static Code Analyzers](#static-code-analyzers)
+    - [Coccinelle](#coccinelle)
+    - [smatch](#smatch)
+    - [Sparse](#sparse)
+    - [clang / LLVM](#clang--llvm)
+    - [Coverity](#coverity)
+- [Fuzzing Tools](#fuzzing-tools)
+    - [Trinity](#trinity)
+    - [Syzcaller](#syzcaller)
 
 <!-- /TOC -->
 
-# Docs
+# Compare
+## Docs
 https://elinux.org/Testing  
-https://elinux.org/Test_Systems#Test_Projects
+https://elinux.org/Test_Systems#Test_Projects  
+https://elinux.org/images/9/9f/Linux-Kernel-Testing-Where-are-we.pdf  (2016)
+http://events17.linuxfoundation.org/sites/events/files/slides/PRE-trunk-ELCE-Automation-beyond-Testing_1.pdf (2017)
 
-http://events17.linuxfoundation.org/sites/events/files/slides/PRE-trunk-ELCE-Automation-beyond-Testing_1.pdf
-
-# Videos
+## Videos
 https://www.youtube.com/watch?v=NRywFwe0uwU  
-introduce multiple frameworks available to test your Embedded Linux System and compare the use-cases 
-
-"The magical fantasy land of Linux kernel testing" - Russell Currey (LCA 2020): https://www.youtube.com/watch?v=9Fzd6MapG3Y
+introduce multiple frameworks available to test your Embedded Linux System and compare the use-cases (2018)  
+Slide: https://elinux.org/images/0/08/Primer-Testing-Your-Embedded-System-What-is-a-ptest-Lava-Fuego-KernelCI-and...-Jan-Simon-Moeller-The-Linux-Foundation.pdf
 
 # Test Suites
 ## Linux Test Project
@@ -44,30 +57,65 @@ https://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/AM335X/linux/Foun
 ## Android
 https://android.googlesource.com/platform/external/ltp/
 
+## xfstests
+https://kernel.googlesource.com/pub/scm/fs/ext2/xfstests-bld/+/HEAD/Documentation/what-is-xfstests.md  
+
+    xfs, ext2, ext4, cifs, btrfs, f2fs, reiserfs, gfs, jfs, udf, nfs, tmpfs
+
 ## More
 
     blktests
-    kselftest - See notes at kselftest Notes
-    xfstests
+
+## Selftests
+https://www.kernel.org/doc/html/v4.15/dev-tools/kselftest.html
+
+    fault-injection  
+    ktest  
+    kunit  
+    nvdimm  
+    radix-tree  
+    scatterlist  
+    selftests  
+    vsock
+
+"The magical fantasy land of Linux kernel testing" - Russell Currey (LCA 2020): https://www.youtube.com/watch?v=9Fzd6MapG3Y
+
+### KUnit 
+https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html    
     
 # Test Automation Tools
+## 0Day
+test suites used by 0-Day performance test and LKP test tool: 
+https://01.org/lkp/documentation/0-day/lkp-test-suites-description
+
 ## KernelCI - Python
 https://kernelci.org/ |  Linux Foundation project  
 use LAVA with KernelCI: https://github.com/kernelci/kernelci-core/blob/main/doc/lava.md
 
-## LAVA - Linaro Automated Validation Architecture - Python
-https://www.lavasoftware.org/  
-Source: https://git.lavasoftware.org/lava/lava
+## LAVA - Python
+Linaro Automated Validation Architecture | https://www.lavasoftware.org/  
+Source: https://git.lavasoftware.org/lava/lava  
+Docker: https://github.com/kernelci/lava-docker/  
 
 ## Fuego - Mitsubishi
-https://elinux.org/images/d/d4/ELCE-2016-Continuous-Integration-and-Autotest-Environment-using-Fuego_Master.pdf  
-
 https://elinux.org/images/6/6c/Introduction-to-Fuego-JJ58-1.pdf  
 Fuego = (Jenkins + abstraction scripts + pre-packaged tests) inside a container
 
-[Video] Introduction to the Fuego Test System: https://www.youtube.com/watch?v=AueBSRN4wLk
+https://elinux.org/images/d/d4/ELCE-2016-Continuous-Integration-and-Autotest-Environment-using-Fuego_Master.pdf  
 
 Source: https://bitbucket.org/fuegotest/
+
+Introduction Videos: 
+- 53min https://www.youtube.com/watch?v=AueBSRN4wLk   
+- 28min https://www.youtube.com/watch?v=2bSqzhTxLdU
+
+## U-Boot “pytest suite”
+https://github.com/u-boot/u-boot/tree/master/test/py  
+only for U-Boot (with build support)
+
+## tbot - Python
+https://tbot.tools/  
+https://github.com/Rahix/tbot
 
 ## labgrid - Python
 https://github.com/labgrid-project/labgrid#purpose  
@@ -88,42 +136,27 @@ r4d means 'Remote For Device-under-test' and is an infrastructure for power-cont
 https://wiki.yoctoproject.org/wiki/Ptest  
 Source: http://git.yoctoproject.org/clean/cgit.cgi/poky/tree/
 
-## Selftests
-https://www.kernel.org/doc/html/v4.15/dev-tools/kselftest.html
-
-    fault-injection  
-    ktest  
-    kunit  
-    nvdimm  
-    radix-tree  
-    scatterlist  
-    selftests  
-    vsock
-
-### KUnit 
-https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html
+## Kerneltests.org
+Created to test stable release candidates   
+https://kerneltests.org/builders  
 
 ## More
 http://fuegotest.org/wiki/Other_test_systems
 
 https://elinux.org/Test_Stack_Survey#Responses  
 
-    0-day
-    buildbot
-    ci-rt (uses r4d) - realtime test system used by Linutronix
+    kisskb    
+    Olof's autobuilder: mainline and next for arm, arm64, powerpc
+    Olof's autobooter:  mainline, next, arm-soc
+    Tegra builds: mainline
+    Buildbot by Mark Brown: x86_64, arm, arm64 (8 builds)
     CKI - used by RedHat
-
     Gentoo Kernel CI
     hottest notes
-    Jenkins ??? (no one is specifically representing Jenkins at the summit)
-    KernelCI
-    kerneltests
     Krzk Samsung-SoC
-    Kselftest
     ktest    
     Labgrid
     LKFT
-    LTP
     Opentest
     Phoronix
     SLAV
@@ -132,11 +165,34 @@ https://elinux.org/Test_Stack_Survey#Responses
     TCF
     Xilinx test (aka regression_xlnx)
 
-# Static Analysis
+# Static Code Analyzers
+## Coccinelle
+https://coccinelle.gitlabpages.inria.fr/website/
 
-    Sparse
-    Smatch
-    clang
+## smatch
+https://github.com/error27/smatch  
+a semantic parser of source files
 
-# Papers
-Fuzz: https://ftp.cs.wisc.edu/paradyn/technical_papers/fuzz.pdf
+## Sparse
+https://sparse.docs.kernel.org/en/latest/  
+the semantic parser, provides a compiler frontend capable of parsing most of ANSI C as well as many GCC extensions, and a collection of sample compiler backends, including a static analyzer also called sparse.
+    
+## clang / LLVM
+https://llvm.org/docs/GettingStarted.html#overview  
+Tools include an assembler, disassembler, bitcode analyzer, and bitcode optimizer. It also contains basic regression tests.
+
+## Coverity
+Commercial Static Analyzer： https://scan.coverity.com/o/oss_success_stories
+
+# Fuzzing Tools
+https://ftp.cs.wisc.edu/paradyn/technical_papers/fuzz.pdf
+
+## Trinity
+https://github.com/kernelslacker/trinity  
+a system call fuzzer which employs some techniques to
+pass semi-intelligent arguments to the syscalls being called.
+
+## Syzcaller
+https://github.com/google/syzkaller/blob/master/docs/internals.md  
+- Net: https://github.com/google/syzkaller/blob/master/docs/linux/external_fuzzing_network.md
+- USB: https://github.com/google/syzkaller/blob/master/docs/linux/external_fuzzing_usb.md

@@ -33,9 +33,9 @@
     - [smatch](#smatch)
     - [Coverity](#coverity)
 - [Fuzzing Tools](#fuzzing-tools)
-- [kcov - code coverage for fuzzing](#kcov---code-coverage-for-fuzzing)
     - [Trinity](#trinity)
     - [Syzcaller](#syzcaller)
+    - [kcov - code coverage for fuzzing](#kcov---code-coverage-for-fuzzing)
 
 <!-- /TOC -->
 
@@ -71,7 +71,8 @@ http://ltp.sourceforge.net/documentation/how-to/ltp.php#_3.2
         tests related to floppy and CD-ROM drives
 
 ## LTP-DDT
-https://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/AM335X/linux/Foundational_Components_Kernel_LTP-DDT_Validation.html
+https://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/AM335X/linux/Foundational_Components_Kernel_LTP-DDT_Validation.html  
+LTP-DDT focuses on embedded device driver tests.
 
 ## Android
 https://android.googlesource.com/platform/external/ltp/
@@ -234,9 +235,6 @@ Commercial Static Analyzer： https://scan.coverity.com/o/oss_success_stories
 # Fuzzing Tools
 Paper: https://ftp.cs.wisc.edu/paradyn/technical_papers/fuzz.pdf
 
-# kcov - code coverage for fuzzing
-kcov exposes kernel code coverage information in a form suitable for coverage- guided fuzzing (randomized testing)
-
 ## Trinity
 https://github.com/kernelslacker/trinity  
 a system call fuzzer which employs some techniques to
@@ -246,3 +244,9 @@ pass semi-intelligent arguments to the syscalls being called.
 https://github.com/google/syzkaller/blob/master/docs/internals.md  
 - Net: https://github.com/google/syzkaller/blob/master/docs/linux/external_fuzzing_network.md
 - USB: https://github.com/google/syzkaller/blob/master/docs/linux/external_fuzzing_usb.md
+
+## kcov - code coverage for fuzzing
+https://www.kernel.org/doc/html/latest/dev-tools/kcov.html  
+kcov exposes kernel code coverage information in a form suitable for coverage- guided fuzzing (randomized testing)
+
+https://www.netbsd.org/~kamil/Maciej_Grochowski-FS_Fuzzing_EuroBSDCon2019.pdf

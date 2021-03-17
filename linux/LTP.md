@@ -7,10 +7,12 @@
     - [Linux Test Project](#linux-test-project)
     - [LTP-DDT](#ltp-ddt)
     - [Android](#android)
-    - [xfstests](#xfstests)
-    - [More](#more)
-    - [Selftests](#selftests)
-        - [KUnit](#kunit)
+    - [dev-tools](#dev-tools)
+        - [Selftests](#selftests)
+        - [KUnit - Kernel Unit Testing Framework](#kunit---kernel-unit-testing-framework)
+    - [Storage](#storage)
+        - [xfstests](#xfstests)
+        - [blktests](#blktests)
 - [Test Automation Tools](#test-automation-tools)
     - [0Day](#0day)
     - [KernelCI - Python](#kernelci---python)
@@ -22,14 +24,16 @@
     - [r4d - Python](#r4d---python)
     - [Yocto project / ptest](#yocto-project--ptest)
     - [Kerneltests.org](#kerneltestsorg)
-    - [More](#more-1)
+    - [Robot Framework - Python](#robot-framework---python)
+    - [More](#more)
 - [Static Code Analyzers](#static-code-analyzers)
-    - [Coccinelle](#coccinelle)
-    - [smatch](#smatch)
     - [Sparse](#sparse)
     - [clang / LLVM](#clang--llvm)
+    - [Coccinelle](#coccinelle)
+    - [smatch](#smatch)
     - [Coverity](#coverity)
 - [Fuzzing Tools](#fuzzing-tools)
+- [kcov - code coverage for fuzzing](#kcov---code-coverage-for-fuzzing)
     - [Trinity](#trinity)
     - [Syzcaller](#syzcaller)
 
@@ -51,24 +55,34 @@ Slide: https://elinux.org/images/0/08/Primer-Testing-Your-Embedded-System-What-i
 ## Linux Test Project
 https://github.com/linux-test-project/ltp/wiki
 
+http://ltp.sourceforge.net/documentation/how-to/ltp.php#_3.2
+
+    runltp
+        filesystem stress tests
+        disk I/O tests
+        memory management stress tests
+        ipc stress
+        scheduler tests
+        commands functional varification tests
+        system call functional varification tests
+    networktests.sh
+        networking related tests
+    diskio.sh
+        tests related to floppy and CD-ROM drives
+
 ## LTP-DDT
 https://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/AM335X/linux/Foundational_Components_Kernel_LTP-DDT_Validation.html
 
 ## Android
 https://android.googlesource.com/platform/external/ltp/
 
-## xfstests
-https://kernel.googlesource.com/pub/scm/fs/ext2/xfstests-bld/+/HEAD/Documentation/what-is-xfstests.md  
+## dev-tools
+https://www.kernel.org/doc/html/latest/dev-tools/
 
-    xfs, ext2, ext4, cifs, btrfs, f2fs, reiserfs, gfs, jfs, udf, nfs, tmpfs
+### Selftests
+https://www.kernel.org/doc/html/latest/dev-tools/kselftest.html
 
-## More
-
-    blktests
-
-## Selftests
-https://www.kernel.org/doc/html/v4.15/dev-tools/kselftest.html
-
+    cd /linux/tools/testing/
     fault-injection  
     ktest  
     kunit  
@@ -78,11 +92,36 @@ https://www.kernel.org/doc/html/v4.15/dev-tools/kselftest.html
     selftests  
     vsock
 
+    make -C selftests
+    make -C selftests run_tests
+
 "The magical fantasy land of Linux kernel testing" - Russell Currey (LCA 2020): https://www.youtube.com/watch?v=9Fzd6MapG3Y
 
-### KUnit 
+### KUnit - Kernel Unit Testing Framework
 https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html    
-    
+
+## Storage
+### xfstests
+https://kernel.googlesource.com/pub/scm/fs/ext2/xfstests-bld/+/HEAD/Documentation/what-is-xfstests.md  
+
+    xfs, ext2, ext4, cifs, btrfs, f2fs, reiserfs, gfs, jfs, udf, nfs, tmpfs
+
+### blktests
+https://github.com/osandov/blktests  
+https://zonedstorage.io/tests/blktests/
+
+|Group name|Description|
+|---|---|
+|block|Block layer generic tests|
+|loop|Loopback device tests|
+|meta|blktests self tests|
+|nbd|Network block device driver tests|
+|nvme|NVMe driver tests|
+|nvmeof-mp|NVME-over-fabrics multipath tests|
+|scsi|SCSI layer tests|
+|srp|SCSI RDMA Protocol driver tests|
+|zbd|Zoned block device tests|
+
 # Test Automation Tools
 ## 0Day
 test suites used by 0-Day performance test and LKP test tool: 
@@ -115,7 +154,8 @@ only for U-Boot (with build support)
 
 ## tbot - Python
 https://tbot.tools/  
-https://github.com/Rahix/tbot
+https://github.com/Rahix/tbot  
+allow running tests in an automated setting (CI).
 
 ## labgrid - Python
 https://github.com/labgrid-project/labgrid#purpose  
@@ -134,11 +174,17 @@ r4d means 'Remote For Device-under-test' and is an infrastructure for power-cont
 
 ## Yocto project / ptest
 https://wiki.yoctoproject.org/wiki/Ptest  
+Ptest (package test) is a concept for building, installing and running the test suites that are included in many upstream packages, and producing a consistent output format for the results.  
 Source: http://git.yoctoproject.org/clean/cgit.cgi/poky/tree/
 
 ## Kerneltests.org
 Created to test stable release candidates   
 https://kerneltests.org/builders  
+
+## Robot Framework - Python
+http://robotframework.org/robotframework/#user-guide
+
+OperatingSystem | Process | Dialogs / String | Telnet
 
 ## More
 http://fuegotest.org/wiki/Other_test_systems
@@ -161,31 +207,35 @@ https://elinux.org/Test_Stack_Survey#Responses
     Phoronix
     SLAV
     syzbot (& syzkaller)
-    tbot
     TCF
     Xilinx test (aka regression_xlnx)
 
 # Static Code Analyzers
+## Sparse
+https://www.kernel.org/doc/html/latest/dev-tools/sparse.html
+
+https://sparse.docs.kernel.org/en/latest/  
+the semantic parser, provides a compiler frontend capable of parsing most of ANSI C as well as many GCC extensions, and a collection of sample compiler backends, including a static analyzer also called sparse.
+
+## clang / LLVM
+https://clang-analyzer.llvm.org/  
+the analyzer is part of Clang
+
 ## Coccinelle
 https://coccinelle.gitlabpages.inria.fr/website/
 
 ## smatch
 https://github.com/error27/smatch  
 a semantic parser of source files
-
-## Sparse
-https://sparse.docs.kernel.org/en/latest/  
-the semantic parser, provides a compiler frontend capable of parsing most of ANSI C as well as many GCC extensions, and a collection of sample compiler backends, including a static analyzer also called sparse.
     
-## clang / LLVM
-https://llvm.org/docs/GettingStarted.html#overview  
-Tools include an assembler, disassembler, bitcode analyzer, and bitcode optimizer. It also contains basic regression tests.
-
 ## Coverity
 Commercial Static Analyzer： https://scan.coverity.com/o/oss_success_stories
 
 # Fuzzing Tools
-https://ftp.cs.wisc.edu/paradyn/technical_papers/fuzz.pdf
+Paper: https://ftp.cs.wisc.edu/paradyn/technical_papers/fuzz.pdf
+
+# kcov - code coverage for fuzzing
+kcov exposes kernel code coverage information in a form suitable for coverage- guided fuzzing (randomized testing)
 
 ## Trinity
 https://github.com/kernelslacker/trinity  

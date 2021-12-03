@@ -26,7 +26,7 @@
 - [Cheatsheet](#cheatsheet)
 - [Tools](#tools)
 - [Gitbook](#gitbook)
-- [Code search](#code-search)
+- [Tools](#tools-1)
 
 <!-- /TOC -->
 
@@ -249,5 +249,6 @@ https://toolchain.gitbook.com/structure.html
         * [English](en/)
         * [Chinese](zh/)
 
-# Code search
-https://about.sourcegraph.com/
+# Tools
+Code search: https://about.sourcegraph.com/
+download: https://minhaskamal.github.io/DownGit/#/home

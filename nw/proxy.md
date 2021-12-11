@@ -1,7 +1,8 @@
 <!-- TOC -->
 
-- [nebula - go](#nebula---go)
 - [WireGuard - C](#wireguard---c)
+    - [tailscale](#tailscale)
+- [nebula - go](#nebula---go)
 - [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [xray](#xray)
@@ -38,11 +39,25 @@
 
 <!-- /TOC -->
 
+# WireGuard - C
+https://www.wireguard.com/quickstart/  
+https://wiki.archlinux.org/title/WireGuard  
+Userspace: https://github.com/masipcat/wireguard-go-docker  
+
+## tailscale
+Free for Personal: https://tailscale.com/pricing/  
+
+    curl -fsSL https://tailscale.com/install.sh | sh
+    sysctl -w net.ipv4.ip_forward=1
+    sysctl -w net.ipv6.conf.all.forwarding=1
+    tailscale up --advertise-exit-node # enable on WebUI: Edit route settings
+    tailscale status
+
+Official: https://login.tailscale.com/admin/machines  
+Custom: https://tailscale.com/kb/1118/custom-derp-servers/
+
 # nebula - go
 https://github.com/slackhq/nebula
-
-# WireGuard - C
-https://www.wireguard.com/quickstart/
 
 # zerotier
 

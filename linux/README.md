@@ -24,6 +24,7 @@
     - [Redhat](#redhat)
     - [Ubuntu](#ubuntu-1)
     - [Debian](#debian-1)
+        - [experimental](#experimental)
     - [dpkg](#dpkg)
     - [apt](#apt)
     - [ssh server](#ssh-server)
@@ -139,20 +140,24 @@ https://git.savannah.gnu.org/cgit/bash.git/
     apt install systemd-sysv    # make link: /sbin/init -> /lib/systemd/systemd
 
 ## login & non-login shells
+https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html
 
-    vi ~/.bash_profile          # login shells
-    vi ~/.bashrc                # non-login shells
+    login shells：  
+        /etc/profile
+        ~/.bash_profile(?-> ~/.bashrc), ~/.bash_login, and ~/.profile 
+        exit:  ~/.bash_logout
 
-    # echo $0 # note the '-'
-    -bash
-    # shopt login_shell
-    login_shell     on
+    non-login shells： 
+        ~/.bashrc
+
+    # echo $0 : `shopt login_shell` \| $-
+    -bash : login_shell on | himBHs
     # bash
-    # echo $0
-    bash
-    # shopt login_shell
-    login_shell     off
-
+    # echo $0 : `shopt login_shell` \| $-
+    bash : login_shell off | himBHs
+    # bash -c 'echo $0 : `shopt login_shell` \| $-'
+    bash : login_shell off | hBc
+    
 ## supervisord
 http://supervisord.org/running.html
 
@@ -258,10 +263,16 @@ Testing - repository with packages from unstable, if no bug are found within 10 
 `contrib` packages contain DFSG-compliant software, but have dependencies not in main (possibly packaged for Debian in non-free).  
 `non-free` contains software that does not comply with the DFSG.  
 
-    deb http://deb.debian.org/debian/ experimental main contrib non-free
-    deb https://mirrors.tuna.tsinghua.edu.cn/debian stretch main contrib non-free
+    deb http://mirror.sjtu.edu.cn/debian/ bullseye main contrib non-free
+
+### experimental
+
+    deb http://mirror.sjtu.edu.cn/debian/ experimental main contrib non-free
+
+    apt install -t experimental linux-image-amd64 # latest kernel
 
 ## dpkg
+
     dpkg --get-selections   # list installed
 
 To install .deb manually, visit `linux/kernel` page.

@@ -18,6 +18,8 @@
     - [net](#net)
 - [DSM](#dsm)
 - [Security](#security)
+    - [Password Managment](#password-managment)
+        - [Bitwarden](#bitwarden)
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
 - [Taobao](#taobao)
@@ -97,6 +99,11 @@ Ports: https://www.synology.com/en-us/knowledgebase/DSM/tutorial/Network/What_ne
 
 # Security
 Password Crack: https://hashcat.net/hashcat
+
+## Password Managment
+### Bitwarden
+lightweight: https://github.com/dani-garcia/vaultwarden
+clients/extensions: https://bitwarden.com/download/
 
 # Instant Notifications
 http://instapush.im/

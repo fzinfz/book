@@ -56,13 +56,12 @@ Ctrl+, (Ctrl + P => type ">User Settings") ==> search "foo.bar"
 https://github.com/conwnet/github1s
 
 ## remtoe-ssh
-https://code.visualstudio.com/docs/remote/ssh
+>settings.json
 
-ssh.exe in sys PATH: C:\Program Files\Git\usr\bin
+    "remote.SSH.configFile": "D:\\conf\\ssh_config"
 
-vscode conf:
+    Host 192.168.88.72
+        HostName 192.168.88.72
+        IdentityFile d:/conf/id_rsa
+        User root
 
-    Host example-remote-linux-machine-with-identity-file
-        User your-user-name-on-host
-        HostName another-host-fqdn-or-ip-goes-here
-        IdentityFile ~/.ssh/id_rsa-remote-ssh

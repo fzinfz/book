@@ -126,6 +126,8 @@ https://certbot.eff.org/
 ### Wildcard 
 https://github.com/Neilpang/acme.sh#10-issue-wildcard-certificates
 
+    curl https://get.acme.sh | sh -s email=my@example.com
+    CF_Key= && CF_Email=
     acme.sh  --issue -d example.com  -d '*.example.com'  --dns dns_cf
 
 https://community.letsencrypt.org/t/wildcard-domain-step-by-step/58250/4

@@ -5,6 +5,7 @@
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
 - [Sniffer & Wireshark](#sniffer--wireshark)
 - [OpenVPN](#openvpn)
+- [WireGuard](#wireguard)
 
 <!-- /TOC -->
 
@@ -49,3 +50,7 @@ https://wiki.mikrotik.com/wiki/OpenVPN
 
   tun, RouterOS defines this as ip.
   tap, which is needed for bridge mode gateways. RouterOS defines this as ethernet.
+
+# WireGuard
+Both WAN: https://help.mikrotik.com/docs/display/ROS/WireGuard  
+1 Server: https://forum.mikrotik.com/viewtopic.php?t=174417

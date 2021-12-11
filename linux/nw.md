@@ -2,12 +2,15 @@
 
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
+    - [/etc/network/interfaces](#etcnetworkinterfaces)
+    - [/etc/netplan/*.yaml](#etcnetplanyaml)
     - [Port listening](#port-listening)
     - [debug](#debug)
     - [Netlink](#netlink)
     - [tuntap](#tuntap)
     - [Features](#features)
     - [disable ipv6](#disable-ipv6)
+- [nftables](#nftables)
 - [iptables](#iptables)
     - [table / chain](#table--chain)
     - [rules](#rules)
@@ -50,6 +53,26 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 
     auto enp1s0
     iface enp1s0 inet dhcp
+
+## /etc/netplan/*.yaml
+
+    network:
+    version: 2
+
+    ethernets:
+      enp1s0: {}
+      enp2s0: {}
+      enp3s0: {}
+      enp4s0:
+        dhcp4: yes
+
+    bridges:
+      br0:
+        interfaces: [enp1s0,enp2s0,enp3s0]
+        dhcp4: yes
+      br1: {}
+
+netplan try 
 
 ## Port listening
    

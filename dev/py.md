@@ -40,6 +40,7 @@ https://stackoverflow.com/a/49375740/4769874
     Debian 8 jessie   2.7.9   /   3.4
     Debian 9 stretch  2.7.13  /   3.5
     Debian 10 buster  2.7.14  /   3.6
+    Debian 11 bullseye            3.9
 
 # Jupyter
 

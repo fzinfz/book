@@ -1,6 +1,8 @@
 <!-- TOC -->
 
-- [Driver backup](#driver-backup)
+- [Driver Backup](#driver-backup)
+- [powercfg](#powercfg)
+- [Disable BitLocker](#disable-bitlocker)
 - [Restore OS](#restore-os)
 - [.Net versions query](#net-versions-query)
 - [Edition Unique Features](#edition-unique-features)
@@ -21,6 +23,7 @@
     - [Force OOBE](#force-oobe)
     - [Fix boot](#fix-boot)
     - [Fix boot partiton](#fix-boot-partiton)
+        - [EFI](#efi)
     - [Copy Boot Entries](#copy-boot-entries)
     - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
     - [Uninstall software in safemode](#uninstall-software-in-safemode)
@@ -49,9 +52,23 @@
 
 <!-- /TOC -->
 
-# Driver backup
+# Driver Backup
 
     dism /online /export-driver /destination:C:\drivers-backup
+
+# powercfg
+
+    powercfg /a
+    powercfg /hibernate off
+
+# Disable BitLocker
+
+    manage-bde -status
+    manage-bde -off C:
+
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker]
+    "PreventDeviceEncryption"=dword:00000001
+
 
 # Restore OS
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windows-to-audit-mode-or-oobe
@@ -138,18 +155,17 @@ https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/adding-boot-en
 ## Fix boot partiton
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di#command-line-options
 
-    bcdboot C:\Windows /s S:
+    bcdboot C:\Windows /s S: /f all
 
-+ EFI
-```
-diskpart
-convert
-create partition efi size=512
-select partition 2
-assign letter=b
+### EFI
 
-bcdboot c:\windows /s h: /f UEFI
-```
+    diskpart
+    convert
+    create partition efi size=512
+    select partition 2
+    assign letter=b
+
+    bcdboot c:\windows /s h: /f UEFI
 
 ## Copy Boot Entries 
 

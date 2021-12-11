@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Diagram image generator online](#diagram-image-generator-online)
+- [view & analyze Pandas](#view--analyze-pandas)
 - [plotly - for Math](#plotly---for-math)
 - [plot time series data](#plot-time-series-data)
 - [Math graph](#math-graph)
@@ -26,6 +27,9 @@
 <!-- /TOC -->
 # Diagram image generator online
 http://blockdiag.com/en/
+
+# view & analyze Pandas
+https://github.com/man-group/dtale
 
 # plotly - for Math
 https://plot.ly/api/  

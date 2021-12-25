@@ -553,10 +553,6 @@ https://hoytech.com/vmtouch/
 # Tools - Online
 http://explainshell.com/  
 
-# Tools - Windows
-https://www.netsarang.com/xshell_download.html  
-https://mobaxterm.mobatek.net/features.html  
-
 # CPU
 
     getconf LONG_BIT

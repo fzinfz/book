@@ -51,7 +51,7 @@ https://help.ubuntu.com/community/KVM/Installation
 
 # Config
 
-    /etc/libvirt/qemu
+    cd /etc/libvirt/qemu && virsh define foo.xml
 
 https://wiki.libvirt.org/page/FAQ#Where_are_VM_config_files_stored.3F_How_do_I_edit_a_VM.27s_XML_config.3F
 
@@ -90,6 +90,7 @@ https://libvirt.org/logging.html
 gdb: https://access.redhat.com/blogs/766093/posts/2690881
 
 # virsh
+
     virsh list --all
     virsh destroy ... # force off
     export EDITOR=vim # for `virsh edit`

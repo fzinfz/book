@@ -4,6 +4,8 @@
 - [PXE](#pxe)
 - [Screen sharing](#screen-sharing)
     - [Shell](#shell)
+- [Terminal](#terminal)
+    - [Windows](#windows)
 - [KVM switch](#kvm-switch)
 - [Chrome](#chrome)
 - [nano](#nano)
@@ -44,6 +46,13 @@ https://space.bilibili.com/14597170/video
 
 ## Shell
 https://asciinema.org/
+
+# Terminal
+## Windows
+C | X11/XYZModem: https://github.com/kingToolbox/WindTerm  
+TypeScript | Terminus: https://github.com/Eugeny/tabby  
+Free version allowd in companay: https://mobaxterm.mobatek.net/download.html   
+Free for home: https://www.netsarang.com/xshell_download.html  
 
 # KVM switch
 https://github.com/debauchee/barrier/   

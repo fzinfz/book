@@ -60,5 +60,7 @@
   * [Oracle](db/oracle.md)
 * [DevOps](DevOps.md)
 * [Hardware](hw/README.md)
+* [Electronic](elec/README.md)
+  * [Micro-Cap](elec/microcap.md)
 * [Android/iOS](phone.md)
 * [Apps](apps.md)

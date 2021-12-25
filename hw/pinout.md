@@ -21,8 +21,7 @@ https://en.wikipedia.org/wiki/USB_3.0
 # PCI-E
 https://en.wikipedia.org/wiki/PCI_Express#Pinout  
 
-    side B: component  
-    side A: PRSNT1# shorter than the rest
+    side A: PRSNT1# shorter than the rest | side B: component side
     ×1/4/8/16 cards end at pin 18/32/49/82  
     +12 V power: 75 W (6-pin) or 150 W (8-pin) | 300 W total (2 × 75 W + 1 × 150 W)
 

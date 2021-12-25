@@ -1,13 +1,12 @@
 <!-- TOC -->
 
-- [Battry](#battry)
+- [Types](#types)
     - [Ni](#ni)
     - [Li](#li)
 
 <!-- /TOC -->
 
-# Battry
-
+# Types
 https://zh.wikipedia.org/wiki/%E8%93%84%E9%9B%BB%E6%B1%A0#%E8%93%84%E9%9B%BB%E6%B1%A0%E7%A8%AE%E9%A1%9E%E5%88%97%E8%A1%A8
 
 ## Ni

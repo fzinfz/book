@@ -1,6 +1,5 @@
 
-Original $4495, now free.  
-http://www.spectrum-soft.com/download/download.shtm
+
 
 # Tutorials
 25/1080p: https://www.youtube.com/watch?v=WExvpASP-1c&list=PLZ0_iMoMBSslK1NFAXIEBsTnFzP8u9BGH  

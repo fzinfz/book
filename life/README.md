@@ -1,9 +1,7 @@
 <!-- TOC -->
 
-- [Battry](#battry)
-    - [Ni](#ni)
-    - [Li](#li)
-- [Residual Current Device](#residual-current-device)
+- [水](#水)
+- [气](#气)
 - [3M Tapes](#3m-tapes)
     - [8810](#8810)
     - [468MP](#468mp)
@@ -14,17 +12,9 @@
 - [空调](#空调)
 - [冰箱](#冰箱)
 - [洗衣机](#洗衣机)
-- [移动](#移动)
-    - [福建](#福建)
 - [联通](#联通)
-- [电信](#电信)
-    - [福厦泉](#福厦泉)
 - [Jabra Clipper](#jabra-clipper)
 - [12306](#12306)
-- [吉他](#吉他)
-    - [Yamaha](#yamaha)
-        - [Acoustic 民谣](#acoustic-民谣)
-        - [Classical 古典](#classical-古典)
 - [App](#app)
 - [账单日/还款日](#账单日还款日)
     - [蚂蚁花呗](#蚂蚁花呗)
@@ -33,45 +23,37 @@
 
 <!-- /TOC -->
 
-# Battry
+# 水
 
-https://zh.wikipedia.org/wiki/%E8%93%84%E9%9B%BB%E6%B1%A0#%E8%93%84%E9%9B%BB%E6%B1%A0%E7%A8%AE%E9%A1%9E%E5%88%97%E8%A1%A8
+    前置过滤器/水压表
+    水流量：闸阀>?球阀>角阀
+    热水器-花洒：绕淋浴房（高度）
+    卫生间大功率控制：继电器/接触器？
+    水箱：止回阀/增压泵
 
-## Ni
-https://zh.wikipedia.org/wiki/%E9%95%8D%E6%B0%A2%E7%94%B5%E6%B1%A0  
-镍氢电池（NiMH）是由镍镉电池（NiCd battery）改良而来的
+|公称直径|De(外径PPR) mm|in(英寸）||
+|---|---|---|--|
+|DN10||3/8||
+|DN15|20|1/2|4分|
+|DN20|25|3/4|6分|
+|DN25|32|1|1寸|
+|DN32|40|1 1/4|1.2英寸|
+|DN40|50|1 1/2|1寸半|
 
-## Li
+PPR低温: https://pic3.zhimg.com/v2-58d30a7e31dbc21117737ed242d53c97_r.jpg
 
-https://www.zhihu.com/question/28128456/answer/1097063877   
-![](https://pic4.zhimg.com/80/v2-85a3f448f751346dd9527bd53db35523_1440w.jpg?source=1940ef5c)
+# 气
 
-# Residual Current Device
-https://www.theiet.org/forums/forum/messageview.cfm?catid=205&threadid=9258
+|名称|传输|成分|热值(大卡/立方米)|
+|---|---|---|--|
+|液化石油气Y|钢瓶|C3H6/8+C4H6/8/10|21000—28000|
+|天然气T|管道|CH4|7100-11500|
+|人工煤气R|管道|CH4+H2+CO|3500—4700|
 
-    RCD - Residual Current Device 
-    RCCB - Residual Current Circuit Breaker 
-    RCBO - Residual Current circuit Breakers integral Over current protection 
-    ELCB - Earth Leakage Circuit Breaker 
-
-RCD is the term that covers a family of devices.
-
-RCCBs are RCDs without any overload protection.
-
-RCBOs are RCDs with overcurrent protection included in the device.
-
-CBRS are circuit breakers with residual current protection which may or may not be integral.
-
-SRCDS are socket outlets with RCD protection.
-
-PRCDS are RCDS built in to a plug.
-
-MRCDS are independantly mounted devices that provide a signal to trip another device.
-
-SRCBOS are sockets incorporating an RCD and overcurrent protection.
-
-RCDs without overcurrent protection must be protected by a separate overcurrent device.
-
+    LNG（低温液化天然气）
+    天然气灶和煤气灶不一样
+    天然气密度比空气小易散发，液化石油气密度比空气重
+    
 # 3M Tapes
 https://multimedia.3m.com/mws/media/67100O/3mtm-vhb-tapes.pdf
 
@@ -185,23 +167,6 @@ Reset: - + - + - +.  Power off/on.
     24小时以上、不足48小时的按票价10%计，
     不足24小时的按票价20%计。
     变更到站: 如新车票票价低于原车票，只需支付差额部分的退票费。
-
-# 吉他
-![](https://img.alicdn.com/imgextra/i3/120593721/TB2iSJMXIsb61BjSszbXXcvMpXa_!!120593721.jpg)
-
-## Yamaha
-### Acoustic 民谣
-FG / FGX Series： https://usa.yamaha.com/products/musical_instruments/guitars_basses/ac_guitars/fg_fgx/specs.html#product-tabs
-
-![](https://usa.yamaha.com/files/2EACEE5108E0412CA57A46FB2FD1D669_12083_1139x545_cbc01e51b9659ef481c37a2abed4e57a.jpg)
-
-### Classical 古典
-合板：  
-![](https://img.alicdn.com/imgextra/i4/120593721/TB2vBsnkyRnpuFjSZFCXXX2DXXa_!!120593721.jpg)
-
-26寸GL1
-
-单板： 云杉 CG122MS 雪松 CG192C
 
 # App
 卡牛： 导入银行，每次刷新需要验证码

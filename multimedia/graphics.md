@@ -11,7 +11,6 @@
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
 - [Premiere](#premiere)
-- [blender](#blender)
 
 <!-- /TOC -->
 
@@ -68,9 +67,3 @@ Window > Essential Graphics -> search `Title`
 Windows -> Effects -> search `Cross Dissolve`  
 Link video and audio clips: Shift-click -> `Linked Selection` Button  
 
-# blender
-https://www.blender.org/  
-3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation.
-
-https://docs.blender.org/manual/en/dev/render/cycles/gpu_rendering.html  
-only support graphics cards with GCN architecture 2.0 and above)

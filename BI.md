@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Sample data](#sample-data)
 - [Diagram image generator online](#diagram-image-generator-online)
 - [view & analyze Pandas](#view--analyze-pandas)
 - [plotly - for Math](#plotly---for-math)
@@ -25,6 +26,9 @@
 - [highcharts](#highcharts)
 
 <!-- /TOC -->
+# Sample data
+python: https://github.com/altair-viz/vega_datasets    
+
 # Diagram image generator online
 http://blockdiag.com/en/
 

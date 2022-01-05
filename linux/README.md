@@ -59,7 +59,6 @@
 - [cache diagnostics](#cache-diagnostics)
 - [WOL](#wol)
 - [Tools - Online](#tools---online)
-- [Tools - Windows](#tools---windows)
 - [CPU](#cpu)
     - [check_cpu_core_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
@@ -300,6 +299,9 @@ rm -r /var/lib/apt/lists/*
     deb http://.../debian/ buster main contrib non-free
 
     apt install openssh-server # not "openssl"
+
+    # fix： userauth_pubkey: key type ssh-rsa not in PubkeyAcceptedAlgorithms [preauth]
+    PubkeyAcceptedAlgorithms  +ssh-rsa
 
 # Grub
 

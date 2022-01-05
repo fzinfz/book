@@ -22,6 +22,8 @@
 https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
 https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio  
 
+Audacity: https://github.com/audacity/audacity/releases
+
 Input/Output equalizer: https://sourceforge.net/projects/equalizerapo/
 
 # Text To Speech
@@ -29,6 +31,9 @@ My rate: Microsoft Neural > Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/
    
 ## Microsoft
 Demo: https://speech.microsoft.com/customvoice  
+
+    git clone https://github.com/Azure-Samples/cognitive-services-speech-sdk.git
+    => quickstart/python/text-to-speech/quickstart.ipynb
 
 https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
 

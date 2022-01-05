@@ -80,7 +80,7 @@ https://github.com/rprx/v2fly-github-io/blob/master/docs/config/protocols/vless.
     v2rayN（v3.21+），支持 Windows
     v2rayNG（v1.3.0+），支持 Android
     PassWall（v3.9.35+），支持 OpenWrt
-    v2rayA（v1.0.0+），支持 Linux
+    v2rayA（v1.0.0+），支持 Linux, Web UI
     v2rayU（v3.0.0+），支持 macOS
 
 # v2ray

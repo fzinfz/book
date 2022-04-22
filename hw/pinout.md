@@ -18,7 +18,7 @@ Line Termination Resistor Calculator: http://www.alciro.org/tools/RS-485/RS485-r
 # USB3
 VBUS/GND: shared by USB2/3; D-/D+: USB2 only.
 
-![](https://imgur.com/Z8covNr)  
+![](https://imgur.com/Z8covNr.png)  
 https://en.wikipedia.org/wiki/USB_3.0  
 
 ![](https://upload.wikimedia.org/wikipedia/commons/8/82/USB_2.0_and_3.0_connectors.svg)

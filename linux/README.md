@@ -62,6 +62,8 @@
 - [CPU](#cpu)
     - [check_cpu_core_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
+- [kali](#kali)
+    - [tools](#tools)
 - [Video](#video)
 - [OpenCL](#opencl)
 - [zFCP](#zfcp)
@@ -571,6 +573,14 @@ same physical/core ID  =》 simultaneous multi threads (SMTs) / HT
 # USB Persistence
 https://docs.kali.org/downloading/kali-linux-live-usb-persistence  
 http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence  
+
+# kali
+x86/M1/Live/VM/WSL/etc: https://www.kali.org/get-kali  
+Docker: https://hub.docker.com/u/kalilinux/
+
+## tools
+https://www.kali.org/tools/  
+screenshots/cheat sheet: https://www.comparitech.com/net-admin/kali-linux-cheat-sheet/#Kali_Linux_tools    
 
 # Video
 https://askubuntu.com/questions/28033/how-to-check-the-information-of-current-installed-video-drivers

@@ -44,21 +44,7 @@ https://grafana.com/docs/loki/latest/clients/promtail/
 [loki](./db/loki)
 
 ## prometheus
-https://github.com/prometheus/prometheus#prometheus
-
-    docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus
-
-### exporters
-https://prometheus.io/docs/instrumenting/exporters/
-
-https://github.com/prometheus/node_exporter  
-
-    docker run -d
-    --net="host" \
-    --pid="host" \
-    -v "/:/host:ro,rslave" \
-    quay.io/prometheus/node-exporter \
-    --path.rootfs=/host
+https://github.com/fzinfz/scripts/tree/master/apps_docker
 
 ## Zabbix - C/PHP/JAVA
 https://github.com/zabbix/zabbix

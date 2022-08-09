@@ -1,19 +1,10 @@
 <!-- TOC -->
 
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
-- [Mikrotik](#mikrotik)
-    - [Quickset](#quickset)
-    - [Reset](#reset)
-    - [Diagram](#diagram)
-    - [Wireless](#wireless)
-        - [Modes](#modes)
-    - [CLI](#cli)
-    - [PCQ](#pcq)
-    - [PPP BCP](#ppp-bcp)
 - [UBNT](#ubnt)
     - [UNMS](#unms)
 - [ER-X](#er-x)
-    - [Reset](#reset-1)
+    - [Reset](#reset)
     - [Console](#console)
     - [bootloader](#bootloader)
     - [Firmware](#firmware)
@@ -21,13 +12,13 @@
     - [custom scripts](#custom-scripts)
     - [Web Setup Wizards](#web-setup-wizards)
         - [Switch](#switch)
-    - [CLI](#cli-1)
+    - [CLI](#cli)
         - [enable apt](#enable-apt)
         - [List dhcp/static clients](#list-dhcpstatic-clients)
         - [RIP](#rip)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Controller Web](#controller-web)
-- [NanoStation® M](#nanostation®-m)
+- [NanoStation® M](#nanostation%C2%AE-m)
 
 <!-- /TOC -->
 
@@ -36,65 +27,6 @@ http://pkg.entware.net/binaries/mipsel/
 
     tar zxvf *.ipk
     tar zxvf data.tar.gz
-
-# Mikrotik
-TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  
-
-check if winbox not working: /webfig/#IP:Services
-
-## Quickset
-
-    CAP: managed by a centralised CAPsMAN server
-
-    CPE: Client device
-
-    BasicAP: Wireless
-    HomeAP: Wireless/Guest; WAN; LAN; VPN; System update/reset/password
-    Wireless ISP (WISP) AP: 802.11/nstreme/nv2 Wireless Bridge/Router;  VPN; System update/reset/password
-
-    Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
-
-not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
-"No supported channel" => reset and run quickset first
-
-    PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
-
-## Reset
-https://wiki.mikrotik.com/wiki/Manual:Reset
-
-    Hold this button before applying power, release after three seconds since powering, to load backup Boot loader.
-    If you keep holding this button for 2 more seconds until LED light starts flashing, release the button to reset RouterOS configuration to default (total 5 seconds)
-
-## Diagram
-![](http://mikrotik-trainings.com/docs/MikroTik_PacketFlow_Routing.jpg)
-
-## Wireless
-RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mode parameter.
-
-default-forwarding (on AP) – gives ability to disable the communication between the wireless clients  
-default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
-
-### Modes
-https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
-
-## CLI
-```
-put [resolve google.com server 8.8.8.8]
-
-/ip hotspot walled-garden
-ip add dst-address=1.1.1.1 action=accept
-add dst-host=:^www.bing.com path=":/*\$"
-    >>> regular expression start with a colon (':')
-    >>> $ requires the escape character '\' to stop it from be processed as an actual $)
-```
-
-## PCQ
-https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
-http://mum.mikrotik.com/presentations/US08/janism.pdf  
-https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
-
-## PPP BCP
-https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
 
 # UBNT
 ## UNMS

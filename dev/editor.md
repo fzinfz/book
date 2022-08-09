@@ -35,7 +35,7 @@ https://github.com/pandao/editor.md
 # VSCode
 ## extensions
 
-    AlanWalk.markdown-toc # Settings(Ctrl+,): Set files.eol to "\n" or "\r\n" in vscode settings.
+    huntertran.auto-markdown-toc
     shardulm94.trailing-spaces
 
 ## User Config

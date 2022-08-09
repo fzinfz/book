@@ -69,6 +69,18 @@
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker]
     "PreventDeviceEncryption"=dword:00000001
 
+## Networking
+```CMD
+netsh interface ipv4 show excludedportrange protocol=tcp
+
+netstat -ano | findstr LISTEN
+netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
+route add 192.168.0.0  MASK 255.255.0.0 10.0.0.1
+route add 172.16.0.0  MASK 255.255.0.0 10.0.0.1
+netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.168.3.2
+
+SUBST X: "D:\Folder_to_map"
+```
 
 # Restore OS
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windows-to-audit-mode-or-oobe
@@ -97,18 +109,6 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 
 ## Auto Login
     netplwiz.exe
-
-# CMD Commands
-## Networking
-```CMD
-netstat -ano | findstr LISTEN
-netsh interface portproxy add v4tov4 listenport=3333 listenaddress=0.0.0.0 connectport=3213 connectaddress=127.0.0.1 
-route add 192.168.0.0  MASK 255.255.0.0 10.0.0.1
-route add 172.16.0.0  MASK 255.255.0.0 10.0.0.1
-netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.168.3.2
-
-SUBST X: "D:\Folder_to_map"
-```
 
 # Configuration
 ## Disable Windows Defender

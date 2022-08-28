@@ -12,8 +12,8 @@
 - [Excel](#excel)
     - [Formula](#formula)
     - [CSharp](#csharp)
-- [CSharp](#csharp-1)
-- [.Net Core](#net-core)
+- [CSharp](#csharp)
+- [Net Core](#net-core)
 
 <!-- /TOC -->
 
@@ -45,29 +45,6 @@ a query language and execution engine tied to any backend service.
         homePlanet: String
     }
 
-# vi/vim
-    go to line: Esc , line#, Shift-g
-    :%s/pattern/replace/g_  # i/I: case in/sensitive    
-    cw => change word
-    ciw => change word from cursor
-    :w !sudo tee %      ===> sudo save
-
-## VISUAL BLOCK mode
-    Ctrl+V；【select】；Shift + I; 【type text】; Esc
-
-# VSCode
-Regex for deleting empty lines: ^\s*$\n
-
-## extensions
-    AlanWalk.markdown-toc
-    shardulm94.trailing-spaces
-
-## Debug Config
-    # launch.json
-    "args": [
-        "--help", ""
-    ],
-
 # Markdown
 ## Parser
 http://demo.showdownjs.com/  
@@ -87,6 +64,9 @@ https://github.com/evilstreak/markdown-js#browser
 Text/HTML table: https://html.ferro.pro/md.html  
 CSV/WIKI table: http://jakebathman.github.io/Markdown-Table-Generator/  
 HTML(non table): https://domchristie.github.io/to-markdown/  
+
+# Markdown + LaTeX
+https://github.com/pandao/editor.md
 
 # Windows Universal
 ## OCR

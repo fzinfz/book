@@ -3,16 +3,15 @@
 - [Driver Backup](#driver-backup)
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
+    - [Networking](#networking)
 - [Restore OS](#restore-os)
-- [.Net versions query](#net-versions-query)
+- [DotNet versions query](#dotnet-versions-query)
 - [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
     - [Date & Time](#date--time)
     - [Query .Net Framwork Versions](#query-net-framwork-versions)
     - [Auto Login](#auto-login)
-- [CMD Commands](#cmd-commands)
-    - [Networking](#networking)
 - [Configuration](#configuration)
     - [Disable Windows Defender](#disable-windows-defender)
     - [Registry locations](#registry-locations)
@@ -41,7 +40,7 @@
     - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
-- [简繁体转换](#简繁体转换)
+- [简繁体转换](#%E7%AE%80%E7%B9%81%E4%BD%93%E8%BD%AC%E6%8D%A2)
 - [mstsc](#mstsc)
     - [GPU - NVIDIA](#gpu---nvidia)
     - [CredSSP](#credssp)
@@ -54,7 +53,7 @@
 
 # Driver Backup
 
-    dism /online /export-driver /destination:C:\drivers-backup
+    dism /online /export-driver /destination:d:\_drivers
 
 # powercfg
 
@@ -88,9 +87,9 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
     sysprep /generalize
     CTRL+SHIFT+F3 to audio mode
 
-# .Net versions query
-    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP"
-    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"
+# DotNet versions query
+
+    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Version
 
 # Edition Unique Features
 10: Free RemoteFX, WSL  
@@ -170,8 +169,9 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-co
 ## Copy Boot Entries 
 
     bcdedit /copy {current} /d "new" 
-    bcdedit /set {。。。}  device partition=W:
-    bcdedit /set {。。。}  osdevice partition=W:
+    bcdedit /set {}  device partition=W:
+    bcdedit /set {}  osdevice partition=W:
+    bcdedit /set {current} description "Windows 11 21H2"
 
 ## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  

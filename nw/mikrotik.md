@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [CHR 60-day trial](#chr-60-day-trial)
 - [Tasks](#tasks)
     - [Scripting](#scripting)
     - [Quickset](#quickset)
@@ -17,9 +18,17 @@
     - [OpenVPN](#openvpn)
     - [WireGuard](#wireguard)
     - [PPP BCP](#ppp-bcp)
+- [Dual WAN](#dual-wan)
+    - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [Videos](#videos)
 
 <!-- /TOC -->
+# CHR 60-day trial
+https://mikrotik.com/client/chr  
+https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
+
+    /system license renew 
+    level: p1
 
 # Tasks
 
@@ -125,6 +134,19 @@ Both WAN: https://help.mikrotik.com/docs/display/ROS/WireGuard
 
 ## PPP BCP
 https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
+
+# Dual WAN
+## PCC - diff subnet/bandwidth
+https://mum.mikrotik.com/presentations/US12/steve.pdf
+mark connections -> associate routing marks with packets -> Create routes
+- p81: action=accept chain=prerouting dst-address=172.*.0.0/24
+- p91: action=mark-connection chain=prerouting connection-mark=no-mark in-interface=LAN new-connection-mark=WAN1 passthrough=yes per-connection-classifier=
+- p100a: action=mark-routing chain=prerouting connection-mark=WAN1 new-routing-mark=WAN1-mark passthrough=yes
+- p100b: action=mark-routing chain=output connection-mark=WAN1 new-routing-mark=WAN1-mark passthrough=yes
+- p104: action=mark-connection chain=prerouting connection-mark=no-mark in-interface=WAN1 new-connection-mark=WAN1 passthrough=yes
+
+
+https://aacable.wordpress.com/2011/07/27/mikrotik-dual-wan-load-balancing-using-pcc-method-complete-script-by-zaib/
 
 # Videos
 TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  

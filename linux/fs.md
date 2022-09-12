@@ -211,8 +211,8 @@ https://wiki.archlinux.org/index.php/NTFS-3G
 # Benchmark
 ## dd
     
-        dd if=/dev/zero of=/tmp/test_iops bs=512  count=10000 oflag=direct
-        dd if=/dev/zero of=/tmp/test_bw   bs=200M count=1     oflag=direct
+        dd if=/dev/zero of=./test_iops bs=4k count=10000 oflag=direct
+        dd if=/dev/zero of=./test_bw   bs=1G count=1     oflag=direct
 
 ## fio
 
@@ -267,4 +267,4 @@ apt
         writable = yes
         guest ok = yes
       
-    service smbd restart
+    service smbd restarttart

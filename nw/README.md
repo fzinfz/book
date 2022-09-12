@@ -13,11 +13,11 @@
 - [NAT Hairpin + DDNS](#nat-hairpin--ddns)
     - [Mikrotik](#mikrotik)
 - [OSPF](#ospf)
-    - [Mikrotik](#mikrotik-1)
+    - [Mikrotik](#mikrotik)
 - [MPLS](#mpls)
-    - [Mikrotik](#mikrotik-2)
+    - [Mikrotik](#mikrotik)
 - [VPLS](#vpls)
-    - [Mikrotik](#mikrotik-3)
+    - [Mikrotik](#mikrotik)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
@@ -38,6 +38,7 @@
     - [Any Proxy - Go](#any-proxy---go)
     - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
 - [NetFlow Software](#netflow-software)
+    - [](#)
 - [IPV6](#ipv6)
 - [Guide](#guide)
 
@@ -106,10 +107,21 @@ https://youtu.be/_kw_bQyX-3U?t=174
 
 # OSPF
 ## Mikrotik
+v6:
+    
     /routing ospf instance
     set [ find default=yes ] redistribute-connected=as-type-1
     /routing ospf network
     add area=backbone network=192.168.1.0/24
+
+v7: https://help.mikrotik.com/docs/display/ROS/Moving+from+ROSv6+to+v7+with+examples
+
+    /routing ospf instance
+    add disabled=no name=ospf-instance-1 redistribute=connected
+    /routing ospf interface-template
+    add area=ospf-area-1 disabled=no interfaces=br-wan
+    /routing ospf area
+    add area-id=192.168.99.0 disabled=no instance=ospf-instance-1 name=ospf-area-1
 
 # MPLS 
 ## Mikrotik 

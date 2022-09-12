@@ -18,6 +18,7 @@ https://github.com/fzinfz/scripts/blob/master/lib/qemu.sh
 
     tar -xvf x.ova
     qemu-img resize foo.qcow2 +2G # thin
+    qemu-img convert -p -f raw -O vhdx -o subformat=dynamic x.img x.vhdx
 
 ## qemu-img-windows
 https://cloudbase.it/qemu-img-windows/

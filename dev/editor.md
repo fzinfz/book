@@ -1,43 +1,31 @@
 <!-- TOC -->
 
 - [VSCode](#vscode)
-    - [extensions](#extensions)
-    - [User Config](#user-config)
-    - [Tips](#tips)
-    - [Debug Config](#debug-config)
-    - [Web](#web)
-    - [remtoe-ssh](#remtoe-ssh)
+    - [remote-ssh](#remote-ssh)
 - [vi/vim](#vivim)
+- [nano](#nano)
 
 <!-- /TOC -->
 
 # VSCode
-## extensions
+- Regex - deleting empty lines: ^\s*$\n
+- Command Palette: F1 / Ctrl+Shift+P
+- Search Settings: Ctrl+, ==> search "XXX.YYY"
+- github to web vscode: add "1s" in URL # https://github.com/conwnet/github1s
+- extensions:
+```
+huntertran.auto-markdown-toc # right click
+shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
+```
+- settings.json
+```
+"editor.renderWhitespace": "all",
+"git.path": "D:\\sdk\\Git\\bin\\git.exe"
+```
 
-    huntertran.auto-markdown-toc
-    shardulm94.trailing-spaces
-
-## User Config
-Ctrl+, ==> search "XXX.YYY" 
-
-    "editor.renderWhitespace": "all", 
-    "git.path": "D:\\sdk\\Git\\bin\\git.exe"  # open user's settings.json
-
-## Tips
-Regex for deleting empty lines: ^\s*$\n
-
-## Debug Config
->launch.json
-
-    "args": [
-        "--help", ""
-    ],
-
-## Web
-https://github.com/conwnet/github1s
-
-## remtoe-ssh
->settings.json
+## remote-ssh
+https://code.visualstudio.com/docs/remote/ssh  
+extension: ms-vscode-remote.remote-ssh
 
     "remote.SSH.configFile": "D:\\conf\\ssh_config"
 
@@ -46,11 +34,12 @@ https://github.com/conwnet/github1s
         IdentityFile d:/conf/id_rsa
         User root
 
+F1 => Remote-SSH: Connect to Host...
 
 # vi/vim
 
     go to line: Esc , line#, Shift-g
-    :%s/pattern/replace/g_  # i/I: case in/sensitive    
+    :%s/pattern/replace/g_  # i/I: case in/sensitive
     cw => change word
     ciw => change word from cursor
     :w !sudo tee %      ===> sudo save
@@ -58,9 +47,12 @@ https://github.com/conwnet/github1s
     ~/.vimrc
     set nocompatible # fix array not working in insert mode
 
-* Visual Insert Mode  
+* Visual Insert Mode
     paste: Shift+Insert
-    
-* VISUAL BLOCK mode  
+
+* VISUAL BLOCK mode
     Ctrl+V；【select block】；Shift + I; 【type text】; Esc
 
+# nano
+CTRL + Shift + 6:   mark
+CTRL + K:           cut/delete

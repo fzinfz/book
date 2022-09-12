@@ -65,7 +65,7 @@ https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 - Pure: http://openwrt-dist.sourceforge.net/   
 - QoS/VPNs: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
 
-* eSir: https://drive.google.com/drive/folders/1ITW4jJvvKkbiJp0pnqdBh7ti6zrYraPt
+* eSir: https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr
 * Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
 
 # RM2100

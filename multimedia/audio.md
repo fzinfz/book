@@ -31,6 +31,7 @@ My rate: Microsoft Neural > Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/
    
 ## Microsoft
 Demo: https://speech.microsoft.com/customvoice  
+download: https://greasyfork.org/en/scripts/444347-azure-speech-download
 
     git clone https://github.com/Azure-Samples/cognitive-services-speech-sdk.git
     => quickstart/python/text-to-speech/quickstart.ipynb

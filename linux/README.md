@@ -331,8 +331,9 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 ```
     sysbench --test=cpu --cpu-max-prime=20000 --num-threads=32 run
 
-    wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.1.9466-static.tar.gz
-    tar zxvf y-cruncher\ v0.7.1.9466-static.tar.gz 
+    wget http://www.numberworld.org/y-cruncher/y-cruncher%20v0.7.9.9510-static.tar.xz
+    tar -xf y-cruncher*.tar.xz
+
 ```
 
 # ssh redirect

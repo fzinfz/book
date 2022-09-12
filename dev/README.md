@@ -7,8 +7,10 @@
 - [Markdown](#markdown)
     - [Parser](#parser)
     - [Converter](#converter)
-- [Windows Universal](#windows-universal)
-    - [OCR](#ocr)
+- [Markdown + LaTeX](#markdown--latex)
+- [OCR](#ocr)
+    - [Offline](#offline)
+    - [Windows Universal](#windows-universal)
 - [Excel](#excel)
     - [Formula](#formula)
     - [CSharp](#csharp)
@@ -68,8 +70,12 @@ HTML(non table): https://domchristie.github.io/to-markdown/
 # Markdown + LaTeX
 https://github.com/pandao/editor.md
 
-# Windows Universal
-## OCR
+# OCR
+## Offline
+https://github.com/hiroi-sora/Umi-OCR  
+text on screen: https://docs.microsoft.com/en-us/windows/powertoys/text-extractor
+
+## Windows Universal
 https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/OCR  
 https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Ocr
 
@@ -88,3 +94,4 @@ async：https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concept
 
 # .Net Core
 https://github.com/thangchung/awesome-dotnet-core
+

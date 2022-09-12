@@ -55,24 +55,29 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     iface enp1s0 inet dhcp
 
 ## /etc/netplan/*.yaml
+```
+network:
+  version: 2
 
-    network:
-    version: 2
+  ethernets:
+    enp1s0: {}
+    enp2s0: {}
+    enp3s0: {}
+    enp4s0: {}
+    enp5s0: {}
+    enp6s0:
+      dhcp4: yes
+  bridges:
+    br0:
+      interfaces: [enp1s0,enp2s0]
+      dhcp4: yes
+    br1: {}
+    ovs-br0:
+      openvswitch: {} # setup ovs manually
+      dhcp4: yes
+```
 
-    ethernets:
-      enp1s0: {}
-      enp2s0: {}
-      enp3s0: {}
-      enp4s0:
-        dhcp4: yes
-
-    bridges:
-      br0:
-        interfaces: [enp1s0,enp2s0,enp3s0]
-        dhcp4: yes
-      br1: {}
-
-netplan try 
+netplan try # if error, run: netplan generate
 
 ## Port listening
    

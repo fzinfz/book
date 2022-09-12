@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [.iso to USB](#iso-to-usb)
+- [iso to USB](#iso-to-usb)
 - [PXE](#pxe)
 - [Screen sharing](#screen-sharing)
     - [Shell](#shell)
@@ -8,7 +8,6 @@
     - [Windows](#windows)
 - [KVM switch](#kvm-switch)
 - [Chrome](#chrome)
-- [nano](#nano)
 - [File Transfer](#file-transfer)
 - [Note](#note)
     - [NextCloud](#nextcloud)
@@ -25,6 +24,7 @@
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
 - [Taobao](#taobao)
+- [Cleaning](#cleaning)
 
 <!-- /TOC -->
 
@@ -63,10 +63,6 @@ h/w: pikvm
 # Chrome
 F12 -> Ctrl+Shift+P -> "screenshot"
 Address: Shift + Del
-
-# nano
-CTRL + Shift + 6:   mark
-CTRL + K:           cut/delete
 
 # File Transfer
 https://github.com/blueimp/jQuery-File-Upload  
@@ -122,3 +118,6 @@ https://www.xively.com/
 
 # Taobao
 http://pt42.cn/taobaobasket_index.htm
+
+# Cleaning
+Explorer: https://github.com/1357310795/MyComputerManager

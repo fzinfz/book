@@ -13,6 +13,8 @@
 
     gcloud auth login
 
+https://cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf
+
 # GCS
 
     export GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`

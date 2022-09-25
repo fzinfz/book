@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [run as Container](#run-as-container)
 - [run as VM](#run-as-vm)
     - [QEMU NIC](#qemu-nic)
 - [Web UI](#web-ui)
@@ -17,6 +18,27 @@
 - [Breed](#breed)
 
 <!-- /TOC -->
+
+# run as Container
+ref: https://mlapp.cn/376.html
+
+    ip link set vlan.10 promisc on
+    docker network create -d macvlan --subnet=10.0.0.0/8 --gateway=10.0.0.1 -o parent=vlan.10 macnet
+    docker network ls && docker network inspect macnet
+    docker run --restart unless-stopped --name openwrt -d --network macnet --privileged sulinggg/openwrt:x86_64 /sbin/init # root/password
+    docker exec -it openwrt /bin/sh # vim /etc/config/network // edit ip/gw & restart
+
+```
+config interface 'lan'
+        option type 'bridge'
+        option ifname 'eth0'
+        option proto 'static'
+        option ipaddr '10.19.0.3'
+        option netmask '255.0.0.0'
+        option gateway '10.0.0.1'
+        option broadcast '10.255.255.255'
+        option dns '10.0.0.1'
+```
 
 # run as VM
 ## QEMU NIC
@@ -37,7 +59,7 @@
 # /etc/config/
 ## network
 https://openwrt.org/docs/guide-user/base-system/basic-networking#network_configuration
-                                  
+
         config interface 'wan'
             option ifname 'eth0'
             option proto 'dhcp'

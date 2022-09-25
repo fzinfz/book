@@ -101,14 +101,22 @@ https://docs.cumulusnetworks.com/display/ROH/Configuring+Cumulus+Quagga
 
 # NAT Hairpin + DDNS
 ## Mikrotik
-https://youtu.be/_kw_bQyX-3U?t=174
 
-    dst-address-type=local and also dst-address=!192.168.0.0/16
+    /ip firewall address-list
+    add address=192.168.88.0/24 comment=Management list=LANs
+    add address=10.0.0.0/8 comment=Lab list=LANs
+    add address=my.ddns.domain list=WANs
+    add address=192.168.1.0/24 list=WANs
+
+    /ip firewall nat
+    add action=dst-nat chain=dstnat dst-address-list=WANs dst-port=4430-4431 protocol=tcp to-addresses=192.168.88.19
+
+ref: https://forum.mikrotik.com/viewtopic.php?t=172380
 
 # OSPF
 ## Mikrotik
 v6:
-    
+
     /routing ospf instance
     set [ find default=yes ] redistribute-connected=as-type-1
     /routing ospf network

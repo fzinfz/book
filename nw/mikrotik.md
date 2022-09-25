@@ -42,7 +42,7 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
       /user ssh-keys import public-key-file= user=
       /ip ssh print
       /ip ssh set forwarding-enabled=local
-       
+
 check if winbox not working: /webfig/#IP:Services
 
 ## Scripting
@@ -120,6 +120,12 @@ https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 
 # Sniffer & Wireshark
 https://mum.mikrotik.com/presentations/ID19/presentation_6708_1572241150.pdf
+
+    /tool sniffer print # running: yes/no
+    # wireshark capture filter: udp port 37008
+    /tool sniffer streaming-server=ip.of.wireshark.box => click Start!
+
+    /interface ethernet switch set switch1 mirror-source=
 
 # VPN
 ## OpenVPN

@@ -1,11 +1,12 @@
 
 <!-- TOC -->
 
+- [Chrome](#chrome)
 - [Percent-encoding reserved](#percent-encoding-reserved)
 - [HTML5](#html5)
     - [lang](#lang)
     - [Subresource Integrity](#subresource-integrity)
-- [media type (MIME type or content type)](#media-type-mime-type-or-content-type)
+- [media type](#media-type)
 - [icons](#icons)
 - [Events](#events)
 - [CSS box model](#css-box-model)
@@ -25,6 +26,15 @@
 - [robots](#robots)
 
 <!-- /TOC -->
+
+# Chrome
+
+    hard reload: Ctrl + F5
+    F12 -> Ctrl+Shift+P -> "screenshot"
+    delete address history: Shift + Del
+    remove domain name: F12 -> console
+        document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
+
 # Percent-encoding reserved
 https://en.wikipedia.org/wiki/Percent-encoding
 |!|#|$|%|&|'|(|)|*|+|,|/|:|;|=|?|@|[|]|
@@ -44,8 +54,8 @@ http://www.ietf.org/rfc/bcp/bcp47.txt
 ## Subresource Integrity
 https://www.w3.org/TR/SRI/#resource-integrity
 
-# media type (MIME type or content type)
-http://www.iana.org/assignments/media-types/media-types.xhtml#application
+# media type
+MIME type or content type: http://www.iana.org/assignments/media-types/media-types.xhtml#application
 
     application/pdf
     audio

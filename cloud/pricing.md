@@ -70,7 +70,7 @@ https://aws.amazon.com/free
     Amazon DynamoDB 25 GB of storage
 
 ## GCP
-https://cloud.google.com/free/docs/always-free-usage-limits  
+https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits
 
     GAE
         28 hours per day of "F" instances

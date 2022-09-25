@@ -22,16 +22,18 @@
     - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
-    - [Ubuntu](#ubuntu-1)
-    - [Debian](#debian-1)
+    - [Ubuntu](#ubuntu)
+    - [Debian](#debian)
         - [experimental](#experimental)
     - [dpkg](#dpkg)
     - [apt](#apt)
     - [ssh server](#ssh-server)
 - [Grub](#grub)
     - [grub-customizer](#grub-customizer)
-    - [boot repair](#boot-repair)
-        - [ubuntu](#ubuntu)
+- [boot repair](#boot-repair)
+    - [ubuntu](#ubuntu)
+- [Serial](#serial)
+    - [client](#client)
 - [Benchmark](#benchmark)
 - [ssh redirect](#ssh-redirect)
 - [web](#web)
@@ -46,7 +48,6 @@
 - [hostname](#hostname)
 - [font](#font)
 - [SELinux](#selinux)
-- [Serial Console](#serial-console)
 - [Dropbox](#dropbox)
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
@@ -54,7 +55,7 @@
 - [JAVA_HOME](#java_home)
 - [I18N & I10N](#i18n--i10n)
 - [Chrome](#chrome)
-- [Proxy](#proxy-1)
+- [Proxy](#proxy)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
 - [WOL](#wol)
@@ -317,14 +318,24 @@ rm -r /var/lib/apt/lists/*
     sudo apt-get update
     sudo apt-get install grub-customizer
 
-## boot repair
+# boot repair
 https://sourceforge.net/p/boot-repair-cd/home/Home/
     apt install linux-image-*  # if vmlinuz & initrd.img missing
 
-### ubuntu
+## ubuntu
     sudo add-apt-repository ppa:yannubuntu/boot-repair
     sudo apt-get update
     sudo apt-get install -y boot-repair && boot-repair
+
+# Serial
+https://help.ubuntu.com/community/SerialConsoleHowto
+
+    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
+
+## client
+
+    screen /dev/ttyUSB0 115200
+    picocom -b 115200 /dev/ttyUSB0
 
 # Benchmark
 http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
@@ -480,14 +491,6 @@ apt-get install  xfonts-base
 ```
 getenforce
 semanage port -a -t mongod_port_t -p tcp 27017
-```
-
-# Serial Console
-https://wiki.openwrt.org/doc/hardware/port.serial
-```
-cat openwrt-lantiq-ram-u-boot.asc > /dev/ttyUSB0
-screen /dev/ttyUSB0 115200
-picocom -b 115200 /dev/ttyUSB0
 ```
 
 # Dropbox

@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [clash](#clash)
+    - [config](#config)
 - [WireGuard - C](#wireguard---c)
     - [tailscale](#tailscale)
 - [nebula - go](#nebula---go)
@@ -8,26 +10,25 @@
 - [xray](#xray)
 - [v2ray](#v2ray)
     - [with router](#with-router)
-- [clash](#clash)
+- [hysteria](#hysteria)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
 - [Transparent Proxy](#transparent-proxy)
-- [中文手册](#中文手册)
+- [中文手册](#%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C)
     - [V2ray](#v2ray)
-    - [Shadowsocks](#shadowsocks-1)
+    - [Shadowsocks](#shadowsocks)
 - [Manager](#manager)
 - [Panel](#panel)
 - [Docker](#docker)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [Optimize](#optimize)
-    - [BBR (Kernel 4.9+)](#bbr-kernel-49)
+    - [BBR Kernel 4.9+](#bbr-kernel-49)
     - [KCPTun](#kcptun)
     - [dragonite-java](#dragonite-java)
     - [UDPspeeder](#udpspeeder)
 - [govpn](#govpn)
 - [HTTP tunnel in Go: goflyway](#http-tunnel-in-go-goflyway)
-- [Other tools](#other-tools)
 - [LightSword](#lightsword)
 - [ShadowVPN](#shadowvpn)
 - [gohop VPN - go](#gohop-vpn---go)
@@ -36,8 +37,18 @@
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [tinyFecVPN](#tinyfecvpn)
 - [Subscription URL Generator](#subscription-url-generator)
+- [OpenWRT](#openwrt)
 
 <!-- /TOC -->
+
+# clash
+https://github.com/Dreamacro/clash  
+Premium: https://github.com/Dreamacro/clash/releases/tag/premium  
+
+## config
+https://github.com/magicdawn/clash-config-manager  
+https://github.com/snapei/clash-pro-rules  
+sub merge: https://acl4ssr-sub.github.io/
 
 # WireGuard - C
 https://www.wireguard.com/quickstart/  
@@ -113,9 +124,8 @@ loglevel： "debug"、"info"、"warning"、"error" 和 "none"
 ## with router
 https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 
-# clash
-https://github.com/Dreamacro/clash  
-Win GUI: https://docs.cfw.lbyczf.com/contents/quickstart.html
+# hysteria
+https://github.com/HyNetwork/hysteria
 
 # Brook - Go
 https://github.com/txthinking/brook
@@ -187,9 +197,6 @@ http://www.cypherpunks.ru/govpn/
 # HTTP tunnel in Go: goflyway
 https://github.com/coyove/goflyway
 
-# Other tools
-https://pbs.twimg.com/media/B6MjT6cCYAA-U3C.png:large
-
 # LightSword
 https://github.com/UnsignedInt8/LightSword  
 https://medium.com/@UnsignedInt8  
@@ -214,3 +221,6 @@ https://github.com/wangyu-/tinyFecVPN
 
 # Subscription URL Generator
 https://sub-web.netlify.app/
+
+# OpenWRT
+https://github.com/immortalwrt/immortalwrt

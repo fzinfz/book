@@ -7,7 +7,6 @@
 - [Terminal](#terminal)
     - [Windows](#windows)
 - [KVM switch](#kvm-switch)
-- [Chrome](#chrome)
 - [File Transfer](#file-transfer)
 - [Note](#note)
     - [NextCloud](#nextcloud)
@@ -59,10 +58,6 @@ https://github.com/debauchee/barrier/
 Barrier was forked from Symless's Synergy 1.9 codebase.
 
 h/w: pikvm
-
-# Chrome
-F12 -> Ctrl+Shift+P -> "screenshot"
-Address: Shift + Del
 
 # File Transfer
 https://github.com/blueimp/jQuery-File-Upload  

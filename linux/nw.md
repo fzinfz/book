@@ -67,17 +67,26 @@ network:
     enp5s0: {}
     enp6s0:
       dhcp4: yes
+
   bridges:
     br0:
       interfaces: [enp1s0,enp2s0]
       dhcp4: yes
     br1: {}
     ovs-br0:
-      openvswitch: {} # setup ovs manually
+      openvswitch: {} # 
       dhcp4: yes
-```
 
-netplan try # if error, run: netplan generate
+  vlans:
+    vlan.10:
+      id: 10
+      link: enp4s0
+      dhcp4: yes
+
+```
+setup ovs manually
+
+    netplan try # if error, run: netplan generate
 
 ## Port listening
    

@@ -3,26 +3,27 @@
 - [Learn](#learn)
 - [My bash](#my-bash)
 - [Workflow](#workflow)
-    - [commit](#commit)
-    - [log](#log)
-    - [branch and merge](#branch-and-merge)
-    - [Undo](#undo)
-    - [stashing](#stashing)
-    - [remote and push](#remote-and-push)
-        - [delete remote branch](#delete-remote-branch)
+  - [commit](#commit)
+  - [log](#log)
+  - [branch and merge](#branch-and-merge)
+  - [Undo](#undo)
+  - [stashing](#stashing)
+  - [remote and push](#remote-and-push)
+    - [delete remote branch](#delete-remote-branch)
 - [config](#config)
-    - [Proxy](#proxy)
+  - [Proxy](#proxy)
 - [filter-branch](#filter-branch)
 - [Remove File](#remove-file)
-    - [Unpushed commit](#unpushed-commit)
-    - [Every commit](#every-commit)
-    - [from Github](#from-github)
+  - [Unpushed commit](#unpushed-commit)
+  - [Every commit](#every-commit)
+  - [from Github](#from-github)
 - [rebase](#rebase)
+- [fork](#fork)
 - [Submodules](#submodules)
 - [Github API](#github-api)
-    - [Download by tag](#download-by-tag)
-    - [curl Github](#curl-github)
-    - [Query latest release](#query-latest-release)
+  - [Download by tag](#download-by-tag)
+  - [curl Github](#curl-github)
+  - [Query latest release](#query-latest-release)
 - [Cheatsheet](#cheatsheet)
 - [Tools](#tools)
 - [Gitbook](#gitbook)
@@ -205,6 +206,9 @@ https://git-scm.com/book/en/v2/Git-Branching-Rebasing
     git checkout master
     git rebase upstream/master
     git push -f origin master
+
+# fork
+https://stackoverflow.com/questions/14587045/how-to-merge-branch-of-forked-repo-into-master-branch-of-original-repo
 
 # Submodules
 https://git-scm.com/book/en/v2/Git-Tools-Submodules    

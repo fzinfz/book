@@ -1,7 +1,7 @@
 <!-- TOC -->
 
 - [VSCode](#vscode)
-    - [remote-ssh](#remote-ssh)
+  - [remote-ssh](#remote-ssh)
 - [vi/vim](#vivim)
 - [nano](#nano)
 
@@ -14,7 +14,7 @@
 - github to web vscode: add "1s" in URL # https://github.com/conwnet/github1s
 - extensions:
 ```
-huntertran.auto-markdown-toc # right click
+yzhang.markdown-all-in-one
 shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
 ```
 - settings.json
@@ -31,7 +31,7 @@ extension: ms-vscode-remote.remote-ssh
 
     Host 192.168.88.72
         HostName 192.168.88.72
-        IdentityFile d:/conf/id_rsa
+        IdentityFile C:/Users/root/.ssh/id_rsa
         User root
 
 F1 => Remote-SSH: Connect to Host...

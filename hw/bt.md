@@ -1,3 +1,7 @@
+- [Bluetooth](#bluetooth)
+- [Audio Codecs](#audio-codecs)
+- [Hardware](#hardware)
+
 # Bluetooth
 |Technology|Rate||Year|
 |---|---|---|
@@ -9,3 +13,6 @@
 # Audio Codecs
 https://majorhifi.com/what-can-bluetooth-codecs-do-for-you-a-brief-decoding/  
 ![](https://majorhifi.com/wp-content/uploads/audio46-bluetooth-spec-chart-1.jpg)
+
+# Hardware
+Jabra Clipper - Reset: - + - + - +.  Power off/on.

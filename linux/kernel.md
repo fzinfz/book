@@ -6,17 +6,17 @@
 - [.deb download](#deb-download)
 - [Dynamic Kernel Module Support (DKMS)](#dynamic-kernel-module-support-dkms)
 - [Compiling](#compiling)
-    - [debug](#debug)
-    - [.config](#config)
+  - [debug](#debug)
+  - [.config](#config)
 - [Install .deb manually](#install-deb-manually)
 - [initrd (initial ramdisk)](#initrd-initial-ramdisk)
-    - [initrd scheme](#initrd-scheme)
-    - [initramfs scheme](#initramfs-scheme)
-        - [dracut](#dracut)
-        - [mkinitcpio](#mkinitcpio)
+  - [initrd scheme](#initrd-scheme)
+  - [initramfs scheme](#initramfs-scheme)
+    - [dracut](#dracut)
+    - [mkinitcpio](#mkinitcpio)
 - [tracing](#tracing)
-    - [BPF /eBPF](#bpf-ebpf)
-    - [bcc](#bcc)
+  - [BPF /eBPF](#bpf-ebpf)
+  - [bcc](#bcc)
 - [Linux Releases](#linux-releases)
 - [Kernel Versions](#kernel-versions)
 - [linux-next](#linux-next)
@@ -121,31 +121,38 @@ https://kernelnewbies.org/LinuxVersions
 [Ubuntu](https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version) | 
 [Debian](https://en.wikipedia.org/wiki/Debian_version_history#Release_table)
 
-    6.0	Squeeze	2.6.32  -> LTS until February 2016
-    7	Wheezy 3.2  -> LTS until May 2018
-    8	Jessie 3.16 -> LTS until April/May 2020
-    9	Stretch	4.9	-> LTS until June 2022
-    10	Buster  4.19 -> LTS until June 2024
-    11	Bullseye
+    6.0	Squeeze	 2.6.32  -> LTS until February 2016
+    7	Wheezy   3.2     -> LTS until May 2018
+    8	Jessie   3.16    -> LTS until April/May 2020
+    9	Stretch	 4.9	 -> LTS until June 2022
+    10	Buster   4.19    -> LTS until June 2024
+    11	Bullseye 5.10    -> LTS until June 2026
 
 # Kernel Versions
 https://kernelnewbies.org/LinuxChanges  
-https://kernelnewbies.org/Linux_5.10 
-
+https://www.kernel.org/category/releases.html  
+Check release note: https://kernelnewbies.org/Linux_5.15 (replace version#)
 
 `+` for Longterm
 
-    5.10 + 2020-12-13
+    5.19 2022-7-31
+        NFSv4 Courteous Server
+
+    5.15  2021-10-31  -> Oct, 2023
+        adds a new NTFS read-write implementation contributed by Parangon, supports NTFS 3.1
+        ksmbd, a in-kernel SMB 3 server, not meant to replace Samba, have better performance and feature integration in some cases.
+
+
+    5.10 + 2020-12-13 -> Dec, 2026
         Ext4 fast commit
         Faster performance and memory consumption in virtio-fs
-        
-
 
     5.9 - 2020-10-11
         New cgroup slab controller shares slab memory
         NFS: extended attributes RFC 8276
 
     5.4 + 2019-11-24  ->	Dec, 2025
+        virtio-fs was added to share parts of the host file systems with guest VMs in a high-performance, API-compatible way
 
     4.19 + 2018-10-22  ->	Dec, 2024
 

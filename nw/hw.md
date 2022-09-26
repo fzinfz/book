@@ -1,32 +1,43 @@
 <!-- TOC -->
 
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
+- [Mi](#mi)
 - [UBNT](#ubnt)
-    - [UNMS](#unms)
+  - [UNMS](#unms)
 - [ER-X](#er-x)
-    - [Reset](#reset)
-    - [Console](#console)
-    - [bootloader](#bootloader)
-    - [Firmware](#firmware)
-        - [OpenWRT](#openwrt)
-    - [custom scripts](#custom-scripts)
-    - [Web Setup Wizards](#web-setup-wizards)
-        - [Switch](#switch)
-    - [CLI](#cli)
-        - [enable apt](#enable-apt)
-        - [List dhcp/static clients](#list-dhcpstatic-clients)
-        - [RIP](#rip)
+  - [Reset](#reset)
+  - [Console](#console)
+  - [bootloader](#bootloader)
+  - [Firmware](#firmware)
+    - [OpenWRT](#openwrt)
+  - [custom scripts](#custom-scripts)
+  - [Web Setup Wizards](#web-setup-wizards)
+    - [Switch](#switch)
+  - [CLI](#cli)
+    - [enable apt](#enable-apt)
+    - [List dhcp/static clients](#list-dhcpstatic-clients)
+    - [RIP](#rip)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
-    - [Controller Web](#controller-web)
-- [NanoStation® M](#nanostation%C2%AE-m)
+  - [Controller Web](#controller-web)
+- [NanoStation® M](#nanostation-m)
 
 <!-- /TOC -->
 
 # arm/mipsel/x86 packages
 http://pkg.entware.net/binaries/mipsel/
 
-    tar zxvf *.ipk
-    tar zxvf data.tar.gz
+    tar zxvf *.ipk / *.tar.gz
+
+# Mi
+AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese) : https://openwrt.org/toh/xiaomi/ax3200  
+AX6 : https://github.com/InfinityTL/OpenWrt-Redmi-AX6  
+AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
+
+|Model|SoC|CPU MHz|Flash MB|RAM MB|
+|---|---|---|---|---|
+|AX3200 / AX6S|MediaTek MT7622B|1350|128NAND|256|
+|RM AX6|Qualcomm IPQ8071A |4C A53 1.4GHz|128 MiB|512|
+|RM AX3000|Qualcomm IPQ5000|2C A53 1.,0GHz|128 MiB|256|
 
 # UBNT
 ## UNMS
@@ -180,8 +191,8 @@ BZ.v3.7.5# set-inform http://unifi:8080/inform
 
 ## Controller Web
 
-    Settings - Sie DEVICE AUTHENTICATION
-    Every minor setting change on controller causes SSID reset.
+    Settings - search "AUTHENTICATION" for SSH/SMTP
+    Every minor change on controller causes SSID reset!
 
 # NanoStation® M
 https://www.ui.com/download/airmax-m/nanostationm

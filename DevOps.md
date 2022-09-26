@@ -1,40 +1,50 @@
 <!-- TOC -->
 
+- [UI](#ui)
+  - [Grafana - TS + Go](#grafana---ts--go)
 - [Monitoring](#monitoring)
-    - [InfluxDB Telegraf](#influxdb-telegraf)
-    - [Grafana Promtail](#grafana-promtail)
-    - [prometheus](#prometheus)
-        - [exporters](#exporters)
-    - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
-        - [server - Docker](#server---docker)
-        - [agent](#agent)
-    - [Nagios - C](#nagios---c)
-        - [Docker](#docker)
-    - [Elastic](#elastic)
-        - [Beats - Go](#beats---go)
-    - [Cacti - PHP](#cacti---php)
-        - [alert](#alert)
-    - [TICK stack](#tick-stack)
-    - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
-    - [open-falcon - Go + Python Flask](#open-falcon---go--python-flask)
-    - [Munin - Perl/Shell](#munin---perlshell)
-    - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
+  - [Prometheus - Go + TS](#prometheus---go--ts)
+  - [InfluxDB Telegraf](#influxdb-telegraf)
+  - [Grafana Promtail](#grafana-promtail)
+  - [Zabbix - C/PHP/JAVA](#zabbix---cphpjava)
+    - [server - Docker](#server---docker)
+    - [agent](#agent)
+  - [Nagios - C](#nagios---c)
+    - [Docker](#docker)
+  - [Elastic](#elastic)
+    - [Beats - Go](#beats---go)
+  - [Cacti - PHP](#cacti---php)
+    - [alert](#alert)
+  - [TICK stack](#tick-stack)
+  - [Pandora FMS - PHP/Perl](#pandora-fms---phpperl)
+  - [open-falcon - Go + Python Flask](#open-falcon---go--python-flask)
+  - [Munin - Perl/Shell](#munin---perlshell)
+  - [netdata - C/Python/JS/Shell](#netdata---cpythonjsshell)
 - [Management](#management)
-    - [Fabric - Python library](#fabric---python-library)
-    - [invoke - Python library](#invoke---python-library)
-    - [Ansible - Python](#ansible---python)
-    - [Puppet - Ruby](#puppet---ruby)
-    - [Chef - Ruby](#chef---ruby)
-    - [SaltStack - Python](#saltstack---python)
+  - [Fabric - Python library](#fabric---python-library)
+  - [invoke - Python library](#invoke---python-library)
+  - [Ansible - Python](#ansible---python)
+  - [Puppet - Ruby](#puppet---ruby)
+  - [Chef - Ruby](#chef---ruby)
+  - [SaltStack - Python](#saltstack---python)
 - [CI](#ci)
-    - [Jenkins - JAVA](#jenkins---java)
-    - [Travis - Ruby/JS](#travis---rubyjs)
+  - [Jenkins - JAVA](#jenkins---java)
+  - [Travis - Ruby/JS](#travis---rubyjs)
 - [SNMP](#snmp)
 
 <!-- /TOC -->
 
+# UI
+## Grafana - TS + Go
+https://github.com/grafana/grafana  
+Search dashboards & copy ID to /dashboard/import: https://grafana.com/grafana/dashboards/  
+
 # Monitoring
 https://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems
+
+## Prometheus - Go + TS
+https://github.com/prometheus/prometheus  
+Grafana: https://grafana.com/grafana/dashboards/1860-node-exporter-full/ | {url}?var-node=
 
 ## InfluxDB Telegraf
 https://www.influxdata.com/blog/getting-started-with-influxdb-2-0-scraping-metrics-running-telegraf-querying-data-and-writing-data/
@@ -42,9 +52,6 @@ https://www.influxdata.com/blog/getting-started-with-influxdb-2-0-scraping-metri
 ## Grafana Promtail
 https://grafana.com/docs/loki/latest/clients/promtail/  
 [loki](./db/loki)
-
-## prometheus
-https://github.com/fzinfz/scripts/tree/master/apps_docker
 
 ## Zabbix - C/PHP/JAVA
 https://github.com/zabbix/zabbix

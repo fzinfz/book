@@ -1,29 +1,47 @@
 <!-- TOC -->
 
+- [Anaconda](#anaconda)
+- [EOL](#eol)
 - [Relative imports in Python 3](#relative-imports-in-python-3)
 - [Distribution Default](#distribution-default)
 - [pip](#pip)
-    - [Installing from local](#installing-from-local)
-    - [Proxy](#proxy)
-    - [CN Mirror](#cn-mirror)
+  - [Installing from local](#installing-from-local)
+  - [Proxy](#proxy)
+  - [CN Mirror](#cn-mirror)
 - [pypi](#pypi)
 - [Google Fire](#google-fire)
 - [pendulum](#pendulum)
 - [Web automation](#web-automation)
-    - [requestium](#requestium)
+  - [requestium](#requestium)
 - [VSCode](#vscode)
-    - [Remote debugging](#remote-debugging)
+  - [Remote debugging](#remote-debugging)
 - [Pythonista on IOS](#pythonista-on-ios)
 - [MongoDB ORM](#mongodb-orm)
 - [ASGI](#asgi)
 - [Web Frameworks](#web-frameworks)
-    - [starlette](#starlette)
-    - [aiohttp](#aiohttp)
-    - [Sanic](#sanic)
-    - [API Server](#api-server)
+  - [starlette](#starlette)
+  - [aiohttp](#aiohttp)
+  - [Sanic](#sanic)
+  - [API Server](#api-server)
 - [WSDL](#wsdl)
 
 <!-- /TOC -->
+
+# Anaconda
+https://docs.anaconda.com/anaconda/packages/oldpkglists/
+
+    # shortcuts
+    %windir%\System32\cmd.exe "/K" d:\_soft\Anaconda3\Scripts\activate.bat d:\_soft\Anaconda3
+    d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\cwp.py d:\_soft\Anaconda3 d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\Scripts\jupyter-notebook-script.py "d:/"
+
+# EOL
+https://endoflife.date/python
+
+    3.10    04 Oct 2026
+    3.9     05 Oct 2025
+    3.8     14 Oct 2024
+    3.7     27 Jun 2023
+    3.6.15  23 Dec 2021
 
 # Relative imports in Python 3
 https://stackoverflow.com/a/49375740/4769874  

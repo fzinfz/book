@@ -113,7 +113,7 @@ https://www.xively.com/
 
 # 电商
 京东、淘宝 订单导出： https://github.com/kangvcar/InfoSpider  
-淘宝一箩筐 | 同店多搜： https://pc.qq.com/detail/5/detail_18345.html  
+TaoBaoBasket | 同店多搜： https://pc.qq.com/detail/5/detail_18345.html  
 
 # Cleaning
 Explorer: https://github.com/1357310795/MyComputerManager

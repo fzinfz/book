@@ -2,13 +2,14 @@
 
 - [Web](#web)
 - [Windows](#windows)
-    - [D2R mod generator](#d2r-mod-generator)
 - [Lib](#lib)
-    - [Python](#python)
+  - [Python](#python)
 
 <!-- /TOC -->
 
 # Web
+
+CheatSheet: https://htmlpreview.github.io/?https://github.com/Michaelangel007/d2_cheat_sheet/blob/master/index.html  
 
 Rune wizard: https://fabd.github.io/diablo2-runewizard/  
 Source(TS+Vue): https://github.com/fabd/diablo2-runewizard

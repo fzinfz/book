@@ -35,6 +35,10 @@
     remove domain name: F12 -> console
         document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
 
+# Static Site Generator
+Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
+
+
 # Percent-encoding reserved
 https://en.wikipedia.org/wiki/Percent-encoding
 |!|#|$|%|&|'|(|)|*|+|,|/|:|;|=|?|@|[|]|

@@ -2,24 +2,24 @@
 
 - [CHR 60-day trial](#chr-60-day-trial)
 - [Tasks](#tasks)
-    - [Scripting](#scripting)
-    - [Quickset](#quickset)
-    - [Reset](#reset)
-    - [PCQ](#pcq)
-    - [hotspot](#hotspot)
+  - [Scripting](#scripting)
+  - [Quickset](#quickset)
+  - [Reset](#reset)
+  - [PCQ](#pcq)
+  - [hotspot](#hotspot)
 - [Routing](#routing)
-    - [Packet Flow](#packet-flow)
+  - [Packet Flow](#packet-flow)
 - [Wireless](#wireless)
-    - [Modes](#modes)
+  - [Modes](#modes)
 - [Switch Chip](#switch-chip)
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
 - [Sniffer & Wireshark](#sniffer--wireshark)
 - [VPN](#vpn)
-    - [OpenVPN](#openvpn)
-    - [WireGuard](#wireguard)
-    - [PPP BCP](#ppp-bcp)
+  - [OpenVPN](#openvpn)
+  - [WireGuard](#wireguard)
+  - [PPP BCP](#ppp-bcp)
 - [Dual WAN](#dual-wan)
-    - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
+  - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [Videos](#videos)
 
 <!-- /TOC -->
@@ -32,6 +32,8 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
 
 # Tasks
 
+    DDNS
+      /ip cloud set ddns-enabled=yes
     Export memory log
       /log print file=log.txt
     Port scan
@@ -43,7 +45,7 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
       /ip ssh print
       /ip ssh set forwarding-enabled=local
 
-check if winbox not working: /webfig/#IP:Services
+if winbox not working: /webfig/#IP:Services
 
 ## Scripting
 https://wiki.mikrotik.com/wiki/Manual:Scripting

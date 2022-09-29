@@ -2,26 +2,23 @@
 
 - [Cert check](#cert-check)
 - [Cryptography](#cryptography)
-    - [Key exchange or key establishment](#key-exchange-or-key-establishment)
-    - [cipher or cypher](#cipher-or-cypher)
-    - [Cryptography libraries compare](#cryptography-libraries-compare)
-    - [X.509](#x509)
-    - [Certificate Revocation List (or CRL)](#certificate-revocation-list-or-crl)
-    - [TLS Extensions - Certificate Status Request](#tls-extensions---certificate-status-request)
-    - [Certificate formats](#certificate-formats)
-    - [ECDSA vs RSA](#ecdsa-vs-rsa)
+  - [Key exchange or key establishment](#key-exchange-or-key-establishment)
+  - [cipher or cypher](#cipher-or-cypher)
+  - [Cryptography libraries compare](#cryptography-libraries-compare)
+  - [X.509](#x509)
+  - [Certificate Revocation List (or CRL)](#certificate-revocation-list-or-crl)
+  - [TLS Extensions - Certificate Status Request](#tls-extensions---certificate-status-request)
+  - [Certificate formats](#certificate-formats)
+  - [ECDSA vs RSA](#ecdsa-vs-rsa)
 - [SSL](#ssl)
-    - [Private Key](#private-key)
-    - [Let's Encrypt](#lets-encrypt)
-        - [Wildcard](#wildcard)
-    - [OpenSSL](#openssl)
+  - [Private Key](#private-key)
+  - [Let's Encrypt](#lets-encrypt)
+    - [Wildcard](#wildcard)
+  - [OpenSSL](#openssl)
 - [PEM (.pem, .crt, .cer) to PFX](#pem-pem-crt-cer-to-pfx)
-    - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
+  - [Mozilla SSL Configuration Generator](#mozilla-ssl-configuration-generator)
 - [Nginx](#nginx)
-    - [SSL](#ssl-1)
-- [Cloudflare](#cloudflare)
-    - [SSL Modes](#ssl-modes)
-    - [HTTPS](#https)
+  - [SSL](#ssl-1)
 
 <!-- /TOC -->
 
@@ -177,22 +174,3 @@ https://mozilla.github.io/server-side-tls/ssl-config-generator/
     ## verify chain of trust of OCSP response using Root CA and Intermediate certs
     ssl_trusted_certificate /path/to/root_CA_cert_plus_intermediates;
 
-# Cloudflare 
-https://blog.cloudflare.com/cloudflare-ca-encryption-origin/ (15-years wildcard)
-
-## SSL Modes
-https://www.cloudflare.com/ssl/  
-`Flexible`: not encrypts traffic from Cloudflare to your origin server.  
-`Full`: 3 options for certificates to install on your server: one issued by a CA (`Strict`), one issued by [Cloudflare (Origin CA)](#cloudflare), or a self signed certificate.
-
-Modern TLS: PCI 3.2 compliance requires either TLS 1.2 or 1.3  
-Opportunistic Encryption: for HTTP-only domains  
-Data centers without access to private keys will experience a slight initial delay.  
-HSTS forces clients to use secure connections for every request
-
-## HTTPS
-[Automatic HTTPS Rewrites](https://support.cloudflare.com/hc/en-us/articles/227227647) safely eliminates **mixed content** issues by rewriting insecure URLs dynamically from known secure hosts to their secure counterpart.
-
-[Page Rules - Always Use HTTPS](https://support.cloudflare.com/hc/en-us/articles/218411427#https)
-
-[Page Rules - Forwarding URL](https://support.cloudflare.com/hc/en-us/articles/200170536)

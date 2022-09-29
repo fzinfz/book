@@ -1,32 +1,30 @@
 <!-- TOC -->
 
-- [clash](#clash)
-    - [config](#config)
 - [WireGuard - C](#wireguard---c)
-    - [tailscale](#tailscale)
+  - [tailscale](#tailscale)
 - [nebula - go](#nebula---go)
 - [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [xray](#xray)
 - [v2ray](#v2ray)
-    - [with router](#with-router)
+  - [with router](#with-router)
 - [hysteria](#hysteria)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
 - [Transparent Proxy](#transparent-proxy)
-- [中文手册](#%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C)
-    - [V2ray](#v2ray)
-    - [Shadowsocks](#shadowsocks)
+- [中文手册](#中文手册)
+  - [V2ray](#v2ray-1)
+  - [Shadowsocks](#shadowsocks-1)
 - [Manager](#manager)
 - [Panel](#panel)
 - [Docker](#docker)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [Optimize](#optimize)
-    - [BBR Kernel 4.9+](#bbr-kernel-49)
-    - [KCPTun](#kcptun)
-    - [dragonite-java](#dragonite-java)
-    - [UDPspeeder](#udpspeeder)
+  - [BBR (Kernel 4.9+)](#bbr-kernel-49)
+  - [KCPTun](#kcptun)
+  - [dragonite-java](#dragonite-java)
+  - [UDPspeeder](#udpspeeder)
 - [govpn](#govpn)
 - [HTTP tunnel in Go: goflyway](#http-tunnel-in-go-goflyway)
 - [LightSword](#lightsword)
@@ -36,19 +34,13 @@
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [tinyFecVPN](#tinyfecvpn)
-- [Subscription URL Generator](#subscription-url-generator)
 - [OpenWRT](#openwrt)
+- [Clients](#clients)
+  - [Subscription](#subscription)
+  - [clash](#clash)
+  - [sing-box](#sing-box)
 
 <!-- /TOC -->
-
-# clash
-https://github.com/Dreamacro/clash  
-Premium: https://github.com/Dreamacro/clash/releases/tag/premium  
-
-## config
-https://github.com/magicdawn/clash-config-manager  
-https://github.com/snapei/clash-pro-rules  
-sub merge: https://acl4ssr-sub.github.io/
 
 # WireGuard - C
 https://www.wireguard.com/quickstart/  
@@ -80,6 +72,8 @@ https://github.com/slackhq/nebula
 [Official](https://github.com/shadowsocks/) | 
 [Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
 ([raw](https://raw.githubusercontent.com/wiki/shadowsocks/shadowsocks/Feature-Comparison-across-Different-Versions.md)) 
+
+shadow-tls: https://github.com/ihciah/shadow-tls/wiki/Example-Compose
 
 # xray
 https://github.com/XTLS/  
@@ -219,8 +213,21 @@ https://github.com/shell909090/goproxy
 # tinyFecVPN
 https://github.com/wangyu-/tinyFecVPN
 
-# Subscription URL Generator
-https://sub-web.netlify.app/
-
 # OpenWRT
 https://github.com/immortalwrt/immortalwrt
+
+# Clients
+https://www.v2ray.com/awesome/tools.html  
+iOS free: OneClick、Leaf | https://itlanyan.com/get-proxy-clients/#bnp_i_2
+
+## Subscription
+convert: https://sub-web.netlify.app/  
+merge: https://acl4ssr-sub.github.io/  
+
+## clash
+https://github.com/Dreamacro/clash  
+Premium: https://github.com/Dreamacro/clash/releases/tag/premium  
+Rules: https://github.com/snapei/clash-pro-rules
+
+## sing-box
+https://sing-box.sagernet.org/features/

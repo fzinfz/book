@@ -1,12 +1,9 @@
 <!-- TOC -->
 
 - [Power Connectors](#power-connectors)
-    - [Industrial](#industrial)
+  - [Industrial](#industrial)
 - [Residual Current Device](#residual-current-device)
 - [UPS](#ups)
-    - [Offline/standby](#offlinestandby)
-    - [Line-interactive](#line-interactive)
-    - [Online/double-conversion](#onlinedouble-conversion)
 
 <!-- /TOC -->
 
@@ -57,12 +54,10 @@ SRCBOS are sockets incorporating an RCD and overcurrent protection.
 RCDs without overcurrent protection must be protected by a separate overcurrent device.
 
 # UPS
-## Offline/standby
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Standby_UPS_Diagram_SVG.svg/525px-Standby_UPS_Diagram_SVG.svg.png)
+- Online/double-conversion: the batteries are always connected to the inverter
+- Offline/standby: https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Standby_UPS_Diagram_SVG.svg/525px-Standby_UPS_Diagram_SVG.svg.png  
+- Line-interactive:  adjust if over/under normal voltage | 
+https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Line-Interactive_UPS_Diagram_SVG.svg/750px-Line-Interactive_UPS_Diagram_SVG.svg.png
 
-## Line-interactive
-https://youtu.be/Fj7e3WGUKO8?t=521  
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Line-Interactive_UPS_Diagram_SVG.svg/750px-Line-Interactive_UPS_Diagram_SVG.svg.png)
+Compare: EEVBlog https://youtu.be/Fj7e3WGUKO8?t=521  
 
-## Online/double-conversion
-the batteries are always connected to the inverter

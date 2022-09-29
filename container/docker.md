@@ -3,30 +3,33 @@
 - [Web UI](#web-ui)
 - [Scripts](#scripts)
 - [Dockerfile code snippets](#dockerfile-code-snippets)
-    - [CMD and ENTRYPOINT](#cmd-and-entrypoint)
-    - [apt](#apt)
-    - [alpine](#alpine)
-    - [tini](#tini)
-    - [S6 - a process supervisor](#s6---a-process-supervisor)
+  - [CMD and ENTRYPOINT](#cmd-and-entrypoint)
+  - [apt](#apt)
+  - [alpine](#alpine)
+  - [tini](#tini)
+  - [S6 - a process supervisor](#s6---a-process-supervisor)
 - [badger](#badger)
 - [Storage](#storage)
-    - [btrfs issue](#btrfs-issue)
+  - [btrfs issue](#btrfs-issue)
+- [Network](#network)
+  - [macvlan/ipvlan](#macvlanipvlan)
+  - [plugins](#plugins)
 - [Commands](#commands)
-    - [build](#build)
-    - [container/image operations](#containerimage-operations)
-    - [cp](#cp)
-    - [run](#run)
-        - [X11 Forwarding](#x11-forwarding)
-    - [container update](#container-update)
-    - [Clean up](#clean-up)
-    - [Detach](#detach)
+  - [build](#build)
+  - [container/image operations](#containerimage-operations)
+  - [cp](#cp)
+  - [run](#run)
+    - [X11 Forwarding](#x11-forwarding)
+  - [container update](#container-update)
+  - [Clean up](#clean-up)
+  - [Detach](#detach)
 - [Config](#config)
-    - [Mirrors](#mirrors)
-    - [Proxy](#proxy)
+  - [Mirrors](#mirrors)
+  - [Proxy](#proxy)
 - [Swarm](#swarm)
 - [OS](#os)
-    - [CoreOS](#coreos)
-    - [boot2docker](#boot2docker)
+  - [CoreOS](#coreos)
+  - [boot2docker](#boot2docker)
 - [Windows/Mac](#windowsmac)
 
 <!-- /TOC -->
@@ -83,6 +86,25 @@ http://jpetazzo.github.io/assets/2015-06-04-deep-dive-into-docker-storage-driver
 
 ## btrfs issue
 https://gist.github.com/hopeseekr/cd2058e71d01deca5bae9f4e5a555440
+
+# Network
+none/bridge/host/overlay/{belows}: https://docs.docker.com/network/
+
+## macvlan/ipvlan
+https://hicu.be/macvlan-vs-ipvlan   
+- Ipvlan：All sub-interfaces share parent’s MAC | vs Macvlan
+- Ipvlan L3 mode：Each sub-interface has to be configured with a different subnet
+- Macvlan and ipvlan cannot be used on the same parent interface at the same time.
+
+https://docs.docker.com/network/ipvlan/  
+- IPvlan L2 mode trunking is the same as Macvlan with regard to gateways and L2 path isolation.
+- `--internal`: ( off `-o parent=` )
+- if no `--gateway`: gw for `--subnet=192.168.1.0/24` will be 192.168.1.1
+
+To access host, check [/nw/openwrt](/nw/openwrt)
+
+## plugins
+https://docs.docker.com/engine/extend/plugins_services/#network-plugins
 
 # Commands   
 ## build

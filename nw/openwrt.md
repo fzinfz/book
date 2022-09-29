@@ -1,18 +1,20 @@
 <!-- TOC -->
 
 - [run as Container](#run-as-container)
+  - [macvlan - access host](#macvlan---access-host)
+  - [ipvlan](#ipvlan)
 - [run as VM](#run-as-vm)
-    - [QEMU NIC](#qemu-nic)
+  - [QEMU NIC](#qemu-nic)
 - [Web UI](#web-ui)
-    - [firewall](#firewall)
-    - [iptables](#iptables)
-    - [SSH key](#ssh-key)
-    - [view conn list](#view-conn-list)
+  - [firewall](#firewall)
+  - [iptables](#iptables)
+  - [SSH key](#ssh-key)
+  - [view conn list](#view-conn-list)
 - [/etc/config/](#etcconfig)
-    - [network](#network)
+  - [network](#network)
 - [QoS](#qos)
-    - [SQM](#sqm)
-    - [nftables](#nftables)
+  - [SQM](#sqm)
+  - [nftables](#nftables)
 - [Download](#download)
 - [RM2100](#rm2100)
 - [Breed](#breed)
@@ -26,9 +28,10 @@ ref: https://mlapp.cn/376.html
     docker network create -d macvlan --subnet=10.0.0.0/8 --gateway=10.0.0.1 -o parent=vlan.10 macnet
     docker network ls && docker network inspect macnet
     docker run --restart unless-stopped --name openwrt -d --network macnet --privileged sulinggg/openwrt:x86_64 /sbin/init # root/password
-    docker exec -it openwrt /bin/sh # vim /etc/config/network // edit ip/gw & restart
 
 ```
+docker exec -it openwrt /bin/sh # vim /etc/config/network // edit ip/gw & restart
+
 config interface 'lan'
         option type 'bridge'
         option ifname 'eth0'
@@ -38,7 +41,37 @@ config interface 'lan'
         option gateway '10.0.0.1'
         option broadcast '10.255.255.255'
         option dns '10.0.0.1'
+
+ docker network inspect macnet
 ```
+
+## macvlan - access host
+https://stackoverflow.com/questions/49600665/docker-macvlan-network-inside-container-is-not-reaching-to-its-own-host
+
+    docker network create -d macvlan -o parent=eno1 \
+    --subnet 192.168.1.0/24 \
+    --gateway 192.168.1.1 \
+    --ip-range 192.168.1.192/27 \
+    --aux-address 'host=192.168.1.223' \
+    mynet
+
+    ip link add macnet-shim link vlan.10 type macvlan  mode bridge
+    ip addr add 10.19.0.1/8 dev macnet-shim
+    ip link set macnet-shim up
+    ip route add 10.0.0.1/8 dev macnet-shim
+    ip link show macnet-shim || ip link delete macnet-shim
+
+macvlan/ipvlan: https://sreeninet.wordpress.com/2016/05/29/docker-macvlan-and-ipvlan-network-plugins/
+
+## ipvlan
+https://docs.docker.com/network/ipvlan/#ipvlan-l2-mode-example-usage
+
+    docker network  create  -d ipvlan \
+        --subnet=10.0.0.0/8 \
+        --gateway=10.0.0.1 \
+        --ip-range=10.19.1.0/24 \
+        -o ipvlan_mode=l2 \
+        -o parent=vlan.10 ipvlan10_NotTested
 
 # run as VM
 ## QEMU NIC

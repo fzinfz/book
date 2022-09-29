@@ -25,7 +25,8 @@
   - [curl Github](#curl-github)
   - [Query latest release](#query-latest-release)
 - [Cheatsheet](#cheatsheet)
-- [WebUI](#webui)
+- [Github](#github)
+- [Self-host git servers](#self-host-git-servers)
 - [Tools](#tools)
 - [CI](#ci)
 - [Gitbook](#gitbook)
@@ -33,7 +34,7 @@
 <!-- /TOC -->
 
 # Learn
-https://learngitbranching.js.org/?locale=en_US
+https://learngitbranching.js.org/?locale=en_US  
 
 # My bash
 
@@ -236,8 +237,13 @@ https://github.com/settings/tokens
 # Cheatsheet
 https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf
 
-# WebUI
+# Github
 check watchers: https://github.com/{user}/{project}/watchers
+
+# Self-host git servers
+Go: https://github.com/go-gitea/gitea  
+Go: https://github.com/gogs/gogs  
+Ruby: https://gitlab.com/gitlab-org/gitlab
 
 # Tools
 curl -L https://github.com...?raw=true  

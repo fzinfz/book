@@ -2,26 +2,29 @@
 <!-- TOC -->
 
 - [Chrome](#chrome)
+- [Static Site Generator](#static-site-generator)
 - [Percent-encoding reserved](#percent-encoding-reserved)
 - [HTML5](#html5)
-    - [lang](#lang)
-    - [Subresource Integrity](#subresource-integrity)
+  - [lang](#lang)
+  - [Subresource Integrity](#subresource-integrity)
 - [media type](#media-type)
 - [icons](#icons)
 - [Events](#events)
 - [CSS box model](#css-box-model)
-    - [box-sizing](#box-sizing)
-    - [content](#content)
-    - [padding](#padding)
-    - [border](#border)
-    - [margin](#margin)
+  - [box-sizing](#box-sizing)
+  - [content](#content)
+  - [padding](#padding)
+  - [border](#border)
+  - [margin](#margin)
 - [Spacing](#spacing)
 - [Mobile](#mobile)
+- [UI Frameworks](#ui-frameworks)
 - [Bootstrap](#bootstrap)
-    - [Version 3](#version-3)
-    - [Version 4](#version-4)
-    - [Grid system](#grid-system)
-    - [forms](#forms)
+  - [Version 3](#version-3)
+  - [Version 4](#version-4)
+  - [Version 5](#version-5)
+  - [Grid system](#grid-system)
+  - [forms](#forms)
 - [whitespace and wrap](#whitespace-and-wrap)
 - [robots](#robots)
 
@@ -36,8 +39,8 @@
         document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
 
 # Static Site Generator
+Vite & Vue powered: https://github.com/vuejs/vitepress  
 Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
-
 
 # Percent-encoding reserved
 https://en.wikipedia.org/wiki/Percent-encoding
@@ -151,7 +154,6 @@ https://getbootstrap.com/docs/4.0/utilities/spacing/
     5 -$spacer * 3
     auto - margin auto
 
-
 # Mobile
 https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
 
@@ -165,6 +167,9 @@ https://developer.apple.com/library/content/documentation/AppleApplications/Refe
     user-scalable: whether or not the user can zoom in and out. yes
     shrink-to-fit=no: override  "width=device-width" to prevent the page from scaling
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+# UI Frameworks
+https://github.com/stars/fzinfz/lists/frontend
 
 # Bootstrap
 ## Version 3
@@ -183,6 +188,17 @@ http://blog.getbootstrap.com/2017/08/10/bootstrap-4-beta/
 - JS plugins in ES6. new teardown methods, option type checking, new methods, and more.
 - auto-placement of tooltips, popovers, and dropdowns from https://popper.js.org
 - npm scripts instead of Grunt
+
+## Version 5
+https://blog.getbootstrap.com/2021/05/05/bootstrap-5/
+
+    No more jQuery!
+    Dropped Internet Explorer 10 and 11
+    Dropped Microsoft Edge < 16 (Legacy Edge)
+    Dropped Firefox < 60
+    Dropped Safari < 12
+    Dropped iOS Safari < 12
+    Dropped Chrome < 60
 
 ## Grid system
 https://getbootstrap.com/docs/3.3/css/#grid

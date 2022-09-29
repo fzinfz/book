@@ -5,12 +5,10 @@
 - [Debugging](#debugging)
 - [SNI](#sni)
 - [Varnish](#varnish)
-- [Cloudflare](#cloudflare)
-    - [CNAME Flattening](#cname-flattening)
-    - [Real IP](#real-ip)
+  - [Real IP](#real-ip)
 - [Github pages](#github-pages)
 - [Google Analytics](#google-analytics)
-    - [Enhanced Link Attribution](#enhanced-link-attribution)
+  - [Enhanced Link Attribution](#enhanced-link-attribution)
 
 <!-- /TOC -->
 
@@ -33,16 +31,6 @@ Wiki: https://en.wikipedia.org/wiki/Server_Name_Indication
 # Varnish
 https://hub.docker.com/r/centos/varnish-4-centos7/  
 https://access.redhat.com/containers/?tab=overview#/search/varnish
-
-# Cloudflare 
-## CNAME Flattening
-https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/
-
-For example, CNAME 6equj5.wordplumblr.com for Foo.com. when Foo.com started using too many resources WordPlumblr could have updated the CNAME and isolated Foo.com from the rest of the customers.
-
-the biggest edge case had to do with email sent from Microsoft Exchange mail servers.
-
-"flattens" the CNAME chain, a way to support a CNAME at the root, but still follow the RFC and return an IP address for any query for the root record. 
 
 ## Real IP
 https://support.cloudflare.com/hc/en-us/articles/200170986

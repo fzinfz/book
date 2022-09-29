@@ -67,7 +67,7 @@
 * [Electronic](elec/README.md)
   * [Micro-Cap](elec/microcap.md)
   * [Battery](elec/battery.md)
-  * [市电](elec/UtilityPower.md)
+  * [市电](elec/AC.md)
   * [金属](elec/metal.md)
 * [Android/iOS](phone.md)
 * [Apps](apps.md)

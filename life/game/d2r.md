@@ -4,6 +4,7 @@
 - [Windows](#windows)
 - [Lib](#lib)
   - [Python](#python)
+  - [C](#c)
 
 <!-- /TOC -->
 
@@ -27,3 +28,7 @@ D2S Save File Editor (LoD and D2R) | pyinstaller: https://github.com/pairofdocs/
 ## Python
 D2 v1.14d: https://github.com/dzik87/D2GridraTools  
 D2R Drop Tracker API | Django: https://github.com/Alschn/d2r-drop-tracker-api
+
+## C
+https://github.com/mbroemme/libmpq  
+https://github.com/mbroemme/mpq-tools  

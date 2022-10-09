@@ -16,7 +16,7 @@
 
 ## text
 
-    if ("ab"+"c".includes("bc")) { console.log("y") } else { }
+    if ("ab"+"c".includes("bc")) { t="_3"; console.log(`t${t}`.replace(/\d/, "").length); } else if (true) {} else { } // Out: 2
 
 ## IIFE (Immediately Invokable Function Expression)
     (function() {

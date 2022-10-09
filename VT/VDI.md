@@ -1,22 +1,23 @@
 <!-- TOC -->
 
 - [GPU assignment](#gpu-assignment)
-    - [Error handling](#error-handling)
-    - [virtio-gpu](#virtio-gpu)
+  - [Clients](#clients)
+  - [Error handling](#error-handling)
+  - [virtio-gpu](#virtio-gpu)
 - [Hardware](#hardware)
-    - [NVIDIA Certified](#nvidia-certified)
-        - [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
-    - [AMD](#amd)
-    - [Intel® Graphics Virtualization Technology](#intel®-graphics-virtualization-technology)
-        - [Optional Firmware](#optional-firmware)
+  - [NVIDIA Certified](#nvidia-certified)
+    - [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
+  - [AMD](#amd)
+  - [Intel® Graphics Virtualization Technology](#intel-graphics-virtualization-technology)
+    - [Optional Firmware](#optional-firmware)
 - [Citrix](#citrix)
-    - [XenServer](#xenserver)
-    - [XenClient(IDV, discontinued)](#xenclientidv-discontinued)
+  - [XenServer](#xenserver)
+  - [XenClient(IDV, discontinued)](#xenclientidv-discontinued)
 - [Remote Desktop](#remote-desktop)
-    - [OpenStack](#openstack)
-    - [Apache Guacamole](#apache-guacamole)
-    - [Hardware - pikvm](#hardware---pikvm)
-    - [KVM-VDI(discontinued)](#kvm-vdidiscontinued)
+  - [OpenStack](#openstack)
+  - [Apache Guacamole](#apache-guacamole)
+  - [Hardware - pikvm](#hardware---pikvm)
+  - [KVM-VDI(discontinued)](#kvm-vdidiscontinued)
 - [SPICE & QXL guest driver](#spice--qxl-guest-driver)
 
 <!-- /TOC -->
@@ -29,6 +30,9 @@ https://wiki.debian.org/VGAPassthrough
 https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm
 
 https://pve.proxmox.com/wiki/Pci_passthrough
+
+## Clients
+https://github.com/mbroemme/vdi-stream-client
 
 ## Error handling
 - Windows BSOD: system thread exception not handled

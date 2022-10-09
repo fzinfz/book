@@ -2,7 +2,6 @@
 
 - [CHR 60-day trial](#chr-60-day-trial)
 - [Tasks](#tasks)
-  - [Scripting](#scripting)
   - [Quickset](#quickset)
   - [Reset](#reset)
   - [PCQ](#pcq)
@@ -20,7 +19,12 @@
   - [PPP BCP](#ppp-bcp)
 - [Dual WAN](#dual-wan)
   - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
+- [WAN + ppp](#wan--ppp)
 - [Videos](#videos)
+- [Automation](#automation)
+  - [Scripting](#scripting)
+  - [SSH](#ssh)
+  - [Python](#python)
 
 <!-- /TOC -->
 # CHR 60-day trial
@@ -46,11 +50,6 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
       /ip ssh set forwarding-enabled=local
 
 if winbox not working: /webfig/#IP:Services
-
-## Scripting
-https://wiki.mikrotik.com/wiki/Manual:Scripting
-
-  :put [resolve google.com server 8.8.8.8] # put=print
 
 ## Quickset
 
@@ -153,8 +152,29 @@ mark connections -> associate routing marks with packets -> Create routes
 - p100b: action=mark-routing chain=output connection-mark=WAN1 new-routing-mark=WAN1-mark passthrough=yes
 - p104: action=mark-connection chain=prerouting connection-mark=no-mark in-interface=WAN1 new-connection-mark=WAN1 passthrough=yes
 
-
 https://aacable.wordpress.com/2011/07/27/mikrotik-dual-wan-load-balancing-using-pcc-method-complete-script-by-zaib/
+
+# WAN + ppp
+
+    /ip firewall nat add action=masquerade chain=srcnat out-interface=l2tp-out1
+    /ip route add dst-address=192.168.1.0/24 gateway=192.168.89.1 ...
 
 # Videos
 TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  
+
+# Automation
+## Scripting
+https://wiki.mikrotik.com/wiki/Manual:Scripting
+
+    :put [resolve google.com server 8.8.8.8] # put=print
+
+https://github.com/eworm-de/routeros-scripts  
+
+## SSH
+https://help.mikrotik.com/docs/display/ROS/SSH
+
+## Python
+API: https://librouteros.readthedocs.io/en/latest/query.html  
+create/dump/unpack .npk: https://github.com/kost/mikrotik-npk  
+vulnerabilities: https://github.com/microsoft/routeros-scanner  
+Monitor/control from Home Assistant: https://github.com/tomaae/homeassistant-mikrotik_router

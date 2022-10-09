@@ -1,33 +1,95 @@
 
 <!-- TOC -->
 
-- [文件结构](#文件结构)
-- [navigator](#navigator)
+- [Docs](#docs)
+- [DevTool](#devtool)
+- [生命周期](#生命周期)
+  - [app](#app)
+  - [pages](#pages)
+- [逻辑](#逻辑)
+  - [app.js *](#appjs-)
+  - [page.js *](#pagejs-)
+- [配置](#配置)
+  - [app.json *](#appjson-)
+  - [page.json](#pagejson)
+- [样式 - WeiXin Style Sheets](#样式---weixin-style-sheets)
+  - [同层渲染](#同层渲染)
+  - [app.wxss](#appwxss)
+  - [page.wxss](#pagewxss)
+- [结构](#结构)
+  - [page.wxml *](#pagewxml-)
+    - [wxs - WeiXin Script](#wxs---weixin-script)
+    - [简易双向绑定](#简易双向绑定)
+    - [navigator](#navigator)
 - [Map](#map)
+  - [jssdk](#jssdk)
+  - [plugin](#plugin)
 - [Code](#code)
-    - [Book](#book)
-- [Page](#page)
-- [Cache](#cache)
+- [Books](#books)
 
 <!-- /TOC -->
 
-# 文件结构
-https://mp.weixin.qq.com/debug/wxadoc/dev/framework/structure.html
+# Docs
+开始：https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/getstart.html  
+小程序专用邮箱登录：https://mp.weixin.qq.com/  
+app&pages: https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html
 
-|文件类型|必填|作用|
-|---|---|---|
-|js|是|页面逻辑|
-|wxml|是|页面结构|
-|wxss|否|页面样式表|
-|json|否|页面配置|
+|作用|格式|App|Page|
+|---|---|---|---|
+|逻辑|js|必需|必需|
+|配置|json|必需|-|
+|样式表|wxss|-|-|
+|结构|wxml|无|必需|
 
-|文件|必填|作用|
-|---|---|---|
-|app.js|是|小程序逻辑|
-|app.json|是|小程序公共设置|
-|app.wxss|否|小程序公共样式表|
+# DevTool
+https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html  
+推送到微信：右上角 =》 详情-本地设置
 
-https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html
+# 生命周期
+## app
+https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/operating-mechanism.html
+
+https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html
+
+    onLaunch(Object object) 小程序初始化完成时触发，全局只触发一次。
+    onShow(o)/Hide()/Error(String error)/PageNotFound(o)/UnhandledRejection(o)/ThemeChange(o)/CUSTOM
+
+## pages
+https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html  
+onLaunch/Show/... 同app： https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html
+
+# 逻辑
+## app.js *
+https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/app.html
+
+    App({ // App() 必须在 app.js 中调用，必须调用且只能调用一次。
+        globalData: 'I am global data'
+    })
+
+    // page.js
+    const appInstance = getApp() // 获取到全局唯一的 App 实例
+    console.log(appInstance.globalData) // I am global data
+
+## page.js *
+https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page.html  
+https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html
+
+    data/options/behaviors/onXXX/CUSTOM
+    开发者可以添加任意的函数或数据到 Object 参数中，在页面的函数中用 this 可以访问。这部分属性会在页面实例创建时进行一次深拷贝。
+    
+    Page({
+    data: {
+        message: 'Hello MINA!'
+        array: [1, 2, 3, 4, 5]
+        view: 'MINA'
+        staffA: {firstName: 'Hulk', lastName: 'Hu'},
+    }
+    })
+
+# 配置
+## app.json *
+https://developers.weixin.qq.com/miniprogram/dev/framework/config.html  
+Layout: https://res.wx.qq.com/wxdoc/dist/assets/img/config.344358b1.jpg
 
 |app.json|类型|必填|描述|
 |---|---|---|---|
@@ -37,14 +99,73 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html
 |networkTimeout|Object|否|设置网络超时时间|
 |debug|Boolean|否|设置是否开启 debug 模式|
 
-# navigator
+## page.json
+https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE
+
+# 样式 - WeiXin Style Sheets
+## 同层渲染
+https://developers.weixin.qq.com/community/develop/article/doc/000c4e433707c072c1793e56f5c813
+
+## app.wxss
+https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html
+
+    @import "common.wxss";  /** app.wxss **/
+
+    <view class="normal_view" />
+    <view style="color:{{color}};" />
+
+## page.wxss
+https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html
+
+# 结构
+## page.wxml *
+https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/
+
+    # get value from: page.js - Page({ data: { } })
+    <view> {{message}} </view>
+
+    <view wx:for="{{array}}"> {{item}} </view>
+
+    <view wx:if="{{view == 'WEBVIEW'}}"> WEBVIEW </view>
+    <view wx:elif="{{view == 'APP'}}"> APP </view>
+    <view wx:else="{{view == 'MINA'}}"> MINA </view>
+
+    <template name="staffName">
+    <template is="staffName" data="{{...staffA}}"></template>
+
+### wxs - WeiXin Script
+
+    <wxs module="m1">
+    var msg = "hello world";
+    module.exports.message = msg;
+    </wxs>
+
+    <view> {{m1.message}} </view>
+
+### 简易双向绑定
+https://developers.weixin.qq.com/miniprogram/dev/framework/view/two-way-bindings.html
+
+    <input value="{{value}}" />        单向
+    <input model:value="{{value}}" />  双向
+
+### navigator
 https://mp.weixin.qq.com/debug/wxadoc/dev/component/navigator.html
 
 
 # Map
-https://mp.weixin.qq.com/debug/wxadoc/dev/component/map.html#map
+Demo: https://github.com/TencentLBS/TencentMapMiniProgramDemo  
 
-http://lbs.qq.com/qqmap_wx_jssdk/index.html
+Doc: https://mp.weixin.qq.com/debug/wxadoc/dev/component/map.html#map  
+controls控件即将废弃 => view
+
+## jssdk
+https://lbs.qq.com/miniProgram/jsSdk/jsSdkGuide/jsSdkOverview  
+http://lbs.qq.com/qqmap_wx_jssdk/index.html  
+
+个性化地图：https://lbs.qq.com/dev/console/custom/guide#miniapp
+
+## plugin
+https://lbs.qq.com/miniProgram/plugin/pluginGuide/pluginStart
 
 # Code
 ```
@@ -147,23 +268,6 @@ var qqmapsdk;
     });
 ```
 
-## Book
+# Books
 http://www.weixinbook.net/download/
 
-# Page
-https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/page.html
-
-  onLoad: 页面加载
-  一个页面只会调用一次，可以在 onLoad 中获取打开当前页面所调用的 query 参数。
-
-  onShow: 页面显示
-  每次打开页面都会调用一次。
-
-  onReady: 页面初次渲染完成
-  一个页面只会调用一次，代表页面已经准备妥当，可以和视图层进行交互。
-  对界面的设置如wx.setNavigationBarTitle请在onReady之后设置。详见生命周期
-
-![](https://mp.weixin.qq.com/debug/wxadoc/dev/image/mina-lifecycle.png)
-
-# Cache
-https://mp.weixin.qq.com/debug/wxadoc/dev/api/data.html#wxsetstorageobject    

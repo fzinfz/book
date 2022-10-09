@@ -1,24 +1,26 @@
 <!-- TOC -->
 
 - [Always Free](#always-free)
-    - [Azure](#azure)
-    - [AWS](#aws)
-    - [GCP](#gcp)
+  - [Azure](#azure)
+  - [AWS](#aws)
+  - [GCP](#gcp)
 - [Compare](#compare)
-    - [Instance](#instance)
-    - [Traffic](#traffic)
+  - [Instance](#instance)
+  - [Traffic](#traffic)
 - [Price](#price)
-    - [AWS](#aws-1)
-    - [Azure](#azure-1)
-    - [GCP](#gcp-1)
-    - [IBM](#ibm)
-    - [China](#china)
-    - [VPS](#vps)
+  - [AWS](#aws-1)
+  - [Azure](#azure-1)
+  - [GCP](#gcp-1)
+  - [IBM](#ibm)
+  - [China](#china)
+  - [VPS](#vps)
 - [Limited Free](#limited-free)
-    - [AWS](#aws-2)
-    - [Azure](#azure-2)
-    - [IBM](#ibm-1)
-    - [VPS](#vps-1)
+  - [AWS](#aws-2)
+  - [Azure](#azure-2)
+  - [IBM](#ibm-1)
+  - [VPS](#vps-1)
+- [CDN](#cdn)
+  - [China](#china-1)
 
 <!-- /TOC -->
 
@@ -161,3 +163,10 @@ https://www.ibm.com/cloud/pricing
 ## VPS
 DigitalOcean $20: https://cloud.docker.com
 
+# CDN
+## China
+JD 动态加速 赠送流量：https://docs.jdcloud.com/cn/cdn/billing-overview  
+qn 10G/m/http：https://www.qiniu.com/prices/qcdn  
+tx 新户100G/6m： https://buy.cloud.tencent.com/price/cdn/overview  
+ali：https://www.aliyun.com/price/detail/cdn  
+hw： https://www.huaweicloud.com/pricing.html#/cdn  

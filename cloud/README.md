@@ -1,11 +1,19 @@
 <!-- TOC -->
 
+- [Domain Name lookup](#domain-name-lookup)
+- [Object Storage](#object-storage)
 - [HIDS uninstall](#hids-uninstall)
-    - [jcloud](#jcloud)
-    - [aliyun](#aliyun)
-    - [qcloud](#qcloud)
+  - [jcloud](#jcloud)
+  - [aliyun](#aliyun)
+  - [qcloud](#qcloud)
 
 <!-- /TOC -->
+
+# Domain Name lookup
+https://lookup.icann.org/
+
+# Object Storage
+China：tx COS | ali/jd OSS | hw OBS
 
 # HIDS uninstall
 ## jcloud
@@ -20,4 +28,4 @@
 ## qcloud
 
     /usr/local/sa/agent
-    /usr/local/qcloud/monitor/barad/admin        
+    /usr/local/qcloud/monitor/barad/admin

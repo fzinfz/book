@@ -1,13 +1,19 @@
 <!-- TOC -->
 
 - [Docker Images](#docker-images)
-    - [Community Stacks](#community-stacks)
-        - [selenium](#selenium)
+  - [Community Stacks](#community-stacks)
+    - [selenium](#selenium)
 
 <!-- /TOC -->
 
-  %reload_ext autoreload
-  %autoreload 2
+    jupyter notebook --generate-config # ~/.jupyter
+        c.NotebookApp.notebook_dir = ''
+        c.NotebookApp.ip = '*'
+        c.NotebookApp.open_browser = False 
+        c.NotebookApp.password = u'type:salt:hashed-password' # from notebook.auth import passwd; passwd()
+
+    %reload_ext autoreload
+    %autoreload 2
 
 # Docker Images
 https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#image-relationships

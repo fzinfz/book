@@ -27,6 +27,7 @@
   - [forms](#forms)
 - [whitespace and wrap](#whitespace-and-wrap)
 - [robots](#robots)
+- [Frameworks](#frameworks)
 
 <!-- /TOC -->
 
@@ -237,3 +238,6 @@ https://css-tricks.com/almanac/properties/w/whitespace/
 
         User-agent: *
         Disallow: /tmp/
+
+# Frameworks
+htmx | AJAX, CSS Transitions, WebSockets and Server Sent Events: https://htmx.org/

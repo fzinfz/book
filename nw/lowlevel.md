@@ -1,26 +1,27 @@
 <!-- TOC -->
 
 - [OSI Physical layer](#osi-physical-layer)
-    - [Network Equipments](#network-equipments)
+- [RFC](#rfc)
+  - [Network Equipments](#network-equipments)
 - [Switching Database Manager (SDM)](#switching-database-manager-sdm)
 - [protocol data unit (PDU)](#protocol-data-unit-pdu)
 - [MTU](#mtu)
 - [MAC](#mac)
-    - [unicast](#unicast)
-    - [multicast addressing](#multicast-addressing)
-    - [Applications](#applications)
+  - [unicast](#unicast)
+  - [multicast addressing](#multicast-addressing)
+  - [Applications](#applications)
 - [Extended Unique Identifier (EUI) -64 identifiers](#extended-unique-identifier-eui--64-identifiers)
 - [IEEE 802](#ieee-802)
 - [Ethernet II (DIX Ethernet) & 802.3 Frame](#ethernet-ii-dix-ethernet--8023-frame)
-    - [EtherType](#ethertype)
-    - [MPLS](#mpls)
+  - [EtherType](#ethertype)
+  - [MPLS](#mpls)
 - [802.1Q & 802.1ad (Q-in-Q)](#8021q--8021ad-q-in-q)
-    - [Cisco](#cisco)
+  - [Cisco](#cisco)
 - [IEEE P802.1p](#ieee-p8021p)
 - [Bit Rate](#bit-rate)
-    - [Wireless](#wireless)
+  - [Wireless](#wireless)
 - [FC](#fc)
-    - [Layers](#layers)
+  - [Layers](#layers)
 - [Wireshark](#wireshark)
 - [Design](#design)
 
@@ -38,6 +39,9 @@ https://en.wikipedia.org/wiki/Physical_layer
     USB physical layer
     Varieties of 802.11 Wi-Fi physical layers
 
+# RFC
+MAC bridge: http://profesores.elo.utfsm.cl/~agv/elo309/doc/802.1D-1998.pdf
+
 ## Network Equipments
     Network interface controller
     Repeater
@@ -45,7 +49,7 @@ https://en.wikipedia.org/wiki/Physical_layer
     Modem
     Fiber media converter
 
-# Switching Database Manager (SDM) 
+# Switching Database Manager (SDM)
 https://www.cisco.com/c/en/us/support/docs/switches/catalyst-3750-series-switches/44921-swdatabase-3750ss-44921.html
 
 Ternary Content Addressable Memory (TCAM): rapid table lookups by ACL engine

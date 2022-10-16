@@ -1,55 +1,62 @@
 <!-- TOC -->
 
+- [Windows 11](#windows-11)
 - [Driver Backup](#driver-backup)
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
-    - [Networking](#networking)
+  - [Networking](#networking)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
 - [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
-    - [Startup Folder](#startup-folder)
-    - [Date & Time](#date--time)
-    - [Query .Net Framwork Versions](#query-net-framwork-versions)
-    - [Auto Login](#auto-login)
+  - [Startup Folder](#startup-folder)
+  - [Date & Time](#date--time)
+  - [Query .Net Framwork Versions](#query-net-framwork-versions)
+  - [Auto Login](#auto-login)
 - [Configuration](#configuration)
-    - [Disable Windows Defender](#disable-windows-defender)
-    - [Registry locations](#registry-locations)
-    - [NFS mount](#nfs-mount)
-    - [Fix cifs/share mount:](#fix-cifsshare-mount)
+  - [Disable Windows Defender](#disable-windows-defender)
+  - [Registry locations](#registry-locations)
+  - [NFS mount](#nfs-mount)
+  - [Fix cifs/share mount:](#fix-cifsshare-mount)
 - [Installation](#installation)
-    - [Tools](#tools)
-    - [Force OOBE](#force-oobe)
-    - [Fix boot](#fix-boot)
-    - [Fix boot partiton](#fix-boot-partiton)
-        - [EFI](#efi)
-    - [Copy Boot Entries](#copy-boot-entries)
-    - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
-    - [Uninstall software in safemode](#uninstall-software-in-safemode)
+  - [Tools](#tools)
+  - [Force OOBE](#force-oobe)
+- [BCD](#bcd)
+  - [Fix boot](#fix-boot)
+  - [Fix boot partiton](#fix-boot-partiton)
+    - [EFI](#efi)
+  - [Copy Boot Entries](#copy-boot-entries)
+  - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
+  - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [services.msc](#servicesmsc)
 - [VS proxy](#vs-proxy)
 - [AD](#ad)
-    - [DC DNS](#dc-dns)
+  - [DC DNS](#dc-dns)
 - [Graphic](#graphic)
 - [Storge](#storge)
 - [CMD Tools](#cmd-tools)
-    - [Check and unclock file](#check-and-unclock-file)
+  - [Check and unclock file](#check-and-unclock-file)
 - [Server Core](#server-core)
-    - [MMC](#mmc)
+  - [MMC](#mmc)
 - [GUI Tools](#gui-tools)
-    - [sysinternals tools](#sysinternals-tools)
+  - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
-- [简繁体转换](#%E7%AE%80%E7%B9%81%E4%BD%93%E8%BD%AC%E6%8D%A2)
+- [简繁体转换](#简繁体转换)
 - [mstsc](#mstsc)
-    - [GPU - NVIDIA](#gpu---nvidia)
-    - [CredSSP](#credssp)
+  - [GPU - NVIDIA](#gpu---nvidia)
+  - [CredSSP](#credssp)
 - [Disk tools](#disk-tools)
 - [KMS Activation](#kms-activation)
-    - [Windows](#windows)
-    - [Office](#office)
+  - [Windows](#windows)
+  - [Office](#office)
 
 <!-- /TOC -->
+
+# Windows 11
+
+    # Disable "Show more options" context menu
+    reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
 
 # Driver Backup
 
@@ -147,6 +154,9 @@ net use h: \\192.168.0.1\docs /user:ServerB\user Password
 ## Force OOBE
 - Shift+F10 
 - c:\windows\system32\oobe\msoobe.exe
+
+# BCD
+GUI editor: http://www.zezula.net/en/fstools/bellavista.html
 
 ## Fix boot
 https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/adding-boot-entries#adding-a-new-boot-en

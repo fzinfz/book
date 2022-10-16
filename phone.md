@@ -1,18 +1,19 @@
 <!-- TOC -->
 
 - [ANDROID](#android)
-    - [Automation](#automation)
-        - [selendroid - JAVA](#selendroid---java)
-        - [appium - nodejs](#appium---nodejs)
-    - [adb](#adb)
-        - [Data Transfer](#data-transfer)
-        - [Debug](#debug)
-    - [fastboot](#fastboot)
-        - [twrp](#twrp)
-        - [miflash unlock](#miflash-unlock)
+  - [Automation](#automation)
+    - [selendroid - JAVA](#selendroid---java)
+    - [appium - nodejs](#appium---nodejs)
+  - [adb](#adb)
+    - [Data Transfer](#data-transfer)
+    - [Debug](#debug)
+  - [fastboot](#fastboot)
+    - [twrp](#twrp)
+  - [Mi](#mi)
+    - [miflash unlock](#miflash-unlock)
 - [IOS](#ios)
-    - [Automation](#automation-1)
-    - [Bar/QR code to REST API](#barqr-code-to-rest-api)
+  - [Automation](#automation-1)
+  - [Bar/QR code to REST API](#barqr-code-to-rest-api)
 - [Google Authenticator](#google-authenticator)
 
 <!-- /TOC -->
@@ -31,7 +32,9 @@ https://github.com/appium/sample-code/tree/master/sample-code/examples
 
     adb devices
     adb ls /sdcard
-    adb push foo.zip /sdcard/Download/
+    adb push foo.zip /sdcard/Download/        # file
+    adb push . /sdcard/Download/NewFolder     # folder
+    adb pull -a /file_on_phone # -a: preserve file timestamp and mode
 
 ### Debug
 https://developer.android.com/studio/command-line/dumpsys.html#meminfo
@@ -48,7 +51,12 @@ https://miuiver.com/how-to-flash-twrp/
     fastboot flash recovery twrp.img
     fastboot reboot # hold [Vol-Up]
 
+## Mi
 ### miflash unlock
+http://www.miui.com/unlock/index.html
+
+    设置——更多设置——开发者选项——设备解锁状态
+
 Down+Power: 
 
     fastboot oem edl

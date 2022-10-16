@@ -4,6 +4,9 @@
   - [Azure](#azure)
   - [AWS](#aws)
   - [GCP](#gcp)
+- [Free CI/CD](#free-cicd)
+  - [Github](#github)
+  - [Jetbrains](#jetbrains)
 - [Compare](#compare)
   - [Instance](#instance)
   - [Traffic](#traffic)
@@ -83,7 +86,21 @@ https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits
         30 GB-months HDD
     GCS: 5 GB + 1 GB network egress*
     Firestore DB: 1 GB storage
-    
+
+# Free CI/CD
+## Github
+https://github.com/pricing
+
+https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
+
+https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#runners
+
+https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
+
+## Jetbrains
+2,000 Computation Credits per month : https://www.jetbrains.com/space/buy/?billing=yearly#cloud  
+1 CC/m = 2 vCPU + 7800MB memory : https://www.jetbrains.com/help/space/billing-and-limits.html
+
 # Compare
 ## Instance
 GCP: 20% vCPU + 0.60GB,	Free - $4.09  

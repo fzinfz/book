@@ -31,6 +31,7 @@
   - [CoreOS](#coreos)
   - [boot2docker](#boot2docker)
 - [Windows/Mac](#windowsmac)
+- [Automated builds](#automated-builds)
 
 <!-- /TOC -->
 
@@ -298,3 +299,10 @@ Lightweight Linux for Docker
 https://docs.docker.com/engine/installation/windows/  
 https://docs.docker.com/machine/drivers/  
 https://forums.docker.com/t/how-can-i-ssh-into-the-betas-mobylinuxvm/10991/
+
+# Automated builds
+Docker Hub | $5+/m: https://www.docker.com/pricing/  
+Github Actions | 2k min/m: https://docs.docker.com/ci-cd/github-actions/  
+Jetbrains Space | 
+
+https://www.jetbrains.com/help/space/docker.html#publish-a-docker-image-to-docker-hub

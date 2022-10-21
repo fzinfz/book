@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Windows 11](#windows-11)
+- [Components](#components)
 - [Driver Backup](#driver-backup)
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
@@ -8,6 +9,8 @@
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
 - [Edition Unique Features](#edition-unique-features)
+- [WSL](#wsl)
+  - [Mount Linux Partitions](#mount-linux-partitions)
 - [RUN](#run)
   - [Startup Folder](#startup-folder)
   - [Date & Time](#date--time)
@@ -15,6 +18,7 @@
   - [Auto Login](#auto-login)
 - [Configuration](#configuration)
   - [Disable Windows Defender](#disable-windows-defender)
+  - [Disable update](#disable-update)
   - [Registry locations](#registry-locations)
   - [NFS mount](#nfs-mount)
   - [Fix cifs/share mount:](#fix-cifsshare-mount)
@@ -23,6 +27,7 @@
   - [Force OOBE](#force-oobe)
 - [BCD](#bcd)
   - [Fix boot](#fix-boot)
+    - [update-grub](#update-grub)
   - [Fix boot partiton](#fix-boot-partiton)
     - [EFI](#efi)
   - [Copy Boot Entries](#copy-boot-entries)
@@ -57,6 +62,11 @@
 
     # Disable "Show more options" context menu
     reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
+# Components
+
+    DirextX Runtime: dxwebsetup
+    .Net 4: dotNetFx40_Full_x86_x64.exe
 
 # Driver Backup
 
@@ -102,6 +112,19 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 10: Free RemoteFX, WSL  
 2016: NFS Server, Hyper-V DDA
 
+# WSL
+https://learn.microsoft.com/en-us/windows/wsl/install
+
+    wsl --list --online
+    wsl --install -d Debian # default: Ubuntu
+    wsl -l -v    # check installed Distributions
+    wsl --status # check wsl kernel
+
+## Mount Linux Partitions
+
+    GET-CimInstance -query "SELECT * from Win32_DiskDrive"
+    wsl --mount \\.\PHYSICALDRIVE4 --partition 1 --type  ext4  # Windows 11 Build 22000 or higher
+
 # RUN
 ## Startup Folder
 - shell:startup
@@ -117,8 +140,15 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
     netplwiz.exe
 
 # Configuration
+gpupdate
+
 ## Disable Windows Defender
 - gpedit.msc: Computer Configuration/Administrative Templates/Windows Components/Windows Defender
+
+## Disable update
+
+  1. 计算机配置 -> 管理模板 -> Windows 组件 -> Windows 更新 -> Windows 更新不包括驱动程序
+  2. 计算机配置 -> 管理模板 -> 系统 -> 设备安装 -> 指定设备驱动程序源位置的搜索顺序：启用并选择“不搜索 Windows 更新”
 
 ## Registry locations
 - %WINDIR%\System32\config\
@@ -161,12 +191,17 @@ GUI editor: http://www.zezula.net/en/fstools/bellavista.html
 ## Fix boot
 https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/adding-boot-entries#adding-a-new-boot-en
 
+### update-grub
+
+    Found Windows Boot Manager on /dev/sdf1@/EFI/Microsoft/Boot/bootmgfw.efi
+
 ## Fix boot partiton
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di#command-line-options
 
     bcdboot C:\Windows /s S: /f all
 
 ### EFI
+\EFI\Boot\bootx64.efi
 
     diskpart
     convert
@@ -178,6 +213,12 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-co
 
 ## Copy Boot Entries 
 
+    diskpart>
+    list disk # check column Gpt
+    list vol  # check column Label/Info: "System"
+
+    # Do Not use PowerShell
+    bcdedit /store g:\boot/bcd
     bcdedit /copy {current} /d "new" 
     bcdedit /set {}  device partition=W:
     bcdedit /set {}  osdevice partition=W:

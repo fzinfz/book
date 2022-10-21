@@ -1,13 +1,40 @@
+- [.iso to USB](#iso-to-usb)
+- [UEFI Editor](#uefi-editor)
+  - [efibootmgr - Linux](#efibootmgr---linux)
+  - [Windows GUI](#windows-gui)
 - [iPXE](#ipxe)
 - [netboot.xyz](#netbootxyz)
   - [USB/ISO/GRUB/TFTP](#usbisogrubtftp)
   - [iPXE](#ipxe-1)
   - [Self Hosting](#self-hosting)
+- [Windows](#windows)
+  - [Remote install ISO](#remote-install-iso)
 - [Diskless](#diskless)
   - [Hive OS - Ubuntu](#hive-os---ubuntu)
   - [NetBSD](#netbsd)
-  - [Windows](#windows)
+  - [Windows](#windows-1)
 
+# .iso to USB
+
+    ventoy:  copy .iso to flash drive directly
+    rufus:   not support mount drive, but can add location; support WTG.
+    Etcher:  may not support Windows
+    https://github.com/nkc3g4/wtg-assistant  : support 16G flash drive
+
+# UEFI Editor
+## efibootmgr - Linux
+https://github.com/rhboot/efibootmgr  
+
+  efibootmgr -v # Listing boot entries
+  wget -P /boot/efi/EFI/arch https://url_of_ipxe-arch.efi  #  https://archlinux.org/releng/netboot/
+  efibootmgr --create --disk /dev/sde --loader /EFI/arch/ipxe-arch.___.efi --label "Arch Linux Netboot" --unicode # -p if ESP not 1st partition
+  efibootmgr --bootorder 
+
+  Boot0006* debian        HD(1,GPT,fcdf5171-643b-4f6d-8599-e2682b07e1bf,0x800,0x1e5000)/File(\EFI\debian\shimx64.efi)
+  Boot000C* BootSandisk   PcieRoot(0x0)/Pci(0x1f,0x2)/Sata(0,0,0)/HD(1,GPT,f4e334a7-3313-43b5-a074-e26d3374c63c,0x800,0x100000)/File(\EFI\BOOT\BOOTX64.EFI)
+
+## Windows GUI
+under `Tools` menu: https://www.diskgenius.com/editions.php
 
 # iPXE
 https://ipxe.org/cmd/chain
@@ -17,6 +44,8 @@ Download and boot the iPXE demonstration image
 
 # netboot.xyz
 https://github.com/netbootxyz/netboot.xyz
+
+OS list: https://netboot.xyz/docs/faq/#what-operating-systems-are-currently-available-on-netbootxyz
 
 https://netboot.xyz/downloads/ | Raspberry Pi 4 / ARM64 / i686, x86_64, or aarch64
 
@@ -40,6 +69,15 @@ Combined Legacy and UEFI iPXE Bootloaders
 https://netboot.xyz/docs/docker  
 https://netboot.xyz/docs/selfhosting
 
+# Windows
+customize and modify wim files: http://hello.wimbuilder.world
+
+    # check build version： WinNTSetup or dism
+    dism /Get-WimInfo /WimFile:e:\sources\install.wim /index:2
+
+## Remote install ISO
+支持安装网络上的微软原版iso （win7/8/10/x64/x86): https://github.com/zwj4031/netgrubfm/  
+支持启动WIM、ISO、IMG、RAMOS、ISCSI的网启模板(BIOS/UEFI): https://github.com/zwj4031/ipxefm  
 
 # Diskless
 ## Hive OS - Ubuntu

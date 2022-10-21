@@ -17,7 +17,8 @@
   - [OpenVPN](#openvpn)
   - [WireGuard](#wireguard)
   - [PPP BCP](#ppp-bcp)
-- [Dual WAN](#dual-wan)
+- [Multi WAN](#multi-wan)
+  - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
   - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [WAN + ppp](#wan--ppp)
 - [Videos](#videos)
@@ -142,7 +143,17 @@ Both WAN: https://help.mikrotik.com/docs/display/ROS/WireGuard
 ## PPP BCP
 https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
 
-# Dual WAN
+# Multi WAN
+Bandwidth-based load-balancing with failover: https://mum.mikrotik.com/presentations/US12/tomas.pdf  
+
+  Bonding: - You need to control of both ends of the link
+  Policy routing: - Not dynamic / Scalability problems
+  PCC: - Not bandwidth wise
+  Bandwidth based: + scalable | MPLS TE / Mangle + scripting
+
+## Bandwidth based - Mangle + scripting
+Steps: from page 23
+
 ## PCC - diff subnet/bandwidth
 https://mum.mikrotik.com/presentations/US12/steve.pdf
 mark connections -> associate routing marks with packets -> Create routes

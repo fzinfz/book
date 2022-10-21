@@ -1,16 +1,16 @@
 <!-- TOC -->
 
 - [IPMI](#ipmi)
-    - [Dell idrac](#dell-idrac)
+  - [Dell idrac](#dell-idrac)
 - [OS](#os)
-    - [IBM Advanced Interactive eXecutive(AIX)](#ibm-advanced-interactive-executiveaix)
-    - [IBM i](#ibm-i)
-    - [HP-UX](#hp-ux)
+  - [IBM Advanced Interactive eXecutive(AIX)](#ibm-advanced-interactive-executiveaix)
+  - [IBM i](#ibm-i)
+  - [HP-UX](#hp-ux)
 - [Software](#software)
-    - [IBM PowerVM](#ibm-powervm)
-    - [IBM PowerKVM](#ibm-powerkvm)
-    - [IBM PowerHA](#ibm-powerha)
-    - [IBM PowerSC](#ibm-powersc)
+  - [IBM PowerVM](#ibm-powervm)
+  - [IBM PowerKVM](#ibm-powerkvm)
+  - [IBM PowerHA](#ibm-powerha)
+  - [IBM PowerSC](#ibm-powersc)
 - [IBM Power Systems](#ibm-power-systems)
 - [IBM Power S8 series servers](#ibm-power-s8-series-servers)
 - [IBM PurePower System](#ibm-purepower-system)
@@ -19,7 +19,8 @@
 
 # IPMI
 ## Dell idrac
-virtual console: open port 443 + 5900
+virtual console: open port 443 + 5900 & java8\javaws.exe viewer.jnlp -verbose  
+HKEY_CLASSES_ROOT\jnlp_auto_file\shell\open\command
 
     action=powerstatus # powerdown powerup graceshutdown hardreset powercycle
     ssh root@${host} "racadm serveraction ${action}"    

@@ -5,24 +5,24 @@
 - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
 - [mkpart, format](#mkpart-format)
 - [mount/umount](#mountumount)
-    - [fstab](#fstab)
+  - [fstab](#fstab)
 - [LVM](#lvm)
-    - [Check lv filesystem](#check-lv-filesystem)
-    - [Rename](#rename)
-    - [Create](#create)
-    - [Activate vg](#activate-vg)
-    - [Add disk to vg](#add-disk-to-vg)
-    - [Remove disk from vg](#remove-disk-from-vg)
-    - [lv operations](#lv-operations)
-    - [Resize fs](#resize-fs)
+  - [Check lv filesystem](#check-lv-filesystem)
+  - [Rename](#rename)
+  - [Create](#create)
+  - [Activate vg](#activate-vg)
+  - [Add disk to vg](#add-disk-to-vg)
+  - [Remove disk from vg](#remove-disk-from-vg)
+  - [lv operations](#lv-operations)
+  - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
-    - [snapshot](#snapshot)
+  - [snapshot](#snapshot)
 - [f2fs](#f2fs)
 - [NTFS](#ntfs)
 - [Swap](#swap)
 - [Benchmark](#benchmark)
-    - [dd](#dd)
-    - [fio](#fio)
+  - [dd](#dd)
+  - [fio](#fio)
 - [SMART](#smart)
 - [SAMBA](#samba)
 
@@ -175,10 +175,15 @@ PV thrink: gparted
     lvextend --resize-fs --extents +100%FREE vg/lv # not support btrfs
 
 # btrfs
+https://btrfs.wiki.kernel.org/index.php/Getting_started#Creating_a_filesystem
 
-    btrfs filesystem resize +60G /data # use gparted for shrink
+    btrfs filesystem show /mnt/intel160
     btrfs filesystem usage /
-    btrfs device usage /data
+
+
+    btrfs device usage  /mnt/intel160G  # get {device ID}
+    btrfs filesystem resize 7:max /mnt/point # {device ID}
+    btrfs filesystem resize +60G /data # use gparted for shrink
 
     dmesg | grep crc32c # verify if Btrfs checksum is hardware accelerated, e.g.: crc32c-intel
 

@@ -19,6 +19,7 @@
   - [Hardware - pikvm](#hardware---pikvm)
   - [KVM-VDI(discontinued)](#kvm-vdidiscontinued)
 - [SPICE & QXL guest driver](#spice--qxl-guest-driver)
+- [Streaming](#streaming)
 
 <!-- /TOC -->
 
@@ -130,3 +131,18 @@ https://www.neblogas.lt/2016/07/18/technical-info-ovirt-agent-sso/
 
 # SPICE & QXL guest driver
 https://www.spice-space.org/download.html
+
+# Streaming
+ref: https://github.com/mbroemme/vdi-stream-client
+
+Method                | Local | Remote | 3D
+----------------------|-------|--------|------------------
+[QXL with Spice](https://www.spice-space.org/)        | Yes   | Yes    | No
+[GPU Passthrough](https://www.kernel.org/doc/Documentation/vfio.txt)       | Yes   | No     | Yes
+[KVM FrameRelay](https://looking-glass.io/)        | Yes   | No     | Yes
+[iGVT-g](https://www.kernel.org/doc/Documentation/vfio-mediated-device.txt)                | Yes   | No     | Yes (Intel only)
+[Virgil 3D](https://virgil3d.github.io/)             | Yes   | Yes    | Yes (Linux only)
+[SPICE Streaming Agent](https://gitlab.freedesktop.org/spice/spice-streaming-agent) | Yes   | Yes    | Yes (Linux only)
+[Moonlight](https://moonlight-stream.org/)             | Yes   | Yes    | Yes (Nvidia only)
+[Parsec](https://parsec.app/)                | Yes   | Yes    | Yes
+[AirGame](https://mycloudgame.com/download.html) | Yes   | Yes    | Yes

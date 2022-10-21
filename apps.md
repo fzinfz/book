@@ -1,7 +1,5 @@
 <!-- TOC -->
 
-- [.iso to USB](#iso-to-usb)
-- [PXE](#pxe)
 - [Screen sharing](#screen-sharing)
   - [Shell](#shell)
 - [Terminal](#terminal)
@@ -24,18 +22,9 @@
 - [IoT](#iot)
 - [电商](#电商)
 - [Cleaning](#cleaning)
+- [Monuments](#monuments)
 
 <!-- /TOC -->
-
-# .iso to USB
-    ventoy:  copy .iso to flash drive directly
-    rufus:   not support mount drive, but can add location; support WTG.
-    Etcher:  may not support Windows
-    https://github.com/nkc3g4/wtg-assistant  : support 16G flash drive
-
-# PXE
-https://github.com/zwj4031/netgrubfm/  
-https://space.bilibili.com/14597170/video  
 
 # Screen sharing
 |Type|Site|Server|Client|Management|
@@ -117,3 +106,7 @@ TaoBaoBasket | 同店多搜： https://pc.qq.com/detail/5/detail_18345.html
 
 # Cleaning
 Explorer: https://github.com/1357310795/MyComputerManager
+
+# Monuments
+KB4570006: Update to disable and remove the RemoteFX vGPU component in Windows 10, version 1809 and Windows Server 2019
+

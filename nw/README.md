@@ -1,44 +1,45 @@
 <!-- TOC -->
 
 - [Mesh](#mesh)
-    - [Build - 802.11s](#build---80211s)
-    - [Roaming - 802.11k/r/v](#roaming---80211krv)
+  - [Build - 802.11s](#build---80211s)
+  - [Roaming - 802.11k/r/v](#roaming---80211krv)
 - [Open Source Software for Routing](#open-source-software-for-routing)
 - [BGP](#bgp)
-    - [Private AS](#private-as)
+  - [Private AS](#private-as)
 - [Virtual networking modes](#virtual-networking-modes)
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
 - [NAT Hairpin + DDNS](#nat-hairpin--ddns)
-    - [Mikrotik](#mikrotik)
+  - [Mikrotik](#mikrotik)
 - [OSPF](#ospf)
-    - [Mikrotik](#mikrotik)
+  - [Mikrotik](#mikrotik-1)
 - [MPLS](#mpls)
-    - [Mikrotik](#mikrotik)
+  - [Mikrotik](#mikrotik-2)
 - [VPLS](#vpls)
-    - [Mikrotik](#mikrotik)
-    - [OpenBSD](#openbsd)
-    - [Linux](#linux)
+  - [Mikrotik](#mikrotik-3)
+  - [OpenBSD](#openbsd)
+  - [Linux](#linux)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
 - [MAC addresss <-> Vender](#mac-addresss---vender)
 - [Tuning](#tuning)
 - [TCP congestion control](#tcp-congestion-control)
-    - [BBR](#bbr)
+  - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
 - [Multi WAN](#multi-wan)
+  - [OpenWRT](#openwrt)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
-    - [mitmproxy](#mitmproxy)
-    - [V2Ray - Go](#v2ray---go)
-    - [redsocks - C](#redsocks---c)
-    - [Tinyproxy - C](#tinyproxy---c)
-    - [moproxy - Rust](#moproxy---rust)
-    - [Any Proxy - Go](#any-proxy---go)
-    - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
+  - [mitmproxy](#mitmproxy)
+  - [V2Ray - Go](#v2ray---go)
+  - [redsocks - C](#redsocks---c)
+  - [Tinyproxy - C](#tinyproxy---c)
+  - [moproxy - Rust](#moproxy---rust)
+  - [Any Proxy - Go](#any-proxy---go)
+  - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
 - [NetFlow Software](#netflow-software)
-    - [](#)
+  - [](#)
 - [IPV6](#ipv6)
 - [Guide](#guide)
 
@@ -213,8 +214,13 @@ https://github.com/fatedier/frp  ( Jan 12 2020: p2p/xtcp under dev)
 pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  
 VYOS: https://wiki.vyos.net/wiki/WAN_load_balancing  
 OpenBSD: https://www.openbsd.org/faq/pf/pools.html#outgoing  
-OpenWRT: https://wiki.openwrt.org/doc/howto/mwan3  
-ROS: https://mum.mikrotik.com/presentations/US12/tomas.pdf  
+[ROS](/nw/mikrotik)
+
+## OpenWRT
+https://wiki.openwrt.org/doc/howto/mwan3  
+gfw+quota: https://www.openmptcprouter.com/screenshot
+
+
 
 # Load Balancing
 https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison

@@ -4,6 +4,7 @@
   - [Azure](#azure)
   - [AWS](#aws)
   - [GCP](#gcp)
+  - [Oracle](#oracle)
 - [Free CI/CD](#free-cicd)
   - [Github](#github)
   - [Jetbrains](#jetbrains)
@@ -72,20 +73,33 @@ https://azure.microsoft.com/en-us/free/free-account-faq/
 ## AWS
 https://aws.amazon.com/free
 
+    Lambda: 1M free requests per month
     Amazon DynamoDB 25 GB of storage
 
 ## GCP
-https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits
+https://cloud.google.com/free/docs/free-cloud-features#free-tier
 
     GAE
         28 hours per day of "F" instances
         9 hours per day of "B" instances
         1 GB of egress per day
     GCE
-        1 non-preemptible f1-micro VM instance per month in one of the following US regions:
-        30 GB-months HDD
+        1 non-preemptible e2-micro: Oregon: us-west1 / Iowa: us-central1 / South Carolina: us-east1
+        30 GB-months standard persistent disk | 1 GB network egress except CN/AU
     GCS: 5 GB + 1 GB network egress*
     Firestore DB: 1 GB storage
+
+## Oracle
+https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm
+
+    2 AMD based Compute VMs Standard.E2.1.Micro with 1/8 OCPU** and 1 GB memory each, in one availability domain | 1 OCPU  = 2 x86 vCPU or 1 ARM vCPU
+    Arm-based Ampere A1 cores and 24 GB of memory usable as 1 VM or up to 4 Standard.A1.Flex VMs with 3,000 OCPU hours and 18,000 GB hours per month
+    2 Block Volumes Storage, 200 GB total
+    10 GB Object Storage – Standard
+    10 GB Object Storage – Infrequent Access
+    10 GB Archive Storage
+    Resource Manager: managed Terraform
+    5 OCI Bastions
 
 # Free CI/CD
 ## Github

@@ -4,8 +4,8 @@
 - [Update tool](#update-tool)
 - [Guide](#guide)
 - [Kernel Compiling](#kernel-compiling)
-    - [KVMGT](#kvmgt)
-    - [XENGT](#xengt)
+  - [KVMGT](#kvmgt)
+  - [XENGT](#xengt)
 - [GRUB](#grub)
 - [mdev](#mdev)
 - [libvirt](#libvirt)
@@ -14,9 +14,12 @@
 
 <!-- /TOC -->
 
+https://01.org/sites/default/files/documentation/an_introduction_to_intel_gvt-g_for_external.pdf
+
 # Requirements
-https://01.org/igvt-g/blogs/wangbo85/2017/intel-gvt-g-kvmgt-public-release-q22017  
-[Xeon E3_v4+ / Core Gen 5th(Broadwell)+](https://en.wikipedia.org/wiki/List_of_Intel_graphics_processing_units#Eighth_generation)
+https://wiki.archlinux.org/title/Intel_GVT-g  
+only works with Intel Broadwell (5th gen) to Comet Lake (10th gen)  
+For Xe Architecture (Gen12) based GPUs, SR-IOV feature is needed instead.
 
     lspci -v -s 00:02.0
 

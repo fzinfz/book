@@ -2,6 +2,7 @@
 
 - [VSCode](#vscode)
   - [remote-ssh](#remote-ssh)
+  - [Cloud IDE](#cloud-ide)
 - [vi/vim](#vivim)
 - [nano](#nano)
 
@@ -35,6 +36,9 @@ extension: ms-vscode-remote.remote-ssh
         User root
 
 F1 => Remote-SSH: Connect to Host...
+
+## Cloud IDE
+https://theia-ide.org/docs/
 
 # vi/vim
 

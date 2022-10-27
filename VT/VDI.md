@@ -1,7 +1,6 @@
 <!-- TOC -->
 
 - [GPU assignment](#gpu-assignment)
-  - [Clients](#clients)
   - [Error handling](#error-handling)
   - [virtio-gpu](#virtio-gpu)
 - [Hardware](#hardware)
@@ -31,9 +30,6 @@ https://wiki.debian.org/VGAPassthrough
 https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm
 
 https://pve.proxmox.com/wiki/Pci_passthrough
-
-## Clients
-https://github.com/mbroemme/vdi-stream-client
 
 ## Error handling
 - Windows BSOD: system thread exception not handled

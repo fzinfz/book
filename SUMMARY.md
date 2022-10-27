@@ -49,6 +49,7 @@
   * [Mac](bsd/mac.md)
 * [Windows](ms/windows.md)
 * [Hardware](hw/README.md)
+  * [Arduino](hw/arduino.md)
   * [PXE/Net Boot](hw/PXE.md)
   * [GPU](hw/GPU.md)
   * [Pinout](hw/pinout.md)

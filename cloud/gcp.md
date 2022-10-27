@@ -1,11 +1,7 @@
-
-<!-- TOC -->
-
 - [cli](#cli)
+- [Tasks](#tasks)
 - [GCS](#gcs)
 - [fuse](#fuse)
-
-<!-- /TOC -->
 
 # cli
 
@@ -14,6 +10,9 @@
     gcloud auth login
 
 https://cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf
+
+# Tasks
+add project non-root ssh key: https://console.cloud.google.com/compute/metadata?tab=sshkeys  
 
 # GCS
 

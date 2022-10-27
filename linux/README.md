@@ -87,8 +87,9 @@ http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/curre
 Debug: Console 4 or /var/log/syslog
 
 # Mirrors
-http://mirrors.huaweicloud.com  
-https://mirrors.tuna.tsinghua.edu.cn
+
+    apt install netselect-apt && netselect-apt -c china --nonfree
+    mv /etc/apt/sources.list /etc/apt/sources.list.ori && mv sources.list /etc/apt/
 
 # Bash
 https://www.gnu.org/software/bash/manual/bash.html
@@ -313,6 +314,8 @@ rm -r /var/lib/apt/lists/*
     awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg
     grub2-set-default 'CentOS Linux (4.9.0-rc8-amd64) 7 (Core)'
     grub2-editenv list
+
+fix: https://www.supergrubdisk.org/category/download/
 
 ## grub-customizer
     sudo add-apt-repository ppa:danielrichter2007/grub-customizer

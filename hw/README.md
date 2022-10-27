@@ -7,9 +7,7 @@
 - [Buses](#buses)
 - [Infini Band](#infini-band)
 - [Raspberry PI](#raspberry-pi)
-    - [Console](#console)
-- [Arduino](#arduino)
-    - [Tutorials](#tutorials)
+  - [Console](#console)
 - [Resolution](#resolution)
 
 <!-- /TOC -->
@@ -81,12 +79,6 @@ Parity: None
 Stop Bits: 1
 Flow Control: None
 ```
-
-# Arduino
-https://www.arduino.cc/en/Products.Compare
-
-## Tutorials
-http://tronixstuff.com/2013/12/12/arduino-tutorials-chapter-22-aref-pin/
 
 # Resolution
 

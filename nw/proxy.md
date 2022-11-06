@@ -38,6 +38,8 @@
 - [Clients](#clients)
   - [Subscription](#subscription)
   - [clash](#clash)
+    - [Premium](#premium)
+    - [Tap](#tap)
   - [sing-box](#sing-box)
 
 <!-- /TOC -->
@@ -226,8 +228,18 @@ merge: https://acl4ssr-sub.github.io/
 
 ## clash
 https://github.com/Dreamacro/clash  
-Premium: https://github.com/Dreamacro/clash/releases/tag/premium  
 Rules: https://github.com/snapei/clash-pro-rules
+
+### Premium
+Download: https://github.com/Dreamacro/clash/releases/tag/premium  
+Guide： 
+- https://github.com/Dreamacro/clash/wiki/Clash-Premium-Features  
+- https://docs.cfw.lbyczf.com/contents/tap.html
+
+### Tap
+.dll to clash folder: https://www.wintun.net/
+
+
 
 ## sing-box
 https://sing-box.sagernet.org/features/

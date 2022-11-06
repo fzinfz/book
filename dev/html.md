@@ -40,6 +40,7 @@
         document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
 
 # Static Site Generator
+Vite powered/Unused JavaScript: https://astro.build/  
 Vite & Vue powered: https://github.com/vuejs/vitepress  
 Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
 

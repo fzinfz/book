@@ -22,7 +22,6 @@
   * [Proxy & VPN](nw/proxy.md)
   * [Security](nw/security.md)
   * [DNS](nw/dns.md)
-  * [DHCP](nw/dhcp.md)
   * [Low Level](nw/lowlevel.md)
   * [TCP](nw/tcp.md)
   * [SDN](nw/sdn.md)

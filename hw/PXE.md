@@ -1,3 +1,5 @@
+- [DHCP Options](#dhcp-options)
+  - [Next Server](#next-server)
 - [.iso to USB](#iso-to-usb)
 - [UEFI Editor](#uefi-editor)
   - [efibootmgr - Linux](#efibootmgr---linux)
@@ -9,10 +11,29 @@
   - [Self Hosting](#self-hosting)
 - [Windows](#windows)
   - [Remote install ISO](#remote-install-iso)
+  - [Server - Windows](#server---windows)
+- [Mikrotik](#mikrotik)
+  - [Mikrotik + Windows](#mikrotik--windows)
 - [Diskless](#diskless)
   - [Hive OS - Ubuntu](#hive-os---ubuntu)
   - [NetBSD](#netbsd)
   - [Windows](#windows-1)
+
+https://blogs.technet.microsoft.com/dominikheinz/2011/03/18/dhcp-pxe-basics/
+
+https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/You-want-to-PXE-Boot-Don-t-use-DHCP-Options/ba-p/275562
+
+
+# DHCP Options
+http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
+
+https://tools.ietf.org/html/rfc2132
+
+    66: TFTP server name
+    67: Bootfile name
+
+## Next Server
+https://www.ietf.org/archive/id/draft-ietf-dhc-nextserver-02.txt
 
 # .iso to USB
 
@@ -78,6 +99,17 @@ customize and modify wim files: http://hello.wimbuilder.world
 ## Remote install ISO
 支持安装网络上的微软原版iso （win7/8/10/x64/x86): https://github.com/zwj4031/netgrubfm/  
 支持启动WIM、ISO、IMG、RAMOS、ISCSI的网启模板(BIOS/UEFI): https://github.com/zwj4031/ipxefm  
+
+## Server - Windows
+http://tftpd32.jounin.net/tftpd32_download.html
+
+# Mikrotik
+
+    add code=66 name=next-server value="'192.168.88.248'"
+    add code=67 name=boot-file value="'CentOS-7-x86_64-NetInstall-1810.iso'"
+
+## Mikrotik + Windows
+https://gist.github.com/PatrickLang/d891d4ed4bdf1d23ec584c44df7b0478
 
 # Diskless
 ## Hive OS - Ubuntu

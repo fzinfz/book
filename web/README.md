@@ -6,7 +6,8 @@
 - [SNI](#sni)
 - [Varnish](#varnish)
   - [Real IP](#real-ip)
-- [Github pages](#github-pages)
+- [Free static site hosting](#free-static-site-hosting)
+  - [Github pages](#github-pages)
 - [Google Analytics](#google-analytics)
   - [Enhanced Link Attribution](#enhanced-link-attribution)
 
@@ -37,7 +38,10 @@ https://support.cloudflare.com/hc/en-us/articles/200170986
 
 https://support.cloudflare.com/hc/en-us/articles/200170706-How-do-I-restore-original-visitor-IP-with-Nginx-
 
-# Github pages
+# Free static site hosting
+vercel/netlify
+
+## Github pages
 *.github.io:    force https  
 custom domain:  https ERR_CERT_COMMON_NAME_INVALID
 

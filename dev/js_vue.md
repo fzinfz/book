@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Vite](#vite)
 - [V3](#v3)
 - [Vue.createApp](#vuecreateapp)
 - [v-bind/on](#v-bindon)
@@ -9,9 +10,20 @@
 
 <!-- /TOC -->
 
+# Vite
+https://vitejs.dev/guide/why.html
+
+https://vuejs.org/guide/quick-start.html
+
+    npm init vue@latest
+    npm create vite@latest
+    cd <your-project-name>
+    npm install
+    npm run dev
+
 # V3
 
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 # Vue.createApp
 

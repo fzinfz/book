@@ -10,9 +10,10 @@
   - [Packet Flow](#packet-flow)
 - [Wireless](#wireless)
   - [Modes](#modes)
+- [Models](#models)
 - [Switch Chip](#switch-chip)
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
-- [Sniffer & Wireshark](#sniffer--wireshark)
+- [Sniffer and Wireshark](#sniffer-and-wireshark)
 - [VPN](#vpn)
   - [OpenVPN](#openvpn)
   - [WireGuard](#wireguard)
@@ -65,7 +66,7 @@ if winbox not working: /webfig/#IP:Services
     Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
 
 not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
-"No supported channel" => reset and run quickset first
+"No supported channel" => reset with default config and run quickset first
 
     PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
 
@@ -101,6 +102,14 @@ default-authentication – enables AP to register a client even if it is not in 
 ## Modes
 https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 
+# Models
+|Model|Alias|Arch|Dude|Chip|CPU|MHz|RAM|Storage|Ports|PoE In|Out|Mbit/s|dBi|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|[RB750Gr3](https://mikrotik.com/product/RB750Gr3)|hEX|MMIPS|v6|MT7621A|2C4T|880|256|16/TF/USB|5/1G|8-30 V|N/A|N/A||
+|[RB941-2nD](https://mikrotik.com/product/RB941-2nD)|hAP lite|SMIPS|-|QCA9533|1C|650|32|16|4/100|MicroUSB|N/A|300|1.5|
+|[RB951G-2HnD](https://mikrotik.com/product/RB951G-2HnD)||MIPSBE|-|AR9344|1C|600|128|128|5/1G|8-30 V|N/A|300|2.5|
+|[RBD52G-*](https://mikrotik.com/product/hap_ac2)|hAP ac²|ARM32|v6|IPQ-4018|4|716|128|16/USB|5/1G|18-28 V||300/867|2.5/2.5|
+
 # Switch Chip
 |Model|RB3011 |RB951G|RB750G|RB951Ui-2HnD|RB951-2n|RB750Gr3|
 |---|---|---|---|---|---|---|
@@ -120,7 +129,7 @@ https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 - https://wiki.mikrotik.com/wiki/Manual:Fast_Path
 - https://wiki.mikrotik.com/wiki/Manual:IP/Fasttrack
 
-# Sniffer & Wireshark
+# Sniffer and Wireshark
 https://mum.mikrotik.com/presentations/ID19/presentation_6708_1572241150.pdf
 
     /tool sniffer print # running: yes/no

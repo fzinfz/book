@@ -68,7 +68,6 @@
 * [Electronic](elec/README.md)
   * [Micro-Cap](elec/microcap.md)
   * [Battery](elec/battery.md)
-  * [市电](elec/AC.md)
-  * [金属](elec/metal.md)
+  * [3D Printing](elec/3d.md)
 * [Android/iOS](phone.md)
 * [Apps](apps.md)

@@ -4,23 +4,23 @@
 - [Units](#units)
 - [target](#target)
 - [Config](#config)
-    - [add](#add)
+  - [add](#add)
 - [debug](#debug)
 - [journald](#journald)
 - [systemd-networkd.service](#systemd-networkdservice)
 - [systemd.netdev](#systemdnetdev)
-    - [Kind](#kind)
-    - [Examples](#examples)
-        - [bridge.netdev](#bridgenetdev)
-        - [dummy.netdev](#dummynetdev)
-        - [vlan1.netdev](#vlan1netdev)
-        - [macvtap.netdev](#macvtapnetdev)
+  - [Kind](#kind)
+  - [Examples](#examples)
+    - [bridge.netdev](#bridgenetdev)
+    - [dummy.netdev](#dummynetdev)
+    - [vlan1.netdev](#vlan1netdev)
+    - [macvtap.netdev](#macvtapnetdev)
 - [systemd.network](#systemdnetwork)
-    - [static.network](#staticnetwork)
-    - [dhcp.network](#dhcpnetwork)
-    - [A bridge with two enslaved links](#a-bridge-with-two-enslaved-links)
-    - [bridge-slave-interface-vlan.network](#bridge-slave-interface-vlannetwork)
-    - [macvtap.network](#macvtapnetwork)
+  - [static.network](#staticnetwork)
+  - [dhcp.network](#dhcpnetwork)
+  - [A bridge with two enslaved links](#a-bridge-with-two-enslaved-links)
+  - [bridge-slave-interface-vlan.network](#bridge-slave-interface-vlannetwork)
+  - [macvtap.network](#macvtapnetwork)
 - [systemd.link](#systemdlink)
 
 <!-- /TOC -->
@@ -29,6 +29,7 @@
 https://wiki.archlinux.org/index.php/systemd
 
 ```
+systemctl --all
 systemctl list-dependencies
 systemctl list-dependencies libvirtd --all
 

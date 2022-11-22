@@ -14,6 +14,7 @@
   - [Web Setup Wizards](#web-setup-wizards)
     - [Switch](#switch)
   - [CLI](#cli)
+    - [add bridge](#add-bridge)
     - [enable apt](#enable-apt)
     - [List dhcp/static clients](#list-dhcpstatic-clients)
     - [RIP](#rip)
@@ -131,7 +132,15 @@ https://openwrt.org/toh/ubiquiti/ubiquiti_edgerouter_x_er-x_ka
     ubnt@ubnt:~$ configure
     [edit]
     ubnt@ubnt# show
-    
+
+### add bridge
+
+    # WebUI: remove eth3 from switch0
+    set interfaces bridge br2 address dhcp
+    set interfaces ethernet eth3 bridge-group bridge br2
+    commit; save
+    # WebUI Dashboard: manage bridge/add ports
+
 ### enable apt
 https://help.ubnt.com/hc/en-us/articles/205202560-EdgeRouter-Add-other-Debian-packages-to-EdgeOS
 

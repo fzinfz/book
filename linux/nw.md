@@ -2,30 +2,31 @@
 
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
-    - [/etc/network/interfaces](#etcnetworkinterfaces)
-    - [/etc/netplan/*.yaml](#etcnetplanyaml)
-    - [Port listening](#port-listening)
-    - [debug](#debug)
-    - [Netlink](#netlink)
-    - [tuntap](#tuntap)
-    - [Features](#features)
-    - [disable ipv6](#disable-ipv6)
+  - [/etc/network/interfaces](#etcnetworkinterfaces)
+  - [/etc/netplan/*.yaml](#etcnetplanyaml)
+  - [Port listening](#port-listening)
+  - [debug](#debug)
+  - [Netlink](#netlink)
+  - [tuntap](#tuntap)
+  - [Features](#features)
+  - [disable ipv6](#disable-ipv6)
 - [nftables](#nftables)
 - [iptables](#iptables)
-    - [table / chain](#table--chain)
-    - [rules](#rules)
-    - [NAT](#nat)
-    - [Trace](#trace)
-    - [Log manually](#log-manually)
-    - [Transparent Proxy](#transparent-proxy)
+  - [table / chain](#table--chain)
+  - [rules](#rules)
+  - [NAT](#nat)
+  - [Trace](#trace)
+  - [Log manually](#log-manually)
+  - [Transparent Proxy](#transparent-proxy)
 - [iptables frontend](#iptables-frontend)
-    - [CentOS firewall-cmd](#centos-firewall-cmd)
-    - [Ubuntu - ufw](#ubuntu---ufw)
+  - [CentOS firewall-cmd](#centos-firewall-cmd)
+  - [Ubuntu - ufw](#ubuntu---ufw)
 - [ip rule](#ip-rule)
 - [tc](#tc)
 - [LVS](#lvs)
 - [Virtual routing and forwarding](#virtual-routing-and-forwarding)
 - [DNS](#dns)
+- [teamd](#teamd)
 
 <!-- /TOC -->
 
@@ -293,3 +294,6 @@ https://www.kernel.org/doc/Documentation/networking/vrf.txt
     /etc/nsswitch.conf
         #hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
         hosts:          files dns  # fix nslookup works but ping not work
+
+# teamd
+https://github.com/jpirko/libteam/wiki/Tutorial

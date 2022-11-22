@@ -12,13 +12,13 @@
 - [MacVTap](#macvtap)
 - [Linux bridge](#linux-bridge)
 - [VLAN](#vlan)
-    - [Macvlan Bridge](#macvlan-bridge)
-    - [OVS - VLAN tagging transparent](#ovs---vlan-tagging-transparent)
+  - [Macvlan Bridge](#macvlan-bridge)
+  - [OVS - VLAN tagging transparent](#ovs---vlan-tagging-transparent)
 - [Shutdown timeout](#shutdown-timeout)
 - [Nested](#nested)
 - [virtiofs](#virtiofs)
 - [vfio](#vfio)
-    - [Raw disk mapping](#raw-disk-mapping)
+  - [Raw disk mapping](#raw-disk-mapping)
 - [GRUB](#grub)
 - [UEFI](#uefi)
 - [Troubleshooting](#troubleshooting)
@@ -119,7 +119,7 @@ http://docs.openvswitch.org/en/latest/howto/libvirt/
 
     <interface type='bridge'>
         <mac address='52:54:00:71:b1:b6'/>
-        <source bridge='br1'/>
+        <source bridge='ovs-br0'/>
         <virtualport type='openvswitch'/>
         <model type='virtio'/>
         <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>

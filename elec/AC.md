@@ -14,6 +14,10 @@ ABB低压产品目录： https://library.e.abb.com/public/3ed9d6e55176101f48257d
 
 DLT645抄表：https://github.com/fzinfz/flask-DLT645
 
+https://en.wikipedia.org/wiki/Mains_electricity_by_country#Table_of_mains_voltages,_frequencies,_and_plugs
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/World_Map_of_Mains_Voltages_and_Frequencies%2C_Detailed.svg/1200px-World_Map_of_Mains_Voltages_and_Frequencies%2C_Detailed.svg.png)
+- CN 220/380V 50Hz | UK 230V 50Hz | US 120/240V 60Hz
+
 # Power Connectors
 https://en.wikipedia.org/wiki/IEC_60320#Appliance_couplers  
 C13/C14 and C15/C16 connectors for up to 15 A[10] (IEC maximum is 10 A)  

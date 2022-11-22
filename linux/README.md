@@ -65,6 +65,7 @@
   - [check_cpu_core_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
 - [kali](#kali)
+- [ssh](#ssh)
   - [tools](#tools)
 - [Video](#video)
 - [OpenCL](#opencl)
@@ -593,6 +594,13 @@ http://antix.mepis.org/index.php?title=Using_liveusb_with_persistence
 # kali
 x86/M1/Live/VM/WSL/etc: https://www.kali.org/get-kali  
 Docker: https://hub.docker.com/u/kalilinux/
+
+# ssh
+Since 2022.1: https://www.kali.org/docs/general-use/ssh-configuration/
+- kali-tweaks -> Hardening  -> Strong Security (the default) and Wide Compatibility
+
+    ls -l /etc/ssh/ssh_host_*
+    systemctl disable regenerate-ssh-host-keys.service
 
 ## tools
 https://www.kali.org/tools/  

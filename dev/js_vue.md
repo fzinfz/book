@@ -2,8 +2,19 @@
 
 - [Vite](#vite)
 - [V3](#v3)
-- [Vue.createApp](#vuecreateapp)
-- [v-bind/on](#v-bindon)
+  - [2to3](#2to3)
+- [createApp](#createapp)
+  - [hydration mode](#hydration-mode)
+- [Components](#components)
+  - [defineComponent](#definecomponent)
+  - [defineCustomElement](#definecustomelement)
+- [Plugins](#plugins)
+- [Routing](#routing)
+- [VNode - h()](#vnode---h)
+- [Data Binding](#data-binding)
+  - [v-bind/on](#v-bindon)
+  - [computed](#computed)
+  - [refs](#refs)
 - [List Rendering](#list-rendering)
 - [lifecycle](#lifecycle)
 - [Code Snippets](#code-snippets)
@@ -24,8 +35,22 @@ https://vuejs.org/guide/quick-start.html
 # V3
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    const { createApp } = Vue
 
-# Vue.createApp
+    <script type="module">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+## 2to3
+https://vuejsdevelopers.com/2020/03/16/vue-js-tutorial/
+
+- `new Vue()` ====> `createApp()`
+- `data: {`   ====> `data: () => ({`
+- `render: h => h(App)` ====> `App`
+- multi `<>` under `<template>`
+- `setup()`: no `.value` and `this` : https://vuejs.org/api/composition-api-setup.html
+- Teleport: `<Teleport to="body/#id">`: https://vuejs.org/guide/built-ins/teleport.html
+- 
+# createApp
 
     Vue.createApp({
         data() {
@@ -35,14 +60,103 @@ https://vuejs.org/guide/quick-start.html
         }
     }).mount('#id')
 
-# v-bind/on
+源码 - ensureRenderer: https://vue3js.cn/global/createApp.html
 
-    v-bind : 1-way
-    v-model: 2-way = v-bind + v-on
+https://vuejs.org/api/application.html#createapp
+
+    function createApp(rootComponent: Component, rootProps?: object): App
+
+## hydration mode
+https://vuejs.org/guide/scaling-up/ssr.html#client-hydration
+
+make the client-side app interactive: use createSSRApp() instead of createApp()
+
+shared between the server and the client - universal code:
+
+    export function createApp() {
+        return createSSRApp({
+
+# Components
+.vue - Single-File Component/SFC: https://vuejs.org/guide/essentials/component-basics.html
+
+```
+<script>
+import ButtonCounter from './ButtonCounter.vue'
+
+export default {
+  components: {
+    ButtonCounter
+  }
+}
+</script>
+
+<template>
+  <h1>Here is a child component!</h1>
+  <ButtonCounter />
+</template>
+```
+
+## defineComponent
+
+    import { defineComponent } from 'vue'
+
+    const MyComponent = defineComponent({
+        data() {
+        methods: {
+
+## defineCustomElement
+
+    import { defineCustomElement } from 'vue'
+    const MyVueElement = defineCustomElement({
+    customElements.define('my-vue-element', MyVueElement)
+
+    <my-vue-element></my-vue-element>
+
+# Plugins
+https://vuejs.org/guide/reusability/plugins.html
+
+    app.use(myPlugin, { })
+
+    const myPlugin = {
+        install(app, options) {
+
+    export default {
+        install: (app, options) => {
+
+# Routing
+https://vuejs.org/guide/scaling-up/routing.html
+
+# VNode - h()
+https://vuejs.org/guide/extras/render-function.html
+
+    import { h } from 'vue'
+    h('div', { id: 'foo' }, 'hello')
+
+# Data Binding
+## v-bind/on
+v-bind: https://vuejs.org/guide/essentials/template-syntax.html#dynamically-binding-multiple-attributes
+
+    data() {
+        return {
+            objectOfAttrs: {
+
+    <div v-bind="objectOfAttrs"></div>
+
+v-bind : 1-way
+v-model: 2-way = v-bind + v-on
 
     <a v-bind:href="url"> ... </a>          ==>  <a :href=""> ... </a>
     <a v-on:click="doSomething"> ... </a>   ==>  <a @click=""> ... </a>
 
+## computed
+for complex logic that includes reactive data：https://vuejs.org/guide/essentials/computed.html
+
+## refs
+https://vuejs.org/guide/essentials/template-refs.html
+
+    <input ref="input">
+
+    this.$refs.input.focus()
 
 # List Rendering
 https://v3.vuejs.org/guide/list.html

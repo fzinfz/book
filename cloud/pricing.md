@@ -201,3 +201,21 @@ qn 10G/m/http：https://www.qiniu.com/prices/qcdn
 tx 新户100G/6m： https://buy.cloud.tencent.com/price/cdn/overview  
 ali：https://www.aliyun.com/price/detail/cdn  
 hw： https://www.huaweicloud.com/pricing.html#/cdn  
+
+dcloud free: https://uniapp.dcloud.net.cn/uniCloud/price.html#%E5%85%8D%E8%B4%B9%E9%A2%9D%E5%BA%A6
+
+  云函数：
+    资源使用量：1000GBs/月
+    调用次数：1.5万次 出网流量：1GB
+  云数据库： 集合数量	100  /  索引数量	400
+    容量：2GB
+    读操作数：0.05万次/天
+    写操作数：0.03万次/天
+  云存储：
+    容量：5GB
+    下载操作次数：0.2万次
+    上传操作次数：0.1万次
+    CDN流量：1GB
+  静态网站托管：
+    容量：5GB
+    CDN流量：1GB

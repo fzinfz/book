@@ -6,8 +6,10 @@
 
 <!-- /TOC -->
 
-    jupyter notebook --generate-config # ~/.jupyter
-        c.NotebookApp.notebook_dir = ''
+vscode: install `Python` extension - support `git diff` code/output of .ipynb
+
+    jupyter notebook --generate-config # ~/.jupyter | jupyter_notebook_config.py
+        c.NotebookApp.notebook_dir = '' # Windows: edit shortcut | better: vscode
         c.NotebookApp.ip = '*'
         c.NotebookApp.open_browser = False 
         c.NotebookApp.password = u'type:salt:hashed-password' # from notebook.auth import passwd; passwd()

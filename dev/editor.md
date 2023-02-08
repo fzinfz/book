@@ -5,6 +5,8 @@
   - [Cloud IDE](#cloud-ide)
 - [vi/vim](#vivim)
 - [nano](#nano)
+- [WebStorm](#webstorm)
+  - [Terminal](#terminal)
 
 <!-- /TOC -->
 
@@ -32,7 +34,7 @@ extension: ms-vscode-remote.remote-ssh
 
     Host 192.168.88.72
         HostName 192.168.88.72
-        IdentityFile C:/Users/root/.ssh/id_rsa
+        IdentityFile C:/Users/root/.ssh/id_rsa  <== File permission: current user only
         User root
 
 F1 => Remote-SSH: Connect to Host...
@@ -60,3 +62,8 @@ https://theia-ide.org/docs/
 # nano
 CTRL + Shift + 6:   mark
 CTRL + K:           cut/delete
+
+# WebStorm
+## Terminal
+- Support ctrl+C/V , clickable links
+- env != OS env: Settings | Tools | Terminal

@@ -24,13 +24,14 @@
 # Vite
 https://vitejs.dev/guide/why.html
 
-https://vuejs.org/guide/quick-start.html
+https://vitejs.dev/guide/
 
-    npm init vue@latest
-    npm create vite@latest
-    cd <your-project-name>
-    npm install
-    npm run dev
+    # vanilla, vanilla-ts, vue, vue-ts, react, react-ts ...
+    npm create vite@latest test-vue3-ts-vite --template vue-ts    # npm 6.x
+    npm create vite@latest test-vue3-ts-vite -- --template vue-ts # npm 7+
+    npm install && npm run dev
+
+[README.md](https://github.com/fzinfz/test-vue3-ts-vite/blob/0652a5ecc9440d520021e4c023fdc21da547efa2/README.md): `@builtin vscode.typescript-language-features` -> `Disable (Workspace)` | install `vue.volar` + `Vue.vscode-typescript-vue-plugin`
 
 # V3
 

@@ -7,6 +7,7 @@
 - [Varnish](#varnish)
   - [Real IP](#real-ip)
 - [Free static site hosting](#free-static-site-hosting)
+  - [Cloudflare Pages](#cloudflare-pages)
   - [Github pages](#github-pages)
 - [Google Analytics](#google-analytics)
   - [Enhanced Link Attribution](#enhanced-link-attribution)
@@ -41,14 +42,15 @@ https://support.cloudflare.com/hc/en-us/articles/200170706-How-do-I-restore-orig
 # Free static site hosting
 vercel/netlify
 
+## Cloudflare Pages
+<YOUR_PROJECT_NAME>.pages.dev: https://developers.cloudflare.com/pages/platform/build-configuration/#framework-presets
+- Static: Framework presets = None &
+- Vue 3: env NODE_VERSION>14.18 : https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/
+
 ## Github pages
-*.github.io:    force https  
-custom domain:  https ERR_CERT_COMMON_NAME_INVALID
+CNAME: <user>.github.io
 
-https://help.github.com/articles/setting-up-an-apex-domain/
-
-    192.30.252.153
-    192.30.252.154
+Gihub token: https://github.com/settings/tokens
 
 # Google Analytics
 https://analytics.google.com/analytics/web/#/.../admin/property/settings

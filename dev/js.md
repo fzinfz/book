@@ -12,7 +12,9 @@
   - [events](#events)
 - [JSX](#jsx)
 - [node](#node)
-  - [Schedule](#schedule)
+  - [Version Manager](#version-manager)
+    - [volta](#volta)
+    - [nvm](#nvm)
 
 <!-- /TOC -->
 
@@ -61,5 +63,15 @@ an XML-like syntax extension to ECMAScript without any defined semantics: https:
 `const element = <h1>Hello, world!</h1>;`: https://zh-hans.reactjs.org/docs/introducing-jsx.html
 
 # node
-## Schedule
+Schedule
 ![](https://raw.githubusercontent.com/nodejs/Release/master/schedule.svg)
+
+## Version Manager
+### volta
+https://volta.sh/
+
+    volta list
+    volta install node@18
+
+### nvm
+https://github.com/nvm-sh/nvm

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Pritable](#pritable)
 - [VSCode](#vscode)
   - [remote-ssh](#remote-ssh)
   - [Cloud IDE](#cloud-ide)
@@ -9,6 +10,15 @@
   - [Terminal](#terminal)
 
 <!-- /TOC -->
+
+# Pritable
+https://pandoc.org/getting-started.html
+
+    pandoc -f html -t markdown                           # HTML to markdown
+    pandoc test1.md -f markdown -t html -s -o test1.html # markdown to HTML
+    # -s option says to create a “standalone” file, with a header and footer, not just a fragment. 
+
+Chrome/Edge - print .md on Github: https://github.com/jerry1100/github-markdown-printer
 
 # VSCode
 - Regex - deleting empty lines: ^\s*$\n

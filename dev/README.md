@@ -5,17 +5,18 @@
 - [Scripts of Powershell/Python/etc](#scripts-of-powershellpythonetc)
 - [GraphQL](#graphql)
 - [Markdown](#markdown)
-    - [Parser](#parser)
-    - [Converter](#converter)
+  - [Parser](#parser)
+  - [Converter](#converter)
 - [Markdown + LaTeX](#markdown--latex)
 - [OCR](#ocr)
-    - [Offline](#offline)
-    - [Windows Universal](#windows-universal)
+  - [Offline](#offline)
+  - [Windows Universal](#windows-universal)
 - [Excel](#excel)
-    - [Formula](#formula)
-    - [CSharp](#csharp)
-- [CSharp](#csharp)
-- [Net Core](#net-core)
+  - [Formula](#formula)
+  - [CSharp](#csharp)
+- [CSharp](#csharp-1)
+- [.Net Core](#net-core)
+- [InPage Search](#inpage-search)
 
 <!-- /TOC -->
 
@@ -95,3 +96,5 @@ async：https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concept
 # .Net Core
 https://github.com/thangchung/awesome-dotnet-core
 
+# InPage Search
+https://docsearch.algolia.com/docs/DocSearch-v3

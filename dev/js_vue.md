@@ -13,6 +13,8 @@
 - [VNode - h()](#vnode---h)
 - [Data Binding](#data-binding)
   - [v-bind/on](#v-bindon)
+  - [Event](#event)
+  - [Watch](#watch)
   - [computed](#computed)
   - [refs](#refs)
 - [List Rendering](#list-rendering)
@@ -40,6 +42,8 @@ https://vitejs.dev/guide/
 
     <script type="module">
       import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+Live try HTML/SFC: https://vuejs.org/tutorial/
 
 ## 2to3
 https://vuejsdevelopers.com/2020/03/16/vue-js-tutorial/
@@ -78,7 +82,7 @@ shared between the server and the client - universal code:
         return createSSRApp({
 
 # Components
-.vue - Single-File Component/SFC: https://vuejs.org/guide/essentials/component-basics.html
+.vue - Single-File Component/SFC | no CDN: https://vuejs.org/guide/essentials/component-basics.html
 
 ```
 <script>
@@ -148,6 +152,16 @@ v-model: 2-way = v-bind + v-on
 
     <a v-bind:href="url"> ... </a>          ==>  <a :href=""> ... </a>
     <a v-on:click="doSomething"> ... </a>   ==>  <a @click=""> ... </a>
+
+## Event
+https://vuejs.org/tutorial/#step-4
+
+SFC Demo: https://github.com/fzinfz/test-vue3-ts-vite/commit/3b06a86c4c894436c47c33f584337fe789c5e6d0
+
+## Watch
+https://vuejs.org/guide/essentials/watchers.html
+
+HTML Demo: https://github.com/fzinfz/scripts/commit/846a0bb2260a92ed9d76fd24f6669e8c63f15fde
 
 ## computed
 for complex logic that includes reactive data：https://vuejs.org/guide/essentials/computed.html

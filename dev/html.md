@@ -18,6 +18,7 @@
   - [margin](#margin)
 - [Spacing](#spacing)
 - [Mobile](#mobile)
+- [Flexbox](#flexbox)
 - [UI Frameworks](#ui-frameworks)
 - [Bootstrap](#bootstrap)
   - [Version 3](#version-3)
@@ -40,9 +41,15 @@
         document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
 
 # Static Site Generator
-Vite powered/Unused JavaScript: https://astro.build/  
-Vite & Vue powered: https://github.com/vuejs/vitepress  
-Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
+- ISR (incremental static regeneration)
+- CSR(client-side rendering)
+- SSG (Static Site Generation) 
+- SSR (server-side rendering)
+
++ Vite powered/Unused JavaScript: https://astro.build/  
++ Vite & Vue powered: https://github.com/vuejs/vitepress  
++ Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
++ Antora: multi repo into 1: https://docs.antora.org/antora/latest/
 
 # Percent-encoding reserved
 https://en.wikipedia.org/wiki/Percent-encoding
@@ -83,15 +90,15 @@ https://github.com/encharm/Font-Awesome-SVG-PNG/tree/master/white/svg
 # Events
 https://developer.mozilla.org/en-US/docs/Web/Events
 
-cut/copy/paste  
-input: the value of an <input>, <select>, or <textarea> element is changed  
-ValueChange: mainly for an accessibility purpose, e.g.: <progress>  
-change(Firefox OS specific, any change made to a file inside a given storage area)
+    cut/copy/paste  
+    input: the value of an <input>, <select>, or <textarea> element is changed  
+    ValueChange: mainly for an accessibility purpose, e.g.: <progress>  
+    change(Firefox OS specific, any change made to a file inside a given storage area)
 
 # CSS box model
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model  
 Every box is composed of four parts (or areas), defined by their respective edges.  
-![](https://mdn.mozillademos.org/files/8685/boxmodel-(3).png)  
+![](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model/boxmodel.png)  
 
 ## box-sizing
 https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
@@ -169,6 +176,20 @@ https://developer.apple.com/library/content/documentation/AppleApplications/Refe
     user-scalable: whether or not the user can zoom in and out. yes
     shrink-to-fit=no: override  "width=device-width" to prevent the page from scaling
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+# Flexbox
+- Game: https://flexboxfroggy.com/
+- Doc: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox
+![](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox/flex_terms.png)
+
+Click links to live try:
+- `flex-direction`: specifies which direction the **main axis** runs; `column` -> vertically
+- `flex-wrap`: default `nowrap`
+- `flex-flow` = `flex-direction` + `flex-wrap`
+- [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content#examples): default `flex-start`, items sit at the start of the main axis
+- [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items#examples)：default `stretch`，fill the parent in the direction of the cross axis
+- [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content#formal_syntax)：around content items along a flexbox's cross-axis
+- [`flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex#examples): grow or shrink to fit the space | flex-grow + flex-shrink + flex-basis
 
 # UI Frameworks
 https://github.com/stars/fzinfz/lists/frontend

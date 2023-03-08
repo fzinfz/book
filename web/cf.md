@@ -6,6 +6,7 @@
   - [Origin CA](#origin-ca)
 - [CNAME Flattening](#cname-flattening)
 - [Workers](#workers)
+  - [TypeScript](#typescript)
   - [Wrangler (Workers CLI)](#wrangler-workers-cli)
 - [Workers as Reverse Proxy](#workers-as-reverse-proxy)
   - [Bulk origin override](#bulk-origin-override)
@@ -67,7 +68,18 @@ https://developers.cloudflare.com/dns/additional-options/cname-flattening/
 - CNAME flattening occurs by default
 
 # Workers
-Free Limits: https://developers.cloudflare.com/workers/platform/limits
+- Free Limits: https://developers.cloudflare.com/workers/platform/limits
+- Examples: https://developers.cloudflare.com/workers/examples/
+- Create site: https://developers.cloudflare.com/workers/platform/sites/
+- Cron: https://developers.cloudflare.com/workers/platform/triggers/cron-triggers/
+- KV: https://developers.cloudflare.com/workers/runtime-apis/kv/
+
+## TypeScript
+https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-typescript
+
+    npm init cloudflare my-project worker-typescript
+
+- Pages: https://developers.cloudflare.com/pages/platform/functions/typescript/
 
 ## Wrangler (Workers CLI)
 https://developers.cloudflare.com/workers/get-started/guide/

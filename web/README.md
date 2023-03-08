@@ -9,6 +9,7 @@
 - [Free static site hosting](#free-static-site-hosting)
   - [Cloudflare Pages](#cloudflare-pages)
   - [Github pages](#github-pages)
+    - [Github Actions - SSR](#github-actions---ssr)
 - [Google Analytics](#google-analytics)
   - [Enhanced Link Attribution](#enhanced-link-attribution)
 
@@ -40,17 +41,31 @@ https://support.cloudflare.com/hc/en-us/articles/200170986
 https://support.cloudflare.com/hc/en-us/articles/200170706-How-do-I-restore-original-visitor-IP-with-Nginx-
 
 # Free static site hosting
-vercel/netlify
+|Free|Storage|month|
+|---|---|---|
+|[Github](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)|500 MB|2000 min|
+|[Cloudflare](https://developers.cloudflare.com/pages/platform/limits/)|25MiB/site|500 times|
+|[vercel](https://vercel.com/pricing)||100GB b/w|
+|[netlify](https://www.netlify.com/pricing/#features)|500 sites|100GB b/w(then $55 per 100GB)|
 
 ## Cloudflare Pages
 <YOUR_PROJECT_NAME>.pages.dev: https://developers.cloudflare.com/pages/platform/build-configuration/#framework-presets
 - Static: Framework presets = None &
 - Vue 3: env NODE_VERSION>14.18 : https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/
 
+1 github repo => 1 cf project = 1 build kernel ([ref](https://community.cloudflare.com/t/cloudflare-pages-multiple-projects-with-a-single/287910))
+
 ## Github pages
 CNAME: <user>.github.io
 
 Gihub token: https://github.com/settings/tokens
+
+### Github Actions - SSR
+https://docs.github.com/en/actions/quickstart
+
+    .github/workflows
+
+check usage: https://github.com/settings/billing
 
 # Google Analytics
 https://analytics.google.com/analytics/web/#/.../admin/property/settings

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
   - [macvlan - access host](#macvlan---access-host)
   - [ipvlan](#ipvlan)
@@ -20,6 +21,18 @@
 - [Breed](#breed)
 
 <!-- /TOC -->
+
+# Install on X86
+https://openwrt.org/docs/guide-user/installation/openwrt_x86
+
+    dd if=openwrt-21.02.0-x86-64-generic-ext4-combined.img bs=1M of=/dev/sdX
+
+    opkg update
+    opkg install lsblk parted losetup resize2fs
+    echo fix | parted -l ---pretend-input-tty
+    parted -s /dev/sda resizepart 2 100% 
+    losetup /dev/loop1 /dev/sda2
+    resize2fs -f /dev/loop1
 
 # run as Container
 ref: https://mlapp.cn/376.html

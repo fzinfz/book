@@ -11,6 +11,7 @@
     - [twrp](#twrp)
   - [Mi](#mi)
     - [miflash unlock](#miflash-unlock)
+  - [SSH Button](#ssh-button)
 - [IOS](#ios)
   - [Automation](#automation-1)
   - [Bar/QR code to REST API](#barqr-code-to-rest-api)
@@ -65,6 +66,14 @@ Down+Power:
 Clear partions & /data: https://zhuanlan.zhihu.com/p/413293727  
 ROMs: https://xiaomirom.com/series/   
 Fix boot hang: https://topjohnwu.github.io/Magisk/install.html  # .apk->.zip; twrp->install 
+
+## SSH Button
+|Features|key|Lack|Lang|Link|
+|---|---|---|---|---|
+|WOL|-|?|ReactNative|https://github.com/BootBoi/android-app|
+|-|custom|output|-|https://play.google.com/store/apps/details?id=com.pd7l.sshbutton|
+|.json|app|?|JAVA|https://github.com/Skarafaz/mercury|
+
 
 # IOS
 ## Automation

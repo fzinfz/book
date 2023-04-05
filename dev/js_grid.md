@@ -6,6 +6,7 @@
 - [jquery](#jquery)
   - [jexcel](#jexcel)
 - [standalone](#standalone)
+- [HTML Table](#html-table)
 
 <!-- /TOC -->
 
@@ -42,3 +43,45 @@ roadmap: Online work collaboration
 
 # standalone
 - tabulator: https://github.com/olifolkerd/tabulator  
+
+# HTML Table
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">The table header</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>The table body</td>
+                <td>with two columns</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Items</th>
+                <th scope="col">Expenditure</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Donuts</th>
+                <td>3,000</td>
+            </tr>
+            <tr>
+                <th scope="row">Stationery</th>
+                <td>18,000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row">Totals</th>
+                <td>21,000</td>
+            </tr>
+        </tfoot>
+    </table>

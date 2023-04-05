@@ -12,6 +12,8 @@
   - [Modes](#modes)
 - [Models](#models)
 - [Switch Chip](#switch-chip)
+  - [Switch VLAN](#switch-vlan)
+- [Bridge VLAN](#bridge-vlan)
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
 - [Sniffer and Wireshark](#sniffer-and-wireshark)
 - [VPN](#vpn)
@@ -111,6 +113,8 @@ https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 |[RBD52G-*](https://mikrotik.com/product/hap_ac2)|hAP ac²|ARM32|v6|IPQ-4018|4|716|128|16/USB|5/1G|18-28 V||300/867|2.5/2.5|
 
 # Switch Chip
+https://wiki.mikrotik.com/wiki/Manual:Switch_Chip_Features
+
 |Model|RB3011 |RB951G|RB750G|RB951Ui-2HnD|RB951-2n|RB750Gr3|
 |---|---|---|---|---|---|---|
 |Feature|QCA8337|Atheros8327|Atheros8316|Atheros8227|Atheros7240|MT7621|
@@ -121,6 +125,16 @@ https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
 |Host table|2048 entries|2048 entries|2048 entries|1024 entries|2048 entries|2048 entries|
 |Vlan table|4096 entries|4096 entries|4096 entries|4096 entries|16 entries|no|
 |Rule table|92 rules|92 rules|32 rules|no|no|no|
+
+## Switch VLAN
+
+- vlan-header # QCA8337 and Atheros8327: when vlan-mode=secure is used, it ignores switch port vlan-header options.
+  - =leave-as-is default
+  - =always-strip for access ports
+  - =add-if-missing for trunk port 
+
+# Bridge VLAN
+https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering
 
 # FastPath + Conntrack = FastTrack
 - https://mum.mikrotik.com/presentations/UA15/presentation_3077_1449654925.pdf

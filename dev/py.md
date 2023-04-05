@@ -34,6 +34,9 @@ https://docs.anaconda.com/anaconda/packages/oldpkglists/
     %windir%\System32\cmd.exe "/K" d:\_soft\Anaconda3\Scripts\activate.bat d:\_soft\Anaconda3
     d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\cwp.py d:\_soft\Anaconda3 d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\Scripts\jupyter-notebook-script.py "d:/"
 
+    ~/.bashrc # conda initialize
+    conda config --set auto_activate_base false
+
 # EOL
 https://endoflife.date/python
 

@@ -1,15 +1,20 @@
 <!-- TOC -->
 
+- [Desktop](#desktop)
 - [TCP congestion control](#tcp-congestion-control)
 - [relayd](#relayd)
 - [PF](#pf)
-    - [ipfw](#ipfw)
+  - [ipfw](#ipfw)
 - [ZFS](#zfs)
 - [DTrace](#dtrace)
 - [CAM Target Layer(ctl)](#cam-target-layerctl)
-    - [HA cluster](#ha-cluster)
+  - [HA cluster](#ha-cluster)
 
 <!-- /TOC -->
+
+# Desktop
+- FreeBSD since 2010, based on FreeBSD
+- TrueOS (formerly PC-BSD or PCBSD) ended in 2020
 
 # TCP congestion control
     sysctl net.inet.tcp.cc

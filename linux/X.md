@@ -5,29 +5,29 @@
 - [DRM](#drm)
 - [Driver source](#driver-source)
 - [Kernel Mode Setting (KMS)](#kernel-mode-setting-kms)
-    - [Installation](#installation)
+  - [Installation](#installation)
 - [Direct Rendering Infrastructure (DRI)](#direct-rendering-infrastructure-dri)
 - [XFree86](#xfree86)
 - [Wayland](#wayland)
 - [X Window System (X11 or X)](#x-window-system-x11-or-x)
-    - [Releases](#releases)
-        - [X11R7.6](#x11r76)
-        - [X11R7.7](#x11r77)
-    - [Config](#config)
-    - [X.Org Server](#xorg-server)
-        - [RandR ("resize and rotate")](#randr-resize-and-rotate)
-    - [Additional specialized X server binaries](#additional-specialized-x-server-binaries)
+  - [Releases](#releases)
+    - [X11R7.6](#x11r76)
+    - [X11R7.7](#x11r77)
+  - [Config](#config)
+  - [X.Org Server](#xorg-server)
+    - [RandR ("resize and rotate")](#randr-resize-and-rotate)
+  - [Additional specialized X server binaries](#additional-specialized-x-server-binaries)
 - [OpenGL](#opengl)
 - [X Clients](#x-clients)
-    - [Window Manager](#window-manager)
+  - [Window Manager](#window-manager)
 - [Xsecurity](#xsecurity)
 - [xhost](#xhost)
 - [xauth](#xauth)
 - [echo $DISPLAY](#echo-display)
 - [mons - manage three monitors on X](#mons---manage-three-monitors-on-x)
 - [Forwarding](#forwarding)
-    - [Debug](#debug)
-    - [xpra](#xpra)
+  - [Debug](#debug)
+  - [xpra](#xpra)
 - [vnc](#vnc)
 - [VGA Switcheroo](#vga-switcheroo)
 - [PRIME](#prime)
@@ -294,7 +294,14 @@ re-attachable: http://xpra.org/
     xpra attach ssh:remote:13   # local
     DISPLAY=:13 xeyes           # remote
 
+https://github.com/Xpra-org/xpra/blob/master/docs/Usage/README.md
+
+https://wiki.archlinux.org/title/Xpra
+
+
+
 # vnc
+
     vncserver -kill :1
 
 # VGA Switcheroo

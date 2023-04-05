@@ -9,12 +9,9 @@
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
 - [Edition Unique Features](#edition-unique-features)
-- [WSL](#wsl)
-  - [Mount Linux Partitions](#mount-linux-partitions)
-  - [network - bridged to host](#network---bridged-to-host)
 - [RUN](#run)
   - [Startup Folder](#startup-folder)
-  - [Date & Time](#date--time)
+  - [Date \& Time](#date--time)
   - [Query .Net Framwork Versions](#query-net-framwork-versions)
   - [Auto Login](#auto-login)
 - [Configuration](#configuration)
@@ -112,39 +109,6 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 # Edition Unique Features
 10: Free RemoteFX, WSL  
 2016: NFS Server, Hyper-V DDA
-
-# WSL
-https://learn.microsoft.com/en-us/windows/wsl/install
-
-    wsl --list --online
-    wsl --install -d Debian # default: Ubuntu
-    wsl -l -v    # check installed Distributions
-    wsl --status # check wsl kernel
-    wsl --shutdown
-
-https://learn.microsoft.com/en-us/windows/wsl/wsl-config
-
-    # WSL2   global: C:\Users\<UserName>\.wslconfig
-    # WSL1/2 per-distribution: /etc/wsl.conf  => automount, network, interop, user
-
-    [boot]
-    systemd=true
-
-    [automount]
-    
-
-## Mount Linux Partitions
-
-    wsl -v # Windows 11 Build 22000 or higher
-    GET-CimInstance -query "SELECT * from Win32_DiskDrive"
-    wsl --mount \\.\PHYSICALDRIVE0 --bare # attach but don't mount
-    wsl --mount \\.\PHYSICALDRIVE2 --partition 2 --type  btrfs
-
-## network - bridged to host
-install hyper-v + manager, start WSL linux, change vSwitch type
-
-    ip addr flush dev eth0
-    dhclient eth0
 
 # RUN
 ## Startup Folder

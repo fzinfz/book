@@ -57,7 +57,7 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     iface enp1s0 inet dhcp
 
 ## /etc/netplan/*.yaml
-https://netplan.io/examples
+basic/bond/wireless/route/SR-IOV: https://netplan.io/examples
 
 ```
 network:
@@ -67,24 +67,23 @@ network:
   ethernets:
     enp1s0: {}
 #   comments
-    enp6s0:
-      dhcp4: yes
-
-  bridges:
-    br0:
-      interfaces: [enp1s0,enp2s0]
-      dhcp4: yes
-    br1: {}
-    ovs-br0:
-      openvswitch: {}
+    enp2s0:
       dhcp4: yes
 
   vlans:
     vlan.10:
+      accept-ra: no
       id: 10
-      link: enp4s0
-      dhcp4: yes
+      link: enp2s0
 
+  bridges:
+    br-vlan10:
+      dhcp4: yes
+      interfaces: [ vlan.10 ]
+    br1: {}
+    ovs-br0:
+      openvswitch: {}
+      dhcp4: yes
 ```
 setup ovs manually
 

@@ -2,7 +2,6 @@
 <!-- TOC -->
 
 - [Chrome](#chrome)
-- [Static Site Generator](#static-site-generator)
 - [Percent-encoding reserved](#percent-encoding-reserved)
 - [HTML5](#html5)
   - [lang](#lang)
@@ -39,17 +38,6 @@
     delete address history: Shift + Del
     remove domain name: F12 -> console
         document.body.innerHTML = document.body.innerHTML.replace(/\.\w+\.\w+(?=:)/g, "")
-
-# Static Site Generator
-- ISR (incremental static regeneration)
-- CSR(client-side rendering)
-- SSG (Static Site Generation) 
-- SSR (server-side rendering)
-
-+ Vite powered/Unused JavaScript: https://astro.build/  
-+ Vite & Vue powered: https://github.com/vuejs/vitepress  
-+ Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
-+ Antora: multi repo into 1: https://docs.antora.org/antora/latest/
 
 # Percent-encoding reserved
 https://en.wikipedia.org/wiki/Percent-encoding

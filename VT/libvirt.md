@@ -116,14 +116,7 @@ VIRTIO_MMIO support for memory mapped virtio platform device driver.
 
 # OVS
 http://docs.openvswitch.org/en/latest/howto/libvirt/
-
-    <interface type='bridge'>
-        <mac address='52:54:00:71:b1:b6'/>
-        <source bridge='ovs-br0'/>
-        <virtualport type='openvswitch'/>
-        <model type='virtio'/>
-        <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
-    </interface>
+- virt-manager / create bridge : <virtualport type='openvswitch'/>
 
 # MacVTap
 https://hicu.be/bridge-vs-macvlan

@@ -16,14 +16,6 @@
 CPUID to arch: https://github.com/mer-tools/oprofile/blob/master/libop/op_hw_specific.h#L119  
 CPU flags meaning: http://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean  
 
-|CPU |Cores|Base|Turbo|TDP|Single Thread Rating |Average CPU Mark|
-|---|---|---|---|---|---|---|
-|J4125 |4C4T|2.0 GHz|2.7 GHz|10 W|1167|2982|
-|7505|2C4T|2.0 GHz|3.5 GHz|15 W|2308|5281|
-|i3-1115G4|2C4T|3.0 GHz|4.1 GHz|12-28W|2673|6193|
-|i5-1135G7|4C8T|2.4 GHz|4.2 GHz|12-28W|2716|9989|
-|i7-1165G7|4C8T|2.8 GHz|4.7 GHz|12-28W|2851|10429|
-
 # Endianness
 https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html  
 In big endian, you store the most significant byte(MSB) in the smallest address.  

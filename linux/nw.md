@@ -3,7 +3,8 @@
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
   - [/etc/network/interfaces](#etcnetworkinterfaces)
-  - [/etc/netplan/*.yaml](#etcnetplanyaml)
+  - [/etc/netplan/\*.yaml](#etcnetplanyaml)
+    - [netplan try](#netplan-try)
   - [Port listening](#port-listening)
   - [debug](#debug)
   - [Netlink](#netlink)
@@ -56,16 +57,16 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     iface enp1s0 inet dhcp
 
 ## /etc/netplan/*.yaml
+https://netplan.io/examples
+
 ```
 network:
   version: 2
+  renderer: networkd / NetworkManager
 
   ethernets:
     enp1s0: {}
-    enp2s0: {}
-    enp3s0: {}
-    enp4s0: {}
-    enp5s0: {}
+#   comments
     enp6s0:
       dhcp4: yes
 
@@ -75,7 +76,7 @@ network:
       dhcp4: yes
     br1: {}
     ovs-br0:
-      openvswitch: {} # 
+      openvswitch: {}
       dhcp4: yes
 
   vlans:
@@ -87,7 +88,9 @@ network:
 ```
 setup ovs manually
 
-    netplan try # if error, run: netplan generate
+### netplan try 
+- `reverting ... not supported`, directly run: `netplan apply`
+- other errors: `netplan generate`
 
 ## Port listening
    

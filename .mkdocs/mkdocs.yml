@@ -1,12 +1,25 @@
-site_name: Ferro's Notes
-# theme: readthedocs
+site_name: Notes
+# repo_url: https://github.com/fzinfz/book
+
+theme:
+    name: mkdocs
+    custom_dir: custom_theme/
+
 markdown_extensions:
-  - pymdownx.magiclink:
-      repo_url_shortener: true
+    toc:
+        permalink: true
+    pymdownx.magiclink:
+
 plugins:
-  - exclude:
+
+    exclude:
       glob:
         - SUMMARY.md
       regex:
-        - '.*\.(tmp|txt)$'
-        - '^[.]'
+        - '.*\.(sh|txt)$'
+
+# https://oprypin.github.io/mkdocs-literate-nav/reference.html
+# not working yet
+    literate-nav:
+      nav_file: SUMMARY.md
+      implicit_index: true

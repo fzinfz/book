@@ -2,14 +2,16 @@ site_name: ""
 # repo_url: https://github.com/fzinfz/book
 
 nav:
-    - Home: 'README.md'
-    - Linux: 'linux/'
-    - Network: 'nw/'
-    - VT: 'vt/'
-    - '*'
-    - Microsoft: 'ms/'
-    - Hardware: 'hw/'
-    - Elec: 'elec/'
+    - Intro: README.md
+    - Linux: linux/
+    - Network: nw/
+    - Virt: vt/
+    - "*"
+    - DB: db/
+    - BSD: bsd/
+    - Microsoft: ms/
+    - Hardware: hw/
+    - Elec: elec/
 
 theme:
     name: mkdocs

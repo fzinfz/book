@@ -1,1 +1,6 @@
 site_name: Ferro's Notes
+# theme: readthedocs
+markdown_extensions:
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+

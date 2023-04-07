@@ -8,7 +8,7 @@
 - [ClearOS](https://www.clearos.com/products/purchase/clearos-downloads) | need [Registration](https://secure.clearcenter.com/portal/index.jsp): https://documentation.clearos.com/content:en_us:7_ug_multiwan
 - OpenWRT: mwan3
 - [OpenMPTCProuter](https://www.openmptcprouter.com/): based on OpenWRT+MPTCP+Shadowsocks+Glorytun(multipath UDP tunnel)
-- [Mikrotik](/mw/mikrotik/)
+- [Mikrotik](/nw/mikrotik/)
 
 # Linux Bond
 https://www.kernel.org/doc/Documentation/networking/bonding.txt

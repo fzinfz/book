@@ -1,8 +1,6 @@
-# Summary
-
 * [Introduction](README.md)
 * [Programming](dev/README.md)
-  * [Git](git.md)
+  * [Git](dev/git.md)
   * [Editor/IDE](dev/editor.md)
   * [HTML5/BS](dev/html.md)
   * [JS](dev/js.md)
@@ -57,7 +55,6 @@
   * [Bluetooth](hw/bt.md)
 * [Cloud](cloud/README.md)
   * [Pricing](cloud/pricing.md)
-* [BI](BI.md)
 * [DB](db/README.md)
   * [loki](db/loki.md)
   * [PostgreSQL](db/pgsql.md)

@@ -1,4 +1,4 @@
-site_name: Notes
+site_name: ""
 # repo_url: https://github.com/fzinfz/book
 
 theme:
@@ -11,15 +11,15 @@ markdown_extensions:
     pymdownx.magiclink:
 
 plugins:
-
-    exclude:
+  - search
+  - exclude:
       glob:
         - SUMMARY.md
       regex:
         - '.*\.(sh|txt)$'
 
 # https://oprypin.github.io/mkdocs-literate-nav/reference.html
-# not working yet
-    literate-nav:
+# not working ?
+  - literate-nav:
       nav_file: SUMMARY.md
       implicit_index: true

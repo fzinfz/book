@@ -77,8 +77,10 @@ network:
       link: enp2s0
 
   bridges:
-    br-vlan10:
+    # no need to set vlan in VM
+    ovsbr-vlan10:
       dhcp4: yes
+      openvswitch: {}
       interfaces: [ vlan.10 ]
     br1: {}
     ovs-br0:

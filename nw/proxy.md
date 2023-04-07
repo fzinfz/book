@@ -40,6 +40,7 @@
   - [clash](#clash)
     - [Premium](#premium)
     - [Tap](#tap)
+    - [Web UI](#web-ui)
   - [sing-box](#sing-box)
 
 <!-- /TOC -->
@@ -239,7 +240,10 @@ Guide：
 ### Tap
 .dll to clash folder: https://www.wintun.net/
 
-
+### Web UI
+- TS: https://github.com/Dreamacro/clash-dashboard
+  - forked: https://github.com/haishanh/yacd/
+- TS + Rust: https://github.com/zzzgydi/clash-verge
 
 ## sing-box
 https://sing-box.sagernet.org/features/

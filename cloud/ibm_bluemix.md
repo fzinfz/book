@@ -48,7 +48,7 @@ https://dev-console.stage1.bluemix.net/docs/containers/cs_network_planning.html
 
     bx cs cluster-get mycluster # Master URL
 
-[k8s related](container/k8s.md)
+[k8s related](/container/k8s.md)
 
 # external services
 

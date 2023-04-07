@@ -1,4 +1,7 @@
 mkdocs
 mkdocs-minify-plugin
 mkdocs-redirects
-markdown
+mkdocs-exclude
+markdown<3.4
+pymdown-extensions
+

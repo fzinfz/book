@@ -3,4 +3,10 @@ site_name: Ferro's Notes
 markdown_extensions:
   - pymdownx.magiclink:
       repo_url_shortener: true
-
+plugins:
+  - exclude:
+      glob:
+        - SUMMARY.md
+      regex:
+        - '.*\.(tmp|txt)$'
+        - '^[.]'

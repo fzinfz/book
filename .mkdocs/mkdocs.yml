@@ -1,5 +1,6 @@
-site_name: ""
-# repo_url: https://github.com/fzinfz/book
+site_name: Ferro's Tech Notes
+repo_url: https://github.com/fzinfz/book
+edit_uri: blob/master/
 
 nav:
     - Intro: README.md

@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
-{% block htmltitle %}
-<title>Ferro's Tech Notes</title>
+{%- block site_name %}
+{%- endblock %}
+
+{%- block next_prev %}
+{%- endblock %}
+
+{%- block extrahead %}
+<script>
+window.onload = function(){
+    $('a').attr('target', '_blank');
+  };      
+</script>
 {% endblock %}
 
 {%- block footer %}
 <hr>
-{%- if config.copyright %}
-    <p>{{ config.copyright }}</p>
-{%- endif %}
 <p>
-    Built with <a href="https://www.mkdocs.org/user-guide/configuration/" target="_blank">MkDocs</a> 
-    | Hosted on <a href="https://developers.cloudflare.com/pages/platform/build-configuration/#language-support-and-tools" target="_blank">CF Pages</a> 
-    | <a href="https://github.com/fzinfz/book" target="_blank">Source</a>
-    | <a href="https://ferro.pro" target="_blank">Home</a>
+    Built with <a href="https://www.mkdocs.org/user-guide/configuration/">MkDocs</a> 
+    | Hosted on <a href="https://developers.cloudflare.com/pages/platform/build-configuration/#language-support-and-tools">CF Pages</a> 
+    | <a href="https://ferro.pro">Home</a>
 </p>
 {%- endblock %}

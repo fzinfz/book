@@ -28,6 +28,7 @@ https://github.com/myles/awesome-static-generators
 ## MkDocs - Python
 ### mkdocs.yml
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs.yml
+- https://github.com/mkdocs/mkdocs/blob/master/mkdocs/tests/integration/complicated_config/mkdocs.yml
 - https://gitlab.liris.cnrs.fr/pagoda/tools/mkdocs_template/-/blob/develop/user_config/mkdocs.local.yml
 
 # Cloudflare Pages

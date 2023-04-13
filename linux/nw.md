@@ -180,6 +180,8 @@ http://backreference.org/2010/06/11/iptables-debugging/
     iptables -t raw -A PREROUTING -p icmp -j TRACE
     vi /var/log/kern.log
 
+    tcpdump -i any icmp
+
 ## Log manually
 http://www.microhowto.info/troubleshooting/troubleshooting_iptables.html
 

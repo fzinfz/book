@@ -13,16 +13,16 @@
 - [NAT Hairpin + DDNS](#nat-hairpin--ddns)
     - [Mikrotik](#mikrotik)
 - [OSPF](#ospf)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-1)
 - [MPLS](#mpls)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-2)
 - [VPLS](#vpls)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-3)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
-- [MAC addresss <-> Vender](#mac-addresss---vender)
+- [MAC addresss \<-\> Vender](#mac-addresss---vender)
 - [Tuning](#tuning)
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
@@ -40,6 +40,7 @@
     - [avege - Go port of redsocks](#avege---go-port-of-redsocks)
 - [NetFlow Software](#netflow-software)
     - [](#)
+- [Private](#private)
 - [IPV6](#ipv6)
 - [Guide](#guide)
 
@@ -278,6 +279,14 @@ https://github.com/avege/avege
 https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/networking_solutions_products_genericcontent0900aecd805ff72b.html
 ## 
 - https://www.linkedin.com/pulse/wtflow-you-really-still-paying-commercial-solutions-collect-cowart
+
+# Private
+- RFC1918 private range for IPv4 networks
+    - 10.0.0.0/8
+    - 172.16.0.0/12： 172.16.0.0 - 172.31.255.255  	  255.240.0.0  	  qty:1048576
+    - 192.168.0.0/16
+
+- RFC4193 range for IPv6 networks (fd00/8).
 
 # IPV6
 https://tunnelbroker.net/

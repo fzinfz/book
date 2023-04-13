@@ -1,34 +1,37 @@
 <!-- TOC -->
 
 - [CHR 60-day trial](#chr-60-day-trial)
+- [Performance](#performance)
 - [Tasks](#tasks)
-  - [Quickset](#quickset)
-  - [Reset](#reset)
-  - [PCQ](#pcq)
-  - [hotspot](#hotspot)
+    - [Quickset](#quickset)
+    - [Reset](#reset)
+    - [PCQ](#pcq)
+    - [hotspot](#hotspot)
 - [Routing](#routing)
-  - [Packet Flow](#packet-flow)
+    - [Packet Flow](#packet-flow)
 - [Wireless](#wireless)
-  - [Modes](#modes)
+    - [Modes](#modes)
 - [Models](#models)
 - [Switch Chip](#switch-chip)
-  - [Switch VLAN](#switch-vlan)
+    - [Switch VLAN](#switch-vlan)
 - [Bridge VLAN](#bridge-vlan)
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
 - [Sniffer and Wireshark](#sniffer-and-wireshark)
 - [VPN](#vpn)
-  - [OpenVPN](#openvpn)
-  - [WireGuard](#wireguard)
-  - [PPP BCP](#ppp-bcp)
+    - [OpenVPN](#openvpn)
+    - [WireGuard](#wireguard)
+    - [PPP BCP](#ppp-bcp)
 - [Multi WAN](#multi-wan)
-  - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
-  - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
+    - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
+    - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [WAN + ppp](#wan--ppp)
 - [Videos](#videos)
 - [Automation](#automation)
-  - [Scripting](#scripting)
-  - [SSH](#ssh)
-  - [Python](#python)
+    - [Scripting](#scripting)
+    - [SSH](#ssh)
+    - [Python](#python)
+- [Monitoring](#monitoring)
+    - [Grafana \& Prometheus](#grafana--prometheus)
 
 <!-- /TOC -->
 # CHR 60-day trial
@@ -37,6 +40,11 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
 
     /system license renew 
     level: p1
+
+# Performance
+Hardware offloading([Chip](#switch-chip)) > [Fast Forward(CPU)](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Fast_Forward) > [Fast Path](https://wiki.mikrotik.com/wiki/Manual:Fast_Path) > Slow Path
+
+    /interface bridge settings print
 
 # Tasks
 
@@ -57,20 +65,14 @@ if winbox not working: /webfig/#IP:Services
 
 ## Quickset
 
-    CAP: managed by a centralised CAPsMAN server
-
-    CPE: Client device
-
-    BasicAP: Wireless
-    HomeAP: Wireless/Guest; WAN; LAN; VPN; System update/reset/password
-    Wireless ISP (WISP) AP: 802.11/nstreme/nv2 Wireless Bridge/Router;  VPN; System update/reset/password
-
-    Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
-
-not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
-"No supported channel" => reset with default config and run quickset first
-
-    PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
+- CPE: Client device
+- BasicAP: Wireless
+- HomeAP: Wireless/Guest; WAN; LAN; VPN; System update/reset/password
+- Wireless ISP (WISP) AP: 802.11/nstreme/nv2 Wireless Bridge/Router;  VPN; System update/reset/password
+- Home Mesh: Enables the CAPsMAN server in the router, and places the local WiFi interfaces under CAPsMAN control. Just boot other MikroTik WiFi APs with the reset button pressed.
+  - not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
+  - "No supported channel" => reset with default config and run quickset first
+- PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
 
 ## Reset
 https://wiki.mikrotik.com/wiki/Manual:Reset
@@ -122,19 +124,30 @@ https://wiki.mikrotik.com/wiki/Manual:Switch_Chip_Features
 |Port Mirroring|yes|yes|yes|yes|yes|yes|
 |TX limit|yes|yes|yes|yes|yes|no|
 |RX limit|yes|yes|no|no|no|no|
-|Host table|2048 entries|2048 entries|2048 entries|1024 entries|2048 entries|2048 entries|
 |Vlan table|4096 entries|4096 entries|4096 entries|4096 entries|16 entries|no|
 |Rule table|92 rules|92 rules|32 rules|no|no|no|
 
 ## Switch VLAN
 
-- vlan-header # QCA8337 and Atheros8327: when vlan-mode=secure is used, it ignores switch port vlan-header options.
+- vlan-mode # QCA8337(RB3011) and Atheros8327(RB951G-2HnD): when vlan-mode=secure is used, it ignores switch port vlan-header options.
+  - fallback 
+    - check ingress
+      - If ingress traffic is tagged and egress port is not found in the VLAN table for the appropriate VLAN ID, then traffic is dropped.
+    - forwards all untagged traffic. If a VLAN ID is not found in the VLAN Table, then traffic is forwarded. Used to allow known VLANs only in specific ports.
+  - check 
+    - check ingress, drops all untagged traffic. 
+      - If ingress traffic is tagged and egress port is not found in the VLAN table for the appropriate VLAN ID, then traffic is dropped.
+  - secure 
+    - check ingress, drops all untagged traffic. Both ingress and egress port must be found in the VLAN Table for the appropriate VLAN ID, otherwise traffic is dropped.
+
+- vlan-header
   - =leave-as-is default
   - =always-strip for access ports
   - =add-if-missing for trunk port 
 
 # Bridge VLAN
-https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering
+- way 1: add br-vlan: if-vlan + phy-access-port
+- way 2: set filtering: https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Bridge_VLAN_Filtering
 
 # FastPath + Conntrack = FastTrack
 - https://mum.mikrotik.com/presentations/UA15/presentation_3077_1449654925.pdf
@@ -212,3 +225,8 @@ API: https://librouteros.readthedocs.io/en/latest/query.html
 create/dump/unpack .npk: https://github.com/kost/mikrotik-npk  
 vulnerabilities: https://github.com/microsoft/routeros-scanner  
 Monitor/control from Home Assistant: https://github.com/tomaae/homeassistant-mikrotik_router
+
+# Monitoring
+## Grafana & Prometheus
+RouterOS v7: https://github.com/M0r13n/mikrotik_monitoring#mikrotik-router
+

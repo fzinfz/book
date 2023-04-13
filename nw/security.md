@@ -2,6 +2,7 @@
 
 - [Cryptography](#cryptography)
 - [Firewall](#firewall)
+  - [ALG](#alg)
 - [IDS/IPS](#idsips)
   - [Snort(NIPS/NIDS)](#snortnipsnids)
   - [OSSEC(HIDS)](#ossechids)
@@ -28,6 +29,21 @@ Please visit `web/SSL` page.
 
 # Firewall
 https://github.com/sonertari/UTMFW
+
+Ports: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+
+## ALG
+China Telecom Modem - Application-layer Gateway
+
+|Service|TCP|UDP|Memo|
+|---|---|---|---|
+|H.323|1720|1719|VoIP |
+|RTSP    |554|554|real-time media streams|
+|L2TP    ||1701||
+|PPTP    |1723|||
+|IPSEC   ||4500|L3:50/51|
+|SIP |5060/5061|5060|VoIP|
+|FTP |21|||
 
 # IDS/IPS
 Network Intrusion Detection System (NIDS) engine  

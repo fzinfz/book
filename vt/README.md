@@ -4,7 +4,6 @@
     - [Hyper-V DDA](#hyper-v-dda)
 - [UI](#ui)
     - [webvirtcloud](#webvirtcloud)
-    - [oVirt](#ovirt)
 - [Compare](#compare)
 - [OVMF (Open Virtual Machine Firmware)](#ovmf-open-virtual-machine-firmware)
 - [Xen vs KVM](#xen-vs-kvm)
@@ -20,9 +19,6 @@
 - [Intel vPro](#intel-vpro)
     - [Q35](#q35)
 - [OSX on KVM](#osx-on-kvm)
-- [Hyper-V](#hyper-v)
-    - [Check support](#check-support)
-    - [Turn Off](#turn-off)
 
 <!-- /TOC -->
 
@@ -136,16 +132,3 @@ https://github.com/kholia/OSX-KVM
 
 https://www.contrib.andrew.cmu.edu/~somlo/OSXKVM/
 
-# Hyper-V
-## Check support
-
-    systeminfo
-
-## Turn Off
-```
-C:\>bcdedit /copy {current} /d "No Hyper-V" 
-The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
-
-C:\>bcdedit /set {ff-23-113-824e-5c5144ea} hypervisorlaunchtype off 
-The operation completed successfully.
-```

@@ -1,7 +1,7 @@
 mkdocs
 mkdocs-minify-plugin
 mkdocs-exclude
-# mkdocs-redirects
+mkdocs-redirects
 mkdocs-literate-nav
 markdown<3.4
 pymdown-extensions

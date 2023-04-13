@@ -1,4 +1,6 @@
 site_name: Ferro's Tech Notes
+site_url: https://notes.ferro.pro/
+
 repo_url: https://github.com/fzinfz/book
 edit_uri: blob/master/
 
@@ -8,6 +10,7 @@ nav:
     - Network: nw/
     - Virt: vt/
     - "*"
+    - Apps: apps/README.md
     - DB: db/
     - BSD: bsd/
     - Microsoft: ms/
@@ -44,3 +47,7 @@ plugins:
       nav_file: SUMMARY.md
       implicit_index: true
       tab_length: 2
+
+  - redirects:
+      redirect_maps:
+          'VT/README.md': 'vt/README.md'

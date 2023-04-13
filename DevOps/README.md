@@ -37,8 +37,15 @@
 # UI
 ## Grafana - TS + Go
 https://github.com/grafana/grafana  
-Search dashboards & copy ID to /dashboard/import: https://grafana.com/grafana/dashboards/  
 
+- Search dashboards & copy ID to /dashboard/import: https://grafana.com/grafana/dashboards/  
+- no login: https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/grafana/#anonymous-authentication
+  
+      [auth.anonymous]
+      enabled = true
+      org_name = Main Org.
+      org_role = Viewer
+      hide_version = true # default: false
 # Monitoring
 https://en.wikipedia.org/wiki/Comparison_of_network_monitoring_systems
 

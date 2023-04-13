@@ -1,6 +1,8 @@
 <!-- TOC -->
 
-- [Software](#software)
+- [Speech recognition](#speech-recognition)
+    - [ML - ## OpenAI](#ml----openai)
+    - [Azure](#azure)
 - [Text To Speech](#text-to-speech)
     - [Microsoft](#microsoft)
     - [Bing](#bing)
@@ -12,19 +14,20 @@
     - [Tencent](#tencent)
     - [Baidu](#baidu)
     - [Offline](#offline)
-- [Speech recognition](#speech-recognition)
-    - [Chinese](#chinese)
-    - [Azure](#azure)
+- [Software](#software)
 
 <!-- /TOC -->
 
-# Software
-https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
-https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio  
+# Speech recognition
+https://github.com/Uberi/speech_recognition
 
-Audacity: https://github.com/audacity/audacity/releases
+## ML - ## OpenAI
+https://github.com/openai/whisper
 
-Input/Output equalizer: https://sourceforge.net/projects/equalizerapo/
+## Azure
+https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
+
+    free per month: 5 audio hours / 0.5 million characters /  10,000 transactions
 
 # Text To Speech
 My rate: Microsoft Neural > Google > Microsoft Zira Desktop ~ AWS Justin >> IBM/Baidu >> espeak
@@ -123,13 +126,10 @@ http://espeak.sourceforge.net/commands.html
 
 Swift: https://youtu.be/bl6hEBXuv5Y?t=1057
 
-# Speech recognition
-https://github.com/Uberi/speech_recognition
+# Software
+https://en.wikipedia.org/wiki/Comparison_of_digital_audio_editors  
+https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio  
 
-## Chinese
-https://www.zhihu.com/question/28167247 
+Audacity: https://github.com/audacity/audacity/releases
 
-## Azure
-https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/
-
-    5 audio hours free per month
+Input/Output equalizer: https://sourceforge.net/projects/equalizerapo/

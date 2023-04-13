@@ -11,6 +11,10 @@
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
 - [Premiere](#premiere)
+- [CLI](#cli)
+- [ML](#ml)
+    - [Stable Diffusion](#stable-diffusion)
+        - [web UI](#web-ui)
 
 <!-- /TOC -->
 
@@ -67,3 +71,10 @@ Window > Essential Graphics -> search `Title`
 Windows -> Effects -> search `Cross Dissolve`  
 Link video and audio clips: Shift-click -> `Linked Selection` Button  
 
+# CLI
+cut by CC text: https://github.com/mli/autocut
+
+# ML
+## Stable Diffusion 
+### web UI
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features

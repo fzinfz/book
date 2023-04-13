@@ -13,7 +13,7 @@ https://en.wikipedia.org/wiki/IPv6_address#Representation
 - prefer lower case letters
 - https://[IPv6_addr]:PORT/
 - Link Local - fe80::/10.../64 : last 24 bits are MAC address
-- [Layer 3](./L3/#ipv6-packet)
+- [Layer 3](/nw/L3/#ipv6-packet)
 
 # Compare with v4
 https://www.ibm.com/docs/en/i/7.2?topic=6-comparison-ipv4-ipv6

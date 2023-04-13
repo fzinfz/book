@@ -69,6 +69,13 @@ network:
 #   comments
     enp2s0:
       dhcp4: yes
+    enp3s0:
+      addresses: [192.168.1.25/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses:
+        - 218.85.157.99
+        - 218.85.152.99
 
   vlans:
     vlan.10:
@@ -91,7 +98,7 @@ setup ovs manually
 
 ### netplan try 
 - `reverting ... not supported`, directly run: `netplan apply`
-- other errors: `netplan generate`
+- other errors: `netplan generate` or `netplan --debug apply`
 
 ## Port listening
    

@@ -1,5 +1,6 @@
 - [OS](#os)
     - [OpenMPTCProuter](#openmptcprouter)
+    - [VyOS](#vyos)
     - [ClearOS](#clearos)
 - [Linux Bond](#linux-bond)
 - [Multipath TCP (MPTCP)](#multipath-tcp-mptcp)
@@ -15,6 +16,10 @@
 - OpenWRT+MPTCP+Shadowsocks+Glorytun(multipath UDP tunnel): https://www.openmptcprouter.com
 - default login: root / <no_pass> ; then config: 
 
+## VyOS
+https://docs.vyos.io/en/equuleus/configuration/loadbalancing/index.html
+
+    # incompatible with dynamic routing protocol
 
 ## ClearOS
 - network config: https://documentation.clearos.com/content:en_us:7_ug_network

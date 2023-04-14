@@ -9,7 +9,7 @@
 {%- block extrahead %}
 <script>
 window.onload = function(){
-    $('a').attr('target', '_blank');
+    $('a[href^="http"]').attr('target', '_blank');
   };      
 </script>
 {% endblock %}

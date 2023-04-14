@@ -77,7 +77,7 @@ Fix boot hang: https://topjohnwu.github.io/Magisk/install.html  # .apk->.zip; tw
 
 # IOS
 ## Automation
-see `appium` above
+https://appium.io/docs/en/drivers/ios-xcuitest/index.html
 
 ## Bar/QR code to REST API
 https://workflow.is/docs/taking-advantage-of-web-apis    

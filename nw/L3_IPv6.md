@@ -4,7 +4,7 @@
 - [NPTv6](#nptv6)
 - [Tools](#tools)
     - [Linux](#linux)
-- [Modem@CN](#modemcn)
+- [Firewall](#firewall)
 
 # Basic
 https://en.wikipedia.org/wiki/IPv6_address#Representation
@@ -35,5 +35,5 @@ https://www.kali.org/tools/ipv6toolkit/
 
     apt install ipv6toolkit
 
-# Modem@CN
-安全-防火墙：IPV6 SESSION
+# Firewall
+ChinaNet Modem: 安全-防火墙：IPV6 SESSION

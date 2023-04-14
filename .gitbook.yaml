@@ -1,7 +1,7 @@
 root: ./
 
 ​structure:  
-    Home: README.md  
+    readme: README.md
 
 redirects:  
     VT: vt/README.md

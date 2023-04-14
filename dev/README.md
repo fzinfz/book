@@ -1,8 +1,7 @@
 
 <!-- TOC -->
 
-- [Interactive coding notes](#interactive-coding-notes)
-- [Scripts of Powershell/Python/etc](#scripts-of-powershellpythonetc)
+- [AI](#ai)
 - [GraphQL](#graphql)
 - [Markdown](#markdown)
     - [Parser](#parser)
@@ -14,19 +13,19 @@
 - [Excel](#excel)
     - [Formula](#formula)
     - [CSharp](#csharp)
-- [CSharp](#csharp)
-- [Net Core](#net-core)
+- [CSharp](#csharp-1)
+- [.Net Core](#net-core)
 - [InPage Search](#inpage-search)
+- [My Notes](#my-notes)
 
 <!-- /TOC -->
 
-# Interactive coding notes
-http://nbviewer.jupyter.org/github/fzinfz/scripts/tree/master/jupyter/ 
-[[Source](https://github.com/fzinfz/scripts/tree/master/jupyter)]
-
-# Scripts of Powershell/Python/etc
-https://github.com/fzinfz/scripts
-
+# AI
+- AWS | free/$19: https://aws.amazon.com/codewhisperer/pricing/
+- Tabnine | free/$12: https://www.tabnine.com/pricing
+- Cursor IDE | based on OpenAI GPT: https://www.cursor.so/
+- Cursor for VSCode: https://github.com/Helixform/CodeCursor
+- Github | 2 month trial/$10+: https://github.com/features/copilot#pricing
 # GraphQL
 http://graphql.org/  
 a query language and execution engine tied to any backend service. 
@@ -98,3 +97,8 @@ https://github.com/thangchung/awesome-dotnet-core
 
 # InPage Search
 https://docsearch.algolia.com/docs/DocSearch-v3
+
+# My Notes
+- Jupyter: http://nbviewer.jupyter.org/github/fzinfz/scripts/tree/master/jupyter/ 
+[[Source](https://github.com/fzinfz/scripts/tree/master/jupyter)]
+- Scripts of Powershell/Python/etc: https://github.com/fzinfz/scripts

@@ -1,7 +1,7 @@
 <!-- TOC -->
 
 - [Speech recognition](#speech-recognition)
-    - [ML - ## OpenAI](#ml----openai)
+    - [ML - OpenAI](#ml---openai)
     - [Azure](#azure)
 - [Text To Speech](#text-to-speech)
     - [Microsoft](#microsoft)
@@ -21,7 +21,7 @@
 # Speech recognition
 https://github.com/Uberi/speech_recognition
 
-## ML - ## OpenAI
+## ML - OpenAI
 https://github.com/openai/whisper
 
 ## Azure

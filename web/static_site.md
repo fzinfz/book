@@ -1,13 +1,14 @@
 <!-- TOC -->
 
 - [Static Site Generator](#static-site-generator)
-  - [MkDocs - Python](#mkdocs---python)
-    - [mkdocs.yml](#mkdocsyml)
+    - [MkDocs - Python](#mkdocs---python)
+        - [mkdocs.yml](#mkdocsyml)
 - [Cloudflare Pages](#cloudflare-pages)
 - [Github pages](#github-pages)
-  - [Github Actions - SSR](#github-actions---ssr)
-  - [Issue Blog](#issue-blog)
+    - [Github Actions - SSR](#github-actions---ssr)
+    - [Issue Blog](#issue-blog)
 - [Free Hosting](#free-hosting)
+- [Demos](#demos)
 
 <!-- /TOC -->
 
@@ -60,3 +61,9 @@ Vue + JS: https://github.com/Yidadaa/Issue-Blog-With-Github-Action
 |[Cloudflare](https://developers.cloudflare.com/pages/platform/limits/)|25MiB/site|500 times|
 |[vercel](https://vercel.com/pricing)||100GB b/w|
 |[netlify](https://www.netlify.com/pricing/#features)|500 sites|100GB b/w(then $55 per 100GB)|
+
+# Demos
+- `vite --template vue` : https://github.com/fzinfz/test-vue3/tree/vite-js-quasar
+  - https://test-vue3.pages.dev/
+- `astro --template blog` : https://github.com/fzinfz/test-pages/tree/astro.blog
+  - https://test-pages-7ku.pages.dev/

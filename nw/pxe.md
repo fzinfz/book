@@ -1,23 +1,23 @@
 - [DHCP Options](#dhcp-options)
-  - [Next Server](#next-server)
+    - [Next Server](#next-server)
 - [.iso to USB](#iso-to-usb)
 - [UEFI Editor](#uefi-editor)
-  - [efibootmgr - Linux](#efibootmgr---linux)
-  - [Windows GUI](#windows-gui)
+    - [efibootmgr - Linux](#efibootmgr---linux)
+    - [Windows GUI](#windows-gui)
 - [iPXE](#ipxe)
 - [netboot.xyz](#netbootxyz)
-  - [USB/ISO/GRUB/TFTP](#usbisogrubtftp)
-  - [iPXE](#ipxe-1)
-  - [Self Hosting](#self-hosting)
+    - [USB/ISO/GRUB/TFTP](#usbisogrubtftp)
+    - [iPXE](#ipxe-1)
+    - [Self Hosting](#self-hosting)
 - [Windows](#windows)
-  - [Remote install ISO](#remote-install-iso)
-  - [Server - Windows](#server---windows)
+    - [Remote install ISO](#remote-install-iso)
+    - [Server - Windows](#server---windows)
 - [Mikrotik](#mikrotik)
-  - [Mikrotik + Windows](#mikrotik--windows)
+    - [Mikrotik + Windows](#mikrotik--windows)
 - [Diskless](#diskless)
-  - [Hive OS - Ubuntu](#hive-os---ubuntu)
-  - [NetBSD](#netbsd)
-  - [Windows](#windows-1)
+    - [Hive OS - Ubuntu](#hive-os---ubuntu)
+    - [NetBSD](#netbsd)
+    - [Windows](#windows-1)
 
 https://blogs.technet.microsoft.com/dominikheinz/2011/03/18/dhcp-pxe-basics/
 
@@ -37,10 +37,10 @@ https://www.ietf.org/archive/id/draft-ietf-dhc-nextserver-02.txt
 
 # .iso to USB
 
-    ventoy:  copy .iso to flash drive directly
-    rufus:   not support mount drive, but can add location; support WTG.
-    Etcher:  may not support Windows
-    https://github.com/nkc3g4/wtg-assistant  : support 16G flash drive
+- [ventoy](https://github.com/ventoy/Ventoy/releases):  copy .iso to flash drive directly
+- [rufus](https://rufus.ie/en/): `WTG<v2.3` | `win7<=v3.22`
+- [Etcher](https://www.balena.io/etcher): Windows images are not bootable without extra treatment
+- Luobotou: https://github.com/nkc3g4/wtg-assistant : support 16G flash drive
 
 # UEFI Editor
 ## efibootmgr - Linux

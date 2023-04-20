@@ -29,7 +29,8 @@
 - [Automation](#automation)
     - [Scripting](#scripting)
     - [SSH](#ssh)
-    - [Python](#python)
+    - [API](#api)
+        - [Python](#python)
 - [Monitoring](#monitoring)
     - [Grafana \& Prometheus](#grafana--prometheus)
 
@@ -61,8 +62,11 @@ Hardware offloading([Chip](#switch-chip)) > [Fast Forward(CPU)](https://wiki.mik
       /ip ssh print
       /ip ssh set forwarding-enabled=local
 
-if winbox not working: /webfig/#IP:Services
+- if winbox not working: `/webfig/#IP:Services`
 
+- create/dump/unpack .npk: https://github.com/kost/mikrotik-npk  
+- vulnerabilities: https://github.com/microsoft/routeros-scanner  
+- Monitor/control from Home Assistant: https://github.com/tomaae/homeassistant-mikrotik_router
 ## Quickset
 
 - CPE: Client device
@@ -210,6 +214,8 @@ https://aacable.wordpress.com/2011/07/27/mikrotik-dual-wan-load-balancing-using-
 TopCommon mistakes: https://www.youtube.com/watch?v=3LmQYIQ5RoA  
 
 # Automation
+
+Web Helper | need SignUp: https://github.com/buananetpbun/buananetpbun.github.io | https://buananetpbun.github.io/
 ## Scripting
 https://wiki.mikrotik.com/wiki/Manual:Scripting
 
@@ -220,13 +226,22 @@ https://github.com/eworm-de/routeros-scripts
 ## SSH
 https://help.mikrotik.com/docs/display/ROS/SSH
 
-## Python
-API: https://librouteros.readthedocs.io/en/latest/query.html  
-create/dump/unpack .npk: https://github.com/kost/mikrotik-npk  
-vulnerabilities: https://github.com/microsoft/routeros-scanner  
-Monitor/control from Home Assistant: https://github.com/tomaae/homeassistant-mikrotik_router
+## API
+- https://help.mikrotik.com/docs/display/ROS/API#API-Exampleclient
+
+### Python
+- https://github.com/LaiArturs/RouterOS_API
+- https://librouteros.readthedocs.io/en/latest/query.html  
 
 # Monitoring
 ## Grafana & Prometheus
-RouterOS v7: https://github.com/M0r13n/mikrotik_monitoring#mikrotik-router
+- Py + Dockerfile : https://github.com/akpw/mktxp
+  - Grafana | docker-compose : https://github.com/akpw/mktxp-stack
+  - Grafana | RouterOS v7 + Raspi: https://github.com/M0r13n/mikrotik_monitoring
 
+    docker exec -it mktxp /bin/sh
+        mktxp show  # cat /root/mktxp/mktxp.conf
+        mktxp print -en 'Sample-Router' -cc # test connection & show CAPsMAN clients
+
+- Go + Dockerfile: https://github.com/nshttpd/mikrotik-exporter
+  - Grafana | k8s: https://www.lisenet.com/2021/monitor-mikrotik-router-with-grafana-and-prometheus-mikrotik-exporter/

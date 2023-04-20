@@ -1,30 +1,30 @@
 <!-- TOC -->
 
 - [WireGuard - C](#wireguard---c)
-  - [tailscale](#tailscale)
+    - [tailscale](#tailscale)
 - [nebula - go](#nebula---go)
 - [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [xray](#xray)
 - [v2ray](#v2ray)
-  - [with router](#with-router)
+    - [with router](#with-router)
 - [hysteria](#hysteria)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
 - [Transparent Proxy](#transparent-proxy)
 - [中文手册](#中文手册)
-  - [V2ray](#v2ray-1)
-  - [Shadowsocks](#shadowsocks-1)
+    - [V2ray](#v2ray-1)
+    - [Shadowsocks](#shadowsocks-1)
 - [Manager](#manager)
 - [Panel](#panel)
 - [Docker](#docker)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [Optimize](#optimize)
-  - [BBR (Kernel 4.9+)](#bbr-kernel-49)
-  - [KCPTun](#kcptun)
-  - [dragonite-java](#dragonite-java)
-  - [UDPspeeder](#udpspeeder)
+    - [BBR (Kernel 4.9+)](#bbr-kernel-49)
+    - [KCPTun](#kcptun)
+    - [dragonite-java](#dragonite-java)
+    - [UDPspeeder](#udpspeeder)
 - [govpn](#govpn)
 - [HTTP tunnel in Go: goflyway](#http-tunnel-in-go-goflyway)
 - [LightSword](#lightsword)
@@ -36,12 +36,12 @@
 - [tinyFecVPN](#tinyfecvpn)
 - [OpenWRT](#openwrt)
 - [Clients](#clients)
-  - [Subscription](#subscription)
-  - [clash](#clash)
-    - [Premium](#premium)
-    - [Tap](#tap)
-    - [Web UI](#web-ui)
-  - [sing-box](#sing-box)
+    - [Subscription](#subscription)
+    - [clash](#clash)
+        - [Premium](#premium)
+        - [Tap](#tap)
+        - [Web UI](#web-ui)
+    - [sing-box](#sing-box)
 
 <!-- /TOC -->
 
@@ -224,8 +224,9 @@ https://www.v2ray.com/awesome/tools.html
 iOS free: OneClick、Leaf | https://itlanyan.com/get-proxy-clients/#bnp_i_2
 
 ## Subscription
-convert: https://sub-web.netlify.app/  
-merge: https://acl4ssr-sub.github.io/  
+- convert/merge: https://github.com/tindy2013/subconverter/blob/master/README-docker.md
+
+    docker run -d --restart=unless-stopped -p 25500:25500 tindy2013/subconverter:latest
 
 ## clash
 https://github.com/Dreamacro/clash  

@@ -1,44 +1,49 @@
 <!-- TOC -->
 
 - [Learn](#learn)
-- [My bash](#my-bash)
 - [Workflow](#workflow)
-  - [commit](#commit)
-  - [log](#log)
-  - [branch and merge](#branch-and-merge)
-  - [Undo](#undo)
-  - [stashing](#stashing)
-  - [remote and push](#remote-and-push)
-    - [delete remote branch](#delete-remote-branch)
+    - [commit](#commit)
+    - [log](#log)
+    - [branch and merge](#branch-and-merge)
+    - [Undo](#undo)
+    - [stashing](#stashing)
+    - [remote and push](#remote-and-push)
+        - [delete remote branch](#delete-remote-branch)
 - [config](#config)
-  - [Proxy](#proxy)
+    - [Proxy](#proxy)
 - [filter-branch](#filter-branch)
 - [Remove File](#remove-file)
-  - [Unpushed commit](#unpushed-commit)
-  - [Every commit](#every-commit)
-  - [from Github](#from-github)
+    - [Unpushed commit](#unpushed-commit)
+    - [Every commit](#every-commit)
+    - [from Github](#from-github)
 - [rebase](#rebase)
 - [fork](#fork)
 - [Submodules](#submodules)
 - [Github API](#github-api)
-  - [Download by tag](#download-by-tag)
-  - [curl Github](#curl-github)
-  - [Query latest release](#query-latest-release)
-- [Cheatsheet](#cheatsheet)
+    - [Download by tag](#download-by-tag)
+    - [curl Github](#curl-github)
+    - [Query latest release](#query-latest-release)
 - [Github](#github)
 - [Self-host git servers](#self-host-git-servers)
 - [Tools](#tools)
-- [CI](#ci)
-- [Gitbook](#gitbook)
 
 <!-- /TOC -->
 
 # Learn
-https://learngitbranching.js.org/?locale=en_US  
+- Practise: https://learngitbranching.js.org/?locale=en_US  
 
-# My bash
+- Cheatsheet
+    - 4 Pages: https://about.gitlab.com/images/press/git-cheat-sheet.pdf
+    - 2 Pages: https://education.github.com/git-cheat-sheet-education.pdf
+    - 2 Pages: https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf
 
-    source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/linux/git.init.sh)"
+- Books
+    - https://git-scm.com/book/en/v2
+    
+[my functions](https://github.com/fzinfz/scripts/blob/master/lib/git.sh#L1):
+```bash
+source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/fzinfz/scripts/master/lib/git.sh)"
+```
 
 # Workflow
 https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git  
@@ -46,7 +51,7 @@ https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-wo
 
     cat .git/HEAD       # current branch head
         ref: refs/heads/master
-    cat .git/ORIG_HEAD | xargs git show  # prevous state of HEAD
+    cat .git/ORIG_HEAD ; git show | head -1
 
 `working tree` don't include `untracked files`
 
@@ -64,10 +69,11 @@ https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-wo
 
 ## branch and merge
     git branch -a       # list all
-    git checkout -b dev # create and checkout a new branch
-    git checkout dev
 
-    git merge master
+    git checkout -b dev # create and checkout a new branch
+
+    git checkout master
+    git merge dev       # merge dev into master
         --squash              create a single commit instead of doing a merge
         --abort               abort the current in-progress merge
 
@@ -234,9 +240,6 @@ https://github.com/settings/tokens
     curl -sSL https://api.github.com/repos/ParsePlatform/Parse-SDK-Android/releases/latest \
         | jq '.zipball_url' | xargs -t wget -O file.zip
 
-# Cheatsheet
-https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf
-
 # Github
 check watchers: https://github.com/{user}/{project}/watchers
 
@@ -253,18 +256,4 @@ curl -L https://github.com...?raw=true
 Code search: https://about.sourcegraph.com/  
 download: https://minhaskamal.github.io/DownGit/#/home  
 
-# CI
-https://github.com/harness/drone
-
-# Gitbook
-https://toolchain.gitbook.com/structure.html
-
-    book.json
-        {
-            "root": "./docs"
-        }
-
-    LANGS.md    # https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-        * [English](en/)
-        * [Chinese](zh/)
 

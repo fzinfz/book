@@ -15,7 +15,7 @@ DC CURRENT PER I/O PIN	20 mA
 
 ## IDE
 - Sketch Menu -> Include Library -> Manage Libraries
-   - Search: BusIO + adafruit ssd1306
+   - Search: `BusIO` + `adafruit ssd1306`
 - File -> Examples
 
 SSD1306 Oled display: https://create.arduino.cc/projecthub/Arnov_Sharma_makes/0-96-inch-oled-getting-started-guide-78163a

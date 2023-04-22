@@ -35,7 +35,7 @@ https://github.com/systemdaemon/systemd/blob/master/src/linux/Documentation/vfio
     intel_iommu=on kvm-intel.nested=1
 
 ## Hyper-V DDA
-https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment#machine-profile-script
+https://github.com/fzinfz/scripts/tree/win/powershell/hyper-v
 
 # UI
 https://www.linux-kvm.org/page/Management_Tools (Most outdated)

@@ -1,18 +1,14 @@
 <!-- TOC -->
 
-- [WireGuard - C](#wireguard---c)
-    - [tailscale](#tailscale)
-- [nebula - go](#nebula---go)
-- [zerotier](#zerotier)
 - [Shadowsocks](#shadowsocks)
 - [xray](#xray)
 - [v2ray](#v2ray)
     - [with router](#with-router)
-- [hysteria](#hysteria)
+- [hysteria - Go](#hysteria---go)
+- [naiveproxy](#naiveproxy)
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
-- [Transparent Proxy](#transparent-proxy)
 - [中文手册](#中文手册)
     - [V2ray](#v2ray-1)
     - [Shadowsocks](#shadowsocks-1)
@@ -34,42 +30,20 @@
 - [goproxy for GAE](#goproxy-for-gae)
 - [goproxy with msocks protocal](#goproxy-with-msocks-protocal)
 - [tinyFecVPN](#tinyfecvpn)
-- [OpenWRT](#openwrt)
 - [Clients](#clients)
-    - [Subscription](#subscription)
     - [clash](#clash)
         - [Premium](#premium)
         - [Tap](#tap)
         - [Web UI](#web-ui)
     - [sing-box](#sing-box)
+- [Management](#management)
+    - [Web](#web)
+    - [CLI](#cli)
+- [Subscription](#subscription)
+- [VPN](#vpn)
+- [Host Apps](#host-apps)
 
 <!-- /TOC -->
-
-# WireGuard - C
-https://www.wireguard.com/quickstart/  
-https://wiki.archlinux.org/title/WireGuard  
-Userspace: https://github.com/masipcat/wireguard-go-docker  
-
-## tailscale
-Free for Personal: https://tailscale.com/pricing/  
-
-    curl -fsSL https://tailscale.com/install.sh | sh
-    sysctl -w net.ipv4.ip_forward=1
-    sysctl -w net.ipv6.conf.all.forwarding=1
-    tailscale up --advertise-exit-node # enable on WebUI: Edit route settings
-    tailscale status
-
-Official: https://login.tailscale.com/admin/machines  
-Custom: https://tailscale.com/kb/1118/custom-derp-servers/
-
-# nebula - go
-https://github.com/slackhq/nebula
-
-# zerotier
-
-    curl -s https://install.zerotier.com | sudo bash
-    service zerotier-one status
-    zerotier-cli status
 
 # Shadowsocks
 [Official](https://github.com/shadowsocks/) | 
@@ -121,8 +95,13 @@ loglevel： "debug"、"info"、"warning"、"error" 和 "none"
 ## with router
 https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 
-# hysteria
-https://github.com/HyNetwork/hysteria
+# hysteria - Go
+- https://github.com/apernet/hysteria
+- Clinets: https://hysteria.network/zh/docs/installation/
+- Full Config: https://hysteria.network/zh/docs/advanced-usage/
+
+# naiveproxy
+https://github.com/klzgrad/naiveproxy
 
 # Brook - Go
 https://github.com/txthinking/brook
@@ -139,9 +118,6 @@ https://github.com/digineo/fastd
 # tinc
 https://www.tinc-vpn.org/
 
-# Transparent Proxy
-https://github.com/shadowsocks/shadowsocks-libev#advanced-usage  
-Check `Networking` page for more.
 
 # 中文手册
 ## V2ray
@@ -216,17 +192,9 @@ https://github.com/shell909090/goproxy
 # tinyFecVPN
 https://github.com/wangyu-/tinyFecVPN
 
-# OpenWRT
-https://github.com/immortalwrt/immortalwrt
-
 # Clients
 https://www.v2ray.com/awesome/tools.html  
 iOS free: OneClick、Leaf | https://itlanyan.com/get-proxy-clients/#bnp_i_2
-
-## Subscription
-- convert/merge: https://github.com/tindy2013/subconverter/blob/master/README-docker.md
-
-    docker run -d --restart=unless-stopped -p 25500:25500 tindy2013/subconverter:latest
 
 ## clash
 https://github.com/Dreamacro/clash  
@@ -248,3 +216,38 @@ Guide：
 
 ## sing-box
 https://sing-box.sagernet.org/features/
+
+# Management
+## Web
+- Xray/Trojan-Go/Hysteria/NaiveProxy: https://github.com/trojanpanel/install-script
+- vmess、vless、trojan、shadowsocks、dokodemo-door、socks、http
+    - https://github.com/vaxilu/x-ui
+    - https://hub.docker.com/r/enwaiax/x-ui
+
+## CLI
+- mack-a: https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh
+
+# Subscription
+- convert/merge: https://github.com/tindy2013/subconverter/blob/master/README-docker.md
+
+    docker run -d --restart=unless-stopped -p 25500:25500 tindy2013/subconverter:latest
+
+https://github.com/tindy2013/subconverter/blob/master/README-cn.md#%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95
+
+http://192.168.1.25:25500/sub?target=clash&url=http%3A%2F%2F192.168.88.19%3A88%2Fxray.txt
+
+    %3A : 
+    %2F /
+
+# VPN
+- Cloudflare WARP: https://1.1.1.1/
+    - WARP+ | $4.99/month or less , +1GB per share
+- Private Cloud: [/nw/VPN/](/nw/VPN/)
+
+# Host Apps
+- Win | ssh : MobaXterm
+- Linux : 
+    - env: https://wiki.archlinux.org/title/Proxy_server
+    - [tsocks](/nw/proxy_socks/#tsocks)
+    - proxychains： `apt install -y proxychains && vi /etc/proxychains.conf`
+

@@ -26,6 +26,9 @@
 - Cursor IDE | based on OpenAI GPT: https://www.cursor.so/
 - Cursor for VSCode: https://github.com/Helixform/CodeCursor
 - Github | 2 month trial/$10+: https://github.com/features/copilot#pricing
+
+- GPT: https://github.com/formulahendry/awesome-gpt
+
 # GraphQL
 http://graphql.org/  
 a query language and execution engine tied to any backend service. 

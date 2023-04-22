@@ -2,22 +2,21 @@
 
 - [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
-  - [macvlan - access host](#macvlan---access-host)
-  - [ipvlan](#ipvlan)
+    - [macvlan - access host](#macvlan---access-host)
+    - [ipvlan](#ipvlan)
 - [run as VM](#run-as-vm)
-  - [QEMU NIC](#qemu-nic)
+    - [QEMU NIC](#qemu-nic)
 - [Web UI](#web-ui)
-  - [firewall](#firewall)
-  - [iptables](#iptables)
-  - [SSH key](#ssh-key)
-  - [view conn list](#view-conn-list)
+    - [firewall](#firewall)
+    - [iptables](#iptables)
+    - [SSH key](#ssh-key)
+    - [view conn list](#view-conn-list)
 - [/etc/config/](#etcconfig)
-  - [network](#network)
+    - [network](#network)
 - [QoS](#qos)
-  - [SQM](#sqm)
-  - [nftables](#nftables)
+    - [SQM](#sqm)
+    - [nftables](#nftables)
 - [Download](#download)
-- [RM2100](#rm2100)
 - [Breed](#breed)
 
 <!-- /TOC -->
@@ -131,13 +130,12 @@ https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 
 # Download
 - Pure: http://openwrt-dist.sourceforge.net/   
-- QoS/VPNs: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
-
+* for CN: https://github.com/immortalwrt/immortalwrt
+- Lean/LEDE/iStoreOS: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
 * eSir: https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr
 * Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
-
-# RM2100
-http://openwrt.ink:88/archives/s-breed
+* RM2100: http://openwrt.ink:88/archives/s-breed
+* Raspberry Pi & NanoPi R2S/R4S & G-Dock & x86 OpenWrt: https://github.com/SuLingGG/OpenWrt-Rpi
 
 # Breed
 breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade

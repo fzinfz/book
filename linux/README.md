@@ -7,7 +7,7 @@
 - [Bash](#bash)
     - [tmux](#tmux)
 - [Init](#init)
-    - [login & non-login shells](#login--non-login-shells)
+    - [login \& non-login shells](#login--non-login-shells)
     - [supervisord](#supervisord)
 - [Exit code](#exit-code)
 - [Syslog Message Severities](#syslog-message-severities)
@@ -15,15 +15,15 @@
 - [kill](#kill)
 - [top](#top)
     - [Glances - A top/htop alternative - Python](#glances---a-tophtop-alternative---python)
-- [User & Permission](#user--permission)
+- [User \& Permission](#user--permission)
     - [add user to group](#add-user-to-group)
     - [password](#password)
     - [sudoers](#sudoers)
     - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
-    - [Ubuntu](#ubuntu)
-    - [Debian](#debian)
+    - [Ubuntu](#ubuntu-1)
+    - [Debian](#debian-1)
         - [experimental](#experimental)
     - [dpkg](#dpkg)
     - [apt](#apt)
@@ -32,7 +32,7 @@
     - [grub-customizer](#grub-customizer)
     - [boot .iso](#boot-iso)
 - [boot repair](#boot-repair)
-    - [ubuntu](#ubuntu)
+    - [ubuntu](#ubuntu-2)
 - [Serial](#serial)
     - [client](#client)
 - [Benchmark](#benchmark)
@@ -53,16 +53,15 @@
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
     - [Proxy](#proxy)
-- [JAVA_HOME](#java_home)
-- [I18N & I10N](#i18n--i10n)
+- [JAVA\_HOME](#java_home)
+- [I18N \& I10N](#i18n--i10n)
 - [Chrome](#chrome)
-- [Proxy](#proxy)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
 - [WOL](#wol)
 - [Tools - Online](#tools---online)
 - [CPU](#cpu)
-    - [check_cpu_core_mapping](#check_cpu_core_mapping)
+    - [check\_cpu\_core\_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
 - [kali](#kali)
 - [ssh](#ssh)
@@ -364,6 +363,7 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 # ssh redirect
 
     ssh -L 9000:public.com:80   # visit local:9000 -> public.com:80
+    ssh -L 0.0.0.0:54321:127.0.0.1:54321 remote -p 22
     ssh -R 9000:localhost:3000  # visit remote:9000 -> local:3000, "GatewayPorts yes" in sshd_config
         -nNT -L ...   # port forwarding only, no shell
 
@@ -536,12 +536,6 @@ run without `root`
 # Chrome
     chromium --no-sandbox # start as root
 
-# Proxy
-    export http_proxy=http://proxy_ip:1080
-    export https_proxy=http://proxy_ip:1080
-
-    sudo apt install -y proxychains
-    vi /etc/proxychains.conf
 
 # AD
 https://wiki.samba.org/index.php/Setting_up_Samba_as_an_NT4_PDC_(Quick_Start)

@@ -33,6 +33,7 @@
         - [Python](#python)
 - [Monitoring](#monitoring)
     - [Grafana \& Prometheus](#grafana--prometheus)
+- [Manage Remote](#manage-remote)
 
 <!-- /TOC -->
 # CHR 60-day trial
@@ -245,3 +246,12 @@ https://help.mikrotik.com/docs/display/ROS/SSH
 
 - Go + Dockerfile: https://github.com/nshttpd/mikrotik-exporter
   - Grafana | k8s: https://www.lisenet.com/2021/monitor-mikrotik-router-with-grafana-and-prometheus-mikrotik-exporter/
+
+# Manage Remote
+ROS v7: conf socks4 and route
+
+    /ip route add dst-address=192.168.1.1/24 gateway=l2tp-out1
+    /ip socks set enabled=yes
+
+[/nw/proxy/#host-apps](/nw/proxy/#host-apps)
+    

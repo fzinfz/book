@@ -2,21 +2,21 @@
 
 - [Vite](#vite)
 - [V3](#v3)
-  - [2to3](#2to3)
+    - [to3](#to3)
 - [createApp](#createapp)
-  - [hydration mode](#hydration-mode)
+    - [hydration mode](#hydration-mode)
 - [Components](#components)
-  - [defineComponent](#definecomponent)
-  - [defineCustomElement](#definecustomelement)
+    - [defineComponent](#definecomponent)
+    - [defineCustomElement](#definecustomelement)
 - [Plugins](#plugins)
 - [Routing](#routing)
-- [VNode - h()](#vnode---h)
+- [VNode - h](#vnode---h)
 - [Data Binding](#data-binding)
-  - [v-bind/on](#v-bindon)
-  - [Event](#event)
-  - [Watch](#watch)
-  - [computed](#computed)
-  - [refs](#refs)
+    - [v-bind/on](#v-bindon)
+    - [Event](#event)
+    - [Watch](#watch)
+    - [computed](#computed)
+    - [refs](#refs)
 - [List Rendering](#list-rendering)
 - [lifecycle](#lifecycle)
 - [Code Snippets](#code-snippets)
@@ -31,7 +31,7 @@ https://vitejs.dev/guide/
     # vanilla, vanilla-ts, vue, vue-ts, react, react-ts ...
     npm create vite@latest test-vue3-ts-vite --template vue-ts    # npm 6.x
     npm create vite@latest test-vue3-ts-vite -- --template vue-ts # npm 7+
-    npm install && npm run dev
+    npm install && npm run dev -- --host
 
 [README.md](https://github.com/fzinfz/test-vue3-ts-vite/blob/0652a5ecc9440d520021e4c023fdc21da547efa2/README.md): `@builtin vscode.typescript-language-features` -> `Disable (Workspace)` | install `vue.volar` + `Vue.vscode-typescript-vue-plugin`
 

@@ -1,10 +1,16 @@
+<!-- TOC -->
+
 - [Basic](#basic)
 - [Compare with v4](#compare-with-v4)
-    - [Types \& Scopes](#types--scopes)
+    - [Types & Scopes](#types--scopes)
+- [LAN](#lan)
 - [NPTv6](#nptv6)
+- [NAT64](#nat64)
 - [Tools](#tools)
     - [Linux](#linux)
 - [Firewall](#firewall)
+
+<!-- /TOC -->
 
 # Basic
 https://en.wikipedia.org/wiki/IPv6_address#Representation
@@ -23,10 +29,29 @@ https://www.ibm.com/docs/en/i/7.2?topic=6-comparison-ipv4-ipv6
 - multicast: 14 scopes
 - anycast
 
+# LAN
+
+    ::/128
+    ::1/128
+    ::ffff:0:0:0/96
+    64:ff9b::/96
+    100::/64
+    2001::/32
+    2001:20::/28
+    2001:db8::/32
+    2002::/16
+    fc00::/7 | IP Range: fc00:: - fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+    fe80::/10
+    ff00::/8
+
 # NPTv6
 Network Prefix Translation： https://en.wikipedia.org/wiki/IPv6-to-IPv6_Network_Prefix_Translation
 
+# NAT64
+https://en.wikipedia.org/wiki/NAT64
+
 # Tools
+
 ## Linux
 
     tcpdump -i any ip6

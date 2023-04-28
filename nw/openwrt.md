@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Packages](#packages)
 - [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
     - [macvlan - access host](#macvlan---access-host)
@@ -16,10 +17,15 @@
 - [QoS](#qos)
     - [SQM](#sqm)
     - [nftables](#nftables)
-- [Download](#download)
-- [Breed](#breed)
+- [Tailscale](#tailscale)
+- [Mesh](#mesh)
 
 <!-- /TOC -->
+
+# Packages
+base image: [/nw/hw/](/nw/hw/)
+
+https://op.supes.top/packages/
 
 # Install on X86
 https://openwrt.org/docs/guide-user/installation/openwrt_x86
@@ -34,7 +40,8 @@ https://openwrt.org/docs/guide-user/installation/openwrt_x86
     resize2fs -f /dev/loop1
 
 # run as Container
-ref: https://mlapp.cn/376.html
+- https://supes.top/docker%E7%89%88openwrt%E6%97%81%E8%B7%AF%E7%94%B1%E5%AE%89%E8%A3%85%E8%AE%BE%E7%BD%AE%E6%95%99%E7%A8%8B/
+- https://mlapp.cn/376.html
 
     ip link set vlan.10 promisc on
     docker network create -d macvlan --subnet=10.0.0.0/8 --gateway=10.0.0.1 -o parent=vlan.10 macnet
@@ -128,14 +135,11 @@ https://openwrt.org/docs/guide-user/network/traffic-shaping/start
 ## nftables
 https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 
-# Download
-- Pure: http://openwrt-dist.sourceforge.net/   
-* for CN: https://github.com/immortalwrt/immortalwrt
-- Lean/LEDE/iStoreOS: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
-* eSir: https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr
-* Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
-* RM2100: http://openwrt.ink:88/archives/s-breed
-* Raspberry Pi & NanoPi R2S/R4S & G-Dock & x86 OpenWrt: https://github.com/SuLingGG/OpenWrt-Rpi
+# Tailscale
+- https://github.com/adyanth/openwrt-tailscale-enabler
+- https://openwrt.org/docs/guide-user/services/vpn/tailscale/start
+# Mesh
 
-# Breed
-breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
+    iw list | grep -E "phy|mesh" # check if supported hardware
+
+## 802.11r

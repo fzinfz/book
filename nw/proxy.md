@@ -9,9 +9,6 @@
 - [Brook - Go](#brook---go)
 - [fastd](#fastd)
 - [tinc](#tinc)
-- [中文手册](#中文手册)
-    - [V2ray](#v2ray-1)
-    - [Shadowsocks](#shadowsocks-1)
 - [Manager](#manager)
 - [Panel](#panel)
 - [Docker](#docker)
@@ -46,11 +43,11 @@
 <!-- /TOC -->
 
 # Shadowsocks
-[Official](https://github.com/shadowsocks/) | 
-[Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
-([raw](https://raw.githubusercontent.com/wiki/shadowsocks/shadowsocks/Feature-Comparison-across-Different-Versions.md)) 
-
-shadow-tls: https://github.com/ihciah/shadow-tls/wiki/Example-Compose
+- [Official](https://github.com/shadowsocks/) | 
+- [Compare](https://github.com/shadowsocks/shadowsocks/wiki/Feature-Comparison-across-Different-Versions)
+- ([raw](https://raw.githubusercontent.com/wiki/shadowsocks/shadowsocks/Feature-Comparison-across-Different-Versions.md)) 
+- haproxy https://lvii.gitbooks.io/outman/content/ss.haproxy.html
+- shadow-tls: https://github.com/ihciah/shadow-tls/wiki/Example-Compose
 
 # xray
 https://github.com/XTLS/  
@@ -69,8 +66,8 @@ https://github.com/rprx/v2fly-github-io/blob/master/docs/config/protocols/vless.
 https://www.v2ray.com/chapter_02/01_overview.html  
 https://github.com/v2ray/manual/blob/master/zh_cn/chapter_02/protocols/vmess.md
 
-https://toutyrater.github.io/v2ray-guide-pages/  
-https://github.com/ToutyRater/v2ray-guide/blob/master/basic/vmess.md
+- 配置指南 https://toutyrater.github.io/v2ray-guide-pages/  
+- https://github.com/ToutyRater/v2ray-guide/blob/master/basic/vmess.md
 
 loglevel： "debug"、"info"、"warning"、"error" 和 "none"
 
@@ -117,15 +114,6 @@ https://github.com/digineo/fastd
 
 # tinc
 https://www.tinc-vpn.org/
-
-
-# 中文手册
-## V2ray
-https://toutyrater.github.io/
-
-## Shadowsocks
-https://lvii.gitbooks.io/outman/content/ss.client.html  
-https://neroxps.gitbooks.io/compile-shadowsocks-rss-libev/content/  
 
 # Manager
 https://github.com/fzinfz/ssmanager-nopanel

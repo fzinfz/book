@@ -19,6 +19,10 @@
     - [nftables](#nftables)
 - [Tailscale](#tailscale)
 - [Mesh](#mesh)
+    - [bat-adv](#bat-adv)
+    - [Mode 802.11s](#mode-80211s)
+    - [Mode AP - 802.11r](#mode-ap---80211r)
+- [Controller - OpenWISP](#controller---openwisp)
 
 <!-- /TOC -->
 
@@ -142,4 +146,26 @@ https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 
     iw list | grep -E "phy|mesh" # check if supported hardware
 
-## 802.11r
+## bat-adv
+https://cgomesu.com/blog/Mesh-networking-openwrt-batman/#initial-configuration
+
+    opkg remove wpad-basic-
+    opkg install batctl-full kmod-batman-adv wpad-mesh-wolfssl
+
+https://www.open-mesh.org/doc/batman-adv/Batman-adv-openwrt-config.html
+
+## Mode 802.11s
+https://openwrt.org/docs/guide-user/network/wifi/mesh/80211s
+
+## Mode AP - 802.11r
+https://www.adrian.idv.hk/2022-11-27-80211r/
+- needs both the AP and the station to support
+- ESS = all BSSID(MAC) of same SSID
+- mobility domain = subset of ESS that allows station to roam around
+    - R0KH: controller as the PMK-R0 key holder 
+    - R1KH: APs as the PMK-R1 key holder
+    - S0KH and S1KH, S for supplicant: station are the PMK-S0 key holder and PMK-S1 key holder
+
+# Controller - OpenWISP
+- https://openwisp.org/whatis.html
+- https://openwisp.io/docs/user/configure-device.html#install-openwisp-config

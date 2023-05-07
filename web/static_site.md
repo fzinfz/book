@@ -1,8 +1,16 @@
 <!-- TOC -->
 
 - [Static Site Generator](#static-site-generator)
+- [for Wiki](#for-wiki)
+    - [Sphinx - Python](#sphinx---python)
+        - [Builtin themes](#builtin-themes)
+        - [Static Files](#static-files)
+        - [Table](#table)
+        - [Diagrams](#diagrams)
     - [MkDocs - Python](#mkdocs---python)
         - [mkdocs.yml](#mkdocsyml)
+- [for Blogs](#for-blogs)
+    - [Pelican - Python](#pelican---python)
 - [Cloudflare Pages](#cloudflare-pages)
 - [Github pages](#github-pages)
     - [Github Actions - SSR](#github-actions---ssr)
@@ -26,11 +34,41 @@ https://github.com/myles/awesome-static-generators
 + Antora: multi repo into 1: https://docs.antora.org/antora/latest/
 + Jupyter: https://curvenote.com/docs/web/notebooks
 
+# for Wiki
+## Sphinx - Python
+reStructuredText -> HTML, PDF, plain text, EPUB, TeX
+- https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
+
+GraphiQL: https://github.com/hasura/sphinx-graphiql
+
+### Builtin themes
+https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
+- only the Alabaster and Scrolls themes are mobile-optimated
+
+### Static Files
+https://www.sphinx-doc.org/en/master/usage/configuration.html
+- html_static_path / html_css_files / html_js_files
+- html_additional_pages: .html files
+
+### Table
+https://docs.espressif.com/projects/esp-docs/en/latest/writing-documentation/table.html
+    - span: https://return42.github.io/linuxdoc/linuxdoc-howto/table-markup.html#flat-table
+
+### Diagrams
+https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagramsInSphinx.html
+
 ## MkDocs - Python
 ### mkdocs.yml
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs.yml
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs/tests/integration/complicated_config/mkdocs.yml
 - https://gitlab.liris.cnrs.fr/pagoda/tools/mkdocs_template/-/blob/develop/user_config/mkdocs.local.yml
+
+# for Blogs
+## Pelican - Python
+Markdown, reStructuredText, and HTML
+- default theme -> blog : https://www.smashingmagazine.com/
+- https://github.com/getpelican/pelican
+- https://docs.getpelican.com/en/latest/index.html#documentation
 
 # Cloudflare Pages
 <YOUR_PROJECT_NAME>.pages.dev: https://developers.cloudflare.com/pages/platform/build-configuration/#framework-presets

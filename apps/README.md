@@ -108,5 +108,6 @@ TaoBaoBasket | 同店多搜： https://pc.qq.com/detail/5/detail_18345.html
 Explorer: https://github.com/1357310795/MyComputerManager
 
 # Monuments
-KB4570006: Update to disable and remove the RemoteFX vGPU component in Windows 10, version 1809 and Windows Server 2019
+- RemoteFX - KB4570006: Update to disable and remove the RemoteFX vGPU component in Windows 10, version 1809 and Windows Server 2019
+
 

@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [CLI](#cli)
 - [Packages](#packages)
 - [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
@@ -25,6 +26,10 @@
 - [Controller - OpenWISP](#controller---openwisp)
 
 <!-- /TOC -->
+
+# CLI
+
+    cat /tmp/dhcp.leases
 
 # Packages
 base image: [/nw/hw/](/nw/hw/)

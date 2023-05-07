@@ -1,11 +1,12 @@
 <!-- TOC -->
 
+- [Versions](#versions)
 - [Windows 11](#windows-11)
 - [Components](#components)
 - [Driver Backup](#driver-backup)
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
-    - [Networking](#networking)
+- [Networking](#networking)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
 - [Edition Unique Features](#edition-unique-features)
@@ -56,6 +57,12 @@
 
 <!-- /TOC -->
 
+# Versions
+https://learn.microsoft.com/en-us/windows/release-health/release-information
+- Win10: 19041=2004 19045=22H2
+- Win11: 22000=21H2 22621=22H2
+- Server: 14393=2016 17763=2019 20348=2022
+
 # Windows 11
 
     # Disable "Show more options" context menu
@@ -80,10 +87,10 @@
     manage-bde -status
     manage-bde -off C:
 
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker]
-    "PreventDeviceEncryption"=dword:00000001
+    # Powershell - Disable BitLocker
+    New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\BitLocker" -Name "PreventDeviceEncryption" -Value 00000001 -PropertyType DWORD -Force 
 
-## Networking
+# Networking
 ```CMD
 netsh interface ipv4 show excludedportrange protocol=tcp
 
@@ -105,10 +112,6 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 # DotNet versions query
 
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Version
-
-# Edition Unique Features
-10: Free RemoteFX, WSL  
-2016: NFS Server, Hyper-V DDA
 
 # RUN
 ## Startup Folder

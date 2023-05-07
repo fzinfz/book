@@ -1,3 +1,9 @@
+<!-- TOC -->
+
+- [Add-ons](#add-ons)
+
+<!-- /TOC -->
+
 https://www.blender.org/  
 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing and motion tracking, even video editing and game creation.
 

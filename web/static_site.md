@@ -81,7 +81,8 @@ https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagram
 ## Docusaurus - React
 - https://opensource.fb.com/projects/docusaurus/
 - https://docusaurus.io/docs/creating-pages
-- Docs Landing Page or Blog Only: https://v1.docusaurus.io/docs/en/site-creation#docs-landing-page
+- Docs Only: https://docusaurus.io/docs/docs-introduction#docs-only-mode
+- Blog Only: https://docusaurus.io/docs/blog#advanced-topics
 
 # for Blogs
 ## Pelican - Python

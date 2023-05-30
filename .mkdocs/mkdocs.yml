@@ -10,7 +10,6 @@ nav:
     - Network: nw/
     - Virt: vt/
     - "*"
-    - Apps: apps/README.md
     - DB: db/
     - BSD: bsd/
     - Microsoft: ms/

@@ -12,6 +12,7 @@
 - [JQuery](#jquery)
   - [events](#events)
 - [JSX](#jsx)
+- [MDX](#mdx)
 - [node](#node)
   - [Version Manager](#version-manager)
     - [volta](#volta)
@@ -66,6 +67,9 @@ http://api.jquery.com/category/events/
 # JSX
 an XML-like syntax extension to ECMAScript without any defined semantics: https://facebook.github.io/jsx/
 `const element = <h1>Hello, world!</h1>;`: https://zh-hans.reactjs.org/docs/introducing-jsx.html
+
+# MDX
+JSX + Markdown: https://mdxjs.com/docs/what-is-mdx/
 
 # node
 Schedule

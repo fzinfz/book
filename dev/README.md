@@ -7,14 +7,15 @@
     - [Parser](#parser)
     - [Converter](#converter)
 - [Markdown + LaTeX](#markdown--latex)
+- [reStructuredText](#restructuredtext)
 - [OCR](#ocr)
     - [Offline](#offline)
     - [Windows Universal](#windows-universal)
 - [Excel](#excel)
     - [Formula](#formula)
     - [CSharp](#csharp)
-- [CSharp](#csharp-1)
-- [.Net Core](#net-core)
+- [CSharp](#csharp)
+- [Net Core](#net-core)
 - [InPage Search](#inpage-search)
 - [My Notes](#my-notes)
 
@@ -72,6 +73,10 @@ HTML(non table): https://domchristie.github.io/to-markdown/
 
 # Markdown + LaTeX
 https://github.com/pandao/editor.md
+
+# reStructuredText
+- .md -> .rst: https://pandoc.org/try/
+- table -> .rst: https://tableconvert.com/restructuredtext-generator
 
 # OCR
 ## Offline

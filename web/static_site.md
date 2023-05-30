@@ -3,12 +3,13 @@
 - [Static Site Generator](#static-site-generator)
 - [for Wiki](#for-wiki)
     - [Sphinx - Python](#sphinx---python)
-        - [Builtin themes](#builtin-themes)
+        - [Themes](#themes)
         - [Static Files](#static-files)
         - [Table](#table)
         - [Diagrams](#diagrams)
     - [MkDocs - Python](#mkdocs---python)
         - [mkdocs.yml](#mkdocsyml)
+    - [Docusaurus - React](#docusaurus---react)
 - [for Blogs](#for-blogs)
     - [Pelican - Python](#pelican---python)
 - [Cloudflare Pages](#cloudflare-pages)
@@ -33,17 +34,31 @@ https://github.com/myles/awesome-static-generators
 + Jekyll theme with search : https://github.com/just-the-docs/just-the-docs
 + Antora: multi repo into 1: https://docs.antora.org/antora/latest/
 + Jupyter: https://curvenote.com/docs/web/notebooks
++ RMarkdown: https://rmarkdown.rstudio.com/docs/reference/publish_site.html
 
 # for Wiki
 ## Sphinx - Python
 reStructuredText -> HTML, PDF, plain text, EPUB, TeX
-- https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
+- Start: https://www.sphinx-doc.org/en/master/tutorial/getting-started.html
+- toctree options: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
 
 GraphiQL: https://github.com/hasura/sphinx-graphiql
 
-### Builtin themes
-https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
+### Themes
+Builtin: https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
 - only the Alabaster and Scrolls themes are mobile-optimated
+
+Templating/blocks: https://www.sphinx-doc.org/en/master/development/templating.html#blocks
+
+`Read the Docs` theme with custom footer: https://github.com/readthedocs/sphinx_rtd_theme/blob/master/sphinx_rtd_theme/footer.html
+
+    html_show_sphinx = False # conf.py
+
+    # %templates_path%/footer.html    
+    {% extends "!footer.html" %}
+    {%- block extrafooter %}
+    
+    {% endblock %}
 
 ### Static Files
 https://www.sphinx-doc.org/en/master/usage/configuration.html
@@ -62,6 +77,11 @@ https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagram
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs.yml
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs/tests/integration/complicated_config/mkdocs.yml
 - https://gitlab.liris.cnrs.fr/pagoda/tools/mkdocs_template/-/blob/develop/user_config/mkdocs.local.yml
+
+## Docusaurus - React
+- https://opensource.fb.com/projects/docusaurus/
+- https://docusaurus.io/docs/creating-pages
+- Docs Landing Page or Blog Only: https://v1.docusaurus.io/docs/en/site-creation#docs-landing-page
 
 # for Blogs
 ## Pelican - Python

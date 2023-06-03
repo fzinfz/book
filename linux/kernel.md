@@ -3,25 +3,27 @@
 - [Check](#check)
 - [delete](#delete)
 - [Commit logs](#commit-logs)
-- [.deb download](#deb-download)
-- [Dynamic Kernel Module Support (DKMS)](#dynamic-kernel-module-support-dkms)
+- [deb download](#deb-download)
+- [Dynamic Kernel Module Support DKMS](#dynamic-kernel-module-support-dkms)
 - [Compiling](#compiling)
-  - [debug](#debug)
-  - [.config](#config)
+    - [debug](#debug)
+    - [config](#config)
 - [Install .deb manually](#install-deb-manually)
-- [initrd (initial ramdisk)](#initrd-initial-ramdisk)
-  - [initrd scheme](#initrd-scheme)
-  - [initramfs scheme](#initramfs-scheme)
-    - [dracut](#dracut)
-    - [mkinitcpio](#mkinitcpio)
+- [initrd initial ramdisk](#initrd-initial-ramdisk)
+    - [initrd scheme](#initrd-scheme)
+    - [initramfs scheme](#initramfs-scheme)
+        - [dracut](#dracut)
+        - [mkinitcpio](#mkinitcpio)
 - [tracing](#tracing)
-  - [BPF /eBPF](#bpf-ebpf)
-  - [bcc](#bcc)
-- [Linux Releases](#linux-releases)
+    - [BPF /eBPF](#bpf-ebpf)
+    - [bcc](#bcc)
 - [Kernel Versions](#kernel-versions)
 - [linux-next](#linux-next)
 
 <!-- /TOC -->
+
+# Versions
+https://kernelnewbies.org/LinuxVersions
 
 # Check
 
@@ -113,20 +115,6 @@ https://qmonnet.github.io/whirl-offload/2016/09/01/dive-into-bpf/
 https://github.com/iovisor/bcc/tree/master/tools
 
 ![](http://www.brendangregg.com/Perf/bcc_tracing_tools.png)
-
-# Linux Releases
-https://kernelnewbies.org/LinuxVersions
-
-[RHEL](https://access.redhat.com/articles/3078) | 
-[Ubuntu](https://askubuntu.com/questions/517136/list-of-ubuntu-versions-with-corresponding-linux-kernel-version) | 
-[Debian](https://en.wikipedia.org/wiki/Debian_version_history#Release_table)
-
-    6.0	Squeeze	 2.6.32  -> LTS until February 2016
-    7	Wheezy   3.2     -> LTS until May 2018
-    8	Jessie   3.16    -> LTS until April/May 2020
-    9	Stretch	 4.9	 -> LTS until June 2022
-    10	Buster   4.19    -> LTS until June 2024
-    11	Bullseye 5.10    -> LTS until June 2026
 
 # Kernel Versions
 https://kernelnewbies.org/LinuxChanges  

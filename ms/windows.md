@@ -9,10 +9,9 @@
 - [Networking](#networking)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
-- [Edition Unique Features](#edition-unique-features)
 - [RUN](#run)
     - [Startup Folder](#startup-folder)
-    - [Date & Time](#date--time)
+    - [Date + Time](#date--time)
     - [Query .Net Framwork Versions](#query-net-framwork-versions)
     - [Auto Login](#auto-login)
 - [Configuration](#configuration)
@@ -117,9 +116,8 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 ## Startup Folder
 - shell:startup
 
-## Date & Time
-    timedate.cpl
-        ntp.sjtu.edu.cn [202.120.2.100]
+## Date + Time
+- timedate.cpl: ntp.sjtu.edu.cn [202.120.2.100]
 
 ## Query .Net Framwork Versions
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP

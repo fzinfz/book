@@ -82,19 +82,21 @@
 [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu_version_history#Table_of_versions) | 
 [Debian](https://en.wikipedia.org/wiki/Debian_version_history#Release_table)
 
-    6.0	Squeeze	 2.6.32  -> LTS until February 2016
-    7	Wheezy   3.2     -> LTS until May 2018
-    8	Jessie   3.16    -> LTS until April/May 2020
-    9	Stretch	 4.9	 -> LTS until June 2022
-    10	Buster   4.19    -> LTS until June 2024
-    11	Bullseye 5.10    -> LTS until June 2026
+    6.0	Squeeze	 2.6.32  -> Security until February 2016
+    7	Wheezy   3.2     -> Security until May 2018
+    8	Jessie   3.16    -> Security until April/May 2020
+    9	Stretch	 4.9	 -> Security until June 2022
+    10	Buster   4.19    -> Security until June 2024
+    11	Bullseye 5.10    -> Security until June 2026
+    12  Bookworm 6.1     -> Security until June 2028
 
 # Install
 from existing: https://www.debian.org/releases/stretch/amd64/apds03.html.en
 
 # Download
 ## Debian
-https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/  
+https://www.debian.org/CD/live/
+
 
 ## Ubuntu
 http://ftp.sjtu.edu.cn/ubuntu-cd/

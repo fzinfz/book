@@ -14,7 +14,7 @@
 - [Docker](#docker)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [Optimize](#optimize)
-    - [BBR (Kernel 4.9+)](#bbr-kernel-49)
+    - [BBR Kernel 4.9+](#bbr-kernel-49)
     - [KCPTun](#kcptun)
     - [dragonite-java](#dragonite-java)
     - [UDPspeeder](#udpspeeder)
@@ -98,7 +98,9 @@ https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 - Full Config: https://hysteria.network/zh/docs/advanced-usage/
 
 # naiveproxy
-https://github.com/klzgrad/naiveproxy
+- https://github.com/klzgrad/naiveproxy
+- wiki: https://github.com/klzgrad/naiveproxy/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87
+- docker: https://github.com/RayWangQvQ/naiveproxy-docker
 
 # Brook - Go
 https://github.com/txthinking/brook
@@ -204,6 +206,15 @@ Guide：
 
 ## sing-box
 https://sing-box.sagernet.org/features/
+
+## nekoray
+https://github.com/MatsuriDayo/nekoray
+
+    SOCKS (4/4a/5) / HTTP(S) 
+    Shadowsocks / VMess / VLESS
+    Trojan
+    NaïveProxy ( Custom Core )
+    Hysteria ( Custom Core or sing-box )
 
 # Management
 ## Web

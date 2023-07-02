@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Static Site Generator](#static-site-generator)
+    - [Docusaurus - React](#docusaurus---react)
 - [for Wiki](#for-wiki)
     - [Sphinx - Python](#sphinx---python)
         - [Themes](#themes)
@@ -9,7 +10,6 @@
         - [Diagrams](#diagrams)
     - [MkDocs - Python](#mkdocs---python)
         - [mkdocs.yml](#mkdocsyml)
-    - [Docusaurus - React](#docusaurus---react)
 - [for Blogs](#for-blogs)
     - [Pelican - Python](#pelican---python)
 - [Cloudflare Pages](#cloudflare-pages)
@@ -35,6 +35,14 @@ https://github.com/myles/awesome-static-generators
 + Antora: multi repo into 1: https://docs.antora.org/antora/latest/
 + Jupyter: https://curvenote.com/docs/web/notebooks
 + RMarkdown: https://rmarkdown.rstudio.com/docs/reference/publish_site.html
+
+## Docusaurus - React
+- https://opensource.fb.com/projects/docusaurus/
+- https://docusaurus.io/docs/creating-pages
+- Docs Only: https://docusaurus.io/docs/docs-introduction#docs-only-mode
+- Blog Only: https://docusaurus.io/docs/blog#advanced-topics
+- Offline Search: https://docusaurus.io/docs/search#using-local-search
+- draw / mermaid: https://docusaurus.io/docs/markdown-features/diagrams
 
 # for Wiki
 ## Sphinx - Python
@@ -77,12 +85,6 @@ https://chiplicity.readthedocs.io/en/latest/Using_Sphinx/UsingGraphicsAndDiagram
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs.yml
 - https://github.com/mkdocs/mkdocs/blob/master/mkdocs/tests/integration/complicated_config/mkdocs.yml
 - https://gitlab.liris.cnrs.fr/pagoda/tools/mkdocs_template/-/blob/develop/user_config/mkdocs.local.yml
-
-## Docusaurus - React
-- https://opensource.fb.com/projects/docusaurus/
-- https://docusaurus.io/docs/creating-pages
-- Docs Only: https://docusaurus.io/docs/docs-introduction#docs-only-mode
-- Blog Only: https://docusaurus.io/docs/blog#advanced-topics
 
 # for Blogs
 ## Pelican - Python

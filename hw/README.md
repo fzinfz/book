@@ -9,6 +9,7 @@
 - [Raspberry PI](#raspberry-pi)
   - [Console](#console)
 - [Resolution](#resolution)
+- [Screen](#screen)
 
 <!-- /TOC -->
 
@@ -100,3 +101,13 @@ Flow Control: None
     1080p is 1920x1080. (2,073,600 total pixels)
     3MP is 2048 x 1536. (3,145,728 total pixels)
     5MP is 2560 x 1920. (4,915,200 total pixels)
+
+
+# Screen
+
+Name | Wiki
+-- | --
+OLED | https://en.wikipedia.org/wiki/OLED
+microLED, micro-LED, mLED or μLED | https://en.wikipedia.org/wiki/MicroLED
+Mini LED | https://en.wikipedia.org/wiki/LED-backlit_LCD#Mini_LED
+

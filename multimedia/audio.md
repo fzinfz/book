@@ -15,6 +15,9 @@
     - [Baidu](#baidu)
     - [Offline](#offline)
 - [Software](#software)
+- [Music](#music)
+    - [Apps](#apps)
+    - [Basic](#basic)
 
 <!-- /TOC -->
 
@@ -133,3 +136,18 @@ https://en.wikipedia.org/wiki/Comparison_of_free_software_for_audio
 Audacity: https://github.com/audacity/audacity/releases
 
 Input/Output equalizer: https://sourceforge.net/projects/equalizerapo/
+
+AI Real-Time Voice Cloning: https://github.com/CorentinJ/Real-Time-Voice-Cloning
+
+# Music
+## Apps
+- Coding: https://sonic-pi.net/#examples
+- Singing Voice Conversion: https://github.com/svc-develop-team/so-vits-svc
+
+## Basic
+
+    ♭ flat:  lower in pitch by one semitone (half step)
+    ♯ sharp: higher in pitch by one semitone (half step)
+
+Equal temperament / 十二平均律: https://baike.baidu.com/item/%E5%8D%81%E4%BA%8C%E5%B9%B3%E5%9D%87%E5%BE%8B/592297  
+![](https://bkimg.cdn.bcebos.com/pic/0b46f21fbe096b6300e5207b09338744ebf8ac19)

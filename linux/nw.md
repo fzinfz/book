@@ -3,7 +3,7 @@
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
     - [/etc/network/interfaces](#etcnetworkinterfaces)
-    - [/etc/netplan/\*.yaml](#etcnetplanyaml)
+    - [/etc/netplan/*.yaml](#etcnetplanyaml)
         - [netplan try](#netplan-try)
     - [Port listening](#port-listening)
     - [debug](#debug)
@@ -57,7 +57,8 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     iface enp1s0 inet dhcp
 
 ## /etc/netplan/*.yaml
-basic/bond/wireless/route/SR-IOV: https://netplan.io/examples
+- basic/bond/wireless/route/SR-IOV: https://netplan.io/examples
+- static/wireguard: https://github.com/canonical/netplan/tree/main/examples
 
 ```
 network:

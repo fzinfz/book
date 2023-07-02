@@ -1,11 +1,11 @@
 <!-- TOC -->
 
-- [Text Tools](#text-tools)
+- [Tools](#tools)
 - [Search Engines](#search-engines)
 
 <!-- /TOC -->
 
-# Text Tools
+# Tools
 
 |Desc|Link|
 |---|---|

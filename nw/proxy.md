@@ -32,7 +32,10 @@
         - [Premium](#premium)
         - [Tap](#tap)
         - [Web UI](#web-ui)
+    - [Gaming](#gaming)
+        - [netch](#netch)
     - [sing-box](#sing-box)
+    - [nekoray](#nekoray)
 - [Management](#management)
     - [Web](#web)
     - [CLI](#cli)
@@ -203,6 +206,12 @@ Guide：
 - TS: https://github.com/Dreamacro/clash-dashboard
   - forked: https://github.com/haishanh/yacd/
 - TS + Rust: https://github.com/zzzgydi/clash-verge
+
+git clone https://github.com/zzzgydi/clash-verge.git
+
+## Gaming
+### netch
+WireGuard/trojan/SS/X: https://github.com/netchx/netch
 
 ## sing-box
 https://sing-box.sagernet.org/features/

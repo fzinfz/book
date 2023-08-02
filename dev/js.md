@@ -79,6 +79,7 @@ Schedule
 ### volta
 https://volta.sh/
 
+    curl https://get.volta.sh | bash
     volta list
     volta install node@18
 

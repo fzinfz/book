@@ -228,6 +228,9 @@ https://wiki.archlinux.org/index.php/NTFS-3G
      --direct=1 --bs=4k --numjobs=8 \
      --size=512M --runtime=5
 
+    fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=random_read.fio --bs=4k --iodepth=64 --size=4G --readwrite=randread
+    fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=random_write.fio --bs=4k --iodepth=64 --size=4G --readwrite=randwrite
+
 # SMART
 
     apt install smartmontools

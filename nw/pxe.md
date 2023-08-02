@@ -1,13 +1,16 @@
+<!-- TOC -->
+
 - [DHCP Options](#dhcp-options)
     - [Next Server](#next-server)
-- [.iso to USB](#iso-to-usb)
+- [iso to USB](#iso-to-usb)
 - [UEFI Editor](#uefi-editor)
     - [efibootmgr - Linux](#efibootmgr---linux)
     - [Windows GUI](#windows-gui)
 - [iPXE](#ipxe)
+- [iVentoy](#iventoy)
 - [netboot.xyz](#netbootxyz)
     - [USB/ISO/GRUB/TFTP](#usbisogrubtftp)
-    - [iPXE](#ipxe-1)
+    - [iPXE](#ipxe)
     - [Self Hosting](#self-hosting)
 - [Windows](#windows)
     - [Remote install ISO](#remote-install-iso)
@@ -17,12 +20,13 @@
 - [Diskless](#diskless)
     - [Hive OS - Ubuntu](#hive-os---ubuntu)
     - [NetBSD](#netbsd)
-    - [Windows](#windows-1)
+    - [Windows](#windows)
+
+<!-- /TOC -->
 
 https://blogs.technet.microsoft.com/dominikheinz/2011/03/18/dhcp-pxe-basics/
 
 https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/You-want-to-PXE-Boot-Don-t-use-DHCP-Options/ba-p/275562
-
 
 # DHCP Options
 http://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml
@@ -62,6 +66,13 @@ https://ipxe.org/cmd/chain
 
 Download and boot the iPXE demonstration image
   chain http://boot.ipxe.org/demo/boot.php
+
+# iVentoy
+https://www.iventoy.com/en/doc_ext_dhcp.html
+- External     : same LAN/VLAN         | bootfile: iventoy_loader_16000
+- ExternalNet  : different LANs/VLANs
+
+Docker: https://hub.docker.com/r/thedrobe/iventoy-docker
 
 # netboot.xyz
 https://github.com/netbootxyz/netboot.xyz

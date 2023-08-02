@@ -2,12 +2,12 @@
 
 - [Pritable](#pritable)
 - [VSCode](#vscode)
-  - [remote-ssh](#remote-ssh)
-  - [Cloud IDE](#cloud-ide)
+    - [remote-ssh](#remote-ssh)
+    - [Cloud IDE](#cloud-ide)
 - [vi/vim](#vivim)
 - [nano](#nano)
 - [WebStorm](#webstorm)
-  - [Terminal](#terminal)
+    - [Terminal](#terminal)
 
 <!-- /TOC -->
 
@@ -34,6 +34,7 @@ shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
 ```
 "editor.renderWhitespace": "all",
 "git.path": "D:\\sdk\\Git\\bin\\git.exe"
+"markdown.editor.pasteUrlAsFormattedLink.enabled": "never",
 ```
 
 ## remote-ssh

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [CHR 60-day trial](#chr-60-day-trial)
+- [IPv6](#ipv6)
 - [Performance](#performance)
 - [Tasks](#tasks)
     - [Quickset](#quickset)
@@ -32,7 +33,7 @@
     - [API](#api)
         - [Python](#python)
 - [Monitoring](#monitoring)
-    - [Grafana \& Prometheus](#grafana--prometheus)
+    - [Grafana & Prometheus](#grafana--prometheus)
 - [Manage Remote](#manage-remote)
 
 <!-- /TOC -->
@@ -42,6 +43,15 @@ https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
 
     /system license renew 
     level: p1
+
+# IPv6
+Server: only delegate IPv6 prefixes, not addresses: https://wiki.mikrotik.com/wiki/Manual:IPv6/DHCP_Server
+
+    # Client
+    /ipv6 dhcp-client
+    add add-default-route=yes interface=ether5 pool-name=pub-pool-1 request=prefix
+    /ipv6 address
+    add address=... eui-64=yes from-pool=pub-pool-1 interface=ether5
 
 # Performance
 Hardware offloading([Chip](#switch-chip)) > [Fast Forward(CPU)](https://wiki.mikrotik.com/wiki/Manual:Interface/Bridge#Fast_Forward) > [Fast Path](https://wiki.mikrotik.com/wiki/Manual:Fast_Path) > Slow Path

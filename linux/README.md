@@ -38,6 +38,7 @@
 - [Serial](#serial)
     - [client](#client)
 - [Benchmark](#benchmark)
+- [sshd](#sshd)
 - [ssh redirect](#ssh-redirect)
 - [web](#web)
     - [wget](#wget)
@@ -94,6 +95,7 @@
 from existing: https://www.debian.org/releases/stretch/amd64/apds03.html.en
 
 # Download
+
 ## Debian
 https://www.debian.org/CD/live/
 
@@ -107,6 +109,8 @@ http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/curre
 Debug: Console 4 or /var/log/syslog
 
 # Mirrors
+- https://debgen.github.io/
+- https://mirrors.tuna.tsinghua.edu.cn/help/debian/
 
     apt install netselect-apt && netselect-apt -c china --nonfree
     mv /etc/apt/sources.list /etc/apt/sources.list.ori && mv sources.list /etc/apt/
@@ -231,6 +235,7 @@ https://github.com/nicolargo/glances
     pip install glances[action,browser,cloud,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]
 
 # User & Permission
+
 ## add user to group
     sudo adduser foobar www-data
     sudo usermod -a -G ftp tony
@@ -247,6 +252,7 @@ https://github.com/nicolargo/glances
     chown -h myuser:mygroup mysymbolic
 
 # Package Management
+
 ## Redhat
 Free RHEL： https://developers.redhat.com/articles/no-cost-rhel-faq/
 
@@ -379,6 +385,12 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 
 ```
 
+# sshd
+
+mobaxterm - No supported authentication methods
+    
+    PubkeyAcceptedAlgorithms +ssh-rsa # sshd_config # journalctl -u ssh
+
 # ssh redirect
 
     ssh -L 9000:public.com:80   # visit local:9000 -> public.com:80
@@ -387,6 +399,7 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
         -nNT -L ...   # port forwarding only, no shell
 
 # web
+
 ## wget 
 
     wget -O diff_name.zip http://...
@@ -527,6 +540,7 @@ semanage port -a -t mongod_port_t -p tcp 27017
 ```
 
 # Dropbox
+
 ## link account
 `~/.dropbox-dist/dropboxd`  
 dropboxd will create a ~/Dropbox folder and start synchronizing it after this step!  
@@ -534,6 +548,7 @@ unlink: https://www.dropbox.com/account#security
 
 # Ubuntu snap
 run without `root`
+
 ## Proxy
     vi /etc/environment
     systemctl restart snapd

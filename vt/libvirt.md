@@ -188,6 +188,8 @@ Support partion
         <source dev='/dev/disk/by-uuid/abcd1234'/>    
 
 # GRUB
+
+    lspci -knn | grep VGA -A 5
     cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT
         intel_iommu=on kvm-intel.nested=1 modprobe.blacklist=megaraid_sas,ahci,radeon,nouveau,nvidiafb,snd_hda_intel,...
     update-grub

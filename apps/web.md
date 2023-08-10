@@ -2,6 +2,7 @@
 
 - [Tools](#tools)
 - [Search Engines](#search-engines)
+- [Linux](#linux)
 
 <!-- /TOC -->
 
@@ -18,3 +19,6 @@ Docker Cmd Helper | https://html.ferro.pro/docker.html
 - https://bard.google.com/
 - https://you.com/
 - More: https://github.com/edoardottt/awesome-hacker-search-engines
+
+# Linux
+cron explain: https://crontab.guru/

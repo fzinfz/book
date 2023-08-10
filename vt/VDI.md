@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [SR-IOV](#sr-iov)
+- [VirGL](#virgl)
 - [GPU assignment](#gpu-assignment)
   - [Error handling](#error-handling)
   - [virtio-gpu](#virtio-gpu)
@@ -17,10 +19,23 @@
   - [Apache Guacamole](#apache-guacamole)
   - [Hardware - pikvm](#hardware---pikvm)
   - [KVM-VDI(discontinued)](#kvm-vdidiscontinued)
-- [SPICE & QXL guest driver](#spice--qxl-guest-driver)
+- [SPICE \& QXL guest driver](#spice--qxl-guest-driver)
 - [Streaming](#streaming)
 
 <!-- /TOC -->
+
+# SR-IOV
+https://wiki.archlinux.org/title/intel_graphics
+
+    grep '' /sys/kernel/debug/dri/0/gt/uc/*uc_info
+    dmesg | grep guc
+
+https://github.com/strongtz/i915-sriov-dkms  | [PVE](PVE.md#sr-iov)
+- for linux 6.1 ~ linux 6.3: https://github.com/strongtz/i915-sriov-dkms/blob/master/README.md
+
+# VirGL
+- https://pve.proxmox.com/pve-docs/chapter-qm.html#qm_display
+- https://docs.mesa3d.org/drivers/virgl.html
 
 # GPU assignment
 The state of GPU assignment in QEMU/KVM: https://www.linux-kvm.org/images/b/b3/01x09b-VFIOandYou-small.pdf

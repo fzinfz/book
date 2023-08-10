@@ -1,0 +1,43 @@
+<!-- TOC -->
+
+- [Boot](#boot)
+- [apt](#apt)
+- [Disk](#disk)
+- [iso](#iso)
+- [PCI Passthrough](#pci-passthrough)
+  - [GPU](#gpu)
+  - [SR-IOV](#sr-iov)
+
+<!-- /TOC -->
+
+# Boot
+Serial: follow debian
+
+    pve-efiboot-tool kernel list
+    pve-efiboot-tool refresh
+
+# apt
+https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
+
+    deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription # 8.x
+
+# Disk
+
+    dmsetup ls --tree
+    lvs
+
+# iso
+    
+    ls -lh /var/lib/vz/template/iso/
+
+# PCI Passthrough
+- All: https://pve.proxmox.com/wiki/PCI(e)_Passthrough
+
+## GPU
+https://pve.proxmox.com/wiki/PCI_Passthrough
+
+## SR-IOV
+https://github.com/strongtz/i915-sriov-dkms#pve-host-installation-steps-tested-kernel-61-and-62
+
+    apt install -y sysfsutils && cat /etc/sysfs.conf | grep -v ^#
+    cd /sys/devices/pci0000:00/0000:00:02.0 && grep '' sriov*

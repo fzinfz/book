@@ -26,16 +26,16 @@ Chrome/Edge - print .md on Github: https://github.com/jerry1100/github-markdown-
 - Search Settings: Ctrl+, ==> search "XXX.YYY"
 - github to web vscode: add "1s" in URL # https://github.com/conwnet/github1s
 - extensions:
-```
-yzhang.markdown-all-in-one
-shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
-```
+    - yzhang.markdown-all-in-one | https://github.com/yzhang-gh/vscode-markdown
+    - huntertran.auto-markdown-toc | forked from alanwalk/markdown-toc | https://github.com/huntertran/markdown-toc
+    - shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
+
 - settings.json
-```
-"editor.renderWhitespace": "all",
-"git.path": "D:\\sdk\\Git\\bin\\git.exe"
-"markdown.editor.pasteUrlAsFormattedLink.enabled": "never",
-```
+
+        "editor.renderWhitespace": "all",
+        "git.path": "D:\\sdk\\Git\\bin\\git.exe",
+        "markdown.editor.pasteUrlAsFormattedLink.enabled": "never",
+        "editor.detectIndentation": false,
 
 ## remote-ssh
 https://code.visualstudio.com/docs/remote/ssh  

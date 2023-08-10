@@ -326,8 +326,8 @@ DM Disk Editor and Data Recovery  https://dmde.com/  (view for viewing)
     
 https://technet.microsoft.com/en-us/library/jj612867.aspx
 
-    slmgr /SKMS 192.168.88.72
     slmgr /ipk {GVLK}
+    slmgr /SKMS 192.168.88.250    
     slmgr /ATO
     slmgr /dli
     slmgr /upk # back to trial

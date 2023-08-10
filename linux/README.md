@@ -325,6 +325,8 @@ apt list --installed
 rm -r /var/lib/apt/lists/*
 ```
 
+    echo 'Acquire::http::Proxy "http://192.168.88.25:7890"; ' > /etc/apt/apt.conf.d/proxy
+
 ## ssh server
 
     deb http://.../debian/ buster main contrib non-free

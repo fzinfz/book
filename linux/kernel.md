@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [Versions](#versions)
 - [Check](#check)
 - [delete](#delete)
 - [Commit logs](#commit-logs)
@@ -23,7 +24,9 @@
 <!-- /TOC -->
 
 # Versions
-https://kernelnewbies.org/LinuxVersions
+- https://kernelnewbies.org/LinuxVersions | https://kernelnewbies.org/Linux_5.15 (replace version#) 
+- https://www.kernel.org/category/releases.html
+- [My Notes](#kernel-versions)
 
 # Check
 
@@ -91,7 +94,7 @@ the image may be a cpio archive (optionally compressed)
 Tiny Core Linux and Puppy Linux can run entirely from initrd.
  
     /etc/initramfs-tools/modules
-    update-initramfs -u
+    update-initramfs -u -k all
     update-initramfs -d -k 4.13.0-16-generic
 
 ### dracut
@@ -117,11 +120,10 @@ https://github.com/iovisor/bcc/tree/master/tools
 ![](http://www.brendangregg.com/Perf/bcc_tracing_tools.png)
 
 # Kernel Versions
-https://kernelnewbies.org/LinuxChanges  
-https://www.kernel.org/category/releases.html  
-Check release note: https://kernelnewbies.org/Linux_5.15 (replace version#)
 
 `+` for Longterm
+
+    6.1 + 2022-12-11 -> Dec, 2026
 
     5.19 2022-7-31
         NFSv4 Courteous Server

@@ -4,6 +4,12 @@ site_url: https://notes.ferro.pro/
 repo_url: https://github.com/fzinfz/book
 edit_uri: blob/master/
 
+exclude_docs: |
+    .*
+    /SUMMARY.md
+    *.sh
+    *.txt
+
 nav:
     - Intro: README.md
     - Linux: linux/
@@ -35,11 +41,6 @@ plugins:
       minify_css: true
       htmlmin_opts:
           remove_comments: true
-  - exclude:
-      glob:
-        - SUMMARY.md
-      regex:
-        - '.*\.(sh|txt)$'
 
 # https://oprypin.github.io/mkdocs-literate-nav/reference.html
   - literate-nav:

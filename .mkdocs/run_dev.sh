@@ -1,4 +1,5 @@
-mkdocs serve -a 0.0.0.0:83
+./pre.sh
+mkdocs serve --clean -a 0.0.0.0:83
 
 cat <<EOF
 TODO

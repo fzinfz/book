@@ -1,0 +1,2 @@
+./pre.sh
+mkdocs build

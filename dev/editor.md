@@ -29,6 +29,7 @@ Chrome/Edge - print .md on Github: https://github.com/jerry1100/github-markdown-
     - yzhang.markdown-all-in-one | https://github.com/yzhang-gh/vscode-markdown
     - huntertran.auto-markdown-toc | forked from alanwalk/markdown-toc | https://github.com/huntertran/markdown-toc
     - shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
+    - mhutchie.git-graph
 
 - settings.json
 

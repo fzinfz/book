@@ -30,6 +30,8 @@ https://wiki.archlinux.org/title/intel_graphics
     grep '' /sys/kernel/debug/dri/0/gt/uc/*uc_info
     dmesg | grep guc
 
+Kubernetes cluster : https://github.com/intel/kubevirt-gfx-sriov
+
 https://github.com/strongtz/i915-sriov-dkms  | [PVE](PVE.md#sr-iov)
 - for linux 6.1 ~ linux 6.3: https://github.com/strongtz/i915-sriov-dkms/blob/master/README.md
 

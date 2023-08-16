@@ -30,12 +30,24 @@ Android 10 (API level 29)- | https://developer.android.com/tools/adb#wireless | 
     adb devices
     adb -s 192.168.88.39:42745 ls /  # `-s` if more than one device/emulator 
 
+    global options:
+    -e                       use TCP/IP device (error if multiple TCP/IP devices available)
+    -s SERIAL                use device with given serial (overrides $ANDROID_SERIAL)
+    -t ID                    use device with given transport id
+    
 ## Data Transfer
 
-    adb ls /sdcard
+    adb shell ls -hs /sdcard
+
+    # Download
+    adb pull -a /file_on_phone # -a: preserve file timestamp and mode
+    adb shell ls /sdcard/DCIM/Camera/*.mp4 | %{ adb pull -a $_} # powershell
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8    # powershell pipe中文乱码，fix `echo`, and some `pull`
+
+    # Upload
     adb push foo.zip /sdcard/Download/        # file
     adb push . /sdcard/Download/NewFolder     # folder
-    adb pull -a /file_on_phone # -a: preserve file timestamp and mode
+
 
 ## Debug
 https://developer.android.com/studio/command-line/dumpsys.html#meminfo

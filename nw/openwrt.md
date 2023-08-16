@@ -172,5 +172,6 @@ https://www.adrian.idv.hk/2022-11-27-80211r/
     - S0KH and S1KH, S for supplicant: station are the PMK-S0 key holder and PMK-S1 key holder
 
 # Controller - OpenWISP
-- https://openwisp.org/whatis.html
-- https://openwisp.io/docs/user/configure-device.html#install-openwisp-config
+- Install: https://github.com/openwisp/openwisp-controller#deploy-it-in-production
+- Features: https://openwisp.org/whatis.html
+- Config: https://openwisp.io/docs/user/configure-device.html#install-openwisp-config

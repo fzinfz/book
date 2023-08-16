@@ -5,13 +5,14 @@
     - [Libraries](#libraries)
     - [transform feedback](#transform-feedback)
 - [OpenSubdiv](#opensubdiv)
-- [Open Machine Learning project (OpenML)](#open-machine-learning-project-openml)
-- [OpenGL Shading Language (GLSL)](#opengl-shading-language-glsl)
+- [Open Machine Learning project OpenML](#open-machine-learning-project-openml)
+- [OpenGL Shading Language GLSL](#opengl-shading-language-glsl)
 - [melt](#melt)
 - [movit](#movit)
 - [Kdenlive](#kdenlive)
 - [Premiere](#premiere)
 - [CLI](#cli)
+    - [ImageMagick](#imagemagick)
 - [ML](#ml)
     - [Stable Diffusion](#stable-diffusion)
         - [web UI](#web-ui)
@@ -31,7 +32,7 @@ https://github.com/Polytonic/Glitter
 - vertex shader： program on GPU, projects vertices with a 3D world position onto your 2D screen! passes attributes like color and texture coordinates further down the pipeline.
 - geometry shader, optional
 
-## Libraries
+    ## Libraries
     SFML： cross-platform C++
     SDL：  cross-platform C
     GLFW： C，only: window and context creation and input management
@@ -73,6 +74,13 @@ Link video and audio clips: Shift-click -> `Linked Selection` Button
 
 # CLI
 cut by CC text: https://github.com/mli/autocut
+
+## ImageMagick
+https://imagemagick.org/script/command-line-processing.php
+
+    magick image.jpg image.png
+    convert -size 32x32 xc:transparent transparent.png
+    convert -size 980x1440 xc:black black.png
 
 # ML
 ## Stable Diffusion 

@@ -389,7 +389,7 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
 
 # sshd
 
-mobaxterm - No supported authentication methods
+mobaxterm login failed: No supported authentication methods
     
     PubkeyAcceptedAlgorithms +ssh-rsa # sshd_config # journalctl -u ssh
 

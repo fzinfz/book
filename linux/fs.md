@@ -5,24 +5,19 @@
 - [Convert between MBR and GPT](#convert-between-mbr-and-gpt)
 - [mkpart, format](#mkpart-format)
 - [mount/umount](#mountumount)
-  - [fstab](#fstab)
+    - [fstab](#fstab)
 - [LVM](#lvm)
-  - [Check lv filesystem](#check-lv-filesystem)
-  - [Rename](#rename)
-  - [Create](#create)
-  - [Activate vg](#activate-vg)
-  - [Add disk to vg](#add-disk-to-vg)
-  - [Remove disk from vg](#remove-disk-from-vg)
-  - [lv operations](#lv-operations)
-  - [Resize fs](#resize-fs)
+    - [vg operations](#vg-operations)
+    - [lv operations](#lv-operations)
+    - [Resize fs](#resize-fs)
 - [btrfs](#btrfs)
-  - [snapshot](#snapshot)
+    - [snapshot](#snapshot)
 - [f2fs](#f2fs)
 - [NTFS](#ntfs)
 - [Swap](#swap)
 - [Benchmark](#benchmark)
-  - [dd](#dd)
-  - [fio](#fio)
+    - [dd](#dd)
+    - [fio](#fio)
 - [SMART](#smart)
 - [SAMBA](#samba)
 
@@ -133,28 +128,26 @@ Loss NAS mount may cause hang!
                 Logical volume	/dev/wd500-vg/data
                 Logical extents	89600 to 102399
 
-## Check lv filesystem
-    file -s /dev/vg1/lv1
+create vg+lv & format & mount:
 
-## Rename
-    vgrename $vg_uuid new-vg-name
-
-## Create
     vgcreate vg-name /dev/sdc3
     lvcreate -L 80G wd500-vg -n data
     mkfs.btrfs /dev/mapper/wd500--vg-data
     mount /dev/mapper/wd500--vg-data /data2
     echo $(cat /proc/mounts | tail -n 1) >> /etc/fstab ; ls /etc/fstab ;
 
-## Activate vg
-    vgchange -ay
+## vg operations
 
-## Add disk to vg
+    vgrename $vg_uuid new-vg-name
+   
+    vgchange -ay # Activate vg
+
+Add disk to vg
+
     pvcreate /dev/sdb   # delete all partitions first
     vgextend ubuntu-vg /dev/sdb
 
-## Remove disk from vg
-https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/disk_remove_ex
+Remove disk from vg: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/disk_remove_ex
 
     pvmove /dev/sdb1
     vgreduce myvg /dev/sdb1
@@ -214,6 +207,7 @@ https://wiki.archlinux.org/index.php/NTFS-3G
     echo /dev/VG/LV swap swap defaults 0 0 >> /etc/fstab
 
 # Benchmark
+
 ## dd
     
         dd if=/dev/zero of=./test_iops bs=4k count=10000 oflag=direct

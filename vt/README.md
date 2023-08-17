@@ -6,11 +6,11 @@
     - [webvirtcloud](#webvirtcloud)
 - [oVirt](#ovirt)
 - [Compare](#compare)
-- [OVMF (Open Virtual Machine Firmware)](#ovmf-open-virtual-machine-firmware)
+- [OVMF Open Virtual Machine Firmware](#ovmf-open-virtual-machine-firmware)
 - [Xen vs KVM](#xen-vs-kvm)
 - [Xen](#xen)
 - [VSphere / ESXi](#vsphere--esxi)
-    - [Raw disk mapping (RDM)](#raw-disk-mapping-rdm)
+    - [Raw disk mapping RDM](#raw-disk-mapping-rdm)
     - [Config](#config)
         - [Backup](#backup)
         - [Restore](#restore)
@@ -24,7 +24,7 @@
 <!-- /TOC -->
 
 # IOMMU
-check [VDI](./vdi) for GPU passthrough.
+check [VDI](VDI.md) for GPU passthrough.
 
 https://www.kernel.org/doc/Documentation/Intel-IOMMU.txt  
 https://pve.proxmox.com/wiki/Pci_passthrough  

@@ -6,9 +6,10 @@ edit_uri: blob/master/
 
 exclude_docs: |
     .*
-    /SUMMARY.md
-    *.sh
+    *.rst
     *.txt
+    *.sh
+    /SUMMARY.md
 
 nav:
     - Intro: README.md
@@ -25,6 +26,12 @@ nav:
 theme:
     name: mkdocs
     custom_dir: custom_theme/
+
+validation:
+  nav:
+    absolute_links: ignore
+  links:
+    absolute_links: ignore
 
 markdown_extensions:
   - smarty

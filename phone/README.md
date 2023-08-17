@@ -4,12 +4,13 @@
 - [IOS](#ios)
     - [Automation](#automation)
     - [Bar/QR code to REST API](#barqr-code-to-rest-api)
-- [Google Authenticator](#google-authenticator)
+- [Apps](#apps)
+    - [Google Authenticator](#google-authenticator)
 
 <!-- /TOC -->
 
 # ANDROID
-[./android.md](./android/)
+[./android.md](./android.md)
 
 # IOS
 ## Automation

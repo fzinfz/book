@@ -58,7 +58,7 @@ https://www.influxdata.com/blog/getting-started-with-influxdb-2-0-scraping-metri
 
 ## Grafana Promtail
 https://grafana.com/docs/loki/latest/clients/promtail/  
-[loki](./db/loki)
+[loki](/db/loki.md)
 
 ## Zabbix - C/PHP/JAVA
 https://github.com/zabbix/zabbix

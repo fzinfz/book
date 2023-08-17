@@ -19,26 +19,26 @@
     - [Manually install](#manually-install)
     - [Docker](#docker)
 - [Controller - Python - Ryu](#controller---python---ryu)
-    - [Docker](#docker-1)
+    - [Docker](#docker)
     - [Writing Your Ryu Application](#writing-your-ryu-application)
     - [Debug](#debug)
 - [Controller - OCaml - Frenetic](#controller---ocaml---frenetic)
     - [Source build](#source-build)
     - [Manual](#manual)
-    - [Install](#install-1)
+    - [Install](#install)
 - [Controller - C - OVN](#controller---c---ovn)
 - [Controller - C++ - OpenContrail by Juniper](#controller---c---opencontrail-by-juniper)
     - [Kubernetes](#kubernetes)
 - [Controller - JAVA - ODL](#controller---java---odl)
     - [Releases](#releases)
     - [Ports](#ports)
-    - [Docker](#docker-2)
+    - [Docker](#docker)
     - [Init](#init)
 - [Controller - JAVA - ONOS](#controller---java---onos)
-    - [Ports](#ports-1)
-    - [Docker](#docker-3)
+    - [Ports](#ports)
+    - [Docker](#docker)
         - [Cluster](#cluster)
-    - [Init](#init-1)
+    - [Init](#init)
     - [WebUI](#webui)
     - [Running as a service](#running-as-a-service)
     - [Forming a cluster](#forming-a-cluster)
@@ -48,7 +48,7 @@
 - [Controller - Ruby - Trema](#controller---ruby---trema)
 - [Controller - Powershell - Microsoft SDN](#controller---powershell---microsoft-sdn)
 - [Routing framework - Kulfi](#routing-framework---kulfi)
-- [Controller - POX(inactive) - python](#controller---poxinactive---python)
+- [Controller - POX - python](#controller---pox---python)
 - [Controller - More](#controller---more)
 - [Open Security Controller - JAVA](#open-security-controller---java)
 - [C++ simulation library and framework - OMNeT++](#c-simulation-library-and-framework---omnet)
@@ -125,7 +125,7 @@ https://github.com/mininet/mininet/wiki/FAQ#how-can-i-control-my-mininet-hosts-r
 https://github.com/mininet/mininet/wiki/FAQ#how-can-i-add-a-rest-interface-to-mininet
 
 # Switch - C - Open vSwitch - OpenFlow 1.0+
-[OVS](./ovs)
+[OVS](ovs.md)
 
 # Switch - C - Lagopus - OpenFlow 1.3
 https://github.com/lagopus/lagopus  
@@ -366,8 +366,8 @@ https://github.com/Microsoft/SDN
 # Routing framework - Kulfi
 https://github.com/merlin-lang/kulfi  
 
-# Controller - POX(inactive) - python
-http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openflow-lets-get-started
+# Controller - POX - python
+inactive: http://en.community.dell.com/techcenter/networking/w/wiki/3820.openvswitch-openflow-lets-get-started
 
 # Controller - More
 http://yuba.stanford.edu/~casado/of-sw.html  

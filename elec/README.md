@@ -1,18 +1,22 @@
 <!-- TOC -->
 
-- [symbol](#symbol)
+- [Package](#package)
+- [Symbol](#symbol)
 - [MOSFET](#mosfet)
 - [Buck & Boost](#buck--boost)
     - [Buck/step-down regulators](#buckstep-down-regulators)
         - [Synchronous Rectification](#synchronous-rectification)
     - [Boost/step-up regulators](#booststep-up-regulators)
     - [forward vs flybac](#forward-vs-flybac)
-- [示波器](#示波器)
+- [示波器](#%E7%A4%BA%E6%B3%A2%E5%99%A8)
 - [Simulation Program](#simulation-program)
 
 <!-- /TOC -->
 
-# symbol
+# Package
+https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types#Transistor,_diode,_small-pin-count_IC_packages
+
+# Symbol
 https://en.wikipedia.org/wiki/Electronic_symbol
 
 # MOSFET
@@ -20,6 +24,8 @@ MOS管控制电源通断以及缓启动：https://www.bilibili.com/video/BV1fU4y
 
 # Buck & Boost
 by Eugene Khutoryansky: https://www.youtube.com/watch?v=vwJYIorz_Aw
+
+More: [boost.md](boost.md) | [bulk.md](bulk.md)
 
 ## Buck/step-down regulators
 https://learnabout-electronics.org/PSU/psu31.php 

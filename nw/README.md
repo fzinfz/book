@@ -57,6 +57,7 @@ Hybrid Wireless Mesh Protocol (HWMP) defined in IEEE 802.11s, is a basic routing
 ## Roaming - 802.11k/r/v
 https://support.apple.com/en-us/HT202628
 - 802.11r - Fast Basic Service Set Transition (FT) to authenticate PSK/802.1X more quickly
+
 * 802.11k - search APs; creating an optimized list of channels
 * 802.11v - exchange network topology
     - BSS transition management + Disassociation Imminent => influence client roaming behavior by providing it the load information of nearby access points.

@@ -23,12 +23,17 @@ nav:
     - Hardware: hw/
     - Elec: elec/
 
+exclude_docs: |
+    /dev/ocaml.md
+    /dev/j2ee.md
+
 theme:
     name: mkdocs
     custom_dir: custom_theme/
 
 validation:
   nav:
+    not_found: ignore
     absolute_links: ignore
   links:
     absolute_links: ignore

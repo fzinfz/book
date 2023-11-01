@@ -3,23 +3,23 @@
 - [SR-IOV](#sr-iov)
 - [VirGL](#virgl)
 - [GPU assignment](#gpu-assignment)
-  - [Error handling](#error-handling)
-  - [virtio-gpu](#virtio-gpu)
+    - [Error handling](#error-handling)
+    - [virtio-gpu](#virtio-gpu)
 - [Hardware](#hardware)
-  - [NVIDIA Certified](#nvidia-certified)
-    - [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
-  - [AMD](#amd)
-  - [Intel® Graphics Virtualization Technology](#intel-graphics-virtualization-technology)
-    - [Optional Firmware](#optional-firmware)
+    - [NVIDIA Certified](#nvidia-certified)
+        - [VDI Solutions - Nvidia](#vdi-solutions---nvidia)
+    - [AMD](#amd)
+    - [Intel® Graphics Virtualization Technology](#intel%C2%AE-graphics-virtualization-technology)
+        - [Optional Firmware](#optional-firmware)
 - [Citrix](#citrix)
-  - [XenServer](#xenserver)
-  - [XenClient(IDV, discontinued)](#xenclientidv-discontinued)
+    - [XenServer](#xenserver)
+    - [XenClientIDV, discontinued](#xenclientidv-discontinued)
 - [Remote Desktop](#remote-desktop)
-  - [OpenStack](#openstack)
-  - [Apache Guacamole](#apache-guacamole)
-  - [Hardware - pikvm](#hardware---pikvm)
-  - [KVM-VDI(discontinued)](#kvm-vdidiscontinued)
-- [SPICE \& QXL guest driver](#spice--qxl-guest-driver)
+    - [OpenStack](#openstack)
+    - [Apache Guacamole](#apache-guacamole)
+    - [Hardware - pikvm](#hardware---pikvm)
+    - [KVM-VDIdiscontinued](#kvm-vdidiscontinued)
+- [SPICE & QXL guest driver](#spice--qxl-guest-driver)
 - [Streaming](#streaming)
 
 <!-- /TOC -->
@@ -31,6 +31,8 @@ https://wiki.archlinux.org/title/intel_graphics
     dmesg | grep guc
 
 Kubernetes cluster : https://github.com/intel/kubevirt-gfx-sriov
+
+Ubuntu 22.04 LTS host: https://www.intel.com/content/www/us/en/developer/articles/reference-implementation/graphics-sr-iov-enablement-toolkit.html
 
 https://github.com/strongtz/i915-sriov-dkms  | [PVE](PVE.md#sr-iov)
 - for linux 6.1 ~ linux 6.3: https://github.com/strongtz/i915-sriov-dkms/blob/master/README.md

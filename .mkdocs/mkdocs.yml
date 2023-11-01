@@ -63,3 +63,4 @@ plugins:
   - redirects:
       redirect_maps:
           'VT/README.md': 'vt/README.md'
+          'web/cf.md': 'cloud/cf.md'

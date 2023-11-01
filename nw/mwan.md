@@ -10,8 +10,7 @@
 
 # OS
 - OpenWRT: mwan3
-- [OpenMPTCProuter](
-- [Mikrotik](/nw/mikrotik/)
+- [Mikrotik](./mikrotik.md)
 
 ## OpenMPTCProuter
 - OpenWRT+MPTCP+Shadowsocks+Glorytun(multipath UDP tunnel): https://www.openmptcprouter.com

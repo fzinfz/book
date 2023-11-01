@@ -2,13 +2,12 @@
 
 - [Package](#package)
 - [Symbol](#symbol)
-- [MOSFET](#mosfet)
 - [Buck & Boost](#buck--boost)
     - [Buck/step-down regulators](#buckstep-down-regulators)
         - [Synchronous Rectification](#synchronous-rectification)
     - [Boost/step-up regulators](#booststep-up-regulators)
     - [forward vs flybac](#forward-vs-flybac)
-- [示波器](#%E7%A4%BA%E6%B3%A2%E5%99%A8)
+- [Oscilloscope](#oscilloscope)
 - [Simulation Program](#simulation-program)
 
 <!-- /TOC -->
@@ -18,9 +17,6 @@ https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types#Transis
 
 # Symbol
 https://en.wikipedia.org/wiki/Electronic_symbol
-
-# MOSFET
-MOS管控制电源通断以及缓启动：https://www.bilibili.com/video/BV1fU4y1J7xi  
 
 # Buck & Boost
 by Eugene Khutoryansky: https://www.youtube.com/watch?v=vwJYIorz_Aw
@@ -48,8 +44,8 @@ https://www.eet-china.com/mp/a12732.html
 
 反激式同步整流控制技术：https://www.bilibili.com/video/BV1bJ411W7Hi  
 
-# 示波器
-测量市电 - AB伪差分：[Siglent](https://youtu.be/kIir80Jnlyo?t=296) | [Tek](https://www.bilibili.com/video/BV1JU4y1K7cy?t=421.1)  
+# Oscilloscope
+示波器测量市电 - AB伪差分：[Siglent](https://youtu.be/kIir80Jnlyo?t=296) | [Tek](https://www.bilibili.com/video/BV1JU4y1K7cy?t=421.1)  
 纹波：[Tek](https://www.bilibili.com/read/cv14145415) | [Rigol](https://www.bilibili.com/video/BV1my4y167ao?t=77.1)  
 Micsig/汽修： https://space.bilibili.com/476743057/channel/seriesdetail?sid=862170  
 

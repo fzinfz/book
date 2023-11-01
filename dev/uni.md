@@ -5,6 +5,9 @@
 
 <!-- /TOC -->
 
+# Quasar
+https://quasar.dev/introduction-to-quasar#what-is-quasar
+
 # Tauri
 https://github.com/tauri-apps/tauri
 

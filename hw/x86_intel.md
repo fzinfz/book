@@ -1,10 +1,18 @@
+<!-- TOC -->
+
+- [CPU](#cpu)
 - [CPU and Chipset](#cpu-and-chipset)
 - [Chipset](#chipset)
-    - [12th Gen](#12th-gen)
-    - [11th Gen](#11th-gen)
+    - [Gen 12](#gen-12)
+    - [Gen 11](#gen-11)
 - [NUC](#nuc)
     - [NUC11](#nuc11)
+- [Notebook](#notebook)
+    - [Thinkpad X](#thinkpad-x)
 
+<!-- /TOC -->
+
+# CPU
 
 nm|CPU |Cores|Base|Turbo|TDP|Single Thread|Average Mark|
 ---|---|---|---|---|---|---|---|
@@ -37,7 +45,7 @@ nm|CPU |Cores|Base|Turbo|TDP|Single Thread|Average Mark|
 
 # Chipset
 
-## 12th Gen
+## Gen 12
 
 | Feature | Z690 | H670 | B660 | H610 |
 |---|---|---|---|---|
@@ -51,7 +59,7 @@ nm|CPU |Cores|Base|Turbo|TDP|Single Thread|Average Mark|
 | Wi-Fi 6E support | Yes | Yes | Yes | No |
 | LAN port | 2.5 Gbps | 2.5 Gbps | 1 Gbps | 1 Gbps |
 
-## 11th Gen
+## Gen 11
 
 | Feature | Z590 | H570 | B560 | H510 |
 |---|---|---|---|---|
@@ -68,3 +76,17 @@ nm|CPU |Cores|Base|Turbo|TDP|Single Thread|Average Mark|
 # NUC
 ## NUC11
 Multi Display: https://www.intel.com/content/www/us/en/support/articles/000058069/intel-nuc.html
+
+# Notebook
+## Thinkpad X
+https://en.wikipedia.org/wiki/ThinkPad_X_series
+
+Year | Model | Intel
+---|---|---
+2018 | X280 | 7/8
+2019 | X390 | 8/10
+2020 | X13 G1 | 10
+2023 | X13 G4 | 13
+
+
+

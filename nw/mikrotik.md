@@ -194,7 +194,7 @@ Both WAN: https://help.mikrotik.com/docs/display/ROS/WireGuard
 ## PPP BCP
 https://wiki.mikrotik.com/wiki/Manual:BCP_bridging_(PPP_tunnel_bridging)
 
-# Multi WAN
+# mwan
 Bandwidth-based load-balancing with failover: https://mum.mikrotik.com/presentations/US12/tomas.pdf  
 
   Bonding: - You need to control of both ends of the link

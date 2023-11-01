@@ -10,19 +10,20 @@
 - [Tools for Windows](#tools-for-windows)
 - [Tools for All platforms](#tools-for-all-platforms)
 - [Router OSes](#router-oses)
+- [NAT](#nat)
 - [NAT Hairpin + DDNS](#nat-hairpin--ddns)
     - [Mikrotik](#mikrotik)
 - [OSPF](#ospf)
-    - [Mikrotik](#mikrotik-1)
+    - [Mikrotik](#mikrotik)
 - [MPLS](#mpls)
-    - [Mikrotik](#mikrotik-2)
+    - [Mikrotik](#mikrotik)
 - [VPLS](#vpls)
-    - [Mikrotik](#mikrotik-3)
+    - [Mikrotik](#mikrotik)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
-- [MAC addresss \<-\> Vender](#mac-addresss---vender)
+- [MAC addresss <-> Vender](#mac-addresss---vender)
 - [Tuning](#tuning)
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
@@ -43,6 +44,9 @@
 - [Private](#private)
 - [IPV6](#ipv6)
 - [Guide](#guide)
+- [Monitoring](#monitoring)
+    - [mikrotik](#mikrotik)
+    - [datadoghq](#datadoghq)
 
 <!-- /TOC -->
 
@@ -63,6 +67,8 @@ https://support.apple.com/en-us/HT202628
     - BSS transition management + Disassociation Imminent => influence client roaming behavior by providing it the load information of nearby access points.
     - Directed Multicast Service (DMS): optimizes multicast
     - BSS Max Idle Service: how long to remain associated when no traffic
+
+[openwrt.md](./openwrt.md#mode-ap---80211r)
 
 # Open Source Software for Routing 
 https://conference.apnic.net/__data/assets/pdf_file/0020/50681/osr_apnic34_1346044930.pdf
@@ -101,6 +107,16 @@ https://wiki.vyos.net/wiki/User_Guide
 https://mikrotik.com/download  
 https://www.clearos.com/clearfoundation/software/clearos-7-community      
 https://docs.cumulusnetworks.com/display/ROH/Configuring+Cumulus+Quagga
+
+# NAT
+
+https://www.quora.com/What-is-a-full-cone-NAT
+
+https://openwrt.org/docs/guide-user/network/integrating-openwrt-introduction
+
+https://openwrt.org/docs/guide-user/network/switch_router_gateway_and_nat
+
+https://oldwiki.archive.openwrt.org/doc/howto/port.forwarding
 
 # NAT Hairpin + DDNS
 ## Mikrotik
@@ -294,3 +310,10 @@ https://tunnelbroker.net/
 
 # Guide
 https://e.huawei.com/en/eblog/enterprise-networking/wifi6/What-the-difference-between-corporate-Wi-Fi-and-home-Wi-Fi
+
+# Monitoring
+## mikrotik
+dude server / v6 / officially deprecated : https://mikrotik.com/thedude
+
+## datadoghq
+Network Device Monitoring | $7+/m : https://www.datadoghq.com/pricing/?product=network-monitoring#network-monitoring

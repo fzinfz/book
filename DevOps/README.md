@@ -215,6 +215,10 @@ Fabric (1.x and earlier) was a hybrid project implementing two feature sets: tas
 https://github.com/pyinvoke/invoke  
 When planning Fabric 2.x, having the “local” feature set as a standalone library made sense, and it seemed plausible to design the SSH component as a separate layer above. Thus, Invoke was created to focus exclusively on local and abstract concerns, leaving Fabric 2.x concerned only with servers and network commands.
 
+## Terraform
+- https://github.com/hashicorp/terraform
+- Self Managed, always free: https://developer.hashicorp.com/terraform/downloads
+
 ## Ansible - Python
 https://github.com/fzinfz/ansible
 

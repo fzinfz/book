@@ -33,9 +33,9 @@ http://pkg.entware.net/binaries/mipsel/
 - Pure: http://openwrt-dist.sourceforge.net/   
 * for CN: https://github.com/immortalwrt/immortalwrt
 - Lean/LEDE/iStoreOS: https://firmware.koolshare.cn/LEDE_X64_fw867/ 
+- 200+ : https://openwrt.ai/ | https://github.com/kiddin9/OpenWrt_x86-r2s-r4s-r5s-N1
 * eSir: https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr
 * Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
-- Docker/Custom 200+ devices: https://github.com/kiddin9/OpenWrt_x86-r2s-r4s-r5s-N1 | https://supes.top/
 - Raspberry Pi & NanoPi R2S/R4S & G-Dock & x86 OpenWrt: https://github.com/SuLingGG/OpenWrt-Rpi
 
 # Breed
@@ -43,21 +43,11 @@ breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
 
 # Mi
 - AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese)
-    - unlock: 
-        - en: https://github.com/YangWang92/AX6S-unlock
-        - zh: https://supes.top/%e7%ba%a2%e7%b1%b3ax6s-%e8%a7%a3%e9%94%81ssh-%e5%88%b7openwrt%e6%95%99%e7%a8%8b/
-        - non-open nw driver: https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=8187405
     - https://openwrt.org/toh/xiaomi/ax3200  
     - https://github.com/mikeeq/xiaomi_ax3200_openwrt
 - AX6 : https://github.com/InfinityTL/OpenWrt-Redmi-AX6  
 - AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
 - RM2100: http://openwrt.ink:88/archives/s-breed
-
-|Model|SoC|CPU MHz|Flash MB|RAM MB|
-|---|---|---|---|---|
-|AX3200 / AX6S|MediaTek MT7622B|1350|128NAND|256|
-|RM AX6|Qualcomm IPQ8071A |4C A53 1.4GHz|128 MiB|512|
-|RM AX3000|Qualcomm IPQ5000|2C A53 1.,0GHz|128 MiB|256|
 
 # UBNT
 ## UNMS

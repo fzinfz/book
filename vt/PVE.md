@@ -27,6 +27,18 @@ https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
     dmsetup ls --tree
     lvs
 
+    ln -s /var/lib/vz/template/iso/ iso
+
+https://pve.proxmox.com/wiki/Storage
+- file + block : zfs
+
+## raw disk map
+https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM)
+
+    find /dev/disk/by-id/ -type l|xargs -I{} ls -l {}|grep -v -E '[0-9]$' |sort -k11|cut -d' ' -f9,10,11,12
+    qm set 100 -scsi2 /dev/disk/by-id/ata-... # add
+    qm unlink 100 --idlist scsi2
+
 # iso
     
     ls -lh /var/lib/vz/template/iso/
@@ -48,5 +60,11 @@ https://github.com/strongtz/i915-sriov-dkms
 
 Windows Guest: All Functions + Advanced(click all)
 
+# NUMA
+https://pve.proxmox.com/wiki/NUMA
+
+    numactl --hardware # both host & vm
+
 # Scripts
 https://tteck.github.io/Proxmox/
+

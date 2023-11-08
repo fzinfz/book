@@ -196,6 +196,16 @@ https://openwrt.org/docs/techref/swconfig
     swconfig list
     swconfig dev switch0 show
 
+    VLAN 1:
+            vid: 1
+            ports: 0 1 6  # 6 = untagged CPU
+    VLAN 10:  # luci： `/network/vlan`
+            vid: 10
+            ports: 2 3 6t # tag CPU => create `eth0.X`(eth0=switch0) under `/network/iface_add`
+
+https://openwrt.org/docs/guide-user/network/vlan/switch_configuration#vlan_explained_with_default_scenario_of_most_openwrt_routers
+- Each port `untagged` to exactly one VLAN ID
+
 ## Bridged AP Setup
 
 Web URI | Task

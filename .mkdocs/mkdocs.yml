@@ -4,12 +4,15 @@ site_url: https://notes.ferro.pro/
 repo_url: https://github.com/fzinfz/book
 edit_uri: blob/master/
 
-exclude_docs: |
+exclude_docs: |    
     .*
     *.rst
     *.txt
     *.sh
     /SUMMARY.md
+    /.mkdocs/
+    /dev/ocaml.md
+    /dev/j2ee.md
 
 nav:
     - Intro: README.md
@@ -22,10 +25,6 @@ nav:
     - Microsoft: ms/
     - Hardware: hw/
     - Elec: elec/
-
-exclude_docs: |
-    /dev/ocaml.md
-    /dev/j2ee.md
 
 theme:
     name: mkdocs

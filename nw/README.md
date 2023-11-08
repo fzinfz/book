@@ -216,8 +216,8 @@ http://netdevconf.org/1.2/slides/oct5/04_Making_Linux_TCP_Fast_netdev_1.2_final.
 https://github.com/inconshreveable/ngrok
 https://github.com/lovedboy/gortcp
 
-https://github.com/ehang-io/nps  
-https://ehang-io.github.io/nps/#/example?id=p2p%e6%9c%8d%e5%8a%a1  
+last update @ 2021 Oct : https://github.com/ehang-io/nps
+- https://ehang-io.github.io/nps/#/example?id=p2p%e6%9c%8d%e5%8a%a1  
 
     ./npc nat # p2p will not work if server/client both Symmetric Nat
 
@@ -313,7 +313,7 @@ https://e.huawei.com/en/eblog/enterprise-networking/wifi6/What-the-difference-be
 
 # Monitoring
 ## mikrotik
-dude server / v6 / officially deprecated : https://mikrotik.com/thedude
+dude server : https://mikrotik.com/thedude
 
 ## datadoghq
 Network Device Monitoring | $7+/m : https://www.datadoghq.com/pricing/?product=network-monitoring#network-monitoring

@@ -146,3 +146,6 @@ job queueing, batching and inter-Service (Worker to Worker) communication.
 [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/) | $5 / month | separate from any other Cloudflare plan (Free, Professional, Business)
 Images | $5 / month | Store, resize, optimize and serve images at scale
 Stream | $5 / month | Live and on-demand video streaming in minutes
+
+# Community
+domain: https://community.cloudflare.com/c/website-application-performance/88

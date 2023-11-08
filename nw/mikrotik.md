@@ -5,13 +5,13 @@
 - [Performance](#performance)
 - [Tasks](#tasks)
     - [Quickset](#quickset)
+        - [CPE](#cpe)
+    - [Wireless](#wireless)
     - [Reset](#reset)
     - [PCQ](#pcq)
     - [hotspot](#hotspot)
 - [Routing](#routing)
     - [Packet Flow](#packet-flow)
-- [Wireless](#wireless)
-    - [Modes](#modes)
 - [Models](#models)
 - [Switch Chip](#switch-chip)
     - [Switch VLAN](#switch-vlan)
@@ -22,7 +22,7 @@
     - [OpenVPN](#openvpn)
     - [WireGuard](#wireguard)
     - [PPP BCP](#ppp-bcp)
-- [Multi WAN](#multi-wan)
+- [mwan](#mwan)
     - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
     - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [WAN + ppp](#wan--ppp)
@@ -37,6 +37,7 @@
 - [Manage Remote](#manage-remote)
 
 <!-- /TOC -->
+
 # CHR 60-day trial
 https://mikrotik.com/client/chr  
 https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
@@ -78,6 +79,7 @@ Hardware offloading([Chip](#switch-chip)) > [Fast Forward(CPU)](https://wiki.mik
 - create/dump/unpack .npk: https://github.com/kost/mikrotik-npk  
 - vulnerabilities: https://github.com/microsoft/routeros-scanner  
 - Monitor/control from Home Assistant: https://github.com/tomaae/homeassistant-mikrotik_router
+
 ## Quickset
 
 - CPE: Client device
@@ -88,6 +90,25 @@ Hardware offloading([Chip](#switch-chip)) > [Fast Forward(CPU)](https://wiki.mik
   - not adding self => Wireless -> CAP: CAPsMAN addr add "127.0.0.1"
   - "No supported channel" => reset with default config and run quickset first
 - PTP Bridge AP: transparently interconnect two remote locations together in the same network, set one device to this mode, and the other => PTP Bridge CPE
+
+### CPE
+https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes#Mode_station-pseudobridge
+
+802.11
+- station: if L2 bridging on station is not necessary - as in case of routed or MPLS switched network
+- station-pseudobridge : single MAC address translation
+- station-pseudobridge-clone : either address configured or first forwarded frame
+
+        /interface wireless
+        set [ find default-name=wlan1 ] disabled=no mode=station-pseudobridge ssid=Soyo_22MAR8287
+        /interface wireless security-profiles
+        set [ find default=yes ] authentication-types=wpa-psk,wpa2-psk group-ciphers=tkip,aes-ccm mode=dynamic-keys supplicant-identity=MikroTik unicast-ciphers=tkip,aes-ccm wpa-pre-shared-key=88888888 wpa2-pre-shared-key=88888888
+
+## Wireless
+RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mode parameter.
+
+default-forwarding (on AP) – gives ability to disable the communication between the wireless clients  
+default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
 
 ## Reset
 https://wiki.mikrotik.com/wiki/Manual:Reset
@@ -112,22 +133,13 @@ https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
 ## Packet Flow
 ![](https://i.imgur.com/Mo8DgjH.png)
 
-# Wireless
-RouterOS AP accepts clients in station-bridge mode when enabled using bridge-mode parameter.
-
-default-forwarding (on AP) – gives ability to disable the communication between the wireless clients  
-default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
-
-## Modes
-https://wiki.mikrotik.com/wiki/Manual:Wireless_Station_Modes
-
 # Models
 |Model|Alias|Arch|Dude|Chip|CPU|MHz|RAM|Storage|Ports|PoE In|Out|Mbit/s|dBi|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|[RB750Gr3](https://mikrotik.com/product/RB750Gr3)|hEX|MMIPS|v6|MT7621A|2C4T|880|256|16/TF/USB|5/1G|8-30 V|N/A|N/A||
+|[RB750Gr3](https://mikrotik.com/product/RB750Gr3)|hEX|MMIPS|v6/7|MT7621A|2C4T|880|256|16/TF/USB|5/1G|8-30 V|N/A|N/A||
 |[RB941-2nD](https://mikrotik.com/product/RB941-2nD)|hAP lite|SMIPS|-|QCA9533|1C|650|32|16|4/100|MicroUSB|N/A|300|1.5|
 |[RB951G-2HnD](https://mikrotik.com/product/RB951G-2HnD)||MIPSBE|-|AR9344|1C|600|128|128|5/1G|8-30 V|N/A|300|2.5|
-|[RBD52G-*](https://mikrotik.com/product/hap_ac2)|hAP ac²|ARM32|v6|IPQ-4018|4|716|128|16/USB|5/1G|18-28 V||300/867|2.5/2.5|
+|[RBD52G-*](https://mikrotik.com/product/hap_ac2)|hAP ac²|ARM32|v6/7|IPQ-4018|4|716|128|16/USB|5/1G|18-28 V|N/A|300/867|2.5/2.5|
 
 # Switch Chip
 https://wiki.mikrotik.com/wiki/Manual:Switch_Chip_Features

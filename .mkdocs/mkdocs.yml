@@ -18,6 +18,7 @@ nav:
     - Intro: README.md
     - Linux: linux/
     - Network: nw/
+    - OpenWrt: OpenWrt/
     - Virt: vt/
     - "*"
     - DB: db/
@@ -63,3 +64,4 @@ plugins:
       redirect_maps:
           'VT/README.md': 'vt/README.md'
           'web/cf.md': 'cloud/cf.md'
+          'nw/openwrt.md' : 'OpenWrt/README.md'

@@ -1,27 +1,32 @@
+<!-- TOC -->
+
 - [OS](#os)
-    - [OpenMPTCProuter](#openmptcprouter)
-    - [VyOS](#vyos)
-    - [ClearOS](#clearos)
+- [OpenMPTCProuter](#openmptcprouter)
+- [VyOS](#vyos)
+- [ClearOS](#clearos)
 - [Linux Bond](#linux-bond)
-- [Multipath TCP (MPTCP)](#multipath-tcp-mptcp)
-    - [kernel \>= v5.6](#kernel--v56)
-    - [kernel \<= 5.4](#kernel--54)
+- [Multipath TCP MPTCP](#multipath-tcp-mptcp)
+    - [kernel >= v5.6](#kernel--v56)
+    - [kernel <= 5.4](#kernel--54)
 - [L4](#l4)
 
-# OS
-- OpenWRT: mwan3
-- [Mikrotik](./mikrotik.md)
+<!-- /TOC -->
 
-## OpenMPTCProuter
-- OpenWRT+MPTCP+Shadowsocks+Glorytun(multipath UDP tunnel): https://www.openmptcprouter.com
+# OS
+- [OpenWRT mwan3](/OpenWrt/mwan3.md)
+- [Mikrotik](./mikrotik.md)
+- OpenBSD: https://www.openbsd.org/faq/pf/pools.html#outgoing  
+- pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/
+
+# OpenMPTCProuter
+- OpenWRT+MPTCP+Shadowsocks+Glorytun(multipath UDP tunnel): https://www.openmptcprouter.com/screenshot
 - default login: root / <no_pass> ; then config: 
 
-## VyOS
-https://docs.vyos.io/en/equuleus/configuration/loadbalancing/index.html
+# VyOS
+- https://wiki.vyos.net/wiki/WAN_load_balancing
+- https://docs.vyos.io/en/equuleus/configuration/loadbalancing/index.html | incompatible with dynamic routing protocol
 
-    # incompatible with dynamic routing protocol
-
-## ClearOS
+# ClearOS
 - network config: https://documentation.clearos.com/content:en_us:7_ug_network
 - mwan: https://www.clearos.com/marketplace/network/Multi-WAN
 - skip wizard: https://w.x.y.z:81/app/base/wizard/stop
@@ -47,3 +52,4 @@ https://www.multipath-tcp.org/
 
 # L4
 - OpenWRT： /cgi-bin/luci/admin/services/[passwall](https://github.com/xiaorouji/openwrt-passwall/issues/2463)/haproxy
+

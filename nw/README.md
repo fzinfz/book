@@ -68,7 +68,7 @@ https://support.apple.com/en-us/HT202628
     - Directed Multicast Service (DMS): optimizes multicast
     - BSS Max Idle Service: how long to remain associated when no traffic
 
-[openwrt.md](./openwrt.md#mode-ap---80211r)
+[openwrt.md](/OpenWrt/README.md#mode-ap---80211r)
 
 # Open Source Software for Routing 
 https://conference.apnic.net/__data/assets/pdf_file/0020/50681/osr_apnic34_1346044930.pdf
@@ -228,20 +228,9 @@ last update @ 2021 Oct : https://github.com/ehang-io/nps
 
 https://github.com/fatedier/frp  ( Jan 12 2020: p2p/xtcp under dev)
 
-# Multi WAN
-pfSense: https://www.cyberciti.biz/faq/howto-configure-dual-wan-load-balance-failover-pfsense-router/  
-VYOS: https://wiki.vyos.net/wiki/WAN_load_balancing  
-OpenBSD: https://www.openbsd.org/faq/pf/pools.html#outgoing  
-[ROS](/nw/mikrotik)
-
-## OpenWRT
-https://wiki.openwrt.org/doc/howto/mwan3  
-gfw+quota: https://www.openmptcprouter.com/screenshot
-
-
-
 # Load Balancing
-https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
+- [mwan](./mwan.md)
+- https://wiki.koumbit.net/LoadBalancingService/SoftwareComparison
 
     Reverse proxying (AKA Layer-7 switching)
         Varnish Cache

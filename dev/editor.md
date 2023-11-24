@@ -1,9 +1,7 @@
 <!-- TOC -->
 
 - [Pritable](#pritable)
-- [VSCode](#vscode)
-    - [remote-ssh](#remote-ssh)
-    - [Cloud IDE](#cloud-ide)
+- [vscode](#vscode)
 - [vi/vim](#vivim)
 - [nano](#nano)
 - [WebStorm](#webstorm)
@@ -20,39 +18,8 @@ https://pandoc.org/getting-started.html
 
 Chrome/Edge - print .md on Github: https://github.com/jerry1100/github-markdown-printer
 
-# VSCode
-- Regex - deleting empty lines: ^\s*$\n
-- Command Palette: F1 / Ctrl+Shift+P
-- Search Settings: Ctrl+, ==> search "XXX.YYY"
-- github to web vscode: add "1s" in URL # https://github.com/conwnet/github1s
-- extensions:
-    - yzhang.markdown-all-in-one | https://github.com/yzhang-gh/vscode-markdown
-    - huntertran.auto-markdown-toc | forked from alanwalk/markdown-toc | https://github.com/huntertran/markdown-toc
-    - shardulm94.trailing-spaces   # F1 => Trailing Spaces: Delete
-    - mhutchie.git-graph
-
-- settings.json
-
-        "editor.renderWhitespace": "all",
-        "git.path": "D:\\sdk\\Git\\bin\\git.exe",
-        "markdown.editor.pasteUrlAsFormattedLink.enabled": "never",
-        "editor.detectIndentation": false,
-
-## remote-ssh
-https://code.visualstudio.com/docs/remote/ssh  
-extension: ms-vscode-remote.remote-ssh
-
-    "remote.SSH.configFile": "D:\\conf\\ssh_config"
-
-    Host 192.168.88.72
-        HostName 192.168.88.72
-        IdentityFile C:/Users/root/.ssh/id_rsa  <== File permission: current user only
-        User root
-
-F1 => Remote-SSH: Connect to Host...
-
-## Cloud IDE
-https://theia-ide.org/docs/
+# vscode
+[/ms/vscode.md](/ms/vscode.md)
 
 # vi/vim
 

@@ -33,8 +33,10 @@
     - [API](#api)
         - [Python](#python)
 - [Monitoring](#monitoring)
-    - [Grafana & Prometheus](#grafana--prometheus)
+    - [Grafana \& Prometheus](#grafana--prometheus)
 - [Manage Remote](#manage-remote)
+- [Wireless](#wireless-1)
+    - [802.11r/k/v](#80211rkv)
 
 <!-- /TOC -->
 
@@ -276,4 +278,11 @@ ROS v7: conf socks4 and route
     /ip socks set enabled=yes
 
 [/nw/proxy/#host-apps](/nw/proxy/#host-apps)
-    
+
+# Wireless
+## 802.11r/k/v
+- 7.13+ | https://help.mikrotik.com/docs/display/ROS/WiFi#WiFi-Compatibility
+    - for ARM | NOT copmatible: MIPS
+- 7.12- | https://help.mikrotik.com/docs/pages/viewpage.action?pageId=46759946#WifiWave2(7.12andolder)-SecurityProperties
+    - 
+

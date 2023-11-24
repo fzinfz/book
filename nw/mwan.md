@@ -52,4 +52,4 @@ https://www.multipath-tcp.org/
 
 # L4
 - OpenWRT： /cgi-bin/luci/admin/services/[passwall](https://github.com/xiaorouji/openwrt-passwall/issues/2463)/haproxy
-
+- v2ray: https://toutyrater.github.io/routing/balance2.html

@@ -7,6 +7,7 @@
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
 - [Networking](#networking)
+    - [VLAN](#vlan)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
 - [RUN](#run)
@@ -45,7 +46,7 @@
     - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
-- [简繁体转换](#%E7%AE%80%E7%B9%81%E4%BD%93%E8%BD%AC%E6%8D%A2)
+- [简繁体转换](#简繁体转换)
 - [mstsc](#mstsc)
     - [GPU - NVIDIA](#gpu---nvidia)
     - [CredSSP](#credssp)
@@ -101,6 +102,13 @@ netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.1
 
 SUBST X: "D:\Folder_to_map"
 ```
+
+## VLAN
+https://learn.microsoft.com/en-us/powershell/module/netadapter/set-netadapter?view=windowsserver2022-ps#examples
+- enable vlan on `devmgmt.msc`, then:
+
+        Get-NetAdapter
+        Set-NetAdapter -InterfaceDescription "*GbE"  -VlanID 77 # TODO
 
 # Restore OS
 https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windows-to-audit-mode-or-oobe

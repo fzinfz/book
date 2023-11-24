@@ -14,22 +14,20 @@
 - [NAT Hairpin + DDNS](#nat-hairpin--ddns)
     - [Mikrotik](#mikrotik)
 - [OSPF](#ospf)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-1)
 - [MPLS](#mpls)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-2)
 - [VPLS](#vpls)
-    - [Mikrotik](#mikrotik)
+    - [Mikrotik](#mikrotik-3)
     - [OpenBSD](#openbsd)
     - [Linux](#linux)
 - [L7 filters](#l7-filters)
 - [Subnet Helper](#subnet-helper)
-- [MAC addresss <-> Vender](#mac-addresss---vender)
+- [MAC addresss \<-\> Vendor](#mac-addresss---vendor)
 - [Tuning](#tuning)
 - [TCP congestion control](#tcp-congestion-control)
     - [BBR](#bbr)
 - [Introspectable tunnels to localhost](#introspectable-tunnels-to-localhost)
-- [Multi WAN](#multi-wan)
-    - [OpenWRT](#openwrt)
 - [Load Balancing](#load-balancing)
 - [Transparent Proxy](#transparent-proxy)
     - [mitmproxy](#mitmproxy)
@@ -45,7 +43,7 @@
 - [IPV6](#ipv6)
 - [Guide](#guide)
 - [Monitoring](#monitoring)
-    - [mikrotik](#mikrotik)
+    - [mikrotik](#mikrotik-4)
     - [datadoghq](#datadoghq)
 
 <!-- /TOC -->
@@ -68,7 +66,15 @@ https://support.apple.com/en-us/HT202628
     - Directed Multicast Service (DMS): optimizes multicast
     - BSS Max Idle Service: how long to remain associated when no traffic
 
-[openwrt.md](/OpenWrt/README.md#mode-ap---80211r)
+https://www.adrian.idv.hk/2022-11-27-80211r/
+- needs both the AP and the station to support
+- ESS = all BSSID(MAC) of same SSID
+- mobility domain = subset of ESS that allows station to roam around
+    - R0KH: controller as the PMK-R0 key holder 
+    - R1KH: APs as the PMK-R1 key holder
+    - S0KH and S1KH, S for supplicant: station are the PMK-S0 key holder and PMK-S1 key holder
+
+[openwrt.md](/OpenWrt/wireless.md#80211kvr)
 
 # Open Source Software for Routing 
 https://conference.apnic.net/__data/assets/pdf_file/0020/50681/osr_apnic34_1346044930.pdf
@@ -197,7 +203,7 @@ E.g.:
 .96-127/27: #2^5
 .0-127/25: #2^7
 
-# MAC addresss <-> Vender
+# MAC addresss <-> Vendor
 http://aruljohn.com/mac.pl
 
 # Tuning

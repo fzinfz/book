@@ -3,10 +3,12 @@
 - [Boot](#boot)
 - [apt](#apt)
 - [Disk](#disk)
+    - [raw disk map](#raw-disk-map)
 - [iso](#iso)
 - [PCI Passthrough](#pci-passthrough)
-  - [GPU](#gpu)
-  - [SR-IOV](#sr-iov)
+    - [GPU](#gpu)
+    - [SR-IOV](#sr-iov)
+- [NUMA](#numa)
 - [Scripts](#scripts)
 
 <!-- /TOC -->

@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Sponsorships](#sponsorships)
+- [Orgs](#orgs)
 
 <!-- /TOC -->
 
@@ -17,3 +18,8 @@
     otechie: # Replace with a single Otechie username
     lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
     custom: # Replace with up to 4 custom sponsorship URLs e.g., ['link1', 'link2']
+
+
+# Orgs
+- month-long celebration: https://github.com/topics/hacktoberfest
+

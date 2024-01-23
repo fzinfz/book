@@ -6,6 +6,8 @@
 - [Time Series DBs](#time-series-dbs)
 - [TimescaleDB](#timescaledb)
 - [Riak TS](#riak-ts)
+- [Firebase](#firebase)
+- [Supabase](#supabase)
 
 <!-- /TOC -->
 
@@ -79,3 +81,11 @@ http://docs.timescale.com/v0.8/getting-started/creating-hypertables
 # Riak TS
 http://docs.basho.com/riak/ts/  
 Riak TS is a distributed NoSQL key/value store optimized for time series data. 
+
+# Firebase
+Realtime NoSQL: https://firebase.google.com/pricing
+
+# Supabase
+Firebase alternative, PostgreSQL
+- OSS: https://github.com/supabase/supabase
+- https://supabase.com/pricing

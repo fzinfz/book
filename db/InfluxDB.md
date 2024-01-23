@@ -2,9 +2,10 @@
 
 - [Data Format](#data-format)
 - [Client](#client)
-    - [Python](#python)
+  - [cli](#cli)
+  - [Python](#python)
 - [Flux Query](#flux-query)
-    - [difference()](#difference)
+  - [difference()](#difference)
 
 <!-- /TOC -->
 
@@ -15,6 +16,13 @@
     [unix-nano-timestamp]
 
 # Client
+## cli
+https://docs.influxdata.com/influxdb/cloud/reference/cli/influx/#credential-precedence
+
+    for c in version config ; do docker exec -it influxdb influx $c ; done
+    docker exec -it influxdb influx bucket list --org $INFLUXDB_ORG --token $INFLUXDB_TOKEN
+    
+
 ## Python
 https://docs.influxdata.com/influxdb/cloud/tools/client-libraries/python/  
 https://github.com/influxdata/influxdb-client-python#pip-install  

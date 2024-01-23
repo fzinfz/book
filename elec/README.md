@@ -1,16 +1,12 @@
-<!-- TOC -->
-
 - [Package](#package)
 - [Symbol](#symbol)
-- [Buck & Boost](#buck--boost)
-    - [Buck/step-down regulators](#buckstep-down-regulators)
-        - [Synchronous Rectification](#synchronous-rectification)
-    - [Boost/step-up regulators](#booststep-up-regulators)
-    - [forward vs flybac](#forward-vs-flybac)
+- [Buck \& Boost](#buck--boost)
+  - [Buck/step-down regulators](#buckstep-down-regulators)
+    - [Synchronous Rectification](#synchronous-rectification)
+  - [Boost/step-up regulators](#booststep-up-regulators)
+  - [forward vs flybac](#forward-vs-flybac)
 - [Oscilloscope](#oscilloscope)
-- [Simulation Program](#simulation-program)
 
-<!-- /TOC -->
 
 # Package
 https://en.wikipedia.org/wiki/List_of_integrated_circuit_packaging_types#Transistor,_diode,_small-pin-count_IC_packages
@@ -47,10 +43,5 @@ https://www.eet-china.com/mp/a12732.html
 # Oscilloscope
 示波器测量市电 - AB伪差分：[Siglent](https://youtu.be/kIir80Jnlyo?t=296) | [Tek](https://www.bilibili.com/video/BV1JU4y1K7cy?t=421.1)  
 纹波：[Tek](https://www.bilibili.com/read/cv14145415) | [Rigol](https://www.bilibili.com/video/BV1my4y167ao?t=77.1)  
-Micsig/汽修： https://space.bilibili.com/476743057/channel/seriesdetail?sid=862170  
 
-# Simulation Program
-Free: https://en.wikipedia.org/wiki/List_of_free_electronics_circuit_simulators  
-Micro-cap | Original $4495, now free: http://www.spectrum-soft.com/download/download.shtm   
 
-Non-free: Multisim/Matlab

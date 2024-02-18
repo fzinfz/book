@@ -1,10 +1,10 @@
 - [Package](#package)
 - [Symbol](#symbol)
 - [Buck \& Boost](#buck--boost)
-  - [Buck/step-down regulators](#buckstep-down-regulators)
-    - [Synchronous Rectification](#synchronous-rectification)
-  - [Boost/step-up regulators](#booststep-up-regulators)
-  - [forward vs flybac](#forward-vs-flybac)
+    - [Buck/step-down regulators](#buckstep-down-regulators)
+        - [Synchronous Rectification](#synchronous-rectification)
+    - [Boost/step-up regulators](#booststep-up-regulators)
+    - [forward vs flybac](#forward-vs-flybac)
 - [Oscilloscope](#oscilloscope)
 
 

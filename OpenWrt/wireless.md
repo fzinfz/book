@@ -1,9 +1,9 @@
 - [802.11kvr](#80211kvr)
-    - [/etc/config/wireless](#etcconfigwireless)
-    - [MediaTek](#mediatek)
+        - [/etc/config/wireless](#etcconfigwireless)
+        - [MediaTek](#mediatek)
 - [Client Info](#client-info)
 - [Controller](#controller)
-    - [DAWN](#dawn)
+        - [DAWN](#dawn)
 
 # 802.11kvr
 [/nw/README.md#roaming---80211krv](/nw/README.md#roaming---80211krv)
@@ -72,4 +72,13 @@ http://wrt.lan/cgi-bin/luci/admin/network/wireless
 ## DAWN
 Decentralized WiFi Controller
 - https://github.com/berlin-open-wireless-lab/DAWN
+    - full wpad-* version and not wpad-basic
+
+- https://github.com/berlin-open-wireless-lab/DAWN/blob/master/CONFIGURE.md
+
 - https://openwrt.org/docs/guide-user/network/wifi/dawn
+
+        sed -i 's/10.0.0.255/192.168.88.255/' /etc/config/dawn && /etc/init.d/dawn restart
+        grep -E '_port|_ip' /etc/config/dawn && netstat -lntup | grep dawn
+
+

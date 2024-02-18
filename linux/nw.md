@@ -3,7 +3,7 @@
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
     - [/etc/network/interfaces](#etcnetworkinterfaces)
-    - [/etc/netplan/*.yaml](#etcnetplanyaml)
+    - [/etc/netplan/\*.yaml](#etcnetplanyaml)
         - [netplan try](#netplan-try)
     - [Port listening](#port-listening)
     - [debug](#debug)

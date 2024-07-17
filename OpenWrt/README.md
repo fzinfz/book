@@ -244,6 +244,19 @@ calc HEX -> DEC ：
 # uboot
 https://github.com/hanwckf/bl-mt798x
 
+# Breed
+breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
+
+# Mi
+- AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese)
+    - https://openwrt.org/toh/xiaomi/ax3200  
+    - https://github.com/mikeeq/xiaomi_ax3200_openwrt
+- AX6 : https://github.com/InfinityTL/OpenWrt-Redmi-AX6  
+- AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
+- RM2100: http://openwrt.ink:88/archives/s-breed
+- AX3000T / Win CMD: https://github.com/zc360/Xiaomi-ax3000t-openwrt
+    - WR30U: https://zhuanlan.zhihu.com/p/659735701
+
 # Hardware
 
 Model|SoC|CPU MHz|Flash MB|RAM MB|Wireless|firmware|Switch

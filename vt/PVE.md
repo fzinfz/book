@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [Doc](#doc)
+- [qm](#qm)
 - [Boot](#boot)
 - [apt](#apt)
 - [Disk](#disk)
@@ -12,6 +14,17 @@
 - [Scripts](#scripts)
 
 <!-- /TOC -->
+
+# Doc
+- v8: https://pve.proxmox.com/pve-docs/pve-admin-guide.pdf
+- v7: https://pve.proxmox.com/pve-docs-7/
+
+# qm
+https://pve.proxmox.com/pve-docs-7/qm.1.html
+
+    qm list
+    qm reset/stop # immediately
+    qm reboot/shutdown # clean
 
 # Boot
 Serial: follow debian

@@ -65,7 +65,7 @@ https://learn.microsoft.com/en-us/windows/release-health/release-information
 
 # Windows 11
 
-    # by pass TPM
+    # bypass TPM
     `SHIFT + F10` -> regedit -> HKEY_LOCAL_MACHINE\SYSTEM\Setup
      - new Key: LabConfig
      - new DWORD : BypassTPMCheck / BypassSecureBootCheck / BypassRAMCheck(if<4G) = 1

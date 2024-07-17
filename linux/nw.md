@@ -78,6 +78,14 @@ network:
         - 218.85.157.99
         - 218.85.152.99
 
+  wifis:
+    wlo1:
+      optional: true
+      access-points:
+        "":
+          password: ""
+      dhcp4: true
+
   vlans:
     vlan.10:
       accept-ra: no
@@ -94,6 +102,7 @@ network:
     ovs-br0:
       openvswitch: {}
       dhcp4: yes
+      interfaces: [ enp1s0 ]
 ```
 setup ovs manually
 

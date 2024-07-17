@@ -38,17 +38,6 @@ http://pkg.entware.net/binaries/mipsel/
 * Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
 - Raspberry Pi & NanoPi R2S/R4S & G-Dock & x86 OpenWrt: https://github.com/SuLingGG/OpenWrt-Rpi
 
-# Breed
-breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
-
-# Mi
-- AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese)
-    - https://openwrt.org/toh/xiaomi/ax3200  
-    - https://github.com/mikeeq/xiaomi_ax3200_openwrt
-- AX6 : https://github.com/InfinityTL/OpenWrt-Redmi-AX6  
-- AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
-- RM2100: http://openwrt.ink:88/archives/s-breed
-
 # UBNT
 ## UNMS
 curl -fsSL https://unms.com/v1/install > /tmp/unms_inst.sh && sudo bash /tmp/unms_inst.sh

@@ -41,13 +41,15 @@ Android 10 (API level 29)- | https://developer.android.com/tools/adb#wireless | 
 
     # Download
     adb pull -a /file_on_phone # -a: preserve file timestamp and mode
-    adb shell ls /sdcard/DCIM/Camera/*.mp4 | %{ adb pull -a $_} # powershell
-    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8    # powershell pipe中文乱码，fix `echo`, and some `pull`
+    adb shell ls /sdcard/DCIM/Screenshots/* | %{ adb pull -a $_} # powershell , w/ speed
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8    # powershell pipe中文乱码fix
+
+    # Delete
+    Get-ChildItem -Path . –File | %{ adb -s 192.168.7.126:38855 shell "ls -l /sdcard/DCIM/Screenshots/$_" } 
 
     # Upload
     adb push foo.zip /sdcard/Download/        # file
     adb push . /sdcard/Download/NewFolder     # folder
-
 
 ## Debug
 https://developer.android.com/studio/command-line/dumpsys.html#meminfo

@@ -314,6 +314,9 @@ Think of this feature as VLAN for layer 3
 https://www.kernel.org/doc/Documentation/networking/vrf.txt
 
 # DNS
+
+    resolvectl dns
+
     /etc/nsswitch.conf
         #hosts:          files mdns4_minimal [NOTFOUND=return] dns mdns4
         hosts:          files dns  # fix nslookup works but ping not work

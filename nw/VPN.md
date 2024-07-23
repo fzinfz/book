@@ -19,10 +19,15 @@ Free for Personal: https://tailscale.com/pricing/
     tailscale up --advertise-exit-node # enable on WebUI: Edit route settings
     tailscale status
 
-Official: https://login.tailscale.com/admin/machines  
-Custom: https://tailscale.com/kb/1118/custom-derp-servers/
+- Console: https://login.tailscale.com/admin/machines  
+- relay: https://tailscale.com/kb/1118/custom-derp-servers/
 
+# Subnet
+https://tailscale.com/kb/1019/subnets#connect-to-tailscale-as-a-subnet-router
 
+- Linux: Enable IP forwarding
+- Web: Edit route settings / Access Controls
+  
 # zerotier
 
     curl -s https://install.zerotier.com | sudo bash

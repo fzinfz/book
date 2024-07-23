@@ -225,23 +225,24 @@ CN: https://yeasy.gitbook.io/docker_practice/install/mirror
 LAN: https://docs.docker.com/registry/configuration/#proxy
 
 ## Proxy
-https://docs.docker.com/network/proxy/#configure-the-docker-client  
-~/.docker/config.json
+23.0+ : https://docs.docker.com/reference/cli/dockerd/#proxy-configuration
+- daemon configuration file : /etc/docker/daemon.json 
+- command-line options : https://pkg.go.dev/golang.org/x/net/http/httpproxy#Config
 
-https://docs.docker.com/engine/admin/systemd/#httphttps-proxy
+https://docs.docker.com/config/daemon/proxy/#environment-variables
+
 ```
 mkdir -p /etc/systemd/system/docker.service.d
 
 cat > /etc/systemd/system/docker.service.d/http-proxy.conf << EOF
 [Service]
-Environment="HTTP_PROXY=http://192.168.88.20:1080/" "NO_PROXY=localhost,127.0.0.1,192.168.*.*.172.16.*.*"
+Environment="HTTP_PROXY=http://127.0.0.1:1081"
+Environment="HTTPS_PROXY=http://127.0.0.1:1081"
+Environment="NO_PROXY=localhost,127.0.0.1,192.168.*.*,172.16.*.*,100.*.*.*"
 EOF
 
-sudo systemctl daemon-reload
-systemctl restart docker
-
+systemctl daemon-reload && systemctl restart docker
 systemctl show --property=Environment docker
-
 ```
 
 # Swarm

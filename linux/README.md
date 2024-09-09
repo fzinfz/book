@@ -333,7 +333,7 @@ rm -r /var/lib/apt/lists/*
 
     apt install openssh-server # not "openssl"
 
-    # fix： userauth_pubkey: key type ssh-rsa not in PubkeyAcceptedAlgorithms [preauth]
+    journalctl -u ssh # fix： ssh-rsa not in PubkeyAcceptedAlgorithms
     PubkeyAcceptedAlgorithms  +ssh-rsa
 
 # Grub

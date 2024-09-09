@@ -123,6 +123,10 @@ https://wiki.mikrotik.com/wiki/Manual:Queue_Size
 http://mum.mikrotik.com/presentations/US08/janism.pdf  
 https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
 
+## QoS
+https://help.mikrotik.com/docs/display/ROS/Connection+rate
+https://help.mikrotik.com/docs/display/ROS/CAKE
+
 ## hotspot
 
     /ip hotspot walled-garden

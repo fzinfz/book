@@ -22,7 +22,7 @@ L4: [/nw/proxy/](/nw/proxy/)
 
 https://github.com/axllent/wireguard-vanity-keygen/releases
 
-    ./wireguard-vanity-keygen --case-sensitive --limit 5 PRE
+    ./wireguard-vanity-keygen --case-sensitive --limit 1 PRE
 
 https://www.wireguard.com/protocol/
 - optional pre-shared key that is mixed into the public key cryptography, all-zeros if not in use
@@ -61,7 +61,7 @@ home gateway
 
     [Interface]
     PrivateKey = client
-    Address = 192.168.44.11/32
+    Address = 192.168.44.11/24
     PreUp = sysctl -w net.ipv4.conf.all.forwarding=1
     PreUp =    iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
     PostDown = iptables -t nat -D POSTROUTING -o ens18 -j MASQUERADE
@@ -95,6 +95,16 @@ https://tailscale.com/kb/1019/subnets#connect-to-tailscale-as-a-subnet-router
     curl -s https://install.zerotier.com | sudo bash
     service zerotier-one status
     zerotier-cli status
+    zerotier-cli peers # PLANET/LEAF
+
+## Moons
+Own Roots (a.k.a. Moons): https://docs.zerotier.com/roots/
+
+    zerotier-cli join ...
+    cd /var/lib/zerotier-one
+    zerotier-idtool initmoon identity.public >> moon.json
+    chown zerotier-one:zerotier-one moon.json
+
 
 # nebula - go
 https://github.com/slackhq/nebula

@@ -108,6 +108,11 @@ netsh interface ip set address "Ether..." static 192.168.3.5 255.255.255.0 192.1
 SUBST X: "D:\Folder_to_map"
 ```
 
+## IP
+
+    Set/New-NetIPAddress -InterfaceIndex 6 -IPAddress 192.168.1.11 -PrefixLength 24
+    Remove-NetIPAddress -PrefixOrigin Manual
+
 ## VLAN
 https://learn.microsoft.com/en-us/powershell/module/netadapter/set-netadapter?view=windowsserver2022-ps#examples
 - enable vlan on `devmgmt.msc`, then:

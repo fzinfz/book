@@ -3,6 +3,7 @@
 - [GUI tool](#gui-tool)
 - [Basic](#basic)
     - [/etc/network/interfaces](#etcnetworkinterfaces)
+        - [VLAN-aware Bridge Mode](#vlan-aware-bridge-mode)
     - [/etc/netplan/\*.yaml](#etcnetplanyaml)
         - [netplan try](#netplan-try)
     - [Port listening](#port-listening)
@@ -55,6 +56,17 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 
     auto enp1s0
     iface enp1s0 inet dhcp
+
+### VLAN-aware Bridge Mode
+https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Layer-2/Ethernet-Bridging-VLANs/VLAN-aware-Bridge-Mode/
+
+    auto vmbr1 # PVE
+    iface vmbr1 inet manual
+            bridge-ports enp2s0
+            bridge-stp off
+            bridge-fd 0
+            bridge-vlan-aware yes
+            bridge-vids 2-4094
 
 ## /etc/netplan/*.yaml
 - basic/bond/wireless/route/SR-IOV: https://netplan.io/examples

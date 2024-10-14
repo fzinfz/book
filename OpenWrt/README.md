@@ -1,4 +1,3 @@
-- [Luci](#luci)
 - [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
     - [macvlan - access host](#macvlan---access-host)
@@ -21,22 +20,10 @@
 - [Controller - OpenWISP](#controller---openwisp)
 - [Compile](#compile)
     - [Version](#version)
-- [MTD](#mtd)
-- [uboot](#uboot)
+- [Mi](#mi)
 - [Hardware](#hardware)
 - [ImmortalWrt](#immortalwrt)
 
-
-# Luci
-Action | Addr
--- | -- 
-conf firewall | http://wrt.lan/cgi-bin/luci/admin/network/firewall  
-view iptables |  http://wrt.lan/cgi-bin/luci/admin/status/iptables  
-view conn | http://wrt.lan/cgi-bin/luci/admin/status/realtime/connections 
-SSH key | http://wrt.lan/cgi-bin/luci/admin/system/admin   
-
-/etc/config/luci
-- ping/traceroute/nslookup: http://wrt.lan/cgi-bin/luci/admin/network/diagnostics
 
 # Install on X86
 https://openwrt.org/docs/guide-user/installation/openwrt_x86
@@ -111,7 +98,7 @@ https://docs.docker.com/network/ipvlan/#ipvlan-l2-mode-example-usage
 
 # network
 ## DSA
-replace swconfigc
+replace swconfig
 
 Multiple networks (using VLANs): https://forum.openwrt.org/t/mini-tutorial-for-dsa-network-config/96998
 
@@ -236,17 +223,6 @@ Extra packages ---> ipv6helper
     CONFIG_VERSION_DIST="##.##-SNAPSHOT"
     CONFIG_VERSION_NUMBER="OpenWrt"
 
-# MTD
-calc HEX -> DEC ： 
-00400000 = 4MiB
-06f00000 = 111MiB
-
-# uboot
-https://github.com/hanwckf/bl-mt798x
-
-# Breed
-breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
-
 # Mi
 - AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese)
     - https://openwrt.org/toh/xiaomi/ax3200  
@@ -255,7 +231,9 @@ breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade
 - AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
 - RM2100: http://openwrt.ink:88/archives/s-breed
 - AX3000T / Win CMD: https://github.com/zc360/Xiaomi-ax3000t-openwrt
-    - WR30U: https://zhuanlan.zhihu.com/p/659735701
+    - https://note.okhk.net/xiaomi-ax3000t-router-with-hanwckf-immortalwrt
+    - back to stock: https://www.kaitaku.xyz/misc/ax3000t-openwrt/#%E6%81%A2%E5%A4%8D%E5%8E%9F%E5%8E%82-uboot
+    - WR30U: https://zhuanlan.zhihu.com/p/659735701 | https://github.com/hanwckf/bl-mt798x
 
 # Hardware
 

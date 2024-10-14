@@ -113,10 +113,13 @@ default-forwarding (on AP) – gives ability to disable the communication betwee
 default-authentication – enables AP to register a client even if it is not in access list. In turn for client it allows to associate with AP not listed in client's connect list
 
 ## Reset
-https://wiki.mikrotik.com/wiki/Manual:Reset
+https://help.mikrotik.com/docs/display/ROS/Reset+Button
 
-    Hold this button before applying power, release after three seconds since powering, to load backup Boot loader.
-    If you keep holding this button for 2 more seconds until LED light starts flashing, release the button to reset RouterOS configuration to default (total 5 seconds)
+- Hold this button before applying power
+  - three seconds : backup boot loader
+  - flashing ： reset configuration
+  - 5 more seconds, LED turns solid : CAP
+  - 5 more seconds until the LED turns off : [Netinstall](https://help.mikrotik.com/docs/display/ROS/Netinstall)
 
 ## PCQ
 https://wiki.mikrotik.com/wiki/Manual:Queue_Size  

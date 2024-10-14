@@ -1,7 +1,6 @@
 <!-- TOC -->
 
 - [arm/mipsel/x86 packages](#armmipselx86-packages)
-- [Breed](#breed)
 - [Mi](#mi)
 - [UBNT](#ubnt)
     - [UNMS](#unms)
@@ -21,7 +20,7 @@
         - [RIP](#rip)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Controller Web](#controller-web)
-- [NanoStation® M](#nanostation%C2%AE-m)
+- [NanoStation® M](#nanostation-m)
 
 <!-- /TOC -->
 
@@ -37,6 +36,9 @@ http://pkg.entware.net/binaries/mipsel/
 * eSir: https://drive.google.com/drive/folders/1uRXg_krKHPrQneI3F2GNcSVRoCgkqESr
 * Lenyu: https://drive.google.com/drive/folders/1mckwgy0zpjSpeLR4K3-wjVDAb9gLwRh_
 - Raspberry Pi & NanoPi R2S/R4S & G-Dock & x86 OpenWrt: https://github.com/SuLingGG/OpenWrt-Rpi
+
+# Mi
+MIWIFIRepairTool: https://www1.miwifi.com/miwifi_download.html
 
 # UBNT
 ## UNMS
@@ -132,6 +134,7 @@ https://openwrt.org/toh/ubiquiti/ubiquiti_edgerouter_x_er-x_ka
     ubnt@ubnt# show
 
 ### add bridge
+https://help.ui.com/hc/en-us/articles/205223350-EdgeRouter-Creating-a-Bridged-Interface
 
     # WebUI: remove eth3 from switch0
     set interfaces bridge br2 address dhcp

@@ -5,6 +5,7 @@
 - [Boot](#boot)
 - [apt](#apt)
 - [Disk](#disk)
+    - [import](#import)
     - [raw disk map](#raw-disk-map)
 - [iso](#iso)
 - [PCI Passthrough](#pci-passthrough)
@@ -46,6 +47,11 @@ https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
 
 https://pve.proxmox.com/wiki/Storage
 - file + block : zfs
+
+## import
+qm disk import 100 x.img local-lvm # webUI: add disk & boot order
+
+
 
 ## raw disk map
 https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM)

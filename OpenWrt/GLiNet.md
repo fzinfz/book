@@ -3,6 +3,11 @@
 - [Multi WAN](#multi-wan)
 - [API](#api)
 
+# Config
+
+    ls -lh /etc/oui-tertf/client.db
+    /etc/config
+
 # Cloud Web
 set firewall/lan subnet/ ; view clients
 - CN : https://cloud.gl-inet.cn

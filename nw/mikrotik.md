@@ -1,48 +1,50 @@
 <!-- TOC -->
 
-- [CHR 60-day trial](#chr-60-day-trial)
+- [CHR](#chr)
 - [IPv6](#ipv6)
 - [Performance](#performance)
 - [Tasks](#tasks)
-    - [Quickset](#quickset)
-        - [CPE](#cpe)
-    - [Wireless](#wireless)
-    - [Reset](#reset)
-    - [PCQ](#pcq)
-    - [hotspot](#hotspot)
+  - [Quickset](#quickset)
+    - [CPE](#cpe)
+  - [Wireless](#wireless)
+  - [Reset](#reset)
+- [QoS](#qos)
+  - [PCQ](#pcq)
+  - [Cake](#cake)
+- [hotspot](#hotspot)
 - [Routing](#routing)
-    - [Packet Flow](#packet-flow)
+  - [Packet Flow](#packet-flow)
 - [Models](#models)
 - [Switch Chip](#switch-chip)
-    - [Switch VLAN](#switch-vlan)
+  - [Switch VLAN](#switch-vlan)
 - [Bridge VLAN](#bridge-vlan)
 - [FastPath + Conntrack = FastTrack](#fastpath--conntrack--fasttrack)
 - [Sniffer and Wireshark](#sniffer-and-wireshark)
 - [VPN](#vpn)
-    - [OpenVPN](#openvpn)
-    - [WireGuard](#wireguard)
-    - [PPP BCP](#ppp-bcp)
+  - [OpenVPN](#openvpn)
+  - [WireGuard](#wireguard)
+  - [PPP BCP](#ppp-bcp)
 - [mwan](#mwan)
-    - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
-    - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
+  - [Bandwidth based - Mangle + scripting](#bandwidth-based---mangle--scripting)
+  - [PCC - diff subnet/bandwidth](#pcc---diff-subnetbandwidth)
 - [WAN + ppp](#wan--ppp)
 - [Videos](#videos)
 - [Automation](#automation)
-    - [Scripting](#scripting)
-    - [SSH](#ssh)
-    - [API](#api)
-        - [Python](#python)
+  - [Scripting](#scripting)
+  - [SSH](#ssh)
+  - [API](#api)
+    - [Python](#python)
 - [Monitoring](#monitoring)
-    - [Grafana \& Prometheus](#grafana--prometheus)
+  - [Grafana \& Prometheus](#grafana--prometheus)
 - [Manage Remote](#manage-remote)
 - [Wireless](#wireless-1)
-    - [802.11r/k/v](#80211rkv)
+  - [802.11r/k/v](#80211rkv)
 
 <!-- /TOC -->
 
-# CHR 60-day trial
-https://mikrotik.com/client/chr  
-https://wiki.mikrotik.com/wiki/Manual:CHR#60-day_trial
+# CHR
+- free/trial： https://help.mikrotik.com/docs/spaces/ROS/pages/18350234/Cloud+Hosted+Router+CHR#CloudHostedRouter%2CCHR-Freelicenses
+- download: https://mikrotik.com/client/chr  
 
     /system license renew 
     level: p1
@@ -121,16 +123,23 @@ https://help.mikrotik.com/docs/display/ROS/Reset+Button
   - 5 more seconds, LED turns solid : CAP
   - 5 more seconds until the LED turns off : [Netinstall](https://help.mikrotik.com/docs/display/ROS/Netinstall)
 
+# QoS
+https://help.mikrotik.com/docs/display/ROS/Connection+rate
+
 ## PCQ
 https://wiki.mikrotik.com/wiki/Manual:Queue_Size  
 http://mum.mikrotik.com/presentations/US08/janism.pdf  
 https://wiki.mikrotik.com/wiki/Manual:HTB-Token_Bucket_Algorithm
 
-## QoS
-https://help.mikrotik.com/docs/display/ROS/Connection+rate
+## Cake
 https://help.mikrotik.com/docs/display/ROS/CAKE
+- config example: https://forum.mikrotik.com/viewtopic.php?t=188420#p1051514
 
-## hotspot
+https://help.mikrotik.com/docs/spaces/ROS/pages/196345874/CAKE
+- ack-filter: improve the utilization of the upload bandwidth
+- diffserv8 : 5. Real-time Interactive (40): Interactive applications, such as gaming.
+
+# hotspot
 
     /ip hotspot walled-garden
     ip add dst-address=1.1.1.1 action=accept

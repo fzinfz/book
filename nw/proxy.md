@@ -100,6 +100,11 @@ https://blog.zichao.io/2018/03/03/v2ray-on-vyos.html
 - Clinets: https://hysteria.network/zh/docs/installation/
 - Full Config: https://hysteria.network/zh/docs/advanced-usage/
 
+multi-port: https://v2.hysteria.network/docs/advanced/Port-Hopping/#server
+
+    iptables -t nat -A PREROUTING -i eth0 -p udp --dport X:Y -j REDIRECT --to-ports Z
+    iptables -t nat -L | grep redir
+
 # naiveproxy
 - https://github.com/klzgrad/naiveproxy
 - wiki: https://github.com/klzgrad/naiveproxy/wiki/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87

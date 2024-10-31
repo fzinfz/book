@@ -57,6 +57,8 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
     auto enp1s0
     iface enp1s0 inet dhcp
 
+    systemctl restart networking # Debian
+
 ### VLAN-aware Bridge Mode
 https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-42/Layer-2/Ethernet-Bridging-VLANs/VLAN-aware-Bridge-Mode/
 

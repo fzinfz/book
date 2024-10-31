@@ -132,12 +132,17 @@ H/W Router: wireless interfaces may be added to lan automatically via LUCI, crea
 ## SQM
 https://openwrt.org/docs/guide-user/network/traffic-shaping/start
 
+https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm
+- Interface name to your internet (WAN) link
+- Link Layer Adaptation: https://openwrt.org/docs/guide-user/network/traffic-shaping/sqm-details#sqmlink_layer_adaptation_tab
+
 ## nftables
 https://github.com/openwrt/packages/blob/master/net/nft-qos/files/nft-qos.config
 
 # Tailscale
 - https://github.com/adyanth/openwrt-tailscale-enabler
 - https://openwrt.org/docs/guide-user/services/vpn/tailscale/start
+
 # Mesh
 
     iw list | grep -E "phy|mesh" # check if supported hardware

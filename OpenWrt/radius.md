@@ -1,3 +1,7 @@
+# platform
+https://www.radiusdesk.com/wiki24/products
+- https://github.com/RADIUSdesk
+
 # FreeRADIUS
 https://openwrt.org/docs/guide-user/network/wifi/freeradius
 

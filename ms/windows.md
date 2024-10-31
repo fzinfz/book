@@ -7,6 +7,7 @@
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
 - [Networking](#networking)
+    - [IP](#ip)
     - [VLAN](#vlan)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
@@ -38,6 +39,7 @@
     - [DC DNS](#dc-dns)
 - [Graphic](#graphic)
 - [Storge](#storge)
+- [Link](#link)
 - [CMD Tools](#cmd-tools)
     - [Check and unclock file](#check-and-unclock-file)
 - [Server Core](#server-core)
@@ -287,6 +289,14 @@ Windows Display Driver Model (WDDM): Windows Vista+
 
 # Storge
 dynamic disks support the creation of new multipartition volumes
+
+# Link
+symbolic vs junction: https://superuser.com/a/1291446
+
+    mklink /J hard_link folder
+    mklink /H hard_link file
+    mklink /D soft_link folder
+
 
 # CMD Tools
 ## Check and unclock file

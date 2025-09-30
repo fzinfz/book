@@ -18,3 +18,5 @@ _book
 *.epub
 *.mobi
 *.pdf
+
+.vscode

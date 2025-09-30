@@ -20,7 +20,7 @@
         - [RIP](#rip)
 - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Controller Web](#controller-web)
-- [NanoStation® M](#nanostation-m)
+- [NanoStation® M](#nanostation®-m)
 
 <!-- /TOC -->
 
@@ -201,13 +201,8 @@ BZ.v3.7.5# set-inform http://unifi:8080/inform
 
 ## Controller Web
 
-    Settings - search "AUTHENTICATION" for SSH/SMTP
-    Every minor change on controller causes SSID reset!
+    Settings - Sie DEVICE AUTHENTICATION
+    Every minor setting change on controller causes SSID reset.
 
-# NanoStation
-M2 loco
-- guide: https://dl.ubnt.com/guides/NanoStation_M/NanoStation_M_Loco_M_QSG.pdf
-- fw: https://www.ui.com/download/software/locom2
-
-as normal AP
-- /ubnt.cgi : airMax off
+# NanoStation® M
+https://www.ui.com/download/airmax-m/nanostationm

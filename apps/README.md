@@ -20,9 +20,8 @@
         - [Bitwarden](#bitwarden)
 - [Instant Notifications](#instant-notifications)
 - [IoT](#iot)
-- [电商](#%E7%94%B5%E5%95%86)
-- [Cleaning](#cleaning)
-- [Monuments](#monuments)
+- [Taobao](#taobao)
+- [Sandbox](#sandbox)
 
 <!-- /TOC -->
 
@@ -100,14 +99,9 @@ http://instapush.im/
 # IoT
 https://www.xively.com/
 
-# 电商
-京东、淘宝 订单导出： https://github.com/kangvcar/InfoSpider  
-TaoBaoBasket | 同店多搜： https://pc.qq.com/detail/5/detail_18345.html  
+# Taobao
+http://pt42.cn/taobaobasket_index.htm
 
-# Cleaning
-Explorer: https://github.com/1357310795/MyComputerManager
+# Sandbox
 
-# Monuments
-- RemoteFX - KB4570006: Update to disable and remove the RemoteFX vGPU component in Windows 10, version 1809 and Windows Server 2019
-
-
+\??\%SystemDrive%\Sandbox\%USER%\%SANDBOX%

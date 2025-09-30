@@ -26,6 +26,7 @@
 - [Github](#github)
 - [Self-host git servers](#self-host-git-servers)
 - [Tools](#tools)
+- [Tools](#tools-1)
 
 <!-- /TOC -->
 
@@ -252,8 +253,8 @@ Ruby: https://gitlab.com/gitlab-org/gitlab
 curl -L https://github.com...?raw=true  
 .html to page, etc: https://rawgit.com/  
 .js CDN: https://cdnjs.com/  https://cdn.jsdelivr.net/gh/user/repo@version/file  
-.ipynb fast open: http://nbviewer.jupyter.org/  
-Code search: https://about.sourcegraph.com/  
-download: https://minhaskamal.github.io/DownGit/#/home  
+.ipynb fast open: http://nbviewer.jupyter.org/
 
-
+# Tools
+Code search: https://about.sourcegraph.com/
+download: https://minhaskamal.github.io/DownGit/#/home

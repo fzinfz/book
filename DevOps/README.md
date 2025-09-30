@@ -32,6 +32,7 @@
     - [Jenkins - JAVA](#jenkins---java)
     - [Travis - Ruby/JS](#travis---rubyjs)
 - [SNMP](#snmp)
+- [More](#more)
 
 <!-- /TOC -->
 
@@ -271,3 +272,6 @@ the agent connects to the server on port 162
 port 161 on the agent side is used for queries
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/SNMP_communication_principles_diagram.PNG/1000px-SNMP_communication_principles_diagram.PNG)
+
+# More
+https://github.com/bregman-arie/devops-resources#devops-tooling

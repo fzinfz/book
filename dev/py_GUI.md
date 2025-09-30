@@ -1,8 +1,8 @@
 <!-- TOC -->
 
-- [Lib](#lib)
-    - [pyqt](#pyqt)
-        - [QNetworkProxy](#qnetworkproxy)
+- [Windows](#windows)
+- [QT](#qt)
+    - [proxy](#proxy)
 - [Apps](#apps)
     - [Browser](#browser)
         - [qutebrowser](#qutebrowser)
@@ -10,15 +10,33 @@
 
 <!-- /TOC -->
 
-# Lib
-https://www.google.com/search?q=best+cross-platform+GUI+toolkits
+# Windows
 
-## pyqt
+https://pypi.org/project/auto-py-to-exe/
 
-    pip install PyQt5
+    pip install --upgrade PyQt5
+    pip install auto-py-to-exe
+    auto-py-to-exe        # GUI
+    auto-py-to-exe --help # cli
 
-### QNetworkProxy
-https://doc.qt.io/qt-5/qnetworkproxy.html
+# QT
+
+    pip install --upgrade PyQt5
+    # or
+    pip install --upgrade PySide6 # Qt 6.0+
+
+## proxy
+https://www.google.com/search?q=python+QNetworkProxy+code+sample
+
+    # 1. Create a QNetworkProxy instance
+    proxy = QNetworkProxy()
+
+    # 2. Set the proxy type (e.g., Socks5Proxy, HttpProxy)
+    proxy.setType(QNetworkProxy.Socks5Proxy)
+
+    # 3. Set the proxy host and port
+    proxy.setHostName("localhost")  # Replace with your proxy server address
+    proxy.setPort(9050)             # Replace with your proxy server port
 
 # Apps
 ## Browser

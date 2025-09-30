@@ -19,6 +19,7 @@
     - [Glances - A top/htop alternative - Python](#glances---a-tophtop-alternative---python)
 - [User & Permission](#user--permission)
     - [add user to group](#add-user-to-group)
+    - [rename](#rename)
     - [password](#password)
     - [sudoers](#sudoers)
     - [chown](#chown)
@@ -239,6 +240,12 @@ https://github.com/nicolargo/glances
 ## add user to group
     sudo adduser foobar www-data
     sudo usermod -a -G ftp tony
+
+## rename
+
+    pkill -9 -u ubuntu
+    usermod --login fzinfz --move-home --home /home/fzinfz ubuntu
+    sed -i 's/ubuntu/fzinfz/' /etc/sudoers
 
 ## password
     echo user:pwd | chpasswd

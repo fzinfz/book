@@ -166,6 +166,11 @@ https://github.com/shemminger/iproute2/blob/master/misc/ss.c
 - https://openwrt.org/docs/guide-user/firewall/misc/nftables
 
 # iptables
+
+    apt-get install iptables-persistent
+    cat /etc/iptables/rules.v4
+    iptables-save > /etc/iptables/rules.v4
+
 ## table / chain
     iptables -t nat -L # filter(default), nat, mangle, raw and security
     iptables -t nat -F ...  # empty chain rules

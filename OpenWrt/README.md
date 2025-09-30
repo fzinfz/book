@@ -240,14 +240,6 @@ Extra packages ---> ipv6helper
     - back to stock: https://www.kaitaku.xyz/misc/ax3000t-openwrt/#%E6%81%A2%E5%A4%8D%E5%8E%9F%E5%8E%82-uboot
     - WR30U: https://zhuanlan.zhihu.com/p/659735701 | https://github.com/hanwckf/bl-mt798x
 
-# Hardware
-
-Model|SoC|CPU MHz|Flash MB|RAM MB|Wireless|firmware|Switch
----|---|---|---|---|---|---|---
-CT3003 | mt7981 | ? | 128 | 256 | MT7981 | ? | MT7531AE
-[AX3200 / AX6S](https://openwrt.org/toh/xiaomi/ax3200)|MediaTek MT7622B|1350|128NAND|256|MT7622B/MT7915E|30720KiB|MT7531BE
-RM AX6|Qualcomm IPQ8071A |4C A53 1.4GHz|128 MiB|512||
-RM AX3000|Qualcomm IPQ5000|2C A53 1.,0GHz|128 MiB|256||
 
 # ImmortalWrt
 - https://github.com/immortalwrt/immortalwrt

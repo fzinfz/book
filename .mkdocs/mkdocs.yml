@@ -21,11 +21,15 @@ nav:
     - OpenWrt: OpenWrt/
     - Virt: vt/
     - "*"
-    - DB: db/
     - BSD: bsd/
     - Microsoft: ms/
     - Hardware: hw/
     - Elec: elec/
+    - DB: db/
+    - Cloud: cloud/
+    - Web: web/
+    - Dev: dev/
+    - AI: ai/
 
 theme:
     name: mkdocs

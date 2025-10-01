@@ -3,8 +3,6 @@
 - [CN](#cn)
 - [OpenWrt One](#openwrt-one)
 - [GLiNet](#glinet)
-    - [Config](#config)
-    - [Cloud Web](#cloud-web)
     - [Multi WAN](#multi-wan)
 
 <!-- /TOC -->
@@ -25,21 +23,21 @@ MT7981B / 2C 1.3GHz / 1G + 256MB / LAN: 2.5G + 1G : https://openwrt.org/toh/open
 # GLiNet
 GL-MT6000 | eth1 + ( eth0 : lan1-5 )
 
-API: https://dev.gl-inet.com/
-
-## Config
-
     ls -lh /etc/oui-tertf/client.db
     /etc/config
 
-## Cloud Web
-set firewall/lan subnet/ ; view clients
+API: https://dev.gl-inet.com/
+
+Cloud Web: set firewall/lan subnet/ ; view clients
 - CN : https://cloud.gl-inet.cn
 - https://www.goodcloud.xyz
+- remote web/terminal : need pub ip? : https://docs.gl-inet.com/router/en/4/interface_guide/cloud/#remote-access-web-admin-panel
 
-remote web/terminal : need pub ip? : https://docs.gl-inet.com/router/en/4/interface_guide/cloud/#remote-access-web-admin-panel
+
 
 ## Multi WAN
+no custom rules on luci
+
 - wan
 - secondwan
 - wwan

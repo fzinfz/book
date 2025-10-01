@@ -18,6 +18,7 @@ https://pypi.org/project/auto-py-to-exe/
     pip install auto-py-to-exe
     auto-py-to-exe        # GUI
     auto-py-to-exe --help # cli
+    Win+R -> shell:startup
 
 # QT
 

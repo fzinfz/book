@@ -230,6 +230,12 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcdboot-co
     bcdedit /set {}  osdevice partition=W:
     bcdedit /set {current} description "Windows 11 21H2"
 
+## disk ATTRIBUTES
+
+    DISKPART> list disk
+    DISKPART> ATTRIBUTES DISK
+    DISKPART> ATTRIBUTES DISK CLEAR READONLY
+
 ## IDE to AHCI after Installation
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\  
 

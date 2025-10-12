@@ -61,11 +61,12 @@
 
 # Versions
 https://learn.microsoft.com/en-us/windows/release-health/release-information
-- Win10: 19041=2004 19045=22H2
-- Win11: 22000=21H2 22621=22H2
+- Win10: 19041=2004 19045=22H2(EOS on October 14, 2025)
+- Win11: 22000=21H2 22621=22H2 	26200=25H2
 - Server: 14393=2016 17763=2019 20348=2022
 
 # Windows 11
+Download: https://www.microsoft.com/en-in/software-download/windows11
 
     # bypass TPM
     `SHIFT + F10` -> regedit -> HKEY_LOCAL_MACHINE\SYSTEM\Setup

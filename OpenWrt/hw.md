@@ -1,5 +1,7 @@
 <!-- TOC -->
 
+- [Chips](#chips)
+    - [MediaTek](#mediatek)
 - [CN](#cn)
 - [OpenWrt One](#openwrt-one)
 - [GLiNet](#glinet)
@@ -7,13 +9,29 @@
 
 <!-- /TOC -->
 
+# Chips
+## MediaTek
+https://wikidevi.wi-cat.ru/MediaTek#ARM
+
+- Ethernet switch
+    - MT7531AE: 2.5Gbps / SerDes interface
+    - MT7531BE: CPU port / RGMII (Reduced Gigabit Media Independent Interface)
+
+
+MT7981B ds: https://one.openwrt.org/hardware/MT7981B_Wi-Fi6_Platform_Datasheet_Open_V1.0.pdf
+
 # CN
-Model|SoC|CPU MHz|Flash MB|RAM MB|Wireless|firmware|Switch
----|---|---|---|---|---|---|---
-CT3003 | mt7981 | ? | 128 | 256 | MT7981 | ? | MT7531AE
-[AX3200 / AX6S](https://openwrt.org/toh/xiaomi/ax3200)|MediaTek MT7622B|1350|128NAND|256|MT7622B/MT7915E|30720KiB|MT7531BE
-RM AX6|Qualcomm IPQ8071A |4C A53 1.4GHz|128 MiB|512||
-RM AX3000|Qualcomm IPQ5000|2C A53 1.,0GHz|128 MiB|256||
+- Xiaomi / Redmi: https://wikidevi.wi-cat.ru/List_of_Xiaomi_Wireless_Devices
+- gl-inet: https://wikidevi.wi-cat.ru/GL.iNet
+
+openwrt.org|SoC|CPU MHz|Flash MB|RAM MB|Wireless|Switch
+---|---|---|---|---|---|---
+[CT3003](https://openwrt.org/toh/hwdata/cetron/cetron_ct3003) | MT7981B | 2c1.3 | 128 | 256 | MT7981 | MT7531AE
+[RM AX6S](https://openwrt.org/toh/xiaomi/ax3200)|MT7622B|2c1.35|128NAND|256|MT7622B/MT7915E|MT7531BE
+[Mi AX3000T](https://openwrt.org/inbox/toh/xiaomi/ax3000t) | MT7981BA | 2c1.3 | 128NAND | 256 | MT7981BA/MT7976CN | MT7531AE
+[GL-MT3000](https://openwrt.org/toh/gl.inet/gl-mt3000) | MT7981BA | 2c1.3 | 256 | 512 | MT7981BA | MT7981BA
+[RM AX6](https://openwrt.org/inbox/toh/xiaomi/xiaomi_redmi_ax6_ax3000)|IPQ8071A |4c1.4|128 MiB|512|QCN5024/QCN5054 | QCA8075
+[GL-MT6000](https://openwrt.org/toh/gl.inet/gl-mt6000)  | MT7986A | 4c2.0 | 8G eMMC | 1024 | MT7976GN/MT7976AN | MT7531AE
 
 # OpenWrt One
 November 29, 2024: https://openwrt.org/#openwrt_one_router_officially_launched

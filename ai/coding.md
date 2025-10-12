@@ -1,6 +1,5 @@
 <!-- TOC -->
 
-- [Model Ranking](#model-ranking)
 - [USD](#usd)
 - [CN](#cn)
 - [CLI](#cli)
@@ -8,13 +7,10 @@
 - [API](#api)
     - [Grok](#grok)
 - [Debug](#debug)
-- [Agentic (vs Vibe)](#agentic-vs-vibe)
+- [Agentic](#agentic)
     - [Cline](#cline)
 
 <!-- /TOC -->
-
-# Model Ranking
-https://openrouter.ai/rankings#categories
 
 # USD
 Price | Site | -
@@ -38,7 +34,7 @@ Vendor | Site | -
 ---| --- | ---
 腾讯云代码助手 | https://copilot.tencent.com/pricing/
 ali 通义灵码 | https://lingma.aliyun.com/pricing | IDE
-字节 豆包 MarsCode | https://www.trae.cn/plugin
+字节 豆包 MarsCode | https://www.trae.cn/plugin | IDE
 百度 文心快码 | https://comate.baidu.com/zh/pricing | 0/100
 
 # CLI
@@ -54,7 +50,7 @@ https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#-why-gemini-cli
 # Debug
 https://x.ai/news/prompt-ide
 
-# Agentic (vs Vibe)
+# Agentic
 ## Cline
 - Doc:  https://docs.cline.bot/provider-config/openrouter
 - Demo: https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev

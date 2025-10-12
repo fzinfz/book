@@ -128,6 +128,17 @@ https://openwrt.org/docs/guide-user/network/network_configuration#example_config
 
 H/W Router: wireless interfaces may be added to lan automatically via LUCI, create new for other bridges.
 
+# DHCP/DNS
+/etc/config/dhcp
+
+    config host
+            list mac 'xx:xx:xx:xx:xx:xx'
+            option ip '192.168.6.16'
+
+    config domain
+            option name 'homeassistant.local'
+            option ip '192.168.6.16'
+
 # QoS
 ## SQM
 https://openwrt.org/docs/guide-user/network/traffic-shaping/start

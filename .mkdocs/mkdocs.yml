@@ -22,8 +22,8 @@ nav:
     - Virt: vt/
     - "*"
     - BSD: bsd/
-    - Microsoft: ms/
-    - Hardware: hw/
+    - MSFT: ms/
+    - H/W: hw/
     - Elec: elec/
     - DB: db/
     - Cloud: cloud/

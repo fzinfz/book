@@ -18,6 +18,7 @@
 # adb
 
     adb version
+    adb --help # push/pull/sync/shell/...
 
 ## Wifi
 Ver | Link | Prepare | CMD
@@ -37,19 +38,25 @@ Android 10 (API level 29)- | https://developer.android.com/tools/adb#wireless | 
     
 ## Data Transfer
 
-    adb shell ls -hs /sdcard
-
-    # Download
-    adb pull -a /file_on_phone # -a: preserve file timestamp and mode
-    adb shell ls /sdcard/DCIM/Screenshots/* | %{ adb pull -a $_} # powershell , w/ speed
     [Console]::OutputEncoding = [System.Text.Encoding]::UTF8    # powershell pipe中文乱码fix
 
+    $remote = "/sdcard/Download"
+    $remote = "/sdcard/DCIM/Camera"
+    $remote = "/sdcard/DCIM/Screenshots"
+
+    adb shell ls -lhS $remote
+    adb shell "du -d 1 $remote/ | sort -rn"
+
+    # Download
+    adb pull -a  $remote # -a: preserve file timestamp and mode; sub-folders
+    adb shell ls $remote/*.* | %{ adb pull -a "$_"} # powershell , w/ speed
+    
     # Delete
-    Get-ChildItem -Path . –File | %{ adb -s 192.168.7.126:38855 shell "ls -l /sdcard/DCIM/Screenshots/$_" } 
+    Get-ChildItem -Path . -File | %{ adb shell "ls -l '$remote/$_'" }  # s/ls/rm/
 
     # Upload
-    adb push foo.zip /sdcard/Download/        # file
-    adb push . /sdcard/Download/NewFolder     # folder
+    adb push --sync newer.file $remote/   # file
+    adb push . $remote/NewFolder          # folder
 
 ## Debug
 https://developer.android.com/studio/command-line/dumpsys.html#meminfo

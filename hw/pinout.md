@@ -12,6 +12,15 @@
 
 <!-- /TOC -->
 
+# I2C
+https://en.wikipedia.org/wiki/I%C2%B2C
+- differential driver: 20-100m
+
+    VCC - 3V–5V
+    GND - GND
+    SDA - Data
+    SCL - Clock
+
 # RS232
 [RS232簡單接法(3線)](http://flykof.pixnet.net/blog/post/24074586-rs232%E7%B0%A1%E5%96%AE%E6%8E%A5%E6%B3%95(3%E7%B7%9A))  
 ![](https://pic.pimg.tw/flykof/4a729ba808337.jpg)
@@ -56,7 +65,7 @@ https://en.wikipedia.org/wiki/PCI_Express#Pinout
 ![](https://imgur.com/u3rUvyL)
 
 
-# HMDI
+# HDMI
 https://en.wikipedia.org/wiki/HDMI
 
 Type | Name | -

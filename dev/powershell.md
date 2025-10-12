@@ -9,6 +9,11 @@
 
 <!-- /TOC -->
 
+# aliases
+
+    % = foreach = ForEach
+    ? = where = Where-Object  # ?{ $_ -NotMatch "regex" } 
+
 # Basic
     Set-ExecutionPolicy RemoteSigned
     Enable-PSRemoting -Force

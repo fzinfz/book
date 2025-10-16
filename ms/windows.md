@@ -1,5 +1,6 @@
 <!-- TOC -->
 
+- [CMD](#cmd)
 - [Versions](#versions)
 - [Windows 11](#windows-11)
 - [Components](#components)
@@ -7,57 +8,64 @@
 - [powercfg](#powercfg)
 - [Disable BitLocker](#disable-bitlocker)
 - [Networking](#networking)
-    - [IP](#ip)
-    - [VLAN](#vlan)
+  - [IP](#ip)
+  - [VLAN](#vlan)
 - [Restore OS](#restore-os)
 - [DotNet versions query](#dotnet-versions-query)
-- [RUN](#run)
-    - [Startup Folder](#startup-folder)
-    - [Date + Time](#date--time)
-    - [Query .Net Framwork Versions](#query-net-framwork-versions)
-    - [Auto Login](#auto-login)
 - [Configuration](#configuration)
-    - [Disable Windows Defender](#disable-windows-defender)
-    - [Disable update](#disable-update)
-    - [Registry locations](#registry-locations)
-    - [NFS mount](#nfs-mount)
-    - [Fix cifs/share mount:](#fix-cifsshare-mount)
+  - [Disable Windows Defender](#disable-windows-defender)
+  - [Disable update](#disable-update)
+  - [Registry locations](#registry-locations)
+  - [NFS mount](#nfs-mount)
+  - [Fix cifs/share mount:](#fix-cifsshare-mount)
 - [Installation](#installation)
-    - [Tools](#tools)
-    - [Force OOBE](#force-oobe)
+  - [Tools](#tools)
+  - [Force OOBE](#force-oobe)
 - [BCD](#bcd)
-    - [Fix boot](#fix-boot)
-        - [update-grub](#update-grub)
-    - [Fix boot partiton](#fix-boot-partiton)
-        - [EFI](#efi)
-    - [Copy Boot Entries](#copy-boot-entries)
-    - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
-    - [Uninstall software in safemode](#uninstall-software-in-safemode)
+  - [Fix boot](#fix-boot)
+    - [update-grub](#update-grub)
+  - [Fix boot partiton](#fix-boot-partiton)
+    - [EFI](#efi)
+  - [Copy Boot Entries](#copy-boot-entries)
+  - [disk ATTRIBUTES](#disk-attributes)
+  - [IDE to AHCI after Installation](#ide-to-ahci-after-installation)
+  - [Uninstall software in safemode](#uninstall-software-in-safemode)
 - [services.msc](#servicesmsc)
 - [VS proxy](#vs-proxy)
 - [AD](#ad)
-    - [DC DNS](#dc-dns)
+  - [DC DNS](#dc-dns)
 - [Graphic](#graphic)
 - [Storge](#storge)
 - [Link](#link)
 - [CMD Tools](#cmd-tools)
-    - [Check and unclock file](#check-and-unclock-file)
+  - [Check and unclock file](#check-and-unclock-file)
+  - [Media Transfer Protocol](#media-transfer-protocol)
 - [Server Core](#server-core)
-    - [MMC](#mmc)
+  - [MMC](#mmc)
 - [GUI Tools](#gui-tools)
-    - [sysinternals tools](#sysinternals-tools)
+  - [sysinternals tools](#sysinternals-tools)
 - [Linux Clients](#linux-clients)
 - [WLAN Hosted Network](#wlan-hosted-network)
 - [简繁体转换](#简繁体转换)
 - [mstsc](#mstsc)
-    - [GPU - NVIDIA](#gpu---nvidia)
-    - [CredSSP](#credssp)
+  - [GPU - NVIDIA](#gpu---nvidia)
+  - [CredSSP](#credssp)
 - [Disk tools](#disk-tools)
 - [KMS Activation](#kms-activation)
-    - [Windows](#windows)
-    - [Office](#office)
+  - [Windows](#windows)
+  - [Office](#office)
 
 <!-- /TOC -->
+
+# CMD
+
+    cd C:\Users\root\AppData\Roaming\Microsoft\Windows\Start Menu\Programs   
+    shell:startup # Startup Folder
+
+    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP # Query .Net Framwork Versions  
+    
+    timedate.cpl # Date + Time + NTP
+    netplwiz.exe # Auto Login
 
 # Versions
 https://learn.microsoft.com/en-us/windows/release-health/release-information
@@ -132,19 +140,6 @@ https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/boot-windo
 # DotNet versions query
 
     reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Version
-
-# RUN
-## Startup Folder
-- shell:startup
-
-## Date + Time
-- timedate.cpl: ntp.sjtu.edu.cn [202.120.2.100]
-
-## Query .Net Framwork Versions
-    reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP
-
-## Auto Login
-    netplwiz.exe
 
 # Configuration
 gpupdate
@@ -309,6 +304,11 @@ symbolic vs junction: https://superuser.com/a/1291446
 ## Check and unclock file
 - https://download.sysinternals.com/files/Handle.zip
 - http://unlocker.en.softonic.com/
+
+## Media Transfer Protocol
+- python 3.12 | https://github.com/Heribert17/mtp
+    - https://heribert17.github.io/mtp/win_access/#mtp.win_access.PortableDeviceContent.get_path
+- powershell | https://github.com/nosalan/powershell-mtp-file-transfer # file size = 0
 
 # Server Core
 https://technet.microsoft.com/en-us/library/jj574205(v=ws.11).aspx

@@ -1,8 +1,9 @@
 - [Concepts](#concepts)
+- [Model Ranking](#model-ranking)
 - [Links](#links)
 
 # Concepts
-- vibe: interactive / 智能问答
+- vibe: chat / 智能问答
 - agentic: agent / 智能体
 - MCP (Model Context Protocol)
     - connecting AI applications to external systems

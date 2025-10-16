@@ -1,15 +1,24 @@
 <!-- TOC -->
 
+- [Run](#run)
 - [Docker Images](#docker-images)
   - [Community Stacks](#community-stacks)
     - [selenium](#selenium)
 
 <!-- /TOC -->
 
-vscode: install `Python` extension - support `git diff` code/output of .ipynb
+Test: https://github.com/fzinfz/ipynb/blob/main/python/jupyter.ipynb
 
+uv: https://docs.astral.sh/uv/guides/integration/jupyter/
+
+# Run
+
+    # win create shortcut
+    d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\cwp.py d:\_soft\Anaconda3 d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\Scripts\jupyter-notebook-script.py "d:/"
+
+    # linux
     jupyter notebook --generate-config # ~/.jupyter | jupyter_notebook_config.py
-        c.NotebookApp.notebook_dir = '' # Windows: edit shortcut | better: vscode
+        c.NotebookApp.notebook_dir = ''
         c.NotebookApp.ip = '*'
         c.NotebookApp.open_browser = False 
         c.NotebookApp.password = u'type:salt:hashed-password' # from notebook.auth import passwd; passwd()

@@ -1,11 +1,16 @@
 <!-- TOC -->
 
+- [tools](#tools)
+- [uv](#uv)
+  - [scripts](#scripts)
+  - [Projects](#projects)
+- [pipx](#pipx)
 - [Anaconda](#anaconda)
 - [EOL](#eol)
 - [Relative imports in Python 3](#relative-imports-in-python-3)
 - [Distribution Default](#distribution-default)
 - [pip](#pip)
-  - [Installing from local](#installing-from-local)
+  - [Installing from](#installing-from)
   - [Proxy](#proxy)
   - [CN Mirror](#cn-mirror)
 - [pypi](#pypi)
@@ -27,27 +32,69 @@
 
 <!-- /TOC -->
 
+# tools
+
+    uv pip install pydantic # Data validation using Python type hints
+
+# uv
+https://pypi.org/project/uv/
+
+    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" # wget uv/uvw/uvx , v0.9.2 < 60MB
+    pip install uv
+    uv self update
+
+    uv python install 3.14 3.12 # around 20MB each
+    uv python list # supported versions & local path
+
+    cd $path
+    uv venv --python 3.12 --seed # cat .venv/pyvenv.cfg
+    uv tool run jupyter lab # v4.4.9 : 99 packages
+
+## scripts
+https://docs.astral.sh/uv/guides/scripts/
+
+    uv run example.py
+
+    echo 'print("hello world!")' | uv run -
+
+    uv run - <<EOF
+    print("hello world!")
+    EOF
+
+## Projects
+
+    $cd example
+    $ uv add ruff
+    Creating virtual environment at: .venv
+    $ uv run ruff check
+    $ uv lock
+    $ uv sync
+
+Jupyter: https://docs.astral.sh/uv/guides/integration/jupyter/#using-jupyter-within-a-project
+
+    uv run --with jupyter jupyter lab  # pyproject.toml or uv.lock
+
+# pipx
+https://github.com/pypa/pipx?tab=readme-ov-file#overview-what-is-pipx
+- creates an isolated environment for each application
+- run from the command line directly
+
 # Anaconda
 https://docs.anaconda.com/anaconda/packages/oldpkglists/
-
-    # shortcuts
-    %windir%\System32\cmd.exe "/K" d:\_soft\Anaconda3\Scripts\activate.bat d:\_soft\Anaconda3
-    d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\cwp.py d:\_soft\Anaconda3 d:\_soft\Anaconda3\python.exe d:\_soft\Anaconda3\Scripts\jupyter-notebook-script.py "d:/"
-
 
     Anaconda3\condabin>conda.bat activate
 
     ~/.bashrc # conda initialize
     conda config --set auto_activate_base false
 
+    conda create -n py3.14 python=3.14
+
 # EOL
 https://endoflife.date/python
 
-    3.10    04 Oct 2026
-    3.9     05 Oct 2025
-    3.8     14 Oct 2024
-    3.7     27 Jun 2023
-    3.6.15  23 Dec 2021
+Ver | Released | EOS
+-- | -- | --
+3.14 | Oct 2025 | Oct 2027
 
 # Relative imports in Python 3
 https://stackoverflow.com/a/49375740/4769874  
@@ -66,7 +113,12 @@ https://stackoverflow.com/a/49375740/4769874
     Debian 11 bullseye            3.9
 
 # pip
-## Installing from local
+## Installing from 
+
+    # online
+    pip install git+   https://github.com/<owner_name>/<repo_name>.git
+
+    # local
     pip install --download DIR -r requirements.txt
     pip wheel --wheel-dir DIR -r requirements.txt
     pip install --no-index --find-links=DIR -r requirements.txt

@@ -1,7 +1,7 @@
 - [BL2/FIP](#bl2fip)
 - [MTD](#mtd)
 - [uboot](#uboot)
-- [ubi](#ubi)
+- [cmd](#cmd)
 - [Breed](#breed)
 
 # BL2/FIP
@@ -18,16 +18,18 @@ calc HEX -> DEC ：
     cat /proc/mtd
     fw_printenv | grep mtdparts
 
-    mtd write .bin FIP # kmod-mtd-rw
-    dd if=/tmp/uboot.bin of=/mtd4
+    mtd write .fip FIP # kmod-mtd-rw
+    dd if=/tmp/uboot.fip of=/mtdX
 
 # uboot
 https://openwrt.org/docs/techref/bootloader/uboot.config
 
-# ubi
+https://github.com/hanwckf/bl-mt798x
+
+# cmd
 
     ubinfo -a
-
+    smeminfo
 
 # Breed
 breed -> openwrt initramfs -> /cgi-bin/luci/admin/system/flashops/sysupgrade

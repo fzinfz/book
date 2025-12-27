@@ -5,6 +5,9 @@
 - [Controller](#controller)
         - [DAWN](#dawn)
 
+# Roaming
+https://openwrt.org/docs/guide-user/network/wifi/roaming
+
 # 802.11kvr
 [/nw/README.md#roaming---80211krv](/nw/README.md#roaming---80211krv)
 
@@ -82,3 +85,11 @@ Decentralized WiFi Controller
         grep -E '_port|_ip' /etc/config/dawn && netstat -lntup | grep dawn
 
 
+## usteer
+https://openwrt.org/docs/guide-user/network/wifi/usteer
+
+## fakemesh
+https://github.com/x-wrt/com.x-wrt/blob/master/luci-app-fakemesh/README.md
+
+https://fakemesh.com/#%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE
+- Sync Config

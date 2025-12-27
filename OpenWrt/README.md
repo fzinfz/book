@@ -1,28 +1,26 @@
 - [Install on X86](#install-on-x86)
 - [run as Container](#run-as-container)
-    - [macvlan - access host](#macvlan---access-host)
-    - [ipvlan](#ipvlan)
+  - [macvlan - access host](#macvlan---access-host)
+  - [ipvlan](#ipvlan)
 - [run as VM](#run-as-vm)
-    - [QEMU NIC](#qemu-nic)
+  - [QEMU NIC](#qemu-nic)
 - [network](#network)
-    - [DSA](#dsa)
-    - [/etc/config/](#etcconfig)
+  - [DSA](#dsa)
+  - [/etc/config/](#etcconfig)
+- [DHCP/DNS](#dhcpdns)
 - [QoS](#qos)
-    - [SQM](#sqm)
-    - [nftables](#nftables)
+  - [SQM](#sqm)
+  - [nftables](#nftables)
 - [Tailscale](#tailscale)
 - [Mesh](#mesh)
-    - [bat-adv](#bat-adv)
-    - [Mode 802.11s](#mode-80211s)
-    - [Mode AP - 802.11r](#mode-ap---80211r)
+  - [bat-adv](#bat-adv)
+  - [Mode 802.11s](#mode-80211s)
+  - [Mode AP - 802.11r](#mode-ap---80211r)
 - [Switch Chip](#switch-chip)
-    - [Bridged AP Setup](#bridged-ap-setup)
+  - [Bridged AP Setup](#bridged-ap-setup)
 - [Controller - OpenWISP](#controller---openwisp)
 - [Compile](#compile)
-    - [Version](#version)
-- [Mi](#mi)
-- [Hardware](#hardware)
-- [ImmortalWrt](#immortalwrt)
+  - [Version](#version)
 
 
 # Install on X86
@@ -239,19 +237,3 @@ Extra packages ---> ipv6helper
     CONFIG_VERSION_DIST="##.##-SNAPSHOT"
     CONFIG_VERSION_NUMBER="OpenWrt"
 
-# Mi
-- AX3200 (RB01, international) = Redmi AX6S (RB03, Chinese)
-    - https://openwrt.org/toh/xiaomi/ax3200  
-    - https://github.com/mikeeq/xiaomi_ax3200_openwrt
-- AX6 : https://github.com/InfinityTL/OpenWrt-Redmi-AX6  
-- AX3000: https://github.com/shell-script/unlock-redmi-ax3000  
-- RM2100: http://openwrt.ink:88/archives/s-breed
-- AX3000T / Win CMD: https://github.com/zc360/Xiaomi-ax3000t-openwrt
-    - https://note.okhk.net/xiaomi-ax3000t-router-with-hanwckf-immortalwrt
-    - back to stock: https://www.kaitaku.xyz/misc/ax3000t-openwrt/#%E6%81%A2%E5%A4%8D%E5%8E%9F%E5%8E%82-uboot
-    - WR30U: https://zhuanlan.zhihu.com/p/659735701 | https://github.com/hanwckf/bl-mt798x
-
-
-# ImmortalWrt
-- https://github.com/immortalwrt/immortalwrt
-- https://firmware-selector.immortalwrt.org

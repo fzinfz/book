@@ -10,7 +10,6 @@
 - [Relative imports in Python 3](#relative-imports-in-python-3)
 - [Distribution Default](#distribution-default)
 - [pip](#pip)
-  - [Installing from](#installing-from)
   - [Proxy](#proxy)
   - [CN Mirror](#cn-mirror)
 - [pypi](#pypi)
@@ -113,7 +112,6 @@ https://stackoverflow.com/a/49375740/4769874
     Debian 11 bullseye            3.9
 
 # pip
-## Installing from 
 
     # online
     pip install git+   https://github.com/<owner_name>/<repo_name>.git

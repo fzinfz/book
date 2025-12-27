@@ -1,11 +1,12 @@
 <!-- TOC -->
 
 - [Chips](#chips)
-    - [MediaTek](#mediatek)
+  - [MediaTek](#mediatek)
 - [CN](#cn)
 - [OpenWrt One](#openwrt-one)
 - [GLiNet](#glinet)
-    - [Multi WAN](#multi-wan)
+  - [VLAN](#vlan)
+  - [Multi WAN](#multi-wan)
 
 <!-- /TOC -->
 
@@ -51,7 +52,9 @@ Cloud Web: set firewall/lan subnet/ ; view clients
 - https://www.goodcloud.xyz
 - remote web/terminal : need pub ip? : https://docs.gl-inet.com/router/en/4/interface_guide/cloud/#remote-access-web-admin-panel
 
-
+## VLAN
+br-lan: rm physical, add br-VLANs.1
+- if br-lan.1 : GL UI won't show clients
 
 ## Multi WAN
 no custom rules on luci

@@ -1,5 +1,8 @@
 - [Web](#web)
+  - [Troubleshooting](#troubleshooting)
 - [port](#port)
+  - [http](#http)
+- [/www/](#www)
 - [/usr/lib/lua/luci/](#usrliblualuci)
 
 
@@ -14,8 +17,13 @@ SSH key | http://wrt.lan/cgi-bin/luci/admin/system/admin
 /etc/config/luci
 - ping/traceroute/nslookup: http://wrt.lan/cgi-bin/luci/admin/network/diagnostics
 
-# port
+## Troubleshooting
+- http://wrt.lan/cgi-bin/luci/admin/status/routes
+  - rm default gw of interface if unexpected 0.0.0.0/0
+- firewall + DNS
 
+# port
+## http
     grep listen /etc/config/uhttpd /etc/nginx/conf.d/*
 
 # /www/

@@ -17,7 +17,7 @@
   - [Disable update](#disable-update)
   - [Registry locations](#registry-locations)
   - [NFS mount](#nfs-mount)
-  - [Fix cifs/share mount:](#fix-cifsshare-mount)
+  - [Fix cifs/share mount](#fix-cifsshare-mount)
 - [Installation](#installation)
   - [Tools](#tools)
   - [Force OOBE](#force-oobe)
@@ -173,7 +173,7 @@ https://unix.stackexchange.com/questions/276292
     "AnonymousUid"=dword:000003e8
     "AnonymousGid"=dword:000003e8
 
-## Fix cifs/share mount:
+## Fix cifs/share mount
 ```
 net use * /del /yes
 net use h: \\192.168.0.1\docs /user:ServerB\user Password 

@@ -4,6 +4,7 @@
   - [ipvlan](#ipvlan)
 - [run as VM](#run-as-vm)
   - [QEMU NIC](#qemu-nic)
+- [Docker](#docker)
 - [network](#network)
   - [DSA](#dsa)
   - [/etc/config/](#etcconfig)
@@ -93,6 +94,14 @@ https://docs.docker.com/network/ipvlan/#ipvlan-l2-mode-example-usage
 
     use e1000; rtl8139 not detected by default.
     eth0 -> LAN, eth1 -> WAN, usually.
+
+# Docker
+
+    service dockerd stop
+    vi /etc/config/dockerd     # data_root
+    vi /etc/docker/daemon.json # data-root
+    reboot
+    docker pull hello-world
 
 # network
 ## DSA

@@ -38,20 +38,27 @@ https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
 
     deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription # 8.x
 
+# Storage
+https://pve.proxmox.com/wiki/Storage  or  
+- zfs : file + block
+
+    cat /etc/pve/storage.cfg
+
+# nfs
+    
+    pvesm scan nfs 192.168.88.8
+    vi /etc/pve/storage.cfg # {IP}/pve-docs/chapter-pvesm.html
+    pvesm remove iso-templates # rm above added lines
+    pvesm status # create /template on NAS if `Permission denied` on PVE
+    grep nfs /proc/mount
+
 # Disk
 
     dmsetup ls --tree
     lvs
 
-    ln -s /var/lib/vz/template/iso/ iso
-
-https://pve.proxmox.com/wiki/Storage
-- file + block : zfs
-
 ## import
 qm disk import 100 x.img local-lvm # webUI: add disk & boot order
-
-
 
 ## raw disk map
 https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM)
@@ -59,10 +66,6 @@ https://pve.proxmox.com/wiki/Passthrough_Physical_Disk_to_Virtual_Machine_(VM)
     find /dev/disk/by-id/ -type l|xargs -I{} ls -l {}|grep -v -E '[0-9]$' |sort -k11|cut -d' ' -f9,10,11,12
     qm set 100 -scsi2 /dev/disk/by-id/ata-... # add
     qm unlink 100 --idlist scsi2
-
-# iso
-    
-    ls -lh /var/lib/vz/template/iso/
 
 # PCI Passthrough
 - All: https://pve.proxmox.com/wiki/PCI(e)_Passthrough

@@ -5,7 +5,10 @@
 - [Tailscale](#tailscale)
     - [Subnet](#subnet)
 - [zerotier](#zerotier)
+    - [Moons](#moons)
 - [nebula - go](#nebula---go)
+- [L2TP](#l2tp)
+    - [v3](#v3)
 
 L4: [/nw/proxy/](/nw/proxy/)
 
@@ -108,3 +111,16 @@ Own Roots (a.k.a. Moons): https://docs.zerotier.com/roots/
 
 # nebula - go
 https://github.com/slackhq/nebula
+
+
+# L2TP
+https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol
+- It is common to carry PPP sessions within an L2TP tunnel. 
+
+        [mikrotik] /interface l2tp-server server set enabled=yes use-ipsec=yes
+
+## v3
+appeared as proposed standard RFC 3931 in 2005
+
+https://en.wikipedia.org/wiki/L2TPv3
+- can be regarded as being to MPLS what IP is to ATM

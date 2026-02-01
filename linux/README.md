@@ -9,7 +9,7 @@
 - [Bash](#bash)
     - [tmux](#tmux)
 - [Init](#init)
-    - [login & non-login shells](#login--non-login-shells)
+    - [login \& non-login shells](#login--non-login-shells)
     - [supervisord](#supervisord)
 - [Exit code](#exit-code)
 - [Syslog Message Severities](#syslog-message-severities)
@@ -17,7 +17,7 @@
 - [kill](#kill)
 - [top](#top)
     - [Glances - A top/htop alternative - Python](#glances---a-tophtop-alternative---python)
-- [User & Permission](#user--permission)
+- [User \& Permission](#user--permission)
     - [add user to group](#add-user-to-group)
     - [rename](#rename)
     - [password](#password)
@@ -25,8 +25,8 @@
     - [chown](#chown)
 - [Package Management](#package-management)
     - [Redhat](#redhat)
-    - [Ubuntu](#ubuntu)
-    - [Debian](#debian)
+    - [Ubuntu](#ubuntu-1)
+    - [Debian](#debian-1)
         - [experimental](#experimental)
     - [dpkg](#dpkg)
     - [apt](#apt)
@@ -35,10 +35,11 @@
     - [grub-customizer](#grub-customizer)
     - [boot .iso](#boot-iso)
 - [boot repair](#boot-repair)
-    - [ubuntu](#ubuntu)
+    - [ubuntu](#ubuntu-2)
 - [Serial](#serial)
     - [client](#client)
 - [Benchmark](#benchmark)
+- [mosh](#mosh)
 - [sshd](#sshd)
 - [ssh redirect](#ssh-redirect)
 - [web](#web)
@@ -57,15 +58,15 @@
     - [link account](#link-account)
 - [Ubuntu snap](#ubuntu-snap)
     - [Proxy](#proxy)
-- [JAVA_HOME](#java_home)
-- [I18N & I10N](#i18n--i10n)
+- [JAVA\_HOME](#java_home)
+- [I18N \& I10N](#i18n--i10n)
 - [Chrome](#chrome)
 - [AD](#ad)
 - [cache diagnostics](#cache-diagnostics)
 - [WOL](#wol)
 - [Tools - Online](#tools---online)
 - [CPU](#cpu)
-    - [check_cpu_core_mapping](#check_cpu_core_mapping)
+    - [check\_cpu\_core\_mapping](#check_cpu_core_mapping)
 - [USB Persistence](#usb-persistence)
 - [kali](#kali)
 - [ssh](#ssh)
@@ -393,6 +394,11 @@ http://www.brendangregg.com/Perf/linux_benchmarking_tools.png
     tar -xf y-cruncher*.tar.xz
 
 ```
+
+# mosh
+
+    apt install mosh -y
+    ss -lntup | grep mosh # 60000:61000/udp | **after** client connected
 
 # sshd
 

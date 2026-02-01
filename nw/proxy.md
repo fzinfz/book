@@ -14,7 +14,7 @@
 - [Docker](#docker)
 - [Cow - Auto detect blocked sites](#cow---auto-detect-blocked-sites)
 - [Optimize](#optimize)
-    - [BBR Kernel 4.9+](#bbr-kernel-49)
+    - [BBR (Kernel 4.9+)](#bbr-kernel-49)
     - [KCPTun](#kcptun)
     - [dragonite-java](#dragonite-java)
     - [UDPspeeder](#udpspeeder)
@@ -42,6 +42,7 @@
 - [Subscription](#subscription)
 - [VPN](#vpn)
 - [Host Apps](#host-apps)
+- [tsocks](#tsocks)
 
 <!-- /TOC -->
 
@@ -264,3 +265,11 @@ http://192.168.1.25:25500/sub?target=clash&url=http%3A%2F%2F192.168.88.19%3A88%2
     - [tsocks](/nw/proxy_socks/#tsocks)
     - proxychains： `apt install -y proxychains && vi /etc/proxychains.conf`
 
+# tsocks
+- https://linux.die.net/man/8/tsocks
+- https://github.com/zouguangxian/tsocks
+
+- `SOCKS server ... is not on a local subnet!` => `vi /root/.tsocks.conf or /etc/tsocks.conf` - `local =`
+
+    TSOCKS_DEBUG: -1/no debug, 2/verbose
+    TSOCKS_DEBUG=2 LD_PRELOAD=libtsocks.so curl -4 ip.gs

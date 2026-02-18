@@ -18,9 +18,10 @@
         - [enable apt](#enable-apt)
         - [List dhcp/static clients](#list-dhcpstatic-clients)
         - [RIP](#rip)
-- [Unifi-AC-Lite/LR](#unifi-ac-litelr)
+- [Unifi](#unifi)
+    - [Unifi-AC-Lite/LR](#unifi-ac-litelr)
     - [Controller Web](#controller-web)
-- [NanoStation® M](#nanostation®-m)
+- [NanoStation® M](#nanostation-m)
 
 <!-- /TOC -->
 
@@ -172,7 +173,16 @@ https://community.ubnt.com/t5/EdgeMAX/Anyway-to-see-connected-clients-Both-DHCP-
             }
         }
 
-# Unifi-AC-Lite/LR
+# Unifi
+https://ui.com/download/releases/network-server
+- `UniFi Network Server` / `UniFi OS Server`: Software you install on your own server (VM/bare metal) to run `UniFi OS`
+- `UniFi Network Application`: A key application within `UniFi OS`
+
+Versions:
+- UniFi OS Server 5.0.6 | UniFi Network 9.5.21 | Win/Mac/Linux
+- UniFi Network Application 10.0.160
+
+## Unifi-AC-Lite/LR
 https://community.ubnt.com/t5/UniFi-Updates-Blog/bg-p/Blog_UniFi
 
 ```

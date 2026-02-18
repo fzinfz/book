@@ -1,11 +1,24 @@
+- [IDE](#ide)
 - [Pinout](#pinout)
+- [ESP32](#esp32)
 - [Uno](#uno)
     - [Q](#q)
     - [R3](#r3)
 - [OLED](#oled)
-    - [IDE](#ide)
+    - [IDE](#ide-1)
 - [3D Case](#3d-case)
 
+# IDE
+
+- ~/.arduinoIDE/arduino-cli.yaml (Linux/macOS)
+- C:\Users\YourUsername\.arduinoIDE\arduino-cli.yaml (Windows)
+
+```
+cd D:\Program Files\Arduino IDE\resources\app\lib\backend\resources
+
+# fix: Client.Timeout
+arduino-cli config set network.connection_timeout 600s
+```
 
 # Pinout
 | Feature | GPIO (General-Purpose I/O) | PWM (Pulse Width Modulation) | ADC (Analog-to-Digital Converter) |
@@ -15,6 +28,11 @@
 | **Mark** | D_ | ~D_ | A_ |
 
 AREF: http://tronixstuff.com/2013/12/12/arduino-tutorials-chapter-22-aref-pin/
+
+# ESP32
+- All: https://products.espressif.com/#/product-comparison?names=ESP32-C3,ESP32-S3,ESP32-C6&type=SoC
+- S3: https://docs.arduino.cc/hardware/nano-esp32/
+- C3/C6/S3: https://wiki.seeedstudio.com/SeeedStudio_XIAO_Series_Introduction/#seeed-studio-xiao-series-comparison-table
 
 # Uno
 https://www.arduino.cc/en/hardware/#uno-family

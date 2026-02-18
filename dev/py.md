@@ -42,11 +42,12 @@ https://pypi.org/project/uv/
     pip install uv
     uv self update
 
+    curl -LsSf https://astral.sh/uv/install.sh | sh # Debian
     uv python install 3.14 3.12 # around 20MB each
     uv python list # supported versions & local path
 
     cd $path
-    uv venv --python 3.12 --seed # cat .venv/pyvenv.cfg
+    uv venv --python 3.14 --seed # cat .venv/pyvenv.cfg
     uv tool run jupyter lab # v4.4.9 : 99 packages
 
 ## scripts

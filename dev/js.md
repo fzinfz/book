@@ -1,6 +1,7 @@
 <!-- TOC -->
 
 - [Frameworks](#frameworks)
+- [UI](#ui)
 - [Basic](#basic)
   - [text](#text)
   - [export \& import](#export--import)
@@ -14,6 +15,8 @@
 - [JSX](#jsx)
 - [MDX](#mdx)
 - [node](#node)
+  - [Install](#install)
+  - [Node Package Manage](#node-package-manage)
   - [Version Manager](#version-manager)
     - [volta](#volta)
     - [nvm](#nvm)
@@ -23,6 +26,9 @@
 # Frameworks
 - Vue: https://nuxtjs.org/
 - React: https://nextjs.org/
+
+# UI
+- byCF: https://kumo-ui.com/
 
 # Basic
 
@@ -74,6 +80,19 @@ JSX + Markdown: https://mdxjs.com/docs/what-is-mdx/
 # node
 Schedule
 ![](https://raw.githubusercontent.com/nodejs/Release/master/schedule.svg)
+
+## Install
+
+    apt update && apt install nodejs npm
+    corepack enable # ls .cache/node/corepack
+    corepack enable npm # globally
+    corepack install --global pnpm@*
+
+## Node Package Manage
+
+    Default/Simple: npm.
+    Large Teams/Monorepo: Yarn (for features) or pnpm (for efficiency).
+    Speed/Efficiency: pnpm
 
 ## Version Manager
 ### volta

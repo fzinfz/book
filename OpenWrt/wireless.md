@@ -1,12 +1,20 @@
+- [Roaming](#roaming)
+        - [Debug](#debug)
 - [802.11kvr](#80211kvr)
         - [/etc/config/wireless](#etcconfigwireless)
         - [MediaTek](#mediatek)
 - [Client Info](#client-info)
 - [Controller](#controller)
         - [DAWN](#dawn)
+        - [usteer](#usteer)
+        - [fakemesh](#fakemesh)
 
 # Roaming
 https://openwrt.org/docs/guide-user/network/wifi/roaming
+
+## Debug
+- https://openwrt.org/docs/guide-user/network/wifi/roaming#checking_80211k_is_enabled
+- https://openwrt.org/docs/guide-user/network/wifi/roaming#verifying_client_80211r_support
 
 # 802.11kvr
 [/nw/README.md#roaming---80211krv](/nw/README.md#roaming---80211krv)

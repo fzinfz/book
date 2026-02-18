@@ -1,8 +1,7 @@
 <!-- TOC -->
 
-- [Mesh](#mesh)
-    - [Build - 802.11s](#build---80211s)
-    - [Roaming - 802.11k/r/v](#roaming---80211krv)
+- [Mesh - 802.11s](#mesh---80211s)
+- [Roaming - 802.11k/r/v](#roaming---80211krv)
 - [Open Source Software for Routing](#open-source-software-for-routing)
 - [BGP](#bgp)
     - [Private AS](#private-as)
@@ -48,15 +47,14 @@
 
 <!-- /TOC -->
 
-# Mesh 
-## Build - 802.11s
+# Mesh - 802.11s
 https://en.wikipedia.org/wiki/IEEE_802.11s  
 extends the IEEE 802.11 MAC standard
 
 https://en.wikipedia.org/wiki/Hybrid_Wireless_Mesh_Protocol  
 Hybrid Wireless Mesh Protocol (HWMP) defined in IEEE 802.11s, is a basic routing protocol for a wireless mesh network.
 
-## Roaming - 802.11k/r/v
+# Roaming - 802.11k/r/v
 https://support.apple.com/en-us/HT202628
 - 802.11r - Fast Basic Service Set Transition (FT) to authenticate PSK/802.1X more quickly
 

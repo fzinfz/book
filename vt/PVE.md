@@ -4,10 +4,12 @@
 - [qm](#qm)
 - [Boot](#boot)
 - [apt](#apt)
+- [Storage](#storage)
+- [nfs](#nfs)
 - [Disk](#disk)
+    - [LVM-thin](#lvm-thin)
     - [import](#import)
     - [raw disk map](#raw-disk-map)
-- [iso](#iso)
 - [PCI Passthrough](#pci-passthrough)
     - [GPU](#gpu)
     - [SR-IOV](#sr-iov)
@@ -56,6 +58,11 @@ https://pve.proxmox.com/wiki/Storage  or
 
     dmsetup ls --tree
     lvs
+
+## LVM-thin
+
+    pvesm status  # used%
+    lvs | grep -E 'LV|snap_' # snapshot
 
 ## import
 qm disk import 100 x.img local-lvm # webUI: add disk & boot order

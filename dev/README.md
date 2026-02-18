@@ -1,7 +1,7 @@
 
 <!-- TOC -->
 
-- [AI](#ai)
+- [Repo](#repo)
 - [GraphQL](#graphql)
 - [Markdown](#markdown)
     - [Parser](#parser)
@@ -14,12 +14,24 @@
 - [Excel](#excel)
     - [Formula](#formula)
     - [CSharp](#csharp)
-- [CSharp](#csharp)
-- [Net Core](#net-core)
+- [CSharp](#csharp-1)
+- [.Net Core](#net-core)
 - [InPage Search](#inpage-search)
 - [My Notes](#my-notes)
 
 <!-- /TOC -->
+
+# Repo
+
+| byGrok                  | **Monolith**                          | **Monorepo**                              | **Polyrepo** (Multi-repo)                  |
+|-------------------------|---------------------------------------|-------------------------------------------|--------------------------------------------|
+| **Definition**          | Single deployable application         | Single Git repository                     | Multiple Git repositories                  |
+| **Code organization**   | One codebase, tightly coupled         | Multiple projects/packages in one repo    | One project/package per repo               |
+
+**Quick rule of thumb**  
+- **Monolith** → simple app, early stage  
+- **Monorepo** → many related projects that share a lot of code  
+- **Polyrepo** → independent projects/teams/services
 
 # GraphQL
 http://graphql.org/  
